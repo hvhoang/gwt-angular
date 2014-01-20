@@ -5,5 +5,5 @@
 	<inherits name="com.asayama.gwt.angular.Angular" />
 	<source path="client" />
 	<source path="shared" />
-	<entry-point class="com.asayama.test.client.MyEntryPoint" />
+	<entry-point class="com.asayama.demo.client.MyEntryPoint" />
 </module>

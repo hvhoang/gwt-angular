@@ -1,4 +1,4 @@
-package com.asayama.test.client;
+package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Module;
 

@@ -1,6 +1,5 @@
 package com.asayama.gwt.angular.client;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
@@ -9,9 +8,8 @@ public class Angular {
 	
 	static final AngularJSO delegate = AngularJSO.getInstance();
 
-	public static <T extends Module> T module(Class<T> klass) {
-		T module = GWT.create(klass);
-		module.setDelegate(delegate.module(klass.getName(), null, new Function.Proxy(new Function() {
+	public static <T extends Module> T module(T module) {
+		module.setDelegate(delegate.module(module.getClass().getName(), null, new Function.Proxy(new Function() {
 			@Override
 			public JavaScriptObject invoke(Object... args) {
 				//TODO implement me

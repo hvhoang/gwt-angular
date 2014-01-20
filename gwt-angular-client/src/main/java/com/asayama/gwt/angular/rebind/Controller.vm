@@ -27,7 +27,8 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 #foreach($field in $serviceFields)
 		try {
 			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-			${field.name} = module.factory(${field.type.qualifiedSourceName}.class);
+			${field.type.qualifiedSourceName} service = GWT.create(${field.type.qualifiedSourceName}.class);
+			${field.name} = module.factory(service);
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}

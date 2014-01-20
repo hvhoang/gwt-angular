@@ -1,6 +1,5 @@
 package com.asayama.gwt.angular.client;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
@@ -8,29 +7,37 @@ public abstract class Module {
 
 	ModuleJSO delegate;
 
-	public <T extends Controller> T controller(Class<T> controllerClass) {
-		final T controller = GWT.create(controllerClass);
-		final Controller.Constructor ctor = (Controller.Constructor) controller;
-		ctor._injectServices(this);
-		delegate.controller(controllerClass.getName(), new Function.Proxy(new Function() {
-			@Override
-			public JavaScriptObject invoke(Object... args) {
-				return ctor._get(controller);
-			}
-		}));
-		return controller;
+	public <T extends Controller> T controller(final T controller) {
+		String className = controller.getClass().getName();
+		try {
+			final Controller.Constructor ctor = (Controller.Constructor) controller;
+			ctor._injectServices(this);
+			delegate.controller(className, new Function.Proxy(new Function() {
+				@Override
+				public JavaScriptObject invoke(Object... args) {
+					return ctor._get(controller);
+				}
+			}));
+			return controller;
+		} catch (ClassCastException e) {
+			throw new UnsupportedOperationException(className + " must be created using GWT.create()");
+		}
 	}
 	
-	public <T extends Service> T factory(Class<T> serviceClass) {
-		final T service = GWT.create(serviceClass);
-		final Service.Constructor ctor = ((Service.Constructor) service);
-		delegate.factory(serviceClass.getName(), new Function.Proxy(new Function() {
-			@Override
-			public JavaScriptObject invoke(Object... args) {
-				return ctor._get(service);
-			}
-		}));
-		return service;
+	public <T extends Service> T factory(final T service) {
+		String className = service.getClass().getName();
+		try {
+			final Service.Constructor ctor = ((Service.Constructor) service);
+			delegate.factory(className, new Function.Proxy(new Function() {
+				@Override
+				public JavaScriptObject invoke(Object... args) {
+					return ctor._get(service);
+				}
+			}));
+			return service;
+		} catch (ClassCastException e) {
+			throw new UnsupportedOperationException(className + " must be created using GWT.create()");
+		}
 	}
 	
 	public void config(Function function) {

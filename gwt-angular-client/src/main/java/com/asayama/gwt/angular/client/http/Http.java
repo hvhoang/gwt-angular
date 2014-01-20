@@ -52,7 +52,7 @@ class HttpImpl extends Http implements Service.Constructor {
 	@Override
 	public native <T extends Service, R extends JavaScriptObject> R _get(T me) /*-{
 		return [ "$http", function ($http) {
-			me.@com.asayama.gwt.angular.client.http.HttpImpl::setDelegate(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
+			me.@com.asayama.gwt.angular.client.http.Http::setDelegate(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
 			return $http;
 		}];
 	}-*/;

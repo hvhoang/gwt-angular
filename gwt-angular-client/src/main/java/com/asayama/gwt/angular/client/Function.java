@@ -6,8 +6,6 @@ import java.util.List;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
-
-
 public interface Function {
 
 	JavaScriptObject invoke(Object... args);

@@ -24,10 +24,6 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<gen>${project.build.directory}/generated</gen>
-				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -39,7 +35,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1</version>
 				<configuration>
 					<warSourceDirectory>war</warSourceDirectory>
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
@@ -49,18 +44,12 @@
 	</build>
 	<dependencies>
 
-		<!-- GWT Client -->
+		<!-- GWT Angular -->
 		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>2.5.1</version>
-		</dependency>
-
-		<!-- Code Generator -->
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
+			<groupId>com.asayama.gwt</groupId>
+			<artifactId>gwt-angular-client</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Testing -->
