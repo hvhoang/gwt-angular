@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.rebind.util.JClassTypeUtils;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
@@ -15,12 +15,11 @@ import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JField;
-import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
-public class ControllerGenerator extends Generator {
+public class ModuleGenerator extends Generator {
 	
-	static final String CLASS = ControllerGenerator.class.getName();
+	static final String CLASS = ModuleGenerator.class.getName();
 	static final Logger LOG = Logger.getLogger(CLASS);
 
 	@Override
@@ -49,31 +48,21 @@ public class ControllerGenerator extends Generator {
 			generator.put("generatedQualifiedName", generatedQualifiedName);
 			generator.put("generatedSimpleName", generatedSimpleName);
 			
-			// Identify the methods to export to $scope
-			List<JMethod> exportMethods = new ArrayList<JMethod>();
-			JMethod[] inheritableMethods = classType.getInheritableMethods();
-			for (JMethod item : inheritableMethods) {
-				if (item.isPublic()) {
-					exportMethods.add(item);
-				}
-			}
-			generator.put("exportMethods", exportMethods);
-			
-			// Identify the services to inject
-			List<JField> serviceFields = new ArrayList<JField>();
+			// Identify the controllers to inject
+			List<JField> controller = new ArrayList<JField>();
 			JField[] fields = classType.getFields();
 			for (JField item : fields) {
 				JClassType itemClassType = item.getType().isClassOrInterface();
-				if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Service.class)) {
-					serviceFields.add(item);
+				if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Controller.class)) {
+					controller.add(item);
 				}
 			}
-			generator.put("serviceFields",	serviceFields);
+			generator.put("controllerFields",	controller);
 			
 			// Generate type
 			PrintWriter pwriter = context.tryCreate(logger, packageName, generatedSimpleName);
 			if (pwriter != null) {
-				final String filename = "com/asayama/gwt/angular/rebind/Controller.vm";
+				final String filename = "com/asayama/gwt/angular/rebind/Module.vm";
 				if (LOG.isLoggable(Level.FINE)) {
 					StringWriter swriter = new StringWriter();
 					generator.generate(swriter, filename);

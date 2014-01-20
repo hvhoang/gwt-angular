@@ -3,6 +3,9 @@
 	<inherits name="com.google.gwt.user.User" />
 	<source path="client" />
 	<source path="shared" />
+	<generate-with class="com.asayama.gwt.angular.rebind.ModuleGenerator">
+		<when-type-assignable class="com.asayama.gwt.angular.client.Module" />
+	</generate-with>
 	<generate-with class="com.asayama.gwt.angular.rebind.ControllerGenerator">
 		<when-type-assignable class="com.asayama.gwt.angular.client.Controller" />
 	</generate-with>

@@ -1,0 +1,31 @@
+package ${packageName};
+
+import java.util.*;
+
+import com.google.gwt.core.client.*;
+import com.asayama.gwt.angular.client.*;
+
+public class ${generatedSimpleName} extends ${qualifiedName} {
+
+	${generatedSimpleName}() {
+		super();
+		String m = "";
+		try {
+			m = "registering ${qualifiedName} with Angular";
+			Angular.module("${qualifiedName}", this);
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+#foreach($field in $controllerFields)
+		try {
+			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
+			${field.type.qualifiedSourceName} controller = GWT.create(${field.type.qualifiedSourceName}.class);
+			controller("${field.type.qualifiedSourceName}", controller);
+			${field.name} = controller;
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+#end
+	}
+	
+}

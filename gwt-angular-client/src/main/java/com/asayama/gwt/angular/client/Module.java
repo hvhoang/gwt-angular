@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
 public abstract class Module {
-
+	
 	ModuleJSO delegate;
 
 	public <T extends Controller> T controller(final String name, final T controller) {
