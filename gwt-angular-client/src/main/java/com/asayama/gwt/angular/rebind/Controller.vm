@@ -1,0 +1,55 @@
+package ${packageName};
+
+import java.util.*;
+
+import com.google.gwt.core.client.*;
+import com.asayama.gwt.angular.client.*;
+
+public class ${generatedSimpleName} extends ${simpleName} implements Controller.Constructor {
+
+	${generatedSimpleName}() {
+	}
+	
+	@Override
+	public void onControllerLoad() {
+		String m = "calling ${qualifiedName}.onControllerLoad";
+		GWT.log(m);
+		try {
+			super.onControllerLoad();
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+	}
+	
+	@Override
+	public <T extends Module> void _injectServices(T module) {
+		String m = "";
+#foreach($field in $serviceFields)
+		try {
+			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
+			${field.name} = module.factory(${field.type.qualifiedSourceName}.class);
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+#end
+	}
+	
+	@Override
+	public native <T extends Controller, R extends JavaScriptObject> R _get(T me) /*-{
+		return [
+			'$scope',
+#foreach($field in $serviceFields)
+			'${field.type.qualifiedSourceName}',
+#end
+			function ($scope) {
+#foreach($method in $exportMethods)
+				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}${foreach.index}#end) {
+					return me.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}${foreach.index} ? ${param.name}${foreach.index} : ${param.name}${foreach.index} == 0 ? 0 : null#end);
+				};
+#end
+				me.@${generatedQualifiedName}::onControllerLoad()();
+			}
+		];
+	}-*/;
+	
+}
