@@ -8,8 +8,8 @@ public class Angular {
 	
 	static final AngularJSO delegate = AngularJSO.getInstance();
 
-	public static <T extends Module> T module(T module) {
-		module.setDelegate(delegate.module(module.getClass().getName(), null, new Function.Proxy(new Function() {
+	public static <T extends Module> T module(String name, T module) {
+		module.setDelegate(delegate.module(name, null, new Function.Proxy(new Function() {
 			@Override
 			public JavaScriptObject invoke(Object... args) {
 				//TODO implement me
@@ -19,10 +19,10 @@ public class Angular {
 		return module;
 	}
 	
-	public static void bootstrap(Module... modules) {
+	public static void bootstrap(String... moduleNames) {
 		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
-		for (Module module : modules) {
-			jsarray.push(module.getClass().getName());
+		for (String moduleName : moduleNames) {
+			jsarray.push(moduleName);
 		}
 		delegate.bootstrap(jsarray);
 	}

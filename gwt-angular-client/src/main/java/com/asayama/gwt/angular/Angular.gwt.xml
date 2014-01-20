@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
+	<inherits name="com.google.gwt.user.User" />
 	<source path="client" />
 	<source path="shared" />
 	<generate-with class="com.asayama.gwt.angular.rebind.ControllerGenerator">
