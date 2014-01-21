@@ -20,7 +20,7 @@ public class ModuleGenerator extends Generator {
 	public String generate(TreeLogger logger, GeneratorContext context, String qualifiedName) throws UnableToCompleteException {
 
 		try {
-			final String filename = "com/asayama/gwt/angular/rebind/Module.vm";
+			final String filename = "Module.vm";
 			VelocityGenerator velocity = new VelocityGenerator(filename);
 			velocity.put("logger", logger);
 			velocity.put("context", context);

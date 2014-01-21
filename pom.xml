@@ -38,4 +38,36 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<dependencyManagement>
+		<dependencies>
+	
+			<!-- GWT Client -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>2.5.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>2.5.1</version>
+			</dependency>
+	
+			<!-- Code Generator -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>1.7</version>
+			</dependency>
+	
+			<!-- Testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.2</version>
+				<scope>test</scope>
+			</dependency>
+	
+		</dependencies>
+	</dependencyManagement>
 </project>
