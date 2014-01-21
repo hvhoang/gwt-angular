@@ -18,14 +18,13 @@ public class MyController implements Controller {
 	@Override
 	public void onControllerLoad() {
 		setTitle(MyControllerConstants.INSTANCE.title());
-//		http.get("/data/hello.txt", new HttpCallback<JsArray<Customer>>() {
-		http.get("/data/customer.json", new HttpCallback<JsArray<Customer>>() {
+		http.get("/api/customer", new HttpCallback<JsArray<CustomerJSO>>() {
 			@Override
-			public void onSuccess(int status, JsArray<Customer> data) {
+			public void onSuccess(int status, JsArray<CustomerJSO> data) {
 				setTitle("onSuccess: status=" + status);
 			}
 			@Override
-			public void onError(int status, JsArray<Customer> data) {
+			public void onError(int status, JsArray<CustomerJSO> data) {
 				setTitle("onError: status=" + status);
 			}
 		});
