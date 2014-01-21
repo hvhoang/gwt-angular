@@ -31,7 +31,7 @@ public abstract class Module {
 			delegate.factory(name, new Function.Proxy(new Function() {
 				@Override
 				public JavaScriptObject invoke(JavaScriptObject jso) {
-					return ctor._get(service);
+					return ctor._getConstructor(service);
 				}
 			}));
 			return service;

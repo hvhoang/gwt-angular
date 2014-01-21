@@ -18,7 +18,8 @@ public class MyController implements Controller {
 	@Override
 	public void onControllerLoad() {
 		setTitle(MyControllerConstants.INSTANCE.title());
-		http.get("http://localhost:8888/data/customer.json", new HttpCallback<JsArray<Customer>>() {
+//		http.get("/data/hello.txt", new HttpCallback<JsArray<Customer>>() {
+		http.get("/data/customer.json", new HttpCallback<JsArray<Customer>>() {
 			@Override
 			public void onSuccess(int status, JsArray<Customer> data) {
 				setTitle("onSuccess: status=" + status);

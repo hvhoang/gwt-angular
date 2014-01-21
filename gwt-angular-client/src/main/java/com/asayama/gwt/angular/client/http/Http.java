@@ -49,11 +49,12 @@ class HttpImpl extends Http implements Service.Constructor {
 	}
 	
 	@Override
-	public native <T extends Service, R extends JavaScriptObject> R _get(T me) /*-{
-		return [ "$http", function ($http) {
-			me.@com.asayama.gwt.angular.client.http.Http::setDelegate(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
-			return $http;
-		}];
+	public native <T extends Service, R extends JavaScriptObject> R _getConstructor(T me) /*-{
+		return [ "$http",
+			function ($http) {
+				me.@com.asayama.gwt.angular.client.http.Http::setDelegate(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
+				return $http;
+			}];
 	}-*/;
 
 }
@@ -65,6 +66,7 @@ class HttpJSO extends JavaScriptObject {
 	final native <T extends JavaScriptObject> void get(String url, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> successProxy, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> errorProxy) /*-{
 		this.get(url)
 			.success(function(data, status, headers, config) {
+alert(data);
 				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({
 					'data': data||null,
 					'status': status||-1,
