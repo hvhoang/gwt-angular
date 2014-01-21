@@ -20,9 +20,11 @@ public class MyController implements Controller {
 		http.get("http://localhost:8888/data/customer.json", new HttpCallback() {
 			@Override
 			public void onSuccess() {
+				setTitle("Http service works.");
 			}
 			@Override
 			public void onError() {
+				setTitle("Http service is broken.");
 			}
 		});
 	}

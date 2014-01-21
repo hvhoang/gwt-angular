@@ -25,20 +25,21 @@ public class Http implements Service {
 	
 	public void get(String url, final HttpCallback callback) {
 		GWT.log("[GET] " + url);
-		delegate.get(url,
-				new Function.Proxy(new Function() {
-					@Override
-					public JavaScriptObject invoke(Object... args) {
-						callback.onSuccess();
-						return null;
-					}
-				}), new Function.Proxy(new Function() {
-					@Override
-					public JavaScriptObject invoke(Object... args) {
-						callback.onError();
-						return null;
-					}
-				}));
+		Function.Proxy successProxy = new Function.Proxy(new Function() {
+			@Override
+			public JavaScriptObject invoke(Object... args) {
+				callback.onSuccess();
+				return null;
+			}
+		});
+		Function.Proxy errorProxy = new Function.Proxy(new Function() {
+			@Override
+			public JavaScriptObject invoke(Object... args) {
+				callback.onError();
+				return null;
+			}
+		});
+		delegate.get(url, successProxy, errorProxy);
 	}
 
 }
@@ -64,9 +65,11 @@ class HttpJSO extends JavaScriptObject {
 	final native void get(String url, Function.Proxy successProxy, Function.Proxy errorProxy) /*-{
 		this.get(url)
 			.success(function(data, status, headers, config) {
-				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)([status,headers,data]);
+alert("HttpJSO.get.success");
+				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)(null);
 			}).error(function(data, status, headers, config) {
-				errorProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)([status,headers,data]);
+alert("HttpJSO.get.error status=" + status);
+				errorProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)([]);
 			});
 	}-*/;
 
