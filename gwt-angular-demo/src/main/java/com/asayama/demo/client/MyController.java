@@ -15,6 +15,7 @@ public class MyController implements Controller {
 	
 	// Other attributes of the controller can be used as reference to view model.
 	String title;
+	String httpStatus;
 	
 	@Override
 	public void onControllerLoad() {
@@ -24,13 +25,13 @@ public class MyController implements Controller {
 			public void onSuccess(HttpResponse<JsArray<CustomerJSO>> response) {
 				String m = "onSuccess: status=" + response.getStatus();
 				GWT.log(m);
-				setTitle(m);
+				setHttpStatus(m);
 			}
 			@Override
 			public void onError(HttpResponse<JsArray<CustomerJSO>> response) {
 				String m = "onError: status=" + response.getStatus();
 				GWT.log(m);
-				setTitle(m);
+				setHttpStatus(m);
 			}
 		});
 	}
@@ -42,6 +43,12 @@ public class MyController implements Controller {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getHttpStatus() {
+		return httpStatus;
+	}
+	public void setHttpStatus(String httpStatus) {
+		this.httpStatus = httpStatus;
 	}
 }
 interface MyControllerConstants extends Constants {
