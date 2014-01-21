@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.angular.client.Function;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.rebind.annotations.Bind;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -15,7 +14,6 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Http implements Service {
 	
-	@Bind(service="$http")
 	HttpJSO delegate = null;
 	
 	public Http() {

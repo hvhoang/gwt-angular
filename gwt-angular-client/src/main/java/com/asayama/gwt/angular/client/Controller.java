@@ -7,7 +7,7 @@ public interface Controller {
 	void onControllerLoad();
 	
 	public static interface Constructor {
-		<T extends Controller, R extends JavaScriptObject> R _get(T me);
+		<T extends Controller, R extends JavaScriptObject> R _getConstructor(T me);
 		<T extends Module> void _injectServices(T module);
 	}
 }

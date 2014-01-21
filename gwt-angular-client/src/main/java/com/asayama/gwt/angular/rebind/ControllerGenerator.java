@@ -1,11 +1,8 @@
 package com.asayama.gwt.angular.rebind;
 
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.rebind.util.JClassTypeUtils;
@@ -20,22 +17,23 @@ import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
 public class ControllerGenerator extends Generator {
 	
-	static final String CLASS = ControllerGenerator.class.getName();
-	static final Logger LOG = Logger.getLogger(CLASS);
-
 	@Override
 	public String generate(TreeLogger logger, GeneratorContext context, String qualifiedName) throws UnableToCompleteException {
+
 		try {
+			final String filename = "com/asayama/gwt/angular/rebind/Controller.vm";
+			VelocityGenerator velocity = new VelocityGenerator(filename);
+			velocity.put("logger", logger);
+			velocity.put("context", context);
+			velocity.put("qualifiedName", qualifiedName);
+			
 			TypeOracle typeOracle = context.getTypeOracle();
 			JClassType classType = typeOracle.getType(qualifiedName);
+			velocity.put("classType", classType);
+			
 			if (classType.isFinal()) {
 				throw new UnsupportedOperationException(qualifiedName + " should not be declared final");
 			}
-			
-			VelocityGenerator generator = new VelocityGenerator();
-			generator.put("logger", logger);
-			generator.put("context", context);
-			generator.put("classType", classType);
 			
 			// Define basic characteristics of the generated type.
 			final String suffix = "Generated";
@@ -43,11 +41,10 @@ public class ControllerGenerator extends Generator {
 			String simpleName = classType.getSimpleSourceName();
 			String generatedQualifiedName = qualifiedName + suffix;
 			String generatedSimpleName = simpleName + suffix;
-			generator.put("packageName", packageName);
-			generator.put("qualifiedName", qualifiedName);
-			generator.put("simpleName", simpleName);
-			generator.put("generatedQualifiedName", generatedQualifiedName);
-			generator.put("generatedSimpleName", generatedSimpleName);
+			velocity.put("packageName", packageName);
+			velocity.put("simpleName", simpleName);
+			velocity.put("generatedQualifiedName", generatedQualifiedName);
+			velocity.put("generatedSimpleName", generatedSimpleName);
 			
 			// Identify the methods to export to $scope
 			List<JMethod> exportMethods = new ArrayList<JMethod>();
@@ -57,7 +54,7 @@ public class ControllerGenerator extends Generator {
 					exportMethods.add(item);
 				}
 			}
-			generator.put("exportMethods", exportMethods);
+			velocity.put("exportMethods", exportMethods);
 			
 			// Identify the services to inject
 			List<JField> serviceFields = new ArrayList<JField>();
@@ -68,22 +65,13 @@ public class ControllerGenerator extends Generator {
 					serviceFields.add(item);
 				}
 			}
-			generator.put("serviceFields",	serviceFields);
+			velocity.put("serviceFields",	serviceFields);
 			
 			// Generate type
-			PrintWriter pwriter = context.tryCreate(logger, packageName, generatedSimpleName);
-			if (pwriter != null) {
-				final String filename = "com/asayama/gwt/angular/rebind/Controller.vm";
-				if (LOG.isLoggable(Level.FINE)) {
-					StringWriter swriter = new StringWriter();
-					generator.generate(swriter, filename);
-					String code = swriter.toString();
-					pwriter.write(code);
-					LOG.fine(code);
-				} else {
-					generator.generate(pwriter, filename);
-				}
-				context.commit(logger, pwriter);
+			PrintWriter wrier = context.tryCreate(logger, packageName, generatedSimpleName);
+			if (wrier != null) {
+				velocity.merge(wrier);
+				context.commit(logger, wrier);
 			}
 			return generatedQualifiedName;
 
@@ -92,4 +80,5 @@ public class ControllerGenerator extends Generator {
 			return qualifiedName;
 		}
 	}
+	
 }

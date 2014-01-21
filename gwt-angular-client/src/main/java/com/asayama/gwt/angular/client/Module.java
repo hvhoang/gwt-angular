@@ -6,7 +6,8 @@ import com.google.gwt.core.client.JsArrayString;
 public abstract class Module {
 	
 	ModuleJSO delegate;
-
+	String name;
+	
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
 			final Controller.Constructor ctor = (Controller.Constructor) controller;
@@ -14,7 +15,7 @@ public abstract class Module {
 			delegate.controller(name, new Function.Proxy(new Function() {
 				@Override
 				public JavaScriptObject invoke(Object... args) {
-					return ctor._get(controller);
+					return ctor._getConstructor(controller);
 				}
 			}));
 			return controller;

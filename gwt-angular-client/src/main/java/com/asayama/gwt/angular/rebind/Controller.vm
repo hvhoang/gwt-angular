@@ -36,7 +36,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 	}
 	
 	@Override
-	public native <T extends Controller, R extends JavaScriptObject> R _get(T me) /*-{
+	public native <T extends Controller, R extends JavaScriptObject> R _getConstructor(T me) /*-{
 		return [
 			'$scope',
 #foreach($field in $serviceFields)

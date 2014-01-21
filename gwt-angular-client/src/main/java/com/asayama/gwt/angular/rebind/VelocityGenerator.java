@@ -10,18 +10,20 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 class VelocityGenerator {
 
-	static final VelocityEngine ENGINE = new VelocityEngine();
+	static final VelocityEngine VELOCITY_ENGINE = new VelocityEngine();
 	static final String ENCODING = "UTF-8";
 	
 	static {
-		ENGINE.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-		ENGINE.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-		ENGINE.init();
+		VELOCITY_ENGINE.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+		VELOCITY_ENGINE.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		VELOCITY_ENGINE.init();
 	}
 	
 	final VelocityContext velocityContext = new VelocityContext();
+	final String filename;
 	
-	VelocityGenerator() {
+	VelocityGenerator(String filename) {
+		this.filename = filename;
 	}
 	
 	VelocityGenerator put(String key, Object value) {
@@ -29,13 +31,9 @@ class VelocityGenerator {
 		return this;
 	}
 
-	void generate(Writer writer, String filename) {
-		try {
-			Template template = ENGINE.getTemplate(filename, ENCODING);
-			template.merge(velocityContext, writer);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	void merge(Writer writer) {
+		Template template = VELOCITY_ENGINE.getTemplate(filename, ENCODING);
+		template.merge(velocityContext, writer);
 	}
 
 }

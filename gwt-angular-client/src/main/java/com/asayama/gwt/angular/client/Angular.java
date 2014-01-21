@@ -19,10 +19,10 @@ public class Angular {
 		return module;
 	}
 	
-	public static void bootstrap(String... moduleNames) {
+	public static void bootstrap(Module... modules) {
 		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
-		for (String moduleName : moduleNames) {
-			jsarray.push(moduleName);
+		for (Module module : modules) {
+			jsarray.push(module.getName());
 		}
 		delegate.bootstrap(jsarray);
 	}
