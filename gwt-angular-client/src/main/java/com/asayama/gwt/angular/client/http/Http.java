@@ -23,23 +23,23 @@ public class Http implements Service {
 		this.delegate = delegate;
 	}
 	
-	public void get(String url, final HttpCallback callback) {
+	public <T extends JavaScriptObject> void get(final String url, final HttpCallback<T> callback) {
 		GWT.log("[GET] " + url);
-		Function.Proxy successProxy = new Function.Proxy(new Function() {
+		delegate.get(url, new Function.Proxy<JavaScriptObject,HttpResponseJSO<T>>(new Function<JavaScriptObject,HttpResponseJSO<T>>() {
 			@Override
-			public JavaScriptObject invoke(Object... args) {
-				callback.onSuccess();
+			public JavaScriptObject invoke(HttpResponseJSO<T> response) {
+				GWT.log("[" + response.getStatus() + "] " + url);
+				callback.onSuccess(response.getStatus(), response.getData());
 				return null;
 			}
-		});
-		Function.Proxy errorProxy = new Function.Proxy(new Function() {
+		}), new Function.Proxy<JavaScriptObject,HttpResponseJSO<T>>(new Function<JavaScriptObject,HttpResponseJSO<T>>() {
 			@Override
-			public JavaScriptObject invoke(Object... args) {
-				callback.onError();
+			public JavaScriptObject invoke(HttpResponseJSO<T> response) {
+				GWT.log("[" + response.getStatus() + "] " + url);
+				callback.onError(response.getStatus(), response.getData());
 				return null;
 			}
-		});
-		delegate.get(url, successProxy, errorProxy);
+		}));
 	}
 
 }
@@ -62,14 +62,22 @@ class HttpJSO extends JavaScriptObject {
 	protected HttpJSO() {
 	}
 
-	final native void get(String url, Function.Proxy successProxy, Function.Proxy errorProxy) /*-{
+	final native <T extends JavaScriptObject> void get(String url, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> successProxy, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> errorProxy) /*-{
 		this.get(url)
 			.success(function(data, status, headers, config) {
-alert("HttpJSO.get.success");
-				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)(null);
+				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({
+					'data': data||null,
+					'status': status||-1,
+					'headers': headers||{},
+					'config': config||function(){}
+				});
 			}).error(function(data, status, headers, config) {
-alert("HttpJSO.get.error status=" + status);
-				errorProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)([]);
+				errorProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({
+					'data': data||null,
+					'status': status||-1,
+					'headers': headers||{},
+					'config': config||function(){}
+				});
 			});
 	}-*/;
 

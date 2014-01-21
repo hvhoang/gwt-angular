@@ -1,6 +1,8 @@
 package com.asayama.gwt.angular.client.http;
 
-public interface HttpCallback {
-	void onSuccess();
-	void onError();
+import com.google.gwt.core.client.JavaScriptObject;
+
+public interface HttpCallback<T extends JavaScriptObject> {
+	void onSuccess(int status, T data);
+	void onError(int status, T data);
 }

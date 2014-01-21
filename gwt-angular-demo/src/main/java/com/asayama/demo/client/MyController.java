@@ -4,6 +4,7 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.http.Http;
 import com.asayama.gwt.angular.client.http.HttpCallback;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.i18n.client.Constants;
 
 public class MyController implements Controller {
@@ -17,14 +18,14 @@ public class MyController implements Controller {
 	@Override
 	public void onControllerLoad() {
 		setTitle(MyControllerConstants.INSTANCE.title());
-		http.get("http://localhost:8888/data/customer.json", new HttpCallback() {
+		http.get("http://localhost:8888/data/customer.json", new HttpCallback<JsArray<Customer>>() {
 			@Override
-			public void onSuccess() {
-				setTitle("Http service works.");
+			public void onSuccess(int status, JsArray<Customer> data) {
+				setTitle("onSuccess: status=" + status);
 			}
 			@Override
-			public void onError() {
-				setTitle("Http service is broken.");
+			public void onError(int status, JsArray<Customer> data) {
+				setTitle("onError: status=" + status);
 			}
 		});
 	}

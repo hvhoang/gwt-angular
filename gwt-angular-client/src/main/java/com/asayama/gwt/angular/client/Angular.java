@@ -11,7 +11,7 @@ public class Angular {
 	public static <T extends Module> T module(String name, T module) {
 		module.setDelegate(delegate.module(name, null, new Function.Proxy(new Function() {
 			@Override
-			public JavaScriptObject invoke(Object... args) {
+			public JavaScriptObject invoke(JavaScriptObject jso) {
 				//TODO implement me
 				return null;
 			}
@@ -38,7 +38,7 @@ class AngularJSO extends JavaScriptObject {
 
 	final native ModuleJSO module(String name, JsArrayString requires, Function.Proxy proxy) /*-{
 		return this.module(name, requires||[], function () {
-			proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JsArray;)([]);
+			proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({});
 		});
 	}-*/;
 	
