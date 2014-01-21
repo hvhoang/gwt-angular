@@ -19,13 +19,19 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 #foreach($field in $controllerFields)
 		try {
 			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-			${field.type.qualifiedSourceName} controller = GWT.create(${field.type.qualifiedSourceName}.class);
-			controller("${field.type.qualifiedSourceName}", controller);
-			${field.name} = controller;
+			${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
+			controller("${field.type.qualifiedSourceName}", object);
+			${field.name} = object;
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}
 #end
+		try {
+			m = "calling ${simpleName}.onModuleLoad()";
+			onModuleLoad();
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
 	}
 	
 }

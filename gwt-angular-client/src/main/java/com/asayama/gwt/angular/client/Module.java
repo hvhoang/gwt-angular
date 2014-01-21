@@ -8,6 +8,14 @@ public abstract class Module {
 	ModuleJSO delegate;
 	String name;
 	
+	/**
+	 * An instance of Module's derived type should be created using GWT.creat()
+	 */
+	protected Module() {
+	}
+	
+	public abstract void onModuleLoad();
+	
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
 			final Controller.Constructor ctor = (Controller.Constructor) controller;
