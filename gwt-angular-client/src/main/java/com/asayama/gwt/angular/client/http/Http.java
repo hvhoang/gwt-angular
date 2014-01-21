@@ -29,14 +29,14 @@ public class Http implements Service {
 			@Override
 			public JavaScriptObject invoke(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
-				callback.onSuccess(response.getStatus(), response.getData());
+				callback.onSuccess(response);
 				return null;
 			}
 		}), new Function.Proxy<JavaScriptObject,HttpResponseJSO<T>>(new Function<JavaScriptObject,HttpResponseJSO<T>>() {
 			@Override
 			public JavaScriptObject invoke(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
-				callback.onError(response.getStatus(), response.getData());
+				callback.onError(response);
 				return null;
 			}
 		}));
@@ -66,7 +66,6 @@ class HttpJSO extends JavaScriptObject {
 	final native <T extends JavaScriptObject> void get(String url, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> successProxy, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> errorProxy) /*-{
 		this.get(url)
 			.success(function(data, status, headers, config) {
-alert(data);
 				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({
 					'data': data||null,
 					'status': status||-1,
