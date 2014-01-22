@@ -5,7 +5,6 @@ import com.asayama.gwt.angular.client.http.Http;
 import com.asayama.gwt.angular.client.http.HttpCallback;
 import com.asayama.gwt.angular.client.http.HttpResponse;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.i18n.client.Constants;
 
 public class MyController implements Controller {
@@ -20,15 +19,15 @@ public class MyController implements Controller {
 	@Override
 	public void onControllerLoad() {
 		setTitle(MyControllerConstants.INSTANCE.title());
-		http.get("/api/customer", new HttpCallback<JsArray<CustomerJSO>>() {
+		http.get("/api/customer", new HttpCallback<CustomerJSO>() {
 			@Override
-			public void onSuccess(HttpResponse<JsArray<CustomerJSO>> response) {
+			public void onSuccess(HttpResponse<CustomerJSO> response) {
 				String m = "onSuccess: status=" + response.getStatus();
 				GWT.log(m);
 				setHttpStatus(m);
 			}
 			@Override
-			public void onError(HttpResponse<JsArray<CustomerJSO>> response) {
+			public void onError(HttpResponse<CustomerJSO> response) {
 				String m = "onError: status=" + response.getStatus();
 				GWT.log(m);
 				setHttpStatus(m);

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.rebind.util.JClassTypeUtils;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
@@ -46,15 +47,33 @@ public class ModuleGenerator extends Generator {
 			velocity.put("generatedSimpleName", generatedSimpleName);
 			
 			// Identify the controllers to inject
-			List<JField> controller = new ArrayList<JField>();
-			JField[] fields = classType.getFields();
-			for (JField item : fields) {
-				JClassType itemClassType = item.getType().isClassOrInterface();
-				if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Controller.class)) {
-					controller.add(item);
+			{
+				List<JField> controller = new ArrayList<JField>();
+				JField[] fields = classType.getFields();
+				for (JField item : fields) {
+					JClassType itemClassType = item.getType().isClassOrInterface();
+					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Controller.class)) {
+						controller.add(item);
+					}
 				}
+				velocity.put("controllerFields", controller);
 			}
-			velocity.put("controllerFields",	controller);
+			
+			// Identify the providers to inject
+			{
+				final String key = "providerFields";
+				final Class<?> klass = Provider.class;
+				List<JField> injectable = new ArrayList<JField>();
+				
+				JField[] fields = classType.getFields();
+				for (JField item : fields) {
+					JClassType itemClassType = item.getType().isClassOrInterface();
+					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, klass)) {
+						injectable.add(item);
+					}
+				}
+				velocity.put(key, injectable);
+			}
 			
 			// Generate type
 			PrintWriter wrier = context.tryCreate(logger, packageName, generatedSimpleName);

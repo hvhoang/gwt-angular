@@ -1,10 +1,9 @@
 package com.asayama.gwt.angular.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 
 public interface Service {
 
 	static interface Constructor {
-		<T extends Service, R extends JavaScriptObject> R _getConstructor(T me);
+		<R extends JS, T extends Service> R _getConstructor(T me);
 	}
 }

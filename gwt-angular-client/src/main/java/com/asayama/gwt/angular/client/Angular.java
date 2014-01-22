@@ -9,9 +9,9 @@ public class Angular {
 	static final AngularJSO delegate = AngularJSO.getInstance();
 
 	public static <T extends Module> T module(String name, T module) {
-		module.setDelegate(delegate.module(name, null, new Function.Proxy(new Function() {
+		module.setDelegate(delegate.module(name, null, new Function.Proxy<JS>(new Function<JS>() {
 			@Override
-			public JavaScriptObject invoke(JavaScriptObject jso) {
+			public JS invoke(JS jso) {
 				//TODO implement me
 				return null;
 			}
@@ -36,9 +36,9 @@ class AngularJSO extends JavaScriptObject {
 	protected AngularJSO() {
 	}
 
-	final native ModuleJSO module(String name, JsArrayString requires, Function.Proxy proxy) /*-{
-		return this.module(name, requires||[], function () {
-			proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({});
+	final native ModuleJSO module(String name, JsArrayString requires, Function.Proxy<JS> proxy) /*-{
+		return this.module(name, [ "ngRoute" ], function () {
+			proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({});
 		});
 	}-*/;
 	

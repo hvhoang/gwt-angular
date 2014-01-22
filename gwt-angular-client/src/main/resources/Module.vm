@@ -16,6 +16,16 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}
+#foreach($field in $providerFields)
+		try {
+			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
+			${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
+			config(object);
+			${field.name} = object;
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+#end
 #foreach($field in $controllerFields)
 		try {
 			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
@@ -26,12 +36,6 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 			GWT.log("Exception while " + m, e);
 		}
 #end
-		try {
-			m = "calling ${simpleName}.onModuleLoad()";
-			onModuleLoad();
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
 	}
 	
 }

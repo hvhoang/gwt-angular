@@ -1,5 +1,6 @@
 package com.asayama.gwt.angular.rebind;
 
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 
 import org.apache.velocity.Template;
@@ -34,6 +35,14 @@ class VelocityGenerator {
 	void merge(Writer writer) {
 		Template template = VELOCITY_ENGINE.getTemplate(filename, ENCODING);
 		template.merge(velocityContext, writer);
+
+		try {
+			Writer w = new OutputStreamWriter(System.out);
+			template.merge(velocityContext, w);
+			w.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

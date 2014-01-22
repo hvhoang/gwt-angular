@@ -1,9 +1,9 @@
 package com.asayama.gwt.angular.client.http;
 
+import com.asayama.gwt.angular.client.JS;
 import com.asayama.gwt.angular.client.Function;
 import com.asayama.gwt.angular.client.Service;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <ul>
@@ -19,22 +19,22 @@ public class Http implements Service {
 	public Http() {
 	}
 	
-	public void setDelegate(HttpJSO delegate) {
+	public void onServiceLoad(HttpJSO delegate) {
 		this.delegate = delegate;
 	}
 	
-	public <T extends JavaScriptObject> void get(final String url, final HttpCallback<T> callback) {
+	public <T extends JS> void get(final String url, final HttpCallback<T> callback) {
 		GWT.log("[GET] " + url);
-		delegate.get(url, new Function.Proxy<JavaScriptObject,HttpResponseJSO<T>>(new Function<JavaScriptObject,HttpResponseJSO<T>>() {
+		delegate.get(url, new Function.Proxy<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
 			@Override
-			public JavaScriptObject invoke(HttpResponseJSO<T> response) {
+			public JS invoke(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onSuccess(response);
 				return null;
 			}
-		}), new Function.Proxy<JavaScriptObject,HttpResponseJSO<T>>(new Function<JavaScriptObject,HttpResponseJSO<T>>() {
+		}), new Function.Proxy<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
 			@Override
-			public JavaScriptObject invoke(HttpResponseJSO<T> response) {
+			public JS invoke(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onError(response);
 				return null;
@@ -49,31 +49,31 @@ class HttpImpl extends Http implements Service.Constructor {
 	}
 	
 	@Override
-	public native <T extends Service, R extends JavaScriptObject> R _getConstructor(T me) /*-{
+	public native <R extends JS, T extends Service> R _getConstructor(T me) /*-{
 		return [ "$http",
 			function ($http) {
-				me.@com.asayama.gwt.angular.client.http.Http::setDelegate(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
+				me.@com.asayama.gwt.angular.client.http.Http::onServiceLoad(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
 				return $http;
 			}];
 	}-*/;
 
 }
-class HttpJSO extends JavaScriptObject {
+class HttpJSO extends JS {
 	
 	protected HttpJSO() {
 	}
 
-	final native <T extends JavaScriptObject> void get(String url, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> successProxy, Function.Proxy<JavaScriptObject,HttpResponseJSO<T>> errorProxy) /*-{
+	final native <T extends JS> void get(String url, Function.Proxy<HttpResponseJSO<T>> successProxy, Function.Proxy<HttpResponseJSO<T>> errorProxy) /*-{
 		this.get(url)
 			.success(function(data, status, headers, config) {
-				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({
+				successProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({
 					'data': data||null,
 					'status': status||-1,
 					'headers': headers||{},
 					'config': config||function(){}
 				});
 			}).error(function(data, status, headers, config) {
-				errorProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({
+				errorProxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({
 					'data': data||null,
 					'status': status||-1,
 					'headers': headers||{},

@@ -14,15 +14,13 @@ public abstract class Module {
 	protected Module() {
 	}
 	
-	public abstract void onModuleLoad();
-	
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
 			final Controller.Constructor ctor = (Controller.Constructor) controller;
 			ctor._injectServices(this);
-			delegate.controller(name, new Function.Proxy(new Function() {
+			delegate.controller(name, new Function.Proxy<JS>(new Function<JS>() {
 				@Override
-				public JavaScriptObject invoke(JavaScriptObject jso) {
+				public JS invoke(JS jso) {
 					return ctor._getConstructor(controller);
 				}
 			}));
@@ -36,9 +34,9 @@ public abstract class Module {
 	public <T extends Service> T factory(final String name, final T service) {
 		try {
 			final Service.Constructor ctor = ((Service.Constructor) service);
-			delegate.factory(name, new Function.Proxy(new Function() {
+			delegate.factory(name, new Function.Proxy<JS>(new Function<JS>() {
 				@Override
-				public JavaScriptObject invoke(JavaScriptObject jso) {
+				public JS invoke(JS jso) {
 					return ctor._getConstructor(service);
 				}
 			}));
@@ -49,8 +47,30 @@ public abstract class Module {
 		}
 	}
 	
-	public void config(Function function) {
-		delegate.config(new Function.Proxy(function));
+	public abstract <T extends Provider> void onProviderReady(T provider);
+	
+	public <T extends Provider> T config(final T provider) {
+		try {
+			final Provider.Constructor ctor = ((Provider.Constructor) provider);
+			delegate.config(new Function.Proxy<JS>(new Function<JS>() {
+				@Override
+				public JS invoke(JS jso) {
+					return ctor._getConstructor(provider, 
+							new Function.Proxy<JS>(new Function<JS>() {
+								@Override
+								public JS invoke(JS jso) {
+									onProviderReady(provider);
+									return null;
+								}
+							})
+						);
+				}
+			}));
+			return provider;
+		} catch (ClassCastException e) {
+			throw new UnsupportedOperationException(provider.getClass().getName()
+					+ " must be created using GWT.create()");
+		}
 	}
 	
 	public String getName() {
@@ -83,17 +103,15 @@ class ModuleJSO extends JavaScriptObject {
 		return this.requires;
 	}-*/;
 	
-	final native void config(Function.Proxy proxy) /*-{
-		this.config(function () {
-			proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({});
-		});
+	final native void config(Function.Proxy<JS> proxy) /*-{
+		this.config(proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({}));
 	}-*/;
 	
-	final native void controller(String name, Function.Proxy proxy) /*-{
-		this.controller(name, proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({}));
+	final native void controller(String name, Function.Proxy<JS> proxy) /*-{
+		this.controller(name, proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({}));
 	}-*/;
 	
-	final native void factory(String name, Function.Proxy proxy) /*-{
-		this.factory(name, proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/google/gwt/core/client/JavaScriptObject;)({}));
+	final native void factory(String name, Function.Proxy<JS> proxy) /*-{
+		this.factory(name, proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({}));
 	}-*/;
 }
