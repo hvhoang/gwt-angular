@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.client.route;
 
-import com.asayama.gwt.angular.client.JS;
+import com.asayama.gwt.core.client.$;
 
-public class Redirect extends JS {
+public class Redirect extends $ {
 
 	protected Redirect() {
 	}

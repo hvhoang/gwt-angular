@@ -3,6 +3,7 @@ package ${packageName};
 import java.util.*;
 
 import com.google.gwt.core.client.*;
+import com.asayama.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName} extends ${simpleName} implements Controller.Constructor {
@@ -36,7 +37,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 	}
 	
 	@Override
-	public native <T extends Controller> JS _getConstructor(T me) /*-{
+	public native <T extends Controller> $ _getConstructor(T me) /*-{
 		return [
 			'$scope',
 #foreach($field in $serviceFields)

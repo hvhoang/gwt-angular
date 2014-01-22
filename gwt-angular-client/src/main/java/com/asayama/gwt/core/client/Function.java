@@ -1,13 +1,13 @@
-package com.asayama.gwt.angular.client;
+package com.asayama.gwt.core.client;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Function<T extends JS> {
+public interface Function<T extends $> {
 
-	JS invoke(T jso);
+	$ invoke(T jso);
 	
-	public static class Proxy<T extends JS> {
+	public static class Proxy<T extends $> {
 		
 		final Function<T> delegate;
 		final List<Object> args = new ArrayList<Object>();
@@ -16,7 +16,7 @@ public interface Function<T extends JS> {
 			this.delegate = delegate;
 		}
 		
-		public JS invoke(T jso) {
+		public $ invoke(T jso) {
 			return delegate.invoke(jso);
 		}
 	}

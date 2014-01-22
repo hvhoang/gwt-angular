@@ -1,14 +1,14 @@
 package com.asayama.gwt.angular.client.http;
 
-import com.asayama.gwt.angular.client.JS;
+import com.asayama.gwt.core.client.$;
 
-public interface HttpResponse<T extends JS> {
+public interface HttpResponse<T extends $> {
 
 	int getStatus();
 	T getData();
 	
 }
-class HttpResponseJSO<T extends JS> extends JS implements HttpResponse<T> {
+class HttpResponseJSO<T extends $> extends $ implements HttpResponse<T> {
 
 	protected HttpResponseJSO() {
 	}

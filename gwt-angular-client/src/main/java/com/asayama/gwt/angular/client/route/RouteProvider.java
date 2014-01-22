@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.client.route;
 
-import com.asayama.gwt.angular.client.JS;
-import com.asayama.gwt.angular.client.Function;
 import com.asayama.gwt.angular.client.Provider;
+import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.Function;
 import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider {
@@ -37,11 +37,11 @@ class RouteProviderImpl extends RouteProvider implements Provider.Constructor {
 	}
 
 	@Override
-	public native <T extends Provider> JS _getConstructor(T me, Function.Proxy<JS> proxy) /*-{
+	public native <T extends Provider> $ _getConstructor(T me, Function.Proxy<$> proxy) /*-{
 		return [ "$routeProvider",
 			function ($routeProvider) {
 				me.@com.asayama.gwt.angular.client.route.RouteProviderImpl::onProviderLoad(Lcom/asayama/gwt/angular/client/route/RouteProviderJSO;)($routeProvider);
-				proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)($routeProvider);
+				proxy.@com.asayama.gwt.core.client.Function.Proxy::invoke(Lcom/asayama/gwt/core/client/$;)($routeProvider);
 				return $routeProvider;
 			}];
 	}-*/;

@@ -1,5 +1,7 @@
 package com.asayama.gwt.angular.client;
 
+import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.Function;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
@@ -18,9 +20,9 @@ public abstract class Module {
 		try {
 			final Controller.Constructor ctor = (Controller.Constructor) controller;
 			ctor._injectServices(this);
-			delegate.controller(name, new Function.Proxy<JS>(new Function<JS>() {
+			delegate.controller(name, new Function.Proxy<$>(new Function<$>() {
 				@Override
-				public JS invoke(JS jso) {
+				public $ invoke($ jso) {
 					return ctor._getConstructor(controller);
 				}
 			}));
@@ -34,9 +36,9 @@ public abstract class Module {
 	public <T extends Service> T factory(final String name, final T service) {
 		try {
 			final Service.Constructor ctor = ((Service.Constructor) service);
-			delegate.factory(name, new Function.Proxy<JS>(new Function<JS>() {
+			delegate.factory(name, new Function.Proxy<$>(new Function<$>() {
 				@Override
-				public JS invoke(JS jso) {
+				public $ invoke($ jso) {
 					return ctor._getConstructor(service);
 				}
 			}));
@@ -52,13 +54,13 @@ public abstract class Module {
 	public <T extends Provider> T config(final T provider) {
 		try {
 			final Provider.Constructor ctor = ((Provider.Constructor) provider);
-			delegate.config(new Function.Proxy<JS>(new Function<JS>() {
+			delegate.config(new Function.Proxy<$>(new Function<$>() {
 				@Override
-				public JS invoke(JS jso) {
+				public $ invoke($ jso) {
 					return ctor._getConstructor(provider, 
-							new Function.Proxy<JS>(new Function<JS>() {
+							new Function.Proxy<$>(new Function<$>() {
 								@Override
-								public JS invoke(JS jso) {
+								public $ invoke($ jso) {
 									onProviderReady(provider);
 									return null;
 								}
@@ -103,15 +105,15 @@ class ModuleJSO extends JavaScriptObject {
 		return this.requires;
 	}-*/;
 	
-	final native void config(Function.Proxy<JS> proxy) /*-{
-		this.config(proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({}));
+	final native void config(Function.Proxy<$> proxy) /*-{
+		this.config(proxy.@com.asayama.gwt.core.client.Function.Proxy::invoke(Lcom/asayama/gwt/core/client/$;)({}));
 	}-*/;
 	
-	final native void controller(String name, Function.Proxy<JS> proxy) /*-{
-		this.controller(name, proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({}));
+	final native void controller(String name, Function.Proxy<$> proxy) /*-{
+		this.controller(name, proxy.@com.asayama.gwt.core.client.Function.Proxy::invoke(Lcom/asayama/gwt/core/client/$;)({}));
 	}-*/;
 	
-	final native void factory(String name, Function.Proxy<JS> proxy) /*-{
-		this.factory(name, proxy.@com.asayama.gwt.angular.client.Function.Proxy::invoke(Lcom/asayama/gwt/angular/client/JS;)({}));
+	final native void factory(String name, Function.Proxy<$> proxy) /*-{
+		this.factory(name, proxy.@com.asayama.gwt.core.client.Function.Proxy::invoke(Lcom/asayama/gwt/core/client/$;)({}));
 	}-*/;
 }

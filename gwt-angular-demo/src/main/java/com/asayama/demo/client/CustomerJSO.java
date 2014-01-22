@@ -1,8 +1,8 @@
 package com.asayama.demo.client;
 
-import com.asayama.gwt.angular.client.JS;
+import com.asayama.gwt.core.client.$;
 
-public class CustomerJSO extends JS  {
+public class CustomerJSO extends $  {
 	
 	protected CustomerJSO() {
 	}
