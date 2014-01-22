@@ -6,6 +6,7 @@ import com.asayama.gwt.angular.client.http.HttpCallback;
 import com.asayama.gwt.angular.client.http.HttpResponse;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
+import com.google.gwt.user.client.Event;
 
 public class MyController implements Controller {
 
@@ -33,6 +34,10 @@ public class MyController implements Controller {
 				setHttpStatus(m);
 			}
 		});
+	}
+	
+	public void onClickTitle(Event event) {
+		setTitle("You clicked me!");
 	}
 
 	// Public methods are bound to AngularJS's $scope automatically.
