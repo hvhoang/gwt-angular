@@ -6,6 +6,6 @@ import com.asayama.gwt.core.client.$;
 public interface Service {
 
 	static interface Constructor {
-		<R extends $, T extends Service> R _getConstructor(T me);
+		<T extends Service> $ _getConstructor(T me);
 	}
 }

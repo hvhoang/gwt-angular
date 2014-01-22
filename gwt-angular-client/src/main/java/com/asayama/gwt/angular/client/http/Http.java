@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.client.http;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.core.client.$;
 import com.asayama.gwt.core.client.Function;
+import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
 
 /**
@@ -25,14 +26,14 @@ public class Http implements Service {
 	
 	public <T extends $> void get(final String url, final HttpCallback<T> callback) {
 		GWT.log("[GET] " + url);
-		delegate.get(url, new Function.Proxy<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
+		delegate.get(url, new Invoker<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
 			@Override
 			public $ invoke(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onSuccess(response);
 				return null;
 			}
-		}), new Function.Proxy<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
+		}), new Invoker<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
 			@Override
 			public $ invoke(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
@@ -49,7 +50,7 @@ class HttpImpl extends Http implements Service.Constructor {
 	}
 	
 	@Override
-	public native <R extends $, T extends Service> R _getConstructor(T me) /*-{
+	public native <T extends Service> $ _getConstructor(T me) /*-{
 		return [ "$http",
 			function ($http) {
 				me.@com.asayama.gwt.angular.client.http.Http::onServiceLoad(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
@@ -63,17 +64,17 @@ class HttpJSO extends $ {
 	protected HttpJSO() {
 	}
 
-	final native <T extends $> void get(String url, Function.Proxy<HttpResponseJSO<T>> successProxy, Function.Proxy<HttpResponseJSO<T>> errorProxy) /*-{
+	final native <T extends $> void get(String url, Invoker<HttpResponseJSO<T>> successInvoker, Invoker<HttpResponseJSO<T>> errorInvoker) /*-{
 		this.get(url)
 			.success(function(data, status, headers, config) {
-				successProxy.@com.asayama.gwt.core.client.Function.Proxy::invoke(Lcom/asayama/gwt/core/client/$;)({
+				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({
 					'data': data||null,
 					'status': status||-1,
 					'headers': headers||{},
 					'config': config||function(){}
 				});
 			}).error(function(data, status, headers, config) {
-				errorProxy.@com.asayama.gwt.core.client.Function.Proxy::invoke(Lcom/asayama/gwt/core/client/$;)({
+				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({
 					'data': data||null,
 					'status': status||-1,
 					'headers': headers||{},
