@@ -20,10 +20,19 @@ public class $ extends JavaScriptObject {
 	}
 	
 	public final native $ get(String key) /*-{
-		return this[key];
+		return this[key]||null;
+	}-*/;
+	
+	public final native String getString(String key) /*-{
+		return this[key]||null;
 	}-*/;
 	
 	public final native $ set(String key, $ value) /*-{
+		this[key] = value;
+		return this;
+	}-*/;
+
+	public final native $ setString(String key, String value) /*-{
 		this[key] = value;
 		return this;
 	}-*/;

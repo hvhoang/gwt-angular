@@ -15,8 +15,8 @@ public class MyModule extends Module {
 	public void onProviderReady(Provider provider) {
 		if (provider == routeProvider) {
 			routeProvider
-				.when("/hello", Route.templateUrl("app/partials/hello.html"))
-				.otherwise(Redirect.redirectTo("/hello"));
+				.when("/hello", Route.create("app/partials/hello.html", MyController.class))
+				.otherwise(Redirect.create("/hello"));
 		}
 	}
 }
