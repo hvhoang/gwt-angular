@@ -22,8 +22,7 @@ public abstract class Module {
 			final Controller.Constructor ctor = (Controller.Constructor) controller;
 			ctor._injectServices(this);
 			delegate.controller(name, new Invoker<$>(new Function<$>() {
-				@Override
-				public $ invoke($ jso) {
+				public $ call($ jso) {
 					return ctor._getConstructor(controller);
 				}
 			}));
@@ -38,8 +37,7 @@ public abstract class Module {
 		try {
 			final Service.Constructor ctor = ((Service.Constructor) service);
 			delegate.factory(name, new Invoker<$>(new Function<$>() {
-				@Override
-				public $ invoke($ jso) {
+				public $ call($ jso) {
 					return ctor._getConstructor(service);
 				}
 			}));
@@ -56,12 +54,10 @@ public abstract class Module {
 		try {
 			final Provider.Constructor ctor = ((Provider.Constructor) provider);
 			delegate.config(new Invoker<$>(new Function<$>() {
-				@Override
-				public $ invoke($ jso) {
+				public $ call($ jso) {
 					return ctor._getConstructor(provider, 
 							new Invoker<$>(new Function<$>() {
-								@Override
-								public $ invoke($ jso) {
+								public $ call($ jso) {
 									onProviderReady(provider);
 									return null;
 								}

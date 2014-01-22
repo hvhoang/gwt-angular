@@ -13,8 +13,7 @@ public class Angular {
 
 	public static <T extends Module> T module(String name, T module) {
 		module.setDelegate(delegate.module(name, null, new Invoker<$>(new Function<$>() {
-			@Override
-			public $ invoke($ jso) {
+			public $ call($ jso) {
 				//TODO implement me
 				return null;
 			}

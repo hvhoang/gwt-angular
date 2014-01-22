@@ -2,6 +2,14 @@ package com.asayama.gwt.core.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+/**
+ * Represents a JavaScriptObject, and used as a syntax sugar, i.e. a shorthand
+ * for its direct parent.
+ * 
+ * @author kyoken74
+ * @see Function
+ * @see Invoker
+ */
 public class $ extends JavaScriptObject {
 
 	public static native $ create() /*-{

@@ -27,15 +27,13 @@ public class Http implements Service {
 	public <T extends $> void get(final String url, final HttpCallback<T> callback) {
 		GWT.log("[GET] " + url);
 		delegate.get(url, new Invoker<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
-			@Override
-			public $ invoke(HttpResponseJSO<T> response) {
+			public $ call(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onSuccess(response);
 				return null;
 			}
 		}), new Invoker<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
-			@Override
-			public $ invoke(HttpResponseJSO<T> response) {
+			public $ call(HttpResponseJSO<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onError(response);
 				return null;
