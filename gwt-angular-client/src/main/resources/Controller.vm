@@ -52,6 +52,8 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 	}
 #end
 
+	// TODO Can I move this to constructor method or somewhere else so that it is not exposed via Controller.Constructor?
+	// One problem is that it needs a reference to Module invoking it. Maybe we call it from generated Module code?
 	@Override
 	public <T extends Module> void _injectServices(T module) {
 		String m = "";
