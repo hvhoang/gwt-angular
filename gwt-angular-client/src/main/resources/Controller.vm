@@ -8,31 +8,50 @@ import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName} extends ${simpleName} implements Controller.Constructor {
 
-	${generatedSimpleName}() {
+	public ${generatedSimpleName}() {
 	}
 	
+	// Constructor Methods
+	
 	@Override
-	public void onControllerLoad() {
-		String m = "calling ${qualifiedName}.onControllerLoad";
+	public $ constructor(Invoker invoker) {
+		return __${simpleName}_constructor(this, invoker);
+	}
+
+	private native $ __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
+		return [
+			'$scope',
+#foreach($field in $serviceFields)
+			'${field.type.qualifiedSourceName}',
+#end
+			function ($scope#foreach($field in $serviceFields), ${field.name}#end) {
+#foreach($method in $exportMethods)
+				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+					return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
+				};
+#end
+#foreach($field in $serviceFields)
+				itself.@${generatedQualifiedName}::__${simpleName}_onInjection_${field.name}(Ljava/lang/Object;)(${field.name});
+#end
+				invoker.@com.asayama.gwt.core.client.Invoker::invoke()();
+			}
+		];
+	}-*/;
+
+	// Controller Extensions
+
+#foreach($field in $serviceFields)
+	private void __${simpleName}_onInjection_${field.name}(Object object) {
+		String m = "calling ${qualifiedName}._onInjection_${field.name}";
 		GWT.log(m);
 		try {
-			super.onControllerLoad();
+			super.onInjection((Injectable) object);
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}
 	}
-	
-	@Override
-	public void onInjection(Injectable object) {
-		String m = "calling ${qualifiedName}.onInjection";
-		GWT.log(m);
-		try {
-			super.onInjection(object);
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-	}
-	
+#end
+
 	@Override
 	public <T extends Module> void _injectServices(T module) {
 		String m = "";
@@ -47,30 +66,4 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 #end
 	}
 
-	@Override
-	public $ constructor(Invoker invoker) {
-		return _constructor(this, invoker);
-	}
-
-	native $ _constructor(${simpleName} itself, Invoker invoker) /*-{
-		return [
-			'$scope',
-#foreach($field in $serviceFields)
-			'${field.type.qualifiedSourceName}',
-#end
-			function ($scope#foreach($field in $serviceFields), ${field.name}#end) {
-#foreach($method in $exportMethods)
-				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-					return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
-				};
-#end
-#foreach($field in $serviceFields)
-				//itself.@${generatedQualifiedName}::onInjection(Lcom/asayama/gwt/angular/client/Injectable;)(${field.name});
-#end
-				itself.@${generatedQualifiedName}::onControllerLoad()();
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke()();
-			}
-		];
-	}-*/;
-	
 }

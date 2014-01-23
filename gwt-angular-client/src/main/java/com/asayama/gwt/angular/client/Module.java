@@ -36,7 +36,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 					return ctor.constructor(new Invoker(new Closure<$>() {
 						@Override
 						public void closure($ jso) {
-//							controller.onControllerLoad();
+							GWT.log("calling " + name + ".onControllerLoad");
+							controller.onControllerLoad();
 GWT.log("controller-->onInjection");
 							onInjection(controller);
 						}
