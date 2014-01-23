@@ -21,7 +21,6 @@ public class MyController implements Controller {
 	
 	@Override
 	public void onInjection(Injectable object) {
-		GWT.log("onInjection object=" + object);
 		if (object == http) {
 			String url = new UrlBuilder()
 				.setProtocol("http").setHost("localhost").setPort(8888)

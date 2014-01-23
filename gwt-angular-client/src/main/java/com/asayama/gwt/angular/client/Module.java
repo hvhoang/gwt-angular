@@ -36,10 +36,19 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 					return ctor.constructor(new Invoker(new Closure<$>() {
 						@Override
 						public void closure($ jso) {
-							GWT.log("calling " + name + ".onControllerLoad");
-							controller.onControllerLoad();
-GWT.log("controller-->onInjection");
-							onInjection(controller);
+							String m = "";
+							try {
+								GWT.log(m = "calling " + name + ".onControllerLoad");
+								controller.onControllerLoad();
+							} catch (Exception e) {
+								GWT.log("Exception while " + m , e);
+							}
+							try {
+								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+								onInjection(controller);
+							} catch (Exception e) {
+								GWT.log("Exception while " + m, e);
+							}
 						}
 					}));
 				}
@@ -60,11 +69,16 @@ GWT.log("controller-->onInjection");
 						@SuppressWarnings("unchecked")
 						@Override
 						public $ function($ jso) {
+							String m = "";
 							if (service instanceof Wrapper) {
 								((Wrapper<$>) service).set$(jso);
 							}
-GWT.log("factory-->onInjection");
-							onInjection(service);
+							try {
+								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+								onInjection(service);
+							} catch (Exception e) {
+								GWT.log("Exception while " + m, e);
+							}
 							return jso;
 						}
 					}));
@@ -79,6 +93,7 @@ GWT.log("factory-->onInjection");
 	
 	public <T extends Provider> T config(final T provider) {
 		try {
+			final String name = provider.getClass().getName();
 			final Constructor ctor = (Constructor) provider;
 			delegate.config(new Invoker(new Function<$>() {
 				public $ function($ jso) {
@@ -86,11 +101,16 @@ GWT.log("factory-->onInjection");
 						@SuppressWarnings("unchecked")
 						@Override
 						public void closure($ jso) {
+							String m = "";
 							if (provider instanceof Wrapper) {
 								((Wrapper<$>) provider).set$(jso);
 							}
-GWT.log("config-->onInjection");
-							onInjection(provider);
+							try {
+								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+								onInjection(provider);
+							} catch (Exception e) {
+								GWT.log("Exception while " + m, e);
+							}
 						}
 					}));
 				}
