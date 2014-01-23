@@ -23,6 +23,17 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 	}
 	
 	@Override
+	public void onInjection(Injectable object) {
+		String m = "calling ${qualifiedName}.onInjection";
+		GWT.log(m);
+		try {
+			super.onInjection(object);
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+	}
+	
+	@Override
 	public <T extends Module> void _injectServices(T module) {
 		String m = "";
 #foreach($field in $serviceFields)
@@ -35,21 +46,29 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 		}
 #end
 	}
-	
+
 	@Override
-	public native <T extends Controller> $ _getConstructor(T me) /*-{
+	public $ constructor(Invoker invoker) {
+		return _constructor(this, invoker);
+	}
+
+	native $ _constructor(${simpleName} itself, Invoker invoker) /*-{
 		return [
 			'$scope',
 #foreach($field in $serviceFields)
 			'${field.type.qualifiedSourceName}',
 #end
-			function ($scope) {
+			function ($scope#foreach($field in $serviceFields), ${field.name}#end) {
 #foreach($method in $exportMethods)
-				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}${foreach.index}#end) {
-					return me.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}${foreach.index} ? ${param.name}${foreach.index} : ${param.name}${foreach.index} == 0 ? 0 : null#end);
+				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+					return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
 				};
 #end
-				me.@${generatedQualifiedName}::onControllerLoad()();
+#foreach($field in $serviceFields)
+				//itself.@${generatedQualifiedName}::onInjection(Lcom/asayama/gwt/angular/client/Injectable;)(${field.name});
+#end
+				itself.@${generatedQualifiedName}::onControllerLoad()();
+				invoker.@com.asayama.gwt.core.client.Invoker::invoke()();
 			}
 		];
 	}-*/;

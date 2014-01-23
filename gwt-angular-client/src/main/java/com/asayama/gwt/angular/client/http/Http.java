@@ -1,8 +1,10 @@
 package com.asayama.gwt.angular.client.http;
 
+import com.asayama.gwt.angular.client.Constructor;
 import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.$;
-import com.asayama.gwt.core.client.Function;
+import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
 
@@ -13,48 +15,49 @@ import com.google.gwt.core.client.GWT;
  * <li>TODO implement head, post, put, delete, and jsonp
  * </ul>
  */
-public class Http implements Service {
+public class Http implements Service, Wrapper<HttpJSO>, Constructor {
+
+	HttpJSO delegate;
 	
-	HttpJSO delegate = null;
-	
-	public Http() {
+	public <T extends $> void head(String url, HttpCallback<T> callback) {
+		delegate.send("HEAD", url, callback);
 	}
 	
-	public void onServiceLoad(HttpJSO delegate) {
-		this.delegate = delegate;
+	public <T extends $> void get(String url, HttpCallback<T> callback) {
+		delegate.send("GET", url, callback);
 	}
 	
-	public <T extends $> void get(final String url, final HttpCallback<T> callback) {
-		GWT.log("[GET] " + url);
-		delegate.get(url, new Invoker<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
-			public $ call(HttpResponseJSO<T> response) {
-				GWT.log("[" + response.getStatus() + "] " + url);
-				callback.onSuccess(response);
-				return null;
-			}
-		}), new Invoker<HttpResponseJSO<T>>(new Function<HttpResponseJSO<T>>() {
-			public $ call(HttpResponseJSO<T> response) {
-				GWT.log("[" + response.getStatus() + "] " + url);
-				callback.onError(response);
-				return null;
-			}
-		}));
+	public <T extends $> void put(String url, HttpCallback<T> callback) {
+		delegate.send("PUT", url, callback);
+	}
+	
+	public <T extends $> void post(String url, HttpCallback<T> callback) {
+		delegate.send("POST", url, callback);
+	}
+	
+	public <T extends $> void delete(String url, HttpCallback<T> callback) {
+		delegate.send("DELETE", url, callback);
 	}
 
-}
-class HttpImpl extends Http implements Service.Constructor {
+	@Override
+	public native $ constructor(Invoker invoker) /*-{
+		return [ '$http', function ($http) {
+			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($http);
+			return $http;
+		}];
+	}-*/;
 
-	public HttpImpl() {
-	}
+	// Wrapper Methods
 	
 	@Override
-	public native <T extends Service> $ _getConstructor(T me) /*-{
-		return [ "$http",
-			function ($http) {
-				me.@com.asayama.gwt.angular.client.http.Http::onServiceLoad(Lcom/asayama/gwt/angular/client/http/HttpJSO;)($http);
-				return $http;
-			}];
-	}-*/;
+	public HttpJSO get$() {
+		return this.delegate;
+	}
+
+	@Override
+	public void set$(HttpJSO delegate) {
+		this.delegate = delegate;
+	}
 
 }
 class HttpJSO extends $ {
@@ -62,8 +65,23 @@ class HttpJSO extends $ {
 	protected HttpJSO() {
 	}
 
-	final native <T extends $> void get(String url, Invoker<HttpResponseJSO<T>> successInvoker, Invoker<HttpResponseJSO<T>> errorInvoker) /*-{
-		this.get(url)
+	final <T extends $> void send(String method, final String url, final HttpCallback<T> callback) {
+		GWT.log("[" + method + "] " + url);
+		send(method, url, new Invoker(new Closure<HttpResponseJSO<T>>() {
+			public void closure(HttpResponseJSO<T> response) {
+				GWT.log("[" + response.getStatus() + "] " + url);
+				callback.onSuccess(response);
+			}
+		}), new Invoker(new Closure<HttpResponseJSO<T>>() {
+			public void closure (HttpResponseJSO<T> response) {
+				GWT.log("[" + response.getStatus() + "] " + url);
+				callback.onError(response);
+			}
+		}));
+	}
+	
+	final native <T extends $> void send(String method, String url, Invoker successInvoker, Invoker errorInvoker) /*-{
+		this({ 'method':method, 'url':url })
 			.success(function(data, status, headers, config) {
 				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({
 					'data': data||null,

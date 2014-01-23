@@ -1,35 +1,23 @@
 package com.asayama.gwt.core.client;
 
-/**
- * Invokes a function that is assigned to it at the time of construction. This
- * class is intended to be used as a callback mechanism from JSNI.
- * <pre>
-public void callJava() {
-  callJSNI(name, new Invoker&lt;$>(new Function&lt;$>() {
-    public $ invoke($ fooObject) {
-      GWT.log(fooObject.name); //prints 'foo' to GWT log
-      return fooObject;
-    }
-  }));
-}
-
-final native void callJSNI(String name, Invoker<$> invoker) /*-{
-  var fooObject = { name:'foo' };
-  invoker.@com.asayama.gwt.core.client.Invoker::
-    invoke(Lcom/asayama/gwt/core/client/$;)(fooObject));
-}-*&#47;
- * </pre>
- * @author kyoken74
- */
-public class Invoker<T extends $> {
+public class Invoker {
 	
-	final Function<T> delegate;
+	final Function<$> delegate;
 	
-	public Invoker(Function<T> delegate) {
-		this.delegate = delegate;
+	@SuppressWarnings("unchecked")
+	public <T extends $> Invoker(Function<T> delegate) {
+		try {
+			this.delegate = (Function<$>) delegate;
+		} catch (ClassCastException e) {
+			throw new UnsupportedOperationException("Incompatible callback type specified for invoker.");
+		}
 	}
 	
-	public $ invoke(T jso) {
-		return delegate.call(jso);
+	public $ invoke() {
+		return delegate.function(null);
+	}
+	
+	public $ invoke($ jso) {
+		return delegate.function(jso);
 	}
 }

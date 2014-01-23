@@ -1,12 +1,7 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.$;
-import com.asayama.gwt.core.client.Invoker;
 
 
-public interface Provider {
+public interface Provider extends Injectable {
 	
-	static interface Constructor {
-		<T extends Provider> $ _getConstructor(T me, Invoker<$> invoker);
-	}
 }

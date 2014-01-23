@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.$;
-import com.asayama.gwt.core.client.Function;
+import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -12,10 +12,9 @@ public class Angular {
 	static final AngularJSO delegate = AngularJSO.getInstance();
 
 	public static <T extends Module> T module(String name, T module) {
-		module.setDelegate(delegate.module(name, null, new Invoker<$>(new Function<$>() {
-			public $ call($ jso) {
+		module.set$(delegate.module(name, null, new Invoker(new Closure<$>() {
+			public void closure($ jso) {
 				//TODO implement me
-				return null;
 			}
 		})));
 		return module;
@@ -38,7 +37,7 @@ class AngularJSO extends JavaScriptObject {
 	protected AngularJSO() {
 	}
 
-	final native ModuleJSO module(String name, JsArrayString requires, Invoker<$> invoker) /*-{
+	final native ModuleJSO module(String name, JsArrayString requires, Invoker invoker) /*-{
 		return this.module(name, [ "ngRoute", "ngSanitize" ], function () {
 			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({});
 		});

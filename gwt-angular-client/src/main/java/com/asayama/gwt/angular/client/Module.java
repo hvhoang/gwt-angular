@@ -1,29 +1,46 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.Invoker;
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
+import com.google.gwt.core.shared.GWT;
 
-public abstract class Module {
+public abstract class Module implements Wrapper<ModuleJSO> {
 	
 	ModuleJSO delegate;
-	String name;
 	
 	/**
-	 * An instance of Module's derived type should be created using GWT.creat()
+	 * An instance of Module's derived type should be created using GWT.create()
 	 */
 	protected Module() {
 	}
+	
+	/**
+	 * This method is called for each of the inject fields. The descendants of
+	 * this abstract class should declare injectable fields as protected.
+	 * 
+	 * @param object injected object
+	 * @see Injectable
+	 */
+	public abstract <T extends Injectable> void onInjection(T object);
 	
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
 			final Controller.Constructor ctor = (Controller.Constructor) controller;
 			ctor._injectServices(this);
-			delegate.controller(name, new Invoker<$>(new Function<$>() {
-				public $ call($ jso) {
-					return ctor._getConstructor(controller);
+			delegate.controller(name, new Invoker(new Function<$>() {
+				@Override
+				public $ function($ jso) {
+					return ctor.constructor(new Invoker(new Closure<$>() {
+						@Override
+						public void closure($ jso) {
+//							controller.onControllerLoad();
+GWT.log("controller-->onInjection");
+							onInjection(controller);
+						}
+					}));
 				}
 			}));
 			return controller;
@@ -35,10 +52,21 @@ public abstract class Module {
 	
 	public <T extends Service> T factory(final String name, final T service) {
 		try {
-			final Service.Constructor ctor = ((Service.Constructor) service);
-			delegate.factory(name, new Invoker<$>(new Function<$>() {
-				public $ call($ jso) {
-					return ctor._getConstructor(service);
+			final Constructor ctor = (Constructor) service;
+			delegate.factory(name, new Invoker(new Function<$>() {
+				public $ function($ jso) {
+					return ctor.constructor(new Invoker(new Function<$>() {
+						@SuppressWarnings("unchecked")
+						@Override
+						public $ function($ jso) {
+							if (service instanceof Wrapper) {
+								((Wrapper<$>) service).set$(jso);
+							}
+GWT.log("factory-->onInjection");
+							onInjection(service);
+							return jso;
+						}
+					}));
 				}
 			}));
 			return service;
@@ -48,21 +76,22 @@ public abstract class Module {
 		}
 	}
 	
-	public abstract <T extends Provider> void onProviderReady(T provider);
-	
 	public <T extends Provider> T config(final T provider) {
 		try {
-			final Provider.Constructor ctor = ((Provider.Constructor) provider);
-			delegate.config(new Invoker<$>(new Function<$>() {
-				public $ call($ jso) {
-					return ctor._getConstructor(provider, 
-							new Invoker<$>(new Function<$>() {
-								public $ call($ jso) {
-									onProviderReady(provider);
-									return null;
-								}
-							})
-						);
+			final Constructor ctor = (Constructor) provider;
+			delegate.config(new Invoker(new Function<$>() {
+				public $ function($ jso) {
+					return ctor.constructor(new Invoker(new Closure<$>() {
+						@SuppressWarnings("unchecked")
+						@Override
+						public void closure($ jso) {
+							if (provider instanceof Wrapper) {
+								((Wrapper<$>) provider).set$(jso);
+							}
+GWT.log("config-->onInjection");
+							onInjection(provider);
+						}
+					}));
 				}
 			}));
 			return provider;
@@ -84,33 +113,41 @@ public abstract class Module {
 		}
 		return results;
 	}
+
+	// Wrapper Methods
 	
-	void setDelegate(ModuleJSO delegate) {
+	@Override
+	public $ get$() {
+		return delegate;
+	}
+
+	@Override
+	public void set$(ModuleJSO delegate) {
 		this.delegate = delegate;
 	}
 }
-class ModuleJSO extends JavaScriptObject {
+class ModuleJSO extends $ {
 	
 	protected ModuleJSO() {
 	}
 	
-	final native String getName() /*-{
-		return this.name;
-	}-*/;
+	final String getName() {
+		return getString("name");
+	}
 	
 	final native JsArrayString getRequires() /*-{
 		return this.requires;
 	}-*/;
 	
-	final native void config(Invoker<$> invoker) /*-{
-		this.config(invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({}));
+	final native void config(Invoker invoker) /*-{
+		this.config(invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
 	}-*/;
 	
-	final native void controller(String name, Invoker<$> invoker) /*-{
-		this.controller(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({}));
+	final native void controller(String name, Invoker invoker) /*-{
+		this.controller(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
 	}-*/;
 	
-	final native void factory(String name, Invoker<$> invoker) /*-{
-		this.factory(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({}));
+	final native void factory(String name, Invoker invoker) /*-{
+		this.factory(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
 	}-*/;
 }
