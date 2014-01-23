@@ -70,6 +70,6 @@ interface MyControllerConstants extends Constants {
 	
 	static final MyControllerConstants INSTANCE = GWT.create(MyControllerConstants.class);
 	
-	@DefaultStringValue("Hello, World!")
+	@DefaultStringValue("Click me")
 	String title();
 }
