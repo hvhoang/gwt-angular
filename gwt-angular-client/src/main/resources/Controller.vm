@@ -36,7 +36,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 				};
 #end
 #foreach($field in $serviceFields)
-				itself.@${generatedQualifiedName}::__${simpleName}_onInjection_${field.name}()();
+				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}()();
 #end
 				invoker.@com.asayama.gwt.core.client.Invoker::invoke()();
 			}
@@ -46,7 +46,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 	// Controller Extensions
 
 #foreach($field in $serviceFields)
-	private void __${simpleName}_onInjection_${field.name}() {
+	private void __${generatedSimpleName}_onInjection_${field.name}() {
 		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
 		GWT.log(m);
 		try {
