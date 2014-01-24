@@ -1,3 +1,8 @@
+/*++
+ * Template: Controller.vm
+ * Provided: ${qualifedName}
+ * Generate: ${generatedQualifiedName}
+ */
 package ${packageName};
 
 import java.util.*;
@@ -69,3 +74,5 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 	}
 
 }
+//--end of ${generatedQualifiedName}
+

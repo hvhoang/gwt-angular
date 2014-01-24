@@ -1,3 +1,8 @@
+/*++
+ * Template: Module.vm
+ * Provided: ${qualifedName}
+ * Generate: ${generatedQualifiedName}
+ */
 package ${packageName};
 
 import java.util.*;
@@ -39,3 +44,5 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 	}
 	
 }
+//--end of ${generatedQualifiedName}
+
