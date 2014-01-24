@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.rebind.util.JClassTypeUtils;
+import com.asayama.gwt.core.client.$;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -45,28 +46,36 @@ public class ControllerGenerator extends Generator {
 			velocity.put("simpleName", simpleName);
 			velocity.put("generatedQualifiedName", generatedQualifiedName);
 			velocity.put("generatedSimpleName", generatedSimpleName);
-			
-			// Identify the methods to export to $scope
-			List<JMethod> exportMethods = new ArrayList<JMethod>();
-			JMethod[] inheritableMethods = classType.getInheritableMethods();
-			for (JMethod item : inheritableMethods) {
-				if (item.isPublic()) {
-					exportMethods.add(item);
+
+			// $scope initialization
+			{
+				List<JMethod> methodList = new ArrayList<JMethod>();
+				JMethod[] methods = classType.getInheritableMethods();
+				for (JMethod item : methods) {
+					if (item.isPublic()) {
+						methodList.add(item);
+					}
 				}
+				velocity.put("exportMethods", methodList);
 			}
-			velocity.put("exportMethods", exportMethods);
-			
-			// Identify the services to inject
-			List<JField> serviceFields = new ArrayList<JField>();
-			JField[] fields = classType.getFields();
-			for (JField item : fields) {
-				JClassType itemClassType = item.getType().isClassOrInterface();
-				if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Service.class)) {
-					serviceFields.add(item);
+			// Services
+			{
+				List<JField> fieldList = new ArrayList<JField>();
+				List<JField> nativeList = new ArrayList<JField>();
+				JField[] fields = classType.getFields();
+				for (JField item : fields) {
+					JClassType itemClassType = item.getType().isClassOrInterface();
+					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Service.class)) {
+						if (JClassTypeUtils.supports(itemClassType, $.class)) {
+							nativeList.add(item);
+						} else {
+							fieldList.add(item);
+						}
+					}
 				}
+				velocity.put("serviceFields", fieldList);
+				velocity.put("nativeServiceFields", nativeList);
 			}
-			velocity.put("serviceFields",	serviceFields);
-			
 			// Generate type
 			PrintWriter wrier = context.tryCreate(logger, packageName, generatedSimpleName);
 			if (wrier != null) {

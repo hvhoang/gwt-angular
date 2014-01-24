@@ -2,8 +2,8 @@ package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Injectable;
-import com.asayama.gwt.angular.client.http.Http;
 import com.asayama.gwt.angular.client.http.HttpCallback;
+import com.asayama.gwt.angular.client.http.HttpJS;
 import com.asayama.gwt.angular.client.http.HttpResponse;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.UrlBuilder;
@@ -13,7 +13,8 @@ import com.google.gwt.user.client.Event;
 public class MyController implements Controller {
 
 	// The service objects are injected at runtime. The fields must be declared "protected".
-	protected Http http;
+//	protected Http http;
+	protected HttpJS $http;
 	
 	// Other attributes of the controller can be used as reference to view model.
 	String title;
@@ -21,11 +22,11 @@ public class MyController implements Controller {
 	
 	@Override
 	public void onInjection(Injectable object) {
-		if (object == http) {
+		if (object == $http) {
 			String url = new UrlBuilder()
 				.setProtocol("http").setHost("localhost").setPort(8888)
 				.setPath("/api/customer").buildString();
-			http.get(url, new HttpCallback<CustomerJSO>() {
+			$http.get(url, new HttpCallback<CustomerJSO>() {
 				@Override
 				public void onSuccess(HttpResponse<CustomerJSO> response) {
 					String m = "onSuccess: status=" + response.getStatus();
