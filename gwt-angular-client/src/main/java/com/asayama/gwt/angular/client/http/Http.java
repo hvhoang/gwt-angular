@@ -43,7 +43,7 @@ public class Http implements Service, Wrapper<HttpJSO>, Constructor {
 	public native $ constructor(Invoker invoker) /*-{
 		return [ '$http', function ($http) {
 			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($http);
-			return $http;
+			return $http; //TODO Maybe there is where the problem is. Maybe we should return Http via Invoker?
 		}];
 	}-*/;
 
