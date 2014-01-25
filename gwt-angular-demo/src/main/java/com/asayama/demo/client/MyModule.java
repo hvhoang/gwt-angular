@@ -17,7 +17,7 @@ public class MyModule extends Module {
 		if (object == routeProvider) {
 			GWT.log("routeProvider injected");
 			routeProvider
-				.when("/hello", Route.create("app/partials/hello.html", MyController.class))
+				.when("/hello", Route.create("partials/hello.html", MyController.class))
 				.otherwise(Redirect.create("/hello"));
 		}
 	}
