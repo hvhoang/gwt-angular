@@ -23,3 +23,36 @@ AngularJS
 
 Bootstrap
 	http://getbootstrap.com
+
+
+Versioning and Stabiliy of Programming Interface
+================================================
+
+Version 0.0.0 development will take place in master branch. During this time,
+none of the interfaces are frozen. When the release version of 0.0.0 is created,
+the development of 0.1.0 will start in develop branch. Any patches to 0.0.0
+will be indicated by the patch number (i.e. the third number in version number
+sequence). Only additive changes to the programming interface may be introduced
+when patching. On the other hand, while the major version number is 0, every
+minor version upgrade may introduce programming interface changes that could
+make the new version incompatible with the earlier version.
+
+For example,
+
+0.0.0 user is able to drop in 0.0.1 without any programming interface changes.
+Note, however, that the user may still need to modify their code to deal with
+"side effects" of the code even though the interface has not changed.
+
+0.1.0 user is able to drop in 0.1.1 (as above).
+
+0.1.1 user will not be able to drop in 0.2.0, because the programming interface
+may have changed between 0.1.x to 0.2.x.
+
+This convention will be observed until 1.0.0 is reached. From that point on,
+none of the minor version upgrade will destroy the programming interface, i.e.
+
+1.0.0 user will be able to drop in 1.0.1 (as above).
+1.1.0 user will be able to drop in 1.1.1 (as above).
+1.0.0 user will be able to drop in 1.2.0 (as above).
+1.2.0 user will not be able to drop in 2.0.0 due to interface changes.
+
