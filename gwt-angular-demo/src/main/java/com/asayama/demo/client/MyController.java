@@ -12,7 +12,9 @@ import com.google.gwt.user.client.Event;
 
 public class MyController implements Controller {
 
-	// The service objects are injected at runtime. The fields must be declared "protected".
+	// The service objects are injected at runtime. The fields must be declared
+	// "protected", and the field name should be the same as the name of the 
+	// service in JavaScript.
 	protected Http $http;
 	
 	// Other attributes of the controller can be used as reference to view model.
@@ -25,7 +27,7 @@ public class MyController implements Controller {
 			getCustomer();
 		}
 	}
-	
+
 	@Override
 	public void onControllerLoad() {
 		setTitle(MyControllerConstants.INSTANCE.title());

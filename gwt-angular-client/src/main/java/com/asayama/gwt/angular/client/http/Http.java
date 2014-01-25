@@ -33,13 +33,13 @@ public class Http extends $ implements Service {
 
 	final <T extends $> void send(String method, final String url, final HttpCallback<T> callback) {
 		GWT.log("[" + method + "] " + url);
-		send(method, url, new Invoker(new Closure<HttpResponseJSO<T>>() {
-			public void closure(HttpResponseJSO<T> response) {
+		send(method, url, new Invoker(new Closure<HttpResponse<T>>() {
+			public void closure(HttpResponse<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onSuccess(response);
 			}
-		}), new Invoker(new Closure<HttpResponseJSO<T>>() {
-			public void closure (HttpResponseJSO<T> response) {
+		}), new Invoker(new Closure<HttpResponse<T>>() {
+			public void closure (HttpResponse<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				callback.onError(response);
 			}
