@@ -5,18 +5,22 @@ import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.client.route.Redirect;
 import com.asayama.gwt.angular.client.route.Route;
 import com.asayama.gwt.angular.client.route.RouteProvider;
+import com.google.gwt.core.client.GWT;
 
 public class MyModule extends Module {
 	
-	protected MyController myController;
 	protected RouteProvider routeProvider;
+	protected MyController myController;
 	
 	@Override
 	public void onInjection(Injectable object) {
 		if (object == routeProvider) {
+			GWT.log("routeProvider injected");
 			routeProvider
 				.when("/hello", Route.create("app/partials/hello.html", MyController.class))
 				.otherwise(Redirect.create("/hello"));
+		} else if (object == myController) {
+			GWT.log("myConroller injected");
 		}
 	}
 }

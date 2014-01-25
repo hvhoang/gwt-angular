@@ -6,7 +6,6 @@ import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
-
 public class Angular {
 	
 	static final AngularJSO delegate = AngularJSO.getInstance();

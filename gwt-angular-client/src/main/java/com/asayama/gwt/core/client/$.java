@@ -22,15 +22,27 @@ public class $ extends JavaScriptObject {
 	}
 	
 	public final native $ get(String key) /*-{
-		return this[key]||null;
+		try {
+			return this[key]||null;
+		} catch (e) {
+			console.log(e);
+		}
 	}-*/;
 	
 	public final native String getString(String key) /*-{
-		return this[key]||null;
+		try {
+			return this[key]||null;
+		} catch (e) {
+			console.log(e);
+		}
 	}-*/;
 	
 	public final native Integer getInteger(String key) /*-{
-		return this[key]||null;
+		try {
+			return this[key]||null;
+		} catch (e) {
+			console.log(e);
+		}
 	}-*/;
 	
 	public final Long getLong(String key) {
@@ -44,17 +56,29 @@ public class $ extends JavaScriptObject {
 	}
 	
 	public final native $ set(String key, $ value) /*-{
-		this[key] = value;
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
 		return this;
 	}-*/;
 
 	public final native $ setString(String key, String value) /*-{
-		this[key] = value;
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
 		return this;
 	}-*/;
 
 	public final native $ setInteger(String key, Integer value) /*-{
-		this[key] = value;
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
 		return this;
 	}-*/;
 

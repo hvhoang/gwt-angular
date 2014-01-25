@@ -11,7 +11,7 @@ import com.google.gwt.core.client.*;
 import com.asayama.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
-public class ${generatedSimpleName} extends ${simpleName} implements Controller.Constructor {
+public class ${generatedSimpleName} extends ${simpleName} implements Constructor {
 
 	public ${generatedSimpleName}() {
 	}
@@ -75,22 +75,6 @@ public class ${generatedSimpleName} extends ${simpleName} implements Controller.
 		}
 	}
 #end
-
-	// TODO Can I move this to constructor method or somewhere else so that it is not exposed via Controller.Constructor?
-	// One problem is that it needs a reference to Module invoking it. Maybe we call it from generated Module code?
-	@Override
-	public <T extends Module> void _injectServices(T module) {
-		String m = "";
-#foreach($field in $serviceFields)
-		try {
-			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-			${field.type.qualifiedSourceName} service = GWT.create(${field.type.qualifiedSourceName}.class);
-			${field.name} = module.factory("${field.type.qualifiedSourceName}", service);
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-#end
-	}
 
 }
 //--end of ${generatedQualifiedName}

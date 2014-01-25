@@ -22,29 +22,33 @@ public class MyController implements Controller {
 	@Override
 	public void onInjection(Injectable object) {
 		if (object == $http) {
-			String url = new UrlBuilder()
-				.setProtocol("http").setHost("localhost").setPort(8888)
-				.setPath("/api/customer").buildString();
-			$http.get(url, new HttpCallback<Customer>() {
-				@Override
-				public void onSuccess(HttpResponse<Customer> response) {
-					String m = "onSuccess: status=" + response.getStatus();
-					GWT.log(m);
-					setHttpStatus(m);
-				}
-				@Override
-				public void onError(HttpResponse<Customer> response) {
-					String m = "onError: status=" + response.getStatus();
-					GWT.log(m);
-					setHttpStatus(m);
-				}
-			});
+			getCustomer();
 		}
 	}
 	
 	@Override
 	public void onControllerLoad() {
 		setTitle(MyControllerConstants.INSTANCE.title());
+	}
+	
+	void getCustomer() {
+		String url = new UrlBuilder()
+			.setProtocol("http").setHost("localhost").setPort(8888)
+			.setPath("/api/customer").buildString();
+		$http.get(url, new HttpCallback<Customer>() {
+			@Override
+			public void onSuccess(HttpResponse<Customer> response) {
+				String m = "onSuccess: status=" + response.getStatus();
+				GWT.log(m);
+				setHttpStatus(m);
+			}
+			@Override
+			public void onError(HttpResponse<Customer> response) {
+				String m = "onError: status=" + response.getStatus();
+				GWT.log(m);
+				setHttpStatus(m);
+			}
+		});
 	}
 	
 	public void onClickTitle(Event event) {

@@ -7,6 +7,6 @@ public abstract class Closure<T extends $> implements Function<T> {
 	@Override
 	public final $ function(T jso) {
 		closure(jso);
-		return null;
+		return jso;
 	}
 }

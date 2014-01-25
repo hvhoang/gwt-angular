@@ -28,8 +28,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
-			final Controller.Constructor ctor = (Controller.Constructor) controller;
-			ctor._injectServices(this);
+			final Constructor ctor = (Constructor) controller;
 			delegate.controller(name, new Invoker(new Function<$>() {
 				@Override
 				public $ function($ jso) {
@@ -45,7 +44,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 							}
 							try {
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-								onInjection(controller);
+								Module.this.onInjection(controller);
 							} catch (Exception e) {
 								GWT.log("Exception while " + m, e);
 							}
@@ -75,7 +74,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 							}
 							try {
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-								onInjection(service);
+								Module.this.onInjection(service);
 							} catch (Exception e) {
 								GWT.log("Exception while " + m, e);
 							}
@@ -107,7 +106,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 							}
 							try {
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-								onInjection(provider);
+								Module.this.onInjection(provider);
 							} catch (Exception e) {
 								GWT.log("Exception while " + m, e);
 							}
