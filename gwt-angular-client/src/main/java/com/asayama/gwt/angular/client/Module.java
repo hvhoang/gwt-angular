@@ -70,6 +70,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 						public $ function($ jso) {
 							String m = "";
 							if (service instanceof Wrapper) {
+								GWT.log("calling " + name + ".set$(" 
+										+ (jso == null ? null : jso.getClass().getName()) + ")");
 								((Wrapper<$>) service).set$(jso);
 							}
 							try {
@@ -102,6 +104,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 						public void closure($ jso) {
 							String m = "";
 							if (provider instanceof Wrapper) {
+								GWT.log("calling " + provider.getClass().getName() + ".set$(" 
+										+ (jso == null ? null : jso.getClass().getName()) + ")");
 								((Wrapper<$>) provider).set$(jso);
 							}
 							try {
