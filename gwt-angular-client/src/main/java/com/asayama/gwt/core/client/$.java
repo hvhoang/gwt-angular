@@ -60,40 +60,45 @@ public class $ extends JavaScriptObject {
 		return value == null ? null : new Date(value);
 	}
 	
-	public final native <T extends $> T set(String key, $ value) /*-{
-		try {
-			this[key] = value;
-		} catch (e) {
-			console.log(e);
-		}
-		return this;
-	}-*/;
-
-	public final native <T extends $> T setString(String key, String value) /*-{
-		try {
-			this[key] = value;
-		} catch (e) {
-			console.log(e);
-		}
-		return this;
-	}-*/;
-
-	public final native <T extends $> T setInteger(String key, Integer value) /*-{
-		try {
-			this[key] = value;
-		} catch (e) {
-			console.log(e);
-		}
-		return this;
-	}-*/;
-
-	public final <T extends $> T setLong(String key, Long value) {
-		setString(key, value == null ? null : value.toString());
+	public final <T extends $> T putObject(String key, $ value) {
+		put(key, value);
 		return this.<T>cast();
 	}
 
-	public final <T extends $> T setDate(String key, Date value) {
-		setLong(key, value == null ? null : value.getTime());
+	final native $ put(String key, $ value) /*-{
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
+		return this;
+	}-*/;
+
+	public final native <T extends $> T putString(String key, String value) /*-{
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
+		return this;
+	}-*/;
+
+	public final native <T extends $> T putInteger(String key, Integer value) /*-{
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
+		return this;
+	}-*/;
+
+	public final <T extends $> T putLong(String key, Long value) {
+		putString(key, value == null ? null : value.toString());
+		return this.<T>cast();
+	}
+
+	public final <T extends $> T putDate(String key, Date value) {
+		putLong(key, value == null ? null : value.getTime());
 		return this.<T>cast();
 	}
 

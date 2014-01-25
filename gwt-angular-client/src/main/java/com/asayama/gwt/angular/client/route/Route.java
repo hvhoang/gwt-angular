@@ -21,7 +21,7 @@ public class Route extends $ {
 	}
 	
 	public final Route setTemplateUrl(String templateUrl) {
-		setString("templateUrl", templateUrl);
+		putString("templateUrl", templateUrl);
 		return this;
 	}
 
@@ -30,7 +30,7 @@ public class Route extends $ {
 	}
 	
 	public final <T extends Controller> Route setController(Class<T> controllerClass) {
-		setString("controller", controllerClass.getName());
+		putString("controller", controllerClass.getName());
 		return this;
 	}
 

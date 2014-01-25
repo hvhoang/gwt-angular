@@ -16,7 +16,7 @@ public class Redirect extends $ {
 	}
 	
 	public final Redirect setRedirectTo(String redirectTo) {
-		setString("redirectTo", redirectTo);
+		putString("redirectTo", redirectTo);
 		return this;
 	}
 	
