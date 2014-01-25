@@ -7,13 +7,9 @@ import com.asayama.gwt.core.client.$;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class RouteProvider implements Provider {
+public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Constructor {
 
 	RouteProviderJSO delegate;
-	
-	public void onProviderLoad(RouteProviderJSO delegate) {
-		this.delegate = delegate;
-	}
 	
 	public RouteProvider when(String route, Route action) {
 		delegate.when(route, action);
@@ -31,19 +27,6 @@ public class RouteProvider implements Provider {
 		delegate.otherwise(action);
 		return this;
 	}
-}
-class RouteProviderImpl extends RouteProvider implements Wrapper<RouteProviderJSO>, Constructor {
-
-	// Constructor Methods
-
-	@Override
-	public native $ constructor(Invoker invoker) /*-{
-		return [ "$routeProvider",
-			function ($routeProvider) {
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($routeProvider);
-				return $routeProvider;
-			}];
-	}-*/;
 
 	// Wrapper Methods
 	
@@ -56,6 +39,17 @@ class RouteProviderImpl extends RouteProvider implements Wrapper<RouteProviderJS
 	public void set$(RouteProviderJSO delegate) {
 		this.delegate = delegate;
 	}
+
+	// Constructor Methods
+	
+	@Override
+	public native $ constructor(Invoker invoker) /*-{
+		return [ "$routeProvider",
+			function ($routeProvider) {
+				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($routeProvider);
+				return $routeProvider;
+			}];
+	}-*/;
 
 }
 class RouteProviderJSO extends $ {
