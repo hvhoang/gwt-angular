@@ -21,7 +21,7 @@ public class MyController implements Controller {
 	Scope scope;
 	String title;
 	String httpStatus;
-	Customer customers;
+	Customers customers;
 	
 	@Override
 	public void onControllerLoad(final Scope scope) {
@@ -35,7 +35,7 @@ public class MyController implements Controller {
 				public void onResponseReceived(Request request, Response response) {
 					int status = response.getStatusCode();
 					if (status == 200) {
-						Customer customers = Customer.parse(response.getText());
+						Customers customers = Customers.parse(response.getText());
 						setCustomers(customers);
 						scope.digest(); //we need this because this is an async callback
 					}
@@ -70,10 +70,10 @@ public class MyController implements Controller {
 	public void setHttpStatus(String httpStatus) {
 		this.httpStatus = httpStatus;
 	}
-	public Customer getCustomers() {
+	public Customers getCustomers() {
 		return customers;
 	}
-	public void setCustomers(Customer customers) {
+	public void setCustomers(Customers customers) {
 		this.customers = customers;
 	}
 
