@@ -31,12 +31,12 @@ public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Const
 	// Wrapper Methods
 	
 	@Override
-	public $ get$() {
+	public $ getDelegate() {
 		return delegate;
 	}
 	
 	@Override
-	public void set$(RouteProviderJSO delegate) {
+	public void setDelegate(RouteProviderJSO delegate) {
 		this.delegate = delegate;
 	}
 

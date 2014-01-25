@@ -72,7 +72,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 							if (service instanceof Wrapper) {
 								GWT.log("calling " + name + ".set$(" 
 										+ (jso == null ? null : jso.getClass().getName()) + ")");
-								((Wrapper<$>) service).set$(jso);
+								((Wrapper<$>) service).setDelegate(jso);
 							}
 							try {
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -106,7 +106,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 							if (provider instanceof Wrapper) {
 								GWT.log("calling " + provider.getClass().getName() + ".set$(" 
 										+ (jso == null ? null : jso.getClass().getName()) + ")");
-								((Wrapper<$>) provider).set$(jso);
+								((Wrapper<$>) provider).setDelegate(jso);
 							}
 							try {
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -141,14 +141,15 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	// Wrapper Methods
 	
 	@Override
-	public $ get$() {
+	public $ getDelegate() {
 		return delegate;
 	}
 
 	@Override
-	public void set$(ModuleJSO delegate) {
+	public void setDelegate(ModuleJSO delegate) {
 		this.delegate = delegate;
 	}
+
 }
 class ModuleJSO extends $ {
 	

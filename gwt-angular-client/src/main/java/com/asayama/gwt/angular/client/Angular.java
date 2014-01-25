@@ -11,7 +11,7 @@ public class Angular {
 	static final AngularJSO delegate = AngularJSO.getInstance();
 
 	public static <T extends Module> T module(String name, T module) {
-		module.set$(delegate.module(name, null, new Invoker(new Closure<$>() {
+		module.setDelegate(delegate.module(name, null, new Invoker(new Closure<$>() {
 			public void closure($ jso) {
 				//TODO implement me
 			}
