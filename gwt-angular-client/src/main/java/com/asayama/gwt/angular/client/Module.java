@@ -32,9 +32,9 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 			delegate.controller(name, new Invoker(new Function<$>() {
 				@Override
 				public $ function($ jso) {
-					return ctor.constructor(new Invoker(new Closure<Scope>() {
+					return ctor.constructor(new Invoker(new Closure<ScopeJSO>() {
 						@Override
-						public void closure(Scope scope) {
+						public void closure(ScopeJSO scope) {
 							String m = "";
 							try {
 								GWT.log(m = "calling " + name + ".onControllerLoad");

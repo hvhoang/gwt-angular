@@ -16,35 +16,33 @@ public class MyController implements Controller {
 	// The service objects are injected at runtime. The fields must be declared
 	// "protected".
 	// TODO implement some examples
-	
+
 	// Other attributes of the controller can be used as reference to view model.
 	Scope scope;
 	String title;
 	String httpStatus;
-
+	Customer customers;
+	
 	@Override
-	public void onControllerLoad(Scope scope) {
+	public void onControllerLoad(final Scope scope) {
 		this.scope = scope;
 		setTitle(MyControllerConstants.INSTANCE.title());
-		getCustomer();
-	}
-	
-	void getCustomer() {
-		String url = "/api/customer";
-		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+		final String url = "/api/customer";
 		try {
+			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 			builder.sendRequest(null, new RequestCallback() {
 				@Override
 				public void onResponseReceived(Request request, Response response) {
-					String status = response.getStatusText();
-					setHttpStatus(status);
-					scope.digest();
+					int status = response.getStatusCode();
+					if (status == 200) {
+						Customer customers = Customer.parse(response.getText());
+						setCustomers(customers);
+						scope.digest(); //we need this because this is an async callback
+					}
 				}
 				@Override
 				public void onError(Request request, Throwable exception) {
-					String status = exception.getMessage();
-					setHttpStatus(status);
-					scope.digest();
+					GWT.log(url, exception);
 				}
 			});
 		} catch (RequestException e) {
@@ -52,11 +50,13 @@ public class MyController implements Controller {
 		}
 	}
 	
+	// Public event handler are automatically wired to AngularJS's $scope.
+	
 	public void onClickTitle(Event event) {
 		setTitle("You clicked me!");
 	}
-
-	// Public methods are bound to AngularJS's $scope automatically.
+	
+	// Public getters and setters are automatically wired to AngularJS's $scope.
 	
 	public String getTitle() {
 		return title;
@@ -69,6 +69,12 @@ public class MyController implements Controller {
 	}
 	public void setHttpStatus(String httpStatus) {
 		this.httpStatus = httpStatus;
+	}
+	public Customer getCustomers() {
+		return customers;
+	}
+	public void setCustomers(Customer customers) {
+		this.customers = customers;
 	}
 
 }

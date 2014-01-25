@@ -3,6 +3,7 @@ package com.asayama.gwt.core.client;
 import java.util.Date;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsonUtils;
 
 /**
  * Represents a JavaScriptObject, and used as a syntax sugar, i.e. a shorthand
@@ -14,9 +15,13 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class $ extends JavaScriptObject {
 
-	public static native $ create() /*-{
+	public static native <T extends $> T create() /*-{
 		return {};
 	}-*/;
+	
+	public static <T extends $> T parse(String jsonString) {
+		return JsonUtils.safeEval(jsonString).cast();
+	}
 	
 	protected $() {
 	}

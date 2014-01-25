@@ -12,18 +12,18 @@ public class $array<T extends $> extends $ implements List<T> {
 	protected $array() {
 	}
 	
-	public static native <T extends $> $array<T> create() /*-{
+	public static native <T extends $> $array<T> array() /*-{
 		return [];
 	}-*/;
 	
-	private final <X extends $> _$array<T> delegate() {
-		return this.cast();
+	private JsArray<T> _delegate() {
+		return this.<JsArray<T>>cast();
 	}
-
+	
 	@Override
 	public final boolean add(T value) {
-		delegate().push(value);
-		return false;
+		_delegate().push(value);
+		return true;
 	}
 
 	@Override
