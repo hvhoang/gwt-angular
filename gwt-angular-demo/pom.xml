@@ -27,6 +27,9 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<executions>
 					<execution>
+						<configuration>
+							<module>com.asayama.demo.MyEntryPoint</module>
+						</configuration>
 						<goals>
 							<goal>compile</goal>
 						</goals>
