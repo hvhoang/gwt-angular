@@ -2,6 +2,7 @@
 <module rename-to="app">
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.i18n.I18N" />
+	<inherits name="com.google.gwt.http.HTTP" />
 	<inherits name="com.asayama.gwt.angular.Angular" />
 	<source path="client" />
 	<source path="shared" />

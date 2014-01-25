@@ -39,12 +39,12 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 				};
 #end
 #foreach($field in $serviceFields)
-				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}()();
+//				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}()();
 #end
 #foreach($field in $nativeServiceFields)
 				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});
 #end
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke()();
+				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($scope);
 			}
 		];
 	}-*/;
@@ -52,15 +52,15 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 	// Controller Extensions
 
 #foreach($field in $serviceFields)
-	private void __${generatedSimpleName}_onInjection_${field.name}() {
-		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
-		GWT.log(m);
-		try {
-			super.onInjection(${field.name});
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-	}
+//	private void __${generatedSimpleName}_onInjection_${field.name}() {
+//		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
+//		GWT.log(m);
+//		try {
+//			super.onInjection(${field.name});
+//		} catch (Exception e) {
+//			GWT.log("Exception while " + m, e);
+//		}
+//	}
 #end
 
 #foreach($field in $nativeServiceFields)
@@ -69,7 +69,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 		GWT.log(m);
 		try {
 			super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
-			super.onInjection(${field.name});
+//			super.onInjection(${field.name});
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}

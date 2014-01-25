@@ -6,6 +6,10 @@ import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
 
+/**
+ * This class is unsupported.
+ */
+@Deprecated
 public class Http extends $ implements Service {
 
 	protected Http() {
