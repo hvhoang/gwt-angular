@@ -1,34 +1,68 @@
 package com.asayama.gwt.angular.client.http;
 
+import com.asayama.gwt.angular.client.Constructor;
 import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.$;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
 
-public class HttpJS extends $ implements Service {
+/**
+ * <ul>
+ * <li>TODO use code generator, and implement as a custom service in Java
+ * <li>TODO fix get
+ * <li>TODO implement head, post, put, delete, and jsonp
+ * </ul>
+ */
+public class Http implements Service, Wrapper<HttpJSO>, Constructor {
 
-	protected HttpJS() {
+	HttpJSO delegate;
+	
+	public <T extends $> void head(String url, HttpCallback<T> callback) {
+		delegate.send("HEAD", url, callback);
+	}
+	
+	public <T extends $> void get(String url, HttpCallback<T> callback) {
+		delegate.send("GET", url, callback);
+	}
+	
+	public <T extends $> void put(String url, HttpCallback<T> callback) {
+		delegate.send("PUT", url, callback);
+	}
+	
+	public <T extends $> void post(String url, HttpCallback<T> callback) {
+		delegate.send("POST", url, callback);
+	}
+	
+	public <T extends $> void delete(String url, HttpCallback<T> callback) {
+		delegate.send("DELETE", url, callback);
 	}
 
-	public final <T extends $> void head(String url, HttpCallback<T> callback) {
-		send("HEAD", url, callback);
-	}
+	@Override
+	public native $ constructor(Invoker invoker) /*-{
+		return [ '$http', function ($http) {
+			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($http);
+			return $http; //TODO Maybe there is where the problem is. Maybe we should return Http via Invoker?
+		}];
+	}-*/;
+
+	// Wrapper Methods
 	
-	public final <T extends $> void get(String url, HttpCallback<T> callback) {
-		send("GET", url, callback);
+	@Override
+	public HttpJSO get$() {
+		return this.delegate;
 	}
-	
-	public final <T extends $> void put(String url, HttpCallback<T> callback) {
-		send("PUT", url, callback);
+
+	@Override
+	public void set$(HttpJSO delegate) {
+		this.delegate = delegate;
 	}
+
+}
+class HttpJSO extends $ {
 	
-	public final <T extends $> void post(String url, HttpCallback<T> callback) {
-		send("POST", url, callback);
-	}
-	
-	public final <T extends $> void delete(String url, HttpCallback<T> callback) {
-		send("DELETE", url, callback);
+	protected HttpJSO() {
 	}
 
 	final <T extends $> void send(String method, final String url, final HttpCallback<T> callback) {
