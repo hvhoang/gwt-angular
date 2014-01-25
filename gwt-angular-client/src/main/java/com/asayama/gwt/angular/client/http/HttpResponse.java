@@ -17,14 +17,16 @@ public class HttpResponse<T extends $> extends $ {
 		return value == null ? null : value.<T>cast();
 	}
 	
+	//TODO Implement a proper HttpHeader type extending $
 	public final $ getHeader() {
 		$ value = get("header");
-		return value == null ? null : value.<T>cast();
+		return value == null ? null : value.<$>cast();
 	}
 
+	//TODO Implement a proper HttpConfig type extending $
 	public final $ getConfig() {
 		$ value = get("config");
-		return value == null ? null : value.<T>cast();
+		return value == null ? null : value.<$>cast();
 	}
 
 }
