@@ -141,7 +141,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	// Wrapper Methods
 	
 	@Override
-	public $ getDelegate() {
+	public ModuleJSO getDelegate() {
 		return delegate;
 	}
 
