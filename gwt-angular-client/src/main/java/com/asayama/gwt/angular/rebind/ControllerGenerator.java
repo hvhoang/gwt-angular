@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.rebind.util.JClassTypeUtils;
 import com.asayama.gwt.core.client.$;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
