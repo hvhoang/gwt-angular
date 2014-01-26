@@ -1,3 +1,10 @@
+WARNING
+=======
+
+The API is in very early stages of development, and it is not yet ready for
+beta.
+
+
 gwt-angular
 ===========
 
@@ -25,8 +32,8 @@ Bootstrap
 	http://getbootstrap.com
 
 
-Versioning and Stabiliy of Programming Interface
-================================================
+Versioning
+==========
 
 Version 0.0.0 development will take place in master branch. During this time,
 none of the interfaces are frozen. When the release version of 0.0.0 is created,

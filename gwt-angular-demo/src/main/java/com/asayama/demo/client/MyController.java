@@ -13,11 +13,6 @@ import com.google.gwt.user.client.Event;
 
 public class MyController implements Controller {
 
-	// The service objects are injected at runtime. The fields must be declared
-	// "protected".
-	// TODO implement some examples
-
-	// Other attributes of the controller can be used as reference to view model.
 	Scope scope;
 	String title;
 	String httpStatus;
@@ -27,6 +22,10 @@ public class MyController implements Controller {
 	public void onControllerLoad(final Scope scope) {
 		this.scope = scope;
 		setTitle(MyControllerConstants.INSTANCE.title());
+		loadCustomers();
+	}
+	
+	private void loadCustomers() {
 		final String url = "/api/customer";
 		try {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
