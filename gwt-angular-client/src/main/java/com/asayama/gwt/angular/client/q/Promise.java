@@ -5,34 +5,34 @@ import com.asayama.gwt.core.client.$;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 
-public class Promise implements Wrapper<PromiseJSO> {
+public class Promise<T extends $> implements Wrapper<PromiseJSO> {
 
-	public Promise then(final PromiseCallback callback) {
-		delegate.then(new Invoker(new Closure<$>() {
+	public Promise<T> then(final PromiseCallback callback) {
+		delegate.then(new Invoker(new Closure<T>() {
 			@Override
-			public void closure($ jso) {
+			public void closure(T jso) {
 				callback.onSuccess();
 			}
-		}), new Invoker(new Closure<$>() {
+		}), new Invoker(new Closure<T>() {
 			@Override
-			public void closure($ jso) {
+			public void closure(T jso) {
 				callback.onError();
 			}
-		}), new Invoker(new Closure<$>() {
+		}), new Invoker(new Closure<T>() {
 			@Override
-			public void closure($ jso) {
+			public void closure(T jso) {
 				callback.onSignal();
 			}
 		}));
 		return this;
 	}
 	
-	public Promise error(Closure<$> closure) {
+	public Promise<T> error(Closure<T> closure) {
 		delegate.error(new Invoker(closure));
 		return this;
 	}
 	
-	public Promise end(Closure<$> closure) {
+	public Promise<T> end(Closure<T> closure) {
 		delegate.end(new Invoker(closure));
 		return this;
 	}

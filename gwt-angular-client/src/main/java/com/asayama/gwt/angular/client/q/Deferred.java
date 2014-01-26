@@ -3,53 +3,53 @@ package com.asayama.gwt.angular.client.q;
 import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.$;
 
-public class Deferred implements Wrapper<DeferredJSO> {
+public class Deferred<T extends $> implements Wrapper<DeferredJSO<T>> {
 
-	public void singal(String value) {
+	public void singal(T value) {
 		delegate.signal(value);
 	}
 	
-	public void resolve(String value) {
+	public void resolve(T value) {
 		delegate.resolve(value);
 	}
 	
-	public void reject(String value) {
+	public void reject(T value) {
 		delegate.reject(value);
 	}
 	
-	public Promise promise() {
-		Promise promise = new Promise();
+	public Promise<T> promise() {
+		Promise<T> promise = new Promise<T>();
 		promise.setDelegate(delegate.promise());
 		return promise;
 	}
 	
 	// Wrapper Methods
 	
-	DeferredJSO delegate = null;
+	DeferredJSO<T> delegate = null;
 	
 	@Override
-	public DeferredJSO getDelegate() {
+	public DeferredJSO<T> getDelegate() {
 		return this.delegate;
 	}
 
 	@Override
-	public void setDelegate(DeferredJSO delegate) {
+	public void setDelegate(DeferredJSO<T> delegate) {
 		this.delegate = delegate;
 	}
 
 }
-class DeferredJSO extends $ {
+class DeferredJSO<T> extends $ {
 
 	protected DeferredJSO() {
 	}
 
-	final native void signal(String value) /*-{
+	final native void signal(T value) /*-{
 		this.notify(value);
 	}-*/;
-	final native void resolve(String value) /*-{
+	final native void resolve(T value) /*-{
 		this.resolve(value);
 	}-*/;
-	final native void reject(String value) /*-{
+	final native void reject(T value) /*-{
 		this.reject(value);
 	}-*/;
 	final native PromiseJSO promise() /*-{

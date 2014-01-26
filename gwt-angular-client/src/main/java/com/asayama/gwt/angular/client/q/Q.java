@@ -8,9 +8,10 @@ import com.asayama.gwt.core.client.Invoker;
 
 public class Q implements Service, Wrapper<QJSO>, Constructor {
 
-	public Deferred defer() {
-		Deferred deferred = new Deferred();
-		deferred.setDelegate(delegate.defer());
+	public <T extends $> Deferred<T> defer() {
+		Deferred<T> deferred = new Deferred<T>();
+		DeferredJSO<T> jso = delegate.defer();
+		deferred.setDelegate(jso);
 		return deferred;
 	}
 	
@@ -43,7 +44,7 @@ class QJSO extends $ {
 	protected QJSO() {
 	}
 
-	final native DeferredJSO defer() /*-{
+	final native <T extends $> DeferredJSO<T> defer() /*-{
 		return this.defer();
 	}-*/;
 
