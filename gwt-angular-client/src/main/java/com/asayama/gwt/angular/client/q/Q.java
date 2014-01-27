@@ -14,11 +14,11 @@ public class Q extends $ implements Service, Constructor {
 	
 	public final <T extends $> Deferred<T> defer() {
 		Deferred<T> deferred = new Deferred<T>();
-		deferred.setDelegate(_defer());
+		deferred.setDelegate($defer());
 		return deferred;
 	}
 	
-	final native <T extends $> DeferredJSO<T> _defer() /*-{
+	final native <T extends $> DeferredJSO<T> $defer() /*-{
 		return this.defer();
 	}-*/;
 

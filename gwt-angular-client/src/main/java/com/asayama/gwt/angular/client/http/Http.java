@@ -35,7 +35,7 @@ public class Http extends $ implements Service /*, Constructor*/ {
 
 	final <T extends $> void send(String method, final String url, final HttpCallback<T> callback) {
 		GWT.log("[" + method + "] " + url);
-		send(method, url, new Invoker(new Closure<HttpResponse<T>>() {
+		$send(method, url, new Invoker(new Closure<HttpResponse<T>>() {
 			public void closure(HttpResponse<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				try {
@@ -56,7 +56,7 @@ public class Http extends $ implements Service /*, Constructor*/ {
 		}));
 	}
 	
-	final native <T extends $> void send(String method, String url, Invoker successInvoker, Invoker errorInvoker) /*-{
+	final native <T extends $> void $send(String method, String url, Invoker successInvoker, Invoker errorInvoker) /*-{
 		this({ 'method':method, 'url':url })
 			.success(function(data, status, headers, config) {
 				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({
