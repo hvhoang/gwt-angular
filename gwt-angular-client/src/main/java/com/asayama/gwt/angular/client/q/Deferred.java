@@ -23,9 +23,6 @@ public class Deferred<T extends $> implements Wrapper<DeferredJSO<T>> {
 	
 	public Promise<T> promise() {
 		GWT.log("Defered.promise");
-//		Promise<T> promise = new Promise<T>();
-//		promise.setDelegate(delegate.promise());
-//		return promise;
 		return delegate.promise();
 	}
 	
