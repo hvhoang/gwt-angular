@@ -2,6 +2,7 @@ package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Module;
+import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.route.Redirect;
 import com.asayama.gwt.angular.client.route.Route;
 import com.asayama.gwt.angular.client.route.RouteProvider;
@@ -9,6 +10,7 @@ import com.asayama.gwt.angular.client.route.RouteProvider;
 public class MyModule extends Module {
 	
 	protected RouteProvider routeProvider;
+	protected Q q;
 	protected MyController myController;
 	
 	@Override

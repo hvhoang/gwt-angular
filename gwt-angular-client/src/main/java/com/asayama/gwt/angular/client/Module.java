@@ -146,8 +146,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	}
 
 	@Override
-	public void setDelegate(ModuleJSO delegate) {
-		this.delegate = delegate;
+	public void setDelegate($ delegate) {
+		this.delegate = delegate.cast();
 	}
 
 }

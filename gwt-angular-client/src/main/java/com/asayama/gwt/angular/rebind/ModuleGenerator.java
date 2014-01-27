@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Provider;
+import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.core.client.$;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -45,6 +47,50 @@ public class ModuleGenerator extends Generator {
 			velocity.put("generatedQualifiedName", generatedQualifiedName);
 			velocity.put("generatedSimpleName", generatedSimpleName);
 			
+			// Identify the providers to inject
+			{
+				List<JField> injectable = new ArrayList<JField>();
+				
+				JField[] fields = classType.getFields();
+				for (JField item : fields) {
+					JClassType itemClassType = item.getType().isClassOrInterface();
+					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Provider.class)) {
+						injectable.add(item);
+					}
+				}
+				velocity.put("providerFields", injectable);
+			}
+
+			// Identify the services to inject
+			{
+				List<JField> injectable = new ArrayList<JField>();
+				JField[] fields = classType.getFields();
+				for (JField item : fields) {
+					JClassType itemClassType = item.getType().isClassOrInterface();
+					if (itemClassType != null
+							&& JClassTypeUtils.supports(itemClassType, Service.class)
+							&& !JClassTypeUtils.supports(itemClassType, $.class)) {
+						injectable.add(item);
+					}
+				}
+				velocity.put("serviceFields", injectable);
+			}
+
+			// Identify the native services to inject
+			{
+				List<JField> injectable = new ArrayList<JField>();
+				JField[] fields = classType.getFields();
+				for (JField item : fields) {
+					JClassType itemClassType = item.getType().isClassOrInterface();
+					if (itemClassType != null
+							&& JClassTypeUtils.supports(itemClassType, Service.class)
+							&& JClassTypeUtils.supports(itemClassType, $.class)) {
+						injectable.add(item);
+					}
+				}
+				velocity.put("nativeServiceFields", injectable);
+			}
+
 			// Identify the controllers to inject
 			{
 				List<JField> controller = new ArrayList<JField>();
@@ -56,22 +102,6 @@ public class ModuleGenerator extends Generator {
 					}
 				}
 				velocity.put("controllerFields", controller);
-			}
-			
-			// Identify the providers to inject
-			{
-				final String key = "providerFields";
-				final Class<?> klass = Provider.class;
-				List<JField> injectable = new ArrayList<JField>();
-				
-				JField[] fields = classType.getFields();
-				for (JField item : fields) {
-					JClassType itemClassType = item.getType().isClassOrInterface();
-					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, klass)) {
-						injectable.add(item);
-					}
-				}
-				velocity.put(key, injectable);
 			}
 			
 			// Generate type

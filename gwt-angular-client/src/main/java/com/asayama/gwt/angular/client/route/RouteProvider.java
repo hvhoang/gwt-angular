@@ -36,8 +36,8 @@ public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Const
 	}
 	
 	@Override
-	public void setDelegate(RouteProviderJSO delegate) {
-		this.delegate = delegate;
+	public void setDelegate($ delegate) {
+		this.delegate = delegate.cast();
 	}
 
 	// Constructor Methods

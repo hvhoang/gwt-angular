@@ -2,6 +2,10 @@ package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
+import com.asayama.gwt.angular.client.q.Deferred;
+import com.asayama.gwt.angular.client.q.Promise;
+import com.asayama.gwt.angular.client.q.Q;
+import com.asayama.gwt.angular.client.q.SuccessCallback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -13,6 +17,8 @@ import com.google.gwt.user.client.Event;
 
 public class MyController implements Controller {
 
+	protected Q q;
+
 	Scope scope;
 	String title;
 	String httpStatus;
@@ -22,30 +28,48 @@ public class MyController implements Controller {
 	public void onControllerLoad(final Scope scope) {
 		this.scope = scope;
 		setTitle(MyControllerConstants.INSTANCE.title());
-		loadCustomers();
+		Promise<Customers> promise = loadCustomers();
+		promise.then(new SuccessCallback<Customers>() {
+			@Override
+			public void onSuccess(Customers object) {
+				setCustomers(object);
+			}
+		});
 	}
 	
-	private void loadCustomers() {
+	public void onInjection(Q q) {
+		GWT.log("onInjection: q=" + q);
+	}
+	
+	private Promise<Customers> loadCustomers() {
+		final Deferred<Customers> deferred = q.defer();
 		final String url = "/api/customer";
 		try {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+			GWT.log("[GET] " + url);
 			builder.sendRequest(null, new RequestCallback() {
 				@Override
 				public void onResponseReceived(Request request, Response response) {
 					int status = response.getStatusCode();
+					GWT.log("[" + status + "] " + url);
 					if (status == 200) {
 						Customers customers = Customers.parse(response.getText());
-						setCustomers(customers);
-						scope.digest(); //we need this because this is an async callback
+						deferred.resolve(customers);
+						//setCustomers(customers);
+						//scope.digest(); //we need this because this is an async callback
 					}
 				}
 				@Override
 				public void onError(Request request, Throwable exception) {
-					GWT.log(url, exception);
+					GWT.log("[ERR] " + url, exception);
+					deferred.reject(null);//FIXME figure out what to do here
 				}
 			});
+			return deferred.promise();
+
 		} catch (RequestException e) {
 			GWT.log("Exception", e);
+			return null; //FIXME figure out what to do where, too.
 		}
 	}
 	

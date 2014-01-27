@@ -27,7 +27,14 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 		return [
 			'$scope',
 #foreach($field in $nativeServiceFields)
-			'${field.name}',
+#set($fieldClassType = ${field.type.isClassOrInterface()})
+#if(${fieldClassType})
+#foreach($annotation in ${fieldClassType.getAnnotations()})
+#if($annotation.annotationType().getName() == "com.asayama.gwt.angular.client.annotations.Bind")
+			'${annotation.value()}',
+#end
+#end
+#end
 #end
 #foreach($field in $serviceFields)
 			'${field.type.qualifiedSourceName}',
@@ -39,7 +46,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 				};
 #end
 #foreach($field in $serviceFields)
-//				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}()();
+				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});
 #end
 #foreach($field in $nativeServiceFields)
 				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});
@@ -50,17 +57,20 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 	}-*/;
 
 	// Controller Extensions
-
 #foreach($field in $serviceFields)
-//	private void __${generatedSimpleName}_onInjection_${field.name}() {
-//		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
-//		GWT.log(m);
-//		try {
-//			super.onInjection(${field.name});
-//		} catch (Exception e) {
-//			GWT.log("Exception while " + m, e);
-//		}
-//	}
+	private void __${generatedSimpleName}_onInjection_${field.name}($ jso) {
+		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
+		GWT.log(m);
+		try {
+			${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
+			if (${field.name} instanceof Wrapper) {
+				${field.name}.setDelegate(jso);
+			}
+			super.onInjection(${field.name});
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+	}
 #end
 
 #foreach($field in $nativeServiceFields)
