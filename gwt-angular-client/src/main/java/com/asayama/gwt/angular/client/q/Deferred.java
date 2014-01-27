@@ -23,9 +23,10 @@ public class Deferred<T extends $> implements Wrapper<DeferredJSO<T>> {
 	
 	public Promise<T> promise() {
 		GWT.log("Defered.promise");
-		Promise<T> promise = new Promise<T>();
-		promise.setDelegate(delegate.promise());
-		return promise;
+//		Promise<T> promise = new Promise<T>();
+//		promise.setDelegate(delegate.promise());
+//		return promise;
+		return delegate.promise();
 	}
 	
 	// Wrapper Methods
@@ -43,7 +44,7 @@ public class Deferred<T extends $> implements Wrapper<DeferredJSO<T>> {
 	}
 
 }
-class DeferredJSO<T> extends $ {
+class DeferredJSO<T extends $> extends $ {
 
 	protected DeferredJSO() {
 	}
@@ -57,7 +58,7 @@ class DeferredJSO<T> extends $ {
 	final native void reject(T value) /*-{
 		this.reject(value);
 	}-*/;
-	final native PromiseJSO promise() /*-{
+	final native Promise<T>/*JSO*/ promise() /*-{
 		return this.promise;
 	}-*/;
 }

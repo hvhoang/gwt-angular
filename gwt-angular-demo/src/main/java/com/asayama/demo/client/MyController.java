@@ -34,6 +34,7 @@ public class MyController implements Controller {
 //		loadCustomers();
 
 		// $q + RequestBuiler
+		// Try returning PromiseJSO to the view and see if view can resolve it.
 		Promise<Customers> promise = loadCustomers();
 		promise.then(new SuccessCallback<Customers>() {
 			@Override
@@ -43,7 +44,7 @@ public class MyController implements Controller {
 		});
 		
 		// $http
-//		http.get("/api/customer", new HttpCallback<Customers>() {
+//		http.get("/myapp/api/customer", new HttpCallback<Customers>() {
 //			@Override
 //			public void onSuccess(HttpResponse<Customers> response) {
 //				setCustomers(response.getData());
@@ -62,9 +63,9 @@ public class MyController implements Controller {
 //		GWT.log("MyController.onInjection: http=" + http);
 //	}
 	
-	private Promise<Customers> loadCustomers() {
+	public Promise<Customers> loadCustomers() {
 		final Deferred<Customers> deferred = q.defer();
-		final String url = "/api/customer";
+		final String url = "/myapp/api/customer";
 		try {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 			GWT.log("[GET] " + url);
@@ -93,7 +94,7 @@ public class MyController implements Controller {
 	}
 
 //	private void loadCustomers() {
-//		final String url = "/api/customer";
+//		final String url = "/myapp/api/customer";
 //		try {
 //			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 //			GWT.log("[GET] " + url);
