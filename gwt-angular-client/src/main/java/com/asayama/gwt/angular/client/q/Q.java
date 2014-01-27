@@ -1,6 +1,3 @@
-/*
- * com.google.gwt.dev.jjs.InternalCompilerException: Already seen an implementing JSO subtype (Http) for interface (Constructor) while examining newly-added type (Q). This is a bug in JSORestrictionsChecker.
- */
 package com.asayama.gwt.angular.client.q;
 
 import com.asayama.gwt.angular.client.Constructor;
@@ -26,6 +23,11 @@ public class Q extends $ implements Service, Constructor {
 	}-*/;
 
 	// Constructor Method
+	//
+	// com.google.gwt.dev.jjs.InternalCompilerException: Already seen an 
+	// implementing JSO subtype (Http) for interface (Constructor) while 
+	// examining newly-added type (Q). This is a bug in JSORestrictionsChecker.
+	//
 	
 	@Override
 	public final native $ constructor(Invoker invoker) /*-{
