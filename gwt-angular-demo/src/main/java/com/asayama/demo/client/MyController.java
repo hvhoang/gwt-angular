@@ -76,8 +76,6 @@ public class MyController implements Controller {
 					if (status == 200) {
 						Customers customers = Customers.parse(response.getText());
 						deferred.resolve(customers);
-						//setCustomers(customers);
-						//scope.digest(); //we need this because this is an async callback
 					}
 				}
 				@Override
