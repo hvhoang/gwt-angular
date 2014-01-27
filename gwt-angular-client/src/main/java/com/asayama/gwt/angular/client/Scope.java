@@ -13,7 +13,9 @@ class ScopeJSO extends $ implements Scope {
 
 	@Override
 	public final native void digest() /*-{
-		this.$digest();
+		if (!this.$$phase) {
+			this.$digest();
+		}
 	}-*/;
 
 }
