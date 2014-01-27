@@ -1,16 +1,14 @@
 package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.$;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
 
-/**
- * This class is unsupported.
- */
-@Deprecated
-public class Http extends $ implements Service {
+@Bind("$http")
+public class Http extends $ implements Service /*, Constructor*/ {
 
 	protected Http() {
 	}
@@ -40,12 +38,20 @@ public class Http extends $ implements Service {
 		send(method, url, new Invoker(new Closure<HttpResponse<T>>() {
 			public void closure(HttpResponse<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
-				callback.onSuccess(response);
+				try {
+					callback.onSuccess(response);
+				} catch (Exception e) {
+					GWT.log("Exception while calling onSuccess()", e);
+				}
 			}
 		}), new Invoker(new Closure<HttpResponse<T>>() {
 			public void closure (HttpResponse<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
-				callback.onError(response);
+				try {
+					callback.onError(response);
+				} catch (Exception e) {
+					GWT.log("Exception while calling onError()", e);
+				}
 			}
 		}));
 	}
@@ -68,5 +74,22 @@ public class Http extends $ implements Service {
 				});
 			});
 	}-*/;
+
+	// Constructor Method
+	//
+	// com.google.gwt.dev.jjs.InternalCompilerException: Already seen an 
+	// implementing JSO subtype (Http) for interface (Constructor) while 
+	// examining newly-added type (Q). This is a bug in JSORestrictionsChecker.
+	//
+	// https://code.google.com/p/google-web-toolkit/issues/detail?id=4859
+	//
+	
+//	@Override
+//	public final native $ constructor(Invoker invoker) /*-{
+//		return [ '$http', function($http) {
+//			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($http);
+//			return $http;
+//		}];
+//	}-*/;
 
 }

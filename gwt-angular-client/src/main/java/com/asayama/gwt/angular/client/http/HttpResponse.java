@@ -2,10 +2,6 @@ package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.core.client.$;
 
-/**
- * This class is unsupported.
- */
-@Deprecated
 public class HttpResponse<T extends $> extends $ {
 
 	protected HttpResponse() {

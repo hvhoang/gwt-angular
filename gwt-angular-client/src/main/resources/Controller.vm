@@ -79,7 +79,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 		GWT.log(m);
 		try {
 			super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
-//			super.onInjection(${field.name});
+			super.onInjection(${field.name});
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}

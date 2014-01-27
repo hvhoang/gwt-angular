@@ -18,6 +18,7 @@ import com.google.gwt.user.client.Event;
 public class MyController implements Controller {
 
 	protected Q q;
+//	protected Http http;
 
 	Scope scope;
 	String title;
@@ -28,6 +29,11 @@ public class MyController implements Controller {
 	public void onControllerLoad(final Scope scope) {
 		this.scope = scope;
 		setTitle(MyControllerConstants.INSTANCE.title());
+
+		// $scope.$digest() + RequestBuilder
+//		loadCustomers();
+
+		// $q + RequestBuiler
 		Promise<Customers> promise = loadCustomers();
 		promise.then(new SuccessCallback<Customers>() {
 			@Override
@@ -35,11 +41,26 @@ public class MyController implements Controller {
 				setCustomers(object);
 			}
 		});
+		
+		// $http
+//		http.get("/api/customer", new HttpCallback<Customers>() {
+//			@Override
+//			public void onSuccess(HttpResponse<Customers> response) {
+//				setCustomers(response.getData());
+//			}
+//			@Override
+//			public void onError(HttpResponse<Customers> response) {
+//			}
+//		});
 	}
 	
 	public void onInjection(Q q) {
-		GWT.log("onInjection: q=" + q);
+		GWT.log("MyController.onInjection: q=" + q);
 	}
+	
+//	public void onInjection(Http http) {
+//		GWT.log("MyController.onInjection: http=" + http);
+//	}
 	
 	private Promise<Customers> loadCustomers() {
 		final Deferred<Customers> deferred = q.defer();
@@ -72,6 +93,33 @@ public class MyController implements Controller {
 			return null; //FIXME figure out what to do where, too.
 		}
 	}
+
+//	private void loadCustomers() {
+//		final String url = "/api/customer";
+//		try {
+//			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+//			GWT.log("[GET] " + url);
+//			builder.sendRequest(null, new RequestCallback() {
+//				@Override
+//				public void onResponseReceived(Request request, Response response) {
+//					int status = response.getStatusCode();
+//					GWT.log("[" + status + "] " + url);
+//					if (status == 200) {
+//						Customers customers = Customers.parse(response.getText());
+//						setCustomers(customers);
+//						scope.digest(); //we need this because this is an async callback
+//					}
+//				}
+//				@Override
+//				public void onError(Request request, Throwable exception) {
+//					GWT.log("[ERR] " + url, exception);
+//				}
+//			});
+//	
+//		} catch (RequestException e) {
+//			GWT.log("Exception", e);
+//		}
+//	}
 	
 	// Public event handler are automatically wired to AngularJS's $scope.
 	
