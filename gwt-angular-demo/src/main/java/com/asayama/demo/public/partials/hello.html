@@ -1,5 +1,6 @@
 <div class="container">
-	<h1 data-ng-click="onClickTitle($event)">{{ getTitle() }}</h1>
+	<h1>{{ GREETING }}, {{ getName() }}!</h1>
+	<p data-ng-click="onClickClickable($event)">{{ getClickable() }}</p>
 	<ul data-ng-repeat="customer in getCustomers()">
 	<li>{{ customer.name }} of {{ customer.city }}</li>
 	</ul>
