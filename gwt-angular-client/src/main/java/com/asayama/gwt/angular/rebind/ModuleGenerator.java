@@ -49,59 +49,58 @@ public class ModuleGenerator extends Generator {
 			
 			// Identify the providers to inject
 			{
-				List<JField> injectable = new ArrayList<JField>();
-				
+				List<JField> list = new ArrayList<JField>();
 				JField[] fields = classType.getFields();
-				for (JField item : fields) {
-					JClassType itemClassType = item.getType().isClassOrInterface();
-					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Provider.class)) {
-						injectable.add(item);
+				for (JField field : fields) {
+					JClassType fieldClassType = field.getType().isClassOrInterface();
+					if (fieldClassType != null && JClassTypeUtils.supports(fieldClassType, Provider.class)) {
+						list.add(field);
 					}
 				}
-				velocity.put("providerFields", injectable);
+				velocity.put("providerFields", list);
 			}
 
 			// Identify the services to inject
 			{
-				List<JField> injectable = new ArrayList<JField>();
+				List<JField> list = new ArrayList<JField>();
 				JField[] fields = classType.getFields();
-				for (JField item : fields) {
-					JClassType itemClassType = item.getType().isClassOrInterface();
-					if (itemClassType != null
-							&& JClassTypeUtils.supports(itemClassType, Service.class)
-							&& !JClassTypeUtils.supports(itemClassType, $.class)) {
-						injectable.add(item);
+				for (JField field : fields) {
+					JClassType fieldClassType = field.getType().isClassOrInterface();
+					if (fieldClassType != null
+							&& JClassTypeUtils.supports(fieldClassType, Service.class)
+							&& !JClassTypeUtils.supports(fieldClassType, $.class)) {
+						list.add(field);
 					}
 				}
-				velocity.put("serviceFields", injectable);
+				velocity.put("serviceFields", list);
 			}
 
 			// Identify the native services to inject
 			{
-				List<JField> injectable = new ArrayList<JField>();
+				List<JField> list = new ArrayList<JField>();
 				JField[] fields = classType.getFields();
-				for (JField item : fields) {
-					JClassType itemClassType = item.getType().isClassOrInterface();
-					if (itemClassType != null
-							&& JClassTypeUtils.supports(itemClassType, Service.class)
-							&& JClassTypeUtils.supports(itemClassType, $.class)) {
-						injectable.add(item);
+				for (JField field : fields) {
+					JClassType fieldClassType = field.getType().isClassOrInterface();
+					if (fieldClassType != null
+							&& JClassTypeUtils.supports(fieldClassType, Service.class)
+							&& JClassTypeUtils.supports(fieldClassType, $.class)) {
+						list.add(field);
 					}
 				}
-				velocity.put("nativeServiceFields", injectable);
+				velocity.put("nativeServiceFields", list);
 			}
 
 			// Identify the controllers to inject
 			{
-				List<JField> controller = new ArrayList<JField>();
+				List<JField> list = new ArrayList<JField>();
 				JField[] fields = classType.getFields();
-				for (JField item : fields) {
-					JClassType itemClassType = item.getType().isClassOrInterface();
-					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Controller.class)) {
-						controller.add(item);
+				for (JField field : fields) {
+					JClassType fieldClassType = field.getType().isClassOrInterface();
+					if (fieldClassType != null && JClassTypeUtils.supports(fieldClassType, Controller.class)) {
+						list.add(field);
 					}
 				}
-				velocity.put("controllerFields", controller);
+				velocity.put("controllerFields", list);
 			}
 			
 			// Generate type
