@@ -40,10 +40,17 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 			'${field.type.qualifiedSourceName}',
 #end
 			function ($scope#foreach($field in $nativeServiceFields), ${field.name}#end#foreach($field in $serviceFields), ${field.name}#end) {
-#foreach($method in $exportMethods)
+#foreach($method in $publicMethods)
 				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
 					return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
 				};
+#end
+#foreach($field in $publicFields)
+#if($field.isStatic())
+				$scope.${field.name} = @${qualifiedName}::${field.name};
+#else
+				$scope.${field.name} = itself.@${qualifiedName}::${field.name};
+#end
 #end
 #foreach($field in $serviceFields)
 				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});

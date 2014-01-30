@@ -48,15 +48,28 @@ public class ControllerGenerator extends Generator {
 
 			// $scope initialization
 			{
-				List<JMethod> methodList = new ArrayList<JMethod>();
+				List<JMethod> list = new ArrayList<JMethod>();
 				JMethod[] methods = classType.getInheritableMethods();
-				for (JMethod item : methods) {
-					if (item.isPublic()) {
-						methodList.add(item);
+				for (JMethod method : methods) {
+					if (method.isPublic()) {
+						list.add(method);
 					}
 				}
-				velocity.put("exportMethods", methodList);
+				velocity.put("publicMethods", list);
 			}
+			
+			// Identify all the public final fields
+			{
+				List<JField> list = new ArrayList<JField>();
+				JField[] fields = classType.getFields();
+				for (JField field : fields) {
+					if (field.isPublic() && field.isFinal()) {
+						list.add(field);
+					}
+				}
+				velocity.put("publicFields", list);
+			}
+
 			// Services
 			{
 				List<JField> fieldList = new ArrayList<JField>();
@@ -75,6 +88,7 @@ public class ControllerGenerator extends Generator {
 				velocity.put("serviceFields", fieldList);
 				velocity.put("nativeServiceFields", nativeList);
 			}
+			
 			// Generate type
 			PrintWriter wrier = context.tryCreate(logger, packageName, generatedSimpleName);
 			if (wrier != null) {
