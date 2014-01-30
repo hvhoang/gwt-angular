@@ -49,7 +49,15 @@ public class $ extends JavaScriptObject {
 	
 	public final native Integer getInteger(String key) /*-{
 		try {
-			return this[key]||null;
+			return this[key] ? this[key] : this[key] == 0 ? 0 : null;
+		} catch (e) {
+			console.log(e);
+		}
+	}-*/;
+	
+	public final native Double getDouble(String key) /*-{
+		try {
+			return this[key] ? this[key] : this[key] == 0.0 ? 0.0 : null;
 		} catch (e) {
 			console.log(e);
 		}
