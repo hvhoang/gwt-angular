@@ -20,6 +20,7 @@ public class MyController implements Controller {
 
 	// Public final fields are directly bound to AngularJS's $scope
 	public static final String GREETING = MyControllerConstants.INSTANCE.greeting();
+	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
 	protected RouteParams routeParams;
 	protected Q q;
@@ -67,7 +68,7 @@ public class MyController implements Controller {
 	public void onInjection(RouteParams routeParams) {
 		String name = routeParams.getString("name");
 		GWT.log("name=" + name);
-		setName(name == null ? "Stranger" : name);
+		setName(name == null ? STRANGER : name);
 	}
 	
 //	public void onInjection(Http http) {
@@ -165,4 +166,7 @@ interface MyControllerConstants extends Constants {
 	
 	@DefaultStringValue("Hello")
 	String greeting();
+	
+	@DefaultStringValue("Stranger")
+	String stranger();
 }
