@@ -63,12 +63,11 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 						@Override
 						public $ function($ jso) {
 							String m = "";
-							if (service instanceof Wrapper) {
-								GWT.log("calling " + name + ".set$(" 
-										+ (jso == null ? null : jso.getClass().getName()) + ")");
-								((Wrapper<$>) service).setDelegate(jso);
-							}
 							try {
+								if (service instanceof Wrapper) {
+									GWT.log(m = "calling " + name + ".setDelegate($)");
+									((Wrapper<$>) service).setDelegate(jso);
+								}
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 								Module.this.onInjection(service);
 							} catch (Exception e) {
@@ -97,12 +96,11 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 						@Override
 						public void closure($ jso) {
 							String m = "";
-							if (provider instanceof Wrapper) {
-								GWT.log("calling " + provider.getClass().getName() + ".set$(" 
-										+ (jso == null ? null : jso.getClass().getName()) + ")");
-								((Wrapper<$>) provider).setDelegate(jso);
-							}
 							try {
+								if (provider instanceof Wrapper) {
+									GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate($)");
+									((Wrapper<$>) provider).setDelegate(jso);
+								}
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 								Module.this.onInjection(provider);
 							} catch (Exception e) {
