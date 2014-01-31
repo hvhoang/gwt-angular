@@ -59,9 +59,20 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});
 #end
 				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($scope);
+				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad(Lcom/asayama/gwt/angular/client/Scope;)($scope);
 			}
 		];
 	}-*/;
+	
+	private void __${generatedSimpleName}_onControllerLoad(Scope scope) {
+		String m = "";
+		try {
+			GWT.log(m = "calling ${qualifiedName}.onControllerLoad(com.asayama.gwt.angular.client.Scope)");
+			super.onControllerLoad(scope);
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
+	}
 
 	// Controller Extensions
 #foreach($field in $serviceFields)

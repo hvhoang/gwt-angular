@@ -37,12 +37,6 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 						public void closure(ScopeJSO scope) {
 							String m = "";
 							try {
-								GWT.log(m = "calling " + name + ".onControllerLoad");
-								controller.onControllerLoad(scope);
-							} catch (Exception e) {
-								GWT.log("Exception while " + m , e);
-							}
-							try {
 								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 								Module.this.onInjection(controller);
 							} catch (Exception e) {
