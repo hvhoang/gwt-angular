@@ -9,13 +9,13 @@ import com.asayama.gwt.angular.client.route.RouteProvider;
 public class MyModule2 extends Module {
 
 	@Override
-	public <T extends Injectable> void onInjection(T object) {
+	public void onInjection(Injectable object) {
+		if (object instanceof RouteProvider) {
+			((RouteProvider) object)
+				.when("/hello", Route.create("partials/hello.html", MyController.class))
+				.when("/hello/:name", Route.create("partials/hello.html", MyController.class))
+				.otherwise(Redirect.create("/hello"));
+		}
 	}
-	
-	public void onInjection(RouteProvider routeProvider) {
-		routeProvider
-			.when("/hello", Route.create("partials/hello.html", MyController.class))
-			.when("/hello/:name", Route.create("partials/hello.html", MyController.class))
-			.otherwise(Redirect.create("/hello"));
-	}
+
 }
