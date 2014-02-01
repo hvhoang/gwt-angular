@@ -19,11 +19,11 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 	// Constructor Methods
 	
 	@Override
-	public $ constructor(Invoker invoker) {
+	public JSObject constructor(Invoker invoker) {
 		return __${simpleName}_constructor(this, invoker);
 	}
 
-	private native $ __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
+	private native JSObject __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
 		return [
 			'$scope',
 #foreach($field in $nativeServiceFields)
@@ -53,12 +53,12 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 #end
 #end
 #foreach($field in $serviceFields)
-				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});
+				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
 #end
 #foreach($field in $nativeServiceFields)
-				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/$;)(${field.name});
+				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
 #end
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($scope);
+				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($scope);
 				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad(Lcom/asayama/gwt/angular/client/Scope;)($scope);
 			}
 		];
@@ -76,7 +76,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 
 	// Controller Extensions
 #foreach($field in $serviceFields)
-	private void __${generatedSimpleName}_onInjection_${field.name}($ jso) {
+	private void __${generatedSimpleName}_onInjection_${field.name}(JSObject jso) {
 		String m = "";
 		try {
 			GWT.log(m = "setting ${qualifiedName}.${field.name}");
@@ -92,7 +92,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 #end
 
 #foreach($field in $nativeServiceFields)
-	private void __${generatedSimpleName}_onInjection_${field.name}($ object) {
+	private void __${generatedSimpleName}_onInjection_${field.name}(JSObject object) {
 		String m = "";
 		try {
 			GWT.log(m = "setting ${qualifiedName}.${field.name}");

@@ -3,7 +3,7 @@ package com.asayama.gwt.angular.client.route;
 import com.asayama.gwt.angular.client.Constructor;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.Wrapper;
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -36,23 +36,23 @@ public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Const
 	}
 	
 	@Override
-	public void setDelegate($ delegate) {
+	public void setDelegate(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 
 	// Constructor Methods
 	
 	@Override
-	public native $ constructor(Invoker invoker) /*-{
+	public native JSObject constructor(Invoker invoker) /*-{
 		return [ "$routeProvider",
 			function ($routeProvider) {
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($routeProvider);
+				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($routeProvider);
 				return $routeProvider;
 			}];
 	}-*/;
 
 }
-class RouteProviderJSO extends $ {
+class RouteProviderJSO extends JSObject {
 
 	protected RouteProviderJSO() {
 	}

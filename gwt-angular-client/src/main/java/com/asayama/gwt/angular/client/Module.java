@@ -1,9 +1,9 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.$;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.Invoker;
+import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
@@ -55,7 +55,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 			}
 		};
 		Constructor ctor = (Constructor) controller;
-		$ jsarray = ctor.constructor(new Invoker(closure));
+		JSObject jsarray = ctor.constructor(new Invoker(closure));
 		delegate.controller(name, jsarray);
 		return controller;
 	}
@@ -70,15 +70,15 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	}
 
 	public <T extends Service> T factory(final String name, final T service) {
-		Function<$> function = new Function<$>() {
+		Function<JSObject,JSObject> function = new Function<JSObject,JSObject>() {
 			@SuppressWarnings("unchecked")
 			@Override
-			public $ function($ jso) {
+			public JSObject function(JSObject jso) {
 				String m = "";
 				try {
 					if (service instanceof Wrapper) {
 						GWT.log(m = "calling " + name + ".setDelegate($)");
-						((Wrapper<$>) service).setDelegate(jso);
+						((Wrapper<JSObject>) service).setDelegate(jso);
 					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 					Module.this.onInjection(service);
@@ -89,7 +89,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 			}
 		};
 		Constructor ctor = (Constructor) service;
-		$ jsarray = ctor.constructor(new Invoker(function));
+		JSObject jsarray = ctor.constructor(new Invoker(function));
 		delegate.factory(name, jsarray);
 		return service;
 	}
@@ -105,15 +105,15 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 
 	public <T extends Provider> T config(final T provider) {
 		final String name = provider.getClass().getName();
-		Closure<$> closure = new Closure<$>() {
+		Closure<JSObject> closure = new Closure<JSObject>() {
 			@SuppressWarnings("unchecked")
 			@Override
-			public void closure($ jso) {
+			public void closure(JSObject jso) {
 				String m = "";
 				try {
 					if (provider instanceof Wrapper) {
 						GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate($)");
-						((Wrapper<$>) provider).setDelegate(jso);
+						((Wrapper<JSObject>) provider).setDelegate(jso);
 					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 					Module.this.onInjection(provider);
@@ -123,7 +123,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 			}
 		};
 		final Constructor ctor = (Constructor) provider;
-		$ jsarray = ctor.constructor(new Invoker(closure));
+		JSObject jsarray = ctor.constructor(new Invoker(closure));
 		delegate.config(jsarray);
 		return provider;
 	}
@@ -149,33 +149,33 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	}
 
 	@Override
-	public void setDelegate($ delegate) {
+	public void setDelegate(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 
 }
-class ModuleJSO extends $ {
+class ModuleJSO extends JSObject {
 	
 	protected ModuleJSO() {
 	}
 	
 	final String getName() {
-		return $string("name");
+		return getString("name");
 	}
 	
 	final native JsArrayString getRequires() /*-{
 		return this.requires;
 	}-*/;
 		
-	final native void factory(String name, $ jsarray) /*-{
+	final native void factory(String name, JSObject jsarray) /*-{
 		this.factory(name, jsarray);
 	}-*/;
 	
-	final native void config($ jsarray) /*-{
+	final native void config(JSObject jsarray) /*-{
 		this.config(jsarray);
 	}-*/;
 	
-	final native void controller(String name, $ jsarray) /*-{
+	final native void controller(String name, JSObject jsarray) /*-{
 		this.controller(name, jsarray);
 	}-*/;
 

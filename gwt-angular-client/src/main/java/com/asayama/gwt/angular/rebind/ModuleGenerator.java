@@ -7,7 +7,7 @@ import java.util.List;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -68,7 +68,7 @@ public class ModuleGenerator extends Generator {
 					JClassType fieldClassType = field.getType().isClassOrInterface();
 					if (fieldClassType != null
 							&& JClassTypeUtils.supports(fieldClassType, Service.class)
-							&& !JClassTypeUtils.supports(fieldClassType, $.class)) {
+							&& !JClassTypeUtils.supports(fieldClassType, JSObject.class)) {
 						list.add(field);
 					}
 				}
@@ -83,7 +83,7 @@ public class ModuleGenerator extends Generator {
 					JClassType fieldClassType = field.getType().isClassOrInterface();
 					if (fieldClassType != null
 							&& JClassTypeUtils.supports(fieldClassType, Service.class)
-							&& JClassTypeUtils.supports(fieldClassType, $.class)) {
+							&& JClassTypeUtils.supports(fieldClassType, JSObject.class)) {
 						list.add(field);
 					}
 				}

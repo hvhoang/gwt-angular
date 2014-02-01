@@ -1,15 +1,15 @@
 package com.asayama.gwt.angular.client.route;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 
-public class Route extends $ {
+public class Route extends JSObject {
 	
 	protected Route() {
 	}
 	
 	public static Route create(String templateUrl) {
-		return $.create().<Route>cast().setTemplateUrl(templateUrl);
+		return JSObject.create().<Route>cast().setTemplateUrl(templateUrl);
 	}
 
 	public static <T extends Controller> Route create(String templateUrl, Class<T> controllerClass) {
@@ -17,20 +17,20 @@ public class Route extends $ {
 	}
 	
 	public final String getTemplateUrl() {
-		return $string("templateUrl");
+		return getString("templateUrl");
 	}
 	
 	public final Route setTemplateUrl(String templateUrl) {
-		$string("templateUrl", templateUrl);
+		putString("templateUrl", templateUrl);
 		return this;
 	}
 
 	public final String getController() {
-		return $string("controller");
+		return getString("controller");
 	}
 	
 	public final <T extends Controller> Route setController(Class<T> controllerClass) {
-		$string("controller", controllerClass.getName());
+		putString("controller", controllerClass.getName());
 		return this;
 	}
 

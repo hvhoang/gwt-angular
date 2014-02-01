@@ -1,32 +1,32 @@
 package com.asayama.gwt.angular.client.http;
 
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 
-public class HttpResponse<T extends $> extends $ {
+public class HttpResponse<T extends JSObject> extends JSObject {
 
 	protected HttpResponse() {
 	}
 
 	public final int getStatus() {
-		Integer value = $integer("status");
+		Integer value = getInteger("status");
 		return value == null ? 0 : value.intValue();
 	}
 	
 	public final T getData() {
-		$ value = $object("data");
+		JSObject value = getObject("data");
 		return value == null ? null : value.<T>cast();
 	}
 	
 	//TODO Implement a proper HttpHeader type extending $
-	public final $ getHeader() {
-		$ value = $object("header");
-		return value == null ? null : value.<$>cast();
+	public final JSObject getHeader() {
+		JSObject value = getObject("header");
+		return value == null ? null : value.<JSObject>cast();
 	}
 
 	//TODO Implement a proper HttpConfig type extending $
-	public final $ getConfig() {
-		$ value = $object("config");
-		return value == null ? null : value.<$>cast();
+	public final JSObject getConfig() {
+		JSObject value = getObject("config");
+		return value == null ? null : value.<JSObject>cast();
 	}
 
 }

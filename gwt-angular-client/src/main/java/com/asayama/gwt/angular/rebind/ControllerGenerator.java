@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -78,7 +78,7 @@ public class ControllerGenerator extends Generator {
 				for (JField item : fields) {
 					JClassType itemClassType = item.getType().isClassOrInterface();
 					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Service.class)) {
-						if (JClassTypeUtils.supports(itemClassType, $.class)) {
+						if (JClassTypeUtils.supports(itemClassType, JSObject.class)) {
 							nativeList.add(item);
 						} else {
 							fieldList.add(item);

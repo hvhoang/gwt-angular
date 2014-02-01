@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
@@ -23,8 +23,8 @@ public class Angular {
 
 	public static <T extends Module> T module(String name, T module) {
 		GWT.log("registering " + name + " with Anuglar");
-		module.setDelegate(delegate.module(name, null, new Invoker(new Closure<$>() {
-			public void closure($ jso) {
+		module.setDelegate(delegate.module(name, null, new Invoker(new Closure<JSObject>() {
+			public void closure(JSObject jso) {
 				//TODO implement me
 			}
 		})));
@@ -50,7 +50,7 @@ class AngularJSO extends JavaScriptObject {
 
 	final native ModuleJSO module(String name, JsArrayString requires, Invoker invoker) /*-{
 		return this.module(name, [ "ngRoute", "ngSanitize" ], function () {
-			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)({});
+			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)({});
 		});
 	}-*/;
 	

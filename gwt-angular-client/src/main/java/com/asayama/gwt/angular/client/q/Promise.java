@@ -1,11 +1,11 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.core.client.$;
+import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.shared.GWT;
 
-public class Promise<T extends $> extends $ {
+public class Promise<T extends JSObject> extends JSObject {
 
 	protected Promise() {
 	}
@@ -46,11 +46,11 @@ public class Promise<T extends $> extends $ {
 	final native void $then(Invoker successCallback, Invoker errorCallback, Invoker signalCallback) /*-{
 		this.then(
 			function (jso) {
-				successCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)(jso);
+				successCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(jso);
 			}, function (jso) {
-				errorCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)(jso);
+				errorCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(jso);
 			}, function (jso) {
-				signalCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)(jso);
+				signalCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(jso);
 			});
 	}-*/;
 	
