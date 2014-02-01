@@ -18,10 +18,6 @@ public class Q extends $ implements Service, Constructor {
 		return deferred;
 	}
 	
-	final native <T extends $> DeferredJSO<T> $defer() /*-{
-		return this.defer();
-	}-*/;
-
 	// Constructor Method
 	//
 	// com.google.gwt.dev.jjs.InternalCompilerException: Already seen an 
@@ -35,6 +31,10 @@ public class Q extends $ implements Service, Constructor {
 			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/$;)($q);
 			return $q;
 		}];
+	}-*/;
+
+	final native <T extends $> DeferredJSO<T> $defer() /*-{
+		return this.defer();
 	}-*/;
 
 }

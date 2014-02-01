@@ -7,6 +7,12 @@ import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
+interface ProviderCreator<T extends Provider> extends Creator<T> {
+}
+interface ServiceCreator<T extends Service> extends Creator<T> {
+}
+interface ControllerCreator<T extends Controller> extends Creator<T> {
+}
 public abstract class Module implements Wrapper<ModuleJSO> {
 	
 	ModuleJSO delegate;
@@ -25,14 +31,31 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	 * @see Injectable
 	 */
 	public abstract <T extends Injectable> void onInjection(T object);
-	
-	public <T extends Controller> T controller(final T controller) {
-		return controller(controller.getClass().getName(), controller);
+
+	public <T extends Controller> T controller(Class<T> klass) {
+		String name = klass.getName();
+		ControllerCreator<T> creator = GWT.create(ControllerCreator.class);
+		T controller = creator.create(klass);
+		return controller(name, controller);
 	}
-	
+
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
 			final Constructor ctor = (Constructor) controller;
+			$ jsarray = ctor.constructor(new Invoker(new Closure<ScopeJSO>() {
+				@Override
+				public void closure(ScopeJSO scope) {
+					String m = "";
+					try {
+						GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+						Module.this.onInjection(controller);
+					} catch (Exception e) {
+						GWT.log("Exception while " + m, e);
+					}
+				}
+			}));
+			delegate.controller(name, jsarray);
+			/*
 			delegate.controller(name, new Invoker(new Function<$>() {
 				@Override
 				public $ function($ jso) {
@@ -50,6 +73,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 					}));
 				}
 			}));
+			*/
 			return controller;
 		} catch (ClassCastException e) {
 			throw new UnsupportedOperationException(controller.getClass().getName()
@@ -57,8 +81,11 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 		}
 	}
 
-	public <T extends Service> T factory(final T service) {
-		return factory(service.getClass().getName(), service);
+	public <T extends Service> T factory(Class<T> klass) {
+		String name = klass.getName();
+		ServiceCreator<T> creator = GWT.create(ServiceCreator.class);
+		T service = creator.create(klass);
+		return factory(name, service);
 	}
 
 	public <T extends Service> T factory(final String name, final T service) {
@@ -93,6 +120,12 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 		}
 	}
 	
+	public <T extends Provider> T config(Class<T> klass) {
+		ProviderCreator<T> creator = GWT.create(ProviderCreator.class);
+		T provider = creator.create(klass);
+		return config(provider);
+	}
+
 	public <T extends Provider> T config(final T provider) {
 		try {
 			final String name = provider.getClass().getName();
@@ -170,6 +203,10 @@ class ModuleJSO extends $ {
 	
 	final native void controller(String name, Invoker invoker) /*-{
 		this.controller(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
+	}-*/;
+	
+	final native void controller(String name, $ jsarray) /*-{
+		this.controller(name, jsarray);
 	}-*/;
 	
 	final native void factory(String name, Invoker invoker) /*-{

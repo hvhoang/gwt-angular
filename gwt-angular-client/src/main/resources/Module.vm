@@ -12,7 +12,7 @@ import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName} extends ${qualifiedName} {
 
-	protected ${generatedSimpleName}() {
+	public ${generatedSimpleName}() {
 		super();
 		__${generatedSimpleName}_module();
 		__${generatedSimpleName}_providers();

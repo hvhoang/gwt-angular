@@ -16,10 +16,12 @@ public class ${generatedSimpleName}<${typeParameterName}> implements ${qualified
 	}
 	
 	public T create(Class<? extends T> klass) {
+		String name = klass.getName();
+		GWT.log("creating " + name);
 #foreach($returnClassType in ${returnClassTypes})
-		//if (klass.equals(${returnClassType}.class)) {
-		//	return (${returnClassType.qualifiedSourceName}) GWT.create(${returnClassType.qualifiedSourceName}.class);
-		//}
+		if (name.equals("${returnClassType.qualifiedSourceName}")) {
+			return GWT.create(${returnClassType.qualifiedSourceName}.class);
+		}
 #end
 		throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
 	}
