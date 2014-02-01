@@ -22,4 +22,5 @@ public class MyModule extends Module {
 				.otherwise(Redirect.create("/hello"));
 		}
 	}
+
 }

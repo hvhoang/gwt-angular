@@ -34,6 +34,11 @@ public class MyController implements Controller {
 	@Override
 	public void onControllerLoad(final Scope scope) {
 		this.scope = scope;
+
+		String name = routeParams.getString("name");
+		GWT.log("name=" + name);
+		setName(name == null ? STRANGER : name);
+
 		setClickable("Click me");
 
 		// $scope.$digest() + RequestBuilder
@@ -60,20 +65,6 @@ public class MyController implements Controller {
 //			}
 //		});
 	}
-	
-	public void onInjection(Q q) {
-		GWT.log("MyController.onInjection: q=" + q);
-	}
-	
-	public void onInjection(RouteParams routeParams) {
-		String name = routeParams.getString("name");
-		GWT.log("name=" + name);
-		setName(name == null ? STRANGER : name);
-	}
-	
-//	public void onInjection(Http http) {
-//		GWT.log("MyController.onInjection: http=" + http);
-//	}
 	
 	public Promise<Customers> loadCustomers() {
 		final Deferred<Customers> deferred = q.defer();

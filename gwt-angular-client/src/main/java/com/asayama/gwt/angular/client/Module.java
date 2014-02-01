@@ -26,6 +26,10 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	 */
 	public abstract <T extends Injectable> void onInjection(T object);
 	
+	public <T extends Controller> T controller(final T controller) {
+		return controller(controller.getClass().getName(), controller);
+	}
+	
 	public <T extends Controller> T controller(final String name, final T controller) {
 		try {
 			final Constructor ctor = (Constructor) controller;
@@ -52,7 +56,11 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 					+ " must be created using GWT.create()");
 		}
 	}
-	
+
+	public <T extends Service> T factory(final T service) {
+		return factory(service.getClass().getName(), service);
+	}
+
 	public <T extends Service> T factory(final String name, final T service) {
 		try {
 			final Constructor ctor = (Constructor) service;

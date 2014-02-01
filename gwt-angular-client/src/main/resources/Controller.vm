@@ -77,14 +77,14 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 	// Controller Extensions
 #foreach($field in $serviceFields)
 	private void __${generatedSimpleName}_onInjection_${field.name}($ jso) {
-		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
-		GWT.log(m);
+		String m = "";
 		try {
+			GWT.log(m = "setting ${qualifiedName}.${field.name}");
 			${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
 			if (${field.name} instanceof Wrapper) {
 				${field.name}.setDelegate(jso);
 			}
-			super.onInjection(${field.name});
+			//super.onInjection(${field.name});
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}
@@ -93,11 +93,12 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructor
 
 #foreach($field in $nativeServiceFields)
 	private void __${generatedSimpleName}_onInjection_${field.name}($ object) {
-		String m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})";
-		GWT.log(m);
+		String m = "";
 		try {
+			GWT.log(m = "setting ${qualifiedName}.${field.name}");
 			super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
-			super.onInjection(${field.name});
+			//GWT.log(m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})");
+			//super.onInjection(${field.name});
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
 		}
