@@ -13,7 +13,7 @@ public class MyEntryPoint implements EntryPoint {
 		
 //		MyModule myModule = GWT.create(MyModule.class);
 		
-		MyModule2 myModule = Angular.module(MyModule.class.getName(), new MyModule2());
+		MyModule myModule = Angular.module(new MyModule());
 		myModule.config(RouteProvider.class);
 		myModule.factory(RouteParams.class);
 		//myModule.factory(Q.class);

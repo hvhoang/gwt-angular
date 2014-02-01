@@ -12,10 +12,13 @@ public class Angular {
 	static final AngularJSO delegate = AngularJSO.getInstance();
 
 	public static <T extends Module> T module(Class<T> klass) {
-		String name = klass.getName();
 		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
 		T module = creator.create(klass);
-		return module(name, module);
+		return module(module);
+	}
+	
+	public static <T extends Module> T module(T module) {
+		return module(module.getClass().getName(), module);
 	}
 
 	public static <T extends Module> T module(String name, T module) {

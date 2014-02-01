@@ -4,19 +4,14 @@ import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.client.route.Redirect;
 import com.asayama.gwt.angular.client.route.Route;
-import com.asayama.gwt.angular.client.route.RouteParams;
 import com.asayama.gwt.angular.client.route.RouteProvider;
 
 public class MyModule extends Module {
-	
-	protected RouteProvider routeProvider;
-	protected RouteParams routeParams;
-	protected MyController myController;
-	
+
 	@Override
 	public void onInjection(Injectable object) {
-		if (object == routeProvider) {
-			routeProvider
+		if (object instanceof RouteProvider) {
+			((RouteProvider) object)
 				.when("/hello", Route.create("partials/hello.html", MyController.class))
 				.when("/hello/:name", Route.create("partials/hello.html", MyController.class))
 				.otherwise(Redirect.create("/hello"));
