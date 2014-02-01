@@ -104,6 +104,14 @@ public class $ extends JavaScriptObject {
 		}
 		return this;
 	}-*/;
+	
+	public final native <T extends $> T putDouble(String key, Double value) /*-{
+		try {
+			this[key] = value;
+		} catch (e) {
+			console.log(e);
+		}
+	}-*/;
 
 	public final <T extends $> T putLong(String key, Long value) {
 		putString(key, value == null ? null : value.toString());
