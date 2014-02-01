@@ -35,10 +35,7 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 #foreach($field in $providerFields)
         try {
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-            ${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
-            config(object);
-            //config(${field.type.qualifiedSourceName}.class);
-            ${field.name} = object;
+            ${field.name} = config(${field.type.qualifiedSourceName}.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
@@ -50,9 +47,7 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 #foreach($field in $serviceFields)
         try {
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-            ${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
-            factory("${field.type.qualifiedSourceName}", object);
-            ${field.name} = object;
+            ${field.name} = factory(${field.type.qualifiedSourceName}.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
@@ -64,9 +59,7 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 #foreach($field in $controllerFields)
         try {
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-            ${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
-            controller("${field.type.qualifiedSourceName}", object);
-            ${field.name} = object;
+            ${field.name} = controller(${field.type.qualifiedSourceName}.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
