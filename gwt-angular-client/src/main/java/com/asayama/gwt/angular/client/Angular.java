@@ -31,14 +31,12 @@ public class Angular {
 		return module;
 	}
 	
-	public static void bootstrap(Module module) {
-//		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
-//		for (Module module : modules) {
-//			jsarray.push(module.getName());
-//		}
-//		delegate.bootstrap(jsarray);
-		GWT.log("bootstrapping " + module.getName());
-		delegate.bootstrap(module.getName());
+	public static void bootstrap(Module... modules) {
+		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
+		for (Module module : modules) {
+			jsarray.push(module.getName());
+		}
+		delegate.bootstrap(jsarray);
 	}
 }
 class AngularJSO extends JavaScriptObject {
@@ -60,9 +58,6 @@ class AngularJSO extends JavaScriptObject {
 		this.bootstrap($doc, modules);
 	}-*/;
 	
-	final native void bootstrap(String module) /*-{
-		this.bootstrap($doc, [ module ]);
-	}-*/;
 }
 interface ModuleCreator<T extends Module> extends Creator<T> {
 }
