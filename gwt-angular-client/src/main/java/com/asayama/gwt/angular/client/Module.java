@@ -32,130 +32,100 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	 */
 	public abstract <T extends Injectable> void onInjection(T object);
 
+	/*
+	 * Controller Factory
+	 */
+	
 	public <T extends Controller> T controller(Class<T> klass) {
-		String name = klass.getName();
 		ControllerCreator<T> creator = GWT.create(ControllerCreator.class);
-		T controller = creator.create(klass);
-		return controller(name, controller);
+		return controller(klass.getName(), creator.create(klass));
 	}
 
 	public <T extends Controller> T controller(final String name, final T controller) {
-		try {
-			final Constructor ctor = (Constructor) controller;
-			$ jsarray = ctor.constructor(new Invoker(new Closure<ScopeJSO>() {
-				@Override
-				public void closure(ScopeJSO scope) {
-					String m = "";
-					try {
-						GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-						Module.this.onInjection(controller);
-					} catch (Exception e) {
-						GWT.log("Exception while " + m, e);
-					}
+		Closure<ScopeJSO> closure = new Closure<ScopeJSO>() {
+			@Override
+			public void closure(ScopeJSO scope) {
+				String m = "";
+				try {
+					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+					Module.this.onInjection(controller);
+				} catch (Exception e) {
+					GWT.log("Exception while " + m, e);
 				}
-			}));
-			delegate.controller(name, jsarray);
-			/*
-			delegate.controller(name, new Invoker(new Function<$>() {
-				@Override
-				public $ function($ jso) {
-					return ctor.constructor(new Invoker(new Closure<ScopeJSO>() {
-						@Override
-						public void closure(ScopeJSO scope) {
-							String m = "";
-							try {
-								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-								Module.this.onInjection(controller);
-							} catch (Exception e) {
-								GWT.log("Exception while " + m, e);
-							}
-						}
-					}));
-				}
-			}));
-			*/
-			return controller;
-		} catch (ClassCastException e) {
-			throw new UnsupportedOperationException(controller.getClass().getName()
-					+ " must be created using GWT.create()");
-		}
+			}
+		};
+		Constructor ctor = (Constructor) controller;
+		$ jsarray = ctor.constructor(new Invoker(closure));
+		delegate.controller(name, jsarray);
+		return controller;
 	}
 
+	/*
+	 * Factory Factory
+	 */
+	
 	public <T extends Service> T factory(Class<T> klass) {
-		String name = klass.getName();
 		ServiceCreator<T> creator = GWT.create(ServiceCreator.class);
-		T service = creator.create(klass);
-		return factory(name, service);
+		return factory(klass.getName(), creator.create(klass));
 	}
 
 	public <T extends Service> T factory(final String name, final T service) {
-		try {
-			final Constructor ctor = (Constructor) service;
-			delegate.factory(name, new Invoker(new Function<$>() {
-				public $ function($ jso) {
-					return ctor.constructor(new Invoker(new Function<$>() {
-						@SuppressWarnings("unchecked")
-						@Override
-						public $ function($ jso) {
-							String m = "";
-							try {
-								if (service instanceof Wrapper) {
-									GWT.log(m = "calling " + name + ".setDelegate($)");
-									((Wrapper<$>) service).setDelegate(jso);
-								}
-								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-								Module.this.onInjection(service);
-							} catch (Exception e) {
-								GWT.log("Exception while " + m, e);
-							}
-							return jso;
-						}
-					}));
+		Function<$> function = new Function<$>() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public $ function($ jso) {
+				String m = "";
+				try {
+					if (service instanceof Wrapper) {
+						GWT.log(m = "calling " + name + ".setDelegate($)");
+						((Wrapper<$>) service).setDelegate(jso);
+					}
+					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+					Module.this.onInjection(service);
+				} catch (Exception e) {
+					GWT.log("Exception while " + m, e);
 				}
-			}));
-			return service;
-		} catch (ClassCastException e) {
-			throw new UnsupportedOperationException(service.getClass().getName()
-					+ " must be created using GWT.create()");
-		}
+				return jso;
+			}
+		};
+		Constructor ctor = (Constructor) service;
+		$ jsarray = ctor.constructor(new Invoker(function));
+		delegate.factory(name, jsarray);
+		return service;
 	}
+	
+	/*
+	 * Provider Factory
+	 */
 	
 	public <T extends Provider> T config(Class<T> klass) {
 		ProviderCreator<T> creator = GWT.create(ProviderCreator.class);
-		T provider = creator.create(klass);
-		return config(provider);
+		return config(creator.create(klass));
 	}
 
 	public <T extends Provider> T config(final T provider) {
-		try {
-			final String name = provider.getClass().getName();
-			final Constructor ctor = (Constructor) provider;
-			delegate.config(new Invoker(new Function<$>() {
-				public $ function($ jso) {
-					return ctor.constructor(new Invoker(new Closure<$>() {
-						@SuppressWarnings("unchecked")
-						@Override
-						public void closure($ jso) {
-							String m = "";
-							try {
-								if (provider instanceof Wrapper) {
-									GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate($)");
-									((Wrapper<$>) provider).setDelegate(jso);
-								}
-								GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-								Module.this.onInjection(provider);
-							} catch (Exception e) {
-								GWT.log("Exception while " + m, e);
-							}
-						}
-					}));
+		final String name = provider.getClass().getName();
+		Closure<$> closure = new Closure<$>() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public void closure($ jso) {
+				String m = "";
+				try {
+					if (provider instanceof Wrapper) {
+						GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate($)");
+						((Wrapper<$>) provider).setDelegate(jso);
+					}
+					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
+					Module.this.onInjection(provider);
+				} catch (Exception e) {
+					GWT.log("Exception while " + m, e);
 				}
-			}));
-			return provider;
-		} catch (ClassCastException e) {
-			throw new UnsupportedOperationException(provider.getClass().getName()
-					+ " must be created using GWT.create()");
-		}
+			}
+		};
+		final Constructor ctor = (Constructor) provider;
+		$ jsarray = ctor.constructor(new Invoker(closure));
+		delegate.config(jsarray);
+		return provider;
 	}
 	
 	public String getName() {
@@ -196,20 +166,17 @@ class ModuleJSO extends $ {
 	final native JsArrayString getRequires() /*-{
 		return this.requires;
 	}-*/;
-	
-	final native void config(Invoker invoker) /*-{
-		this.config(invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
+		
+	final native void factory(String name, $ jsarray) /*-{
+		this.factory(name, jsarray);
 	}-*/;
 	
-	final native void controller(String name, Invoker invoker) /*-{
-		this.controller(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
+	final native void config($ jsarray) /*-{
+		this.config(jsarray);
 	}-*/;
 	
 	final native void controller(String name, $ jsarray) /*-{
 		this.controller(name, jsarray);
 	}-*/;
-	
-	final native void factory(String name, Invoker invoker) /*-{
-		this.factory(name, invoker.@com.asayama.gwt.core.client.Invoker::invoke()());
-	}-*/;
+
 }

@@ -12,66 +12,67 @@ import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName} extends ${qualifiedName} {
 
-	public ${generatedSimpleName}() {
-		super();
-		__${generatedSimpleName}_module();
-		__${generatedSimpleName}_providers();
-		__${generatedSimpleName}_services();
-		__${generatedSimpleName}_controllers();
-	}
-	
-	private void __${generatedSimpleName}_module() {
-		String m = "";
-		try {
-			m = "registering ${qualifiedName} with Angular";
-			Angular.module("${qualifiedName}", this);
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-	}
-	
-	private void __${generatedSimpleName}_providers() {
-		String m = "";
+    public ${generatedSimpleName}() {
+        super();
+        __${generatedSimpleName}_module();
+        __${generatedSimpleName}_providers();
+        __${generatedSimpleName}_services();
+        __${generatedSimpleName}_controllers();
+    }
+    
+    private void __${generatedSimpleName}_module() {
+        String m = "";
+        try {
+            m = "registering ${qualifiedName} with Angular";
+            Angular.module("${qualifiedName}", this);
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
+    }
+    
+    private void __${generatedSimpleName}_providers() {
+        String m = "";
 #foreach($field in $providerFields)
-		try {
-			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-			${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
-			config(object);
-			${field.name} = object;
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
+        try {
+            m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
+            ${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
+            config(object);
+            //config(${field.type.qualifiedSourceName}.class);
+            ${field.name} = object;
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
 #end
-	}
+    }
 
-	private void __${generatedSimpleName}_services() {
-		String m = "";
+    private void __${generatedSimpleName}_services() {
+        String m = "";
 #foreach($field in $serviceFields)
-		try {
-			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-			${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
-			factory("${field.type.qualifiedSourceName}", object);
-			${field.name} = object;
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
+        try {
+            m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
+            ${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
+            factory("${field.type.qualifiedSourceName}", object);
+            ${field.name} = object;
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
 #end
-	}
+    }
 
-	private void __${generatedSimpleName}_controllers() {
-		String m = "";
+    private void __${generatedSimpleName}_controllers() {
+        String m = "";
 #foreach($field in $controllerFields)
-		try {
-			m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
-			${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
-			controller("${field.type.qualifiedSourceName}", object);
-			${field.name} = object;
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
+        try {
+            m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
+            ${field.type.qualifiedSourceName} object = GWT.create(${field.type.qualifiedSourceName}.class);
+            controller("${field.type.qualifiedSourceName}", object);
+            ${field.name} = object;
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
 #end
-	}
-	
+    }
+    
 }
 //--end of ${generatedQualifiedName}
 
