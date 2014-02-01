@@ -8,9 +8,10 @@ public class MyEntryPoint implements EntryPoint {
 
 	public void onModuleLoad() {
 		GWT.log("entering MyEntryPoint.onModuleLoad");
+		
 		MyModule myModule = GWT.create(MyModule.class);
 		
-//		final MyModule2 myModule = Angular.module(MyModule2.class);
+//		MyModule2 myModule = Angular.module(MyModule2.class);
 //		myModule.config(RouteProvider.class);
 //		myModule.factory(RouteParams.class);
 //		myModule.factory(Q.class);

@@ -14,56 +14,25 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
 
     public ${generatedSimpleName}() {
         super();
-        __${generatedSimpleName}_module();
-        __${generatedSimpleName}_providers();
-        __${generatedSimpleName}_services();
-        __${generatedSimpleName}_controllers();
-    }
-    
-    private void __${generatedSimpleName}_module() {
         String m = "";
         try {
             m = "registering ${qualifiedName} with Angular";
             Angular.module("${qualifiedName}", this);
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
-    }
-    
-    private void __${generatedSimpleName}_providers() {
-        String m = "";
 #foreach($field in $providerFields)
-        try {
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
             ${field.name} = config(${field.type.qualifiedSourceName}.class);
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
 #end
-    }
-
-    private void __${generatedSimpleName}_services() {
-        String m = "";
 #foreach($field in $serviceFields)
-        try {
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
             ${field.name} = factory(${field.type.qualifiedSourceName}.class);
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
 #end
-    }
-
-    private void __${generatedSimpleName}_controllers() {
-        String m = "";
 #foreach($field in $controllerFields)
-        try {
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
             ${field.name} = controller(${field.type.qualifiedSourceName}.class);
+#end
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
-#end
     }
     
 }
