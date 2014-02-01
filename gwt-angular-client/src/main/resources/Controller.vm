@@ -11,15 +11,15 @@ import com.google.gwt.core.client.*;
 import com.asayama.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
-public class ${generatedSimpleName} extends ${simpleName} implements Constructor {
+public class ${generatedSimpleName} extends ${simpleName} implements Constructable {
 
 	public ${generatedSimpleName}() {
 	}
 	
-	// Constructor Methods
+	// Construct Methods
 	
 	@Override
-	public JSObject constructor(Invoker invoker) {
+	public JSObject construct(Invoker invoker) {
 		return __${simpleName}_constructor(this, invoker);
 	}
 

@@ -2,13 +2,13 @@ package com.asayama.gwt.angular.client.route;
 
 import java.util.Date;
 
-import com.asayama.gwt.angular.client.Constructor;
+import com.asayama.gwt.angular.client.Constructable;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Invoker;
 
-public class RouteParams implements Service, Wrapper<RouteParamsJSO>, Constructor {
+public class RouteParams implements Service, Wrapper<RouteParamsJSO>, Constructable {
 
 	RouteParamsJSO delegate;
 	
@@ -47,7 +47,7 @@ public class RouteParams implements Service, Wrapper<RouteParamsJSO>, Constructo
 	// Constructor Methods
 	
 	@Override
-	public native JSObject constructor(Invoker invoker) /*-{
+	public native JSObject construct(Invoker invoker) /*-{
 		return [ "$routeParams",
 			function ($routeParams) {
 				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($routeParams);

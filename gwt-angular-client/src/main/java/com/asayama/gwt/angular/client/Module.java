@@ -54,8 +54,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				}
 			}
 		};
-		Constructor ctor = (Constructor) controller;
-		JSObject jsarray = ctor.constructor(new Invoker(closure));
+		Constructable ctor = (Constructable) controller;
+		JSObject jsarray = ctor.construct(new Invoker(closure));
 		delegate.controller(name, jsarray);
 		return controller;
 	}
@@ -88,8 +88,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				return jso;
 			}
 		};
-		Constructor ctor = (Constructor) service;
-		JSObject jsarray = ctor.constructor(new Invoker(function));
+		Constructable ctor = (Constructable) service;
+		JSObject jsarray = ctor.construct(new Invoker(function));
 		delegate.factory(name, jsarray);
 		return service;
 	}
@@ -122,8 +122,8 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				}
 			}
 		};
-		final Constructor ctor = (Constructor) provider;
-		JSObject jsarray = ctor.constructor(new Invoker(closure));
+		final Constructable ctor = (Constructable) provider;
+		JSObject jsarray = ctor.construct(new Invoker(closure));
 		delegate.config(jsarray);
 		return provider;
 	}
