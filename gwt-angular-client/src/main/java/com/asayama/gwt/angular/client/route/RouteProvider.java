@@ -11,7 +11,7 @@ public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Const
 
 	RouteProviderJSO delegate;
 	
-	public RouteProvider when(String route, Route action) {
+	public RouteProvider when(String route, Template action) {
 		delegate.when(route, action);
 		return this;
 	}
@@ -19,7 +19,7 @@ public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Const
 		delegate.when(route, action);
 		return this;
 	}
-	public RouteProvider otherwise(Route action) {
+	public RouteProvider otherwise(Template action) {
 		delegate.otherwise(action);
 		return this;
 	}
