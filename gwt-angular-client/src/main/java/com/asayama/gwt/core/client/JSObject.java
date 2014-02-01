@@ -28,17 +28,17 @@ public class JSObject extends JavaScriptObject {
 	protected JSObject() {
 	}
 
-	private final native boolean _isThisUndefined() /*-{
+	protected final native boolean _isThisUndefined() /*-{
 		return (typeof(this) == "undefined");
 	}-*/;
 
-	private final void _checkUndefined() throws UndefinedException {
+	protected final void _checkUndefined() throws UndefinedException {
 		if (_isThisUndefined()) {
 			throw new UndefinedException();
 		}
 	}
 	
-	private final void _checkEmptyKey(String key) throws EmptyKeyException {
+	protected final void _checkEmptyKey(String key) throws EmptyKeyException {
 		if (key == null || key.length() == 0) {
 			throw new EmptyKeyException();
 		}

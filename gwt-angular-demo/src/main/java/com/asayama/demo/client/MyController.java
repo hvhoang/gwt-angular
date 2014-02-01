@@ -68,7 +68,7 @@ public class MyController implements Controller {
 	
 	public Promise<Customers> loadCustomers() {
 		final Deferred<Customers> deferred = q.defer();
-		final String url = "/myapp/api/customer";
+		final String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
 		try {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 			GWT.log("[GET] " + url);
