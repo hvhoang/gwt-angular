@@ -17,20 +17,20 @@ public class Route extends $ {
 	}
 	
 	public final String getTemplateUrl() {
-		return getString("templateUrl");
+		return $string("templateUrl");
 	}
 	
 	public final Route setTemplateUrl(String templateUrl) {
-		putString("templateUrl", templateUrl);
+		$string("templateUrl", templateUrl);
 		return this;
 	}
 
 	public final String getController() {
-		return getString("controller");
+		return $string("controller");
 	}
 	
 	public final <T extends Controller> Route setController(Class<T> controllerClass) {
-		putString("controller", controllerClass.getName());
+		$string("controller", controllerClass.getName());
 		return this;
 	}
 

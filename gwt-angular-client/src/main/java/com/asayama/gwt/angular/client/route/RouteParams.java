@@ -61,4 +61,23 @@ class RouteParamsJSO extends $ {
 	protected RouteParamsJSO() {
 	}
 
+	public final String getString(String key) {
+		return $string(key);
+	}
+	
+	public final Integer getInteger(String key) {
+		return $integer(key);
+	}
+	
+	public final Double getDouble(String key) {
+		return $double(key);
+	}
+	
+	public final Date getDate(String key) {
+		return $date(key);
+	}
+	
+	public final <T extends $> T getObject(String key) {
+		return $object(key);
+	}
 }

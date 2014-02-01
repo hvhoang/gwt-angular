@@ -160,7 +160,7 @@ class ModuleJSO extends $ {
 	}
 	
 	final String getName() {
-		return getString("name");
+		return $string("name");
 	}
 	
 	final native JsArrayString getRequires() /*-{
