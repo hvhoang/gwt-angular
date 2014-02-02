@@ -77,7 +77,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				String m = "";
 				try {
 					if (service instanceof Wrapper) {
-						GWT.log(m = "calling " + name + ".setDelegate($)");
+						GWT.log(m = "calling " + name + ".setDelegate(JSObject)");
 						((Wrapper<JSObject>) service).setDelegate(jso);
 					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -112,7 +112,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				String m = "";
 				try {
 					if (provider instanceof Wrapper) {
-						GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate($)");
+						GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate(JSObject)");
 						((Wrapper<JSObject>) provider).setDelegate(jso);
 					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
