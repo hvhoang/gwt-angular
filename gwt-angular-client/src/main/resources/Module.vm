@@ -1,6 +1,6 @@
 /*++
  * Template: Module.vm
- * Provided: ${qualifedName}
+ * Provided: ${qualifiedName}
  * Generate: ${generatedQualifiedName}
  */
 package ${packageName};
