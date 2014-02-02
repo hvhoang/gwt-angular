@@ -5,6 +5,9 @@ import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 
+/**
+ * TODO Was able to get RestClient working as a wrapper. Why can't Q be wrapped?
+ */
 @Bind("$q")
 public class Q extends AngularJSO implements Service {
 
