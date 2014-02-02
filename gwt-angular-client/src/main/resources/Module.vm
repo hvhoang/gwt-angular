@@ -16,8 +16,6 @@ public class ${generatedSimpleName} extends ${qualifiedName} {
         super();
         String m = "";
         try {
-            m = "registering ${qualifiedName} with Angular";
-            Angular.module("${qualifiedName}", this);
 #foreach($field in $providerFields)
             m = "injecting ${field.type.qualifiedSourceName} into ${simpleName}.${field.name}";
             ${field.name} = config(${field.type.qualifiedSourceName}.class);

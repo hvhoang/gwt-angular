@@ -14,13 +14,10 @@ public class Angular {
 	public static <T extends Module> T module(Class<T> klass) {
 		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
 		T module = creator.create(klass);
-		return module(module);
+		String name = klass.getName();
+		return module(name, module);
 	}
 	
-	public static <T extends Module> T module(T module) {
-		return module(module.getClass().getName(), module);
-	}
-
 	public static <T extends Module> T module(String name, T module) {
 		GWT.log("registering " + name + " with Anuglar");
 		module.setDelegate($module(name, null, new Invoker(new Closure<JSObject>() {
