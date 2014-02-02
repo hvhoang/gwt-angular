@@ -1,14 +1,15 @@
 package com.asayama.gwt.angular.client.http;
 
+import com.asayama.gwt.angular.client.AngularJSO;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
+import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
 
 @Bind("$http")
-public class Http extends JSObject implements Service /*, Constructor*/ {
+public class Http extends AngularJSO implements Service /*, Constructor*/ {
 
 	protected Http() {
 	}
@@ -35,7 +36,7 @@ public class Http extends JSObject implements Service /*, Constructor*/ {
 
 	final <T extends JSObject> void send(String method, final String url, final String data, final HttpCallback<T> callback) {
 		GWT.log("[" + method + "] " + url);
-		$send(method, url, data, new Invoker(new Closure<HttpResponse<T>>() {
+		_send(method, url, data, new Invoker(new Closure<HttpResponse<T>>() {
 			public void closure(HttpResponse<T> response) {
 				GWT.log("[" + response.getStatus() + "] " + url);
 				try {
@@ -56,7 +57,7 @@ public class Http extends JSObject implements Service /*, Constructor*/ {
 		}));
 	}
 	
-	final native <T extends JSObject> void $send(String method, String url, String data, Invoker successInvoker, Invoker errorInvoker) /*-{
+	final native <T extends JSObject> void _send(String method, String url, String data, Invoker successInvoker, Invoker errorInvoker) /*-{
 		this({ 'method':method, 'url':url, 'data':data })
 			.success(function(data, status, headers, config) {
 				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)({
@@ -75,21 +76,9 @@ public class Http extends JSObject implements Service /*, Constructor*/ {
 			});
 	}-*/;
 
-	// Constructor Method
-	//
-	// com.google.gwt.dev.jjs.InternalCompilerException: Already seen an 
-	// implementing JSO subtype (Http) for interface (Constructor) while 
-	// examining newly-added type (Q). This is a bug in JSORestrictionsChecker.
-	//
-	// https://code.google.com/p/google-web-toolkit/issues/detail?id=4859
-	//
-	
 //	@Override
-//	public final native $ constructor(Invoker invoker) /*-{
-//		return [ '$http', function($http) {
-//			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($http);
-//			return $http;
-//		}];
-//	}-*/;
+//	public final JSObject construct(Invoker invoker) {
+//		return getConstructor(invoker, "$http");
+//	}
 
 }
