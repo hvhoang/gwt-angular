@@ -5,6 +5,9 @@ import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.shared.GWT;
 
+/**
+ * TODO T should not have to extend JSObject.
+ */
 public class Promise<T extends JSObject> extends JSObject {
 
 	protected Promise() {
