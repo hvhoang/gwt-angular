@@ -8,8 +8,12 @@ import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
 
+/**
+ * we get digest in progress error from the demo app
+ * @deprecated This class is not supported
+ */
 @Bind("$http")
-public class Http extends AngularJSO implements Service /*, Constructor*/ {
+public class Http extends AngularJSO implements Service {
 
 	protected Http() {
 	}
@@ -75,10 +79,5 @@ public class Http extends AngularJSO implements Service /*, Constructor*/ {
 				});
 			});
 	}-*/;
-
-//	@Override
-//	public final JSObject construct(Invoker invoker) {
-//		return getConstructor(invoker, "$http");
-//	}
 
 }
