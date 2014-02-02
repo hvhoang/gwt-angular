@@ -36,8 +36,7 @@ public class MyController implements Controller {
 		this.scope = scope;
 
 		String name = routeParams.getString("name");
-		GWT.log("name=" + name);
-		setName(name == null ? STRANGER : name);
+		setName(name);
 
 		setClickable("Click me");
 
