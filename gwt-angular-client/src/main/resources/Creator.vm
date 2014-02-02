@@ -10,7 +10,7 @@ import java.util.*;
 import com.google.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
-public class ${generatedSimpleName}<${typeParameterName}> implements ${qualifiedName}<T> {
+public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifiedName}<T> {
 
 	protected ${generatedSimpleName}() {
 	}

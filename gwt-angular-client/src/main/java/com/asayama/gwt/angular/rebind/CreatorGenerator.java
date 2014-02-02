@@ -43,28 +43,28 @@ public class CreatorGenerator extends Generator {
 			velocity.put("generatedSimpleName", generatedSimpleName);
 			
 			// Find the public create(Class<T>) method's return type
-			JClassType returnClassType = null;
+			JClassType parameterClassType = null;
 			JMethod[] methods = classType.getInheritableMethods();
 			for (JMethod method : methods) {
 				if (method.getName().equals("create")) {
 					JType returnType = method.getReturnType();
-					returnClassType = returnType.isClassOrInterface();
-					if (returnClassType != null) {
+					parameterClassType = returnType.isClassOrInterface();
+					if (parameterClassType != null) {
 						break;
 					}
 				}
 			}
 			
-			if (returnClassType == null) {
+			if (parameterClassType == null) {
 				return qualifiedName;
 			}
 			
 			// Find all the subtypes of this return type
-			JClassType[] returnClassTypes = returnClassType.getSubtypes();
+			JClassType[] returnClassTypes = parameterClassType.getSubtypes();
 			if (returnClassTypes == null || returnClassTypes.length == 0) {
 				return qualifiedName;
 			}
-			velocity.put("typeParameterName", returnClassType.getQualifiedSourceName());
+			velocity.put("parameterClassType", parameterClassType.getQualifiedSourceName());
 			velocity.put("returnClassTypes", returnClassTypes);
 			
 			// Generate type
