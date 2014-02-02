@@ -19,7 +19,7 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
         String name = klass.getName();
         GWT.log("creating " + name);
 #foreach($returnClassType in ${returnClassTypes})
-        if (name.equals("${returnClassType.qualifiedSourceName}")) {
+        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
             return GWT.create(${returnClassType.qualifiedSourceName}.class);
         }
 #end

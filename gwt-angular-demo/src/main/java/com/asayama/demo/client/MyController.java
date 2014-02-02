@@ -2,17 +2,11 @@ package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
-import com.asayama.gwt.angular.client.q.Deferred;
-import com.asayama.gwt.angular.client.q.Promise;
-import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.angular.client.q.SuccessCallback;
+import com.asayama.gwt.angular.client.rest.RestCallback;
+import com.asayama.gwt.angular.client.rest.RestClient;
 import com.asayama.gwt.angular.client.route.RouteParams;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.RequestBuilder;
-import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
-import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.user.client.Event;
 
@@ -23,7 +17,8 @@ public class MyController implements Controller {
 	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
 	protected RouteParams routeParams;
-	protected Q q;
+	protected RestClient rest;
+//	protected Q q;
 //	protected Http http;
 
 	Scope scope;
@@ -40,15 +35,30 @@ public class MyController implements Controller {
 
 		setClickable("Click me");
 
+		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
+		try {
+			rest.get(url, new RestCallback<Customers>() {
+				@Override
+				public void onSuccess(Customers object) {
+					setCustomers(object);
+				}
+				@Override
+				public void onError(Customers object) {
+				}
+			});
+		} catch (RequestException e) {
+			GWT.log("Exception while calling " + url, e);
+		}
+		
 		// $q + RequestBuiler
 		// Try returning PromiseJSO to the view and see if view can resolve it.
-		Promise<Customers> promise = loadCustomers();
-		promise.then(new SuccessCallback<Customers>() {
-			@Override
-			public void onSuccess(Customers object) {
-				setCustomers(object);
-			}
-		});
+//		Promise<Customers> promise = loadCustomers();
+//		promise.then(new SuccessCallback<Customers>() {
+//			@Override
+//			public void onSuccess(Customers object) {
+//				setCustomers(object);
+//			}
+//		});
 		
 		// $http
 //		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
@@ -63,35 +73,35 @@ public class MyController implements Controller {
 //		});
 	}
 	
-	public Promise<Customers> loadCustomers() {
-		final Deferred<Customers> deferred = q.defer();
-		final String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
-		try {
-			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
-			GWT.log("[GET] " + url);
-			builder.sendRequest(null, new RequestCallback() {
-				@Override
-				public void onResponseReceived(Request request, Response response) {
-					int status = response.getStatusCode();
-					GWT.log("[" + status + "] " + url);
-					if (status == 200) {
-						Customers customers = Customers.parse(response.getText());
-						deferred.resolve(customers);
-					}
-				}
-				@Override
-				public void onError(Request request, Throwable exception) {
-					GWT.log("[ERR] " + url, exception);
-					deferred.reject(null);//FIXME figure out what to do here
-				}
-			});
-			return deferred.promise();
-
-		} catch (RequestException e) {
-			GWT.log("Exception", e);
-			return null; //FIXME figure out what to do where, too.
-		}
-	}
+//	public Promise<Customers> loadCustomers() {
+//		final Deferred<Customers> deferred = q.defer();
+//		final String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
+//		try {
+//			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+//			GWT.log("[GET] " + url);
+//			builder.sendRequest(null, new RequestCallback() {
+//				@Override
+//				public void onResponseReceived(Request request, Response response) {
+//					int status = response.getStatusCode();
+//					GWT.log("[" + status + "] " + url);
+//					if (status == 200) {
+//						Customers customers = Customers.parse(response.getText());
+//						deferred.resolve(customers);
+//					}
+//				}
+//				@Override
+//				public void onError(Request request, Throwable exception) {
+//					GWT.log("[ERR] " + url, exception);
+//					deferred.reject(null);//FIXME figure out what to do here
+//				}
+//			});
+//			return deferred.promise();
+//
+//		} catch (RequestException e) {
+//			GWT.log("Exception", e);
+//			return null; //FIXME figure out what to do where, too.
+//		}
+//	}
 
 	// Public event handler are automatically wired to AngularJS's $scope.
 	
