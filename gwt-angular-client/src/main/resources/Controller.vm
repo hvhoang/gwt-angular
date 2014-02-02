@@ -13,96 +13,96 @@ import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName} extends ${simpleName} implements Constructable {
 
-	public ${generatedSimpleName}() {
-	}
-	
-	// Construct Methods
-	
-	@Override
-	public JSObject construct(Invoker invoker) {
-		return __${simpleName}_constructor(this, invoker);
-	}
+    public ${generatedSimpleName}() {
+    }
+    
+    // Construct Methods
+    
+    @Override
+    public JSObject construct(Invoker invoker) {
+        return __${simpleName}_constructor(this, invoker);
+    }
 
-	private native JSObject __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
-		return [
-			'$scope',
+    private native JSObject __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
+        return [
+            '$scope',
 #foreach($field in $nativeServiceFields)
 #set($fieldClassType = ${field.type.isClassOrInterface()})
 #if(${fieldClassType})
 #foreach($annotation in ${fieldClassType.getAnnotations()})
 #if($annotation.annotationType().getName() == "com.asayama.gwt.angular.client.annotations.Bind")
-			'${annotation.value()}',
+            '${annotation.value()}',
 #end
 #end
 #end
 #end
 #foreach($field in $serviceFields)
-			'${field.type.qualifiedSourceName}',
+            '${field.type.qualifiedSourceName}',
 #end
-			function ($scope#foreach($field in $nativeServiceFields), ${field.name}#end#foreach($field in $serviceFields), ${field.name}#end) {
+            function ($scope#foreach($field in $nativeServiceFields), ${field.name}#end#foreach($field in $serviceFields), ${field.name}#end) {
 #foreach($method in $publicMethods)
-				$scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-					return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
-				};
+                $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+                    return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
+                };
 #end
 #foreach($field in $publicFields)
 #if($field.isStatic())
-				$scope.${field.name} = @${qualifiedName}::${field.name};
+                $scope.${field.name} = @${qualifiedName}::${field.name};
 #else
-				$scope.${field.name} = itself.@${qualifiedName}::${field.name};
+                $scope.${field.name} = itself.@${qualifiedName}::${field.name};
 #end
 #end
 #foreach($field in $serviceFields)
-				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
+                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
 #end
 #foreach($field in $nativeServiceFields)
-				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
+                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
 #end
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($scope);
-				itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad(Lcom/asayama/gwt/angular/client/Scope;)($scope);
-			}
-		];
-	}-*/;
-	
-	private void __${generatedSimpleName}_onControllerLoad(Scope scope) {
-		String m = "";
-		try {
-			GWT.log(m = "calling ${qualifiedName}.onControllerLoad(com.asayama.gwt.angular.client.Scope)");
-			super.onControllerLoad(scope);
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-	}
+                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($scope);
+                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad(Lcom/asayama/gwt/angular/client/Scope;)($scope);
+            }
+        ];
+    }-*/;
+    
+    private void __${generatedSimpleName}_onControllerLoad(Scope scope) {
+        String m = "";
+        try {
+            GWT.log(m = "calling ${qualifiedName}.onControllerLoad(com.asayama.gwt.angular.client.Scope)");
+            super.onControllerLoad(scope);
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
+    }
 
-	// Controller Extensions
+    // Controller Extensions
 #foreach($field in $serviceFields)
-	private void __${generatedSimpleName}_onInjection_${field.name}(JSObject jso) {
-		String m = "";
-		try {
-			GWT.log(m = "setting ${qualifiedName}.${field.name}");
-			${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
-			if (${field.name} instanceof Wrapper) {
-				${field.name}.setDelegate(jso);
-			}
-			//super.onInjection(${field.name});
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-	}
+    private void __${generatedSimpleName}_onInjection_${field.name}(JSObject jso) {
+        String m = "";
+        try {
+            GWT.log(m = "setting ${qualifiedName}.${field.name}");
+            ${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
+            if (${field.name} instanceof Wrapper) {
+                ${field.name}.setDelegate(jso);
+            }
+            //super.onInjection(${field.name});
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
+    }
 #end
 
 #foreach($field in $nativeServiceFields)
-	private void __${generatedSimpleName}_onInjection_${field.name}(JSObject object) {
-		String m = "";
-		try {
-			GWT.log(m = "setting ${qualifiedName}.${field.name}");
-			super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
-			//GWT.log(m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})");
-			//super.onInjection(${field.name});
-		} catch (Exception e) {
-			GWT.log("Exception while " + m, e);
-		}
-	}
+    private void __${generatedSimpleName}_onInjection_${field.name}(JSObject object) {
+        String m = "";
+        try {
+            GWT.log(m = "setting ${qualifiedName}.${field.name}");
+            super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
+            //GWT.log(m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})");
+            //super.onInjection(${field.name});
+        } catch (Exception e) {
+            GWT.log("Exception while " + m, e);
+        }
+    }
 #end
 
 }

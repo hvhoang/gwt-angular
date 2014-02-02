@@ -12,21 +12,20 @@ import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifiedName}<T> {
 
-	protected ${generatedSimpleName}() {
-	}
-	
-	public T create(Class<? extends T> klass) {
-		String name = klass.getName();
-		GWT.log("creating " + name);
+    protected ${generatedSimpleName}() {
+    }
+    
+    public T create(Class<? extends T> klass) {
+        String name = klass.getName();
+        GWT.log("creating " + name);
 #foreach($returnClassType in ${returnClassTypes})
-		if (name.equals("${returnClassType.qualifiedSourceName}")) {
-			return GWT.create(${returnClassType.qualifiedSourceName}.class);
-		}
+        if (name.equals("${returnClassType.qualifiedSourceName}")) {
+            return GWT.create(${returnClassType.qualifiedSourceName}.class);
+        }
 #end
-		throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
-	}
+        throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
+    }
 
 }
 //--end of ${generatedQualifiedName}
 
-	
