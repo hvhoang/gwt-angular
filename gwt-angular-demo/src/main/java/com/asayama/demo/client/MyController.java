@@ -41,9 +41,6 @@ public class MyController implements Controller {
 
 		setClickable("Click me");
 
-		// $scope.$digest() + RequestBuilder
-//		loadCustomersWithRequestBuilder();
-
 		// $q + RequestBuiler
 		// Try returning PromiseJSO to the view and see if view can resolve it.
 		Promise<Customers> promise = loadCustomers();
@@ -55,7 +52,8 @@ public class MyController implements Controller {
 		});
 		
 		// $http
-//		http.get("/myapp/api/customer", new HttpCallback<Customers>() {
+//		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
+//		http.get(url, new HttpCallback<Customers>() {
 //			@Override
 //			public void onSuccess(HttpResponse<Customers> response) {
 //				setCustomers(response.getData());
@@ -96,33 +94,6 @@ public class MyController implements Controller {
 		}
 	}
 
-//	private void loadCustomersWithRequestBuilder() {
-//		final String url = "/myapp/api/customer";
-//		try {
-//			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
-//			GWT.log("[GET] " + url);
-//			builder.sendRequest(null, new RequestCallback() {
-//				@Override
-//				public void onResponseReceived(Request request, Response response) {
-//					int status = response.getStatusCode();
-//					GWT.log("[" + status + "] " + url);
-//					if (status == 200) {
-//						Customers customers = Customers.parse(response.getText());
-//						setCustomers(customers);
-//						scope.digest(); //we need this because this is an async callback
-//					}
-//				}
-//				@Override
-//				public void onError(Request request, Throwable exception) {
-//					GWT.log("[ERR] " + url, exception);
-//				}
-//			});
-//	
-//		} catch (RequestException e) {
-//			GWT.log("Exception", e);
-//		}
-//	}
-	
 	// Public event handler are automatically wired to AngularJS's $scope.
 	
 	public void onClickClickable(Event event) {
