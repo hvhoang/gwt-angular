@@ -13,19 +13,15 @@ public class Angular {
 	
 	public static <T extends Module> T module(Class<T> klass) {
 		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
-		T module = creator.create(klass);
-		String name = klass.getName();
-		return module(name, module);
-	}
-	
-	public static <T extends Module> T module(String name, T module) {
+		final T object = creator.create(klass);
+		final String name = klass.getName();
 		GWT.log("registering " + name + " with Anuglar");
-		module.wrap($module(name, null, new Invoker(new Closure<JSObject>() {
+		object.wrap(_module(name, null, new Invoker(new Closure<JSObject>() {
 			public void closure(JSObject jso) {
 				//TODO implement me
 			}
 		})));
-		return module;
+		return object;
 	}
 	
 	public static void bootstrap(Module... modules) {
@@ -33,17 +29,18 @@ public class Angular {
 		for (Module module : modules) {
 			jsarray.push(module.getName());
 		}
-		$bootstrap(jsarray);
+		_bootstrap(jsarray);
 	}
 
 	//TODO Support module dependency
-	static native ModuleJSO $module(String name, JsArrayString requires, Invoker invoker) /*-{
+	//TODO Figure out how to support Creator
+	private static native ModuleJSO _module(String name, JsArrayString requires, Invoker invoker) /*-{
 		return $wnd.angular.module(name, [ "ngRoute", "ngSanitize" ], function () {
 			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)({});
 		});
 	}-*/;
 	
-	static native void $bootstrap(JsArrayString modules) /*-{
+	private static native void _bootstrap(JsArrayString modules) /*-{
 		$wnd.angular.bootstrap($doc, modules);
 	}-*/;
 	

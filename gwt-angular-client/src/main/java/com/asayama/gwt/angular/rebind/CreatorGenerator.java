@@ -78,7 +78,7 @@ public class CreatorGenerator extends Generator {
 					dependencies.add(new String[0]);
 					continue;
 				}
-				String[] names = depends.name();
+				String[] names = depends.value();
 				dependencies.add(names);
 			}
 			velocity.put("dependencies", dependencies);

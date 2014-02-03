@@ -1,14 +1,12 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.angular.client.Constructable;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.angular.client.annotations.Depends;
-import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 
-@Depends(name = "$q")
-public class Q implements Service, Wrapper, Constructable {
+@Depends("$q")
+public class Q implements Service, Wrapper {
 
 	QJSO delegate;
 	
@@ -24,16 +22,6 @@ public class Q implements Service, Wrapper, Constructable {
 		this.delegate = delegate.cast();
 	}
 
-	// Constructor Methods
-	
-	@Override
-	public native JSObject construct(Invoker invoker) /*-{
-		return [ "$q",
-			function (arguments) {
-				invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(arguments);
-				return arguments;
-			}];
-	}-*/;
 }
 class QJSO extends JSObject {
 
