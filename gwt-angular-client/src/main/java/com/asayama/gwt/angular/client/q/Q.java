@@ -1,13 +1,11 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.angular.client.AngularJSO;
-import com.asayama.gwt.angular.client.Constructable;
+import com.asayama.gwt.angular.client.AngularWrapper;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 
-public class Q implements Service, Wrapper<QJSO>, Constructable {
+public class Q implements Service, AngularWrapper<QJSO> {
 
 	QJSO delegate;
 	
@@ -38,7 +36,7 @@ public class Q implements Service, Wrapper<QJSO>, Constructable {
 			}];
 	}-*/;
 }
-class QJSO extends AngularJSO {
+class QJSO extends JSObject {
 
 	protected QJSO(){
 	}

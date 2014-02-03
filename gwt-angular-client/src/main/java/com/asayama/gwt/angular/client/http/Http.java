@@ -1,6 +1,5 @@
 package com.asayama.gwt.angular.client.http;
 
-import com.asayama.gwt.angular.client.AngularJSO;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.Closure;
@@ -13,7 +12,7 @@ import com.google.gwt.core.client.GWT;
  * @deprecated This class is not supported
  */
 @Bind("$http")
-public class Http extends AngularJSO implements Service {
+public class Http extends JSObject implements Service {
 
 	protected Http() {
 	}

@@ -41,7 +41,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 		return controller(klass.getName(), creator.create(klass));
 	}
 
-	public <T extends Controller> T controller(final String name, final T controller) {
+	protected <T extends Controller> T controller(final String name, final T controller) {
 		Closure<ScopeJSO> closure = new Closure<ScopeJSO>() {
 			@Override
 			public void closure(ScopeJSO scope) {
@@ -69,7 +69,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 		return factory(klass.getName(), creator.create(klass));
 	}
 
-	public <T extends Service> T factory(final String name, final T service) {
+	protected <T extends Service> T factory(final String name, final T service) {
 		Function<JSObject,JSObject> function = new Function<JSObject,JSObject>() {
 			@SuppressWarnings("unchecked")
 			@Override
@@ -88,7 +88,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				return jso;
 			}
 		};
-		Constructable ctor = (Constructable) service;
+		AngularWrapper<?> ctor = (AngularWrapper<?>) service;
 		JSObject jsarray = ctor.construct(new Invoker(function));
 		delegate.factory(name, jsarray);
 		return service;
@@ -103,7 +103,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 		return config(creator.create(klass));
 	}
 
-	public <T extends Provider> T config(final T provider) {
+	protected <T extends Provider> T config(final T provider) {
 		final String name = provider.getClass().getName();
 		Closure<JSObject> closure = new Closure<JSObject>() {
 			@SuppressWarnings("unchecked")
@@ -122,7 +122,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				}
 			}
 		};
-		final Constructable ctor = (Constructable) provider;
+		AngularWrapper<?> ctor = (AngularWrapper<?>) provider;
 		JSObject jsarray = ctor.construct(new Invoker(closure));
 		delegate.config(jsarray);
 		return provider;

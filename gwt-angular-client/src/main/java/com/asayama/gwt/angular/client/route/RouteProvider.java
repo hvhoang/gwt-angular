@@ -1,13 +1,12 @@
 package com.asayama.gwt.angular.client.route;
 
-import com.asayama.gwt.angular.client.Constructable;
+import com.asayama.gwt.angular.client.AngularWrapper;
 import com.asayama.gwt.angular.client.Provider;
-import com.asayama.gwt.angular.client.Wrapper;
-import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Invoker;
+import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class RouteProvider implements Provider, Wrapper<RouteProviderJSO>, Constructable {
+public class RouteProvider implements Provider, AngularWrapper<RouteProviderJSO> {
 
 	RouteProviderJSO delegate;
 	
