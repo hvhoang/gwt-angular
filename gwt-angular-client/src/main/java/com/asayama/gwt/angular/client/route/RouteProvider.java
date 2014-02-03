@@ -6,7 +6,7 @@ import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class RouteProvider implements Provider, AngularWrapper<RouteProviderJSO> {
+public class RouteProvider implements Provider, AngularWrapper {
 
 	RouteProviderJSO delegate;
 	
@@ -30,12 +30,7 @@ public class RouteProvider implements Provider, AngularWrapper<RouteProviderJSO>
 	// Wrapper Methods
 	
 	@Override
-	public RouteProviderJSO getDelegate() {
-		return delegate;
-	}
-	
-	@Override
-	public void setDelegate(JSObject delegate) {
+	public void wrap(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 

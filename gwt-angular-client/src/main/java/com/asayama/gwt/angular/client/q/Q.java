@@ -5,23 +5,19 @@ import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 
-public class Q implements Service, AngularWrapper<QJSO> {
+public class Q implements Service, AngularWrapper {
 
 	QJSO delegate;
 	
+	@SuppressWarnings("unchecked")
 	public <T extends JSObject> Deferred<T> defer() {
 		Deferred<T> deferred = new Deferred<T>();
-		deferred.setDelegate(delegate._defer());
+		deferred.wrap((DeferredJSO<T>) delegate._defer());
 		return deferred;
 	}
 
 	@Override
-	public QJSO getDelegate() {
-		return delegate;
-	}
-
-	@Override
-	public void setDelegate(JSObject delegate) {
+	public void wrap(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 

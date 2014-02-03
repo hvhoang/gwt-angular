@@ -56,7 +56,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
 #end
 #foreach($field in $nativeServiceFields)
-                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
+//                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/asayama/gwt/core/client/JSObject;)(${field.name});
 #end
                 invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($scope);
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad(Lcom/asayama/gwt/angular/client/Scope;)($scope);
@@ -82,7 +82,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
             GWT.log(m = "setting ${qualifiedName}.${field.name}");
             ${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
             if (${field.name} instanceof Wrapper) {
-                ${field.name}.setDelegate(jso);
+                ${field.name}.wrap(jso);
             }
             //super.onInjection(${field.name});
         } catch (Exception e) {
@@ -92,17 +92,17 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #end
 
 #foreach($field in $nativeServiceFields)
-    private void __${generatedSimpleName}_onInjection_${field.name}(JSObject object) {
-        String m = "";
-        try {
-            GWT.log(m = "setting ${qualifiedName}.${field.name}");
-            super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
-            //GWT.log(m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})");
-            //super.onInjection(${field.name});
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
-    }
+//    private void __${generatedSimpleName}_onInjection_${field.name}(JSObject object) {
+//        String m = "";
+//        try {
+//            GWT.log(m = "setting ${qualifiedName}.${field.name}");
+//            super.${field.name} = object == null ? null : object.<${field.type.qualifiedSourceName}>cast();
+//            //GWT.log(m = "calling ${qualifiedName}.onInjection(${field.type.qualifiedSourceName})");
+//            //super.onInjection(${field.name});
+//        } catch (Exception e) {
+//            GWT.log("Exception while " + m, e);
+//        }
+//    }
 #end
 
 }

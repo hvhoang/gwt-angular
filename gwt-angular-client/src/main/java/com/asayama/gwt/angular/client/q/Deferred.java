@@ -4,7 +4,7 @@ import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
 
-public class Deferred<T extends JSObject> implements Wrapper<DeferredJSO<T>> {
+public class Deferred<T extends JSObject> implements Wrapper {
 
 	public void singal(T value) {
 		GWT.log("Deferred.singal: " + (value == null ? null : value.getClass().getName()));
@@ -29,14 +29,9 @@ public class Deferred<T extends JSObject> implements Wrapper<DeferredJSO<T>> {
 	// Wrapper Methods
 	
 	DeferredJSO<T> delegate = null;
-	
-	@Override
-	public DeferredJSO<T> getDelegate() {
-		return this.delegate;
-	}
 
 	@Override
-	public void setDelegate(JSObject delegate) {
+	public void wrap(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 

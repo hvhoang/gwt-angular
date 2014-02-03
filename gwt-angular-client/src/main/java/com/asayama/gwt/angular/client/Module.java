@@ -13,7 +13,7 @@ interface ServiceCreator<T extends Service> extends Creator<T> {
 }
 interface ControllerCreator<T extends Controller> extends Creator<T> {
 }
-public abstract class Module implements Wrapper<ModuleJSO> {
+public abstract class Module implements Wrapper {
 	
 	ModuleJSO delegate;
 	
@@ -78,7 +78,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				try {
 					if (service instanceof Wrapper) {
 						GWT.log(m = "calling " + name + ".setDelegate(JSObject)");
-						((Wrapper<JSObject>) service).setDelegate(jso);
+						((Wrapper) service).wrap(jso);
 					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 					Module.this.onInjection(service);
@@ -88,7 +88,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				return jso;
 			}
 		};
-		AngularWrapper<?> ctor = (AngularWrapper<?>) service;
+		AngularWrapper ctor = (AngularWrapper) service;
 		JSObject jsarray = ctor.construct(new Invoker(function));
 		delegate.factory(name, jsarray);
 		return service;
@@ -113,7 +113,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				try {
 					if (provider instanceof Wrapper) {
 						GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate(JSObject)");
-						((Wrapper<JSObject>) provider).setDelegate(jso);
+						((Wrapper) provider).wrap(jso);
 					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 					Module.this.onInjection(provider);
@@ -122,7 +122,7 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 				}
 			}
 		};
-		AngularWrapper<?> ctor = (AngularWrapper<?>) provider;
+		AngularWrapper ctor = (AngularWrapper) provider;
 		JSObject jsarray = ctor.construct(new Invoker(closure));
 		delegate.config(jsarray);
 		return provider;
@@ -142,14 +142,9 @@ public abstract class Module implements Wrapper<ModuleJSO> {
 	}
 
 	// Wrapper Methods
-	
-	@Override
-	public ModuleJSO getDelegate() {
-		return delegate;
-	}
 
 	@Override
-	public void setDelegate(JSObject delegate) {
+	public void wrap(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 

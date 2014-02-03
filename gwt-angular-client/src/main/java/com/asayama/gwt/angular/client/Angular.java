@@ -20,7 +20,7 @@ public class Angular {
 	
 	public static <T extends Module> T module(String name, T module) {
 		GWT.log("registering " + name + " with Anuglar");
-		module.setDelegate($module(name, null, new Invoker(new Closure<JSObject>() {
+		module.wrap($module(name, null, new Invoker(new Closure<JSObject>() {
 			public void closure(JSObject jso) {
 				//TODO implement me
 			}

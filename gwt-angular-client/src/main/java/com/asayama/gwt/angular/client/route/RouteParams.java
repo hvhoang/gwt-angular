@@ -7,7 +7,7 @@ import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 
-public class RouteParams implements Service, AngularWrapper<RouteParamsJSO> {
+public class RouteParams implements Service, AngularWrapper {
 
 	RouteParamsJSO delegate;
 	
@@ -34,12 +34,7 @@ public class RouteParams implements Service, AngularWrapper<RouteParamsJSO> {
 	// Wrapper Methods
 	
 	@Override
-	public RouteParamsJSO getDelegate() {
-		return delegate;
-	}
-	
-	@Override
-	public void setDelegate(JSObject delegate) {
+	public void wrap(JSObject delegate) {
 		this.delegate = delegate.cast();
 	}
 
