@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.rest;
+package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.q.Deferred;
@@ -11,11 +11,12 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 
-public class RestClient implements Service {
+public class Http implements Service {
 
 	protected Q q; //TODO Must figure out dependency injection
 	
-	public <T extends JSObject> Request get(final String url, RestCallback<T> callback) throws RequestException {
+	//TODO Expose RequestCallback and still support Promise
+	public <T extends JSObject> Request get(final String url, HttpCallback<T> callback) throws RequestException {
 		final Deferred<T> deferred = q.defer();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		GWT.log("[GET] " + url);

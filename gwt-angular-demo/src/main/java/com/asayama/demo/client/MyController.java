@@ -6,7 +6,6 @@ import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.q.SuccessCallback;
-import com.asayama.gwt.angular.client.rest.RestClient;
 import com.asayama.gwt.angular.client.route.RouteParams;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
@@ -24,7 +23,6 @@ public class MyController implements Controller {
 	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
 	protected RouteParams routeParams;
-	protected RestClient rest;
 	protected Q q;
 
 	Scope scope;
