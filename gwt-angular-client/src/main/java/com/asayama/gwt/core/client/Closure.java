@@ -1,12 +1,14 @@
 package com.asayama.gwt.core.client;
 
-public abstract class Closure<T extends JSObject> implements Function<Void, T> {
+import com.google.gwt.core.client.JsArray;
 
-	public abstract void closure(T jso);
+public abstract class Closure implements Function<Void> {
+
+	public abstract void closure(JsArray<?> jsarray);
 	
 	@Override
-	public final Void function(T jso) {
-		closure(jso);
+	public Void function(JsArray<?> jsarray) {
+		closure(jsarray);
 		return Void.INSTANCE;
 	}
 }

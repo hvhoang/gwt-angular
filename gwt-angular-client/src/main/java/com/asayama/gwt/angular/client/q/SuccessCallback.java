@@ -1,11 +1,11 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.core.client.JSObject;
+import com.google.gwt.core.client.JsArray;
 
-public abstract class SuccessCallback<T extends JSObject> extends PromiseCallback<T> {
+public abstract class SuccessCallback extends PromiseCallback {
 	
 	@Override
-	public void onError(T object) {
+	public void onError(JsArray<?> object) {
 		// noop by default
 	}
 

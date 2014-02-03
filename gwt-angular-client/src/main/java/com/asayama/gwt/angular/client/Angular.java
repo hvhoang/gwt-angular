@@ -2,9 +2,9 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
-import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 
 interface ModuleCreator<T extends Module> extends Creator<T> {
@@ -16,11 +16,14 @@ public class Angular {
 		final T object = creator.create(klass);
 		final String name = klass.getName();
 		GWT.log("registering " + name + " with Anuglar");
-		object.wrap(_module(name, null, new Invoker(new Closure<JSObject>() {
-			public void closure(JSObject jso) {
+		ModuleJSO jso = _module(name, null, new Invoker(new Closure() {
+			public void closure(JsArray<?> jso) {
 				//TODO implement me
 			}
-		})));
+		}));
+		JsArray<ModuleJSO> jsarray = (JsArray<ModuleJSO>) JavaScriptObject.createArray();
+		jsarray.push(jso);
+		object.wrap(jsarray);
 		return object;
 	}
 	
@@ -36,7 +39,7 @@ public class Angular {
 	//TODO Figure out how to support Creator
 	private static native ModuleJSO _module(String name, JsArrayString requires, Invoker invoker) /*-{
 		return $wnd.angular.module(name, [ "ngRoute", "ngSanitize" ], function () {
-			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)({});
+			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)();
 		});
 	}-*/;
 	

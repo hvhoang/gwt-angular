@@ -40,8 +40,8 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
 
 #foreach($dependency in ${dependencies})
     private native JSObject __${generatedSimpleName}_consturct_${foreach.index}(Invoker invoker) /*-{
-        return [#foreach($name in ${dependency})'${name}',#end function(arguments) {
-            invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(arguments);
+        return [#foreach($name in ${dependency})'${name}',#end function() {
+            invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
             return arguments;
         }];
     }-*/;

@@ -5,6 +5,8 @@ import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -16,8 +18,8 @@ public class Http implements Service {
 	protected Q q; //TODO Must figure out dependency injection
 	
 	//TODO Expose RequestCallback and still support Promise
-	public <T extends JSObject> Request get(final String url, HttpCallback<T> callback) throws RequestException {
-		final Deferred<T> deferred = q.defer();
+	public <T extends JSObject> Request get(final String url, HttpCallback callback) throws RequestException {
+		final Deferred deferred = q.defer();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		GWT.log("[GET] " + url);
 		Request request = builder.sendRequest(null, new RequestCallback() {
@@ -26,7 +28,9 @@ public class Http implements Service {
 				int status = response.getStatusCode();
 				GWT.log("[" + status + "] " + url);
 				if (status == 200) {
-					deferred.resolve(T.<T>parse(response.getText()));
+					JsArray<JSObject> jsarray = (JsArray<JSObject>) JavaScriptObject.createArray();
+					jsarray.push(JSObject.parse(response.getText()));
+					deferred.resolve(jsarray);
 				}
 			}
 			@Override

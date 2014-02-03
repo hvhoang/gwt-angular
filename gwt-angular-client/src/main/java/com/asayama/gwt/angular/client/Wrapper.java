@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.JSObject;
+import com.google.gwt.core.client.JsArray;
 
 public interface Wrapper {
-	void wrap(JSObject delegate);
+	void wrap(JsArray<?> jsarray);
 }

@@ -1,23 +1,26 @@
 package com.asayama.gwt.core.client;
 
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+
 public class Invoker {
 	
-	final Function<JSObject,JSObject> delegate;
+	final Function<?> delegate;
 	
-	@SuppressWarnings("unchecked")
-	public <R extends JSObject, T extends JSObject> Invoker(Function<R,T> delegate) {
+	public <R extends JavaScriptObject> Invoker(Function<R> delegate) {
 		try {
-			this.delegate = (Function<JSObject,JSObject>) delegate;
+			this.delegate = delegate;
 		} catch (ClassCastException e) {
 			throw new UnsupportedOperationException("Incompatible callback type specified for invoker.");
 		}
 	}
 	
-	public JSObject invoke() {
+	public JavaScriptObject invoke() {
 		return delegate.function(null);
 	}
 	
-	public JSObject invoke(JSObject jso) {
+	public JavaScriptObject invoke(JsArray<?> jso) {
 		return delegate.function(jso);
 	}
+
 }

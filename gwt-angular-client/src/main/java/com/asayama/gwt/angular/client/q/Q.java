@@ -4,6 +4,8 @@ import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.core.client.JSObject;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 @Depends("$q")
 public class Q implements Service, Wrapper {
@@ -11,15 +13,19 @@ public class Q implements Service, Wrapper {
 	QJSO delegate;
 	
 	@SuppressWarnings("unchecked")
-	public <T extends JSObject> Deferred<T> defer() {
-		Deferred<T> deferred = new Deferred<T>();
-		deferred.wrap((DeferredJSO<T>) delegate._defer());
+	public <T extends JSObject> Deferred defer() {
+		Deferred deferred = new Deferred();
+		JsArray<DeferredJSO> jsarray = (JsArray<DeferredJSO>) JavaScriptObject.createArray();
+		jsarray.push(delegate._defer());
+		deferred.wrap(jsarray);
 		return deferred;
 	}
 
 	@Override
-	public void wrap(JSObject delegate) {
-		this.delegate = delegate.cast();
+	public void wrap(JsArray<?> jsarray) {
+		if (jsarray != null && jsarray.length() > 0) {
+			this.delegate = jsarray.get(0).cast();
+		}
 	}
 
 }
@@ -28,7 +34,7 @@ class QJSO extends JSObject {
 	protected QJSO(){
 	}
 	
-	final native <T extends JSObject> DeferredJSO<T> _defer() /*-{
+	final native DeferredJSO _defer() /*-{
 		return this.defer();
 	}-*/;
 

@@ -8,6 +8,8 @@ import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.q.SuccessCallback;
 import com.asayama.gwt.angular.client.route.RouteParams;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -57,18 +59,20 @@ public class MyController implements Controller {
 		
 		// $q + RequestBuiler
 		// Try returning PromiseJSO to the view and see if view can resolve it.
-		Promise<Customers> promise = loadCustomers(url);
-		promise.then(new SuccessCallback<Customers>() {
+		Promise promise = loadCustomers(url);
+		promise.then(new SuccessCallback() {
 			@Override
-			public void onSuccess(Customers object) {
-				setCustomers(object);
+			public void onSuccess(JsArray<?> jsarray) {
+				if (jsarray != null && jsarray.length() > 0) {
+					Customers customers = jsarray.get(0).cast();
+					setCustomers(customers);
+				}
 			}
 		});
-		
 	}
 	
-	public Promise<Customers> loadCustomers(final String url) {
-		final Deferred<Customers> deferred = q.defer();
+	public Promise loadCustomers(final String url) {
+		final Deferred deferred = q.defer();
 		try {
 			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 			GWT.log("[GET] " + url);
@@ -78,8 +82,11 @@ public class MyController implements Controller {
 					int status = response.getStatusCode();
 					GWT.log("[" + status + "] " + url);
 					if (status == 200) {
-						Customers customers = Customers.parse(response.getText());
-						deferred.resolve(customers);
+						String responseString = response.getText();
+						Customers customers = Customers.parse(responseString);
+						JsArray<Customers> jsarray = (JsArray<Customers>) JavaScriptObject.createArray();
+						jsarray.push(customers);
+						deferred.resolve(jsarray);
 					}
 				}
 				@Override

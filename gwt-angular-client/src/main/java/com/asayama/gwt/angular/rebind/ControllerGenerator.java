@@ -73,20 +73,16 @@ public class ControllerGenerator extends Generator {
 			// Services
 			{
 				List<JField> fieldList = new ArrayList<JField>();
-				List<JField> nativeList = new ArrayList<JField>();
 				JField[] fields = classType.getFields();
 				for (JField item : fields) {
 					JClassType itemClassType = item.getType().isClassOrInterface();
 					if (itemClassType != null && JClassTypeUtils.supports(itemClassType, Service.class)) {
-						if (JClassTypeUtils.supports(itemClassType, JSObject.class)) {
-							nativeList.add(item);
-						} else {
+						if (!JClassTypeUtils.supports(itemClassType, JSObject.class)) {
 							fieldList.add(item);
 						}
 					}
 				}
 				velocity.put("serviceFields", fieldList);
-				velocity.put("nativeServiceFields", nativeList);
 			}
 			
 			// Generate type

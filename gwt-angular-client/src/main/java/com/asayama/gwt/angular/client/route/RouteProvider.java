@@ -5,6 +5,7 @@ import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 @Depends("$routeProvider")
 public class RouteProvider implements Provider, Wrapper {
@@ -31,8 +32,10 @@ public class RouteProvider implements Provider, Wrapper {
 	// Wrapper Methods
 	
 	@Override
-	public void wrap(JSObject delegate) {
-		this.delegate = delegate.cast();
+	public void wrap(JsArray<?> jsarray) {
+		if (jsarray != null && jsarray.length() > 0) {
+			this.delegate = jsarray.get(0).cast();
+		}
 	}
 
 }

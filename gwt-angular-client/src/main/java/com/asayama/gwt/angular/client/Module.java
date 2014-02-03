@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
@@ -32,33 +33,37 @@ public abstract class Module implements Wrapper {
 	public abstract <T extends Injectable> void onInjection(T object);
 
 	/*
-	 * Controller Factory
+	 * Provider Factory
 	 */
 	
-	public <T extends Controller> T controller(Class<T> klass) {
-		ControllerCreator<T> creator = GWT.create(ControllerCreator.class);
-		return controller(klass.getName(), creator.create(klass));
-	}
-
-	protected <T extends Controller> T controller(final String name, final T controller) {
-		Closure<ScopeJSO> closure = new Closure<ScopeJSO>() {
+	public <T extends Provider> T config(Class<T> klass) {
+		
+		ProviderCreator<T> creator = GWT.create(ProviderCreator.class);
+		final T object = creator.create(klass);
+		final String name = klass.getName();
+		
+		Closure closure = new Closure() {
 			@Override
-			public void closure(ScopeJSO scope) {
+			public void closure(JsArray<?> jsarray) {
 				String m = "";
+				if (object instanceof Wrapper) {
+					GWT.log(m = "calling " + object.getClass().getName() + ".wrap(JsArray)");
+					((Wrapper) object).wrap(jsarray);
+				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-					Module.this.onInjection(controller);
+					Module.this.onInjection(object);
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
 			}
 		};
-		Constructable ctor = (Constructable) controller;
-		JSObject jsarray = ctor.construct(new Invoker(closure));
-		delegate.controller(name, jsarray);
-		return controller;
+		
+		JSObject jsarray = creator.construct(klass, new Invoker(closure));
+		delegate.config(jsarray);
+		return object;
 	}
-
+	
 	/*
 	 * Factory Factory
 	 */
@@ -69,13 +74,13 @@ public abstract class Module implements Wrapper {
 		final T object = creator.create(klass);
 		final String name = klass.getName();
 		
-		Closure<JSObject> closure = new Closure<JSObject>() {
+		Closure closure = new Closure() {
 			@Override
-			public void closure(JSObject jso) {
+			public void closure(JsArray<?> jsarray) {
 				String m = "";
 				if (object instanceof Wrapper) {
-					GWT.log(m = "calling " + name + ".setDelegate(JSObject)");
-					((Wrapper) object).wrap(jso);
+					GWT.log(m = "calling " + name + ".wrap(JsArray)");
+					((Wrapper) object).wrap(jsarray);
 				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -92,37 +97,33 @@ public abstract class Module implements Wrapper {
 	}
 	
 	/*
-	 * Provider Factory
+	 * Controller Factory
 	 */
 	
-	public <T extends Provider> T config(Class<T> klass) {
-		
-		ProviderCreator<T> creator = GWT.create(ProviderCreator.class);
-		final T object = creator.create(klass);
-		final String name = klass.getName();
-		
-		Closure<JSObject> closure = new Closure<JSObject>() {
+	public <T extends Controller> T controller(Class<T> klass) {
+		ControllerCreator<T> creator = GWT.create(ControllerCreator.class);
+		return controller(klass.getName(), creator.create(klass));
+	}
+
+	protected <T extends Controller> T controller(final String name, final T controller) {
+		Closure closure = new Closure() {
 			@Override
-			public void closure(JSObject jso) {
+			public void closure(JsArray<?> scope) {
 				String m = "";
-				if (object instanceof Wrapper) {
-					GWT.log(m = "calling " + object.getClass().getName() + ".setDelegate(JSObject)");
-					((Wrapper) object).wrap(jso);
-				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-					Module.this.onInjection(object);
+					Module.this.onInjection(controller);
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
 			}
 		};
-		
-		JSObject jsarray = creator.construct(klass, new Invoker(closure));
-		delegate.config(jsarray);
-		return object;
+		Constructable ctor = (Constructable) controller;
+		JSObject jsarray = ctor.construct(new Invoker(closure));
+		delegate.controller(name, jsarray);
+		return controller;
 	}
-	
+
 	public String getName() {
 		return delegate.getName();
 	}
@@ -139,8 +140,10 @@ public abstract class Module implements Wrapper {
 	// Wrapper Methods
 
 	@Override
-	public void wrap(JSObject delegate) {
-		this.delegate = delegate.cast();
+	public void wrap(JsArray<?> jsarray) {
+		if (jsarray != null && jsarray.length() > 0) {
+			this.delegate = jsarray.get(0).cast();
+		}
 	}
 
 }

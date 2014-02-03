@@ -1,59 +1,56 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
-import com.google.gwt.core.shared.GWT;
+import com.asayama.gwt.core.client.JSObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * TODO T should not have to extend JSObject.
  */
-public class Promise<T extends JSObject> extends JSObject {
+public class Promise extends JSObject {
 
 	protected Promise() {
 	}
 	
-	public final Promise<T> then(final PromiseCallback<T> callback) {
-		$then(new Invoker(new Closure<T>() {
+	public final Promise then(final PromiseCallback callback) {
+		_then(new Invoker(new Closure() {
 			@Override
-			public void closure(T jso) {
-				GWT.log("Promise.then: onSuccess: " + (jso == null ? null : jso.getClass().getName()));
-				callback.onSuccess(jso);
+			public void closure(JsArray<?> jsarray) {
+				callback.onSuccess(jsarray);
 			}
-		}), new Invoker(new Closure<T>() {
+		}), new Invoker(new Closure() {
 			@Override
-			public void closure(T jso) {
-				GWT.log("Promise.then: onError: " + (jso == null ? null : jso.getClass().getName()));
-				callback.onError(jso);
+			public void closure(JsArray<?> jsarray) {
+				callback.onError(jsarray);
 			}
-		}), new Invoker(new Closure<T>() {
+		}), new Invoker(new Closure() {
 			@Override
-			public void closure(T jso) {
-				GWT.log("Promise.then: onSignal: " + (jso == null ? null : jso.getClass().getName()));
-				callback.onSignal(jso);
+			public void closure(JsArray<?> jsarray) {
+				callback.onSignal(jsarray);
 			}
 		}));
 		return this;
 	}
 	
-	public final Promise<T> success(SuccessCallback<T> callback) {
+	public final Promise success(SuccessCallback callback) {
 		then(callback);
 		return this;
 	}
 	
-	public final Promise<T> error(ErrorCallback<T> callback) {
+	public final Promise error(ErrorCallback callback) {
 		then(callback);
 		return this;
 	}
 
-	final native void $then(Invoker successCallback, Invoker errorCallback, Invoker signalCallback) /*-{
+	final native void _then(Invoker successCallback, Invoker errorCallback, Invoker signalCallback) /*-{
 		this.then(
-			function (jso) {
-				successCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(jso);
-			}, function (jso) {
-				errorCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(jso);
-			}, function (jso) {
-				signalCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(jso);
+			function (jsarray) {
+				successCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(jsarray);
+			}, function (jsarray) {
+				errorCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(jsarray);
+			}, function (jsarray) {
+				signalCallback.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(jsarray);
 			});
 	}-*/;
 	
