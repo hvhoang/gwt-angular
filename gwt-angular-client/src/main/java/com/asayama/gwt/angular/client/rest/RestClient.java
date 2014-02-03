@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client.rest;
 
 import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.core.client.JSObject;
@@ -11,7 +12,7 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 
-
+@Depends(Q.class)
 public class RestClient implements Service {
 
 	protected Q q; //TODO Must figure out dependency injection
