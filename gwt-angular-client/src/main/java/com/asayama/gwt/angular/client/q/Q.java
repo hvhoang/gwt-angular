@@ -1,11 +1,14 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.angular.client.AngularWrapper;
+import com.asayama.gwt.angular.client.Constructable;
 import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.Wrapper;
+import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 
-public class Q implements Service, AngularWrapper {
+@Depends(name = "$q")
+public class Q implements Service, Wrapper, Constructable {
 
 	QJSO delegate;
 	

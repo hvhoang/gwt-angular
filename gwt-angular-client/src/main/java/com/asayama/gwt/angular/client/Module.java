@@ -1,7 +1,6 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -65,32 +64,31 @@ public abstract class Module implements Wrapper {
 	 */
 	
 	public <T extends Service> T factory(Class<T> klass) {
+		
 		ServiceCreator<T> creator = GWT.create(ServiceCreator.class);
-		return factory(klass.getName(), creator.create(klass));
-	}
-
-	protected <T extends Service> T factory(final String name, final T service) {
-		Function<JSObject,JSObject> function = new Function<JSObject,JSObject>() {
+		final T object = creator.create(klass);
+		final String name = klass.getName();
+		
+		Closure<JSObject> closure = new Closure<JSObject>() {
 			@Override
-			public JSObject function(JSObject jso) {
+			public void closure(JSObject jso) {
 				String m = "";
+				if (object instanceof Wrapper) {
+					GWT.log(m = "calling " + name + ".setDelegate(JSObject)");
+					((Wrapper) object).wrap(jso);
+				}
 				try {
-					if (service instanceof Wrapper) {
-						GWT.log(m = "calling " + name + ".setDelegate(JSObject)");
-						((Wrapper) service).wrap(jso);
-					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-					Module.this.onInjection(service);
+					Module.this.onInjection(object);
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
-				return jso;
 			}
 		};
-		AngularWrapper ctor = (AngularWrapper) service;
-		JSObject jsarray = ctor.construct(new Invoker(function));
+		
+		JSObject jsarray = creator.construct(klass, new Invoker(closure));
 		delegate.factory(name, jsarray);
-		return service;
+		return object;
 	}
 	
 	/*
@@ -98,32 +96,31 @@ public abstract class Module implements Wrapper {
 	 */
 	
 	public <T extends Provider> T config(Class<T> klass) {
+		
 		ProviderCreator<T> creator = GWT.create(ProviderCreator.class);
-		return config(creator.create(klass));
-	}
-
-	protected <T extends Provider> T config(final T provider) {
-		final String name = provider.getClass().getName();
+		final T object = creator.create(klass);
+		final String name = klass.getName();
+		
 		Closure<JSObject> closure = new Closure<JSObject>() {
 			@Override
 			public void closure(JSObject jso) {
 				String m = "";
+				if (object instanceof Wrapper) {
+					GWT.log(m = "calling " + object.getClass().getName() + ".setDelegate(JSObject)");
+					((Wrapper) object).wrap(jso);
+				}
 				try {
-					if (provider instanceof Wrapper) {
-						GWT.log(m = "calling " + provider.getClass().getName() + ".setDelegate(JSObject)");
-						((Wrapper) provider).wrap(jso);
-					}
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-					Module.this.onInjection(provider);
+					Module.this.onInjection(object);
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
 			}
 		};
-		AngularWrapper ctor = (AngularWrapper) provider;
-		JSObject jsarray = ctor.construct(new Invoker(closure));
+		
+		JSObject jsarray = creator.construct(klass, new Invoker(closure));
 		delegate.config(jsarray);
-		return provider;
+		return object;
 	}
 	
 	public String getName() {

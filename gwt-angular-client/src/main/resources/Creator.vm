@@ -8,6 +8,7 @@ package ${packageName};
 import java.util.*;
 
 import com.google.gwt.core.client.*;
+import com.asayama.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
 public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifiedName}<T> {
@@ -15,6 +16,7 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     protected ${generatedSimpleName}() {
     }
     
+    @Override
     public T create(Class<? extends T> klass) {
         String name = klass.getName();
         GWT.log("creating " + name);
@@ -25,6 +27,25 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
 #end
         throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
     }
+
+    @Override
+    public JSObject construct(Class<? extends T> klass, Invoker invoker) {
+#foreach($returnClassType in ${returnClassTypes})
+        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
+            return __${generatedSimpleName}_consturct_${foreach.index}(invoker);
+        }
+#end
+        return null;
+    }
+
+#foreach($dependency in ${dependencies})
+    private native JSObject __${generatedSimpleName}_consturct_${foreach.index}(Invoker invoker) /*-{
+        return [#foreach($name in ${dependency})'${name}',#end function(arguments) {
+            invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)(arguments);
+            return arguments;
+        }];
+    }-*/;
+#end
 
 }
 //--end of ${generatedQualifiedName}

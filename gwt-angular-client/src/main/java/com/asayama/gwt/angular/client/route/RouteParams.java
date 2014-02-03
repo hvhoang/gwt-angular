@@ -2,12 +2,15 @@ package com.asayama.gwt.angular.client.route;
 
 import java.util.Date;
 
-import com.asayama.gwt.angular.client.AngularWrapper;
+import com.asayama.gwt.angular.client.Constructable;
 import com.asayama.gwt.angular.client.Service;
+import com.asayama.gwt.angular.client.Wrapper;
+import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 
-public class RouteParams implements Service, AngularWrapper {
+@Depends(name = "$routeParams")
+public class RouteParams implements Service, Wrapper, Constructable {
 
 	RouteParamsJSO delegate;
 	

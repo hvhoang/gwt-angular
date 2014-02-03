@@ -14,6 +14,7 @@ import com.asayama.gwt.core.client.JSObject;
  * See also https://code.google.com/p/google-web-toolkit/issues/detail?id=4859
  * </p>
  */
+@Deprecated
 public interface Constructable {
 	JSObject construct(Invoker invoker);
 }

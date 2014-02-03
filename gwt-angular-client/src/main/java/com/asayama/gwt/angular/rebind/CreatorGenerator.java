@@ -1,7 +1,10 @@
 package com.asayama.gwt.angular.rebind;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.asayama.gwt.angular.client.annotations.Depends;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -66,6 +69,19 @@ public class CreatorGenerator extends Generator {
 			}
 			velocity.put("parameterClassType", parameterClassType.getQualifiedSourceName());
 			velocity.put("returnClassTypes", returnClassTypes);
+			
+			// Find the dependency of all return types
+			List<String[]> dependencies = new ArrayList<String[]>();
+			for (JClassType returnClassType : returnClassTypes) {
+				Depends depends = returnClassType.getAnnotation(Depends.class);
+				if (depends == null) {
+					dependencies.add(new String[0]);
+					continue;
+				}
+				String[] names = depends.name();
+				dependencies.add(names);
+			}
+			velocity.put("dependencies", dependencies);
 			
 			// Generate type
 			PrintWriter wrier = context.tryCreate(logger, packageName, generatedSimpleName);
