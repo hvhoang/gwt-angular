@@ -71,7 +71,6 @@ public abstract class Module implements Wrapper {
 
 	protected <T extends Service> T factory(final String name, final T service) {
 		Function<JSObject,JSObject> function = new Function<JSObject,JSObject>() {
-			@SuppressWarnings("unchecked")
 			@Override
 			public JSObject function(JSObject jso) {
 				String m = "";
@@ -106,7 +105,6 @@ public abstract class Module implements Wrapper {
 	protected <T extends Provider> T config(final T provider) {
 		final String name = provider.getClass().getName();
 		Closure<JSObject> closure = new Closure<JSObject>() {
-			@SuppressWarnings("unchecked")
 			@Override
 			public void closure(JSObject jso) {
 				String m = "";
