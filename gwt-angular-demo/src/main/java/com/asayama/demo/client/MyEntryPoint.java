@@ -17,7 +17,7 @@ public class MyEntryPoint implements EntryPoint {
 		myModule.config(RouteProvider.class);
 		myModule.factory(Q.class);
 		myModule.factory(RouteParams.class);
-//		myModule.factory(RestClient.class);
+		myModule.factory(RestClient.class);
 		myModule.controller(MyController.class);
 		
 		Angular.bootstrap(myModule);
