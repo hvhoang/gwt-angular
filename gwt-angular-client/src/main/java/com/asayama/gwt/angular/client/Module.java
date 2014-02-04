@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
@@ -44,11 +43,11 @@ public abstract class Module {
 		
 		Closure closure = new Closure() {
 			@Override
-			public void closure(JsArray<?> jsarray) {
+			public void closure(Object... args) {
 				String m = "";
-				if (object instanceof NGObjectWrapper) {
+				if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
 					GWT.log(m = "calling " + name + ".wrap(NGObject)");
-					((NGObjectWrapper) object).wrap(jsarray.get(0).<NGObject>cast());
+					((NGObjectWrapper) object).wrap((NGObject) args[0]);
 				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -76,11 +75,11 @@ public abstract class Module {
 		
 		Closure closure = new Closure() {
 			@Override
-			public void closure(JsArray<?> jsarray) {
+			public void closure(Object... args) {
 				String m = "";
-				if (object instanceof NGObjectWrapper) {
+				if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
 					GWT.log(m = "calling " + name + ".wrap(NGObject)");
-					((NGObjectWrapper) object).wrap(jsarray.get(0).<NGObject>cast());
+					((NGObjectWrapper) object).wrap((NGObject) args[0]);
 				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -108,7 +107,7 @@ public abstract class Module {
 	protected <T extends Controller> T controller(final String name, final T controller) {
 		Closure closure = new Closure() {
 			@Override
-			public void closure(JsArray<?> scope) {
+			public void closure(Object... args) {
 				String m = "";
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");

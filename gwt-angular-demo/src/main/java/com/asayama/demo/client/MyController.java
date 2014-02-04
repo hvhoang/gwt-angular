@@ -8,8 +8,6 @@ import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.q.SuccessCallback;
 import com.asayama.gwt.angular.client.route.RouteParams;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -34,6 +32,9 @@ public class MyController implements Controller {
 	
 	@Override
 	public void onControllerLoad(final Scope scope) {
+
+		GWT.log("entering MyController.onControllerLoad");
+		
 		this.scope = scope;
 
 		String name = routeParams.getString("name");
@@ -43,7 +44,8 @@ public class MyController implements Controller {
 
 		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
 
-//		try {
+		try {
+
 //			http.get(url, new HttpCallback<Customers>() {
 //				@Override
 //				public void onSuccess(Customers object) {
@@ -53,54 +55,48 @@ public class MyController implements Controller {
 //				public void onError(Customers object) {
 //				}
 //			});
-//		} catch (RequestException e) {
-//			GWT.log("Exception while calling " + url, e);
-//		}
-		
-		// $q + RequestBuiler
-		// Try returning PromiseJSO to the view and see if view can resolve it.
-		Promise promise = loadCustomers(url);
-		promise.then(new SuccessCallback() {
-			@Override
-			public void success(JsArray<?> jsarray) {
-				if (jsarray != null && jsarray.length() > 0) {
-					Customers customers = jsarray.get(0).cast();
-					setCustomers(customers);
-				}
-			}
-		});
-	}
-	
-	public Promise loadCustomers(final String url) {
-		final Deferred deferred = q.defer();
-		try {
-			RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
-			GWT.log("[GET] " + url);
-			builder.sendRequest(null, new RequestCallback() {
+
+			// $q + RequestBuiler
+			// Try returning PromiseJSO to the view and see if view can resolve it.
+			Promise promise = loadCustomers(url);
+			promise.then(new SuccessCallback() {
 				@Override
-				public void onResponseReceived(Request request, Response response) {
-					int status = response.getStatusCode();
-					GWT.log("[" + status + "] " + url);
-					if (status == 200) {
-						String responseString = response.getText();
-						Customers customers = Customers.parse(responseString);
-						JsArray<Customers> jsarray = (JsArray<Customers>) JavaScriptObject.createArray();
-						jsarray.push(customers);
-						deferred.resolve(jsarray);
+				public void success(Object... args) {
+					if (args != null && args.length > 0) {
+						Customers customers = (Customers) args[0];
+						setCustomers(customers);
 					}
 				}
-				@Override
-				public void onError(Request request, Throwable exception) {
-					GWT.log("[ERR] " + url, exception);
-					deferred.reject(null);//FIXME figure out what to do here
-				}
 			});
-			return deferred.promise();
-
+		
 		} catch (RequestException e) {
-			GWT.log("Exception", e);
-			return null; //FIXME figure out what to do where, too.
+			GWT.log("Exception while calling " + url, e);
 		}
+		
+	}
+	
+	public Promise loadCustomers(final String url) throws RequestException {
+		final Deferred deferred = q.defer();
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+		GWT.log("[GET] " + url);
+		builder.sendRequest(null, new RequestCallback() {
+			@Override
+			public void onResponseReceived(Request request, Response response) {
+				int status = response.getStatusCode();
+				GWT.log("[" + status + "] " + url);
+				if (status == 200) {
+					String responseString = response.getText();
+					Customers customers = Customers.parse(responseString);
+					deferred.resolve(customers);
+				}
+			}
+			@Override
+			public void onError(Request request, Throwable exception) {
+				GWT.log("[ERR] " + url, exception);
+				deferred.reject(null);//FIXME figure out what to do here
+			}
+		});
+		return deferred.promise();
 	}
 
 	// Public event handler are automatically wired to AngularJS's $scope.

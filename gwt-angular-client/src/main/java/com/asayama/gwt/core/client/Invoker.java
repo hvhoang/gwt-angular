@@ -16,12 +16,19 @@ public class Invoker {
 	}
 	
 	public JavaScriptObject invoke() {
-		return delegate.function(null);
+		return (JavaScriptObject) delegate.function();
 	}
 	
-	public JavaScriptObject invoke(JsArray<?> jso) {
-		//TODO convert from JsArray to Object[]
-		return delegate.function(jso);
+	public JavaScriptObject invoke(JsArray<?> jsarray) {
+		Object[] args = null;
+		if (jsarray != null) {
+			args = new Object[jsarray.length()];
+			for (int i = 0; i < jsarray.length(); i++) {
+				JavaScriptObject jso = jsarray.get(i);
+				args[i] = jso;
+			}
+		}
+		return (JavaScriptObject) delegate.function(args);
 	}
 
 }

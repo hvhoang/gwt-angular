@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
+import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.Invoker;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 
 interface ModuleCreator<T extends Module> extends Creator<T> {
@@ -19,7 +19,7 @@ public class Angular {
 		
 		Closure closure = new Closure() {
 			@Override
-			public void closure(JsArray<?> jsarray) {
+			public void closure(Object... args) {
 			}
 		};
 
@@ -29,11 +29,26 @@ public class Angular {
 	}
 	
 	public static void bootstrap(Module... modules) {
+		String m = "";
 		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
 		for (Module module : modules) {
 			jsarray.push(module.getName());
 		}
-		_bootstrap(jsarray);
+		try {
+			GWT.log(m = "bootstrapping " + new Function<String>() {
+				@Override
+				public String function(Object... args) {
+					String names = "";
+					for (Object arg : args) {
+						names += ((Module) arg).getName() + " ";
+					}
+					return names;
+				}
+			}.function((Object[]) modules));
+			_bootstrap(jsarray);
+		} catch (Exception e) {
+			GWT.log("Exception while " + m, e);
+		}
 	}
 
 	//TODO Support Creator.constructor method instead of the below method.
