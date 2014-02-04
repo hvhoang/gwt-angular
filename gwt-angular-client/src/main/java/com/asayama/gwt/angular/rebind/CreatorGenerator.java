@@ -17,6 +17,7 @@ import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
+// TODO Consider moving the Controller.construct method generation to this class.
 public class CreatorGenerator extends Generator {
 
 	private static final String[] EMPTY_STRING_ARRAY = new String[0];
