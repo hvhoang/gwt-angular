@@ -17,12 +17,12 @@ public class Q implements Service, Wrapper {
 		Deferred deferred = new Deferred();
 		JsArray<DeferredJSO> jsarray = (JsArray<DeferredJSO>) JavaScriptObject.createArray();
 		jsarray.push(delegate._defer());
-		deferred.wrap(jsarray);
+		deferred.onInjection(jsarray);
 		return deferred;
 	}
 
 	@Override
-	public void wrap(JsArray<?> jsarray) {
+	public void onInjection(JsArray<?> jsarray) {
 		if (jsarray != null && jsarray.length() > 0) {
 			this.delegate = jsarray.get(0).cast();
 		}

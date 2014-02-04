@@ -1,5 +1,5 @@
 package com.asayama.gwt.angular.client;
 
-public interface NGObject {
+public interface NGObject extends Injectable {
 
 }

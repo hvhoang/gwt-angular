@@ -23,7 +23,7 @@ public class Angular {
 		}));
 		JsArray<ModuleJSO> jsarray = (JsArray<ModuleJSO>) JavaScriptObject.createArray();
 		jsarray.push(jso);
-		object.wrap(jsarray);
+		object.onInjection(jsarray);
 		return object;
 	}
 	

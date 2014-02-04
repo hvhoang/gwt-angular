@@ -79,7 +79,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
             GWT.log(m = "setting ${qualifiedName}.${field.name}");
             ${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
             if (${field.name} instanceof Wrapper) {
-                ${field.name}.wrap(jsarray);
+                ${field.name}.onInjection(jsarray);
             }
             //super.onInjection(${field.name});
         } catch (Exception e) {

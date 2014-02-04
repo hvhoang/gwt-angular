@@ -32,7 +32,7 @@ public class RouteProvider implements Provider, Wrapper {
 	// Wrapper Methods
 	
 	@Override
-	public void wrap(JsArray<?> jsarray) {
+	public void onInjection(JsArray<?> jsarray) {
 		if (jsarray != null && jsarray.length() > 0) {
 			this.delegate = jsarray.get(0).cast();
 		}

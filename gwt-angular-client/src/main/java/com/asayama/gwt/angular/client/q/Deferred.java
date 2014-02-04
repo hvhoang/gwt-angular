@@ -27,7 +27,7 @@ public class Deferred implements Wrapper {
 	DeferredJSO delegate = null;
 
 	@Override
-	public void wrap(JsArray<?> jsarray) {
+	public void onInjection(JsArray<?> jsarray) {
 		if (jsarray != null && jsarray.length() > 0) {
 			this.delegate = jsarray.get(0).cast();
 		}
