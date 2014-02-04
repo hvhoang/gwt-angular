@@ -4,18 +4,23 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.asayama.gwt.angular.client.annotations.Depends;
+import com.asayama.gwt.angular.client.Injectable;
+import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.annotations.Bind;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.typeinfo.JClassType;
+import com.google.gwt.core.ext.typeinfo.JField;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
 public class CreatorGenerator extends Generator {
 
+	private static final String[] EMPTY_STRING_ARRAY = new String[0];
+	
 	@Override
 	public String generate(TreeLogger logger, GeneratorContext context, String qualifiedName) throws UnableToCompleteException {
 
@@ -73,13 +78,20 @@ public class CreatorGenerator extends Generator {
 			// Find the dependency of all return types
 			List<String[]> dependencies = new ArrayList<String[]>();
 			for (JClassType returnClassType : returnClassTypes) {
-				Depends depends = returnClassType.getAnnotation(Depends.class);
-				if (depends == null) {
-					dependencies.add(new String[0]);
-					continue;
+				JField[] fields = returnClassType.getFields();
+				List<String> names = new ArrayList<String>();
+				for (JField field : fields) {
+					JClassType fieldClassType = field.getType().isClassOrInterface();
+					if (JClassTypeUtils.supports(fieldClassType, NGObject.class)) {
+						Bind bind = fieldClassType.getAnnotation(Bind.class);
+						String name = bind.value();
+						names.add(name);
+					} else if (JClassTypeUtils.supports(fieldClassType, Injectable.class)) {
+						String name = fieldClassType.getQualifiedSourceName();
+						names.add(name);
+					}
 				}
-				String[] names = depends.value();
-				dependencies.add(names);
+				dependencies.add(names.toArray(EMPTY_STRING_ARRAY));
 			}
 			velocity.put("dependencies", dependencies);
 			

@@ -1,16 +1,16 @@
 package com.asayama.gwt.angular.client.route;
 
+import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.Wrapper;
-import com.asayama.gwt.angular.client.annotations.Depends;
+import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
-@Depends("$routeProvider")
 public class RouteProvider implements Provider, Wrapper {
 
-	RouteProviderJSO delegate;
+	protected RouteProviderJSO delegate;
 	
 	public RouteProvider when(String route, Template action) {
 		delegate.when(route, action);
@@ -39,7 +39,8 @@ public class RouteProvider implements Provider, Wrapper {
 	}
 
 }
-class RouteProviderJSO extends JSObject {
+@Bind("$routeProvider")
+class RouteProviderJSO extends JSObject implements NGObject {
 
 	protected RouteProviderJSO() {
 	}

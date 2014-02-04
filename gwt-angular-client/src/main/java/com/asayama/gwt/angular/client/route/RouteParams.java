@@ -2,16 +2,16 @@ package com.asayama.gwt.angular.client.route;
 
 import java.util.Date;
 
+import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.Wrapper;
-import com.asayama.gwt.angular.client.annotations.Depends;
+import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JsArray;
 
-@Depends("$routeParams")
 public class RouteParams implements Service, Wrapper {
 
-	RouteParamsJSO delegate;
+	protected RouteParamsJSO delegate;
 	
 	public String getString(String key) {
 		return delegate.getStringParam(key);
@@ -43,7 +43,8 @@ public class RouteParams implements Service, Wrapper {
 	}
 
 }
-class RouteParamsJSO extends JSObject {
+@Bind("$routeParams")
+class RouteParamsJSO extends JSObject implements NGObject {
 
 	protected RouteParamsJSO() {
 	}
