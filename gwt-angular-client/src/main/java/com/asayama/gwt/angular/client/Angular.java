@@ -12,18 +12,19 @@ interface ModuleCreator<T extends Module> extends Creator<T> {
 public class Angular {
 	
 	public static <T extends Module> T module(Class<T> klass) {
+		
 		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
 		final T object = creator.create(klass);
 		final String name = klass.getName();
-		GWT.log("registering " + name + " with Anuglar");
-		ModuleJSO jso = _module(name, null, new Invoker(new Closure() {
-			public void closure(JsArray<?> jso) {
-				//TODO implement me
+		
+		Closure closure = new Closure() {
+			@Override
+			public void closure(JsArray<?> jsarray) {
 			}
-		}));
-		JsArray<ModuleJSO> jsarray = (JsArray<ModuleJSO>) JavaScriptObject.createArray();
-		jsarray.push(jso);
-		object.onInjection(jsarray);
+		};
+
+		//TODO Support module dependency
+		object.delegate = _module(name, null, new Invoker(closure));
 		return object;
 	}
 	
@@ -35,8 +36,7 @@ public class Angular {
 		_bootstrap(jsarray);
 	}
 
-	//TODO Support module dependency
-	//TODO Figure out how to support Creator
+	//TODO Support Creator.constructor method instead of the below method.
 	private static native ModuleJSO _module(String name, JsArrayString requires, Invoker invoker) /*-{
 		return $wnd.angular.module(name, [ "ngRoute", "ngSanitize" ], function () {
 			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)();
