@@ -20,6 +20,7 @@ public class Invoker {
 	}
 	
 	public JavaScriptObject invoke(JsArray<?> jso) {
+		//TODO convert from JsArray to Object[]
 		return delegate.function(jso);
 	}
 

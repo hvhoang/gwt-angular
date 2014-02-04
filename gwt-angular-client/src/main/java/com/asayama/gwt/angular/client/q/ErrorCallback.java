@@ -5,7 +5,7 @@ import com.google.gwt.core.client.JsArray;
 public abstract class ErrorCallback extends PromiseCallback {
 
 	@Override
-	public void onSuccess(JsArray<?> object) {
+	public void success(JsArray<?> object) {
 		// noop by default
 	}
 	

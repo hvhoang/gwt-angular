@@ -5,11 +5,11 @@ import com.google.gwt.core.client.JsArray;
 
 public abstract class PromiseCallback {
 
-	public abstract void onSuccess(JsArray<?> object);
+	public abstract void success(JsArray<?> object);
 	
-	public abstract void onError(JsArray<?> object);
+	public abstract void error(JsArray<?> object);
 	
-	public void onSignal(JsArray<?> object) {
+	public void signal(JsArray<?> object) {
 		//noop by default
 	}
 }

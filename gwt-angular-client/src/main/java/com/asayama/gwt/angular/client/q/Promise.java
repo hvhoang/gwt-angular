@@ -17,17 +17,17 @@ public class Promise extends JSObject {
 		_then(new Invoker(new Closure() {
 			@Override
 			public void closure(JsArray<?> jsarray) {
-				callback.onSuccess(jsarray);
+				callback.success(jsarray);
 			}
 		}), new Invoker(new Closure() {
 			@Override
 			public void closure(JsArray<?> jsarray) {
-				callback.onError(jsarray);
+				callback.error(jsarray);
 			}
 		}), new Invoker(new Closure() {
 			@Override
 			public void closure(JsArray<?> jsarray) {
-				callback.onSignal(jsarray);
+				callback.signal(jsarray);
 			}
 		}));
 		return this;

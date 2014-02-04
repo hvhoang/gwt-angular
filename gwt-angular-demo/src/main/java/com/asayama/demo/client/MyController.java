@@ -44,7 +44,7 @@ public class MyController implements Controller {
 		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
 
 //		try {
-//			rest.get(url, new RestCallback<Customers>() {
+//			http.get(url, new HttpCallback<Customers>() {
 //				@Override
 //				public void onSuccess(Customers object) {
 //					setCustomers(object);
@@ -62,7 +62,7 @@ public class MyController implements Controller {
 		Promise promise = loadCustomers(url);
 		promise.then(new SuccessCallback() {
 			@Override
-			public void onSuccess(JsArray<?> jsarray) {
+			public void success(JsArray<?> jsarray) {
 				if (jsarray != null && jsarray.length() > 0) {
 					Customers customers = jsarray.get(0).cast();
 					setCustomers(customers);

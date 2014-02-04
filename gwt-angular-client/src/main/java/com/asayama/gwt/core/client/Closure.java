@@ -9,11 +9,10 @@ public abstract class Closure implements Function<Void> {
 	@Override
 	public Void function(JsArray<?> jsarray) {
 		closure(jsarray);
-		return Void.INSTANCE;
+		return null;
 	}
 }
 class Void extends JSObject {
-	public static final Void INSTANCE = Void.create();
 	protected Void() {
 	}
 }
