@@ -47,7 +47,7 @@ public abstract class Module implements Wrapper {
 			public void closure(JsArray<?> jsarray) {
 				String m = "";
 				if (object instanceof Wrapper) {
-					GWT.log(m = "calling " + object.getClass().getName() + ".wrap(JsArray)");
+					GWT.log(m = "calling " + name + ".onInjection(JsArray)");
 					((Wrapper) object).onInjection(jsarray);
 				}
 				try {
@@ -79,7 +79,7 @@ public abstract class Module implements Wrapper {
 			public void closure(JsArray<?> jsarray) {
 				String m = "";
 				if (object instanceof Wrapper) {
-					GWT.log(m = "calling " + name + ".wrap(JsArray)");
+					GWT.log(m = "calling " + name + ".onInjection(JsArray)");
 					((Wrapper) object).onInjection(jsarray);
 				}
 				try {
