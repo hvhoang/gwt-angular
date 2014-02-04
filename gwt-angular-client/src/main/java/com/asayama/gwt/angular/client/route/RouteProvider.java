@@ -1,14 +1,12 @@
 package com.asayama.gwt.angular.client.route;
 
 import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Provider;
-import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
-public class RouteProvider implements Provider, Wrapper {
+public class RouteProvider implements Provider, NGObjectWrapper {
 
 	protected RouteProviderJSO delegate;
 	
@@ -29,18 +27,14 @@ public class RouteProvider implements Provider, Wrapper {
 		return this;
 	}
 
-	// Wrapper Methods
-	
 	@Override
-	public void onInjection(JsArray<?> jsarray) {
-		if (jsarray != null && jsarray.length() > 0) {
-			this.delegate = jsarray.get(0).cast();
-		}
+	public void wrap(NGObject delegate) {
+		this.delegate = delegate == null ? null : delegate.<RouteProviderJSO>cast();
 	}
 
 }
 @Bind("$routeProvider")
-class RouteProviderJSO extends JSObject implements NGObject {
+class RouteProviderJSO extends NGObject {
 
 	protected RouteProviderJSO() {
 	}

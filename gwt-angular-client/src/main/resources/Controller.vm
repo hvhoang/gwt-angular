@@ -78,8 +78,8 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
         try {
             GWT.log(m = "setting ${qualifiedName}.${field.name}");
             ${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
-            if (${field.name} instanceof Wrapper) {
-                ${field.name}.onInjection(jsarray);
+            if (${field.name} instanceof NGObjectWrapper) {
+                ${field.name}.wrap(jsarray.get(0).<NGObject>cast());
             }
             //super.onInjection(${field.name});
         } catch (Exception e) {

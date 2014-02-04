@@ -8,7 +8,7 @@ import com.asayama.gwt.angular.client.route.Template;
 
 //@Depends({ "ngRoute", "ngSanitize" })
 public class MyModule extends Module {
-
+	
 	@Override
 	public void onInjection(Injectable object) {
 		if (object instanceof RouteProvider) {

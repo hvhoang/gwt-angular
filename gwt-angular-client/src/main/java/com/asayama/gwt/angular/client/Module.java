@@ -13,7 +13,7 @@ interface ServiceCreator<T extends Service> extends Creator<T> {
 }
 interface ControllerCreator<T extends Controller> extends Creator<T> {
 }
-public abstract class Module implements Wrapper {
+public abstract class Module {
 	
 	ModuleJSO delegate;
 	
@@ -46,9 +46,9 @@ public abstract class Module implements Wrapper {
 			@Override
 			public void closure(JsArray<?> jsarray) {
 				String m = "";
-				if (object instanceof Wrapper) {
-					GWT.log(m = "calling " + name + ".onInjection(JsArray)");
-					((Wrapper) object).onInjection(jsarray);
+				if (object instanceof NGObjectWrapper) {
+					GWT.log(m = "calling " + name + ".wrap(NGObject)");
+					((NGObjectWrapper) object).wrap(jsarray.get(0).<NGObject>cast());
 				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -78,9 +78,9 @@ public abstract class Module implements Wrapper {
 			@Override
 			public void closure(JsArray<?> jsarray) {
 				String m = "";
-				if (object instanceof Wrapper) {
-					GWT.log(m = "calling " + name + ".onInjection(JsArray)");
-					((Wrapper) object).onInjection(jsarray);
+				if (object instanceof NGObjectWrapper) {
+					GWT.log(m = "calling " + name + ".wrap(NGObject)");
+					((NGObjectWrapper) object).wrap(jsarray.get(0).<NGObject>cast());
 				}
 				try {
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
@@ -135,15 +135,6 @@ public abstract class Module implements Wrapper {
 			results[i] = jsarray.get(i);
 		}
 		return results;
-	}
-
-	// Wrapper Methods
-
-	@Override
-	public void onInjection(JsArray<?> jsarray) {
-		if (jsarray != null && jsarray.length() > 0) {
-			this.delegate = jsarray.get(0).cast();
-		}
 	}
 
 }

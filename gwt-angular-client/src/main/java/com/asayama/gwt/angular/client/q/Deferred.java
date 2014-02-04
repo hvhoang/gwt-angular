@@ -1,10 +1,11 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JsArray;
 
-public class Deferred implements Wrapper {
+public class Deferred {
+
+	DeferredJSO delegate = null;
 
 	public void singal(JsArray<?> value) {
 		delegate.signal(value);
@@ -22,17 +23,6 @@ public class Deferred implements Wrapper {
 		return delegate.promise();
 	}
 	
-	// Wrapper Methods
-	
-	DeferredJSO delegate = null;
-
-	@Override
-	public void onInjection(JsArray<?> jsarray) {
-		if (jsarray != null && jsarray.length() > 0) {
-			this.delegate = jsarray.get(0).cast();
-		}
-	}
-
 }
 class DeferredJSO extends JSObject {
 

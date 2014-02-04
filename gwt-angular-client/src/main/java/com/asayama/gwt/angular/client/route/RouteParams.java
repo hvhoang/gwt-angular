@@ -3,13 +3,12 @@ package com.asayama.gwt.angular.client.route;
 import java.util.Date;
 
 import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
-import com.google.gwt.core.client.JsArray;
 
-public class RouteParams implements Service, Wrapper {
+public class RouteParams implements Service, NGObjectWrapper {
 
 	protected RouteParamsJSO delegate;
 	
@@ -33,18 +32,14 @@ public class RouteParams implements Service, Wrapper {
 		return delegate.getObjectParam(key);
 	}
 	
-	// Wrapper Methods
-	
 	@Override
-	public void onInjection(JsArray<?> jsarray) {
-		if (jsarray != null && jsarray.length() > 0) {
-			this.delegate = jsarray.get(0).cast();
-		}
+	public void wrap(NGObject delegate) {
+		this.delegate = delegate == null ? null : delegate.<RouteParamsJSO>cast();
 	}
 
 }
 @Bind("$routeParams")
-class RouteParamsJSO extends JSObject implements NGObject {
+class RouteParamsJSO extends NGObject {
 
 	protected RouteParamsJSO() {
 	}

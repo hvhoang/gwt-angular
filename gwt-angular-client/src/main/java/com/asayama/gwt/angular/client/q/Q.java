@@ -1,36 +1,29 @@
 package com.asayama.gwt.angular.client.q;
 
 import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.Wrapper;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
-public class Q implements Service, Wrapper {
+public class Q implements Service, NGObjectWrapper {
 
 	protected QJSO delegate;
 	
-	@SuppressWarnings("unchecked")
 	public <T extends JSObject> Deferred defer() {
 		Deferred deferred = new Deferred();
-		JsArray<DeferredJSO> jsarray = (JsArray<DeferredJSO>) JavaScriptObject.createArray();
-		jsarray.push(delegate._defer());
-		deferred.onInjection(jsarray);
+		deferred.delegate = delegate._defer();
 		return deferred;
 	}
 
 	@Override
-	public void onInjection(JsArray<?> jsarray) {
-		if (jsarray != null && jsarray.length() > 0) {
-			this.delegate = jsarray.get(0).cast();
-		}
+	public void wrap(NGObject delegate) {
+		this.delegate = delegate == null ? null : delegate.<QJSO>cast();
 	}
 
 }
 @Bind("$q")
-class QJSO extends JSObject implements NGObject {
+class QJSO extends NGObject {
 
 	protected QJSO(){
 	}
