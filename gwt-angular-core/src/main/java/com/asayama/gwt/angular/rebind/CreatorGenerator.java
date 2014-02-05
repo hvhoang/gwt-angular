@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asayama.gwt.angular.client.Injectable;
+import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.annotations.Bind;
+import com.asayama.gwt.angular.client.annotations.Depends;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -97,6 +99,17 @@ public class CreatorGenerator extends Generator {
 					} else if (JClassTypeUtils.supports(fieldClassType, Injectable.class)) {
 						String name = fieldClassType.getQualifiedSourceName();
 						names.add(name);
+					}
+				}
+				if (JClassTypeUtils.supports(returnClassType, Module.class)) {
+					Depends depends = returnClassType.getAnnotation(Depends.class);
+					String[] ng = depends.ng();
+					if (ng != null) for (String n : ng) {
+						names.add(n);
+					}
+					Class<?>[] nc = depends.value();
+					if (nc != null) for (Class<?> c : nc) {
+						names.add(c.getName());
 					}
 				}
 				dependencies.add(names.toArray(EMPTY_STRING_ARRAY));
