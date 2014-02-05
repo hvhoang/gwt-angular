@@ -1,6 +1,6 @@
-package com.asayama.gwt.angular.client.http;
+package com.asayama.gwt.angular.client.services.http;
 
-import com.asayama.gwt.angular.client.q.PromiseCallback;
+import com.asayama.gwt.angular.client.services.q.PromiseCallback;
 
 
 public abstract class HttpCallback extends PromiseCallback {

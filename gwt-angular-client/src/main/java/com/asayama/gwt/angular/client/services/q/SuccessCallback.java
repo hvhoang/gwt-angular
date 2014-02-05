@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.q;
+package com.asayama.gwt.angular.client.services.q;
 
 
 public abstract class SuccessCallback extends PromiseCallback {

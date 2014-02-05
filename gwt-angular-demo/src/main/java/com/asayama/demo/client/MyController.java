@@ -2,12 +2,12 @@ package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
-import com.asayama.gwt.angular.client.q.Deferred;
-import com.asayama.gwt.angular.client.q.Promise;
-import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.angular.client.q.SuccessCallback;
-import com.asayama.gwt.angular.client.route.RouteParams;
 import com.asayama.gwt.angular.client.services.Location;
+import com.asayama.gwt.angular.client.services.q.Deferred;
+import com.asayama.gwt.angular.client.services.q.Promise;
+import com.asayama.gwt.angular.client.services.q.Q;
+import com.asayama.gwt.angular.client.services.q.SuccessCallback;
+import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;

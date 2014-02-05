@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.route;
+package com.asayama.gwt.angular.route.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.core.client.JSObject;

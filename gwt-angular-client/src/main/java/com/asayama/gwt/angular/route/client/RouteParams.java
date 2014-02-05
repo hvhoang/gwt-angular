@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.route;
+package com.asayama.gwt.angular.route.client;
 
 import java.util.Date;
 

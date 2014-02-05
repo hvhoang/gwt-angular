@@ -1,8 +1,8 @@
-package com.asayama.gwt.angular.client.http;
+package com.asayama.gwt.angular.client.services.http;
 
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.q.Deferred;
-import com.asayama.gwt.angular.client.q.Q;
+import com.asayama.gwt.angular.client.services.q.Deferred;
+import com.asayama.gwt.angular.client.services.q.Q;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;

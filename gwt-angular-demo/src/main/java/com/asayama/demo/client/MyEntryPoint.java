@@ -1,10 +1,10 @@
 package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.angular.client.route.RouteParams;
-import com.asayama.gwt.angular.client.route.RouteProvider;
 import com.asayama.gwt.angular.client.services.Location;
+import com.asayama.gwt.angular.client.services.q.Q;
+import com.asayama.gwt.angular.route.client.RouteParams;
+import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
