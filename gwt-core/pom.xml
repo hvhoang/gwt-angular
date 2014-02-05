@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>gwt-angular-core</artifactId>
+	<artifactId>gwt-core</artifactId>
 	<packaging>jar</packaging>
-	<name>gwt-angular-core</name>
+	<name>gwt-core</name>
 	<parent>
 		<groupId>com.asayama.gwt</groupId>
 		<artifactId>gwt-angular</artifactId>
@@ -44,13 +44,6 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<scope>provided</scope>
-		</dependency>
-
-		<!-- GWT Utils -->
-		<dependency>
-			<groupId>com.asayama.gwt</groupId>
-			<artifactId>gwt-core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<!-- Code Generator -->
