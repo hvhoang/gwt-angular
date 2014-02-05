@@ -61,8 +61,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- JEE -->
-
 		<!-- Testing -->
 		<dependency>
 			<groupId>junit</groupId>
