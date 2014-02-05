@@ -5,8 +5,6 @@ import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -27,16 +25,17 @@ public class Http implements Service {
 			public void onResponseReceived(Request request, Response response) {
 				int status = response.getStatusCode();
 				GWT.log("[" + status + "] " + url);
-				if (status == 200) {
-					JsArray<JSObject> jsarray = (JsArray<JSObject>) JavaScriptObject.createArray();
-					jsarray.push(JSObject.parse(response.getText()));
-					deferred.resolve(jsarray);
-				}
+				deferred.resolve(response);
+//				if (status == 200) {
+//					String responseString = response.getText();
+//					T jso = T.parse(responseString);
+//					deferred.resolve(jso);
+//				}
 			}
 			@Override
 			public void onError(Request request, Throwable exception) {
 				GWT.log("[EXCEPTION] " + url, exception);
-				deferred.reject(null);//FIXME figure out what to do here
+				deferred.reject(exception);//FIXME figure out what to do here
 			}
 		});
 		deferred.promise().then(callback);

@@ -1,21 +1,20 @@
 package com.asayama.gwt.angular.client.q;
 
 import com.asayama.gwt.core.client.JSObject;
-import com.google.gwt.core.client.JavaScriptObject;
 
 public class Deferred {
 
 	DeferredJSO delegate = null;
 
-	public void singal(JavaScriptObject value) {
+	public void singal(Object value) {
 		delegate.signal(value);
 	}
 	
-	public void resolve(JavaScriptObject value) {
+	public void resolve(Object value) {
 		delegate.resolve(value);
 	}
 	
-	public void reject(JavaScriptObject value) {
+	public void reject(Object value) {
 		delegate.reject(value);
 	}
 	
@@ -29,15 +28,15 @@ class DeferredJSO extends JSObject {
 	protected DeferredJSO() {
 	}
 
-	final native void signal(JavaScriptObject value) /*-{
+	final native void signal(Object value) /*-{
 		this.notify(value);
 	}-*/;
 	
-	final native void resolve(JavaScriptObject value) /*-{
+	final native void resolve(Object value) /*-{
 		this.resolve(value);
 	}-*/;
 	
-	final native void reject(JavaScriptObject value) /*-{
+	final native void reject(Object value) /*-{
 		this.reject(value);
 	}-*/;
 	
