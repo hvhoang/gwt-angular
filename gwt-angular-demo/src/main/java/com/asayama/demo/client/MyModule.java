@@ -14,7 +14,6 @@ public class MyModule extends Module {
 		if (object instanceof RouteProvider) {
 			((RouteProvider) object)
 				.when("/hello", Template.create("partials/hello.html", MyController.class))
-				.when("/hello/:name", Template.create("partials/hello.html", MyController.class))
 				.otherwise(Redirect.create("/hello"));
 		}
 	}

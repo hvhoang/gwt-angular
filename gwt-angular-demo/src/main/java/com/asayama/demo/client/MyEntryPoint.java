@@ -4,6 +4,7 @@ import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.route.RouteParams;
 import com.asayama.gwt.angular.client.route.RouteProvider;
+import com.asayama.gwt.angular.client.services.Location;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
@@ -16,6 +17,7 @@ public class MyEntryPoint implements EntryPoint {
 		myModule.config(RouteProvider.class);
 		myModule.factory(Q.class);
 		myModule.factory(RouteParams.class);
+		myModule.factory(Location.class);
 		myModule.controller(MyController.class);
 		
 		Angular.bootstrap(myModule);

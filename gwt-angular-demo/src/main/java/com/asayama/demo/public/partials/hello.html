@@ -3,7 +3,7 @@
 	<h1>{{ GREETING }}, {{ getName()||STRANGER }}!</h1>
 
 	<h1>What is your name?</h1>
-	<input type="text" data-ng-model="name" data-ng-change="setName(name||null)" />
+	<input type="text" data-ng-model="name" data-ng-change="setName(name||null)" data-ng-init="name = getName()"/>
 
 	<h1 data-ng-click="onClickClickable($event)">{{ getClickable() }}</h1>
 

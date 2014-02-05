@@ -7,6 +7,7 @@ import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.q.SuccessCallback;
 import com.asayama.gwt.angular.client.route.RouteParams;
+import com.asayama.gwt.angular.client.services.Location;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -23,6 +24,7 @@ public class MyController implements Controller {
 	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
 	protected RouteParams routeParams;
+	protected Location location;
 	protected Q q;
 
 	Scope scope;
@@ -102,7 +104,7 @@ public class MyController implements Controller {
 	// Public event handler are automatically wired to AngularJS's $scope.
 	
 	public void onClickClickable(Event event) {
-		setClickable("You clicked me!");
+		location.setHashParam("name", "You Clicked Me!");
 	}
 	
 	// Public getters and setters are automatically wired to AngularJS's $scope.
