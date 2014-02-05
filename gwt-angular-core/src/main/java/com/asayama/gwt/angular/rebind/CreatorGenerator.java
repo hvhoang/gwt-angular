@@ -85,7 +85,7 @@ public class CreatorGenerator extends Generator {
 			
 			// Find the dependency of all return types
 			List<String[]> dependencies = new ArrayList<String[]>();
-			for (JClassType returnClassType : returnClassTypes) {
+			for (JClassType returnClassType : returnClassTypeList) {
 				JField[] fields = returnClassType.getFields();
 				List<String> names = new ArrayList<String>();
 				for (JField field : fields) {
