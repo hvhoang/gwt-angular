@@ -3,6 +3,8 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
@@ -58,7 +60,9 @@ public abstract class Module {
 			}
 		};
 		
-		JSObject jsarray = creator.construct(klass, new Invoker(closure));
+		JsArray<JSObject> jsarray = creator.dependencies(klass);
+		JSObject jso = creator.constructor(klass, new Invoker(closure));
+		jsarray.push(jso);
 		delegate.config(jsarray);
 		return object;
 	}
@@ -90,7 +94,9 @@ public abstract class Module {
 			}
 		};
 		
-		JSObject jsarray = creator.construct(klass, new Invoker(closure));
+		JsArray<JSObject> jsarray = creator.dependencies(klass);
+		JSObject jso = creator.constructor(klass, new Invoker(closure));
+		jsarray.push(jso);
 		delegate.factory(name, jsarray);
 		return object;
 	}
@@ -150,15 +156,15 @@ class ModuleJSO extends JSObject {
 		return this.requires;
 	}-*/;
 		
-	final native void factory(String name, JSObject jsarray) /*-{
-		this.factory(name, jsarray);
-	}-*/;
-	
-	final native void config(JSObject jsarray) /*-{
+	final native void config(JavaScriptObject jsarray) /*-{
 		this.config(jsarray);
 	}-*/;
 	
-	final native void controller(String name, JSObject jsarray) /*-{
+	final native void factory(String name, JavaScriptObject jsarray) /*-{
+		this.factory(name, jsarray);
+	}-*/;
+	
+	final native void controller(String name, JavaScriptObject jsarray) /*-{
 		this.controller(name, jsarray);
 	}-*/;
 

@@ -29,21 +29,35 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     }
 
     @Override
-    public JSObject construct(Class<? extends T> klass, Invoker invoker) {
+    public JSObject constructor(Class<? extends T> klass, Invoker invoker) {
 #foreach($returnClassType in ${returnClassTypes})
         if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
-            return __${generatedSimpleName}_consturct_${foreach.index}(invoker);
+            return __${generatedSimpleName}_consturctor(invoker);
+        }
+#end
+        return null;
+    }
+
+    private native JSObject __${generatedSimpleName}_consturctor(Invoker invoker) /*-{
+        return function() {
+            invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
+            return arguments;
+        };
+    }-*/;
+
+    @Override
+    public JsArray<JSObject> dependencies(Class<? extends T> klass) {
+#foreach($returnClassType in ${returnClassTypes})
+        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
+            return __${generatedSimpleName}_dependencies_${foreach.index}();
         }
 #end
         return null;
     }
 
 #foreach($dependency in ${dependencies})
-    private native JSObject __${generatedSimpleName}_consturct_${foreach.index}(Invoker invoker) /*-{
-        return [#foreach($name in ${dependency})'${name}',#end function() {
-            invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
-            return arguments;
-        }];
+    private native JsArray<JSObject> __${generatedSimpleName}_dependencies_${foreach.index}() /*-{
+        return [#foreach($name in ${dependency})'${name}'#if(${foreach.hasNext}),#end#end];
     }-*/;
 #end
 
