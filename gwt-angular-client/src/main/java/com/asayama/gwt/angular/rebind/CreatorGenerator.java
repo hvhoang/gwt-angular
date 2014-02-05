@@ -70,11 +70,18 @@ public class CreatorGenerator extends Generator {
 			
 			// Find all the subtypes of this return type
 			JClassType[] returnClassTypes = parameterClassType.getSubtypes();
+			List<JClassType> returnClassTypeList = new ArrayList<JClassType>();
 			if (returnClassTypes == null || returnClassTypes.length == 0) {
 				return qualifiedName;
 			}
+			for (JClassType returnClassType : returnClassTypes) {
+				if (!returnClassType.getQualifiedSourceName().equals(
+						parameterClassType.getErasedType().getQualifiedSourceName())) {
+					returnClassTypeList.add(returnClassType);
+				}
+			}
 			velocity.put("parameterClassType", parameterClassType.getQualifiedSourceName());
-			velocity.put("returnClassTypes", returnClassTypes);
+			velocity.put("returnClassTypes", returnClassTypeList);
 			
 			// Find the dependency of all return types
 			List<String[]> dependencies = new ArrayList<String[]>();
