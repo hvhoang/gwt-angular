@@ -63,3 +63,9 @@ none of the minor version upgrade will destroy the programming interface, i.e.
 1.0.0 user will be able to drop in 1.2.0 (as above).
 1.2.0 user will not be able to drop in 2.0.0 due to interface changes.
 
+TODO
+====
+* Abstract module dependency support so modules are not mentioned by name
+* Refactor controller construction, retire Constructable interface
+* Clean up Deferred interface
+* Get HTTP working, and possibly move it out to separate module
