@@ -64,3 +64,5 @@ TODO
 * Robustness and error reporting
 * Migrate the generated code to com/asayama/gwt/core/client/JSArray
 * Look at ScopeJSO and see if we should be extending NGObject
+* Create JSFunction(Function) to convert java function to JS function
+* Move the TODO list to JIRA or something.
