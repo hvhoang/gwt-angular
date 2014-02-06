@@ -1,21 +1,22 @@
 package com.asayama.gwt.angular.client.services.q;
 
+import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSObject;
 
 public class Deferred {
 
 	DeferredJSO delegate = null;
 
-	public void singal(Object value) {
-		delegate.signal(value);
+	public void singal(Object... values) {
+		delegate.signal(JSArray.create(values));
 	}
 	
-	public void resolve(Object value) {
-		delegate.resolve(value);
+	public void resolve(Object... values) {
+		delegate.resolve(JSArray.create(values));
 	}
 	
-	public void reject(Object value) {
-		delegate.reject(value);
+	public void reject(Object... values) {
+		delegate.reject(JSArray.create(values));
 	}
 	
 	public Promise promise() {
@@ -28,15 +29,15 @@ class DeferredJSO extends JSObject {
 	protected DeferredJSO() {
 	}
 
-	final native void signal(Object value) /*-{
+	final native void signal(JSArray<Object> value) /*-{
 		this.notify(value);
 	}-*/;
 	
-	final native void resolve(Object value) /*-{
+	final native void resolve(JSArray<Object> value) /*-{
 		this.resolve(value);
 	}-*/;
 	
-	final native void reject(Object value) /*-{
+	final native void reject(JSArray<Object> value) /*-{
 		this.reject(value);
 	}-*/;
 	

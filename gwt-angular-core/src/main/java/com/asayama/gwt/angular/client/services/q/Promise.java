@@ -44,12 +44,12 @@ public class Promise extends JSObject {
 
 	final native void _then(Invoker successInvoker, Invoker errorInvoker, Invoker signalInvoker) /*-{
 		this.then(
-			function () {
-				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
-			}, function () {
-				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
-			}, function () {
-				signalInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
+			function (jsarray) {
+				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(jsarray);
+			}, function (jsarray) {
+				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(jsarray);
+			}, function (jsarray) {
+				signalInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(jsarray);
 			});
 	}-*/;
 	
