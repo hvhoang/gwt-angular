@@ -60,6 +60,5 @@ TODO
 ====
 * Abstract module dependency support so modules are not mentioned by name
 * Refactor controller construction, retire Constructable interface
-* Clean up Deferred interface
 * Get HTTP working, and possibly move it out to separate module
 * Robustness and error reporting
