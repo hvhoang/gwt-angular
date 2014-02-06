@@ -45,7 +45,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #foreach($field in $serviceFields)
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
 #end
-                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
+                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
             }
         ];
     }-*/;
@@ -61,7 +61,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #foreach($field in $serviceFields)
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
 #end
-                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
+                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
             }
         ];
     }-*/;

@@ -1,7 +1,6 @@
 package com.asayama.gwt.core.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 
 public class Invoker {
 	
@@ -27,13 +26,13 @@ public class Invoker {
 		return (JavaScriptObject) delegate.function();
 	}
 	
-	public JavaScriptObject invoke(JsArray<?> jsarray) {
+	public JavaScriptObject invoke(JSArray<?> jsarray) {
 		Object[] args = null;
 		if (jsarray != null) {
-			args = new Object[jsarray.length()];
-			for (int i = 0; i < jsarray.length(); i++) {
-				JavaScriptObject jso = jsarray.get(i);
-				args[i] = jso;
+			args = new Object[jsarray.size()];
+			for (int i = 0; i < jsarray.size(); i++) {
+				Object object = jsarray.get(i);
+				args[i] = object;
 			}
 		}
 		return (JavaScriptObject) delegate.function(args);

@@ -23,8 +23,23 @@ public class JSArray<T> extends JavaScriptObject {
 	protected JSArray() {
 	}
 	
+	public final T get(int i) {
+		if (i < 0 || size() < i) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		return _get(i);
+	}
+
+	public final native T _get(int i) /*-{
+		return this[i];
+	}-*/;
+	
 	public final native void add(T object) /*-{
 		this.push(object);
+	}-*/;
+
+	public final native int size() /*-{
+		return this.length;
 	}-*/;
 
 }

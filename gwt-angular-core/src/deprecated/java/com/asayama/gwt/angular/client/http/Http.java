@@ -42,7 +42,7 @@ public class Http implements Service, Wrapper<HttpJSO>, Constructor {
 	@Override
 	public native $ constructor(Invoker invoker) /*-{
 		return [ '$http', function ($http) {
-			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)($http);
+			invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)([ $http ]);
 			return $http; //TODO Maybe there is where the problem is. Maybe we should return Http via Invoker?
 		}];
 	}-*/;
@@ -83,14 +83,14 @@ class HttpJSO extends $ {
 	final native <T extends $> void send(String method, String url, Invoker successInvoker, Invoker errorInvoker) /*-{
 		this({ 'method':method, 'url':url })
 			.success(function(data, status, headers, config) {
-				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)({
+				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)({
 					'data': data||null,
 					'status': status||-1,
 					'headers': headers||{},
 					'config': config||function(){}
 				});
 			}).error(function(data, status, headers, config) {
-				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSObject;)({
+				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)({
 					'data': data||null,
 					'status': status||-1,
 					'headers': headers||{},
