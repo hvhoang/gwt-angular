@@ -55,21 +55,10 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #foreach($field in $serviceFields)
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
 #end
-                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)([ $scope ]);
-                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad()();
+                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)([#foreach($field in $serviceFields)${field.name}#if(${foreach.hasNext}), #end#end]);
             }
         ];
     }-*/;
-    
-    private void __${generatedSimpleName}_onControllerLoad() {
-        String m = "";
-        try {
-            GWT.log(m = "calling ${qualifiedName}.onControllerLoad()");
-            super.onControllerLoad();
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
-    }
 
     // Controller Extensions
 #foreach($field in $serviceFields)
