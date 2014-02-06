@@ -26,23 +26,13 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
     private native JSObject __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
         return [
             '$scope',
-#foreach($field in $nativeServiceFields)
-#set($fieldClassType = ${field.type.isClassOrInterface()})
-#if(${fieldClassType})
-#foreach($annotation in ${fieldClassType.getAnnotations()})
-#if($annotation.annotationType().getName() == "com.asayama.gwt.angular.client.annotations.Bind")
-            '${annotation.value()}',
-#end
-#end
-#end
-#end
 #foreach($field in $serviceFields)
             '${field.type.qualifiedSourceName}',
 #end
             function ($scope#foreach($field in $nativeServiceFields), ${field.name}#end#foreach($field in $serviceFields), ${field.name}#end) {
 #foreach($method in $publicMethods)
                 $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-                    return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}?${param.name}:${param.name}==0?0:null#end);
+                    return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
                 };
 #end
 #foreach($field in $publicFields)
@@ -55,21 +45,41 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #foreach($field in $serviceFields)
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
 #end
-                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)([ $scope ]);
-                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad()();
+                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
             }
         ];
     }-*/;
-    
-    private void __${generatedSimpleName}_onControllerLoad() {
-        String m = "";
-        try {
-            GWT.log(m = "calling ${qualifiedName}.onControllerLoad()");
-            super.onControllerLoad();
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
-    }
+
+    // WORK IN PROGRESS
+    private native JSObject __${simpleName}_constructor_0(Invoker invoker, ${simpleName} itself) /*-{
+        return [
+#foreach($field in $serviceFields)
+            '${field.type.qualifiedSourceName}',
+#end
+            function () {
+#foreach($field in $serviceFields)
+                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
+#end
+                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
+            }
+        ];
+    }-*/;
+
+    // WORK IN PROGRESS
+    private native JSObject __${simpleName}_bind(ScopeJSO $scope, ${simpleName} itself) /*-{
+#foreach($method in $publicMethods)
+        $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+            return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
+        };
+#end
+#foreach($field in $publicFields)
+#if($field.isStatic())
+        $scope.${field.name} = @${qualifiedName}::${field.name};
+#else
+        $scope.${field.name} = itself.@${qualifiedName}::${field.name};
+#end
+#end
+    }-*/;
 
     // Controller Extensions
 #foreach($field in $serviceFields)

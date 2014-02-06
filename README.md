@@ -62,3 +62,4 @@ TODO
 * Refactor controller construction, retire Constructable interface
 * Get HTTP working, and possibly move it out to separate module
 * Robustness and error reporting
+* Migrate the generated code to com/asayama/gwt/core/client/JSArray

@@ -116,6 +116,8 @@ public abstract class Module {
 			public void closure(Object... args) {
 				String m = "";
 				try {
+					GWT.log(m = "calling " + name + ".onControllerLoad");
+					controller.onControllerLoad();
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
 					Module.this.onInjection(controller);
 				} catch (Exception e) {
