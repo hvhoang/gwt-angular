@@ -51,6 +51,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
     }-*/;
 
     // WORK IN PROGRESS
+#*
     private native JSObject __${simpleName}_constructor_0(Invoker invoker, ${simpleName} itself) /*-{
         return [
 #foreach($field in $serviceFields)
@@ -64,9 +65,11 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
             }
         ];
     }-*/;
+*#
 
     // WORK IN PROGRESS
-    private native JSObject __${simpleName}_bind(ScopeJSO $scope, ${simpleName} itself) /*-{
+#*
+    private native JSObject __${simpleName}_bind(NGObject $scope, ${simpleName} itself) /*-{
 #foreach($method in $publicMethods)
         $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
             return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
@@ -80,6 +83,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #end
 #end
     }-*/;
+*#
 
     // Controller Extensions
 #foreach($field in $serviceFields)
