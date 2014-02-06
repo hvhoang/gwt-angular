@@ -15,6 +15,14 @@ public class Invoker {
 		}
 	}
 	
+	public <R extends JavaScriptObject> Invoker(Closure delegate) {
+		try {
+			this.delegate = delegate;
+		} catch (ClassCastException e) {
+			throw new UnsupportedOperationException("Incompatible callback type specified for invoker.");
+		}
+	}
+	
 	public JavaScriptObject invoke() {
 		return (JavaScriptObject) delegate.function();
 	}
