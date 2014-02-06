@@ -25,7 +25,7 @@ public class Angular {
 	public static <T extends Module> T module(Class<T> klass, Closure closure) {
 		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
 		JsArrayString requires = creator.dependencies(klass).cast();
-		JSObject ctor = creator.constructor(klass, new Invoker(closure));
+		JSObject ctor = creator.constructor(new Invoker(closure));
 		String name = klass.getName();
 		T object = creator.create(klass);
 		object.delegate = _module(name, requires, ctor);

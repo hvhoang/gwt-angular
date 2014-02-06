@@ -29,16 +29,7 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     }
 
     @Override
-    public JSObject constructor(Class<? extends T> klass, Invoker invoker) {
-#foreach($returnClassType in ${returnClassTypes})
-        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
-            return __${generatedSimpleName}_consturctor(invoker);
-        }
-#end
-        return null;
-    }
-
-    private native JSObject __${generatedSimpleName}_consturctor(Invoker invoker) /*-{
+    public native JSObject constructor(Invoker invoker) /*-{
         return function() {
             invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)(arguments);
             return arguments;

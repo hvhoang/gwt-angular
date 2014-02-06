@@ -61,7 +61,7 @@ public abstract class Module {
 		};
 		
 		JsArray<JSObject> jsarray = creator.dependencies(klass);
-		JSObject jso = creator.constructor(klass, new Invoker(closure));
+		JSObject jso = creator.constructor(new Invoker(closure));
 		jsarray.push(jso);
 		delegate.config(jsarray);
 		return object;
@@ -95,7 +95,7 @@ public abstract class Module {
 		};
 		
 		JsArray<JSObject> jsarray = creator.dependencies(klass);
-		JSObject jso = creator.constructor(klass, new Invoker(closure));
+		JSObject jso = creator.constructor(new Invoker(closure));
 		jsarray.push(jso);
 		delegate.factory(name, jsarray);
 		return object;
