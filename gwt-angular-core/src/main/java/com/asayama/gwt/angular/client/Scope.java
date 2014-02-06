@@ -1,17 +1,30 @@
 package com.asayama.gwt.angular.client;
 
+import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 
 
-public interface Scope {
-	public void digest();
+public class Scope implements Service, NGObjectWrapper {
+
+	ScopeJSO delegate = null;
+	
+	public Scope digest() {
+		delegate.digest();
+		return this;
+	}
+	
+	@Override
+	public void wrap(NGObject ngo) {
+		this.delegate = ngo == null ? null : ngo.<ScopeJSO>cast();
+	}
+
 }
-class ScopeJSO extends JSObject implements Scope {
+@Bind("$scope")
+class ScopeJSO extends JSObject {
 
 	protected ScopeJSO() {
 	}
 
-	@Override
 	public final native void digest() /*-{
 		if (!this.$$phase) {
 			this.$digest();

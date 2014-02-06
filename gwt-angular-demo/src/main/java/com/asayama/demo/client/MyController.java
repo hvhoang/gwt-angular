@@ -33,12 +33,10 @@ public class MyController implements Controller {
 	Customers customers;
 	
 	@Override
-	public void onControllerLoad(final Scope scope) {
+	public void onControllerLoad() {
 
 		GWT.log("entering MyController.onControllerLoad");
 		
-		this.scope = scope;
-
 		String name = routeParams.getString("name");
 		setName(name);
 

@@ -56,16 +56,16 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
 #end
                 invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/google/gwt/core/client/JsArray;)([ $scope ]);
-                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad(Lcom/asayama/gwt/angular/client/Scope;)($scope);
+                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onControllerLoad()();
             }
         ];
     }-*/;
     
-    private void __${generatedSimpleName}_onControllerLoad(Scope scope) {
+    private void __${generatedSimpleName}_onControllerLoad() {
         String m = "";
         try {
-            GWT.log(m = "calling ${qualifiedName}.onControllerLoad(com.asayama.gwt.angular.client.Scope)");
-            super.onControllerLoad(scope);
+            GWT.log(m = "calling ${qualifiedName}.onControllerLoad()");
+            super.onControllerLoad();
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
