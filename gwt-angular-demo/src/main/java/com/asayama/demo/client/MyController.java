@@ -1,8 +1,12 @@
 package com.asayama.demo.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
-import com.asayama.gwt.angular.client.services.Location;
+import com.asayama.gwt.angular.client.location.HashParam;
+import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.services.q.Deferred;
 import com.asayama.gwt.angular.client.services.q.Promise;
 import com.asayama.gwt.angular.client.services.q.Q;
@@ -102,7 +106,11 @@ public class MyController implements Controller {
 	// Public event handler are automatically wired to AngularJS's $scope.
 	
 	public void onClickClickable(Event event) {
-		location.setHashParam("name", "You Clicked Me!");
+//		location.setHashParam("name", "You Clicked Me!");
+		List<HashParam> params = new ArrayList<HashParam>();
+		params.add(new HashParam("name", "You Clicked Me!"));
+		params.add(new HashParam("foo", "bar"));
+		location.setHashParam(params);
 	}
 	
 	// Public getters and setters are automatically wired to AngularJS's $scope.

@@ -1,14 +1,14 @@
-package com.asayama.gwt.angular.client.services;
+package com.asayama.gwt.angular.client.location;
+
+import java.util.List;
 
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.JSObject;
-import com.asayama.gwt.core.client.KeyValuePair;
 
 public class Location implements Service, NGObjectWrapper {
-
+	
 	LocationJSO delegate;
 	
 	public String getHash() {
@@ -25,19 +25,15 @@ public class Location implements Service, NGObjectWrapper {
 		return this;
 	}
 	
-	public Location setHashParam(KeyValuePair<String,String>... kvp) {
-		if (kvp == null || kvp.length == 0) {
+	public Location setHashParam(List<HashParam> params) {
+		if (params == null || params.size() == 0) {
 			return this;
 		}
-		if (kvp.length == 1) {
-			setHashParam(kvp[0].key(), kvp[0].value());
-			return this;
+		HashParamJSO jso = HashParamJSO.create();
+		for (HashParam p : params) {
+			jso.put(p.key(), p.value());
 		}
-		HashParam param = HashParam.create();
-		for (KeyValuePair<String,String> item : kvp) {
-			param.put(item.key(), item.value());
-		}
-		delegate.search(param);
+		delegate.search(jso);
 		return this;
 	}
 	
@@ -65,18 +61,8 @@ class LocationJSO extends NGObject {
 		this.search(key, value);
 	}-*/;
 	
-	final native void search(HashParam param) /*-{
+	final native void search(HashParamJSO param) /*-{
 		this.search(param);
 	}-*/;
-
-}
-class HashParam extends JSObject {
-
-	protected HashParam() {
-	}
-
-	final void put(String key, String value ) {
-		putString(key, value);
-	}
 
 }

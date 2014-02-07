@@ -2,7 +2,7 @@ package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Scope;
-import com.asayama.gwt.angular.client.services.Location;
+import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.services.q.Q;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.angular.route.client.RouteProvider;
