@@ -56,13 +56,3 @@ When the major versions are changed, the previously deprecated interfaces may
 be removed; hecne requiring code changes to those users relying on the old 
 interface.
 
-TODO
-====
-* Abstract module dependency support so modules are not mentioned by name
-* Refactor controller construction, retire Constructable interface
-* Get HTTP working, and possibly move it out to separate module
-* Robustness and error reporting
-* Migrate the generated code to com/asayama/gwt/core/client/JSArray
-* Look at ScopeJSO and see if we should be extending NGObject
-* Create JSFunction(Function) to convert java function to JS function
-* Move the TODO list to JIRA or something.
