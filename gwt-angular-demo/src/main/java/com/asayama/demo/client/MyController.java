@@ -7,7 +7,6 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
 import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.client.services.http.Http;
 import com.asayama.gwt.angular.client.services.q.Deferred;
 import com.asayama.gwt.angular.client.services.q.Promise;
 import com.asayama.gwt.angular.client.services.q.Q;
@@ -28,12 +27,12 @@ public class MyController implements Controller {
 	public static final String GREETING = MyControllerConstants.INSTANCE.greeting();
 	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
+	protected Scope scope;
 	protected RouteParams routeParams;
 	protected Location location;
 	protected Q q;
 //	protected Http http;
 
-	Scope scope;
 	String clickable;
 	String name;
 	Customers customers;

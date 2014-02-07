@@ -43,6 +43,7 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #end
 #end
 #foreach($field in $serviceFields)
+                // ${field.type.qualifiedSourceName}
                 itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
 #end
                 invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
