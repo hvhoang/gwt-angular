@@ -1,6 +1,5 @@
 package com.asayama.gwt.core.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 
 public class Invoker {
 	
@@ -14,7 +13,7 @@ public class Invoker {
 		}
 	}
 	
-	public <R extends JavaScriptObject> Invoker(Closure delegate) {
+	public <R> Invoker(Closure delegate) {
 		try {
 			this.delegate = delegate;
 		} catch (ClassCastException e) {
@@ -22,11 +21,11 @@ public class Invoker {
 		}
 	}
 	
-	public JavaScriptObject invoke() {
-		return (JavaScriptObject) delegate.function();
+	public Object invoke() {
+		return (Object) delegate.function();
 	}
 	
-	public JavaScriptObject invoke(JSArray<?> jsarray) {
+	public Object invoke(JSArray<?> jsarray) {
 		Object[] args = null;
 		if (jsarray != null) {
 			args = new Object[jsarray.size()];
@@ -35,7 +34,7 @@ public class Invoker {
 				args[i] = object;
 			}
 		}
-		return (JavaScriptObject) delegate.function(args);
+		return (Object) delegate.function(args);
 	}
 
 }
