@@ -6,7 +6,7 @@ public class Invoker {
 	
 	final Function<?> delegate;
 	
-	public <R extends JavaScriptObject> Invoker(Function<R> delegate) {
+	public <R> Invoker(Function<R> delegate) {
 		try {
 			this.delegate = delegate;
 		} catch (ClassCastException e) {

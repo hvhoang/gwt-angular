@@ -50,53 +50,17 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
         ];
     }-*/;
 
-    // WORK IN PROGRESS
-#*
-    private native JSObject __${simpleName}_constructor_0(Invoker invoker, ${simpleName} itself) /*-{
-        return [
-#foreach($field in $serviceFields)
-            '${field.type.qualifiedSourceName}',
-#end
-            function () {
-#foreach($field in $serviceFields)
-                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Lcom/google/gwt/core/client/JsArray;)(${field.name});
-#end
-                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
-            }
-        ];
-    }-*/;
-*#
-
-    // WORK IN PROGRESS
-#*
-    private native JSObject __${simpleName}_bind(NGObject $scope, ${simpleName} itself) /*-{
-#foreach($method in $publicMethods)
-        $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-            return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
-        };
-#end
-#foreach($field in $publicFields)
-#if($field.isStatic())
-        $scope.${field.name} = @${qualifiedName}::${field.name};
-#else
-        $scope.${field.name} = itself.@${qualifiedName}::${field.name};
-#end
-#end
-    }-*/;
-*#
-
     // Controller Extensions
 #foreach($field in $serviceFields)
-    private void __${generatedSimpleName}_onInjection_${field.name}(JsArray<?> jsarray) {
+    private void __${generatedSimpleName}_onInjection_${field.name}(JsArray<?> object) {
         String m = "";
         try {
             GWT.log(m = "setting ${qualifiedName}.${field.name}");
             ${field.name} = GWT.create(${field.type.qualifiedSourceName}.class);
             if (${field.name} instanceof NGObjectWrapper) {
                 GWT.log(m = "calling ${qualifiedName}.${field.name}.wrap(NGObject)");
-                ${field.name}.wrap(jsarray.get(0).<NGObject>cast());
+                ${field.name}.wrap(object.get(0).<NGObject>cast());
             }
-            //super.onInjection(${field.name});
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

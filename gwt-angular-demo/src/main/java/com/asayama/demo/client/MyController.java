@@ -7,6 +7,7 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
 import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
+import com.asayama.gwt.angular.client.services.http.Http;
 import com.asayama.gwt.angular.client.services.q.Deferred;
 import com.asayama.gwt.angular.client.services.q.Promise;
 import com.asayama.gwt.angular.client.services.q.Q;
@@ -30,6 +31,7 @@ public class MyController implements Controller {
 	protected RouteParams routeParams;
 	protected Location location;
 	protected Q q;
+//	protected Http http;
 
 	Scope scope;
 	String clickable;
@@ -50,13 +52,15 @@ public class MyController implements Controller {
 
 		try {
 
-//			http.get(url, new HttpCallback<Customers>() {
+//			http.get(url, new HttpCallback() {
 //				@Override
-//				public void onSuccess(Customers object) {
-//					setCustomers(object);
+//				public void onSuccess(Request request, Response response) {
+//					Customers customers = Customers.parse(response.getText());
+//					setCustomers(customers);
 //				}
 //				@Override
-//				public void onError(Customers object) {
+//				public void onError(Request request, Exception exception) {
+//					GWT.log("onError", exception);
 //				}
 //			});
 
@@ -72,7 +76,7 @@ public class MyController implements Controller {
 					setCustomers(customers);
 				}
 			});
-		
+
 		} catch (RequestException e) {
 			GWT.log("Exception while calling " + url, e);
 		}
@@ -88,17 +92,11 @@ public class MyController implements Controller {
 			public void onResponseReceived(Request request, Response response) {
 				int status = response.getStatusCode();
 				GWT.log("[" + status + "] " + url);
-//				if (status == 200) {
-//					String responseString = response.getText();
-//					Customers customers = Customers.parse(responseString);
-//					deferred.resolve(customers);
-//				}
 				deferred.resolve(request, response);
 			}
 			@Override
 			public void onError(Request request, Throwable exception) {
 				GWT.log("[ERR] " + url, exception);
-//				deferred.reject(null);//FIXME figure out what to do here
 				deferred.reject(request, exception);
 			}
 		});
