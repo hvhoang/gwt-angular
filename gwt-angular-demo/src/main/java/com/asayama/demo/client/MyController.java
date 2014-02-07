@@ -66,10 +66,10 @@ public class MyController implements Controller {
 			promise.then(new SuccessCallback() {
 				@Override
 				public void success(Object... args) {
-					if (args != null && args.length > 0) {
-						Customers customers = (Customers) args[0];
-						setCustomers(customers);
-					}
+					Response response = (Response) args[1];
+					String jsonString = response.getText();
+					Customers customers = Customers.parse(jsonString);
+					setCustomers(customers);
 				}
 			});
 		
@@ -88,16 +88,18 @@ public class MyController implements Controller {
 			public void onResponseReceived(Request request, Response response) {
 				int status = response.getStatusCode();
 				GWT.log("[" + status + "] " + url);
-				if (status == 200) {
-					String responseString = response.getText();
-					Customers customers = Customers.parse(responseString);
-					deferred.resolve(customers);
-				}
+//				if (status == 200) {
+//					String responseString = response.getText();
+//					Customers customers = Customers.parse(responseString);
+//					deferred.resolve(customers);
+//				}
+				deferred.resolve(request, response);
 			}
 			@Override
 			public void onError(Request request, Throwable exception) {
 				GWT.log("[ERR] " + url, exception);
-				deferred.reject(null);//FIXME figure out what to do here
+//				deferred.reject(null);//FIXME figure out what to do here
+				deferred.reject(request, exception);
 			}
 		});
 		return deferred.promise();
