@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
+import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -33,19 +34,15 @@ public abstract class Module {
 	 */
 	public abstract <T extends Injectable> void onInjection(T object);
 
-	/*
-	 * Provider Factory
-	 */
-	
-	public <T extends Provider> T config(Class<T> klass) {
+	public <P extends Provider> P config(Class<P> klass) {
 		
-		ProviderCreator<T> creator = GWT.create(ProviderCreator.class);
-		final T object = creator.create(klass);
+		ProviderCreator<P> creator = GWT.create(ProviderCreator.class);
+		final P object = creator.create(klass);
 		final String name = klass.getName();
 		
-		Closure closure = new Closure() {
+		Function<P> closure = new Function<P>() {
 			@Override
-			public void closure(Object... args) {
+			public P function(Object... args) {
 				String m = "";
 				if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
 					GWT.log(m = "calling " + name + ".wrap(NGObject)");
@@ -57,6 +54,7 @@ public abstract class Module {
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
+				return object;
 			}
 		};
 		
@@ -67,14 +65,10 @@ public abstract class Module {
 		return object;
 	}
 	
-	/*
-	 * Factory Factory
-	 */
-	
-	public <T extends Service> T factory(Class<T> klass) {
+	public <S extends Service> S factory(Class<S> klass) {
 		
-		ServiceCreator<T> creator = GWT.create(ServiceCreator.class);
-		final T object = creator.create(klass);
+		ServiceCreator<S> creator = GWT.create(ServiceCreator.class);
+		final S object = creator.create(klass);
 		final String name = klass.getName();
 		
 		Closure closure = new Closure() {
@@ -101,16 +95,12 @@ public abstract class Module {
 		return object;
 	}
 	
-	/*
-	 * Controller Factory
-	 */
-	
-	public <T extends Controller> T controller(Class<T> klass) {
-		ControllerCreator<T> creator = GWT.create(ControllerCreator.class);
+	public <C extends Controller> C controller(Class<C> klass) {
+		ControllerCreator<C> creator = GWT.create(ControllerCreator.class);
 		return controller(klass.getName(), creator.create(klass));
 	}
 
-	protected <T extends Controller> T controller(final String name, final T controller) {
+	protected <C extends Controller> C controller(final String name, final C controller) {
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
