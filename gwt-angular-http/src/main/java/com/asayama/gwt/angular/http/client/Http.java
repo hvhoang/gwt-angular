@@ -14,22 +14,6 @@ import com.google.gwt.http.client.Response;
 public class Http implements Service {
 
 	protected Q q; //FIXME https://github.com/kyoken74/gwt-angular/issues/3
-
-	/**
-	 * FIXME https://github.com/kyoken74/gwt-angular/issues/3
-	 * <p>
-	 * This method is not officially supported. It is called by the generated
-	 * controller code, which somehow is unable to recognize the fact tha this
-	 * class does not implement NGObjectWrapper, and therefore calls a method
-	 * by this name.
-	 * </p><p>
-	 * The instance of Q is not injected automatically. It must be provided by
-	 * the caller via setQ(Q)
-	 * </p>
-	 */
-	@Deprecated
-	public void wrap(Object o) {
-	}
 	
 	public void get(String url, HttpCallback callback) throws RequestException {
 		Promise promise = get(url);
