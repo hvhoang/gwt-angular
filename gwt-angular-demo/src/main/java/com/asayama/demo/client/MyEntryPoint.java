@@ -14,7 +14,6 @@ public class MyEntryPoint implements EntryPoint {
 
 	public void onModuleLoad() {
 		GWT.log("entering MyEntryPoint.onModuleLoad");
-		
 		MyModule myModule = Angular.module(MyModule.class);
 		myModule.config(RouteProvider.class);
 		myModule.factory(Q.class);
@@ -23,7 +22,6 @@ public class MyEntryPoint implements EntryPoint {
 		myModule.factory(RouteParams.class);
 		myModule.factory(Location.class);
 		myModule.controller(MyController.class);
-		
 		Angular.bootstrap(myModule);
 	}
 
