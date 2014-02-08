@@ -8,7 +8,7 @@ import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 
-public class RouteParams implements Service, NGObjectWrapper<RouteParamsJSO> {
+public class RouteParams implements Service, NGObjectWrapper {
 
 	protected RouteParamsJSO delegate;
 	
@@ -33,7 +33,7 @@ public class RouteParams implements Service, NGObjectWrapper<RouteParamsJSO> {
 	}
 	
 	@Override
-	public void wrap(RouteParamsJSO ngo) {
+	public void wrap(NGObject ngo) {
 		this.delegate = NGObject.cast(ngo);
 	}
 

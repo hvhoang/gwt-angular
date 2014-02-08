@@ -8,13 +8,13 @@ package com.asayama.gwt.angular.client;
  * they implement NGObjectWrapper is lost.
  */
 @Deprecated
-public abstract class AbstractNGObjectWrapper<T extends NGObject> implements NGObjectWrapper<T> {
+public abstract class AbstractNGObjectWrapper<T extends NGObject> implements NGObjectWrapper {
 
 	private T ngo = null;
 	
 	@Override
-	public final void wrap(T ngo) {
-		this.ngo = ngo;
+	public final void wrap(NGObject ngo) {
+		this.ngo = NGObject.cast(ngo);
 	}
 	
 	protected T getNGObject() throws IllegalStateException {

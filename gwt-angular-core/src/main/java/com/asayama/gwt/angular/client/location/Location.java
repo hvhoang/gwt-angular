@@ -7,7 +7,7 @@ import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 
-public class Location implements Service, NGObjectWrapper<LocationJSO> {
+public class Location implements Service, NGObjectWrapper {
 	
 	LocationJSO delegate;
 	
@@ -38,7 +38,7 @@ public class Location implements Service, NGObjectWrapper<LocationJSO> {
 	}
 	
 	@Override
-	public void wrap(LocationJSO ngo) {
+	public void wrap(NGObject ngo) {
 		this.delegate = NGObject.cast(ngo);
 	}
 
