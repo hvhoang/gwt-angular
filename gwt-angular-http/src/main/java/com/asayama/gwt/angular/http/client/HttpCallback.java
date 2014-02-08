@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.http;
+package com.asayama.gwt.angular.http.client;
 
 import com.asayama.gwt.angular.client.q.PromiseCallback;
 import com.google.gwt.http.client.Request;

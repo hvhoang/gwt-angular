@@ -3,6 +3,7 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.i18n.I18N" />
 	<inherits name="com.asayama.gwt.angular.Angular" />
+	<inherits name="com.asayama.gwt.angular.http.AngularHttp" />
 	<inherits name="com.asayama.gwt.angular.route.AngularRoute" />
 	<source path="client" />
 	<source path="shared" />

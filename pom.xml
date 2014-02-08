@@ -9,6 +9,7 @@
   <modules>
     <module>gwt-angular-core</module>
     <module>gwt-angular-demo</module>
+    <module>gwt-angular-http</module>
     <module>gwt-angular-route</module>
     <module>gwt-core</module>
   </modules>

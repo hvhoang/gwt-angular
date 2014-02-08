@@ -5,11 +5,11 @@ import java.util.List;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Scope;
-import com.asayama.gwt.angular.client.http.Http;
-import com.asayama.gwt.angular.client.http.HttpCallback;
 import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.q.Q;
+import com.asayama.gwt.angular.http.client.Http;
+import com.asayama.gwt.angular.http.client.HttpCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
