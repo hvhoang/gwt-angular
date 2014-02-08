@@ -48,7 +48,7 @@ public class MyController implements Controller {
 
 		try {
 			http.setQ(q);
-			http.get(url, new HttpCallback() {
+			HttpCallback callback = new HttpCallback() {
 				@Override
 				public void onSuccess(Request request, Response response) {
 					Customers customers = Customers.parse(response.getText());
@@ -58,7 +58,8 @@ public class MyController implements Controller {
 				public void onError(Request request, Exception exception) {
 					GWT.log("onError", exception);
 				}
-			});
+			};
+			http.get(url, callback);
 
 		} catch (RequestException e) {
 			GWT.log("Exception while calling " + url, e);

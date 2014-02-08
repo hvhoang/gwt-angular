@@ -9,7 +9,7 @@ public abstract class HttpCallback extends PromiseCallback {
 
 	abstract public void onSuccess(Request request, Response response);
 	abstract public void onError(Request request, Exception exception);
-	public void onSignal(Request request) {
+	public void onNotify(Request request) {
 		//noop
 	}
 
@@ -43,9 +43,9 @@ public abstract class HttpCallback extends PromiseCallback {
 	public final void notify(Object... args) {
 		Request request = null;
 		if (args != null && args.length > 0) {
-			request = (Request) request;
+			request = (Request) args[0];
 		}
-		onSignal(request);
+		onNotify(request);
 	}
 	
 }
