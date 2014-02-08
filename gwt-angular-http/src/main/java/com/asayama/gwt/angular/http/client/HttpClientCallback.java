@@ -5,7 +5,7 @@ import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 
 
-public abstract class HttpCallback extends PromiseCallback {
+public abstract class HttpClientCallback extends PromiseCallback {
 
 	abstract public void onSuccess(Request request, Response response);
 	abstract public void onError(Request request, Exception exception);

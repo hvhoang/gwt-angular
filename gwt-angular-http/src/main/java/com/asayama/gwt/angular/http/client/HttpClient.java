@@ -15,7 +15,7 @@ public class HttpClient implements Service {
 
 	protected Q q; //FIXME https://github.com/kyoken74/gwt-angular/issues/3
 	
-	public void get(String url, HttpCallback callback) throws RequestException {
+	public void get(String url, HttpClientCallback callback) throws RequestException {
 		Promise promise = get(url);
 		promise.then(callback);
 	}
@@ -42,7 +42,7 @@ public class HttpClient implements Service {
 		return deferred.promise();
 	}
 	
-	public void post(String url, String data, HttpCallback callback) throws RequestException {
+	public void post(String url, String data, HttpClientCallback callback) throws RequestException {
 		Promise promise = post(url, data);
 		promise.then(callback);
 	}
@@ -69,7 +69,7 @@ public class HttpClient implements Service {
 		return deferred.promise();
 	}
 
-	public void put(String url, String data, HttpCallback callback) throws RequestException {
+	public void put(String url, String data, HttpClientCallback callback) throws RequestException {
 		Promise promise = put(url, data);
 		promise.then(callback);
 	}
@@ -96,7 +96,7 @@ public class HttpClient implements Service {
 		return deferred.promise();
 	}
 
-	public void delete(String url, HttpCallback callback) throws RequestException {
+	public void delete(String url, HttpClientCallback callback) throws RequestException {
 		Promise promise = delete(url);
 		promise.then(callback);
 	}
