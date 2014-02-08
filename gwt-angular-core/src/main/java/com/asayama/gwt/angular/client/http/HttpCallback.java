@@ -1,6 +1,6 @@
-package com.asayama.gwt.angular.client.services.http;
+package com.asayama.gwt.angular.client.http;
 
-import com.asayama.gwt.angular.client.services.q.PromiseCallback;
+import com.asayama.gwt.angular.client.q.PromiseCallback;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 

@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.services.q;
+package com.asayama.gwt.angular.client.q;
 
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.NGObjectWrapper;

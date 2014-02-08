@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.client.services.q;
+package com.asayama.gwt.angular.client.q;
 
 
 public abstract class ErrorCallback extends PromiseCallback {
