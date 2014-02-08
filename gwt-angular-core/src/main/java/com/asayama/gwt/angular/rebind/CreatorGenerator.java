@@ -77,8 +77,9 @@ public class CreatorGenerator extends Generator {
 				return qualifiedName;
 			}
 			for (JClassType returnClassType : returnClassTypes) {
-				if (!returnClassType.getQualifiedSourceName().equals(
-						parameterClassType.getErasedType().getQualifiedSourceName())) {
+//				if (!returnClassType.getQualifiedSourceName().equals(
+//						parameterClassType.getErasedType().getQualifiedSourceName())) {
+				if (returnClassType.isDefaultInstantiable()) {
 					returnClassTypeList.add(returnClassType);
 				}
 			}
@@ -103,7 +104,7 @@ public class CreatorGenerator extends Generator {
 				}
 				if (JClassTypeUtils.supports(returnClassType, Module.class)) {
 					Depends depends = returnClassType.getAnnotation(Depends.class);
-					String[] ng = depends.ng();
+					String[] ng = depends == null ? null : depends.ng();
 					if (ng != null) for (String n : ng) {
 						names.add(n);
 					}
