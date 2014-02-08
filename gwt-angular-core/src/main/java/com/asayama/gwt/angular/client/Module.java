@@ -71,9 +71,9 @@ public abstract class Module {
 		final S object = creator.create(klass);
 		final String name = klass.getName();
 		
-		Closure closure = new Closure() {
+		Function<S> closure = new Function<S>() {
 			@Override
-			public void closure(Object... args) {
+			public S function(Object... args) {
 				String m = "";
 				if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
 					GWT.log(m = "calling " + name + ".wrap(NGObject)");
@@ -85,6 +85,7 @@ public abstract class Module {
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
+				return object;
 			}
 		};
 		
