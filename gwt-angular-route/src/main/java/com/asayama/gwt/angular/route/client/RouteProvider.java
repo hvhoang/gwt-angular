@@ -8,7 +8,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider, NGObjectWrapper {
 
-	protected RouteProviderJSO delegate;
+	protected NGRouteProvider delegate;
 	
 	public RouteProvider when(String route, Template action) {
 		delegate.when(route, action);
@@ -34,9 +34,9 @@ public class RouteProvider implements Provider, NGObjectWrapper {
 
 }
 @Bind("$routeProvider")
-class RouteProviderJSO extends NGObject {
+class NGRouteProvider extends NGObject {
 
-	protected RouteProviderJSO() {
+	protected NGRouteProvider() {
 	}
 
 	final native void when(String route, JavaScriptObject action) /*-{

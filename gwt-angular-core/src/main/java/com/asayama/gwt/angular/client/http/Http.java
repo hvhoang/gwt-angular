@@ -7,7 +7,7 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 
 public class Http implements Service, NGObjectWrapper {
 	
-	HttpJSO delegate;
+	NGHttp delegate;
 	
 	@Override
 	public void wrap(NGObject ngo) {
@@ -16,9 +16,9 @@ public class Http implements Service, NGObjectWrapper {
 
 }
 @Bind("$http")
-class HttpJSO extends NGObject {
+class NGHttp extends NGObject {
 
-	protected HttpJSO() {
+	protected NGHttp() {
 	}
 
 }

@@ -8,7 +8,7 @@ import com.asayama.gwt.core.client.JSObject;
 
 public class Q implements Service, NGObjectWrapper {
 
-	protected QJSO delegate;
+	protected NGQ delegate;
 	
 	public <T extends JSObject> Deferred defer() {
 		Deferred deferred = new Deferred();
@@ -23,9 +23,9 @@ public class Q implements Service, NGObjectWrapper {
 
 }
 @Bind("$q")
-class QJSO extends NGObject {
+class NGQ extends NGObject {
 
-	protected QJSO(){
+	protected NGQ(){
 	}
 	
 	final native DeferredJSO _defer() /*-{

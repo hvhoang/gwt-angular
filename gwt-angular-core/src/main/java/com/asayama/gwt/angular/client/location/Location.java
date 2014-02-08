@@ -9,7 +9,7 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 
 public class Location implements Service, NGObjectWrapper {
 	
-	LocationJSO delegate;
+	NGLocation delegate;
 	
 	public String getHash() {
 		return delegate.hash();
@@ -44,9 +44,9 @@ public class Location implements Service, NGObjectWrapper {
 
 }
 @Bind("$location")
-class LocationJSO extends NGObject {
+class NGLocation extends NGObject {
 
-	protected LocationJSO() {
+	protected NGLocation() {
 	}
 
 	final native String hash() /*-{

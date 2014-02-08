@@ -10,7 +10,7 @@ import com.asayama.gwt.core.client.JSObject;
 
 public class RouteParams implements Service, NGObjectWrapper {
 
-	protected RouteParamsJSO delegate;
+	protected NGRouteParams delegate;
 	
 	public String getString(String key) {
 		return delegate.getStringParam(key);
@@ -39,9 +39,9 @@ public class RouteParams implements Service, NGObjectWrapper {
 
 }
 @Bind("$routeParams")
-class RouteParamsJSO extends NGObject {
+class NGRouteParams extends NGObject {
 
-	protected RouteParamsJSO() {
+	protected NGRouteParams() {
 	}
 
 	public final String getStringParam(String key) {
