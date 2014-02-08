@@ -43,26 +43,12 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
 #end
 #end
 #foreach($field in $serviceFields)
-                // ${field.type.qualifiedSourceName}
-                itself.@${generatedQualifiedName}::__${generatedSimpleName}_onInjection_${field.name}(Ljava/lang/Object;)(${field.name});
+                itself.@${qualifiedName}::${field.name} = ${field.name};
 #end
                 invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
             }
         ];
     }-*/;
-
-    // Controller Extensions
-#foreach($field in $serviceFields)
-    private void __${generatedSimpleName}_onInjection_${field.name}(Object object) {
-        String m = "";
-        try {
-            GWT.log(m = "setting ${qualifiedName}.${field.name}");
-            ${field.name} = (${field.type.qualifiedSourceName}) object;
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
-    }
-#end
 
 }
 //--end of ${generatedQualifiedName}
