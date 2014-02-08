@@ -3,9 +3,10 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.Invoker;
+import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.core.client.JSFunction;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
@@ -40,7 +41,7 @@ public abstract class Module {
 		final P object = creator.create(klass);
 		final String name = klass.getName();
 		
-		Function<P> closure = new Function<P>() {
+		Function<P> function = new Function<P>() {
 			@Override
 			public P function(Object... args) {
 				String m = "";
@@ -58,9 +59,9 @@ public abstract class Module {
 			}
 		};
 		
-		JsArray<JSObject> jsarray = creator.dependencies(klass);
-		JSObject jso = creator.constructor(new Invoker(closure));
-		jsarray.push(jso);
+		JSArray<Object> jsarray = creator.dependencies(klass);
+		JSFunction<P> jsfunction = JSFunction.create(function);
+		jsarray.add(jsfunction);
 		delegate.config(jsarray);
 		return object;
 	}
@@ -71,7 +72,7 @@ public abstract class Module {
 		final S object = creator.create(klass);
 		final String name = klass.getName();
 		
-		Function<S> closure = new Function<S>() {
+		Function<S> function = new Function<S>() {
 			@Override
 			public S function(Object... args) {
 				String m = "";
@@ -89,9 +90,9 @@ public abstract class Module {
 			}
 		};
 		
-		JsArray<JSObject> jsarray = creator.dependencies(klass);
-		JSObject jso = creator.constructor(new Invoker(closure));
-		jsarray.push(jso);
+		JSArray<Object> jsarray = creator.dependencies(klass);
+		JSFunction<S> jsfunction = JSFunction.create(function);
+		jsarray.add(jsfunction);
 		delegate.factory(name, jsarray);
 		return object;
 	}

@@ -14,4 +14,7 @@ public class JSFunction<R> extends JavaScriptObject {
 		};
 	}-*/;
 
+	protected JSFunction() {
+	}
+
 }

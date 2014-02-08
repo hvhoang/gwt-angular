@@ -29,14 +29,7 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     }
 
     @Override
-    public native JSObject constructor(Invoker invoker) /*-{
-        return function() {
-            return invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
-        };
-    }-*/;
-
-    @Override
-    public JsArray<JSObject> dependencies(Class<? extends T> klass) {
+    public JSArray<Object> dependencies(Class<? extends T> klass) {
 #foreach($returnClassType in ${returnClassTypes})
         if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
             return __${generatedSimpleName}_dependencies_${foreach.index}();
@@ -46,7 +39,7 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     }
 
 #foreach($dependency in ${dependencies})
-    private native JsArray<JSObject> __${generatedSimpleName}_dependencies_${foreach.index}() /*-{
+    private native JSArray<Object> __${generatedSimpleName}_dependencies_${foreach.index}() /*-{
         return [#foreach($name in ${dependency})'${name}'#if(${foreach.hasNext}),#end#end];
     }-*/;
 #end

@@ -2,8 +2,8 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.Invoker;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.core.client.JSClosure;
+import com.asayama.gwt.core.client.JSFunction;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -25,10 +25,10 @@ public class Angular {
 	public static <T extends Module> T module(Class<T> klass, Closure closure) {
 		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
 		JsArrayString requires = creator.dependencies(klass).cast();
-		JSObject ctor = creator.constructor(new Invoker(closure));
+		JSClosure jsclosure = JSClosure.create(closure);
 		String name = klass.getName();
 		T object = creator.create(klass);
-		object.delegate = _module(name, requires, ctor);
+		object.delegate = _module(name, requires, jsclosure);
 		return object;
 	}
 	
@@ -56,7 +56,7 @@ public class Angular {
 	}
 
 	//TODO Support Creator.constructor method instead of the below method.
-	private static native ModuleJSO _module(String name, JsArrayString requires, JSObject ctor) /*-{
+	private static native ModuleJSO _module(String name, JsArrayString requires, JSFunction<?> ctor) /*-{
 		return $wnd.angular.module(name, requires, ctor);
 	}-*/;
 	

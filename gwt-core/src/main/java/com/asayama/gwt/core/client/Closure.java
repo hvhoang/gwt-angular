@@ -13,7 +13,3 @@ public abstract class Closure implements Function<Void> {
 	}
 
 }
-class Void extends JSObject {
-	protected Void() {
-	}
-}
