@@ -40,19 +40,21 @@ public class Http implements Service {
 		final Deferred deferred = q.defer();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		GWT.log("[GET] " + url);
-		builder.sendRequest(null, new RequestCallback() {
-			@Override
-			public void onResponseReceived(Request request, Response response) {
-				int status = response.getStatusCode();
-				GWT.log("[" + status + "] " + url);
-				deferred.resolve(request, response);
-			}
-			@Override
-			public void onError(Request request, Throwable exception) {
-				GWT.log("[ERR] " + url, exception);
-				deferred.reject(request, exception);
-			}
-		});
+		deferred.notify(
+			builder.sendRequest(null, new RequestCallback() {
+				@Override
+				public void onResponseReceived(Request request, Response response) {
+					int status = response.getStatusCode();
+					GWT.log("[" + status + "] " + url);
+					deferred.resolve(request, response);
+				}
+				@Override
+				public void onError(Request request, Throwable exception) {
+					GWT.log("[ERR] " + url, exception);
+					deferred.reject(request, exception);
+				}
+			})
+		);
 		return deferred.promise();
 	}
 	
@@ -65,19 +67,21 @@ public class Http implements Service {
 		final Deferred deferred = q.defer();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 		GWT.log("[POST] " + url);
-		builder.sendRequest(data, new RequestCallback() {
-			@Override
-			public void onResponseReceived(Request request, Response response) {
-				int status = response.getStatusCode();
-				GWT.log("[" + status + "] " + url);
-				deferred.resolve(request, response);
-			}
-			@Override
-			public void onError(Request request, Throwable exception) {
-				GWT.log("[ERR] " + url, exception);
-				deferred.reject(request, exception);
-			}
-		});
+		deferred.notify(
+			builder.sendRequest(data, new RequestCallback() {
+				@Override
+				public void onResponseReceived(Request request, Response response) {
+					int status = response.getStatusCode();
+					GWT.log("[" + status + "] " + url);
+					deferred.resolve(request, response);
+				}
+				@Override
+				public void onError(Request request, Throwable exception) {
+					GWT.log("[ERR] " + url, exception);
+					deferred.reject(request, exception);
+				}
+			})
+		);
 		return deferred.promise();
 	}
 
@@ -90,19 +94,21 @@ public class Http implements Service {
 		final Deferred deferred = q.defer();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.PUT, url);
 		GWT.log("[POST] " + url);
-		builder.sendRequest(data, new RequestCallback() {
-			@Override
-			public void onResponseReceived(Request request, Response response) {
-				int status = response.getStatusCode();
-				GWT.log("[" + status + "] " + url);
-				deferred.resolve(request, response);
-			}
-			@Override
-			public void onError(Request request, Throwable exception) {
-				GWT.log("[ERR] " + url, exception);
-				deferred.reject(request, exception);
-			}
-		});
+		deferred.notify(
+			builder.sendRequest(data, new RequestCallback() {
+				@Override
+				public void onResponseReceived(Request request, Response response) {
+					int status = response.getStatusCode();
+					GWT.log("[" + status + "] " + url);
+					deferred.resolve(request, response);
+				}
+				@Override
+				public void onError(Request request, Throwable exception) {
+					GWT.log("[ERR] " + url, exception);
+					deferred.reject(request, exception);
+				}
+			})
+		);
 		return deferred.promise();
 	}
 
@@ -115,19 +121,21 @@ public class Http implements Service {
 		final Deferred deferred = q.defer();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.DELETE, url);
 		GWT.log("[DELETE] " + url);
-		builder.sendRequest(null, new RequestCallback() {
-			@Override
-			public void onResponseReceived(Request request, Response response) {
-				int status = response.getStatusCode();
-				GWT.log("[" + status + "] " + url);
-				deferred.resolve(request, response);
-			}
-			@Override
-			public void onError(Request request, Throwable exception) {
-				GWT.log("[ERR] " + url, exception);
-				deferred.reject(request, exception);
-			}
-		});
+		deferred.notify(
+			builder.sendRequest(null, new RequestCallback() {
+				@Override
+				public void onResponseReceived(Request request, Response response) {
+					int status = response.getStatusCode();
+					GWT.log("[" + status + "] " + url);
+					deferred.resolve(request, response);
+				}
+				@Override
+				public void onError(Request request, Throwable exception) {
+					GWT.log("[ERR] " + url, exception);
+					deferred.reject(request, exception);
+				}
+			})
+		);
 		return deferred.promise();
 	}
 

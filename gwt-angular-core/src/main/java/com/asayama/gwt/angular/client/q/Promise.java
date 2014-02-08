@@ -26,7 +26,7 @@ public class Promise extends JSObject {
 		}), new Invoker(new Closure() {
 			@Override
 			public void closure(Object... args) {
-				callback.signal(args);
+				callback.notify(args);
 			}
 		}));
 		return this;
@@ -42,14 +42,14 @@ public class Promise extends JSObject {
 		return this;
 	}
 
-	final native void _then(Invoker successInvoker, Invoker errorInvoker, Invoker signalInvoker) /*-{
+	final native void _then(Invoker successInvoker, Invoker errorInvoker, Invoker notifyInvoker) /*-{
 		this.then(
 			function (jsarray) {
 				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
 			}, function (jsarray) {
 				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
 			}, function (jsarray) {
-				signalInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
+				notifyInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
 			});
 	}-*/;
 	

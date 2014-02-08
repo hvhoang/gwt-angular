@@ -40,7 +40,7 @@ public abstract class HttpCallback extends PromiseCallback {
 	}
 	
 	@Override
-	public final void signal(Object... args) {
+	public final void notify(Object... args) {
 		Request request = null;
 		if (args != null && args.length > 0) {
 			request = (Request) request;

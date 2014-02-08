@@ -8,7 +8,7 @@ public abstract class PromiseCallback {
 	
 	public abstract void error(Object... args);
 	
-	public void signal(Object... args) {
+	public void notify(Object... args) {
 		//noop by default
 	}
 }

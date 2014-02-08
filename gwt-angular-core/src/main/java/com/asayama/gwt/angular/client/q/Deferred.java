@@ -7,8 +7,8 @@ public class Deferred {
 
 	DeferredJSO delegate = null;
 
-	public void singal(Object... values) {
-		delegate.signal(JSArray.create(values));
+	public void notify(Object... values) {
+		delegate.notify(JSArray.create(values));
 	}
 	
 	public void resolve(Object... values) {
@@ -29,7 +29,7 @@ class DeferredJSO extends JSObject {
 	protected DeferredJSO() {
 	}
 
-	final native void signal(JSArray<Object> value) /*-{
+	final native void notify(JSArray<Object> value) /*-{
 		this.notify(value);
 	}-*/;
 	
