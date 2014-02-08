@@ -10,12 +10,16 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
-interface ProviderCreator<T extends Provider> extends Creator<T> {
-}
-interface ServiceCreator<T extends Service> extends Creator<T> {
-}
-interface ControllerCreator<T extends Controller> extends Creator<T> {
-}
+interface ProviderCreator<T extends Provider> extends Creator<T> {}
+interface ServiceCreator<T extends Service> extends Creator<T> {}
+interface ControllerCreator<T extends Controller> extends Creator<T> {}
+
+/**
+ * Provides GWT Java representation of AngularJS's Module object.
+ * 
+ * @author kyoken74
+ * @see http://docs.angularjs.org/api/angular.Module
+ */
 public abstract class Module {
 	
 	JSModule delegate;

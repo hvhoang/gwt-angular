@@ -10,33 +10,35 @@ import com.asayama.gwt.core.client.JSObject;
 
 public class RouteParams implements Service, NGObjectWrapper {
 
-	protected NGRouteParams delegate;
+	protected NGRouteParams ngo;
 	
 	public String getString(String key) {
-		return delegate.getStringParam(key);
+		return getNGObject().getStringParam(key);
 	}
 	
 	public Integer getInteger(String key) {
-		return delegate.getIntegerParam(key);
+		return getNGObject().getIntegerParam(key);
 	}
 	
 	public Double getDouble(String key) {
-		return delegate.getDoubleParam(key);
+		return getNGObject().getDoubleParam(key);
 	}
 	
 	public Date getDate(String key) {
-		return delegate.getDateParam(key);
+		return getNGObject().getDateParam(key);
 	}
 	
 	public <T extends JSObject> T getObject(String key) {
-		return delegate.getObjectParam(key);
+		return getNGObject().getObjectParam(key);
 	}
 	
 	@Override
 	public void wrap(NGObject ngo) {
-		this.delegate = NGObject.cast(ngo);
+		this.ngo = NGObject.cast(ngo);
 	}
-
+	NGRouteParams getNGObject() {
+		return ngo;
+	}
 }
 @Bind("$routeParams")
 class NGRouteParams extends NGObject {

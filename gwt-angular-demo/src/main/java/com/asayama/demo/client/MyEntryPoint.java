@@ -1,7 +1,6 @@
 package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.client.Scope;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.http.client.HttpClient;
@@ -18,7 +17,6 @@ public class MyEntryPoint implements EntryPoint {
 		myModule.config(RouteProvider.class);
 		myModule.factory(Q.class);
 		myModule.factory(HttpClient.class);
-		myModule.factory(Scope.class);
 		myModule.factory(RouteParams.class);
 		myModule.factory(Location.class);
 		myModule.controller(MyController.class);

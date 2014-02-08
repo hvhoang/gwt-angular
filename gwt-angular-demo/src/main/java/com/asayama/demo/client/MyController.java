@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.Scope;
 import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpCallback;
+import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
@@ -24,7 +23,6 @@ public class MyController implements Controller {
 	public static final String GREETING = MyControllerConstants.INSTANCE.greeting();
 	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
-	protected Scope scope;
 	protected RouteParams routeParams;
 	protected Location location;
 	protected Q q;
@@ -60,7 +58,6 @@ public class MyController implements Controller {
 				}
 			};
 			http.get(url, callback);
-
 		} catch (RequestException e) {
 			GWT.log("Exception while calling " + url, e);
 		}

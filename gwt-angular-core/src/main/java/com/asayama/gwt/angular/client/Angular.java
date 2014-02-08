@@ -8,8 +8,13 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
-interface ModuleCreator<T extends Module> extends Creator<T> {
-}
+interface ModuleCreator<T extends Module> extends Creator<T> {}
+
+/**
+ * Provides GWT Java representation of AngularJS's angular object.
+ * 
+ * @author kyoken74
+ */
 public class Angular {
 	
 	public static <T extends Module> T module(Class<T> klass) {

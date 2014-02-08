@@ -8,19 +8,21 @@ import com.asayama.gwt.core.client.JSObject;
 
 public class Q implements Service, NGObjectWrapper {
 
-	protected NGQ delegate;
+	protected NGQ ngo;
 	
 	public <T extends JSObject> Deferred defer() {
 		Deferred deferred = new Deferred();
-		deferred.jso = delegate._defer();
+		deferred.jso = getNGObject()._defer();
 		return deferred;
 	}
 
 	@Override
 	public void wrap(NGObject ngo) {
-		this.delegate = NGObject.cast(ngo);
+		this.ngo = NGObject.cast(ngo);
 	}
-
+	NGQ getNGObject() {
+		return ngo;
+	}
 }
 @Bind("$q")
 class NGQ extends NGObject {

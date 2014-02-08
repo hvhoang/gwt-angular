@@ -9,19 +9,19 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 
 public class Location implements Service, NGObjectWrapper {
 	
-	NGLocation delegate;
+	NGLocation ngo;
 	
 	public String getHash() {
-		return delegate.hash();
+		return getNGObject().hash();
 	}
 	
 	public Location setHash(String hash) {
-		delegate.hash(hash);
+		getNGObject().hash(hash);
 		return this;
 	}
 	
 	public Location setHashParam(String key, String value) {
-		delegate.search(key, value);
+		getNGObject().search(key, value);
 		return this;
 	}
 	
@@ -33,13 +33,16 @@ public class Location implements Service, NGObjectWrapper {
 		for (HashParam p : params) {
 			jso.put(p.key(), p.value());
 		}
-		delegate.search(jso);
+		getNGObject().search(jso);
 		return this;
 	}
 	
 	@Override
 	public void wrap(NGObject ngo) {
-		this.delegate = NGObject.cast(ngo);
+		this.ngo = NGObject.cast(ngo);
+	}
+	NGLocation getNGObject() {
+		return ngo;
 	}
 
 }

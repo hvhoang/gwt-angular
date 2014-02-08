@@ -7,11 +7,14 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 
 public class Http implements Service, NGObjectWrapper {
 	
-	NGHttp delegate;
+	NGHttp ngo;
 	
 	@Override
 	public void wrap(NGObject ngo) {
-		this.delegate = NGObject.cast(ngo);
+		this.ngo = NGObject.cast(ngo);
+	}
+	NGHttp getNGObject() {
+		return ngo;
 	}
 
 }

@@ -8,30 +8,32 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider, NGObjectWrapper {
 
-	protected NGRouteProvider delegate;
+	protected NGRouteProvider ngo;
 	
 	public RouteProvider when(String route, Template action) {
-		delegate.when(route, action);
+		getNGObject().when(route, action);
 		return this;
 	}
 	public RouteProvider when(String route, Redirect action) {
-		delegate.when(route, action);
+		getNGObject().when(route, action);
 		return this;
 	}
 	public RouteProvider otherwise(Template action) {
-		delegate.otherwise(action);
+		getNGObject().otherwise(action);
 		return this;
 	}
 	public RouteProvider otherwise(Redirect action) {
-		delegate.otherwise(action);
+		getNGObject().otherwise(action);
 		return this;
 	}
 
 	@Override
 	public void wrap(NGObject ngo) {
-		this.delegate = NGObject.cast(ngo);
+		this.ngo = NGObject.cast(ngo);
 	}
-
+	NGRouteProvider getNGObject() {
+		return ngo;
+	}
 }
 @Bind("$routeProvider")
 class NGRouteProvider extends NGObject {
