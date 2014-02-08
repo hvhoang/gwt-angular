@@ -12,7 +12,7 @@ public class Q implements Service, NGObjectWrapper {
 	
 	public <T extends JSObject> Deferred defer() {
 		Deferred deferred = new Deferred();
-		deferred.delegate = delegate._defer();
+		deferred.jso = delegate._defer();
 		return deferred;
 	}
 
@@ -28,7 +28,7 @@ class NGQ extends NGObject {
 	protected NGQ(){
 	}
 	
-	final native DeferredJSO _defer() /*-{
+	final native JSDeferred _defer() /*-{
 		return this.defer();
 	}-*/;
 

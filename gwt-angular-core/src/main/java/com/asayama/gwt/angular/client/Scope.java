@@ -3,10 +3,12 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 
-
+/**
+ * FIXME https://github.com/kyoken74/gwt-angular/issues/6
+ */
 public class Scope implements Service, NGObjectWrapper {
 
-	ScopeJSO delegate = null;
+	NGScope delegate = null;
 	
 	public Scope digest() {
 		delegate.digest();
@@ -20,9 +22,9 @@ public class Scope implements Service, NGObjectWrapper {
 
 }
 @Bind("$scope")
-class ScopeJSO extends JSObject {
+class NGScope extends JSObject {
 
-	protected ScopeJSO() {
+	protected NGScope() {
 	}
 
 	public final native void digest() /*-{

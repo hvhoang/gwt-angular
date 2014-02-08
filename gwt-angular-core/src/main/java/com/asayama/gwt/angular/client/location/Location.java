@@ -29,7 +29,7 @@ public class Location implements Service, NGObjectWrapper {
 		if (params == null || params.size() == 0) {
 			return this;
 		}
-		HashParamJSO jso = HashParamJSO.create();
+		JSHashParam jso = JSHashParam.create();
 		for (HashParam p : params) {
 			jso.put(p.key(), p.value());
 		}
@@ -61,7 +61,7 @@ class NGLocation extends NGObject {
 		this.search(key, value);
 	}-*/;
 	
-	final native void search(HashParamJSO param) /*-{
+	final native void search(JSHashParam param) /*-{
 		this.search(param);
 	}-*/;
 

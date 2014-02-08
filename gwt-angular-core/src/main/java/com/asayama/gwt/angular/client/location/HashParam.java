@@ -10,9 +10,9 @@ public class HashParam extends KeyValuePair<String,String> {
 	}
 
 }
-class HashParamJSO extends JSObject {
+class JSHashParam extends JSObject {
 
-	protected HashParamJSO() {
+	protected JSHashParam() {
 	}
 
 	final void put(String key, String value ) {

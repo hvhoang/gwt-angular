@@ -8,7 +8,7 @@ public class Redirect extends JSObject {
 	}
 
 	public static Redirect create(String redirectTo) {
-		return JSObject.create().<Redirect>cast().setRedirectTo(redirectTo);
+		return Redirect.<Redirect>create().setRedirectTo(redirectTo);
 	}
 	
 	public final String getRedirectTo() {

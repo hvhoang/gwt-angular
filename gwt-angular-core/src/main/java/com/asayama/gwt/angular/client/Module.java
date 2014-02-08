@@ -18,7 +18,7 @@ interface ControllerCreator<T extends Controller> extends Creator<T> {
 }
 public abstract class Module {
 	
-	ModuleJSO delegate;
+	JSModule delegate;
 	
 	/**
 	 * An instance of Module's derived type should be created using GWT.create()
@@ -137,9 +137,9 @@ public abstract class Module {
 	}
 
 }
-class ModuleJSO extends JSObject {
+class JSModule extends JSObject {
 	
-	protected ModuleJSO() {
+	protected JSModule() {
 	}
 	
 	final String getName() {

@@ -5,28 +5,28 @@ import com.asayama.gwt.core.client.JSObject;
 
 public class Deferred {
 
-	DeferredJSO delegate = null;
+	JSDeferred jso = null;
 
 	public void notify(Object... values) {
-		delegate.notify(JSArray.create(values));
+		jso.notify(JSArray.create(values));
 	}
 	
 	public void resolve(Object... values) {
-		delegate.resolve(JSArray.create(values));
+		jso.resolve(JSArray.create(values));
 	}
 	
 	public void reject(Object... values) {
-		delegate.reject(JSArray.create(values));
+		jso.reject(JSArray.create(values));
 	}
 	
 	public Promise promise() {
-		return delegate.promise();
+		return jso.promise();
 	}
 	
 }
-class DeferredJSO extends JSObject {
+class JSDeferred extends JSObject {
 
-	protected DeferredJSO() {
+	protected JSDeferred() {
 	}
 
 	final native void notify(JSArray<Object> value) /*-{
