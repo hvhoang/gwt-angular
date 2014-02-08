@@ -25,6 +25,13 @@ public class JSObject extends JavaScriptObject {
 		return JsonUtils.safeEval(jsonString).cast();
 	}
 	
+	public static <R extends JSObject, P extends JSObject> R cast(P object) {
+		if (object == null) {
+			return null;
+		}
+		return object.cast();
+	}
+	
 	protected JSObject() {
 	}
 

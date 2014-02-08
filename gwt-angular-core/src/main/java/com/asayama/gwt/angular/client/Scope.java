@@ -15,7 +15,7 @@ public class Scope implements Service, NGObjectWrapper {
 	
 	@Override
 	public void wrap(NGObject ngo) {
-		this.delegate = ngo == null ? null : ngo.<ScopeJSO>cast();
+		this.delegate = NGObject.cast(ngo);
 	}
 
 }

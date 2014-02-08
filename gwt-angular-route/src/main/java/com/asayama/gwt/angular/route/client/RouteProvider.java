@@ -6,7 +6,7 @@ import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class RouteProvider implements Provider, NGObjectWrapper {
+public class RouteProvider implements Provider, NGObjectWrapper<RouteProviderJSO> {
 
 	protected RouteProviderJSO delegate;
 	
@@ -28,8 +28,8 @@ public class RouteProvider implements Provider, NGObjectWrapper {
 	}
 
 	@Override
-	public void wrap(NGObject delegate) {
-		this.delegate = delegate == null ? null : delegate.<RouteProviderJSO>cast();
+	public void wrap(RouteProviderJSO ngo) {
+		this.delegate = NGObject.cast(ngo);
 	}
 
 }

@@ -6,7 +6,7 @@ import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 
-public class Q implements Service, NGObjectWrapper {
+public class Q implements Service, NGObjectWrapper<QJSO> {
 
 	protected QJSO delegate;
 	
@@ -17,8 +17,8 @@ public class Q implements Service, NGObjectWrapper {
 	}
 
 	@Override
-	public void wrap(NGObject delegate) {
-		this.delegate = delegate == null ? null : delegate.<QJSO>cast();
+	public void wrap(QJSO ngo) {
+		this.delegate = NGObject.cast(ngo);
 	}
 
 }
