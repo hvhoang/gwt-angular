@@ -21,7 +21,7 @@ public class ControllerGenerator extends Generator {
 	public String generate(TreeLogger logger, GeneratorContext context, String qualifiedName) throws UnableToCompleteException {
 
 		try {
-			final String filename = "Controller.vm";
+			final String filename = "com/asayama/gwt/angular/rebind/Controller.vm";
 			VelocityGenerator velocity = new VelocityGenerator(filename);
 			velocity.put("logger", logger);
 			velocity.put("context", context);

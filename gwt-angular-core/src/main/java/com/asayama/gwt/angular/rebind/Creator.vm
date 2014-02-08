@@ -32,7 +32,6 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     public native JSObject constructor(Invoker invoker) /*-{
         return function() {
             return invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
-//            return arguments;
         };
     }-*/;
 
