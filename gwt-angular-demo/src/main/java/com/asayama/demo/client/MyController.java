@@ -8,7 +8,7 @@ import com.asayama.gwt.angular.client.Scope;
 import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.angular.http.client.Http;
+import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.client.GWT;
@@ -28,7 +28,7 @@ public class MyController implements Controller {
 	protected RouteParams routeParams;
 	protected Location location;
 	protected Q q;
-	protected Http http;
+	protected HttpClient http;
 
 	String clickable;
 	String name;

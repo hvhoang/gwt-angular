@@ -11,7 +11,7 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 
-public class Http implements Service {
+public class HttpClient implements Service {
 
 	protected Q q; //FIXME https://github.com/kyoken74/gwt-angular/issues/3
 	
