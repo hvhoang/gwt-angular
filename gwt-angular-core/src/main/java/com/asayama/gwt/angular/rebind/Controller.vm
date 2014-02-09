@@ -19,38 +19,46 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
     // Construct Methods
     
     @Override
-    public JSObject construct(Invoker invoker) {
-        return __${simpleName}_constructor(this, invoker);
+    public JSObject construct(JSClosure closure) {
+        JSClosure injector = __${simpleName}_injector(this);
+        JSClosure binder = __${simpleName}_binder(this);
+        JSClosure constructor = __${simpleName}_constructor(binder, injector, closure);
+        JSArray<Object> dependencies = __${simpleName}_dependencies();
+        dependencies.add(constructor);
+        return dependencies.cast();
     }
 
-    private native JSObject __${simpleName}_constructor(${simpleName} itself, Invoker invoker) /*-{
+    /**
+     * FIXME the serviceFields may be empty this comma might cause problems
+     */
+    private native JSArray<Object> __${simpleName}_dependencies() /*-{
         return [
             '$scope',
 #foreach($field in $serviceFields)
-            '${field.type.qualifiedSourceName}',
+            '${field.type.qualifiedSourceName}'#if($foreach.hasNext), #end
+
 #end
-            function ($scope#foreach($field in $nativeServiceFields), ${field.name}#end#foreach($field in $serviceFields), ${field.name}#end) {
-#foreach($method in $publicMethods)
-                $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-                    return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
-                };
-#end
-#foreach($field in $publicFields)
-#if($field.isStatic())
-                $scope.${field.name} = @${qualifiedName}::${field.name};
-#else
-                $scope.${field.name} = itself.@${qualifiedName}::${field.name};
-#end
-#end
-#foreach($field in $serviceFields)
-                itself.@${qualifiedName}::${field.name} = ${field.name};
-#end
-                invoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(arguments);
-            }
         ];
     }-*/;
+    
+    private native JSClosure __${simpleName}_constructor(JSClosure binder, JSClosure injector, JSClosure closure) /*-{
+        return function ($scope#foreach($field in $serviceFields), ${field.name}#end) {
+            var args = Array.prototype.slice.call(arguments, 0);
+            binder(args.shift());
+            injector(#foreach($field in $serviceFields)${field.name}#if($foreach.hasNext), #end#end);
+            closure(args);
+        };
+    }-*/;
 
-    private native JSClosure __${simpleName}_createScopeBinder(${simpleName} itself) /*-{
+    private native JSClosure __${simpleName}_injector(${simpleName} itself) /*-{
+        return function (#foreach($field in $serviceFields)${field.name}#if($foreach.hasNext), #end#end) {
+#foreach($field in $serviceFields)
+            itself.@${qualifiedName}::${field.name} = ${field.name};
+#end
+        };
+    }-*/;
+
+    private native JSClosure __${simpleName}_binder(${simpleName} itself) /*-{
         return function ($scope) {
 #foreach($method in $publicMethods)
             $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {

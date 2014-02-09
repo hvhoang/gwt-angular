@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.Invoker;
+import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSObject;
 
 /**
@@ -16,5 +16,5 @@ import com.asayama.gwt.core.client.JSObject;
  */
 @Deprecated
 public interface Constructable {
-	JSObject construct(Invoker invoker);
+	JSObject construct(JSClosure closure);
 }

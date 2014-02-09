@@ -2,8 +2,8 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.Invoker;
 import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSFunction;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -123,7 +123,7 @@ public abstract class Module {
 			}
 		};
 		Constructable ctor = (Constructable) controller;
-		JSObject jsarray = ctor.construct(new Invoker(closure));
+		JSObject jsarray = ctor.construct(JSClosure.create(closure));
 		delegate.controller(name, jsarray);
 		return controller;
 	}
