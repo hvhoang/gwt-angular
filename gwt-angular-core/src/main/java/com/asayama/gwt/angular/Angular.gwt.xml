@@ -13,7 +13,4 @@
   <generate-with class="com.asayama.gwt.angular.rebind.InjectorGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.Injector" />
   </generate-with>
-  <generate-with class="com.asayama.gwt.angular.rebind.ControllerGenerator">
-    <when-type-assignable class="com.asayama.gwt.angular.client.Controller" />
-  </generate-with>
 </module>

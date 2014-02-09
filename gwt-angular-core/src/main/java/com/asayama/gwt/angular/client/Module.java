@@ -107,15 +107,14 @@ public abstract class Module {
 	public <C extends Controller> C controller(Class<C> klass) {
 		return controller(klass.getName(), klass);
 	}
-
+	
 	public <C extends Controller> C controller(final String name, Class<C> klass) {
 		ControllerCreator<C> creator = GWT.create(ControllerCreator.class);
-//		ControllerBinder<C> binder = GWT.create(ControllerBinder.class);
-//		ControllerInjector<C> injector = GWT.create(ControllerInjector.class);
+		ControllerBinder<C> binder = GWT.create(ControllerBinder.class);
+		ControllerInjector<C> injector = GWT.create(ControllerInjector.class);
 		final C object = creator.create(klass);
-//		JSClosure bclosure = binder.binder(klass, object);
-//		JSClosure iclosure = injector.injector(klass, object);
-		
+		JSClosure jsbinder = binder.binder(klass, object);
+		JSClosure jsinjector = injector.injector(klass, object);
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
@@ -130,12 +129,23 @@ public abstract class Module {
 				}
 			}
 		};
-		Constructable ctor = (Constructable) object;
-		JSObject jsarray = ctor.construct(JSClosure.create(closure));
-		delegate.controller(name, jsarray);
+		JSClosure constructor = _controller(jsbinder, jsinjector, JSClosure.create(closure));
+		JSArray<Object> dependencies = creator.dependencies(klass);
+		dependencies.add(0, "$scope");
+		dependencies.add(constructor);
+		delegate.controller(name, dependencies);
 		return object;
 	}
 
+    private native JSClosure _controller(JSClosure binder, JSClosure injector, JSClosure closure) /*-{
+	    return function () {
+	        var args = Array.prototype.slice.call(arguments, 0);
+	        binder(args.shift());
+	        injector.apply(null, args);
+	        closure(args);
+	    };
+	}-*/;
+	
 	public String getName() {
 		return delegate.getName();
 	}

@@ -38,6 +38,10 @@ public class JSArray<T> extends JavaScriptObject {
 		this.push(object);
 	}-*/;
 
+	public final native void add(int index, T object) /*-{
+		this.splice(index, 0, object);
+	}-*/;
+	
 	public final native int size() /*-{
 		return this.length;
 	}-*/;
