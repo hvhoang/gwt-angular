@@ -1,0 +1,68 @@
+/*++
+ * Template: Creator.vm
+ * Provided: ${qualifiedName}
+ * Generate: ${generatedQualifiedName}
+ */
+package ${packageName};
+
+import java.util.*;
+
+import com.google.gwt.core.client.*;
+import com.asayama.gwt.core.client.*;
+import com.asayama.gwt.angular.client.*;
+
+public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifiedName}<T> {
+
+    protected ${generatedSimpleName}() {
+    }
+    
+    @Override
+    public T create(Class<? extends T> klass) {
+        String name = klass.getName();
+        GWT.log("creating " + name);
+#foreach($returnClassType in ${returnClassTypes})
+        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
+            return GWT.create(${returnClassType.qualifiedSourceName}.class);
+        }
+#end
+        throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
+    }
+    
+    @Override
+    public JSClosure binder(Class<? extends T> klass, T object) {
+#foreach($returnClassType in ${returnClassTypes})
+        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
+            return __${generatedSimpleName}_binder_${foreach.index}(object);
+        }
+#end
+        return null;
+    }
+    
+#foreach($returnClassType in ${returnClassTypes})
+    private native JSClosure __${generatedSimpleName}_binder_${foreach.index}(T object) /*-{
+        return function ($scope) {
+#foreach($field in $returnClassType.fields)
+#if($field.isPublic() && $field.isFinal() && $field.isStatic())
+            $scope.${field.name} = @${returnClassType.qualifiedSourceName}::${field.name};
+#elseif($field.isPublic() && $field.isFinal())
+            $scope.${field.name} = object.@${returnClassType.qualifiedSourceName}::${field.name};
+#end
+#end
+#foreach($method in $returnClassType.inheritableMethods)
+#if($method.isPublic() && $method.isStatic())
+            $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+                return ${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
+            };
+#elseif($method.isPublic())
+            $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+                return object.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
+            };
+#end
+#end
+        };
+    }-*/;
+#end
+
+}
+//--end of ${generatedQualifiedName}
+

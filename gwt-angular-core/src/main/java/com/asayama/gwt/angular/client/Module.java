@@ -13,6 +13,8 @@ import com.google.gwt.core.shared.GWT;
 interface ProviderCreator<T extends Provider> extends Creator<T> {}
 interface ServiceCreator<T extends Service> extends Creator<T> {}
 interface ControllerCreator<T extends Controller> extends Creator<T> {}
+interface ControllerBinder<T extends Controller> extends Binder<T> {}
+interface ControllerInjector<T extends Controller> extends Injector<T> {}
 
 /**
  * Provides GWT Java representation of AngularJS's Module object.
@@ -103,29 +105,35 @@ public abstract class Module {
 	}
 	
 	public <C extends Controller> C controller(Class<C> klass) {
-		ControllerCreator<C> creator = GWT.create(ControllerCreator.class);
-		return controller(klass.getName(), creator.create(klass));
+		return controller(klass.getName(), klass);
 	}
 
-	protected <C extends Controller> C controller(final String name, final C controller) {
+	public <C extends Controller> C controller(final String name, Class<C> klass) {
+		ControllerCreator<C> creator = GWT.create(ControllerCreator.class);
+//		ControllerBinder<C> binder = GWT.create(ControllerBinder.class);
+//		ControllerInjector<C> injector = GWT.create(ControllerInjector.class);
+		final C object = creator.create(klass);
+//		JSClosure bclosure = binder.binder(klass, object);
+//		JSClosure iclosure = injector.injector(klass, object);
+		
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
 				String m = "";
 				try {
 					GWT.log(m = "calling " + name + ".onControllerLoad");
-					controller.onControllerLoad();
+					object.onControllerLoad();
 					GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-					Module.this.onInjection(controller);
+					Module.this.onInjection(object);
 				} catch (Exception e) {
 					GWT.log("Exception while " + m, e);
 				}
 			}
 		};
-		Constructable ctor = (Constructable) controller;
+		Constructable ctor = (Constructable) object;
 		JSObject jsarray = ctor.construct(JSClosure.create(closure));
 		delegate.controller(name, jsarray);
-		return controller;
+		return object;
 	}
 
 	public String getName() {

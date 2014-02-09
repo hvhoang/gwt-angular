@@ -4,10 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.google.gwt.core.ext.typeinfo.JClassType;
+import com.google.gwt.core.ext.typeinfo.JType;
 
 public class JClassTypeUtils {
 
-	static boolean supports(JClassType classType, Class<?> supportType) {
+	public static boolean supports(JType type, Class<?> supportType) {
+		JClassType classType = type.isClassOrInterface();
+		if (classType == null) {
+			return false;
+		}
+		return supports(classType, supportType);
+	}
+
+	public static boolean supports(JClassType classType, Class<?> supportType) {
 		String testTypeName = classType.getQualifiedSourceName();
 		String supportTypeName = supportType.getName();
 		if (testTypeName.equals(supportTypeName)) {
