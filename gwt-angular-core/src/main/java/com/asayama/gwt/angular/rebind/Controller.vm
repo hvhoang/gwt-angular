@@ -50,6 +50,23 @@ public class ${generatedSimpleName} extends ${simpleName} implements Constructab
         ];
     }-*/;
 
+    private native JSClosure __${simpleName}_createScopeBinder(${simpleName} itself) /*-{
+        return function ($scope) {
+#foreach($method in $publicMethods)
+            $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
+                return itself.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
+            };
+#end
+#foreach($field in $publicFields)
+#if($field.isStatic())
+            $scope.${field.name} = @${qualifiedName}::${field.name};
+#else
+            $scope.${field.name} = itself.@${qualifiedName}::${field.name};
+#end
+#end
+        };
+    }-*/;
+
 }
 //--end of ${generatedQualifiedName}
 

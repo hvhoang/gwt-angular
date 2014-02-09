@@ -16,9 +16,10 @@ interface ControllerCreator<T extends Controller> extends Creator<T> {}
 
 /**
  * Provides GWT Java representation of AngularJS's Module object.
- * 
+ * <p>
+ * http://docs.angularjs.org/api/angular.Module
+ * </p>
  * @author kyoken74
- * @see http://docs.angularjs.org/api/angular.Module
  */
 public abstract class Module {
 	

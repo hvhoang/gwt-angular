@@ -4,7 +4,13 @@ import com.asayama.gwt.angular.client.q.PromiseCallback;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 
-
+/**
+ * Provides an asynchronous HTTP client callback abstract implementation based
+ * on AngularJS's promise framework.
+ * 
+ * @author kyoken74
+ * @see PromiseCallback
+ */
 public abstract class HttpClientCallback extends PromiseCallback {
 
 	abstract public void onSuccess(Request request, Response response);
