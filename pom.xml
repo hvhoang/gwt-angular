@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt</groupId>
   <artifactId>gwt-angular</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>gwt-angular</name>
   <modules>
@@ -90,6 +90,6 @@
     <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
     <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
     <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
-    <tag>gwt-angular-0.0.5</tag>
+    <tag>gwt-angular-0.0.0</tag>
   </scm>
 </project>
