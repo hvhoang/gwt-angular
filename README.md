@@ -39,7 +39,7 @@ Versioning
 will increment the patch number. The programming interface will remain unstable
 during this cycle.
 
-The interface will become stable once we reach 1.0.0. From this point, only
+The interface will become stable once we reach 1.0.0. From this point on, only
 additive changes will be introduced to the programming interface, so that the
 users can upgrade to the new versions without major code changes.
 
@@ -48,11 +48,13 @@ notice even when the interface remains unchanged. This may require code changes
 when upgrading to later versions.
 
 1.0.0 user will be able to drop in 1.0.1
+
 1.1.0 user will be able to drop in 1.1.1
+
 1.0.0 user will be able to drop in 1.2.0
+
 1.2.0 user will not be able to drop in 2.0.0 due to interface changes.
 
 When the major versions are changed, the previously deprecated interfaces may
 be removed; hecne requiring code changes to those users relying on the old 
 interface.
-
