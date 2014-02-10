@@ -45,7 +45,6 @@
 		<dependency>
 			<groupId>com.asayama.gwt</groupId>
 			<artifactId>gwt-angular-core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<!-- Testing -->

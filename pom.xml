@@ -53,6 +53,33 @@
   </build>
   <dependencyManagement>
     <dependencies>
+    
+      <!-- Project -->
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-core</artifactId>
+        <version>0.0.6-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-core</artifactId>
+        <version>0.0.6-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-demo</artifactId>
+        <version>0.0.6-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-http</artifactId>
+        <version>0.0.6-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-route</artifactId>
+        <version>0.0.6-SNAPSHOT</version>
+      </dependency>
 
       <!-- GWT Client -->
       <dependency>

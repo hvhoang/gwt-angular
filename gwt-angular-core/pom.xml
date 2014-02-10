@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>com.asayama.gwt</groupId>
 			<artifactId>gwt-core</artifactId>
-			<version>${project.version}</version>
+			<version>0.0.6-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Code Generator -->
