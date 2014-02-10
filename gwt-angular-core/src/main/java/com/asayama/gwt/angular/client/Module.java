@@ -10,13 +10,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
-interface ProviderCreator<T extends Provider> extends Creator<T> {}
-interface ServiceCreator<T extends Service> extends Creator<T> {}
-interface ServiceInjector<T extends Service> extends Injector<T> {}
-interface ControllerCreator<T extends Controller> extends Creator<T> {}
-interface ControllerInjector<T extends Controller> extends Injector<T> {}
-interface ControllerBinder<T extends Controller> extends Binder<T> {}
-
 /**
  * Provides GWT Java representation of AngularJS's Module object.
  * <p>
@@ -45,9 +38,12 @@ public abstract class Module {
 
 	public <P extends Provider> P config(Class<P> klass) {
 		
-		ProviderCreator<P> creator = GWT.create(ProviderCreator.class);
-		final P object = creator.create(klass);
 		final String name = klass.getName();
+		ProviderCreator<P> creator = GWT.create(ProviderCreator.class);
+		ProviderInjector<P> injector = GWT.create(ProviderInjector.class);
+		
+		final P object = creator.create(klass);
+		JSClosure jsinjector = injector.injector(klass, object);
 		
 		Function<P> function = new Function<P>() {
 			@Override
@@ -66,14 +62,23 @@ public abstract class Module {
 				return object;
 			}
 		};
-		
-		JSArray<Object> jsarray = creator.dependencies(klass);
-		JSFunction<P> jsfunction = JSFunction.create(function);
-		jsarray.add(jsfunction);
-		delegate.config(jsarray);
+		JSArray<Object> dependencies = creator.dependencies(klass);
+		JSFunction<P> constructor = _config(JSFunction.create(function), jsinjector);
+		dependencies.add(constructor);
+		delegate.config(dependencies);
 		return object;
 	}
-	
+
+	private native <P extends Provider> JSFunction<P> _config(JSFunction<P> jsfunction, JSClosure jsinjector) /*-{
+	    return function () {
+	        var args = Array.prototype.slice.call(arguments, 0);
+	        if (jsinjector) {
+	        	jsinjector.apply(null, args);
+	        }
+	        return jsfunction.apply(null, args);
+	    };
+	}-*/;
+
 	public <S extends Service> S factory(Class<S> klass) {
 		
 		final String name = klass.getName();

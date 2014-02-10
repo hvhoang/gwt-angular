@@ -8,8 +8,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
-interface ModuleCreator<T extends Module> extends Creator<T> {}
-
 /**
  * Provides GWT Java representation of AngularJS's angular object.
  * 
