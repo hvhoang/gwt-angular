@@ -4,13 +4,14 @@
  * <p>
  * In order to use the components in this module, the user must add the 
  * following inherit statements in his or code.
+ * </p>
  * <pre>{@code
- *<inherits name="com.asayama.gwt.angular.http.AngularHttp" />
+ * <inherits name="com.asayama.gwt.angular.http.AngularHttp" />
  * }</pre>
- * </p><p>
+ * <p>
  * The implementation of HTTP client is asynchronous in a sense that it does
  * not block the UI thread. The client is synchronous in its request/response
  * handling.
  * </p>
  */
-package com.asayama.gwt.angular.http;
+package com.asayama.gwt.angular.http.client;

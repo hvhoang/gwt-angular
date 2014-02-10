@@ -1,9 +1,15 @@
 /**
- * Provides interfaces and implementations for core components in AngularJS.
- * To overcome the challenges of bridging the gap between the programming
- * paradigms of JavaScript and Java, code generator is used to inspect types
- * at compile-time and build helper classes to provide the glue between the
- * JavaScript and Java.
+ * Provides GWT Java wrapper around AngularJS. This module contains the 
+ * components in Angular's "ng" module, which is the core of AngularJS 
+ * framework. The core module contains enough components to start building a
+ * simple application.
+ * <p>
+ * In order to use the components in this module, the user must add the 
+ * following inherit statements in his or code.
+ * </p>
+ * <pre>{@code
+ * <inherits name="com.asayama.gwt.angular.Angular" />
+ * }</pre>
  */
 package com.asayama.gwt.angular.client;
 
