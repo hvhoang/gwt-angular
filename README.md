@@ -31,6 +31,17 @@ AngularJS
 Bootstrap
 	http://getbootstrap.com
 
+Building
+========
+
+Set up Maven 2 (http://maven.apache.org).
+
+Clone the repository or download the source code, go into gwt-angular directory
+and execute the below command.
+
+```
+mvn clean install
+```
 
 Versioning
 ==========
