@@ -32,4 +32,5 @@ public class JClassTypeUtils {
 		}
 		return false;
 	}
+
 }
