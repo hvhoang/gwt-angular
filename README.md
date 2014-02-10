@@ -22,11 +22,9 @@ intended to be written in HTML/CSS, and, as such, gwt-angular does not provide
 any view components (i.e. widgets) in Java. The users are  encouraged to 
 explorer various HTML based view frameworks.
 
-GWT
-	http://www.gwtproject.org
+GWT (http://www.gwtproject.org)
 
-AngularJS
-	http://angularjs.org/
+AngularJS (http://angularjs.org/)
 
 
 Demo App (gwt-angular-demo)
@@ -37,14 +35,13 @@ in a live application. It is more a documentation than an application.
 
 The demo application uses Twitter's Bootstrap as the view framework.
 
-Bootstrap
-	http://getbootstrap.com
+Bootstrap (http://getbootstrap.com)
 
 
 Building the Project
 ====================
 
-Set up Maven 2 (http://maven.apache.org).
+Set up Maven 2 (http://maven.apache.org)
 
 Clone the repository or download the source code, go into gwt-angular directory
 and execute the below command.
