@@ -39,10 +39,6 @@ if (!$scope.$$phase) {
 }
  * </pre>
  * </p>
- * <h3>Known Issues:</h3>
- * <ul>
- * <li><a href="https://github.com/kyoken74/gwt-angular/issues/3">Inject Q into Http automatically.</a></li>
- * </ul>
  * 
  * @author kyoken74
  * @see Q
