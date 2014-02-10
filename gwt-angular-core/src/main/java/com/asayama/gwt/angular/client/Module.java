@@ -12,9 +12,10 @@ import com.google.gwt.core.shared.GWT;
 
 interface ProviderCreator<T extends Provider> extends Creator<T> {}
 interface ServiceCreator<T extends Service> extends Creator<T> {}
+interface ServiceInjector<T extends Service> extends Injector<T> {}
 interface ControllerCreator<T extends Controller> extends Creator<T> {}
-interface ControllerBinder<T extends Controller> extends Binder<T> {}
 interface ControllerInjector<T extends Controller> extends Injector<T> {}
+interface ControllerBinder<T extends Controller> extends Binder<T> {}
 
 /**
  * Provides GWT Java representation of AngularJS's Module object.
@@ -75,9 +76,12 @@ public abstract class Module {
 	
 	public <S extends Service> S factory(Class<S> klass) {
 		
-		ServiceCreator<S> creator = GWT.create(ServiceCreator.class);
-		final S object = creator.create(klass);
 		final String name = klass.getName();
+		ServiceCreator<S> creator = GWT.create(ServiceCreator.class);
+		ServiceInjector<S> injector = GWT.create(ServiceInjector.class);
+
+		final S object = creator.create(klass);
+		JSClosure jsinjector = injector.injector(klass, object);
 		
 		Function<S> function = new Function<S>() {
 			@Override
@@ -96,25 +100,37 @@ public abstract class Module {
 				return object;
 			}
 		};
-		
-		JSArray<Object> jsarray = creator.dependencies(klass);
-		JSFunction<S> jsfunction = JSFunction.create(function);
-		jsarray.add(jsfunction);
-		delegate.factory(name, jsarray);
+		JSArray<Object> dependencies = creator.dependencies(klass);
+		JSFunction<S> constructor = _factory(JSFunction.create(function), jsinjector);
+		dependencies.add(constructor);
+		delegate.factory(name, dependencies);
 		return object;
 	}
-	
+
+    private native <S extends Service> JSFunction<S> _factory(JSFunction<S> jsfunction, JSClosure jsinjector) /*-{
+	    return function () {
+	        var args = Array.prototype.slice.call(arguments, 0);
+	        if (jsinjector) {
+	        	jsinjector.apply(null, args);
+	        }
+	        return jsfunction.apply(null, args);
+	    };
+	}-*/;
+
 	public <C extends Controller> C controller(Class<C> klass) {
 		return controller(klass.getName(), klass);
 	}
 	
 	public <C extends Controller> C controller(final String name, Class<C> klass) {
+
 		ControllerCreator<C> creator = GWT.create(ControllerCreator.class);
 		ControllerBinder<C> binder = GWT.create(ControllerBinder.class);
 		ControllerInjector<C> injector = GWT.create(ControllerInjector.class);
+		
 		final C object = creator.create(klass);
 		JSClosure jsbinder = binder.binder(klass, object);
 		JSClosure jsinjector = injector.injector(klass, object);
+		
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
@@ -129,7 +145,7 @@ public abstract class Module {
 				}
 			}
 		};
-		JSClosure constructor = _controller(jsbinder, jsinjector, JSClosure.create(closure));
+		JSClosure constructor = _controller(JSClosure.create(closure), jsinjector, jsbinder);
 		JSArray<Object> dependencies = creator.dependencies(klass);
 		dependencies.add(0, "$scope");
 		dependencies.add(constructor);
@@ -137,12 +153,16 @@ public abstract class Module {
 		return object;
 	}
 
-    private native JSClosure _controller(JSClosure binder, JSClosure injector, JSClosure closure) /*-{
+    private native JSClosure _controller(JSClosure jsclosure, JSClosure jsinjector, JSClosure jsbinder) /*-{
 	    return function () {
 	        var args = Array.prototype.slice.call(arguments, 0);
-	        binder(args.shift());
-	        injector.apply(null, args);
-	        closure(args);
+	        if (jsbinder) {
+	        	jsbinder(args.shift());
+	        }
+	        if (jsinjector) {
+	        	jsinjector.apply(null, args);
+	        }
+	        jsclosure.apply(null, args);
 	    };
 	}-*/;
 	

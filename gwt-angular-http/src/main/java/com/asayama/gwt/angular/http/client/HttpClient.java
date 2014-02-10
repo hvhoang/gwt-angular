@@ -50,7 +50,7 @@ if (!$scope.$$phase) {
  */
 public class HttpClient implements Service {
 
-	protected Q q; //FIXME https://github.com/kyoken74/gwt-angular/issues/3
+	private Q q;
 	
 	public void get(String url, HttpClientCallback callback) throws RequestException {
 		Promise promise = get(url);
@@ -158,15 +158,6 @@ public class HttpClient implements Service {
 			})
 		);
 		return deferred.promise();
-	}
-
-	// Getters and Setters
-	
-	public Q getQ() {
-		return q;
-	}
-	public void setQ(Q q) {
-		this.q = q;
 	}
 
 }

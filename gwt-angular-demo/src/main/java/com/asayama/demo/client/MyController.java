@@ -45,7 +45,6 @@ public class MyController implements Controller {
 		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
 		
 		try {
-			http.setQ(q);
 			HttpClientCallback callback = new HttpClientCallback() {
 				@Override
 				public void onSuccess(Request request, Response response) {
