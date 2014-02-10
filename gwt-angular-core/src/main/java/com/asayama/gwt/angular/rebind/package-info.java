@@ -1,3 +1,10 @@
+/**
+ * Provides the code generator implementation for the code generator used in
+ * gwt-agnular-core project. This package uses Apache Velocity as the template
+ * engine for the generated code. (http://velocity.apache.org/)
+ * <p>
+ * </p>
+ */
 package com.asayama.gwt.angular.rebind;
 
 import java.io.OutputStreamWriter;

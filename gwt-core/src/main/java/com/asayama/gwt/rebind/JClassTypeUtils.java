@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.rebind;
+package com.asayama.gwt.rebind;
 
 import java.util.HashSet;
 import java.util.Set;

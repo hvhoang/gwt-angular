@@ -9,6 +9,7 @@ import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.annotations.Depends;
+import com.asayama.gwt.rebind.JClassTypeUtils;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
