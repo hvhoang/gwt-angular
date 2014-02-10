@@ -58,7 +58,6 @@ public class Angular {
 		}
 	}
 
-	//TODO Support Creator.constructor method instead of the below method.
 	private static native JSModule _module(String name, JsArrayString requires, JSFunction<?> ctor) /*-{
 		return $wnd.angular.module(name, requires, ctor);
 	}-*/;
