@@ -23,14 +23,16 @@ public class MyController implements Controller {
 	public static final String GREETING = MyControllerConstants.INSTANCE.greeting();
 	public static final String STRANGER = MyControllerConstants.INSTANCE.stranger();
 	
-	protected RouteParams routeParams;
-	protected Location location;
-	protected Q q;
-	protected HttpClient http;
+	// Fields of type that implements Injectable are injected by the framework
+	private RouteParams routeParams;
+	private Location location;
+	private Q q;
+	private HttpClient http;
 
-	String clickable;
-	String name;
-	Customers customers;
+	// Other fields are used to represent the state of this controller
+	private String clickable;
+	private String name;
+	private Customers customers;
 	
 	@Override
 	public void onControllerLoad() {
