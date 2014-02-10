@@ -20,7 +20,7 @@ import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
-public abstract class AbstractGenerator extends Generator {
+abstract class AbstractGenerator extends Generator {
 
 	private static final String[] EMPTY_STRING_ARRAY = new String[0];
 	
