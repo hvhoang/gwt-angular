@@ -5,8 +5,8 @@ The API is in very early stages of development, and it is not yet ready for
 beta.
 
 
-gwt-angular
-===========
+Core API (gwt-angular)
+======================
 
 The purpose of gwt-angular project is to bring the powerful MVC framework of
 AngularJS to Java programmers.
@@ -14,13 +14,13 @@ AngularJS to Java programmers.
 gwt-angular provides a GWT wrapper around AngularJS, so that the controller
 component of AngularJS can be written in Java language, in a manner that is 
 more natural to a programmer with little background in JavaScript but come with
-more experience in Java.
+more experience in Java. gwt-angular aims to bridge the gap in paradigm.
 
 The purpose of gwt-angular is to introduce a clear separation between the view
-and controller. The views are intended to be written in HTML/CSS, and, as such,
-gwt-angular does not provide any view components (i.e. widgets) in Java. The 
-users are  encouraged to explorer various HTML based view frameworks. (The demo
-application gwt-angular-demo uses Twitter's Bootstrap.)
+and controller for GWT developers, which has been a challenge. The views are 
+intended to be written in HTML/CSS, and, as such, gwt-angular does not provide 
+any view components (i.e. widgets) in Java. The users are  encouraged to 
+explorer various HTML based view frameworks.
 
 GWT
 	http://www.gwtproject.org
@@ -28,11 +28,21 @@ GWT
 AngularJS
 	http://angularjs.org/
 
+
+Demo App (gwt-angular-demo)
+===========================
+
+The demo application gwt-angular-demo demonstrates the usage of gwt-angular API
+in a live application. It is more a documentation than an application.
+
+The demo application uses Twitter's Bootstrap as the view framework.
+
 Bootstrap
 	http://getbootstrap.com
 
-Building
-========
+
+Building the Project
+====================
 
 Set up Maven 2 (http://maven.apache.org).
 
