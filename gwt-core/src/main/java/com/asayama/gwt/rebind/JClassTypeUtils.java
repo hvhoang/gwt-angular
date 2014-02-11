@@ -10,13 +10,13 @@ public class JClassTypeUtils {
 
 	public static boolean supports(JType type, Class<?> supportType) {
 		JClassType classType = type.isClassOrInterface();
-		if (classType == null) {
-			return false;
-		}
 		return supports(classType, supportType);
 	}
 
 	public static boolean supports(JClassType classType, Class<?> supportType) {
+		if (classType == null) {
+			return false;
+		}
 		String testTypeName = classType.getQualifiedSourceName();
 		String supportTypeName = supportType.getName();
 		if (testTypeName.equals(supportTypeName)) {

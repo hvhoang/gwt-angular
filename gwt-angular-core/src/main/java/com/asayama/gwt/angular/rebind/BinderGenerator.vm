@@ -1,5 +1,5 @@
 /*++
- * Template: Creator.vm
+ * Template: BinderGenerator.vm
  * Provided: ${qualifiedName}
  * Generate: ${generatedQualifiedName}
  */
