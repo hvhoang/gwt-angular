@@ -21,7 +21,10 @@ public class NavbarController implements Controller {
 		listItems.push(ListItem.create().setCaption("Example 2").setRoute("/example2"));
 		listItems.push(ListItem.create().setCaption("Example 3").setRoute("/example3"));
 		listItems.push(ListItem.create().setCaption("Example 4").setRoute("/example4"));
-		String hash = Window.Location.getHash().substring(1);
+		String hash = Window.Location.getHash();
+		if (hash != null && hash.startsWith("#")) {
+			hash.substring(1);
+		}
 		for (int i = 0; i < listItems.length(); i++) {
 			ListItem listItem = listItems.get(i);
 			if (listItem.getRoute().equals(hash)) {
