@@ -57,7 +57,7 @@ class NGLocation extends NGObject {
 	}-*/;
 	
 	final native void hash(String hash) /*-{
-		this.hash(hasl);
+		this.hash(hash);
 	}-*/;
 	
 	final native void search(String key, String value) /*-{

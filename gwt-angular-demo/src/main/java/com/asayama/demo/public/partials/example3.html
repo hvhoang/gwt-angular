@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>{{ TITLE }}</h1>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Enter some text an click Modify" data-ng-model="name" data-ng-init="name = getName()">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" data-ng-click="onClickModify(name)">Modify</button>
+    </span>
+  </div>
+</div>

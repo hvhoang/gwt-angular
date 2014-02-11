@@ -1,5 +1,10 @@
 package com.asayama.demo.client;
 
+import com.asayama.demo.client.controller.Example1Controller;
+import com.asayama.demo.client.controller.Example2Controller;
+import com.asayama.demo.client.controller.Example3Controller;
+import com.asayama.demo.client.controller.Example4Controller;
+import com.asayama.demo.client.controller.NavbarController;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.q.Q;
@@ -19,7 +24,11 @@ public class MyEntryPoint implements EntryPoint {
 		myModule.factory(HttpClient.class);
 		myModule.factory(RouteParams.class);
 		myModule.factory(Location.class);
-		myModule.controller(MyController.class);
+		myModule.controller(NavbarController.class);
+		myModule.controller(Example1Controller.class);
+		myModule.controller(Example2Controller.class);
+		myModule.controller(Example3Controller.class);
+		myModule.controller(Example4Controller.class);
 		Angular.bootstrap(myModule);
 	}
 
