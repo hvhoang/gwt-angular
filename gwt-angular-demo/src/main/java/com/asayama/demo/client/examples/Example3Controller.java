@@ -1,4 +1,4 @@
-package com.asayama.demo.client.controller;
+package com.asayama.demo.client.examples;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.asayama.demo.client.controller;
+package com.asayama.demo.client.examples;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.http.client.HttpClient;
@@ -19,7 +19,7 @@ public class Example4Controller implements Controller {
 	
 	@Override
 	public void onControllerLoad() {
-		String url = GWT.getModuleBaseForStaticFiles() + "api/customer";
+		String url = GWT.getModuleBaseForStaticFiles() + "data/customer";
 		try {
 			HttpClientCallback callback = new HttpClientCallback() {
 				@Override

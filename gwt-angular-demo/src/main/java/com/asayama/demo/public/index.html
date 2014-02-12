@@ -7,28 +7,8 @@
 </head>
 <body>
 
-  <div data-ng-include="'partials/navbar.html'" data-ng-controller="com.asayama.demo.client.controller.NavbarController"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="list-group">
-          <a href="#/example1" class="list-group-item active">Cras justo odio</a>
-          <a href="#/example2" class="list-group-item">Dapibus ac facilisis in</a>
-          <a href="#/example3" class="list-group-item">Morbi leo risus</a>
-          <a href="#/example4" class="list-group-item">Porta ac consectetur ac</a>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <ul class="nav nav-tabs">
-          <li class="active"><a>Demo</a></li>
-          <li><a>HTML</a></li>
-          <li><a>Java</a></li>
-          <li><a>Data</a></li>
-        </ul>
-        <div data-ng-view></div>
-      </div>
-    </div>
-  </div>
+  <div data-ng-include="'partials/navbar.html'" data-ng-controller="com.asayama.demo.client.NavbarController"></div>
+  <div data-ng-view></div>
 
   <!-- GWT -->
   <script src="myapp.nocache.js"></script>
