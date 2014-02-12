@@ -11,6 +11,7 @@
     <relativePath>..</relativePath>
   </parent>
   <build>
+    <finalName>gwt-angular-demo</finalName>
     <resources>
       <resource>
         <directory>src/main/java</directory>
