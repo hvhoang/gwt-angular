@@ -4,14 +4,14 @@
       <div class="list-group">
         <a data-ng-repeat="page in getPages()" 
           class="list-group-item {{ isPageActive(page) }}" 
-          data-ng-click="onClickPage(page)">{{ page }}</a>
+          data-ng-click="onClickPage(page)">{{ page.displayName }}</a>
       </div>
     </div>
     <div class="col-md-9">
       <ul class="nav nav-tabs">
         <li data-ng-repeat="tab in getTabs()" 
           class="{{ isTabActive(tab) }}"
-          data-ng-click="onClickTab(tab)"><a>{{ tab }}</a></li>
+          data-ng-click="onClickTab(tab)"><a>{{ tab.displayName }}</a></li>
       </ul>
     </div>
     <div data-ng-include="'panels/example1.html'"></div>

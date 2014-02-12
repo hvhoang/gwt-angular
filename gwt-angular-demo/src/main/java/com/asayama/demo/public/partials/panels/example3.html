@@ -1,9 +1,6 @@
-<div data-ng-controller="com.asayama.demo.client.examples.Example3Controller">
-  <h1>{{ TITLE }}</h1>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Enter some text an click Modify" data-ng-model="name" data-ng-init="name = getName()">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button" data-ng-click="onClickModify(name)">Modify</button>
-    </span>
-  </div>
+<div data-ng-controller="com.asayama.demo.client.examples.Example4Controller">
+	<h1>Records Loaded via HTTP</h1>
+	<ul data-ng-repeat="customer in getCustomers()">
+	<li>{{ customer.name }} of {{ customer.city }}</li>
+	</ul>
 </div>
