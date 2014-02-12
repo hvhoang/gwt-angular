@@ -3,7 +3,7 @@ package com.asayama.demo.client.examples;
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.user.client.Event;
 
-public class Example2Controller implements Controller {
+public class ExampleController1 implements Controller {
 
 	// Other fields are used to represent the state of this controller
 	private String title;

@@ -10,7 +10,7 @@ import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
 
-public class Example3Controller implements Controller {
+public class ExampleController2 implements Controller {
 
 	// Public final fields are directly bound to AngularJS's $scope
 	public static final String TITLE = Example3Constants.INSTANCE.title();

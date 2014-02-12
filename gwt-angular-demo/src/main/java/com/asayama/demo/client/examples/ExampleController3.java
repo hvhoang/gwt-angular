@@ -9,7 +9,7 @@ import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 
-public class Example4Controller implements Controller {
+public class ExampleController3 implements Controller {
 
 	// Fields of type that implements Injectable are injected by the framework
 	private HttpClient http;
