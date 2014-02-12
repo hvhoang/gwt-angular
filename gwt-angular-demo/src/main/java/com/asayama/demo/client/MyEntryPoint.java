@@ -18,10 +18,8 @@ import com.google.gwt.core.client.GWT;
 public class MyEntryPoint implements EntryPoint {
 
 	public void onModuleLoad() {
-
 		GWT.log("entering MyEntryPoint.onModuleLoad");
-
-		final MyModule myModule = Angular.module(MyModule.class);
+		MyModule myModule = Angular.module(MyModule.class);
 		myModule.config(RouteProvider.class);
 		myModule.factory(Q.class);
 		myModule.factory(HttpClient.class);
