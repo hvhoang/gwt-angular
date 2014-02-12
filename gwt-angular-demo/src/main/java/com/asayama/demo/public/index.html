@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="com.asayama.demo.client.MyModule">
+<html lang="en">
 <head>
 <link rel="stylesheet" href="bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/3.0.3/css/bootstrap-theme.min.css">
 </head>
 <body>
 
-<div data-ng-include="'partials/navbar.html'" data-ng-controller="com.asayama.demo.client.controller.NavbarController"></div>
+  <div data-ng-include="'partials/navbar.html'" 
+    data-ng-controller="com.asayama.demo.client.controller.NavbarController"></div>
+  <div data-ng-view></div>
 
-<div data-ng-view></div>
+  <!-- GWT -->
+  <script src="myapp.nocache.js"></script>
 
-<!-- GWT -->
-<script src="myapp.nocache.js"></script>
+  <!-- Angular -->
+  <script src="angular/1.2.9/angular.min.js"></script>
+  <script src="angular/1.2.9/angular-route.min.js"></script>
+  <script src="angular/1.2.9/angular-sanitize.min.js"></script>
 
-<!-- Angular -->
-<script src="angular/1.2.9/angular.js"></script>
-<script src="angular/1.2.9/angular-route.js"></script>
-<script src="angular/1.2.9/angular-sanitize.js"></script>
-
-<!-- Bootstrap -->
-<script src="jquery/1.10.2/jquery.min.js"></script>
-<script src="bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="jquery/1.10.2/jquery.min.js"></script>
+  <script src="bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 </body>
 </html>

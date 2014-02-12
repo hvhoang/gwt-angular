@@ -11,10 +11,6 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ getSelectedListItem().caption }} <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li data-ng-repeat="listItem in getListItems()"><a href="#{{ listItem.route }}" data-ng-click="onSelectedItem(listItem)">{{ listItem.caption }}</a></li>
-          </ul></li>
       </ul>
     </div>
   </div>

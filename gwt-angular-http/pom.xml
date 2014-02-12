@@ -1,59 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>gwt-angular-http</artifactId>
-	<packaging>jar</packaging>
-	<name>gwt-angular-http</name>
-	<parent>
-		<groupId>com.asayama.gwt</groupId>
-		<artifactId>gwt-angular</artifactId>
-		<version>0.0.6-SNAPSHOT</version>
-		<relativePath>..</relativePath>
-	</parent>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.java</include>
-					<include>**/*.gwt.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>gwt-angular-http</artifactId>
+  <packaging>jar</packaging>
+  <name>gwt-angular-http</name>
+  <parent>
+    <groupId>com.asayama.gwt</groupId>
+    <artifactId>gwt-angular</artifactId>
+    <version>0.0.6-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.java</include>
+          <include>**/*.gwt.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
 
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.asayama.gwt</groupId>
-			<artifactId>gwt-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.asayama.gwt</groupId>
-			<artifactId>gwt-angular-core</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-core</artifactId>
+    </dependency>
 
-		<!-- Testing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+    <!-- Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
 
-	</dependencies>
+  </dependencies>
 </project>

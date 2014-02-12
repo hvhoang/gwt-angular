@@ -65,5 +65,5 @@ public class Angular {
 	private static native void _bootstrap(JsArrayString modules) /*-{
 		$wnd.angular.bootstrap($doc, modules);
 	}-*/;
-	
+
 }

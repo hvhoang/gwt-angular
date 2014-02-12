@@ -1,9 +1,6 @@
 package com.asayama.demo.client;
 
-import com.asayama.demo.client.controller.Example1Controller;
-import com.asayama.demo.client.controller.Example2Controller;
-import com.asayama.demo.client.controller.Example3Controller;
-import com.asayama.demo.client.controller.Example4Controller;
+import com.asayama.demo.client.controller.ContainerController;
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.client.annotations.Depends;
@@ -18,11 +15,8 @@ public class MyModule extends Module {
 	public void onInjection(Injectable object) {
 		if (object instanceof RouteProvider) {
 			((RouteProvider) object)
-				.when("/example1", Template.create("partials/example1.html", Example1Controller.class))
-				.when("/example2", Template.create("partials/example2.html", Example2Controller.class))
-				.when("/example3", Template.create("partials/example3.html", Example3Controller.class))
-				.when("/example4", Template.create("partials/example4.html", Example4Controller.class))
-				.otherwise(Redirect.create("/example1"));
+				.when("/examples", Template.create("partials/container.html", ContainerController.class))
+				.otherwise(Redirect.create("/examples"));
 		}
 	}
 
