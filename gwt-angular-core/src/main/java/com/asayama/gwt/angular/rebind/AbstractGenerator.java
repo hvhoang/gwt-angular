@@ -31,7 +31,9 @@ abstract class AbstractGenerator extends Generator {
 	public String generate(TreeLogger logger, GeneratorContext context, String qualifiedName) throws UnableToCompleteException {
 
 		try {
-			VelocityGenerator velocity = new VelocityGenerator(getFilename());
+			final String filename = getFilename();
+			VelocityGenerator velocity = new VelocityGenerator(filename);
+			velocity.put("templateFilename", filename);
 			velocity.put("logger", logger);
 			velocity.put("context", context);
 			velocity.put("qualifiedName", qualifiedName);

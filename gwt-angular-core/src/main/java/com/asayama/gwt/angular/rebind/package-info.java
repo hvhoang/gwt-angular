@@ -40,10 +40,11 @@ class VelocityGenerator {
 		VELOCITY_ENGINE.init();
 	}
 	
-	final VelocityContext velocityContext = new VelocityContext();
+	final VelocityContext velocityContext;
 	final String filename;
 	
 	VelocityGenerator(String filename) {
+		velocityContext = new VelocityContext();
 		this.filename = filename;
 	}
 	

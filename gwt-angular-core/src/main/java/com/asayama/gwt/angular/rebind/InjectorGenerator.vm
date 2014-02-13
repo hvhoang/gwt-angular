@@ -1,5 +1,5 @@
 /*++
- * Template: CreatorGenerator.vm
+ * Template: ${templateFilename}
  * Provided: ${qualifiedName}
  * Generate: ${generatedQualifiedName}
  */
