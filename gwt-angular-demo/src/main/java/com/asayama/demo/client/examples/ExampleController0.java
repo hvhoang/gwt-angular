@@ -1,6 +1,7 @@
 package com.asayama.demo.client.examples;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.log.Log;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
 
@@ -10,11 +11,14 @@ public class ExampleController0 implements Controller {
 	public static final String GREETING = Example1Constants.INSTANCE.greeting();
 	public static final String STRANGER = Example1Constants.INSTANCE.stranger();
 
+	private Log log;
+	
 	// Other fields are used to represent the state of this controller
 	private String name = null;
 	
 	@Override
 	public void onControllerLoad() {
+		log.log("entering onControllerLoad");
 	}
 
 	// Public getters and setters are automatically wired to AngularJS's $scope.
