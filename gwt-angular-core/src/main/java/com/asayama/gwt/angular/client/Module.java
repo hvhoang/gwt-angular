@@ -36,13 +36,13 @@ public abstract class Module {
 	 */
 	public abstract <T extends Injectable> void onInjection(T object);
 
-	public <P extends Provider> P config(Class<P> klass) {
+	public <P extends Provider> P config(final P object) {
 		
+		Class<P> klass = (Class<P>) object.getClass();
 		final String name = klass.getName();
-		ProviderCreator<P> creator = GWT.create(ProviderCreator.class);
+		ProviderDependencies<P> creator = GWT.create(ProviderDependencies.class);
 		ProviderInjector<P> injector = GWT.create(ProviderInjector.class);
 		
-		final P object = creator.create(klass);
 		JSClosure jsinjector = injector.injector(klass, object);
 		
 		Function<P> function = new Function<P>() {
@@ -79,13 +79,12 @@ public abstract class Module {
 	    };
 	}-*/;
 
-	public <S extends Service> S factory(Class<S> klass) {
-		
+	public <S extends Service> S factory(final S object) {
+		Class<S> klass = (Class<S>) object.getClass();
 		final String name = klass.getName();
-		ServiceCreator<S> creator = GWT.create(ServiceCreator.class);
+		ServiceDependencies<S> creator = GWT.create(ServiceDependencies.class);
 		ServiceInjector<S> injector = GWT.create(ServiceInjector.class);
 
-		final S object = creator.create(klass);
 		JSClosure jsinjector = injector.injector(klass, object);
 		
 		Function<S> function = new Function<S>() {
@@ -122,17 +121,17 @@ public abstract class Module {
 	    };
 	}-*/;
 
-	public <C extends Controller> C controller(Class<C> klass) {
-		return controller(klass.getName(), klass);
+	public <C extends Controller> C controller(C object) {
+		return controller(object.getClass().getName(), object);
 	}
 	
-	public <C extends Controller> C controller(final String name, Class<C> klass) {
-
-		ControllerCreator<C> creator = GWT.create(ControllerCreator.class);
+	public <C extends Controller> C controller(final String name, final C object) {
+		
+		Class<C> klass = (Class<C>) object.getClass();
+		ControllerDependencies<C> creator = GWT.create(ControllerDependencies.class);
 		ControllerBinder<C> binder = GWT.create(ControllerBinder.class);
 		ControllerInjector<C> injector = GWT.create(ControllerInjector.class);
 		
-		final C object = creator.create(klass);
 		JSClosure jsbinder = binder.binder(klass, object);
 		JSClosure jsinjector = injector.injector(klass, object);
 		

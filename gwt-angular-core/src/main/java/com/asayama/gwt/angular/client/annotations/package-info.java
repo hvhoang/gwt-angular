@@ -3,7 +3,7 @@
  * project.
  * 
  * @see BinderGenerator
- * @see CreatorGenerator
+ * @see DependenciesGenerator
  * @see InjectorGenerator
  */
 package com.asayama.gwt.angular.client.annotations;

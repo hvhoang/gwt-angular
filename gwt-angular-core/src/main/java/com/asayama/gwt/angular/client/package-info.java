@@ -18,7 +18,7 @@ import com.asayama.gwt.core.client.JSClosure;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
- * used with {@link CreatorGenerator}, which inspects the types eligible for
+ * used with {@link DependenciesGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -28,21 +28,21 @@ import com.asayama.gwt.core.client.JSClosure;
  * 
  * @author kyoken74
  *
- * @see CreatorGenerator
+ * @see DependenciesGenerator
  * @param <T>
  */
-interface Creator<T> {
+interface Dependencies<T> {
 	T create(Class<? extends T> klass);
 	JSArray<Object> dependencies(Class<? extends T> klass);
 }
 
-interface ModuleCreator<T extends Module> extends Creator<T> {}
+interface ModuleDependencies<T extends Module> extends Dependencies<T> {}
 
-interface ProviderCreator<T extends Provider> extends Creator<T> {}
+interface ProviderDependencies<T extends Provider> extends Dependencies<T> {}
 
-interface ServiceCreator<T extends Service> extends Creator<T> {}
+interface ServiceDependencies<T extends Service> extends Dependencies<T> {}
 
-interface ControllerCreator<T extends Controller> extends Creator<T> {}
+interface ControllerDependencies<T extends Controller> extends Dependencies<T> {}
 
 /**
  * Provides interfaces for an object binder. This interface is intended to be

@@ -21,4 +21,27 @@ public class JMethodUtils {
 		return sb.toString();
 	}
 
+	public static boolean isGetter(JMethod method) {
+		return method.getName().startsWith("get")
+				&& method.getName().length() > 3
+				&& !JTypeUtils.isVoid(method.getReturnType())
+				&& method.getParameters().length == 0;
+	}
+	
+	public static boolean isSetter(JMethod method) {
+		return method.getName().startsWith("set")
+				&& method.getName().length() > 3
+				&& method.getParameters().length == 1;
+	}
+	
+	public static String getProp(JMethod method) {
+		if (isGetter(method) || isSetter(method)) {
+			String p = method.getName().substring(3);
+			char c = p.charAt(0);
+			c = Character.toLowerCase(c);
+			return new Character(c) + p.substring(1);
+		}
+		return null;
+	}
+
 }

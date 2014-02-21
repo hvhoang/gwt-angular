@@ -28,6 +28,27 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
         throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
     }
     
+    @Override
+    public JSArray<Object> dependencies(Class<? extends T> klass) {
+#foreach($returnClassType in ${returnClassTypes})
+        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
+            return __${generatedSimpleName}_dependencies_${foreach.index}();
+        }
+#end
+        return null;
+    }
+
+#foreach($dependency in ${dependencies})
+    private native JSArray<Object> __${generatedSimpleName}_dependencies_${foreach.index}() /*-{
+        return [
+#foreach($name in ${dependency})
+            '${name}'#if(${foreach.hasNext}),#end
+
+#end
+        ];
+    }-*/;
+#end
+
 }
 //--end of ${generatedQualifiedName}
 

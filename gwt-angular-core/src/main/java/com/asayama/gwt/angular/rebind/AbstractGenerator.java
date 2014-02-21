@@ -50,7 +50,7 @@ abstract class AbstractGenerator extends Generator {
 			// Define basic characteristics of the generated type.
 			String packageName = classType.getPackage().getName();
 			String simpleName = classType.getSimpleSourceName();
-			String generatedQualifiedName = qualifiedName + getSuffix();
+			String generatedQualifiedName = packageName + "." + simpleName + getSuffix();
 			String generatedSimpleName = simpleName + getSuffix();
 			velocity.put("packageName", packageName);
 			velocity.put("simpleName", simpleName);

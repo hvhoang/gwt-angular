@@ -15,22 +15,22 @@ import com.google.gwt.core.client.JsArrayString;
  */
 public class Angular {
 	
-	public static <T extends Module> T module(Class<T> klass) {
+	public static <T extends Module> T module(T object) {
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
 				//noop
 			}
 		};
-		return module(klass, closure);
+		return module(object, closure);
 	}
 	
-	public static <T extends Module> T module(Class<T> klass, Closure closure) {
-		ModuleCreator<T> creator = GWT.create(ModuleCreator.class);
-		JsArrayString requires = creator.dependencies(klass).cast();
+	public static <T extends Module> T module(T object, Closure closure) {
+		Class<T> klass = (Class<T>) object.getClass();
+		ModuleDependencies<T> dependencies = GWT.create(ModuleDependencies.class);
+		JsArrayString requires = dependencies.dependencies(klass).cast();
 		JSClosure jsclosure = JSClosure.create(closure);
 		String name = klass.getName();
-		T object = creator.create(klass);
 		object.delegate = _module(name, requires, jsclosure);
 		return object;
 	}
