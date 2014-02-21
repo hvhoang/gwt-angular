@@ -50,12 +50,12 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
 #end
 #foreach($method in $returnClassType.inheritableMethods)
 #if($method.isPublic() && $method.isStatic())
-            $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-                return ${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
+            $scope.${method.name} = function (${JMethodUtils.getArgs(${method})}) {
+                return ${method.jsniSignature}(${JMethodUtils.getArgs(${method})});
             };
 #elseif($method.isPublic())
-            $scope.${method.name} = function (#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end) {
-                return object.${method.jsniSignature}(#foreach($param in ${method.parameters})#if($foreach.index>0), #end${param.name}#end);
+            $scope.${method.name} = function (${JMethodUtils.getArgs(${method})}) {
+                return object.${method.jsniSignature}(${JMethodUtils.getArgs(${method})});
             };
 #end
 #end
