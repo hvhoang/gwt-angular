@@ -1,7 +1,7 @@
 {
 	"pages" : [
 		{
-			"displayName" : "Example 0",
+			"displayName" : "Text Input",
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
@@ -22,7 +22,7 @@
 				}
 			]
 		},{
-			"displayName" : "Example 1",
+			"displayName" : "Onclick Event",
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
@@ -43,7 +43,7 @@
 				}
 			]
 		},{
-			"displayName" : "Example 2",
+			"displayName" : "URL Hash Parameter",
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
@@ -64,7 +64,7 @@
 				}
 			]
 		},{
-			"displayName" : "Example 3",
+			"displayName" : "HTTP Client",
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
