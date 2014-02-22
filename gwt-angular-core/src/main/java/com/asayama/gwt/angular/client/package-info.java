@@ -32,17 +32,20 @@ import com.asayama.gwt.core.client.JSClosure;
  * @param <T>
  */
 interface Dependencies<T> {
-	T create(Class<? extends T> klass);
-	JSArray<Object> dependencies(Class<? extends T> klass);
+    JSArray<Object> dependencies(T object);
 }
 
-interface ModuleDependencies<T extends Module> extends Dependencies<T> {}
+interface ModuleDependencies extends Dependencies<Module> {
+}
 
-interface ProviderDependencies<T extends Provider> extends Dependencies<T> {}
+interface ProviderDependencies extends Dependencies<Provider> {
+}
 
-interface ServiceDependencies<T extends Service> extends Dependencies<T> {}
+interface ServiceDependencies extends Dependencies<Service> {
+}
 
-interface ControllerDependencies<T extends Controller> extends Dependencies<T> {}
+interface ControllerDependencies extends Dependencies<Controller> {
+}
 
 /**
  * Provides interfaces for an object binder. This interface is intended to be
@@ -60,11 +63,11 @@ interface ControllerDependencies<T extends Controller> extends Dependencies<T> {
  * @param <T>
  */
 interface Binder<T> {
-	T create(Class<? extends T> klass);
-    JSClosure binder(Class<? extends T> klass, T object);
+    JSClosure binder(T object);
 }
 
-interface ControllerBinder<T extends Controller> extends Binder<T> {}
+interface ControllerBinder extends Binder<Controller> {
+}
 
 /**
  * Provides interfaces for an object injector. This interface is intended to be
@@ -82,12 +85,14 @@ interface ControllerBinder<T extends Controller> extends Binder<T> {}
  * @param <T>
  */
 interface Injector<T> {
-	T create(Class<? extends T> klass);
-    JSClosure injector(Class<? extends T> klass, T object);
+    JSClosure injector(T object);
 }
 
-interface ProviderInjector<T extends Provider> extends Injector<T> {}
+interface ProviderInjector extends Injector<Provider> {
+}
 
-interface ServiceInjector<T extends Service> extends Injector<T> {}
+interface ServiceInjector extends Injector<Service> {
+}
 
-interface ControllerInjector<T extends Controller> extends Injector<T> {}
+interface ControllerInjector extends Injector<Controller> {
+}

@@ -28,8 +28,8 @@ public class Angular {
 	public static <T extends Module> T module(T object, Closure closure) {
 		@SuppressWarnings("unchecked")
         Class<T> klass = (Class<T>) object.getClass();
-		ModuleDependencies<T> dependencies = GWT.create(ModuleDependencies.class);
-		JsArrayString requires = dependencies.dependencies(klass).cast();
+		ModuleDependencies dependencies = GWT.create(ModuleDependencies.class);
+		JsArrayString requires = dependencies.dependencies(object).cast();
 		JSClosure jsclosure = JSClosure.create(closure);
 		String name = klass.getName();
 		object.delegate = _module(name, requires, jsclosure);

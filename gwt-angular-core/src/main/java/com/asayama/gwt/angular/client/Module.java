@@ -43,8 +43,8 @@ public abstract class Module {
         @SuppressWarnings("unchecked")
         Class<P> klass = (Class<P>) object.getClass();
         final String name = klass.getName();
-        ProviderDependencies<P> dependencies = GWT.create(ProviderDependencies.class);
-        ProviderInjector<P> injector = GWT.create(ProviderInjector.class);
+        ProviderDependencies dependencies = GWT.create(ProviderDependencies.class);
+        ProviderInjector injector = GWT.create(ProviderInjector.class);
         Function<P> constructor = new Function<P>() {
 
             @Override
@@ -64,8 +64,8 @@ public abstract class Module {
             }
         };
 
-        JSClosure jsinjector = injector.injector(klass, object);
-        JSArray<Object> jsdependencies = dependencies.dependencies(klass);
+        JSClosure jsinjector = injector.injector(object);
+        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         JSFunction<P> jsconstructor = _config(JSFunction.create(constructor), jsinjector);
         jsdependencies.add(jsconstructor);
         delegate.config(jsdependencies);
@@ -87,8 +87,8 @@ public abstract class Module {
         @SuppressWarnings("unchecked")
         Class<S> klass = (Class<S>) object.getClass();
         final String name = klass.getName();
-        ServiceDependencies<S> dependencies = GWT.create(ServiceDependencies.class);
-        ServiceInjector<S> injector = GWT.create(ServiceInjector.class);
+        ServiceDependencies dependencies = GWT.create(ServiceDependencies.class);
+        ServiceInjector injector = GWT.create(ServiceInjector.class);
         Function<S> constructor = new Function<S>() {
 
             @Override
@@ -108,8 +108,8 @@ public abstract class Module {
             }
         };
         
-        JSClosure jsinjector = injector.injector(klass, object);
-        JSArray<Object> jsdependencies = dependencies.dependencies(klass);
+        JSClosure jsinjector = injector.injector(object);
+        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         JSFunction<S> jsconstructor = _factory(JSFunction.create(constructor), jsinjector);
         jsdependencies.add(jsconstructor);
         delegate.factory(name, jsdependencies);
@@ -132,11 +132,9 @@ public abstract class Module {
 
     public <C extends Controller> C controller(final String name, final C object) {
 
-        @SuppressWarnings("unchecked")
-        Class<C> klass = (Class<C>) object.getClass();
-        ControllerDependencies<C> dependencies = GWT.create(ControllerDependencies.class);
-        ControllerBinder<C> binder = GWT.create(ControllerBinder.class);
-        ControllerInjector<C> injector = GWT.create(ControllerInjector.class);
+        ControllerDependencies dependencies = GWT.create(ControllerDependencies.class);
+        ControllerBinder binder = GWT.create(ControllerBinder.class);
+        ControllerInjector injector = GWT.create(ControllerInjector.class);
         Closure constructor = new Closure() {
 
             @Override
@@ -153,10 +151,10 @@ public abstract class Module {
             }
         };
 
-        JSClosure jsbinder = binder.binder(klass, object);
-        JSClosure jsinjector = injector.injector(klass, object);
+        JSClosure jsbinder = binder.binder(object);
+        JSClosure jsinjector = injector.injector(object);
         JSClosure jsconstructor = _controller(JSClosure.create(constructor), jsinjector, jsbinder);
-        JSArray<Object> jsdependencies = dependencies.dependencies(klass);
+        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         jsdependencies.add(0, "$scope");
         jsdependencies.add(jsconstructor);
         delegate.controller(name, jsdependencies);

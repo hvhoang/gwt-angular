@@ -11,25 +11,14 @@ import com.google.gwt.core.client.*;
 import com.asayama.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
-public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifiedName}<T> {
+public class ${generatedSimpleName} implements ${qualifiedName} {
 
     protected ${generatedSimpleName}() {
     }
     
     @Override
-    public T create(Class<? extends T> klass) {
-        String name = klass.getName();
-        GWT.log("creating " + name);
-#foreach($returnClassType in ${returnClassTypes})
-        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
-            return GWT.create(${returnClassType.qualifiedSourceName}.class);
-        }
-#end
-        throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
-    }
-    
-    @Override
-    public JSArray<Object> dependencies(Class<? extends T> klass) {
+    public JSArray<Object> dependencies(${parameterClassType} object) {
+        Class klass = object.getClass();
 #foreach($returnClassType in ${returnClassTypes})
         if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
             return __${generatedSimpleName}_dependencies_${foreach.index}();

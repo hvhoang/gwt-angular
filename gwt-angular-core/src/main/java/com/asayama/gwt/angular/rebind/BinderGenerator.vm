@@ -11,25 +11,14 @@ import com.google.gwt.core.client.*;
 import com.asayama.gwt.core.client.*;
 import com.asayama.gwt.angular.client.*;
 
-public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifiedName}<T> {
+public class ${generatedSimpleName} implements ${qualifiedName} {
 
     protected ${generatedSimpleName}() {
     }
     
     @Override
-    public T create(Class<? extends T> klass) {
-        String name = klass.getName();
-        GWT.log("creating " + name);
-#foreach($returnClassType in ${returnClassTypes})
-        if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
-            return GWT.create(${returnClassType.qualifiedSourceName}.class);
-        }
-#end
-        throw new UnsupportedOperationException(klass.getName() + " is not supported by ${qualifiedName}");
-    }
-    
-    @Override
-    public JSClosure binder(Class<? extends T> klass, T object) {
+    public JSClosure binder(${parameterClassType} object) {
+        Class klass = object.getClass();
 #foreach($returnClassType in ${returnClassTypes})
         if (klass.equals(${returnClassType.qualifiedSourceName}.class)) {
             return __${generatedSimpleName}_binder_${foreach.index}(object);
@@ -39,7 +28,7 @@ public class ${generatedSimpleName}<${parameterClassType}> implements ${qualifie
     }
     
 #foreach($returnClassType in ${returnClassTypes})
-    private native JSClosure __${generatedSimpleName}_binder_${foreach.index}(T object) /*-{
+    private native JSClosure __${generatedSimpleName}_binder_${foreach.index}(${parameterClassType} object) /*-{
         return function ($scope) {
 #foreach($field in $returnClassType.fields)
 #if($field.isPublic() && $field.isFinal() && $field.isStatic())
