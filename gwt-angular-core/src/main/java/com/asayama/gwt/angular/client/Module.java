@@ -28,42 +28,23 @@ public abstract class Module {
     protected Module() {
     }
 
-    /**
-     * This method is called for each of the inject fields. The descendants of
-     * this abstract class should declare injectable fields as protected.
-     * 
-     * @param object
-     *            injected object
-     * @see Injectable
-     */
-    public abstract <T extends Injectable> void onInjection(T object);
+    public <P extends Provider> P config(P object) {
+        return config(object, null);
+    }
 
-    public <P extends Provider> P config(final P object) {
-
-        @SuppressWarnings("unchecked")
-        Class<P> klass = (Class<P>) object.getClass();
-        final String name = klass.getName();
+    public <P extends Provider> P config(final P object, final InjectionCallback<P> callback) {
         ProviderDependencies dependencies = GWT.create(ProviderDependencies.class);
         ProviderInjector injector = GWT.create(ProviderInjector.class);
         Function<P> constructor = new Function<P>() {
 
             @Override
             public P function(Object... args) {
-                String m = "";
-//                if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
-//                    GWT.log(m = "calling " + name + ".wrap(NGObject)");
-//                    ((NGObjectWrapper) object).wrap((NGObject) args[0]);
-//                }
-                try {
-                    GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-                    Module.this.onInjection(object);
-                } catch (Exception e) {
-                    GWT.log("Exception while " + m, e);
+                if (callback != null) {
+                    callback.onInjection(object);
                 }
                 return object;
             }
         };
-
         JSClosure jsinjector = injector.injector(object);
         JSArray<Object> jsdependencies = dependencies.dependencies(object);
         JSFunction<P> jsconstructor = _config(JSFunction.create(constructor), jsinjector);
@@ -82,32 +63,27 @@ public abstract class Module {
 		};
     }-*/;
 
-    public <S extends Service> S factory(final S object) {
-
-        @SuppressWarnings("unchecked")
-        Class<S> klass = (Class<S>) object.getClass();
-        final String name = klass.getName();
+    public <S extends Service> S factory(S object) {
+        return factory(object.getClass().getName(), object);
+    }
+    
+    public <S extends Service> S factory(String name, S object) {
+        return factory(name, object, null);
+    }
+    
+    public <S extends Service> S factory(String name, final S object, final InjectionCallback<S> callback) {
         ServiceDependencies dependencies = GWT.create(ServiceDependencies.class);
         ServiceInjector injector = GWT.create(ServiceInjector.class);
         Function<S> constructor = new Function<S>() {
 
             @Override
             public S function(Object... args) {
-                String m = "";
-//                if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
-//                    GWT.log(m = "calling " + name + ".wrap(NGObject)");
-//                    ((NGObjectWrapper) object).wrap((NGObject) args[0]);
-//                }
-                try {
-                    GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-                    Module.this.onInjection(object);
-                } catch (Exception e) {
-                    GWT.log("Exception while " + m, e);
+                if (callback != null) {
+                    callback.onInjection(object);
                 }
                 return object;
             }
         };
-        
         JSClosure jsinjector = injector.injector(object);
         JSArray<Object> jsdependencies = dependencies.dependencies(object);
         JSFunction<S> jsconstructor = _factory(JSFunction.create(constructor), jsinjector);
@@ -127,11 +103,18 @@ public abstract class Module {
     }-*/;
 
     public <C extends Controller> C controller(C object) {
-        return controller(object.getClass().getName(), object);
+        return controller(object, null);
+    }
+    
+    public <C extends Controller> C controller(C object, InjectionCallback<C> callback) {
+        return controller(object.getClass().getName(), object, callback);
     }
 
-    public <C extends Controller> C controller(final String name, final C object) {
-
+    public <C extends Controller> C controller(String name, C object) {
+        return controller(name, object, null);
+    }
+    
+    public <C extends Controller> C controller(String name, final C object, final InjectionCallback<C> callback) {
         ControllerDependencies dependencies = GWT.create(ControllerDependencies.class);
         ControllerBinder binder = GWT.create(ControllerBinder.class);
         ControllerInjector injector = GWT.create(ControllerInjector.class);
@@ -139,18 +122,12 @@ public abstract class Module {
 
             @Override
             public void closure(Object... args) {
-                String m = "";
-                try {
-                    GWT.log(m = "calling " + name + ".onControllerLoad");
-                    object.onControllerLoad();
-                    GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
-                    Module.this.onInjection(object);
-                } catch (Exception e) {
-                    GWT.log("Exception while " + m, e);
+                object.onControllerLoad();
+                if (callback != null) {
+                    callback.onInjection(object);
                 }
             }
         };
-
         JSClosure jsbinder = binder.binder(object);
         JSClosure jsinjector = injector.injector(object);
         JSClosure jsconstructor = _controller(JSClosure.create(constructor), jsinjector, jsbinder);
@@ -186,7 +163,6 @@ public abstract class Module {
         }
         return results;
     }
-
 }
 
 class JSModule extends JSObject {

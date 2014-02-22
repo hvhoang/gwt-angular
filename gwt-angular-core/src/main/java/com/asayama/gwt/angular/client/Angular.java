@@ -25,13 +25,14 @@ public class Angular {
 		return module(object, closure);
 	}
 	
-	public static <T extends Module> T module(T object, Closure closure) {
-		@SuppressWarnings("unchecked")
-        Class<T> klass = (Class<T>) object.getClass();
+    public static <T extends Module> T module(T object, Closure closure) {
+        return module(object.getClass().getName(), object, closure);
+    }
+    
+	public static <T extends Module> T module(String name, T object, Closure closure) {
 		ModuleDependencies dependencies = GWT.create(ModuleDependencies.class);
 		JsArrayString requires = dependencies.dependencies(object).cast();
 		JSClosure jsclosure = JSClosure.create(closure);
-		String name = klass.getName();
 		object.delegate = _module(name, requires, jsclosure);
 		return object;
 	}
