@@ -71,15 +71,6 @@ abstract class AbstractGenerator extends Generator {
                 if (parameterClassType != null) {
                     break;
                 }
-//                for (JType parameterType : parameterTypes) {
-//                    if (!JClassTypeUtils.supports(parameterType, Class.class)) {
-//                        continue;
-//                    }
-//                    JClassType[] parameterClassTypes = parameterType.isParameterized().getTypeArgs();
-//                    if (parameterClassTypes != null && parameterClassTypes.length == 1) {
-//                        parameterClassType = parameterClassTypes[0];
-//                    }
-//                }
             }
 
             if (parameterClassType == null) {
