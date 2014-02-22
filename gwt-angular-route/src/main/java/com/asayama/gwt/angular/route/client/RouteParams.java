@@ -3,43 +3,32 @@ package com.asayama.gwt.angular.route.client;
 import java.util.Date;
 
 import com.asayama.gwt.angular.client.NGObject;
-import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.JSObject;
 
-public class RouteParams implements Service, NGObjectWrapper<NGRouteParams> {
+public class RouteParams implements Service {
 
-    protected NGRouteParams ngo;
+    private NGRouteParams ngo;
 
     public String getString(String key) {
-        return getNGObject().getStringParam(key);
+        return ngo.getStringParam(key);
     }
 
     public Integer getInteger(String key) {
-        return getNGObject().getIntegerParam(key);
+        return ngo.getIntegerParam(key);
     }
 
     public Double getDouble(String key) {
-        return getNGObject().getDoubleParam(key);
+        return ngo.getDoubleParam(key);
     }
 
     public Date getDate(String key) {
-        return getNGObject().getDateParam(key);
+        return ngo.getDateParam(key);
     }
 
     public <T extends JSObject> T getObject(String key) {
-        return getNGObject().getObjectParam(key);
-    }
-
-    @Override
-    public void wrap(NGObject ngo) {
-        this.ngo = NGObject.cast(ngo);
-    }
-
-    @Override
-    public NGRouteParams getNGObject() {
-        return ngo;
+        return ngo.getObjectParam(key);
     }
 }
 

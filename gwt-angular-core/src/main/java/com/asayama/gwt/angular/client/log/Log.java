@@ -1,42 +1,31 @@
 package com.asayama.gwt.angular.client.log;
 
 import com.asayama.gwt.angular.client.NGObject;
-import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 
-public class Log implements Service, NGObjectWrapper<NGLog> {
+public class Log implements Service {
 
-    NGLog ngo;
+    private NGLog ngo;
 
     public void log(String message) {
-        getNGObject().log(message);
+        ngo.log(message);
     }
 
     public void info(String message) {
-        getNGObject().info(message);
+        ngo.info(message);
     }
 
     public void warn(String message) {
-        getNGObject().warn(message);
+        ngo.warn(message);
     }
 
     public void error(String message) {
-        getNGObject().error(message);
+        ngo.error(message);
     }
 
     public void debug(String message) {
-        getNGObject().debug(message);
-    }
-
-    @Override
-    public void wrap(NGObject ngo) {
-        this.ngo = NGObject.cast(ngo);
-    }
-
-    @Override
-    public NGLog getNGObject() {
-        return ngo;
+        ngo.debug(message);
     }
 }
 

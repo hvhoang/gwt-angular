@@ -3,25 +3,24 @@ package com.asayama.gwt.angular.client.location;
 import java.util.List;
 
 import com.asayama.gwt.angular.client.NGObject;
-import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 
-public class Location implements Service, NGObjectWrapper<NGLocation> {
+public class Location implements Service {
 
-    NGLocation ngo;
+    private NGLocation ngo;
 
     public String getHash() {
-        return getNGObject().hash();
+        return ngo.hash();
     }
 
     public Location setHash(String hash) {
-        getNGObject().hash(hash);
+        ngo.hash(hash);
         return this;
     }
 
     public Location setHashParam(String key, String value) {
-        getNGObject().search(key, value);
+        ngo.search(key, value);
         return this;
     }
 
@@ -33,20 +32,9 @@ public class Location implements Service, NGObjectWrapper<NGLocation> {
         for (HashParam p : params) {
             jso.put(p.key(), p.value());
         }
-        getNGObject().search(jso);
+        ngo.search(jso);
         return this;
     }
-
-    @Override
-    public void wrap(NGObject ngo) {
-        this.ngo = NGObject.cast(ngo);
-    }
-
-    @Override
-    public NGLocation getNGObject() {
-        return ngo;
-    }
-
 }
 
 @Bind("$location")

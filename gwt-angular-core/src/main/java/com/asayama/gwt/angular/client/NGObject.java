@@ -11,7 +11,7 @@ import com.asayama.gwt.core.client.JSObject;
  * @author kyoken74
  * @see Bind
  */
-public abstract class NGObject extends JSObject {
+public abstract class NGObject extends JSObject implements Injectable {
 
 	protected NGObject() {
 	}
