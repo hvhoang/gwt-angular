@@ -47,8 +47,12 @@ public class Angular {
 				@Override
 				public String function(Object... args) {
 					String names = "";
-					for (Object arg : args) {
-						names += ((Module) arg).getName() + " ";
+					for (int i = 0; i < args.length; i++) {
+					    Module arg = (Module) args[i];
+					    if (i > 0) {
+					        names += ", ";
+					    }
+						names += arg.getName();
 					}
 					return names;
 				}
