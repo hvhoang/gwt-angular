@@ -28,12 +28,14 @@ public class ExamplesController implements Controller {
 	@Override
 	public void onControllerLoad() {
 		final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
+		final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
 		try {
 			http.get(EXAMPLES_DATA, new HttpClientCallback() {
 				@Override
 				public void onSuccess(Request request, Response response) {
 					examples = Examples.parse(response.getText());
-					selectedPage = examples.getPages().get(pageIndex);
+					setSelectedPage(examples.getPages().get(pageIndex));
+					getSelectedPage().setSelectedTab(selectedPage.getTabs().get(tabIndex));
 				}
 				@Override
 				public void onError(Request request, Exception exception) {
