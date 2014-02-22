@@ -8,7 +8,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 
-public class ExampleController3 implements Controller {
+public class HttpClientExample implements Controller {
 
     // Fields of type that implements Injectable are injected by the framework
     private HttpClient http;

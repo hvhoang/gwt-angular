@@ -35,7 +35,8 @@ public class TextInputExample implements Controller {
 
 interface TextInputExampleConstants extends Constants {
 
-    static final TextInputExampleConstants INSTANCE = GWT.create(TextInputExampleConstants.class);
+    static final TextInputExampleConstants INSTANCE = 
+            GWT.create(TextInputExampleConstants.class);
 
     @DefaultStringValue("Hello")
     String greeting();

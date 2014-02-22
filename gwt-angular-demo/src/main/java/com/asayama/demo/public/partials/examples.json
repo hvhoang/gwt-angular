@@ -8,12 +8,12 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/textInputExample.html"
+					"filename" : "myapp/examples/demo/TextInputExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/textInputExample.html"
+					"filename" : "myapp/examples/demo/TextInputExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
@@ -22,24 +22,24 @@
 				}
 			]
 		},{
-			"displayName" : "Onclick Event",
+			"displayName" : "OnClick Event",
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/example1.html"
+					"filename" : "myapp/examples/demo/OnClickEventExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/example1.html"
+					"filename" : "myapp/examples/demo/OnClickEventExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController1.java"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/OnClickEventExample.java"
 				}
 			]
 		},{
@@ -50,17 +50,17 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/example2.html"
+					"filename" : "myapp/examples/demo/UrlHashParameterExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/example2.html"
+					"filename" : "myapp/examples/demo/UrlHashParameterExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController2.java"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/UrlHashParameterExample.java"
 				}
 			]
 		},{
@@ -71,17 +71,17 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/example3.html"
+					"filename" : "myapp/examples/demo/HttpClientExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/example3.html"
+					"filename" : "myapp/examples/demo/HttpClientExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController3.java"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/HttpClientExample.java"
 				},{
 					"id" : "data",
 					"displayName" : "Data",

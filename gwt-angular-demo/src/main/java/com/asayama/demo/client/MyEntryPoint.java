@@ -1,9 +1,9 @@
 package com.asayama.demo.client;
 
 import com.asayama.demo.client.examples.TextInputExample;
-import com.asayama.demo.client.examples.ExampleController1;
-import com.asayama.demo.client.examples.ExampleController2;
-import com.asayama.demo.client.examples.ExampleController3;
+import com.asayama.demo.client.examples.OnClickEventExample;
+import com.asayama.demo.client.examples.UrlHashParameterExample;
+import com.asayama.demo.client.examples.HttpClientExample;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.log.Log;
@@ -28,9 +28,9 @@ public class MyEntryPoint implements EntryPoint {
         myModule.controller(new NavbarController());
         myModule.controller(new ExamplesController());
         myModule.controller(new TextInputExample());
-        myModule.controller(new ExampleController1());
-        myModule.controller(new ExampleController2());
-        myModule.controller(new ExampleController3());
+        myModule.controller(new OnClickEventExample());
+        myModule.controller(new UrlHashParameterExample());
+        myModule.controller(new HttpClientExample());
         Angular.bootstrap(myModule);
     }
 }
