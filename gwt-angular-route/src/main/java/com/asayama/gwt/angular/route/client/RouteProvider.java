@@ -6,46 +6,52 @@ import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class RouteProvider implements Provider, NGObjectWrapper {
+public class RouteProvider implements Provider, NGObjectWrapper<NGRouteProvider> {
 
-	protected NGRouteProvider ngo;
-	
-	public RouteProvider when(String route, Template action) {
-		getNGObject().when(route, action);
-		return this;
-	}
-	public RouteProvider when(String route, Redirect action) {
-		getNGObject().when(route, action);
-		return this;
-	}
-	public RouteProvider otherwise(Template action) {
-		getNGObject().otherwise(action);
-		return this;
-	}
-	public RouteProvider otherwise(Redirect action) {
-		getNGObject().otherwise(action);
-		return this;
-	}
+    protected NGRouteProvider ngo;
 
-	@Override
-	public void wrap(NGObject ngo) {
-		this.ngo = NGObject.cast(ngo);
-	}
-	NGRouteProvider getNGObject() {
-		return ngo;
-	}
+    public RouteProvider when(String route, Template action) {
+        getNGObject().when(route, action);
+        return this;
+    }
+
+    public RouteProvider when(String route, Redirect action) {
+        getNGObject().when(route, action);
+        return this;
+    }
+
+    public RouteProvider otherwise(Template action) {
+        getNGObject().otherwise(action);
+        return this;
+    }
+
+    public RouteProvider otherwise(Redirect action) {
+        getNGObject().otherwise(action);
+        return this;
+    }
+
+    @Override
+    public void wrap(NGObject ngo) {
+        this.ngo = NGObject.cast(ngo);
+    }
+
+    @Override
+    public NGRouteProvider getNGObject() {
+        return ngo;
+    }
 }
+
 @Bind("$routeProvider")
 class NGRouteProvider extends NGObject {
 
-	protected NGRouteProvider() {
-	}
+    protected NGRouteProvider() {
+    }
 
-	final native void when(String route, JavaScriptObject action) /*-{
+    final native void when(String route, JavaScriptObject action) /*-{
 		this.when(route, action);
-	}-*/;
-	
-	final native void otherwise(JavaScriptObject action) /*-{
+    }-*/;
+
+    final native void otherwise(JavaScriptObject action) /*-{
 		this.otherwise(action);
 	}-*/;
 }

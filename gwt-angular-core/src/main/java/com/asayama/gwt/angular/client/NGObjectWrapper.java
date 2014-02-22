@@ -6,6 +6,7 @@ package com.asayama.gwt.angular.client;
  * 
  * @author kyoken74
  */
-public interface NGObjectWrapper {
+public interface NGObjectWrapper<T extends NGObject> {
 	void wrap(NGObject ngo);
+	T getNGObject();
 }
