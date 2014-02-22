@@ -5,11 +5,11 @@ import com.asayama.gwt.angular.client.log.Log;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
 
-public class ExampleController0 implements Controller {
+public class TextInputExample implements Controller {
 
     // Public final fields are directly bound to AngularJS's $scope
-    public static final String GREETING = Example1Constants.INSTANCE.greeting();
-    public static final String STRANGER = Example1Constants.INSTANCE.stranger();
+    public static final String GREETING = TextInputExampleConstants.INSTANCE.greeting();
+    public static final String STRANGER = TextInputExampleConstants.INSTANCE.stranger();
 
     // Injectable fields are automatically injected by the framework
     private Log log;
@@ -33,9 +33,9 @@ public class ExampleController0 implements Controller {
 
 }
 
-interface Example1Constants extends Constants {
+interface TextInputExampleConstants extends Constants {
 
-    static final Example1Constants INSTANCE = GWT.create(Example1Constants.class);
+    static final TextInputExampleConstants INSTANCE = GWT.create(TextInputExampleConstants.class);
 
     @DefaultStringValue("Hello")
     String greeting();

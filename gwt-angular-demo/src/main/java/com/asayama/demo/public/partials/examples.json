@@ -8,17 +8,17 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/example0.html"
+					"filename" : "myapp/examples/demo/textInputExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/example0.html"
+					"filename" : "myapp/examples/demo/textInputExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController0.java"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/TextInputExample.java"
 				}
 			]
 		},{

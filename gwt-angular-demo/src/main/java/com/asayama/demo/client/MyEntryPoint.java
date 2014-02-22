@@ -1,6 +1,6 @@
 package com.asayama.demo.client;
 
-import com.asayama.demo.client.examples.ExampleController0;
+import com.asayama.demo.client.examples.TextInputExample;
 import com.asayama.demo.client.examples.ExampleController1;
 import com.asayama.demo.client.examples.ExampleController2;
 import com.asayama.demo.client.examples.ExampleController3;
@@ -27,7 +27,7 @@ public class MyEntryPoint implements EntryPoint {
         myModule.factory(new Log());
         myModule.controller(new NavbarController());
         myModule.controller(new ExamplesController());
-        myModule.controller(new ExampleController0());
+        myModule.controller(new TextInputExample());
         myModule.controller(new ExampleController1());
         myModule.controller(new ExampleController2());
         myModule.controller(new ExampleController3());
