@@ -1,7 +1,5 @@
 package com.asayama.gwt.core.client;
 
-
-
 public abstract class Closure implements Function<Void> {
 
 	public abstract void closure(Object... args);
@@ -11,5 +9,4 @@ public abstract class Closure implements Function<Void> {
 		closure(args);
 		return null;
 	}
-
 }

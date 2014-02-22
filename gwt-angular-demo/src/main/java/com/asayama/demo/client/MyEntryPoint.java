@@ -16,21 +16,21 @@ import com.google.gwt.core.client.GWT;
 
 public class MyEntryPoint implements EntryPoint {
 
-	public void onModuleLoad() {
-		GWT.log("entering MyEntryPoint.onModuleLoad");
-		MyModule myModule = Angular.module(new MyModule());
-		myModule.config(new RouteProvider());
-		myModule.factory(new Q());
-		myModule.factory(new HttpClient());
-		myModule.factory(new RouteParams());
-		myModule.factory(new Location());
-		myModule.factory(new Log());
-		myModule.controller(new NavbarController());
-		myModule.controller(new ExamplesController());
-		myModule.controller(new ExampleController0());
-		myModule.controller(new ExampleController1());
-		myModule.controller(new ExampleController2());
-		myModule.controller(new ExampleController3());
-		Angular.bootstrap(myModule);
-	}
+    public void onModuleLoad() {
+        GWT.log("entering MyEntryPoint.onModuleLoad");
+        MyModule myModule = Angular.module(new MyModule());
+        myModule.config(new RouteProvider());
+        myModule.factory(new Q());
+        myModule.factory(new HttpClient());
+        myModule.factory(new RouteParams());
+        myModule.factory(new Location());
+        myModule.factory(new Log());
+        myModule.controller(new NavbarController());
+        myModule.controller(new ExamplesController());
+        myModule.controller(new ExampleController0());
+        myModule.controller(new ExampleController1());
+        myModule.controller(new ExampleController2());
+        myModule.controller(new ExampleController3());
+        Angular.bootstrap(myModule);
+    }
 }

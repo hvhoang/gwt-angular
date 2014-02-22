@@ -9,14 +9,16 @@ import com.asayama.gwt.angular.route.client.Template;
 
 @Depends(ng = { "ngRoute", "ngSanitize" })
 public class MyModule extends Module {
-	
-	@Override
-	public void onInjection(Injectable object) {
-		if (object instanceof RouteProvider) {
-			((RouteProvider) object)
-				.when("/examples", Template.create("myapp/partials/examples.html", ExamplesController.class))
-				.otherwise(Redirect.create("/examples"));
-		}
-	}
+
+    @Override
+    public void onInjection(Injectable object) {
+        if (object instanceof RouteProvider) {
+            ((RouteProvider) object).when(
+                    "/examples",
+                    Template.create("myapp/partials/examples.html",
+                            ExamplesController.class)).otherwise(
+                    Redirect.create("/examples"));
+        }
+    }
 
 }
