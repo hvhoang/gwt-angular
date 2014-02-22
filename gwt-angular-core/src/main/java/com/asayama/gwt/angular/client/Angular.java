@@ -26,7 +26,8 @@ public class Angular {
 	}
 	
 	public static <T extends Module> T module(T object, Closure closure) {
-		Class<T> klass = (Class<T>) object.getClass();
+		@SuppressWarnings("unchecked")
+        Class<T> klass = (Class<T>) object.getClass();
 		ModuleDependencies<T> dependencies = GWT.create(ModuleDependencies.class);
 		JsArrayString requires = dependencies.dependencies(klass).cast();
 		JSClosure jsclosure = JSClosure.create(closure);
