@@ -14,7 +14,7 @@ public class MyModule extends Module {
 	public void onInjection(Injectable object) {
 		if (object instanceof RouteProvider) {
 			((RouteProvider) object)
-				.when("/examples", Template.create("partials/examples.html", ExamplesController.class))
+				.when("/examples", Template.create("myapp/partials/examples.html", ExamplesController.class))
 				.otherwise(Redirect.create("/examples"));
 		}
 	}

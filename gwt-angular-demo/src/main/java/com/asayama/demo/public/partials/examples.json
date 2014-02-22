@@ -5,13 +5,20 @@
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
+					"id" : "demo",
 					"displayName" : "Demo",
-					"filename" : "partials/panels/example0.html"
+					"template" : "myapp/partials/templates/demo.html",
+					"filename" : "myapp/examples/demo/example0.html"
 				},{
+					"id" : "html",
 					"displayName" : "HTML",
-					"filename" : "partials/panels/example0.html"
+					"template" : "myapp/partials/templates/html.html",
+					"filename" : "myapp/examples/demo/example0.html"
 				},{
-					"displayName" : "Java"
+					"id" : "java",
+					"displayName" : "Java",
+					"template" : "myapp/partials/templates/java.html",
+					"filename" : "myapp/examples/demo/example0.html"
 				}
 			]
 		},{
@@ -19,13 +26,20 @@
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
+					"id" : "demo",
 					"displayName" : "Demo",
-					"filename" : "partials/panels/example1.html"
+					"template" : "myapp/partials/templates/demo.html",
+					"filename" : "myapp/examples/demo/example1.html"
 				},{
+					"id" : "html",
 					"displayName" : "HTML",
-					"filename" : "partials/panels/example1.html"
+					"template" : "myapp/partials/templates/html.html",
+					"filename" : "myapp/examples/demo/example1.html"
 				},{
-					"displayName" : "Java"
+					"id" : "java",
+					"displayName" : "Java",
+					"template" : "myapp/partials/templates/java.html",
+					"filename" : "myapp/examples/demo/example1.html"
 				}
 			]
 		},{
@@ -33,13 +47,20 @@
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
+					"id" : "demo",
 					"displayName" : "Demo",
-					"filename" : "partials/panels/example2.html"
+					"template" : "myapp/partials/templates/demo.html",
+					"filename" : "myapp/examples/demo/example2.html"
 				},{
+					"id" : "html",
 					"displayName" : "HTML",
-					"filename" : "partials/panels/example2.html"
+					"template" : "myapp/partials/templates/html.html",
+					"filename" : "myapp/examples/demo/example2.html"
 				},{
-					"displayName" : "Java"
+					"id" : "java",
+					"displayName" : "Java",
+					"template" : "myapp/partials/templates/java.html",
+					"filename" : "myapp/examples/demo/example2.html"
 				}
 			]
 		},{
@@ -47,13 +68,25 @@
 			"description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin ante nec vestibulum posuere. Morbi in posuere orci. Ut blandit eros mi, nec blandit nunc gravida sit amet. Aliquam erat volutpat. Pellentesque sagittis tortor in pharetra eleifend. Proin dignissim sapien eu nunc iaculis pellentesque. Sed aliquet ligula non mauris convallis, eget iaculis urna porttitor. Phasellus aliquet velit leo, eget ultricies quam gravida ut. Nunc rhoncus euismod suscipit. Nunc tincidunt in augue id rhoncus. Etiam non dignissim lectus. Quisque fringilla a erat in sollicitudin.",
 			"tabs" : [
 				{
+					"id" : "demo",
 					"displayName" : "Demo",
-					"filename" : "partials/panels/example3.html"
+					"template" : "myapp/partials/templates/demo.html",
+					"filename" : "myapp/examples/demo/example3.html"
 				},{
+					"id" : "html",
 					"displayName" : "HTML",
-					"filename" : "partials/panels/example3.html"
+					"template" : "myapp/partials/templates/html.html",
+					"filename" : "myapp/examples/demo/example3.html"
 				},{
-					"displayName" : "Java"
+					"id" : "java",
+					"displayName" : "Java",
+					"template" : "myapp/partials/templates/java.html",
+					"filename" : "myapp/examples/demo/example3.html"
+				},{
+					"id" : "data",
+					"displayName" : "Data",
+					"template" : "myapp/partials/templates/json.html",
+					"filename" : "myapp/examples/data/customers.json"
 				}
 			]
 		}

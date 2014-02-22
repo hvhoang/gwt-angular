@@ -19,7 +19,7 @@ public class ExampleController3 implements Controller {
 	
 	@Override
 	public void onControllerLoad() {
-		String url = GWT.getModuleBaseForStaticFiles() + "data/customer";
+		String url = GWT.getModuleBaseForStaticFiles() + "examples/data/customers.json";
 		try {
 			HttpClientCallback callback = new HttpClientCallback() {
 				@Override
