@@ -50,10 +50,10 @@ public abstract class Module {
             @Override
             public P function(Object... args) {
                 String m = "";
-                if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
-                    GWT.log(m = "calling " + name + ".wrap(NGObject)");
-                    ((NGObjectWrapper) object).wrap((NGObject) args[0]);
-                }
+//                if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
+//                    GWT.log(m = "calling " + name + ".wrap(NGObject)");
+//                    ((NGObjectWrapper) object).wrap((NGObject) args[0]);
+//                }
                 try {
                     GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
                     Module.this.onInjection(object);
@@ -94,10 +94,10 @@ public abstract class Module {
             @Override
             public S function(Object... args) {
                 String m = "";
-                if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
-                    GWT.log(m = "calling " + name + ".wrap(NGObject)");
-                    ((NGObjectWrapper) object).wrap((NGObject) args[0]);
-                }
+//                if (object instanceof NGObjectWrapper && args != null && args.length > 0) {
+//                    GWT.log(m = "calling " + name + ".wrap(NGObject)");
+//                    ((NGObjectWrapper) object).wrap((NGObject) args[0]);
+//                }
                 try {
                     GWT.log(m = "calling " + getName() + ".onInjection(" + name + ")");
                     Module.this.onInjection(object);

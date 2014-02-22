@@ -1,7 +1,6 @@
 package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.angular.client.NGObject;
-import com.asayama.gwt.angular.client.NGObjectWrapper;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.core.client.Closure;
@@ -22,12 +21,12 @@ import com.asayama.gwt.core.client.JSClosure;
  * @author kyoken74
  */
 @Deprecated
-public class Http implements Service, NGObjectWrapper<NGHttp> {
+public class Http implements Service {
 
-    NGHttp ngo;
+    private NGHttp ngo;
 
     public void get(String url, final HttpCallback callback) {
-        getNGObject().get(url, JSClosure.create(new Closure() {
+        ngo.get(url, JSClosure.create(new Closure() {
 
             @Override
             public void closure(Object... args) {
@@ -44,16 +43,6 @@ public class Http implements Service, NGObjectWrapper<NGHttp> {
                 callback.onSuccess(status, data);
             }
         }));
-    }
-
-    @Override
-    public void wrap(NGObject ngo) {
-        this.ngo = NGObject.cast(ngo);
-    }
-
-    @Override
-    public NGHttp getNGObject() {
-        return ngo;
     }
 }
 
