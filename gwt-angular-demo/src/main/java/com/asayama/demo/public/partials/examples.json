@@ -18,7 +18,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/demo/example0.html"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController0.java"
 				}
 			]
 		},{
@@ -39,7 +39,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/demo/example1.html"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController1.java"
 				}
 			]
 		},{
@@ -60,7 +60,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/demo/example2.html"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController2.java"
 				}
 			]
 		},{
@@ -81,7 +81,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/demo/example3.html"
+					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/ExampleController3.java"
 				},{
 					"id" : "data",
 					"displayName" : "Data",
