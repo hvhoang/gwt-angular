@@ -2,8 +2,6 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.angular.rebind.CreatorGenerator;
 
-
-
 /**
  * Provides interfaces for an object creator. This interface is intended to be
  * used with {@link CreatorGenerator}, which inspects the types eligible for
