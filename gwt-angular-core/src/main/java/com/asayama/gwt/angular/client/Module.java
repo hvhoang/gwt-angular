@@ -28,11 +28,11 @@ public abstract class Module {
     protected Module() {
     }
 
-    public <P extends Provider> P config(P object) {
-        return config(object, null);
+    public <P extends Provider> P config(P provider) {
+        return config(provider, null);
     }
 
-    public <P extends Provider> P config(final P object, final InjectionCallback<P> callback) {
+    public <P extends Provider> P config(final P provider, final InjectionCallback<P> callback) {
         ProviderDependenciesFactory dependencies = GWT.create(ProviderDependenciesFactory.class);
         ProviderInjectorFactory injector = GWT.create(ProviderInjectorFactory.class);
         Function<P> constructor = new Function<P>() {
@@ -40,17 +40,17 @@ public abstract class Module {
             @Override
             public P function(Object... args) {
                 if (callback != null) {
-                    callback.onInjection(object);
+                    callback.onInjection(provider);
                 }
-                return object;
+                return provider;
             }
         };
-        JSClosure jsinjector = injector.injector(object);
+        JSClosure jsinjector = injector.injector(provider);
         JSFunction<P> jsconstructor = _config(JSFunction.create(constructor), jsinjector);
-        JSArray<Object> jsdependencies = dependencies.dependencies(object);
+        JSArray<Object> jsdependencies = dependencies.dependencies(provider);
         jsdependencies.add(jsconstructor);
         delegate.config(jsdependencies);
-        return object;
+        return provider;
     }
 
     private native <P extends Provider> JSFunction<P> _config(JSFunction<P> jsfunction, JSClosure jsinjector) /*-{
@@ -63,15 +63,15 @@ public abstract class Module {
 		};
     }-*/;
 
-    public <S extends Service> S factory(S object) {
-        return factory(object.getClass().getName(), object);
+    public <S extends Service> S factory(S service) {
+        return factory(service.getClass().getName(), service);
     }
     
-    public <S extends Service> S factory(String name, S object) {
-        return factory(name, object, null);
+    public <S extends Service> S factory(String name, S service) {
+        return factory(name, service, null);
     }
     
-    public <S extends Service> S factory(String name, final S object, final InjectionCallback<S> callback) {
+    public <S extends Service> S factory(String name, final S service, final InjectionCallback<S> callback) {
         ServiceDependenciesFactory dependencies = GWT.create(ServiceDependenciesFactory.class);
         ServiceInjectorFactory injector = GWT.create(ServiceInjectorFactory.class);
         Function<S> constructor = new Function<S>() {
@@ -79,17 +79,17 @@ public abstract class Module {
             @Override
             public S function(Object... args) {
                 if (callback != null) {
-                    callback.onInjection(object);
+                    callback.onInjection(service);
                 }
-                return object;
+                return service;
             }
         };
-        JSClosure jsinjector = injector.injector(object);
+        JSClosure jsinjector = injector.injector(service);
         JSFunction<S> jsconstructor = _factory(JSFunction.create(constructor), jsinjector);
-        JSArray<Object> jsdependencies = dependencies.dependencies(object);
+        JSArray<Object> jsdependencies = dependencies.dependencies(service);
         jsdependencies.add(jsconstructor);
         delegate.factory(name, jsdependencies);
-        return object;
+        return service;
     }
 
     private native <S extends Service> JSFunction<S> _factory(JSFunction<S> jsfunction, JSClosure jsinjector) /*-{
@@ -102,19 +102,19 @@ public abstract class Module {
 		};
     }-*/;
 
-    public <C extends Controller> C controller(C object) {
-        return controller(object, null);
+    public <C extends Controller> C controller(C controller) {
+        return controller(controller, null);
     }
     
-    public <C extends Controller> C controller(C object, InjectionCallback<C> callback) {
-        return controller(object.getClass().getName(), object, callback);
+    public <C extends Controller> C controller(C controller, InjectionCallback<C> callback) {
+        return controller(controller.getClass().getName(), controller, callback);
     }
 
     public <C extends Controller> C controller(String name, C object) {
         return controller(name, object, null);
     }
     
-    public <C extends Controller> C controller(String name, final C object, final InjectionCallback<C> callback) {
+    public <C extends Controller> C controller(String name, final C controller, final InjectionCallback<C> callback) {
         ControllerDependenciesFactory dependencies = GWT.create(ControllerDependenciesFactory.class);
         ControllerBinderFactory binder = GWT.create(ControllerBinderFactory.class);
         ControllerInjectorFactory injector = GWT.create(ControllerInjectorFactory.class);
@@ -122,20 +122,20 @@ public abstract class Module {
 
             @Override
             public void closure(Object... args) {
-                object.onControllerLoad();
+                controller.onControllerLoad();
                 if (callback != null) {
-                    callback.onInjection(object);
+                    callback.onInjection(controller);
                 }
             }
         };
-        JSClosure jsbinder = binder.binder(object);
-        JSClosure jsinjector = injector.injector(object);
+        JSClosure jsbinder = binder.binder(controller);
+        JSClosure jsinjector = injector.injector(controller);
         JSClosure jsconstructor = _controller(JSClosure.create(constructor), jsinjector, jsbinder);
-        JSArray<Object> jsdependencies = dependencies.dependencies(object);
+        JSArray<Object> jsdependencies = dependencies.dependencies(controller);
         jsdependencies.add(0, "$scope");
         jsdependencies.add(jsconstructor);
         delegate.controller(name, jsdependencies);
-        return object;
+        return controller;
     }
 
     private native JSClosure _controller(JSClosure jsclosure, JSClosure jsinjector, JSClosure jsbinder) /*-{
