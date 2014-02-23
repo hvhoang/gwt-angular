@@ -32,7 +32,9 @@ import com.asayama.gwt.core.client.JSClosure;
  * @param <T>
  */
 interface DependenciesFactory<T> {
+    @Deprecated
     JSArray<Object> dependencies(T object);
+    String[] create(T object);
 }
 
 interface ModuleDependenciesFactory extends DependenciesFactory<Module> {

@@ -10,6 +10,21 @@ import com.asayama.gwt.core.client.JSArray;
 public class __${className} implements ${className} {
 
     @Override
+    public String[] create(${supportedRootClassType} object) {
+#foreach(${supportedClassType} in ${supportedClassTypes})
+        if (object instanceof ${supportedClassType.qualifiedSourceName}) {
+            return new String[] {
+#foreach($name in ${dependencies.get($foreach.index)})
+                "${name}"#if(${foreach.hasNext}),#end
+
+#end
+            };
+        }
+#end
+        return null;
+    }
+
+    @Override
     public JSArray<Object> dependencies(${supportedRootClassType} object) {
 #foreach(${supportedClassType} in ${supportedClassTypes})
         if (object instanceof ${supportedClassType.qualifiedSourceName}) {

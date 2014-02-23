@@ -2,9 +2,7 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
-import com.asayama.gwt.core.client.JSFunction;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -20,6 +18,14 @@ import com.google.gwt.core.shared.GWT;
  */
 public abstract class Module {
 
+    ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
+    ProviderInjectorFactory providerInjectorFactory = GWT.create(ProviderInjectorFactory.class);
+    ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
+    ServiceInjectorFactory serviceInjectorFactory = GWT.create(ServiceInjectorFactory.class);
+    ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
+    ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
+    ControllerInjectorFactory controllerInjectorFactory = GWT.create(ControllerInjectorFactory.class);
+
     JSModule jso;
 
     /**
@@ -33,35 +39,23 @@ public abstract class Module {
     }
 
     public <P extends Provider> P config(final P provider, final InjectionCallback<P> callback) {
-        ProviderDependenciesFactory dependencies = GWT.create(ProviderDependenciesFactory.class);
-        ProviderInjectorFactory injector = GWT.create(ProviderInjectorFactory.class);
-        Function<P> constructor = new Function<P>() {
+        final JSClosure injector = providerInjectorFactory.injector(provider);
+        Function<P> initializer = new Function<P>() {
 
             @Override
             public P function(Object... args) {
+                injector.apply(args);
                 if (callback != null) {
                     callback.onInjection(provider);
                 }
                 return provider;
             }
         };
-        JSClosure jsinjector = injector.injector(provider);
-        JSFunction<P> jsconstructor = _config(JSFunction.create(constructor), jsinjector);
-        JSArray<Object> jsdependencies = dependencies.dependencies(provider);
-        jsdependencies.add(jsconstructor);
-        jso.config(jsdependencies);
+        String[] dependencies = providerDependenciesFactory.create(provider);
+        NGConstructor constructors = NGConstructor.create(initializer, dependencies);
+        jso.config(constructors);
         return provider;
     }
-
-    private native <P extends Provider> JSFunction<P> _config(JSFunction<P> jsfunction, JSClosure jsinjector) /*-{
-		return function() {
-			var args = Array.prototype.slice.call(arguments, 0);
-			if (jsinjector) {
-				jsinjector.apply(null, args);
-			}
-			return jsfunction.apply(null, args);
-		};
-    }-*/;
 
     public <S extends Service> S factory(S service) {
         return factory(service.getClass().getName(), service);
@@ -72,35 +66,23 @@ public abstract class Module {
     }
     
     public <S extends Service> S factory(String name, final S service, final InjectionCallback<S> callback) {
-        ServiceDependenciesFactory dependencies = GWT.create(ServiceDependenciesFactory.class);
-        ServiceInjectorFactory injector = GWT.create(ServiceInjectorFactory.class);
-        Function<S> constructor = new Function<S>() {
+        final JSClosure injector = serviceInjectorFactory.injector(service);
+        Function<S> initializer = new Function<S>() {
 
             @Override
             public S function(Object... args) {
+                injector.apply(args);
                 if (callback != null) {
                     callback.onInjection(service);
                 }
                 return service;
             }
         };
-        JSClosure jsinjector = injector.injector(service);
-        JSFunction<S> jsconstructor = _factory(JSFunction.create(constructor), jsinjector);
-        JSArray<Object> jsdependencies = dependencies.dependencies(service);
-        jsdependencies.add(jsconstructor);
-        jso.factory(name, jsdependencies);
+        String[] dependencies = serviceDependencyFactory.create(service);
+        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
+        jso.factory(name, constructor);
         return service;
     }
-
-    private native <S extends Service> JSFunction<S> _factory(JSFunction<S> jsfunction, JSClosure jsinjector) /*-{
-		return function() {
-			var args = Array.prototype.slice.call(arguments, 0);
-			if (jsinjector) {
-				jsinjector.apply(null, args);
-			}
-			return jsfunction.apply(null, args);
-		};
-    }-*/;
 
     public <C extends Controller> C controller(C controller) {
         return controller(controller, null);
@@ -115,41 +97,37 @@ public abstract class Module {
     }
     
     public <C extends Controller> C controller(String name, final C controller, final InjectionCallback<C> callback) {
-        ControllerDependenciesFactory dependencies = GWT.create(ControllerDependenciesFactory.class);
-        ControllerBinderFactory binder = GWT.create(ControllerBinderFactory.class);
-        ControllerInjectorFactory injector = GWT.create(ControllerInjectorFactory.class);
-        Closure constructor = new Closure() {
+        final JSClosure binder = controllerBinderFactory.binder(controller);
+        final JSClosure injector = controllerInjectorFactory.injector(controller);
+        Closure initializer = new Closure() {
 
             @Override
             public void closure(Object... args) {
+                Object[] shiftedArgs = new Object[args.length - 1];
+                for (int i = 0; i < shiftedArgs.length; i++) {
+                    shiftedArgs[i] = args[i + 1];
+                }
+                binder.apply(args);
+                injector.apply(shiftedArgs);
                 controller.onControllerLoad();
                 if (callback != null) {
                     callback.onInjection(controller);
                 }
             }
         };
-        JSClosure jsbinder = binder.binder(controller);
-        JSClosure jsinjector = injector.injector(controller);
-        JSClosure jsconstructor = _controller(JSClosure.create(constructor), jsinjector, jsbinder);
-        JSArray<Object> jsdependencies = dependencies.dependencies(controller);
-        jsdependencies.add(0, "$scope");
-        jsdependencies.add(jsconstructor);
-        jso.controller(name, jsdependencies);
+        String [] dependencies;
+        {
+            String[] d = controllerDependenciesFactory.create(controller);
+            dependencies = new String[d.length + 1];
+            dependencies[0] = "$scope";
+            for (int i = 0; i < d.length; i++) {
+                dependencies[i + 1] = d[i];
+            }
+        }
+        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
+        jso.controller(name, constructor);
         return controller;
     }
-
-    private native JSClosure _controller(JSClosure jsclosure, JSClosure jsinjector, JSClosure jsbinder) /*-{
-		return function() {
-			var args = Array.prototype.slice.call(arguments, 0);
-			if (jsbinder) {
-				jsbinder(args.shift());
-			}
-			if (jsinjector) {
-				jsinjector.apply(null, args);
-			}
-			jsclosure.apply(null, args);
-		};
-    }-*/;
 
     public String getName() {
         return jso.getName();
@@ -178,16 +156,16 @@ class JSModule extends JSObject {
 		return this.requires;
     }-*/;
 
-    final native void config(JavaScriptObject jsarray) /*-{
-		this.config(jsarray);
+    final native void config(JavaScriptObject constructor) /*-{
+		this.config(constructor);
     }-*/;
 
-    final native void factory(String name, JavaScriptObject jsarray) /*-{
-		this.factory(name, jsarray);
+    final native void factory(String name, JavaScriptObject constructor) /*-{
+		this.factory(name, constructor);
     }-*/;
 
-    final native void controller(String name, JavaScriptObject jsarray) /*-{
-		this.controller(name, jsarray);
+    final native void controller(String name, JavaScriptObject constructor) /*-{
+		this.controller(name, constructor);
     }-*/;
 
 }

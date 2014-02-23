@@ -17,4 +17,19 @@ public class JSFunction<R> extends JavaScriptObject {
 	protected JSFunction() {
 	}
 
+	public final R apply(Object... args) {
+	    @SuppressWarnings("unchecked")
+        JSArray<Object> jsarray = (JSArray<Object>) JavaScriptObject.createArray();
+	    if (args != null) {
+	        for (Object arg : args) {
+	            jsarray.add(arg);
+	        }
+	    }
+	    return _apply(jsarray);
+	}
+
+	protected final native R _apply(JSArray<Object> jsarray) /*-{
+	    return this.apply(null, jsarray);
+	}-*/;
+
 }

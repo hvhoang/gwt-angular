@@ -19,13 +19,13 @@ public class __${className} implements ${className} {
         return null;
     }
 
-#foreach($supportedClassType in ${supportedClassTypes})
 #*
   https://github.com/kyoken74/gwt-angular/issues/14
   Consider using dependencies for the fields. By the time we get here, the
   dependencies array should contain super types injectables. One tricky thing
   though is that dependencies may contain fields other than injectables.
 *#
+#foreach($supportedClassType in ${supportedClassTypes})
 #set($fields = $supportedClassType.fields)
 #set($isFirst = true)
     //${supportedClassType.qualifiedSourceName}
