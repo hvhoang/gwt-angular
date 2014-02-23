@@ -5,8 +5,6 @@ import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSFunction;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArrayString;
 
 /**
  * Provides GWT Java representation of AngularJS's angular object.
@@ -40,9 +38,9 @@ public class Angular {
 	public static void bootstrap(Module... modules) {
 		String m = "";
         StringBuilder sb = new StringBuilder();
-		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
+		JSArray<String> jsarray = JSArray.create();
 		for (int i = 0; i < modules.length; i++) {
-			jsarray.push(modules[i].getClass().getName());
+			jsarray.add(modules[i].getClass().getName());
             sb.append(i == 0 ? "" : ", ").append(modules[i].getClass().getName());
 		}
 		try {
@@ -57,7 +55,7 @@ public class Angular {
 		return $wnd.angular.module(name, requires, ctor);
 	}-*/;
 	
-	private static native void _bootstrap(JsArrayString modules) /*-{
+	private static native void _bootstrap(JSArray<String> modules) /*-{
 		$wnd.angular.bootstrap($doc, modules);
 	}-*/;
 

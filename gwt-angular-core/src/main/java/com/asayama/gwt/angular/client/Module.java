@@ -2,10 +2,10 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
+import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.shared.GWT;
 
 /**
@@ -134,13 +134,9 @@ public abstract class Module {
     }
 
     public String[] getRequires() {
-        JsArrayString jsarray = jso.getRequires();
-        String[] results = new String[jsarray.length()];
-        for (int i = 0; i < jsarray.length(); i++) {
-            results[i] = jsarray.get(i);
-        }
-        return results;
+        return jso.getRequires().toArray(JSArray.STRING);
     }
+
 }
 
 class JSModule extends JSObject {
@@ -152,7 +148,7 @@ class JSModule extends JSObject {
         return getString("name");
     }
 
-    final native JsArrayString getRequires() /*-{
+    final native JSArray<String> getRequires() /*-{
 		return this.requires;
     }-*/;
 

@@ -1,9 +1,13 @@
 package com.asayama.gwt.core.client;
 
+import java.util.ArrayList;
+
 import com.google.gwt.core.client.JavaScriptObject;
 
 
 public class JSArray<T> extends JavaScriptObject {
+    
+    public static final String[] STRING = new String[0];
 
 	public static native <T> JSArray<T> create() /*-{
 		return [];
@@ -34,8 +38,9 @@ public class JSArray<T> extends JavaScriptObject {
 		return this[i];
 	}-*/;
 	
-	public final native void add(T object) /*-{
+	public final native boolean add(T object) /*-{
 		this.push(object);
+		return true;
 	}-*/;
 
 	public final native void add(int index, T object) /*-{
@@ -45,5 +50,21 @@ public class JSArray<T> extends JavaScriptObject {
 	public final native int size() /*-{
 		return this.length;
 	}-*/;
+
+	public final Object[] toArray() {
+	    Object[] array = new Object[size()];
+	    for (int i = 0; i < size(); i++) {
+	        array[i] = get(i);
+	    }
+	    return array;
+	}
+
+	public final <U extends Object> U[] toArray(U[] a) {
+	    ArrayList<T> list = new ArrayList<T>();
+	    for (int i = 0; i < size(); i++) {
+	        list.add(get(i));
+	    }
+	    return list.toArray(a);
+	}
 
 }

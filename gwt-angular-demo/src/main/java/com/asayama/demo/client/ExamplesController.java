@@ -4,9 +4,9 @@ import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
+import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSObject;
 import com.asayama.gwt.core.client.util.Objects;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -107,7 +107,7 @@ class Examples extends JSObject {
     protected Examples() {
     }
 
-    final JsArray<Page> getPages() {
+    final JSArray<Page> getPages() {
         return getObject("pages").cast();
     }
 }
@@ -117,7 +117,7 @@ class Page extends JSObject {
     protected Page() {
     }
 
-    final JsArray<Tab> getTabs() {
+    final JSArray<Tab> getTabs() {
         return getObject("tabs").cast();
     }
 
