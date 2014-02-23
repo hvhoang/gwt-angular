@@ -1,6 +1,5 @@
 package com.asayama.demo.client;
 
-import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
@@ -12,7 +11,7 @@ import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
-public class ExamplesController implements Controller {
+public class ExamplesController extends AbstractController {
 
     public static final String EXAMPLES_DATA = "myapp/partials/examples.json";
 
@@ -25,8 +24,11 @@ public class ExamplesController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        final int pageIndex = Objects.coalesce(routeParams.getInteger("page"),
-                0);
+        
+        //https://github.com/kyoken74/gwt-angular/issues/14
+        //log.debug("calling ExamplesController.onControllerLoad()");
+        
+        final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
         http.get(EXAMPLES_DATA, new HttpClientCallback() {
 
