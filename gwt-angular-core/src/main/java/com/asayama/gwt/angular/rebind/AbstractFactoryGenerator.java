@@ -128,7 +128,7 @@ abstract class AbstractFactoryGenerator extends Generator {
                         names.add(n);
                     }
                 }
-                Class<?>[] nc = depends.value();
+                Class<?>[] nc = depends == null ? null : depends.value();
                 if (nc != null) {
                     for (Class<?> c : nc) {
                         names.add(c.getName());

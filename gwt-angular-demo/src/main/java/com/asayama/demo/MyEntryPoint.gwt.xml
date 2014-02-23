@@ -10,5 +10,5 @@
   <script src="lib/bootstrap/3.0.3/js/bootstrap.min.js" />
   <source path="client" />
   <source path="shared" />
-  <entry-point class="com.asayama.demo.client.MyEntryPoint" />
+  <entry-point class="com.asayama.demo.client.MyModule" />
 </module>

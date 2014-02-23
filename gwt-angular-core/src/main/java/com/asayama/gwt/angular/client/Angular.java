@@ -1,7 +1,6 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSFunction;
@@ -40,25 +39,14 @@ public class Angular {
 	
 	public static void bootstrap(Module... modules) {
 		String m = "";
+        StringBuilder sb = new StringBuilder();
 		JsArrayString jsarray = (JsArrayString) JavaScriptObject.createArray();
-		for (Module module : modules) {
-			jsarray.push(module.getName());
+		for (int i = 0; i < modules.length; i++) {
+			jsarray.push(modules[i].getClass().getName());
+            sb.append(i == 0 ? "" : ", ").append(modules[i].getClass().getName());
 		}
 		try {
-			GWT.log(m = "bootstrapping " + new Function<String>() {
-				@Override
-				public String function(Object... args) {
-					String names = "";
-					for (int i = 0; i < args.length; i++) {
-					    Module arg = (Module) args[i];
-					    if (i > 0) {
-					        names += ", ";
-					    }
-						names += arg.getName();
-					}
-					return names;
-				}
-			}.function((Object[]) modules));
+		    GWT.log(m = "bootstrapping " + sb.toString());
 			_bootstrap(jsarray);
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);

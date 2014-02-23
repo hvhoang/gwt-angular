@@ -5,4 +5,5 @@
   <inherits name="com.asayama.gwt.angular.Angular" />
   <source path="client" />
   <source path="shared" />
+  <entry-point class="com.asayama.gwt.angular.http.client.HttpClientModule" />
 </module>

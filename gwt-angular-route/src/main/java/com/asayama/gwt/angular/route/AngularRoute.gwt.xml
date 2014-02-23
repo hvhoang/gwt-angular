@@ -6,4 +6,5 @@
   <script src="lib/angular/1.2.9/angular-route.min.js" />
   <source path="client" />
   <source path="shared" />
+  <entry-point class="com.asayama.gwt.angular.route.client.NGRoute" />
 </module>
