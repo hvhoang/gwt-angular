@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt</groupId>
   <artifactId>gwt-angular</artifactId>
-  <version>0.0.10</version>
+  <version>0.0.11-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>gwt-angular</name>
   <modules>
@@ -59,32 +59,32 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-core</artifactId>
-        <version>0.0.10</version>
+        <version>0.0.11-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-core</artifactId>
-        <version>0.0.10</version>
+        <version>0.0.11-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-demo</artifactId>
-        <version>0.0.10</version>
+        <version>0.0.11-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.0.10</version>
+        <version>0.0.11-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-route</artifactId>
-        <version>0.0.10</version>
+        <version>0.0.11-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-sanitize</artifactId>
-        <version>0.0.10</version>
+        <version>0.0.11-SNAPSHOT</version>
       </dependency>
 
       <!-- GWT Client -->
@@ -123,6 +123,6 @@
     <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
     <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
     <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
-    <tag>gwt-angular-0.0.10</tag>
+    <tag>gwt-angular-0.0.0</tag>
   </scm>
 </project>

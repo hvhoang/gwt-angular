@@ -14,7 +14,6 @@ import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.rebind.JClassTypeUtils;
 import com.asayama.gwt.rebind.JMethodUtils;
 import com.asayama.gwt.rebind.exceptions.RebindException;
-import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.UnableToCompleteException;
@@ -22,49 +21,17 @@ import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JField;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
-import com.google.gwt.core.ext.typeinfo.NotFoundException;
-import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
-abstract class AbstractFactoryGenerator extends Generator {
+abstract class AbstractFactoryGenerator extends AbstractGenerator {
 
     private static final String CLASS = AbstractFactoryGenerator.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
 
-    abstract String getFilename();
-
-    @Override
-    public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
+    protected JClassType getSupportedRootClassType(JClassType classType) {
         
-        final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
-
-        JClassType classType = null;
-        try {
-            TypeOracle typeOracle = context.getTypeOracle();
-            classType = typeOracle.getType(qualifiedClassName);
-        } catch (NotFoundException e) {
-            String m = qualifiedClassName + " was not found";
-            LOG.logp(Level.SEVERE, CLASS, METHOD, m);
-            throw new RebindException(m);
-        }
-
-        if (classType.isInterface() == null) {
-            String m = classType + " must be an interface";
-            LOG.logp(Level.SEVERE, CLASS, METHOD, m);
-            throw new RebindException(m);
-        }
-
-        String packageName = classType.getPackage().getName();
-        String className = classType.getSimpleSourceName();
+        final String METHOD = "getSupportedRootClassType(JClassType)";
         
-        String templateFilename = getFilename();
-        VelocityGenerator velocity = new VelocityGenerator(templateFilename);
-        velocity.put("templateFilename", templateFilename);
-        velocity.put("classType", classType);
-        velocity.put("packageName", packageName);
-        velocity.put("className", className);
-
-        // Find the type Factory supports
         JClassType supportedRootClassType = null;
         JMethod[] methods = classType.getInheritableMethods();
         for (JMethod method : methods) {
@@ -77,27 +44,56 @@ abstract class AbstractFactoryGenerator extends Generator {
                 break;
             }
         }
-
         if (supportedRootClassType == null) {
-            String m = "Unable to find the supported root classType for " + className;
+            String m = "Unable to find the supported root classType for " + classType;
             LOG.logp(Level.SEVERE, CLASS, METHOD, m);
             throw new RebindException(m);
         }
-        velocity.put("supportedRootClassType", supportedRootClassType.getQualifiedSourceName());
-
-        // Find all the subtypes of this return type
+        return supportedRootClassType;
+    }
+    
+    protected List<JClassType> getSupportedClassTypes(JClassType supportedRootClassType) {
+        
+        final String METHOD = "getSupportedSubClassTypes(JClassType)";
+        
         JClassType[] supportedSubClassTypes = supportedRootClassType.getSubtypes();
         List<JClassType> supportedClassTypes = new ArrayList<JClassType>();
         if (supportedSubClassTypes == null || supportedSubClassTypes.length == 0) {
-            return qualifiedClassName;
+            String m = "Unable to find supported sub classTypes for " + supportedRootClassType;
+            LOG.logp(Level.SEVERE, CLASS, METHOD, m);
+            throw new RebindException(m);
         }
         for (JClassType returnClassType : supportedSubClassTypes) {
             if (returnClassType.isDefaultInstantiable()) {
                 supportedClassTypes.add(returnClassType);
             }
         }
+        return supportedClassTypes;
+    }
+    
+    @Override
+    public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
+        
+        final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
+
+        JClassType classType = getClassType(context, qualifiedClassName);
+        String packageName = classType.getPackage().getName();
+        String className = classType.getSimpleSourceName();
+        JClassType supportedRootClassType = getSupportedRootClassType(classType);
+        List<JClassType> supportedClassTypes = getSupportedClassTypes(supportedRootClassType);
+
+        VelocityGenerator velocity = new VelocityGenerator(getFilename());
+        velocity.put("classType", classType);
+        velocity.put("packageName", packageName);
+        velocity.put("className", className);
+        velocity.put("supportedRootClassType", supportedRootClassType.getQualifiedSourceName());
         velocity.put("supportedClassTypes", supportedClassTypes);
 
+        // TODO Injectable Fields (type, name, dependency)
+        // TODO Bind Fields (type, name)
+        // TODO Module Dependency
+        
+        //++ DEPRECATED
         // Identify dependencies of each supported type
         List<String[]> dependencies = new ArrayList<String[]>();
         for (JClassType supportedClassType : supportedClassTypes) {
@@ -131,6 +127,7 @@ abstract class AbstractFactoryGenerator extends Generator {
             dependencies.add(names.toArray(EMPTY_STRING_ARRAY));
         }
         velocity.put("dependencies", dependencies);
+        //--DEPRECATED
 
         // Helpers
         velocity.put("JClassTypeUtils", JClassTypeUtils.class);
