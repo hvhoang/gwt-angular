@@ -137,6 +137,10 @@ public abstract class Module {
         return jso.getRequires().toArray(JSArray.STRING);
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
 
 class JSModule extends JSObject {

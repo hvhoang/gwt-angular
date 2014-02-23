@@ -122,16 +122,10 @@ abstract class AbstractFactoryGenerator extends Generator {
             // Consider the below block deprecated.
             if (JClassTypeUtils.supports(supportedClassType, Module.class)) {
                 Depends depends = supportedClassType.getAnnotation(Depends.class);
-                String[] ng = depends == null ? null : depends.ng();
+                String[] ng = depends == null ? null : depends.value();
                 if (ng != null) {
                     for (String n : ng) {
                         names.add(n);
-                    }
-                }
-                Class<?>[] nc = depends == null ? null : depends.value();
-                if (nc != null) {
-                    for (Class<?> c : nc) {
-                        names.add(c.getName());
                     }
                 }
             }
