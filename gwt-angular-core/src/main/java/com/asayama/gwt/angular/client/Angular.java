@@ -33,7 +33,7 @@ public class Angular {
 		ModuleDependenciesFactory dependencies = GWT.create(ModuleDependenciesFactory.class);
 		JsArrayString requires = dependencies.dependencies(object).cast();
 		JSClosure jsclosure = JSClosure.create(closure);
-		object.delegate = _module(name, requires, jsclosure);
+		object.jso = _module(name, requires, jsclosure);
 		return object;
 	}
 	

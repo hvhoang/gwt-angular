@@ -20,7 +20,7 @@ import com.google.gwt.core.shared.GWT;
  */
 public abstract class Module {
 
-    JSModule delegate;
+    JSModule jso;
 
     /**
      * An instance of Module's derived type should be created using GWT.create()
@@ -49,7 +49,7 @@ public abstract class Module {
         JSFunction<P> jsconstructor = _config(JSFunction.create(constructor), jsinjector);
         JSArray<Object> jsdependencies = dependencies.dependencies(provider);
         jsdependencies.add(jsconstructor);
-        delegate.config(jsdependencies);
+        jso.config(jsdependencies);
         return provider;
     }
 
@@ -88,7 +88,7 @@ public abstract class Module {
         JSFunction<S> jsconstructor = _factory(JSFunction.create(constructor), jsinjector);
         JSArray<Object> jsdependencies = dependencies.dependencies(service);
         jsdependencies.add(jsconstructor);
-        delegate.factory(name, jsdependencies);
+        jso.factory(name, jsdependencies);
         return service;
     }
 
@@ -134,7 +134,7 @@ public abstract class Module {
         JSArray<Object> jsdependencies = dependencies.dependencies(controller);
         jsdependencies.add(0, "$scope");
         jsdependencies.add(jsconstructor);
-        delegate.controller(name, jsdependencies);
+        jso.controller(name, jsdependencies);
         return controller;
     }
 
@@ -152,11 +152,11 @@ public abstract class Module {
     }-*/;
 
     public String getName() {
-        return delegate.getName();
+        return jso.getName();
     }
 
     public String[] getRequires() {
-        JsArrayString jsarray = delegate.getRequires();
+        JsArrayString jsarray = jso.getRequires();
         String[] results = new String[jsarray.length()];
         for (int i = 0; i < jsarray.length(); i++) {
             results[i] = jsarray.get(i);
