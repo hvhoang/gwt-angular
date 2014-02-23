@@ -24,27 +24,6 @@ public class __${className} implements ${className} {
         return null;
     }
 
-    @Override
-    public JSArray<Object> dependencies(${supportedRootClassType} object) {
-#foreach(${supportedClassType} in ${supportedClassTypes})
-        if (object instanceof ${supportedClassType.qualifiedSourceName}) {
-            return __${className}_${foreach.index}();
-        }
-#end
-        return null;
-    }
-
-#foreach($dependency in ${dependencies})
-    private native JSArray<Object> __${className}_${foreach.index}() /*-{
-        return [
-#foreach($name in ${dependency})
-            '${name}'#if(${foreach.hasNext}),#end
-
-#end
-        ];
-    }-*/;
-
-#end
 }
 //--end of ${packageName}.__${className}
 

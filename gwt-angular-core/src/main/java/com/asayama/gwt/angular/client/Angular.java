@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
+import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSFunction;
 import com.google.gwt.core.client.GWT;
@@ -31,7 +32,7 @@ public class Angular {
     
 	public static <T extends Module> T module(String name, T object, Closure closure) {
 		ModuleDependenciesFactory dependencies = GWT.create(ModuleDependenciesFactory.class);
-		JsArrayString requires = dependencies.dependencies(object).cast();
+		JSArray<String> requires = JSArray.create(dependencies.create(object));
 		JSClosure jsclosure = JSClosure.create(closure);
 		object.jso = _module(name, requires, jsclosure);
 		return object;
@@ -64,7 +65,7 @@ public class Angular {
 		}
 	}
 
-	private static native JSModule _module(String name, JsArrayString requires, JSFunction<?> ctor) /*-{
+	private static native JSModule _module(String name, JSArray<String> requires, JSFunction<?> ctor) /*-{
 		return $wnd.angular.module(name, requires, ctor);
 	}-*/;
 	

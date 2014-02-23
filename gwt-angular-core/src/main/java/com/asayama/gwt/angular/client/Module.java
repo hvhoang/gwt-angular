@@ -39,7 +39,7 @@ public abstract class Module {
     }
 
     public <P extends Provider> P config(final P provider, final InjectionCallback<P> callback) {
-        final JSClosure injector = providerInjectorFactory.injector(provider);
+        final JSClosure injector = providerInjectorFactory.create(provider);
         Function<P> initializer = new Function<P>() {
 
             @Override
@@ -66,7 +66,7 @@ public abstract class Module {
     }
     
     public <S extends Service> S factory(String name, final S service, final InjectionCallback<S> callback) {
-        final JSClosure injector = serviceInjectorFactory.injector(service);
+        final JSClosure injector = serviceInjectorFactory.create(service);
         Function<S> initializer = new Function<S>() {
 
             @Override
@@ -97,8 +97,8 @@ public abstract class Module {
     }
     
     public <C extends Controller> C controller(String name, final C controller, final InjectionCallback<C> callback) {
-        final JSClosure binder = controllerBinderFactory.binder(controller);
-        final JSClosure injector = controllerInjectorFactory.injector(controller);
+        final JSClosure binder = controllerBinderFactory.create(controller);
+        final JSClosure injector = controllerInjectorFactory.create(controller);
         Closure initializer = new Closure() {
 
             @Override

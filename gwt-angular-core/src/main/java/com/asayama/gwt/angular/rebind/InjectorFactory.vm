@@ -10,7 +10,7 @@ import com.asayama.gwt.core.client.JSClosure;
 public class __${className} implements ${className} {
 
     @Override
-    public JSClosure injector(${supportedRootClassType} object) {
+    public JSClosure create(${supportedRootClassType} object) {
 #foreach(${supportedClassType} in ${supportedClassTypes})
         if (object instanceof ${supportedClassType.qualifiedSourceName}) {
             return __${className}_${foreach.index}(object);

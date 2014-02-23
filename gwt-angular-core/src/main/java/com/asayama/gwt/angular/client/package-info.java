@@ -13,7 +13,6 @@
  */
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
 
 /**
@@ -32,8 +31,6 @@ import com.asayama.gwt.core.client.JSClosure;
  * @param <T>
  */
 interface DependenciesFactory<T> {
-    @Deprecated
-    JSArray<Object> dependencies(T object);
     String[] create(T object);
 }
 
@@ -65,7 +62,7 @@ interface ControllerDependenciesFactory extends DependenciesFactory<Controller> 
  * @param <T>
  */
 interface BinderFactory<T> {
-    JSClosure binder(T object);
+    JSClosure create(T object);
 }
 
 interface ControllerBinderFactory extends BinderFactory<Controller> {
@@ -87,7 +84,7 @@ interface ControllerBinderFactory extends BinderFactory<Controller> {
  * @param <T>
  */
 interface InjectorFactory<T> {
-    JSClosure injector(T object);
+    JSClosure create(T object);
 }
 
 interface ProviderInjectorFactory extends InjectorFactory<Provider> {
