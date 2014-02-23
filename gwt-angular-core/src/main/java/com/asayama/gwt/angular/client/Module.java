@@ -46,8 +46,8 @@ public abstract class Module {
             }
         };
         JSClosure jsinjector = injector.injector(object);
-        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         JSFunction<P> jsconstructor = _config(JSFunction.create(constructor), jsinjector);
+        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         jsdependencies.add(jsconstructor);
         delegate.config(jsdependencies);
         return object;
@@ -85,8 +85,8 @@ public abstract class Module {
             }
         };
         JSClosure jsinjector = injector.injector(object);
-        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         JSFunction<S> jsconstructor = _factory(JSFunction.create(constructor), jsinjector);
+        JSArray<Object> jsdependencies = dependencies.dependencies(object);
         jsdependencies.add(jsconstructor);
         delegate.factory(name, jsdependencies);
         return object;
