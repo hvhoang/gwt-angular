@@ -33,8 +33,8 @@ public abstract class Module {
     }
 
     public <P extends Provider> P config(final P object, final InjectionCallback<P> callback) {
-        ProviderDependencies dependencies = GWT.create(ProviderDependencies.class);
-        ProviderInjector injector = GWT.create(ProviderInjector.class);
+        ProviderDependenciesFactory dependencies = GWT.create(ProviderDependenciesFactory.class);
+        ProviderInjectorFactory injector = GWT.create(ProviderInjectorFactory.class);
         Function<P> constructor = new Function<P>() {
 
             @Override
@@ -72,8 +72,8 @@ public abstract class Module {
     }
     
     public <S extends Service> S factory(String name, final S object, final InjectionCallback<S> callback) {
-        ServiceDependencies dependencies = GWT.create(ServiceDependencies.class);
-        ServiceInjector injector = GWT.create(ServiceInjector.class);
+        ServiceDependenciesFactory dependencies = GWT.create(ServiceDependenciesFactory.class);
+        ServiceInjectorFactory injector = GWT.create(ServiceInjectorFactory.class);
         Function<S> constructor = new Function<S>() {
 
             @Override
@@ -115,9 +115,9 @@ public abstract class Module {
     }
     
     public <C extends Controller> C controller(String name, final C object, final InjectionCallback<C> callback) {
-        ControllerDependencies dependencies = GWT.create(ControllerDependencies.class);
-        ControllerBinder binder = GWT.create(ControllerBinder.class);
-        ControllerInjector injector = GWT.create(ControllerInjector.class);
+        ControllerDependenciesFactory dependencies = GWT.create(ControllerDependenciesFactory.class);
+        ControllerBinderFactory binder = GWT.create(ControllerBinderFactory.class);
+        ControllerInjectorFactory injector = GWT.create(ControllerInjectorFactory.class);
         Closure constructor = new Closure() {
 
             @Override

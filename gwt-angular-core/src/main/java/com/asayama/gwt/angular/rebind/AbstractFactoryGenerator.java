@@ -3,6 +3,8 @@ package com.asayama.gwt.angular.rebind;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Module;
@@ -11,6 +13,7 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.rebind.JClassTypeUtils;
 import com.asayama.gwt.rebind.JMethodUtils;
+import com.asayama.gwt.rebind.exceptions.RebindException;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
@@ -21,79 +24,74 @@ import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
 
-abstract class AbstractGenerator extends Generator {
+abstract class AbstractFactoryGenerator extends Generator {
 
+    private static final String CLASS = AbstractFactoryGenerator.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     abstract String getFilename();
 
-    abstract String getSuffix();
-
     @Override
-    public String generate(TreeLogger logger, GeneratorContext context,
-            String qualifiedName) throws UnableToCompleteException {
+    public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
+        
+        final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
 
         try {
-            final String filename = getFilename();
-            VelocityGenerator velocity = new VelocityGenerator(filename);
-            velocity.put("templateFilename", filename);
-            velocity.put("logger", logger);
-            velocity.put("context", context);
-            velocity.put("qualifiedName", qualifiedName);
-
+            String templateFilename = getFilename();
             TypeOracle typeOracle = context.getTypeOracle();
-            JClassType classType = typeOracle.getType(qualifiedName);
-            velocity.put("classType", classType);
-
+            JClassType classType = typeOracle.getType(qualifiedClassName);
+            String packageName = classType.getPackage().getName();
+            String className = classType.getSimpleSourceName();
+            
             if (classType.isInterface() == null) {
-                return qualifiedName;
+                String m = className + " must be an interface";
+                LOG.logp(Level.SEVERE, CLASS, METHOD, m);
+                throw new RebindException(m);
             }
 
-            // Define basic characteristics of the generated type.
-            String packageName = classType.getPackage().getName();
-            String simpleName = classType.getSimpleSourceName();
-            String generatedQualifiedName = packageName + "." + simpleName + getSuffix();
-            String generatedSimpleName = simpleName + getSuffix();
+            VelocityGenerator velocity = new VelocityGenerator(templateFilename);
+            velocity.put("templateFilename", templateFilename);
+            velocity.put("classType", classType);
             velocity.put("packageName", packageName);
-            velocity.put("simpleName", simpleName);
-            velocity.put("generatedQualifiedName", generatedQualifiedName);
-            velocity.put("generatedSimpleName", generatedSimpleName);
+            velocity.put("className", className);
+//            velocity.put("qualifiedClassName", qualifiedClassName);
 
-            // Find the public create(Class<T>) method's return type
-            JClassType parameterClassType = null;
+            // Find the type Factory supports
+            JClassType supportedRootClassType = null;
             JMethod[] methods = classType.getInheritableMethods();
             for (JMethod method : methods) {
                 JType[] parameterTypes = method.getParameterTypes();
                 if (parameterTypes == null || parameterTypes.length == 0) {
                     continue;
                 }
-                parameterClassType = parameterTypes[0].isClassOrInterface();
-                if (parameterClassType != null) {
+                supportedRootClassType = parameterTypes[0].isClassOrInterface();
+                if (supportedRootClassType != null) {
                     break;
                 }
             }
 
-            if (parameterClassType == null) {
-                return qualifiedName;
+            if (supportedRootClassType == null) {
+                return qualifiedClassName;
             }
 
             // Find all the subtypes of this return type
-            JClassType[] returnClassTypes = parameterClassType.getSubtypes();
-            List<JClassType> returnClassTypeList = new ArrayList<JClassType>();
-            if (returnClassTypes == null || returnClassTypes.length == 0) {
-                return qualifiedName;
+            JClassType[] supportedSubClassTypes = supportedRootClassType.getSubtypes();
+            List<JClassType> supportedClassTypes = new ArrayList<JClassType>();
+            if (supportedSubClassTypes == null || supportedSubClassTypes.length == 0) {
+                return qualifiedClassName;
             }
-            for (JClassType returnClassType : returnClassTypes) {
+            for (JClassType returnClassType : supportedSubClassTypes) {
                 if (returnClassType.isDefaultInstantiable()) {
-                    returnClassTypeList.add(returnClassType);
+                    supportedClassTypes.add(returnClassType);
                 }
             }
-            velocity.put("parameterClassType", parameterClassType.getQualifiedSourceName());
-            velocity.put("returnClassTypes", returnClassTypeList);
+            velocity.put("supportedRootClassType", supportedRootClassType.getQualifiedSourceName());
+            velocity.put("supportedClassTypes", supportedClassTypes);
 
             // Find the dependency of all return types
             List<String[]> dependencies = new ArrayList<String[]>();
-            for (JClassType returnClassType : returnClassTypeList) {
+            for (JClassType returnClassType : supportedClassTypes) {
                 JField[] fields = returnClassType.getFields();
                 List<String> names = new ArrayList<String>();
                 for (JField field : fields) {
@@ -132,16 +130,16 @@ abstract class AbstractGenerator extends Generator {
             velocity.put("Injectable", Injectable.class);
 
             // Generate type
-            PrintWriter wrier = context.tryCreate(logger, packageName, generatedSimpleName);
+            PrintWriter wrier = context.tryCreate(logger, packageName, "__" + className);
             if (wrier != null) {
                 velocity.merge(wrier);
                 context.commit(logger, wrier);
             }
-            return generatedQualifiedName;
+            return packageName + ".__" + className;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return qualifiedName;
+            return qualifiedClassName;
         }
 
     }

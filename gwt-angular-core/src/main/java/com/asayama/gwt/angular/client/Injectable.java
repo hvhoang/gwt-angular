@@ -6,7 +6,7 @@ package com.asayama.gwt.angular.client;
  * {@link Module}s.
  * 
  * @author kyoken74
- * @see Injector
+ * @see InjectorFactory
  */
 public interface Injectable {
 }

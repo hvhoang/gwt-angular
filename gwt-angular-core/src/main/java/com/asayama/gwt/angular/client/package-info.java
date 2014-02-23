@@ -18,7 +18,7 @@ import com.asayama.gwt.core.client.JSClosure;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
- * used with {@link DependenciesGenerator}, which inspects the types eligible for
+ * used with {@link DependenciesFactoryGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -28,28 +28,28 @@ import com.asayama.gwt.core.client.JSClosure;
  * 
  * @author kyoken74
  *
- * @see DependenciesGenerator
+ * @see DependenciesFactoryGenerator
  * @param <T>
  */
-interface Dependencies<T> {
+interface DependenciesFactory<T> {
     JSArray<Object> dependencies(T object);
 }
 
-interface ModuleDependencies extends Dependencies<Module> {
+interface ModuleDependenciesFactory extends DependenciesFactory<Module> {
 }
 
-interface ProviderDependencies extends Dependencies<Provider> {
+interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
 }
 
-interface ServiceDependencies extends Dependencies<Service> {
+interface ServiceDependenciesFactory extends DependenciesFactory<Service> {
 }
 
-interface ControllerDependencies extends Dependencies<Controller> {
+interface ControllerDependenciesFactory extends DependenciesFactory<Controller> {
 }
 
 /**
  * Provides interfaces for an object binder. This interface is intended to be
- * used with {@link BinderGenerator}, which inspects the types eligible for
+ * used with {@link BinderFactoryGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -59,19 +59,19 @@ interface ControllerDependencies extends Dependencies<Controller> {
  * 
  * @author kyoken74
  *
- * @see BinderGenerator
+ * @see BinderFactoryGenerator
  * @param <T>
  */
-interface Binder<T> {
+interface BinderFactory<T> {
     JSClosure binder(T object);
 }
 
-interface ControllerBinder extends Binder<Controller> {
+interface ControllerBinderFactory extends BinderFactory<Controller> {
 }
 
 /**
  * Provides interfaces for an object injector. This interface is intended to be
- * used with {@link InjectorGenerator}, which inspects the types eligible for
+ * used with {@link InjectorFactoryGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -81,18 +81,18 @@ interface ControllerBinder extends Binder<Controller> {
  * 
  * @author kyoken74
  *
- * @see InjectorGenerator
+ * @see InjectorFactoryGenerator
  * @param <T>
  */
-interface Injector<T> {
+interface InjectorFactory<T> {
     JSClosure injector(T object);
 }
 
-interface ProviderInjector extends Injector<Provider> {
+interface ProviderInjectorFactory extends InjectorFactory<Provider> {
 }
 
-interface ServiceInjector extends Injector<Service> {
+interface ServiceInjectorFactory extends InjectorFactory<Service> {
 }
 
-interface ControllerInjector extends Injector<Controller> {
+interface ControllerInjectorFactory extends InjectorFactory<Controller> {
 }

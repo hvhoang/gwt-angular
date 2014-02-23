@@ -30,7 +30,7 @@ public class Angular {
     }
     
 	public static <T extends Module> T module(String name, T object, Closure closure) {
-		ModuleDependencies dependencies = GWT.create(ModuleDependencies.class);
+		ModuleDependenciesFactory dependencies = GWT.create(ModuleDependenciesFactory.class);
 		JsArrayString requires = dependencies.dependencies(object).cast();
 		JSClosure jsclosure = JSClosure.create(closure);
 		object.delegate = _module(name, requires, jsclosure);

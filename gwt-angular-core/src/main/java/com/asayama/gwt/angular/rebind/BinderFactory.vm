@@ -1,0 +1,49 @@
+/*++
+ * Template: ${templateFilename}
+ * Provided: ${packageName}.${className}
+ * Generate: ${packageName}.__${className}
+ */
+package ${packageName};
+
+import com.asayama.gwt.core.client.JSClosure;
+
+public class __${className} implements ${className} {
+
+    @Override
+    public JSClosure binder(${supportedRootClassType} object) {
+#foreach(${supportedClassType} in ${supportedClassTypes})
+        if (object instanceof ${supportedClassType.qualifiedSourceName}) {
+            return __${className}_${foreach.index}(object);
+        }
+#end
+        return null;
+    }
+    
+#foreach($supportedClassType in ${supportedClassTypes})
+    private native JSClosure __${className}_${foreach.index}(${supportedRootClassType} object) /*-{
+        return function ($scope) {
+#foreach($field in $supportedClassType.fields)
+#if($field.isPublic() && $field.isFinal() && $field.isStatic())
+            $scope.${field.name} = @${supportedClassType.qualifiedSourceName}::${field.name};
+#elseif($field.isPublic() && $field.isFinal())
+            $scope.${field.name} = object.@${supportedClassType.qualifiedSourceName}::${field.name};
+#end
+#end
+#foreach($method in $supportedClassType.inheritableMethods)
+#if($method.isPublic() && $method.isStatic())
+            $scope.${method.name} = function (${JMethodUtils.getArgs(${method})}) {
+                return ${method.jsniSignature}(${JMethodUtils.getArgs(${method})});
+            };
+#elseif($method.isPublic())
+            $scope.${method.name} = function (${JMethodUtils.getArgs(${method})}) {
+                return object.${method.jsniSignature}(${JMethodUtils.getArgs(${method})});
+            };
+#end
+#end
+        };
+    }-*/;
+
+#end
+}
+//--end of ${packageName}.__${className}
+
