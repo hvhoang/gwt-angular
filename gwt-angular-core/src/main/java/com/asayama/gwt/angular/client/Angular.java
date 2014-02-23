@@ -1,5 +1,10 @@
 package com.asayama.gwt.angular.client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
@@ -13,6 +18,14 @@ import com.google.gwt.core.client.GWT;
  */
 public class Angular {
 	
+    static final Module[] MODULE_ARRAY = new Module[0];
+    static List<Module> modules = new ArrayList<Module>();
+    static Map<String, Module> index = new HashMap<String, Module>();
+    
+    public static Module[] modules() {
+        return modules.toArray(MODULE_ARRAY);
+    }
+    
 	public static <T extends Module> T module(T object) {
 		Closure closure = new Closure() {
 			@Override
@@ -28,6 +41,8 @@ public class Angular {
     }
     
 	public static <T extends Module> T module(String name, T object, Closure closure) {
+	    modules.add(object);
+	    index.put(name, object);
 		ModuleDependenciesFactory dependencies = GWT.create(ModuleDependenciesFactory.class);
 		JSArray<String> requires = JSArray.create(dependencies.create(object));
 		JSClosure jsclosure = JSClosure.create(closure);
@@ -35,6 +50,10 @@ public class Angular {
 		return object;
 	}
 	
+    public static void bootstrap() {
+        bootstrap(modules());
+    }
+    
 	public static void bootstrap(Module... modules) {
 		String m = "";
         StringBuilder sb = new StringBuilder();
