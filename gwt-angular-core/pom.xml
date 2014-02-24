@@ -18,6 +18,7 @@
           <include>**/*.java</include>
           <include>**/*.gwt.xml</include>
           <include>**/*.vm</include>
+          <include>**/public/**/*</include>
         </includes>
       </resource>
       <resource>
