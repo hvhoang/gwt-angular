@@ -20,8 +20,8 @@ public class MyModule extends Module implements EntryPoint {
         MyModule module = Angular.module(this);
         module.config(new RouteProvider(), new InjectionCallback<RouteProvider>() {
             @Override
-            public void onInjection(RouteProvider injectable) {
-                injectable
+            public void onInjection(RouteProvider routeProvider) {
+                routeProvider
                     .when("/examples", Template.create("myapp/partials/examples.html", ExamplesController.class))
                     .otherwise(Redirect.create("/examples"));
             }
