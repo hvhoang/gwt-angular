@@ -1,11 +1,13 @@
 package com.asayama.gwt.angular.rebind;
 
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.asayama.gwt.rebind.exceptions.RebindException;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
+import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.NotFoundException;
 import com.google.gwt.core.ext.typeinfo.TypeOracle;
@@ -33,4 +35,13 @@ abstract class AbstractGenerator extends Generator {
         return classType;
     }
     
+    protected String generate(TreeLogger logger, GeneratorContext context, VelocityGenerator velocity, String packageName, String className) {
+        PrintWriter wrier = context.tryCreate(logger, packageName, "__" + className);
+        if (wrier != null) {
+            // The type has not yet been generated. Generate.
+            velocity.merge(wrier);
+            context.commit(logger, wrier);
+        }
+        return packageName + ".__" + className;
+    }
 }

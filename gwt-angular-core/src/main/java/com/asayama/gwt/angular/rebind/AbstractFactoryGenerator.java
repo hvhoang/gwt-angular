@@ -1,6 +1,5 @@
 package com.asayama.gwt.angular.rebind;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,6 +26,93 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
     private static final String CLASS = AbstractFactoryGenerator.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
+
+    @Override
+    public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
+        
+        final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
+
+        JClassType classType = getClassType(context, qualifiedClassName);
+        String packageName = classType.getPackage().getName();
+        String className = classType.getSimpleSourceName();
+        JClassType supportedRootClassType = getSupportedRootClassType(classType);
+        List<JClassType> supportedClassTypes = getSupportedClassTypes(supportedRootClassType);
+
+        VelocityGenerator velocity = new VelocityGenerator(getFilename());
+        velocity.put("classType", classType);
+        velocity.put("packageName", packageName);
+        velocity.put("className", className);
+        velocity.put("supportedRootClassType", supportedRootClassType.getQualifiedSourceName());
+        velocity.put("supportedClassTypes", supportedClassTypes);
+
+        // Helpers
+        velocity.put("JClassTypeUtils", JClassTypeUtils.class);
+        velocity.put("JMethodUtils", JMethodUtils.class);
+        velocity.put("Injectable", Injectable.class);
+
+//        Map<JClassType, List<List<String>>> injectableFieldMap = new HashMap<JClassType, List<List<String>>>();
+//        for (JClassType supportedClassType : supportedClassTypes) {
+//            List<List<String>> fieldList = new ArrayList<List<String>>();
+//            for (JClassType supportedSuperClassType : supportedClassType.getFlattenedSupertypeHierarchy()) {
+//                JField[] fields = supportedSuperClassType.getFields();
+//                if (fields == null) {
+//                    continue;
+//                }
+//                for (JField field : fields) {
+//                    if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
+//                        List<String> attr = new ArrayList<String>();
+//                        attr.add(supportedSuperClassType.getQualifiedSourceName()); //idx = 0
+//                        attr.add(field.getName()); //idx = 1
+//                        if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
+//                            Bind bind = field.getType().isClass().getAnnotation(Bind.class);
+//                            attr.add(bind.value()); //idx = 2
+//                        } else {
+//                            attr.add(field.getType().getQualifiedSourceName()); //idx = 2
+//                        }
+//                        fieldList.add(attr);
+//                    }
+//                }
+//            }
+//            injectableFieldMap.put(supportedClassType, fieldList);
+//        }
+//        velocity.put("injectableFieldMap", injectableFieldMap);
+
+        // Identify dependencies of each supported type
+        List<String[]> dependencies = new ArrayList<String[]>();
+        for (JClassType supportedClassType : supportedClassTypes) {
+            JField[] fields = supportedClassType.getFields();
+            List<String> names = new ArrayList<String>();
+            // https://github.com/kyoken74/gwt-angular/issues/14
+            // We need to inject super types' injectables as well
+            for (JField field : fields) {
+                JClassType fieldClassType = field.getType().isClassOrInterface();
+                if (JClassTypeUtils.supports(fieldClassType, NGObject.class)) {
+                    Bind bind = fieldClassType.getAnnotation(Bind.class);
+                    String name = bind.value();
+                    names.add(name);
+                } else if (JClassTypeUtils.supports(fieldClassType, Injectable.class)) {
+                    String name = fieldClassType.getQualifiedSourceName();
+                    names.add(name);
+                }
+            }
+            //++
+            // https://github.com/kyoken74/gwt-angular/issues/12
+            if (JClassTypeUtils.supports(supportedClassType, Module.class)) {
+                Depends depends = supportedClassType.getAnnotation(Depends.class);
+                String[] ng = depends == null ? null : depends.value();
+                if (ng != null) {
+                    for (String n : ng) {
+                        names.add(n);
+                    }
+                }
+            }
+            //--
+            dependencies.add(names.toArray(EMPTY_STRING_ARRAY));
+        }
+        velocity.put("dependencies", dependencies);
+
+        return generate(logger, context, velocity, packageName, className);
+    }
 
     protected JClassType getSupportedRootClassType(JClassType classType) {
         
@@ -69,78 +155,5 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
             }
         }
         return supportedClassTypes;
-    }
-    
-    @Override
-    public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
-        
-        final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
-
-        JClassType classType = getClassType(context, qualifiedClassName);
-        String packageName = classType.getPackage().getName();
-        String className = classType.getSimpleSourceName();
-        JClassType supportedRootClassType = getSupportedRootClassType(classType);
-        List<JClassType> supportedClassTypes = getSupportedClassTypes(supportedRootClassType);
-
-        VelocityGenerator velocity = new VelocityGenerator(getFilename());
-        velocity.put("classType", classType);
-        velocity.put("packageName", packageName);
-        velocity.put("className", className);
-        velocity.put("supportedRootClassType", supportedRootClassType.getQualifiedSourceName());
-        velocity.put("supportedClassTypes", supportedClassTypes);
-
-        // TODO Injectable Fields (type, name, dependency)
-        // TODO Bind Fields (type, name)
-        // TODO Module Dependency
-        
-        //++ DEPRECATED
-        // Identify dependencies of each supported type
-        List<String[]> dependencies = new ArrayList<String[]>();
-        for (JClassType supportedClassType : supportedClassTypes) {
-            JField[] fields = supportedClassType.getFields();
-            List<String> names = new ArrayList<String>();
-            // https://github.com/kyoken74/gwt-angular/issues/14
-            // We need to inject super types' injectables as well
-            for (JField field : fields) {
-                JClassType fieldClassType = field.getType().isClassOrInterface();
-                if (JClassTypeUtils.supports(fieldClassType, NGObject.class)) {
-                    Bind bind = fieldClassType.getAnnotation(Bind.class);
-                    String name = bind.value();
-                    names.add(name);
-                } else if (JClassTypeUtils.supports(fieldClassType, Injectable.class)) {
-                    String name = fieldClassType.getQualifiedSourceName();
-                    names.add(name);
-                }
-            }
-            //++
-            // https://github.com/kyoken74/gwt-angular/issues/12
-            if (JClassTypeUtils.supports(supportedClassType, Module.class)) {
-                Depends depends = supportedClassType.getAnnotation(Depends.class);
-                String[] ng = depends == null ? null : depends.value();
-                if (ng != null) {
-                    for (String n : ng) {
-                        names.add(n);
-                    }
-                }
-            }
-            //--
-            dependencies.add(names.toArray(EMPTY_STRING_ARRAY));
-        }
-        velocity.put("dependencies", dependencies);
-        //--DEPRECATED
-
-        // Helpers
-        velocity.put("JClassTypeUtils", JClassTypeUtils.class);
-        velocity.put("JMethodUtils", JMethodUtils.class);
-        velocity.put("Injectable", Injectable.class);
-
-        // Generate type
-        PrintWriter wrier = context.tryCreate(logger, packageName, "__" + className);
-        if (wrier != null) {
-            // The type has not yet been generated. Generate.
-            velocity.merge(wrier);
-            context.commit(logger, wrier);
-        }
-        return packageName + ".__" + className;
     }
 }
