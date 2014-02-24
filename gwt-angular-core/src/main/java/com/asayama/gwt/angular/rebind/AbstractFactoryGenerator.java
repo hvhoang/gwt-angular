@@ -1,7 +1,9 @@
 package com.asayama.gwt.angular.rebind;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,32 +50,30 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
         velocity.put("JMethodUtils", JMethodUtils.class);
         velocity.put("Injectable", Injectable.class);
 
-//        Map<JClassType, List<List<String>>> injectableFieldMap = new HashMap<JClassType, List<List<String>>>();
-//        for (JClassType supportedClassType : supportedClassTypes) {
-//            List<List<String>> fieldList = new ArrayList<List<String>>();
-//            for (JClassType supportedSuperClassType : supportedClassType.getFlattenedSupertypeHierarchy()) {
-//                JField[] fields = supportedSuperClassType.getFields();
-//                if (fields == null) {
-//                    continue;
-//                }
-//                for (JField field : fields) {
-//                    if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
-//                        List<String> attr = new ArrayList<String>();
-//                        attr.add(supportedSuperClassType.getQualifiedSourceName()); //idx = 0
-//                        attr.add(field.getName()); //idx = 1
-//                        if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
-//                            Bind bind = field.getType().isClass().getAnnotation(Bind.class);
-//                            attr.add(bind.value()); //idx = 2
-//                        } else {
-//                            attr.add(field.getType().getQualifiedSourceName()); //idx = 2
-//                        }
-//                        fieldList.add(attr);
-//                    }
-//                }
-//            }
-//            injectableFieldMap.put(supportedClassType, fieldList);
-//        }
-//        velocity.put("injectableFieldMap", injectableFieldMap);
+        Map<JClassType, List<Field>> classTypeFields = new HashMap<JClassType, List<Field>>();
+        for (JClassType supportedClassType : supportedClassTypes) {
+            List<Field> fieldList = new ArrayList<Field>();
+            for (JClassType supportedSuperClassType : supportedClassType.getFlattenedSupertypeHierarchy()) {
+                JField[] fields = supportedSuperClassType.getFields();
+                if (fields == null) {
+                    continue;
+                }
+                for (JField field : fields) {
+                    String cname = supportedSuperClassType.getQualifiedSourceName();
+                    String dependency = null;
+                    if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
+                        Bind bind = field.getType().isClass().getAnnotation(Bind.class);
+                        dependency = bind.value();
+                    } else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
+                        dependency = field.getType().getQualifiedSourceName();
+                    }
+                    String name = field.getName();
+                    fieldList.add(new Field(field, cname, dependency, name));
+                }
+            }
+            classTypeFields.put(supportedClassType, fieldList);
+        }
+        velocity.put("classTypeFields", classTypeFields);
 
         // Identify dependencies of each supported type
         List<String[]> dependencies = new ArrayList<String[]>();
