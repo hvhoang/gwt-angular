@@ -26,7 +26,7 @@ public class ExamplesController extends AbstractController {
     public void onControllerLoad() {
         
         //https://github.com/kyoken74/gwt-angular/issues/14
-        //log.debug("calling ExamplesController.onControllerLoad()");
+        log.debug("calling ExamplesController.onControllerLoad()");
         
         final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);

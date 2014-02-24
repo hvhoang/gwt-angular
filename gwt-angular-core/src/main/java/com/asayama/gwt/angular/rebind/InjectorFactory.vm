@@ -10,30 +10,20 @@ public class __${className} implements ${className} {
 
     @Override
     public JSClosure create(${supportedRootClassType} object) {
-#foreach(${supportedClassType} in ${supportedClassTypes})
+#foreach(${supportedClassType} in ${classTypeFields.classTypes})
         if (object instanceof ${supportedClassType.qualifiedSourceName}) {
-            return __${className}_${foreach.index}(object);
+            return __${className}_create((${supportedClassType.qualifiedSourceName}) object);
         }
 #end
         return null;
     }
 
-#*
-  https://github.com/kyoken74/gwt-angular/issues/14
-  Consider using dependencies for the fields. By the time we get here, the
-  dependencies array should contain super types injectables. One tricky thing
-  though is that dependencies may contain fields other than injectables.
-*#
-#foreach($supportedClassType in ${supportedClassTypes})
-#set($fields = $supportedClassType.fields)
-#set($isFirst = true)
-    //${supportedClassType.qualifiedSourceName}
-    private native JSClosure __${className}_${foreach.index}(${supportedRootClassType} object) /*-{
-        return function (#foreach($field in $fields)#if($JClassTypeUtils.supports($field.type, $Injectable))#if($isFirst)#set($isFirst = false)#else, #end${field.name}#end#end) {
+#foreach(${supportedClassType} in ${classTypeFields.classTypes})
+#set($fields = ${classTypeFields.getInjectables($supportedClassType)})
+    private native JSClosure __${className}_create(${supportedClassType.qualifiedSourceName} object) /*-{
+        return function (#foreach($field in $fields)${field.name}#if(${foreach.hasNext}), #end#end) {
 #foreach($field in $fields)
-#if($JClassTypeUtils.supports($field.type, $Injectable))
-            object.@${supportedClassType.qualifiedSourceName}::${field.name} = ${field.name};
-#end
+            object.@${field.className}::${field.name} = ${field.name};
 #end
         };
     }-*/;
