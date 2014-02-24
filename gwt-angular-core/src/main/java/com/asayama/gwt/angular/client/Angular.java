@@ -26,27 +26,26 @@ public class Angular {
         return modules.toArray(MODULE_ARRAY);
     }
     
-	public static <T extends Module> T module(T object) {
+	public static <T extends Module> T module(T object, String... requires) {
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
 				//noop
 			}
 		};
-		return module(object, closure);
+		return module(object, closure, requires);
 	}
 	
-    public static <T extends Module> T module(T object, Closure closure) {
-        return module(object.getClass().getName(), object, closure);
+    public static <T extends Module> T module(T object, Closure closure, String... requires) {
+        return module(object.getClass().getName(), object, closure, requires);
     }
     
-	public static <T extends Module> T module(String name, T object, Closure closure) {
+	public static <T extends Module> T module(String name, T object, Closure closure, String... requires) {
 	    modules.add(object);
 	    index.put(name, object);
-		ModuleDependenciesFactory dependencies = GWT.create(ModuleDependenciesFactory.class);
-		JSArray<String> requires = JSArray.create(dependencies.create(object));
+		JSArray<String> jsrequires = JSArray.create(requires);
 		JSClosure jsclosure = JSClosure.create(closure);
-		object.jso = _module(name, requires, jsclosure);
+		object.jso = _module(name, jsrequires, jsclosure);
 		return object;
 	}
 	

@@ -34,9 +34,6 @@ interface DependenciesFactory<T> {
     String[] create(T object);
 }
 
-interface ModuleDependenciesFactory extends DependenciesFactory<Module> {
-}
-
 interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
 }
 

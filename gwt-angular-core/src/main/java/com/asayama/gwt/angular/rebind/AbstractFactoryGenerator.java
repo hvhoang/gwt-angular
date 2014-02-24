@@ -6,10 +6,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.Injectable;
-import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.angular.client.annotations.Depends;
 import com.asayama.gwt.rebind.JClassTypeUtils;
 import com.asayama.gwt.rebind.JMethodUtils;
 import com.asayama.gwt.rebind.exceptions.RebindException;
@@ -95,18 +93,6 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                     names.add(name);
                 }
             }
-            //++
-            // https://github.com/kyoken74/gwt-angular/issues/12
-            if (JClassTypeUtils.supports(supportedClassType, Module.class)) {
-                Depends depends = supportedClassType.getAnnotation(Depends.class);
-                String[] ng = depends == null ? null : depends.value();
-                if (ng != null) {
-                    for (String n : ng) {
-                        names.add(n);
-                    }
-                }
-            }
-            //--
             dependencies.add(names.toArray(EMPTY_STRING_ARRAY));
         }
         velocity.put("dependencies", dependencies);
