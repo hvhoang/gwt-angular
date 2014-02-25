@@ -59,10 +59,10 @@ public class Angular {
 		JSArray<String> jsarray = JSArray.create();
 		for (int i = 0; i < modules.length; i++) {
 			jsarray.add(modules[i].getClass().getName());
-            sb.append(i == 0 ? "" : ", ").append(modules[i].getClass().getName());
+            sb.append("\n").append(modules[i].getClass().getName());
 		}
 		try {
-		    GWT.log(m = "bootstrapping " + sb.toString());
+		    GWT.log(m = "bootstrapping " + jsarray.size() + " modules" + sb.toString());
 			_bootstrap(jsarray);
 		} catch (Exception e) {
 			GWT.log("Exception while " + m, e);
