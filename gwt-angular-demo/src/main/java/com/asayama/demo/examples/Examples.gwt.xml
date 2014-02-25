@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  
+  <inherits name="com.google.gwt.user.User" />
+  <inherits name="com.google.gwt.i18n.I18N" />
+  
+  <inherits name="com.asayama.gwt.angular.Angular" />
+  <inherits name="com.asayama.gwt.angular.http.AngularHttp" />
+  <inherits name="com.asayama.gwt.angular.route.AngularRoute" />
+  <inherits name="com.asayama.gwt.angular.sanitize.AngularSanitize" />
+  
+  <source path="client" />
+  <source path="shared" />
+  
+  <entry-point class="com.asayama.demo.examples.client.Examples" />
+</module>

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module rename-to="myapp">
+<module rename-to="demo">
+  
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.google.gwt.i18n.I18N" />
+  
   <inherits name="com.asayama.gwt.angular.Angular" />
   <inherits name="com.asayama.gwt.angular.http.AngularHttp" />
   <inherits name="com.asayama.gwt.angular.route.AngularRoute" />
-  <inherits name="com.asayama.gwt.angular.sanitize.AngularSanitize" />
+  <inherits name="com.asayama.demo.examples.Examples" />
+  
+  <stylesheet src="lib/bootstrap/3.0.3/css/bootstrap.min.css" />
+  <stylesheet src="lib/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
   <script src="lib/jquery/1.10.2/jquery.min.js" />
   <script src="lib/bootstrap/3.0.3/js/bootstrap.min.js" />
+ 
   <source path="client" />
   <source path="shared" />
-  <entry-point class="com.asayama.demo.client.MyModule" />
+  
+  <entry-point class="com.asayama.demo.ui.client.Demo" />
 </module>

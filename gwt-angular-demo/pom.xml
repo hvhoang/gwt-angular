@@ -61,7 +61,7 @@
                 This configuration is used to make the Java source code 
                 available on the website.
               -->
-              <outputDirectory>${basedir}/target/${project.build.finalName}/myapp/partials/examples/java</outputDirectory>
+              <outputDirectory>${basedir}/target/${project.build.finalName}/demo/partials/examples/java</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/java/</directory>

@@ -1,4 +1,4 @@
-package com.asayama.demo.client;
+package com.asayama.demo.ui.client.controllers;
 
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;

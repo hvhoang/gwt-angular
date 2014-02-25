@@ -1,9 +1,7 @@
-package com.asayama.demo.client;
+package com.asayama.demo.ui.client;
 
-import com.asayama.demo.client.examples.HttpClientExample;
-import com.asayama.demo.client.examples.OnClickEventExample;
-import com.asayama.demo.client.examples.TextInputExample;
-import com.asayama.demo.client.examples.UrlHashParameterExample;
+import com.asayama.demo.ui.client.controllers.ExamplesController;
+import com.asayama.demo.ui.client.controllers.NavbarController;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.InjectionCallback;
 import com.asayama.gwt.angular.client.Module;
@@ -13,10 +11,10 @@ import com.asayama.gwt.angular.route.client.Template;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-public class MyModule extends Module implements EntryPoint {
+public class Demo extends Module implements EntryPoint {
 
     public void onModuleLoad() {
-        GWT.log("entering MyModule.onModuleLoad");
+        GWT.log("initializing " + getClass().getName());
         Angular.module(this);
         config(new RouteProvider(), new InjectionCallback<RouteProvider>() {
             @Override
@@ -28,10 +26,6 @@ public class MyModule extends Module implements EntryPoint {
         });
         controller(new NavbarController());
         controller(new ExamplesController());
-        controller(new TextInputExample());
-        controller(new OnClickEventExample());
-        controller(new UrlHashParameterExample());
-        controller(new HttpClientExample());
         Angular.bootstrap();
     }
 }

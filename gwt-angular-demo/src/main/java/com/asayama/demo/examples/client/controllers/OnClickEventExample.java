@@ -1,4 +1,4 @@
-package com.asayama.demo.client.examples;
+package com.asayama.demo.examples.client.controllers;
 
 import java.util.Date;
 
