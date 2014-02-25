@@ -61,20 +61,13 @@ public abstract class Module {
         return factory(service.getClass().getName(), service);
     }
     
-    public <S extends Service> S factory(String name, S service) {
-        return factory(name, service, null);
-    }
-    
-    public <S extends Service> S factory(String name, final S service, final InjectionCallback<S> callback) {
+    public <S extends Service> S factory(String name, final S service) {
         final JSClosure injector = serviceInjectorFactory.create(service);
         Function<S> initializer = new Function<S>() {
 
             @Override
             public S function(Object... args) {
                 injector.apply(args);
-                if (callback != null) {
-                    callback.onInjection(service);
-                }
                 return service;
             }
         };
@@ -85,18 +78,10 @@ public abstract class Module {
     }
 
     public <C extends Controller> C controller(C controller) {
-        return controller(controller, null);
-    }
-    
-    public <C extends Controller> C controller(C controller, InjectionCallback<C> callback) {
-        return controller(controller.getClass().getName(), controller, callback);
+        return controller(controller.getClass().getName(), controller);
     }
 
-    public <C extends Controller> C controller(String name, C object) {
-        return controller(name, object, null);
-    }
-    
-    public <C extends Controller> C controller(String name, final C controller, final InjectionCallback<C> callback) {
+    public <C extends Controller> C controller(String name, final C controller) {
         final JSClosure binder = controllerBinderFactory.create(controller);
         final JSClosure injector = controllerInjectorFactory.create(controller);
         Closure initializer = new Closure() {
@@ -110,9 +95,6 @@ public abstract class Module {
                 binder.apply(args);
                 injector.apply(shiftedArgs);
                 controller.onControllerLoad();
-                if (callback != null) {
-                    callback.onInjection(controller);
-                }
             }
         };
         String [] dependencies;
