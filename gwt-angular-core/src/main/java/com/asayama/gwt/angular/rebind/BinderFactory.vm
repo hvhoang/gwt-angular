@@ -10,7 +10,7 @@ public class __${className} implements ${className} {
 
     @Override
     public JSClosure create(${supportedRootClassType} object) {
-#foreach(${supportedClassType} in ${supportedClassTypes})
+#foreach(${supportedClassType} in ${classTypeFields.classTypes})
         if (object instanceof ${supportedClassType.qualifiedSourceName}) {
             return __${className}_create((${supportedClassType.qualifiedSourceName}) object);
         }
@@ -18,14 +18,15 @@ public class __${className} implements ${className} {
         return null;
     }
     
-#foreach($supportedClassType in ${supportedClassTypes})
+#foreach(${supportedClassType} in ${classTypeFields.classTypes})
+#set($fields = ${classTypeFields.getPublicFinalProperties($supportedClassType)})
     private native JSClosure __${className}_create(${supportedClassType.qualifiedSourceName} object) /*-{
         return function ($scope) {
-#foreach($field in $supportedClassType.fields)
-#if($field.isPublic() && $field.isFinal() && $field.isStatic())
-            $scope.${field.name} = @${supportedClassType.qualifiedSourceName}::${field.name};
-#elseif($field.isPublic() && $field.isFinal())
-            $scope.${field.name} = object.@${supportedClassType.qualifiedSourceName}::${field.name};
+#foreach($field in $fields)
+#if(${field.field.isPublic()} && ${field.field.isFinal()} && ${field.field.isStatic()})
+            $scope.${field.name} = @${field.className}::${field.name};
+#elseif(${field.field.isPublic()} && ${field.field.isFinal()})
+            $scope.${field.name} = object.@${field.className}::${field.name};
 #end
 #end
 #foreach($method in $supportedClassType.inheritableMethods)
