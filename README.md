@@ -4,6 +4,17 @@ WARNING
 The API is in very early stages of development, and it is not yet ready for
 beta.
 
+Collaborators Wanted
+====================
+
+Although I have many years of Java and GWT development experience, my 
+understanding of AngularJS is naïve at best. If any AngularJS experts out there
+who can help me understand the core design philosophy of this powerful 
+framework, please let me know. I can use your help.
+
+You may have figured out that this is a one-man project started in his kitchen
+(I do not have a garage). There is no corporate sponsor behind this project.
+
 
 Core API (gwt-angular)
 ======================
