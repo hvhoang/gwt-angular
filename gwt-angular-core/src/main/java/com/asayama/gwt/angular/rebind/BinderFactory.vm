@@ -12,14 +12,14 @@ public class __${className} implements ${className} {
     public JSClosure create(${supportedRootClassType} object) {
 #foreach(${supportedClassType} in ${supportedClassTypes})
         if (object instanceof ${supportedClassType.qualifiedSourceName}) {
-            return __${className}_${foreach.index}(object);
+            return __${className}_create((${supportedClassType.qualifiedSourceName}) object);
         }
 #end
         return null;
     }
     
 #foreach($supportedClassType in ${supportedClassTypes})
-    private native JSClosure __${className}_${foreach.index}(${supportedRootClassType} object) /*-{
+    private native JSClosure __${className}_create(${supportedClassType.qualifiedSourceName} object) /*-{
         return function ($scope) {
 #foreach($field in $supportedClassType.fields)
 #if($field.isPublic() && $field.isFinal() && $field.isStatic())
