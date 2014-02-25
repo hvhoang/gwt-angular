@@ -51,6 +51,14 @@ public class JSObject extends JavaScriptObject {
 		}
 	}
 	
+    protected final native boolean _isPropUndefined(String key) /*-{
+        return (typeof(this[key]) == "undefined");
+    }-*/;
+    
+    protected final native boolean _isPropNull(String key) /*-{
+        return (this[key] == null);
+    }-*/;
+    
 	/*
 	 * Object
 	 */
@@ -58,12 +66,14 @@ public class JSObject extends JavaScriptObject {
 	protected final <T extends JSObject> T getObject(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		JSObject value = _getObject(key);
-		return value == null ? null : value.<T>cast();
+		if (_isPropUndefined(key) || _isPropNull(key)) {
+		    return null;
+		}
+		return _getObject(key).cast();
 	}
 	
 	private final native JSObject _getObject(String key) /*-{
-		return typeof(this[key]) == "undefined" ? null : this[key];
+		return this[key];
 	}-*/;
 	
 	protected final <T extends JSObject> void putObject(String key, T value) throws UndefinedException, EmptyKeyException {
@@ -84,12 +94,14 @@ public class JSObject extends JavaScriptObject {
 	protected final String getString(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		String value = _getString(key);
-		return value == null ? null : value;
+        if (_isPropUndefined(key) || _isPropNull(key)) {
+            return null;
+        }
+		return _getString(key);
 	}
 	
 	private final native String _getString(String key) /*-{
-		return typeof(this[key]) == "undefined" ? null : this[key];
+		return this[key];
 	}-*/;
 	
 	protected final void putString(String key, String value) throws UndefinedException, EmptyKeyException {
@@ -109,12 +121,14 @@ public class JSObject extends JavaScriptObject {
 	protected final Integer getInteger(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		Integer value = _getInteger(key);
-		return value == null ? null : value;
+        if (_isPropUndefined(key) || _isPropNull(key)) {
+            return null;
+        }
+		return _getInteger(key);
 	}
 	
-	private final native Integer _getInteger(String key) /*-{
-		return typeof(this[key]) == "undefined" ? null : this[key];
+	private final native int _getInteger(String key) /*-{
+		return Number(this[key]);
 	}-*/;
 	
 	protected final void putInteger(String key, Integer value) throws UndefinedException, EmptyKeyException {
@@ -134,12 +148,14 @@ public class JSObject extends JavaScriptObject {
 	protected final Double getDouble(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		Double value = _getDouble(key);
-		return value == null ? null : value;
+        if (_isPropUndefined(key) || _isPropNull(key)) {
+            return null;
+        }
+		return _getDouble(key);
 	}
 	
-	private final native Double _getDouble(String key) /*-{
-		return typeof(this[key]) == "undefined" ? null : this[key];
+	private final native double _getDouble(String key) /*-{
+		return Number(this[key]);
 	}-*/;
 
 	protected final void putDouble(String key, Double value) throws UndefinedException, EmptyKeyException {
@@ -159,12 +175,14 @@ public class JSObject extends JavaScriptObject {
 	protected final Boolean getBoolean(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		Boolean value = _getBoolean(key);
-		return value == null ? null : value;
+        if (_isPropUndefined(key) || _isPropNull(key)) {
+            return null;
+        }
+		return _getBoolean(key);
 	}
 
-	private final native Boolean _getBoolean(String key) /*-{
-		return typeof(this[key]) == "undefined" ? null : this[key];
+	private final native boolean _getBoolean(String key) /*-{
+		return this[key];
 	}-*/;
 	
 	protected final void putBoolean(String key, Boolean value) throws UndefinedException, EmptyKeyException {
