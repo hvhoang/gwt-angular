@@ -28,7 +28,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.asayama.demo.MyEntryPoint</module>
+              <module>com.asayama.demo.ui.Demo</module>
             </configuration>
             <goals>
               <goal>compile</goal>
