@@ -17,21 +17,21 @@ public class MyModule extends Module implements EntryPoint {
 
     public void onModuleLoad() {
         GWT.log("entering MyModule.onModuleLoad");
-        MyModule module = Angular.module(this);
-        module.config(new RouteProvider(), new InjectionCallback<RouteProvider>() {
+        Angular.module(this);
+        config(new RouteProvider(), new InjectionCallback<RouteProvider>() {
             @Override
             public void onInjection(RouteProvider routeProvider) {
                 routeProvider
-                    .when("/examples", Template.create("myapp/partials/examples.html", ExamplesController.class))
+                    .when("/examples", Template.create("partials/examples.html", ExamplesController.class))
                     .otherwise(Redirect.create("/examples"));
             }
         });
-        module.controller(new NavbarController());
-        module.controller(new ExamplesController());
-        module.controller(new TextInputExample());
-        module.controller(new OnClickEventExample());
-        module.controller(new UrlHashParameterExample());
-        module.controller(new HttpClientExample());
+        controller(new NavbarController());
+        controller(new ExamplesController());
+        controller(new TextInputExample());
+        controller(new OnClickEventExample());
+        controller(new UrlHashParameterExample());
+        controller(new HttpClientExample());
         Angular.bootstrap();
     }
 }

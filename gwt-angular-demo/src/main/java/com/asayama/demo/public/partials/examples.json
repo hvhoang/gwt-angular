@@ -7,18 +7,18 @@
 				{
 					"id" : "demo",
 					"displayName" : "Demo",
-					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/TextInputExample.html"
+					"template" : "partials/templates/demo.html",
+					"filename" : "partials/examples/demo/TextInputExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
-					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/TextInputExample.html"
+					"template" : "partials/templates/html.html",
+					"filename" : "partials/examples/demo/TextInputExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
-					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/TextInputExample.java"
+					"template" : "partials/templates/java.html",
+					"filename" : "partials/examples/java/com/asayama/demo/client/examples/TextInputExample.java"
 				}
 			]
 		},{
@@ -28,18 +28,18 @@
 				{
 					"id" : "demo",
 					"displayName" : "Demo",
-					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/OnClickEventExample.html"
+					"template" : "partials/templates/demo.html",
+					"filename" : "partials/examples/demo/OnClickEventExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
-					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/OnClickEventExample.html"
+					"template" : "partials/templates/html.html",
+					"filename" : "partials/examples/demo/OnClickEventExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
-					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/OnClickEventExample.java"
+					"template" : "partials/templates/java.html",
+					"filename" : "partials/examples/java/com/asayama/demo/client/examples/OnClickEventExample.java"
 				}
 			]
 		},{
@@ -49,18 +49,18 @@
 				{
 					"id" : "demo",
 					"displayName" : "Demo",
-					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/UrlHashParameterExample.html"
+					"template" : "partials/templates/demo.html",
+					"filename" : "partials/examples/demo/UrlHashParameterExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
-					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/UrlHashParameterExample.html"
+					"template" : "partials/templates/html.html",
+					"filename" : "partials/examples/demo/UrlHashParameterExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
-					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/UrlHashParameterExample.java"
+					"template" : "partials/templates/java.html",
+					"filename" : "partials/examples/java/com/asayama/demo/client/examples/UrlHashParameterExample.java"
 				}
 			]
 		},{
@@ -70,23 +70,23 @@
 				{
 					"id" : "demo",
 					"displayName" : "Demo",
-					"template" : "myapp/partials/templates/demo.html",
-					"filename" : "myapp/examples/demo/HttpClientExample.html"
+					"template" : "partials/templates/demo.html",
+					"filename" : "partials/examples/demo/HttpClientExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
-					"template" : "myapp/partials/templates/html.html",
-					"filename" : "myapp/examples/demo/HttpClientExample.html"
+					"template" : "partials/templates/html.html",
+					"filename" : "partials/examples/demo/HttpClientExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
-					"template" : "myapp/partials/templates/java.html",
-					"filename" : "myapp/examples/java/com/asayama/demo/client/examples/HttpClientExample.java"
+					"template" : "partials/templates/java.html",
+					"filename" : "partials/examples/java/com/asayama/demo/client/examples/HttpClientExample.java"
 				},{
 					"id" : "data",
 					"displayName" : "Data",
-					"template" : "myapp/partials/templates/json.html",
-					"filename" : "myapp/examples/data/customers.json"
+					"template" : "partials/templates/json.html",
+					"filename" : "partials/examples/data/customers.json"
 				}
 			]
 		}

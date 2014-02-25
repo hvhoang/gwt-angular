@@ -13,7 +13,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class ExamplesController extends AbstractController {
 
-    public static final String EXAMPLES_DATA = "myapp/partials/examples.json";
+    public static final String EXAMPLES_MODEL_URL = "partials/examples.json";
 
     private HttpClient http;
     private RouteParams routeParams;
@@ -30,7 +30,7 @@ public class ExamplesController extends AbstractController {
         
         final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
-        http.get(EXAMPLES_DATA, new HttpClientCallback() {
+        http.get(EXAMPLES_MODEL_URL, new HttpClientCallback() {
 
             @Override
             public void onSuccess(Request request, Response response) {

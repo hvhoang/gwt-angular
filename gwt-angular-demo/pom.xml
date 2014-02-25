@@ -52,13 +52,16 @@
         <executions>
           <execution>
             <id>copy-resources</id>
-            <!-- here the phase you need -->
             <phase>validate</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/${project.build.finalName}/myapp/examples/java</outputDirectory>
+              <!--
+                This configuration is used to make the Java source code 
+                available on the website.
+              -->
+              <outputDirectory>${basedir}/target/${project.build.finalName}/myapp/partials/examples/java</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/java/</directory>
