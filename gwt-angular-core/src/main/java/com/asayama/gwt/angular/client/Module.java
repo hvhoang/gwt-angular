@@ -29,16 +29,20 @@ public abstract class Module {
     JSModule jso;
 
     /**
-     * An instance of Module's derived type should be created using GWT.create()
+     * Defines a value as a service to the module.
+     * @param name Name of the value
+     * @param value Value object
      */
-    protected Module() {
+    public void value(String name, String value) {
+        
     }
 
-    public <P extends Provider> P config(P provider) {
-        return config(provider, null);
-    }
-
-    public <P extends Provider> P config(final P provider, final InjectionCallback<P> callback) {
+    /**
+     * Configures a previosly created service object. Use the 
+     * @param provider Service that has been created
+     * @param callback Configures the service object.
+     */
+    public <P extends Provider> void config(final P provider, final InjectionCallback<P> callback) {
         final JSClosure injector = providerInjectorFactory.create(provider);
         Function<P> initializer = new Function<P>() {
 
@@ -54,7 +58,6 @@ public abstract class Module {
         String[] dependencies = providerDependenciesFactory.create(provider);
         NGConstructor constructors = NGConstructor.create(initializer, dependencies);
         jso.config(constructors);
-        return provider;
     }
 
     public <S extends Service> S factory(S service) {
