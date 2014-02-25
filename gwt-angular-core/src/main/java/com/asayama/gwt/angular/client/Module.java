@@ -38,9 +38,11 @@ public abstract class Module {
     }
 
     /**
-     * Configures a previosly created service object. Use the 
-     * @param provider Service that has been created
-     * @param callback Configures the service object.
+     * Configures a previously created service object. Use the {@link InjectionCallback}
+     * to configure the provider injected into the module.
+     * 
+     * @param provider Provider to be configured.
+     * @param callback Configures the provider.
      */
     public <P extends Provider> void config(final P provider, final InjectionCallback<P> callback) {
         final JSClosure injector = providerInjectorFactory.create(provider);
