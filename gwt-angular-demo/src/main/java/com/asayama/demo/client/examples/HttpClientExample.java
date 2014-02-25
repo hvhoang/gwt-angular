@@ -18,8 +18,7 @@ public class HttpClientExample implements Controller {
 
     @Override
     public void onControllerLoad() {
-        String url = GWT.getModuleBaseForStaticFiles()
-                + "examples/data/customers.json";
+        String url = "partials/examples/data/customers.json";
         HttpClientCallback callback = new HttpClientCallback() {
             @Override
             public void onSuccess(Request request, Response response) {
