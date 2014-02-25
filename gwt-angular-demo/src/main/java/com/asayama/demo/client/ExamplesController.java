@@ -25,9 +25,9 @@ public class ExamplesController extends AbstractController {
     @Override
     public void onControllerLoad() {
         
-        //https://github.com/kyoken74/gwt-angular/issues/14
         log.debug("calling ExamplesController.onControllerLoad()");
         
+        // https://github.com/kyoken74/gwt-angular/issues/33
         final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
         http.get(EXAMPLES_MODEL_URL, new HttpClientCallback() {
@@ -37,7 +37,7 @@ public class ExamplesController extends AbstractController {
                 examples = Examples.parse(response.getText());
                 setSelectedPage(examples.getPages().get(pageIndex));
                 getSelectedPage().setSelectedTab(
-                        selectedPage.getTabs().get(tabIndex));
+                        getSelectedPage().getTabs().get(tabIndex));
             }
 
             @Override
@@ -48,6 +48,7 @@ public class ExamplesController extends AbstractController {
 
     public void onClickPage(Page page) {
         selectedPage = page;
+        // https://github.com/kyoken74/gwt-angular/issues/33
         if (getSelectedPage().getSelectedTab() == null) {
             getSelectedPage()
                     .setSelectedTab(getSelectedPage().getTabs().get(0));
@@ -59,6 +60,7 @@ public class ExamplesController extends AbstractController {
         if (tab.getSource() != null) {
             return;
         }
+        // https://github.com/kyoken74/gwt-angular/issues/33
         String url = getSelectedPage().getSelectedTab().getFilename();
         http.get(url, new HttpClientCallback() {
 
