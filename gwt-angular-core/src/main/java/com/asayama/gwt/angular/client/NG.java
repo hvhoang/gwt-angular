@@ -8,13 +8,11 @@ import com.google.gwt.core.client.GWT;
 
 public class NG extends Module implements EntryPoint {
 
-    static final String CLASS = NG.class.getName();
-    
     @Override
     public void onModuleLoad() {
         String m = "";
         try {
-            GWT.log(m = "initializing " + CLASS);
+            GWT.log(m = "initializing " + getClass().getName());
             NG module = Angular.module(this, "ng");
             module.factory(new Q());
             module.factory(new Location());

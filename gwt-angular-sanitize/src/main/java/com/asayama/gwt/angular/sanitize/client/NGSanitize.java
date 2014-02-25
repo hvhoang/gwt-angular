@@ -7,13 +7,11 @@ import com.google.gwt.core.client.GWT;
 
 public class NGSanitize extends Module implements EntryPoint {
 
-    static final String CLASS = NGSanitize.class.getName();
-    
     @Override
     public void onModuleLoad() {
         String m = "";
         try {
-            GWT.log(m = "initializing " + CLASS);
+            GWT.log(m = "initializing " + getClass().getName());
             NGSanitize module = Angular.module(this, "ngSanitize");
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);

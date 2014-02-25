@@ -8,13 +8,11 @@ import com.google.gwt.core.client.GWT;
 
 public class HttpClientModule extends Module implements EntryPoint {
 
-    static final String CLASS = HttpClientModule.class.getName();
-    
     @Override
     public void onModuleLoad() {
         String m = "";
         try {
-            GWT.log(m = "initializing " + CLASS);
+            GWT.log(m = "initializing " + getClass().getName());
             HttpClientModule module = Angular.module(this);
             module.factory(new HttpClient());
         } catch (Exception e) {

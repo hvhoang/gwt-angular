@@ -7,13 +7,11 @@ import com.google.gwt.core.client.GWT;
 
 public class NGRoute extends Module implements EntryPoint {
 
-    static final String CLASS = NGRoute.class.getName();
-    
     @Override
     public void onModuleLoad() {
         String m = "";
         try {
-            GWT.log(m = "initializing " + CLASS);
+            GWT.log(m = "initializing " + getClass().getName());
             NGRoute module = Angular.module(this, "ngRoute");
             module.factory(new RouteParams());
         } catch (Exception e) {
