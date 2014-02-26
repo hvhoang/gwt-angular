@@ -57,13 +57,15 @@ class VelocityGenerator {
 		Template template = VELOCITY_ENGINE.getTemplate(filename, ENCODING);
 		template.merge(velocityContext, writer);
 
-		try {
-			Writer w = new OutputStreamWriter(System.out);
-			template.merge(velocityContext, w);
-			w.flush();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	    if (System.getProperty("velocity.print") != null) {
+	        try {
+    			Writer w = new OutputStreamWriter(System.out);
+    			template.merge(velocityContext, w);
+    			w.flush();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 
 }
