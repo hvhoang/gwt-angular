@@ -2,8 +2,8 @@
  * Provides annotations used by the code generators used in gwt-agnular-core 
  * project.
  * 
- * @see BinderFactoryGenerator
+ * @see ScopeBinderFactoryGenerator
  * @see DependenciesFactoryGenerator
- * @see InjectorFactoryGenerator
+ * @see BinderFactoryGenerator
  */
 package com.asayama.gwt.angular.client.annotations;

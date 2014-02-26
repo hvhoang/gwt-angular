@@ -19,12 +19,14 @@ import com.google.gwt.core.shared.GWT;
 public abstract class Module {
 
     ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
-    ProviderInjectorFactory providerInjectorFactory = GWT.create(ProviderInjectorFactory.class);
     ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
-    ServiceInjectorFactory serviceInjectorFactory = GWT.create(ServiceInjectorFactory.class);
     ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
+
+    ProviderBinderFactory providerBinderFactory = GWT.create(ProviderBinderFactory.class);
+    ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
     ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
-    ControllerInjectorFactory controllerInjectorFactory = GWT.create(ControllerInjectorFactory.class);
+
+    ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
 
     JSModule jso;
 
@@ -38,28 +40,26 @@ public abstract class Module {
     }
 
     /**
-     * Configures a previously created service object. Use the {@link InjectionCallback}
+     * Configures a previously created service object. Use the {@link Configurator}
      * to configure the provider injected into the module.
      * 
      * @param provider Provider to be configured.
-     * @param callback Configures the provider.
+     * @param configurator Configures the provider.
      */
-    public <P extends Provider> void config(final P provider, final InjectionCallback<P> callback) {
-        final JSClosure injector = providerInjectorFactory.create(provider);
+    public <P extends Provider> void config(final P provider, final Configurator<P> configurator) {
+        final JSClosure injector = providerBinderFactory.create(provider);
         Function<P> initializer = new Function<P>() {
 
             @Override
             public P function(Object... args) {
                 injector.apply(args);
-                if (callback != null) {
-                    callback.onInjection(provider);
-                }
+                configurator.configure(provider);
                 return provider;
             }
         };
         String[] dependencies = providerDependenciesFactory.create(provider);
-        NGConstructor constructors = NGConstructor.create(initializer, dependencies);
-        jso.config(constructors);
+        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
+        jso.config(constructor);
     }
 
     public <S extends Service> S factory(S service) {
@@ -67,7 +67,7 @@ public abstract class Module {
     }
     
     public <S extends Service> S factory(String name, final S service) {
-        final JSClosure injector = serviceInjectorFactory.create(service);
+        final JSClosure injector = serviceBinderFactory.create(service);
         Function<S> initializer = new Function<S>() {
 
             @Override
@@ -87,8 +87,8 @@ public abstract class Module {
     }
 
     public <C extends Controller> C controller(String name, final C controller) {
-        final JSClosure binder = controllerBinderFactory.create(controller);
-        final JSClosure injector = controllerInjectorFactory.create(controller);
+        final JSClosure binder = controllerScopeBinderFactory.create(controller);
+        final JSClosure injector = controllerBinderFactory.create(controller);
         Closure initializer = new Closure() {
 
             @Override

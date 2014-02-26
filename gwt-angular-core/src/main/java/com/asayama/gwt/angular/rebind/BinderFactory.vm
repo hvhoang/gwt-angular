@@ -17,28 +17,13 @@ public class __${className} implements ${className} {
 #end
         return null;
     }
-    
+
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
-#set($fields = ${classTypeFields.getPublicFinalProperties($supportedClassType)})
+#set($fields = ${classTypeFields.getInjectables($supportedClassType)})
     private native JSClosure __${className}_create(${supportedClassType.qualifiedSourceName} object) /*-{
-        return function ($scope) {
+        return function (#foreach($field in $fields)${field.name}#if(${foreach.hasNext}), #end#end) {
 #foreach($field in $fields)
-#if(${field.field.isPublic()} && ${field.field.isFinal()} && ${field.field.isStatic()})
-            $scope.${field.name} = @${field.className}::${field.name};
-#elseif(${field.field.isPublic()} && ${field.field.isFinal()})
-            $scope.${field.name} = object.@${field.className}::${field.name};
-#end
-#end
-#foreach($method in $supportedClassType.inheritableMethods)
-#if($method.isPublic() && $method.isStatic())
-            $scope.${method.name} = function (${JMethodUtils.getArgs(${method})}) {
-                return ${method.jsniSignature}(${JMethodUtils.getArgs(${method})});
-            };
-#elseif($method.isPublic())
-            $scope.${method.name} = function (${JMethodUtils.getArgs(${method})}) {
-                return object.${method.jsniSignature}(${JMethodUtils.getArgs(${method})});
-            };
-#end
+            object.@${field.className}::${field.name} = ${field.name};
 #end
         };
     }-*/;

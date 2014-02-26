@@ -45,6 +45,28 @@ interface ControllerDependenciesFactory extends DependenciesFactory<Controller> 
 
 /**
  * Provides interfaces for an object binder. This interface is intended to be
+ * used with {@link ScopeBinderFactoryGenerator}, which inspects the types eligible for
+ * creation at compile time.
+ * <p>
+ * The decision to separate the code generator from the underlying classes was
+ * made to work around a limitation in GWT, which prevents us from implementing
+ * multiple JavaScriptObject extensions sharing an interface.
+ * </p>
+ * 
+ * @author kyoken74
+ *
+ * @see ScopeBinderFactoryGenerator
+ * @param <T>
+ */
+interface ScopeBinderFactory<T> {
+    JSClosure create(T object);
+}
+
+interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
+}
+
+/**
+ * Provides interfaces for an object injector. This interface is intended to be
  * used with {@link BinderFactoryGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
@@ -62,33 +84,11 @@ interface BinderFactory<T> {
     JSClosure create(T object);
 }
 
+interface ProviderBinderFactory extends BinderFactory<Provider> {
+}
+
+interface ServiceBinderFactory extends BinderFactory<Service> {
+}
+
 interface ControllerBinderFactory extends BinderFactory<Controller> {
-}
-
-/**
- * Provides interfaces for an object injector. This interface is intended to be
- * used with {@link InjectorFactoryGenerator}, which inspects the types eligible for
- * creation at compile time.
- * <p>
- * The decision to separate the code generator from the underlying classes was
- * made to work around a limitation in GWT, which prevents us from implementing
- * multiple JavaScriptObject extensions sharing an interface.
- * </p>
- * 
- * @author kyoken74
- *
- * @see InjectorFactoryGenerator
- * @param <T>
- */
-interface InjectorFactory<T> {
-    JSClosure create(T object);
-}
-
-interface ProviderInjectorFactory extends InjectorFactory<Provider> {
-}
-
-interface ServiceInjectorFactory extends InjectorFactory<Service> {
-}
-
-interface ControllerInjectorFactory extends InjectorFactory<Controller> {
 }
