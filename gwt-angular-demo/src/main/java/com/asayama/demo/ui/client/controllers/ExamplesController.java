@@ -1,5 +1,6 @@
 package com.asayama.demo.ui.client.controllers;
 
+import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
@@ -15,10 +16,19 @@ public class ExamplesController extends AbstractController {
 
     public static final String EXAMPLES_MODEL_URL = "partials/examples.json";
 
-    private HttpClient http;
-    private RouteParams routeParams;
-    private Location location;
+    // Services
+    protected HttpClient http;
+    protected RouteParams routeParams;
+    protected Location location;
+    
+    @Bind("hostPageBaseURL")
+    private String hostPageBaseURL;
+    
+    public String getHostPageBaseURL() {
+        return hostPageBaseURL;
+    }
 
+    // Models
     private Examples examples = null;
     private Page selectedPage = null;
 

@@ -161,8 +161,12 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                 for (JField field : fields) {
                     String cname = supportedSuperClassType.getQualifiedSourceName();
                     String dependency = null;
-                    if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
-                        Bind bind = field.getType().isClass().getAnnotation(Bind.class);
+                    Bind bind = field.getAnnotation(Bind.class);
+                    if (bind != null) {
+                        //direct annotation supersedes other criteria
+                        dependency = bind.value();
+                    } else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
+                        bind = field.getType().isClass().getAnnotation(Bind.class);
                         dependency = bind.value();
                     } else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
                         dependency = field.getType().getQualifiedSourceName();

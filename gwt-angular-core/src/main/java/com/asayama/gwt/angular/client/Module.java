@@ -22,11 +22,13 @@ public abstract class Module {
 
     /**
      * Defines a value as a service to the module.
-     * @param name Name of the value
-     * @param value Value object
+     * @param name Name by which to register the value with {@link Injector}
+     * @param value Value object to register with {@link Injector}
+     * @return Value object registered with {@link Injector}
      */
-    public void value(String name, String value) {
-        
+    public <V> V value(String name, V value) {
+        jso.value(name, value);
+        return value;
     }
 
     //
@@ -132,8 +134,8 @@ public abstract class Module {
         return jso.getName();
     }
 
-    public String[] getRequires() {
-        return jso.getRequires().toArray(JSArray.STRING);
+    public String[] requires() {
+        return jso.requires().toArray(JSArray.STRING);
     }
 
     @Override
@@ -151,8 +153,12 @@ class JSModule extends JSObject {
         return getString("name");
     }
 
-    final native JSArray<String> getRequires() /*-{
+    final native JSArray<String> requires() /*-{
 		return this.requires;
+    }-*/;
+    
+    final native void value(String name, Object value) /*-{
+        this.value(name, value);
     }-*/;
 
     final native void config(JavaScriptObject constructor) /*-{
