@@ -23,10 +23,6 @@ public class ExamplesController extends AbstractController {
     
     @Bind("hostPageBaseURL")
     private String hostPageBaseURL;
-    
-    public String getHostPageBaseURL() {
-        return hostPageBaseURL;
-    }
 
     // Models
     private Examples examples = null;
@@ -110,6 +106,10 @@ public class ExamplesController extends AbstractController {
 
     public void setSelectedPage(Page selectedPage) {
         this.selectedPage = selectedPage;
+    }
+
+    public String getHostPageBaseURL() {
+        return hostPageBaseURL;
     }
 
 }

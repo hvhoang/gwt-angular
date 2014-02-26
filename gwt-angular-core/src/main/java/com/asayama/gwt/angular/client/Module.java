@@ -31,6 +31,17 @@ public abstract class Module {
         return value;
     }
 
+    /**
+     * Defines a value as a serive to the module.
+     * @param name Name by which to register the value with {@link Injector}
+     * @param value Value object to register with {@link Injector}
+     * @return Value object registered with {@link Injector}
+     */
+    public <V> V constant(String name, V value) {
+        jso.constant(name, value);
+        return value;
+    }
+
     //
     // Provider
     //
@@ -159,6 +170,10 @@ class JSModule extends JSObject {
     
     final native void value(String name, Object value) /*-{
         this.value(name, value);
+    }-*/;
+    
+    final native void constant(String name, Object value) /*-{
+        this.constant(name, value);
     }-*/;
 
     final native void config(JavaScriptObject constructor) /*-{

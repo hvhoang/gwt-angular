@@ -16,7 +16,7 @@ public class Demo extends Module implements EntryPoint {
     public void onModuleLoad() {
         GWT.log("initializing " + getClass().getName());
         Angular.module(this);
-        value("hostPageBaseURL", GWT.getModuleBaseForStaticFiles());
+        constant("hostPageBaseURL", GWT.getModuleBaseForStaticFiles());
         config(new RouteProvider(), new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider routeProvider) {
