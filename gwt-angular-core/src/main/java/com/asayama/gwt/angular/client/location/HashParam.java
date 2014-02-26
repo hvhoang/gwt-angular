@@ -16,7 +16,7 @@ class JSHashParam extends JSObject {
 	}
 
 	final void put(String key, String value ) {
-		putString(key, value);
+		$string(key, value);
 	}
 
 }

@@ -120,7 +120,7 @@ class Examples extends JSObject {
     }
 
     final JSArray<Page> getPages() {
-        return getObject("pages").cast();
+        return $object("pages").cast();
     }
 }
 
@@ -130,15 +130,15 @@ class Page extends JSObject {
     }
 
     final JSArray<Tab> getTabs() {
-        return getObject("tabs").cast();
+        return $object("tabs").cast();
     }
 
     final void setSelectedTab(Tab tab) {
-        putObject("selectedTab", tab);
+        $object("selectedTab", tab);
     }
 
     final Tab getSelectedTab() {
-        return getObject("selectedTab");
+        return $object("selectedTab");
     }
 }
 
@@ -148,22 +148,22 @@ class Tab extends JSObject {
     }
 
     final String getDisplayName() {
-        return getString("displayName");
+        return $string("displayName");
     }
 
     final String getTemplate() {
-        return getString("template");
+        return $string("template");
     }
 
     final String getFilename() {
-        return getString("filename");
+        return $string("filename");
     }
 
     final String getSource() {
-        return getString("source");
+        return $string("source");
     }
 
     final void setSource(String source) {
-        putString("source", source);
+        $string("source", source);
     }
 }

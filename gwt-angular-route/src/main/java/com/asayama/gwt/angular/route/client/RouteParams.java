@@ -39,22 +39,22 @@ class NGRouteParams extends NGObject {
     }
 
     public final String getStringParam(String key) {
-        return getString(key);
+        return $string(key);
     }
 
     public final Integer getIntegerParam(String key) {
-        return getInteger(key);
+        return $integer(key);
     }
 
     public final Double getDoubleParam(String key) {
-        return getDouble(key);
+        return $double(key);
     }
 
     public final Date getDateParam(String key) {
-        return getDate(key);
+        return $date(key);
     }
 
     public final <T extends JSObject> T getObjectParam(String key) {
-        return getObject(key);
+        return $object(key);
     }
 }

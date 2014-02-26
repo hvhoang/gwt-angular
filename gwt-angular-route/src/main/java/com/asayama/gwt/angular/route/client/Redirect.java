@@ -12,11 +12,11 @@ public class Redirect extends JSObject {
 	}
 	
 	public final String getRedirectTo() {
-		return getString("redirectTo");
+		return $string("redirectTo");
 	}
 	
 	public final Redirect setRedirectTo(String redirectTo) {
-		putString("redirectTo", redirectTo);
+		$string("redirectTo", redirectTo);
 		return this;
 	}
 	

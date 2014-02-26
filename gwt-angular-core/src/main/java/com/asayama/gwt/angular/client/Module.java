@@ -161,7 +161,7 @@ class JSModule extends JSObject {
     }
 
     final String getName() {
-        return getString("name");
+        return $string("name");
     }
 
     final native JSArray<String> requires() /*-{

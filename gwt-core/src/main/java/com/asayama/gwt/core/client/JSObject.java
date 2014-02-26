@@ -25,37 +25,30 @@ public class JSObject extends JavaScriptObject {
 		return JsonUtils.safeEval(jsonString).cast();
 	}
 	
-	public static <R extends JSObject, P extends JSObject> R cast(P object) {
-		if (object == null) {
-			return null;
-		}
-		return object.cast();
-	}
-	
 	protected JSObject() {
 	}
 
-	protected final native boolean _isThisUndefined() /*-{
+	private final native boolean _isThisUndefined() /*-{
 		return (typeof(this) == "undefined");
 	}-*/;
 
-	protected final void _checkUndefined() throws UndefinedException {
+	private final void _checkUndefined() throws UndefinedException {
 		if (_isThisUndefined()) {
 			throw new UndefinedException();
 		}
 	}
 	
-	protected final void _checkEmptyKey(String key) throws EmptyKeyException {
+	private final void _checkEmptyKey(String key) throws EmptyKeyException {
 		if (key == null || key.length() == 0) {
 			throw new EmptyKeyException();
 		}
 	}
 	
-    protected final native boolean _isPropUndefined(String key) /*-{
+	private final native boolean _isPropUndefined(String key) /*-{
         return (typeof(this[key]) == "undefined");
     }-*/;
     
-    protected final native boolean _isPropNull(String key) /*-{
+	private final native boolean _isPropNull(String key) /*-{
         return (this[key] == null);
     }-*/;
     
@@ -63,54 +56,67 @@ public class JSObject extends JavaScriptObject {
 	 * Object
 	 */
 
-	protected final <T extends JSObject> T getObject(String key) throws UndefinedException, EmptyKeyException {
+	protected final <T extends JSObject> T $object(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
 		if (_isPropUndefined(key) || _isPropNull(key)) {
 		    return null;
 		}
-		return _getObject(key).cast();
+		return _object(key).cast();
 	}
 	
-	private final native JSObject _getObject(String key) /*-{
+	private final native JSObject _object(String key) /*-{
 		return this[key];
 	}-*/;
 	
-	protected final <T extends JSObject> void putObject(String key, T value) throws UndefinedException, EmptyKeyException {
+	protected final <T extends JSObject> void $object(String key, T value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
 		value._checkUndefined();
-		_putObject(key, value);
+		_object(key, value);
 	}
 	
-	private final native void _putObject(String key, JSObject value) /*-{
+	private final native void _object(String key, JSObject value) /*-{
 		this[key] = value;
 	}-*/;
+	
+	/*
+	 * Array
+	 */
+    protected final <T> JSArray<T> $array(String key) throws UndefinedException, EmptyKeyException {
+        JSObject value = $object(key);
+        return value == null ? null : value.<JSArray<T>>cast();
+    }
+
+    protected final <T> void $array(String key, JSArray<T> value) throws UndefinedException, EmptyKeyException {
+        $object(key, value == null ? null : value.<JSObject>cast());
+    }	
+	
 
 	/*
 	 * String
 	 */
 	
-	protected final String getString(String key) throws UndefinedException, EmptyKeyException {
+	protected final String $string(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _getString(key);
+		return _string(key);
 	}
 	
-	private final native String _getString(String key) /*-{
+	private final native String _string(String key) /*-{
 		return this[key];
 	}-*/;
 	
-	protected final void putString(String key, String value) throws UndefinedException, EmptyKeyException {
+	protected final void $string(String key, String value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		_putString(key, value);
+		_string(key, value);
 	}
 	
-	private final native void _putString(String key, String value) /*-{
+	private final native void _string(String key, String value) /*-{
 		this[key] = value;
 	}-*/;
 
@@ -118,26 +124,26 @@ public class JSObject extends JavaScriptObject {
 	 * Integer
 	 */
 	
-	protected final Integer getInteger(String key) throws UndefinedException, EmptyKeyException {
+	protected final Integer $integer(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _getInteger(key);
+		return _integer(key);
 	}
 	
-	private final native int _getInteger(String key) /*-{
+	private final native int _integer(String key) /*-{
 		return Number(this[key]);
 	}-*/;
 	
-	protected final void putInteger(String key, Integer value) throws UndefinedException, EmptyKeyException {
+	protected final void $integer(String key, Integer value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		_putInteger(key, value);
+		_integer(key, value);
 	}
 	
-	private final native void _putInteger(String key, Integer value) /*-{
+	private final native void _integer(String key, Integer value) /*-{
 		this[key] = value;
 	}-*/;
 
@@ -145,26 +151,26 @@ public class JSObject extends JavaScriptObject {
 	 * Double
 	 */
 	
-	protected final Double getDouble(String key) throws UndefinedException, EmptyKeyException {
+	protected final Double $double(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _getDouble(key);
+		return _double(key);
 	}
 	
-	private final native double _getDouble(String key) /*-{
+	private final native double _double(String key) /*-{
 		return Number(this[key]);
 	}-*/;
 
-	protected final void putDouble(String key, Double value) throws UndefinedException, EmptyKeyException {
+	protected final void $double(String key, Double value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		_putDouble(key, value);
+		_double(key, value);
 	}
 	
-	private final native void _putDouble(String key, Double value) /*-{
+	private final native void _double(String key, Double value) /*-{
 		this[key] = value;
 	}-*/;
 
@@ -172,26 +178,26 @@ public class JSObject extends JavaScriptObject {
 	 * Boolean
 	 */
 	
-	protected final Boolean getBoolean(String key) throws UndefinedException, EmptyKeyException {
+	protected final Boolean $boolean(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _getBoolean(key);
+		return _boolean(key);
 	}
 
-	private final native boolean _getBoolean(String key) /*-{
+	private final native boolean _boolean(String key) /*-{
 		return this[key];
 	}-*/;
 	
-	protected final void putBoolean(String key, Boolean value) throws UndefinedException, EmptyKeyException {
+	protected final void $boolean(String key, Boolean value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
-		_putBoolean(key, value);
+		_boolean(key, value);
 	}
 	
-	private final native void _putBoolean(String key, Boolean value) /*-{
+	private final native void _boolean(String key, Boolean value) /*-{
 		this[key] = value;
 	}-*/;
 
@@ -199,26 +205,26 @@ public class JSObject extends JavaScriptObject {
 	 * Long
 	 */
 	
-	protected final Long getLong(String key) throws UndefinedException, EmptyKeyException {
-		String value = getString(key);
+	protected final Long $long(String key) throws UndefinedException, EmptyKeyException {
+		String value = $string(key);
 		return value == null ? null : Long.valueOf(value);
 	}
 
-	protected final void putLong(String key, Long value) throws UndefinedException, EmptyKeyException {
-		putString(key, value+"");
+	protected final void $long(String key, Long value) throws UndefinedException, EmptyKeyException {
+		$string(key, value+"");
 	}
 
 	/*
 	 * Date
 	 */
 	
-	protected final Date getDate(String key) throws UndefinedException, EmptyKeyException {
-		Long value = getLong(key);
+	protected final Date $date(String key) throws UndefinedException, EmptyKeyException {
+		Long value = $long(key);
 		return value == null ? null : new Date(value);
 	}
 
-	protected final void putDate(String key, Date value) throws UndefinedException, EmptyKeyException {
-		putLong(key, value.getTime());
+	protected final void $date(String key, Date value) throws UndefinedException, EmptyKeyException {
+		$long(key, value.getTime());
 	}
 	
 }
