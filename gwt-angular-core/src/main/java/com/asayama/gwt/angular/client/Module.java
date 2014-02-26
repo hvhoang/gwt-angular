@@ -18,16 +18,6 @@ import com.google.gwt.core.shared.GWT;
  */
 public abstract class Module {
 
-    ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
-    ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
-    ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
-
-    ProviderBinderFactory providerBinderFactory = GWT.create(ProviderBinderFactory.class);
-    ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
-    ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
-
-    ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
-
     JSModule jso;
 
     /**
@@ -38,6 +28,13 @@ public abstract class Module {
     public void value(String name, String value) {
         
     }
+
+    //
+    // Provider
+    //
+    
+    ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
+    ProviderBinderFactory providerBinderFactory = GWT.create(ProviderBinderFactory.class);
 
     /**
      * Configures a previously created service object. Use the {@link Configurator}
@@ -62,6 +59,13 @@ public abstract class Module {
         jso.config(constructor);
     }
 
+    //
+    // Service
+    //
+    
+    ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
+    ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
+    
     public <S extends Service> S factory(S service) {
         return factory(service.getClass().getName(), service);
     }
@@ -81,6 +85,14 @@ public abstract class Module {
         jso.factory(name, constructor);
         return service;
     }
+    
+    //
+    // Controller
+    //
+    
+    ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
+    ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
+    ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
 
     public <C extends Controller> C controller(C controller) {
         return controller(controller.getClass().getName(), controller);

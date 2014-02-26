@@ -26,27 +26,27 @@ public class Angular {
         return modules.toArray(MODULE_ARRAY);
     }
     
-	public static <T extends Module> T module(T object, String... requires) {
+	public static <T extends Module> T module(T module, String... requires) {
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
 				//noop
 			}
 		};
-		return module(object, closure, requires);
+		return module(module, closure, requires);
 	}
 	
-    public static <T extends Module> T module(T object, Closure closure, String... requires) {
-        return module(object.getClass().getName(), object, closure, requires);
+    public static <T extends Module> T module(T module, Closure closure, String... requires) {
+        return module(module.getClass().getName(), module, closure, requires);
     }
     
-	public static <T extends Module> T module(String name, T object, Closure closure, String... requires) {
-	    modules.add(object);
-	    index.put(name, object);
+	public static <T extends Module> T module(String name, T module, Closure closure, String... requires) {
+	    modules.add(module);
+	    index.put(name, module);
 		JSArray<String> jsrequires = JSArray.create(requires);
 		JSClosure jsclosure = JSClosure.create(closure);
-		object.jso = _module(name, jsrequires, jsclosure);
-		return object;
+		module.jso = _module(name, jsrequires, jsclosure);
+		return module;
 	}
 	
     public static void bootstrap() {
