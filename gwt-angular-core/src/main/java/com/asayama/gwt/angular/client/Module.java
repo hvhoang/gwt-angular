@@ -147,11 +147,11 @@ class JSModule extends JSObject {
 		this.config(constructor);
     }-*/;
 
-    final native void factory(String name, JavaScriptObject constructor) /*-{
+    final native void factory(String name, NGConstructor constructor) /*-{
 		this.factory(name, constructor);
     }-*/;
 
-    final native void controller(String name, JavaScriptObject constructor) /*-{
+    final native void controller(String name, NGConstructor constructor) /*-{
 		this.controller(name, constructor);
     }-*/;
 
