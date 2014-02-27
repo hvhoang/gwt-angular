@@ -36,7 +36,7 @@ public class Injector implements Service {
     }
     
     public String[] annotate() {
-        return ngo.annotate().toArray(JSArray.STRING);
+        return ngo.annotate().toArray(JSArray.STRING_ARRAY);
     }
     
 }

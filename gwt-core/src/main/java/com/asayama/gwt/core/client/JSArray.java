@@ -2,6 +2,7 @@ package com.asayama.gwt.core.client;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -11,7 +12,12 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class JSArray<T> extends JavaScriptObject { //implements List<T> {
     
-    public static final String[] STRING = new String[0];
+    public static final String[] STRING_ARRAY = new String[0];
+    public static final Boolean[] BOOLEAN_ARRAY = new Boolean[0];
+    public static final Integer[] INTEGER_ARRAY = new Integer[0];
+    public static final Long[] LONG_ARRAY = new Long[0];
+    public static final Double[] DOUBLE_ARRAY = new Double[0];
+    public static final Date[] DATE_ARRAY = new Date[0];
 
 	public static native <T> JSArray<T> create() /*-{
 		return [];

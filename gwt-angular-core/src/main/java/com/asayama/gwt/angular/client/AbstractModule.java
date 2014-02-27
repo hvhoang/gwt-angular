@@ -16,7 +16,7 @@ import com.google.gwt.core.shared.GWT;
  * 
  * @author kyoken74
  */
-public abstract class AbstractModule {
+public abstract class AbstractModule implements Module {
 
     JSModule jso;
 
@@ -146,7 +146,12 @@ public abstract class AbstractModule {
     }
 
     public String[] requires() {
-        return jso.requires().toArray(JSArray.STRING);
+        return jso.requires().toArray(JSArray.STRING_ARRAY);
+    }
+    
+    @Override
+    public void bind(JSModule jso) {
+        this.jso = jso;
     }
 
     @Override
