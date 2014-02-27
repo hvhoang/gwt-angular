@@ -52,31 +52,59 @@ public class JSObject extends JavaScriptObject {
         return (this[key] == null);
     }-*/;
     
-	/*
-	 * Object
+    /*
+     * Object
+     */
+
+    @SuppressWarnings("unchecked")
+    protected final <T> T $object(String key) throws ClassCastException, UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        if (_isPropUndefined(key) || _isPropNull(key)) {
+            return null;
+        }
+        return (T) _object(key);
+    }
+    
+    private final native Object _object(String key) /*-{
+        return this[key];
+    }-*/;
+    
+    protected final <T> void $object(String key, T value) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        _object(key, value);
+    }
+
+    private final native void _object(String key, Object value) /*-{
+        this[key] = value;
+    }-*/;
+
+    /*
+	 * JSObject
 	 */
 
-	protected final <T extends JSObject> T $object(String key) throws UndefinedException, EmptyKeyException {
+	protected final <T extends JSObject> T $jso(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
 		if (_isPropUndefined(key) || _isPropNull(key)) {
 		    return null;
 		}
-		return _object(key).cast();
+		return _jso(key).cast();
 	}
 	
-	private final native JSObject _object(String key) /*-{
+	private final native JSObject _jso(String key) /*-{
 		return this[key];
 	}-*/;
 	
-	protected final <T extends JSObject> void $object(String key, T value) throws UndefinedException, EmptyKeyException {
+	protected final <T extends JSObject> void $jso(String key, T value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
 		value._checkUndefined();
-		_object(key, value);
+		_jso(key, value);
 	}
 	
-	private final native void _object(String key, JSObject value) /*-{
+	private final native void _jso(String key, JSObject value) /*-{
 		this[key] = value;
 	}-*/;
 	
@@ -84,12 +112,12 @@ public class JSObject extends JavaScriptObject {
 	 * Array
 	 */
     protected final <T> JSArray<T> $array(String key) throws UndefinedException, EmptyKeyException {
-        JSObject value = $object(key);
+        JSObject value = $jso(key);
         return value == null ? null : value.<JSArray<T>>cast();
     }
 
     protected final <T> void $array(String key, JSArray<T> value) throws UndefinedException, EmptyKeyException {
-        $object(key, value == null ? null : value.<JSObject>cast());
+        $jso(key, value == null ? null : value.<JSObject>cast());
     }	
 	
 
