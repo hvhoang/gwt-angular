@@ -7,7 +7,7 @@ import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSFunction;
 
 /**
- * Provide registers {@link Providers} with {@link Injector}.
+ * Provide registers {@link Provider} with {@link Injector}.
  * <p>
  * http://docs.angularjs.org/api/auto/object/$provide
  * </p>

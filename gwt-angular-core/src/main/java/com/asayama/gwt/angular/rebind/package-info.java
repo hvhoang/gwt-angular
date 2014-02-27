@@ -15,8 +15,7 @@
 </dependency>
  * }</pre>
  * 
- * @see Bind
- * @see Depends
+ * @see com.asayama.gwt.angular.client.annotations.Bind
  */
 package com.asayama.gwt.angular.rebind;
 
