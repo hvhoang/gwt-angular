@@ -9,8 +9,14 @@ import java.util.ListIterator;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-
-public class JSArray<T> extends JavaScriptObject { //implements List<T> {
+/**
+ * https://github.com/kyoken74/gwt-angular/issues/28
+ * 
+ * @author kyoken74
+ *
+ * @param <T> Element type of the list
+ */
+public class JSArray<T> extends JavaScriptObject {
     
     public static final String[] STRING_ARRAY = new String[0];
     public static final Boolean[] BOOLEAN_ARRAY = new Boolean[0];
@@ -36,7 +42,7 @@ public class JSArray<T> extends JavaScriptObject { //implements List<T> {
 
 	protected JSArray() {
 	}
-	
+
 	public final T get(int i) {
 		if (i < 0 || size() < i) {
 			throw new ArrayIndexOutOfBoundsException();
@@ -47,7 +53,7 @@ public class JSArray<T> extends JavaScriptObject { //implements List<T> {
 	public final native T _get(int i) /*-{
 		return this[i];
 	}-*/;
-	
+
 	public final native boolean add(T e) /*-{
 		this.push(e);
 		return true;
@@ -203,7 +209,7 @@ public class JSArray<T> extends JavaScriptObject { //implements List<T> {
     }
 
     public final T set(int index, T element) {
-        if (index >= size()) {
+        if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException("index=" + index + ", size=" + size());
         }
         T result = get(index);
