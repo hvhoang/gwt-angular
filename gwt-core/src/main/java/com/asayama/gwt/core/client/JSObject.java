@@ -21,10 +21,10 @@ public class JSObject extends JavaScriptObject {
 		return {};
 	}-*/;
 	
-	public static <T extends JSObject> T parse(String jsonString) {
-		return JsonUtils.safeEval(jsonString).cast();
-	}
-	
+    public static <T extends JSObject> T parse(String jsonString) {
+        return JsonUtils.safeEval(jsonString).cast();
+    }
+    
 	protected JSObject() {
 	}
 
@@ -32,7 +32,7 @@ public class JSObject extends JavaScriptObject {
 		return (typeof(this) == "undefined");
 	}-*/;
 
-	private final void _checkUndefined() throws UndefinedException {
+	protected final void _checkUndefined() throws UndefinedException {
 		if (_isThisUndefined()) {
 			throw new UndefinedException();
 		}

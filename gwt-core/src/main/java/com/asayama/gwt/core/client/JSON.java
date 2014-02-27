@@ -2,6 +2,8 @@ package com.asayama.gwt.core.client;
 
 import java.util.Date;
 
+import com.google.gwt.json.client.JSONObject;
+
 
 public class JSON extends JSObject {
 
@@ -16,7 +18,7 @@ public class JSON extends JSObject {
         $object(key, value);
     }
     
-    public final JSON getJSON(String key) {
+    public final <T extends JSON> T getJSON(String key) {
         return $jso(key);
     }
 
@@ -78,6 +80,10 @@ public class JSON extends JSObject {
     
     public final void put(String key, Date value) {
         $date(key, value);
+    }
+
+    public final String toJSONString() {
+        return new JSONObject(this).toString();
     }
 
 }

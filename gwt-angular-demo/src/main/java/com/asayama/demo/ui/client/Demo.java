@@ -8,10 +8,13 @@ import com.asayama.gwt.angular.client.Module;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
+import com.asayama.gwt.core.client.Config;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
 public class Demo extends Module implements EntryPoint {
+
+    Config config = Config.eval("$wnd.config");
 
     public void onModuleLoad() {
         GWT.log("initializing " + getClass().getName());
