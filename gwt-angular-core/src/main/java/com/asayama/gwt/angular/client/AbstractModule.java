@@ -16,7 +16,7 @@ import com.google.gwt.core.shared.GWT;
  * 
  * @author kyoken74
  */
-public abstract class Module {
+public abstract class AbstractModule {
 
     JSModule jso;
 

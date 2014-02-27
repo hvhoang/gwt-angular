@@ -4,7 +4,7 @@ import com.asayama.demo.ui.client.controllers.ExamplesController;
 import com.asayama.demo.ui.client.controllers.NavbarController;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
-import com.asayama.gwt.angular.client.Module;
+import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
@@ -12,7 +12,7 @@ import com.asayama.gwt.core.client.Config;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-public class Demo extends Module implements EntryPoint {
+public class Demo extends AbstractModule implements EntryPoint {
 
     Config config = Config.eval("$wnd.config");
 

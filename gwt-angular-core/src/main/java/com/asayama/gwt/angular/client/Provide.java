@@ -18,7 +18,7 @@ import com.asayama.gwt.core.client.JSFunction;
  * provider instance is. Could it be provider function?
  * 
  * @author kyoken74
- * @see Module
+ * @see AbstractModule
  */
 public class Provide implements Service {
     

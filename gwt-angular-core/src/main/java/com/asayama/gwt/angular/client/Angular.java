@@ -18,15 +18,15 @@ import com.google.gwt.core.client.GWT;
  */
 public class Angular {
 	
-    static final Module[] MODULE_ARRAY = new Module[0];
-    static List<Module> modules = new ArrayList<Module>();
-    static Map<String, Module> index = new HashMap<String, Module>();
+    static final AbstractModule[] MODULE_ARRAY = new AbstractModule[0];
+    static List<AbstractModule> modules = new ArrayList<AbstractModule>();
+    static Map<String, AbstractModule> index = new HashMap<String, AbstractModule>();
     
-    public static Module[] modules() {
+    public static AbstractModule[] modules() {
         return modules.toArray(MODULE_ARRAY);
     }
     
-	public static <T extends Module> T module(T module, String... requires) {
+	public static <T extends AbstractModule> T module(T module, String... requires) {
 		Closure closure = new Closure() {
 			@Override
 			public void closure(Object... args) {
@@ -36,11 +36,11 @@ public class Angular {
 		return module(module, closure, requires);
 	}
 	
-    public static <T extends Module> T module(T module, Closure closure, String... requires) {
+    public static <T extends AbstractModule> T module(T module, Closure closure, String... requires) {
         return module(module.getClass().getName(), module, closure, requires);
     }
     
-	public static <T extends Module> T module(String name, T module, Closure closure, String... requires) {
+	public static <T extends AbstractModule> T module(String name, T module, Closure closure, String... requires) {
 	    modules.add(module);
 	    index.put(name, module);
 		JSArray<String> jsrequires = JSArray.create(requires);
@@ -53,7 +53,7 @@ public class Angular {
         bootstrap(modules());
     }
     
-	public static void bootstrap(Module... modules) {
+	public static void bootstrap(AbstractModule... modules) {
 		String m = "";
         StringBuilder sb = new StringBuilder();
 		JSArray<String> jsarray = JSArray.create();

@@ -6,7 +6,7 @@ import com.asayama.gwt.angular.client.q.Q;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-public class NG extends Module implements EntryPoint {
+public class NG extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {

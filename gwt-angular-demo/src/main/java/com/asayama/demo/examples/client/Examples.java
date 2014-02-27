@@ -5,11 +5,11 @@ import com.asayama.demo.examples.client.controllers.OnClickEventExample;
 import com.asayama.demo.examples.client.controllers.TextInputExample;
 import com.asayama.demo.examples.client.controllers.UrlHashParameterExample;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.client.Module;
+import com.asayama.gwt.angular.client.AbstractModule;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-public class Examples extends Module implements EntryPoint {
+public class Examples extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         GWT.log("initializing " + getClass().getName());

@@ -1,5 +1,6 @@
 package com.asayama.demo.ui.client.controllers;
 
+import com.asayama.gwt.angular.client.AbstractController;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;

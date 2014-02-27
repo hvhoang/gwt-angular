@@ -10,7 +10,7 @@ import com.asayama.gwt.core.client.JSArray;
  * </p>
  * 
  * @author kyoken74
- * @see Module
+ * @see AbstractModule
  */
 public class Injector implements Service {
 

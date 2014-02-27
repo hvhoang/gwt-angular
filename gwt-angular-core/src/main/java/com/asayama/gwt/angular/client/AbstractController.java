@@ -1,7 +1,5 @@
-package com.asayama.demo.ui.client.controllers;
+package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.client.log.Log;
 
 
