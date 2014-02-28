@@ -1,7 +1,5 @@
-package com.asayama.demo.ui.client;
+package com.asayama.demo.client;
 
-import com.asayama.demo.ui.client.controllers.ExamplesController;
-import com.asayama.demo.ui.client.controllers.NavbarController;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;

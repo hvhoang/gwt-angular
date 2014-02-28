@@ -1,4 +1,4 @@
-package com.asayama.demo.ui.client.controllers;
+package com.asayama.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 

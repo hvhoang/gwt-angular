@@ -1,4 +1,4 @@
-package com.asayama.demo.examples.client.controllers;
+package com.asayama.demo.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.client.GWT;

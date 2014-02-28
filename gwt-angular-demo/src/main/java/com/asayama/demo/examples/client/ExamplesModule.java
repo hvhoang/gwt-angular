@@ -1,9 +1,5 @@
 package com.asayama.demo.examples.client;
 
-import com.asayama.demo.examples.client.controllers.HttpClientExample;
-import com.asayama.demo.examples.client.controllers.OnClickEventExample;
-import com.asayama.demo.examples.client.controllers.TextInputExample;
-import com.asayama.demo.examples.client.controllers.UrlHashParameterExample;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.google.gwt.core.client.EntryPoint;
