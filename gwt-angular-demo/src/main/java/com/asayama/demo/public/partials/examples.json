@@ -18,7 +18,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/demo/examples/client/controllers/TextInputExample.java"
+					"filename" : "partials/examples/java/com/asayama/demo/examples/client/TextInputExample.java"
 				}
 			]
 		},{
@@ -39,7 +39,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/demo/examples/client/controllers/OnClickEventExample.java"
+					"filename" : "partials/examples/java/com/asayama/demo/examples/client/OnClickEventExample.java"
 				}
 			]
 		},{
@@ -60,7 +60,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/demo/examples/client/controllers/UrlHashParameterExample.java"
+					"filename" : "partials/examples/java/com/asayama/demo/examples/client/UrlHashParameterExample.java"
 				}
 			]
 		},{
@@ -81,7 +81,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/demo/examples/client/controllers/HttpClientExample.java"
+					"filename" : "partials/examples/java/com/asayama/demo/examples/client/HttpClientExample.java"
 				},{
 					"id" : "data",
 					"displayName" : "Data",
