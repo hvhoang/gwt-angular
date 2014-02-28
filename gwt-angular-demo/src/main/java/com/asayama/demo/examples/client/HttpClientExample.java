@@ -47,6 +47,7 @@ public class HttpClientExample implements Controller {
 }
 
 class Customers extends JSON {
+
     protected Customers() {
     }
 }

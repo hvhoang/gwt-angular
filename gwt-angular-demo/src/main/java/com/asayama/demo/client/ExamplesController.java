@@ -118,7 +118,7 @@ class Examples extends JSON {
     }
 
     final JSArray<Page> getPages() {
-        return $jsarray("pages");
+        return getJSArray("pages");
     }
 }
 
@@ -128,15 +128,15 @@ class Page extends JSON {
     }
 
     final JSArray<Tab> getTabs() {
-        return $jsarray("tabs");
+        return getJSArray("tabs");
     }
 
     final void setSelectedTab(Tab tab) {
-        $jsobject("selectedTab", tab);
+        put("selectedTab", tab);
     }
 
     final Tab getSelectedTab() {
-        return $jsobject("selectedTab");
+        return getJSObject("selectedTab");
     }
 }
 
@@ -146,22 +146,22 @@ class Tab extends JSON {
     }
 
     final String getDisplayName() {
-        return $string("displayName");
+        return getString("displayName");
     }
 
     final String getTemplate() {
-        return $string("template");
+        return getString("template");
     }
 
     final String getFilename() {
-        return $string("filename");
+        return getString("filename");
     }
 
     final String getSource() {
-        return $string("source");
+        return getString("source");
     }
 
     final void setSource(String source) {
-        $string("source", source);
+        put("source", source);
     }
 }
