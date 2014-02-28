@@ -55,6 +55,6 @@ class NGRouteParams extends NGObject {
     }
 
     public final <T extends JSObject> T getObjectParam(String key) {
-        return $jso(key);
+        return $jsobject(key);
     }
 }

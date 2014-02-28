@@ -7,7 +7,7 @@ import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.core.client.JSON;
 import com.asayama.gwt.core.client.util.Objects;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
@@ -115,35 +115,35 @@ public class ExamplesController extends AbstractController {
 
 }
 
-class Examples extends JSObject {
+class Examples extends JSON {
 
     protected Examples() {
     }
 
     final JSArray<Page> getPages() {
-        return $jso("pages").cast();
+        return $jsarray("pages");
     }
 }
 
-class Page extends JSObject {
+class Page extends JSON {
 
     protected Page() {
     }
 
     final JSArray<Tab> getTabs() {
-        return $jso("tabs").cast();
+        return $jsarray("tabs");
     }
 
     final void setSelectedTab(Tab tab) {
-        $jso("selectedTab", tab);
+        $jsobject("selectedTab", tab);
     }
 
     final Tab getSelectedTab() {
-        return $jso("selectedTab");
+        return $jsobject("selectedTab");
     }
 }
 
-class Tab extends JSObject {
+class Tab extends JSON {
 
     protected Tab() {
     }

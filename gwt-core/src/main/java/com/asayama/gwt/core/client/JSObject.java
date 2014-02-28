@@ -5,7 +5,6 @@ import java.util.Date;
 import com.asayama.gwt.core.client.exceptions.EmptyKeyException;
 import com.asayama.gwt.core.client.exceptions.UndefinedException;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsonUtils;
 
 /**
  * Represents a JavaScriptObject, and used as a syntax sugar, i.e. a shorthand
@@ -17,14 +16,14 @@ import com.google.gwt.core.client.JsonUtils;
  */
 public class JSObject extends JavaScriptObject {
 
-	public static native <T extends JSObject> T create() /*-{
-		return {};
-	}-*/;
-	
-    public static <T extends JSObject> T parse(String jsonString) {
-        return JsonUtils.safeEval(jsonString).cast();
-    }
+    public static native <T extends JSObject> T create() /*-{
+        return {};
+    }-*/;
     
+    public static native <T extends JSObject> T eval(String expr) /*-{
+        return eval('('+expr+')');
+    }-*/;
+
 	protected JSObject() {
 	}
 
@@ -79,45 +78,45 @@ public class JSObject extends JavaScriptObject {
     private final native void _object(String key, Object value) /*-{
         this[key] = value;
     }-*/;
-
+    
     /*
 	 * JSObject
 	 */
 
-	protected final <T extends JSObject> T $jso(String key) throws UndefinedException, EmptyKeyException {
+	protected final <T extends JSObject> T $jsobject(String key) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
 		if (_isPropUndefined(key) || _isPropNull(key)) {
 		    return null;
 		}
-		return _jso(key).cast();
+		return _jsobject(key).cast();
 	}
 	
-	private final native JSObject _jso(String key) /*-{
+	private final native JSObject _jsobject(String key) /*-{
 		return this[key];
 	}-*/;
 	
-	protected final <T extends JSObject> void $jso(String key, T value) throws UndefinedException, EmptyKeyException {
+	protected final <T extends JSObject> void $jsobject(String key, T value) throws UndefinedException, EmptyKeyException {
 		_checkUndefined();
 		_checkEmptyKey(key);
 		value._checkUndefined();
-		_jso(key, value);
+		_jsobject(key, value);
 	}
 	
-	private final native void _jso(String key, JSObject value) /*-{
+	private final native void _jsobject(String key, JSObject value) /*-{
 		this[key] = value;
 	}-*/;
 	
 	/*
 	 * Array
 	 */
-    protected final <T> JSArray<T> $array(String key) throws UndefinedException, EmptyKeyException {
-        JSObject value = $jso(key);
+    protected final <T> JSArray<T> $jsarray(String key) throws UndefinedException, EmptyKeyException {
+        JSObject value = $jsobject(key);
         return value == null ? null : value.<JSArray<T>>cast();
     }
 
-    protected final <T> void $array(String key, JSArray<T> value) throws UndefinedException, EmptyKeyException {
-        $jso(key, value == null ? null : value.<JSObject>cast());
+    protected final <T> void $jsarray(String key, JSArray<T> value) throws UndefinedException, EmptyKeyException {
+        $jsobject(key, value == null ? null : value.<JSObject>cast());
     }	
 	
 

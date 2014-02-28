@@ -3,7 +3,7 @@ package com.asayama.demo.examples.client.controllers;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
@@ -46,7 +46,7 @@ public class HttpClientExample implements Controller {
 
 }
 
-class Customers extends JSObject {
+class Customers extends JSON {
     protected Customers() {
     }
 }

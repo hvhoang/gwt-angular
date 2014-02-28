@@ -25,11 +25,38 @@ public class JSONPath {
         });
     }
     
-    public static <T> JSArray<T> getArray(JSON json, String path) {
+    public static <T extends JSObject> T getJSObject(JSON json, String path) {
+        return get(json, path, new Function<T>() {
+            @Override
+            public T function(Object... args) {
+                return ((JSON) args[0]).getJSObject((String) args[1]);
+            }
+        });
+    }
+    
+    public static <T> JSArray<T> getJSArray(JSON json, String path) {
         return get(json, path, new Function<JSArray<T>>() {
             @Override
             public JSArray<T> function(Object... args) {
-                return ((JSON) args[0]).getArray((String) args[1]);
+                return ((JSON) args[0]).getJSArray((String) args[1]);
+            }
+        });
+    }
+    
+    public static <T> JSFunction<T> getJSFunction(JSON json, String path) {
+        return get(json, path, new Function<JSFunction<T>>() {
+            @Override
+            public JSFunction<T> function(Object... args) {
+                return ((JSON) args[0]).getJSFunction((String) args[1]);
+            }
+        });
+    }
+    
+    public static JSClosure getJSClosure(JSON json, String path) {
+        return get(json, path, new Function<JSClosure>() {
+            @Override
+            public JSClosure function(Object... args) {
+                return ((JSON) args[0]).getJSClosure((String) args[1]);
             }
         });
     }
@@ -97,13 +124,16 @@ public class JSONPath {
         JSON node = json;
         for (int i = 0; i < split.length; i++) {
             String s = split[i];
+            if (i == 0 && (s == null || s.length() == 0)) {
+                continue; //first slash is ignored, if it exists
+            }
             if (s.contains("[") && s.contains("]")) {
                 String key = s.substring(0, s.indexOf("["));
                 String indexString = s.substring(s.indexOf("[") + 1, s.indexOf("]"));
                 if (indexString == null || indexString.length() == 0) {
                     throw new InvalidPathException(path);
                 }
-                JSArray<JSON> array = node.getArray(key);
+                JSArray<JSON> array = node.getJSArray(key);
                 if (array == null) {
                     throw new InvalidPathException(path);
                 }
