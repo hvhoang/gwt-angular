@@ -11,7 +11,7 @@ public class JSON extends JSObject {
     public static <T extends JSON> T parse(String jsonString) {
         return JsonUtils.safeEval(jsonString).cast();
     }
-
+    
     protected JSON() {
     }
     
