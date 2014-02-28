@@ -43,7 +43,6 @@ public class UrlHashParameterExample implements Controller {
     public void setName(String name) {
         this.name = name;
     }
-
 }
 
 interface UrlHashParameterExampleConstants extends Constants {
