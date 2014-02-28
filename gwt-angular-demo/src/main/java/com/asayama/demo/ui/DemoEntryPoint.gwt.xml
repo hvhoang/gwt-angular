@@ -4,9 +4,9 @@
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.google.gwt.i18n.I18N" />
   
-  <inherits name="com.asayama.gwt.angular.Angular" />
-  <inherits name="com.asayama.gwt.angular.http.AngularHttp" />
-  <inherits name="com.asayama.gwt.angular.route.AngularRoute" />
+  <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.angular.route.NGRoute" />
+  <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
   <inherits name="com.asayama.demo.examples.ExamplesModule" />
   
   <stylesheet src="lib/bootstrap/3.0.3/css/bootstrap.min.css" />
