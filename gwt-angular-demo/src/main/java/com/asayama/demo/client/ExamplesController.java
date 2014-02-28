@@ -6,7 +6,6 @@ import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
-import com.asayama.gwt.core.client.Config;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
 import com.asayama.gwt.core.client.util.Objects;
@@ -16,26 +15,16 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class ExamplesController extends AbstractController {
 
-    public static final String EXAMPLES_MODEL_URL = "partials/examples.json";
-
     // Services
     protected HttpClient http;
     protected RouteParams routeParams;
     protected Location location;
     
-    @Bind("config")
-    private Config config;
-    
-    public Config getConfig() {
-        return config;
-    }
-    
-    public JSArray<String> getConfigKeys() {
-        return config.keys();
-    }
-    
     @Bind("hostPageBaseURL")
     private String hostPageBaseURL;
+    
+    @Bind("examplesURL")
+    private String examplesURL;
 
     // Models
     private Examples examples = null;
@@ -49,7 +38,7 @@ public class ExamplesController extends AbstractController {
         // https://github.com/kyoken74/gwt-angular/issues/33
         final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
-        http.get(EXAMPLES_MODEL_URL, new HttpClientCallback() {
+        http.get(getExamplesURL(), new HttpClientCallback() {
 
             @Override
             public void onSuccess(Request request, Response response) {
@@ -123,6 +112,10 @@ public class ExamplesController extends AbstractController {
 
     public String getHostPageBaseURL() {
         return hostPageBaseURL;
+    }
+    
+    public String getExamplesURL() {
+        return examplesURL;
     }
 
 }

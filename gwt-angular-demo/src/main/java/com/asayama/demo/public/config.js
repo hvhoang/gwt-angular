@@ -1,5 +1,3 @@
 var config = {
-		foo: "foo",
-		bar: "bar",
-		baz: "baz"
+		examplesUrl: "example.json"
 };
