@@ -20,9 +20,6 @@ public class ExamplesController extends AbstractController {
     protected RouteParams routeParams;
     protected Location location;
     
-    @Bind("hostPageBaseURL")
-    private String hostPageBaseURL;
-    
     @Bind("examplesURL")
     private String examplesURL;
 
@@ -110,14 +107,9 @@ public class ExamplesController extends AbstractController {
         this.selectedPage = selectedPage;
     }
 
-    public String getHostPageBaseURL() {
-        return hostPageBaseURL;
-    }
-    
     public String getExamplesURL() {
         return examplesURL;
     }
-
 }
 
 class Examples extends JSON {

@@ -14,7 +14,6 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         GWT.log("initializing " + getClass().getName());
         Angular.module(this);
-        constant("hostPageBaseURL", GWT.getModuleBaseForStaticFiles());
         constant("examplesURL", "examples.json");
         controller(new NavbarController());
         controller(new ExamplesController());
