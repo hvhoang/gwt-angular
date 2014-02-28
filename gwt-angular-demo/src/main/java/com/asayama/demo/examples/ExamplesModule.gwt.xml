@@ -12,5 +12,5 @@
   <source path="client" />
   <source path="shared" />
   
-  <entry-point class="com.asayama.demo.examples.client.Examples" />
+  <entry-point class="com.asayama.demo.examples.client.ExamplesModule" />
 </module>

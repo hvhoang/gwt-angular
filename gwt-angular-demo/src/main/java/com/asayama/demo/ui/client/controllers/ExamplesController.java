@@ -6,6 +6,7 @@ import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
+import com.asayama.gwt.core.client.Config;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
 import com.asayama.gwt.core.client.util.Objects;
@@ -21,6 +22,17 @@ public class ExamplesController extends AbstractController {
     protected HttpClient http;
     protected RouteParams routeParams;
     protected Location location;
+    
+    @Bind("config")
+    private Config config;
+    
+    public Config getConfig() {
+        return config;
+    }
+    
+    public JSArray<String> getConfigKeys() {
+        return config.keys();
+    }
     
     @Bind("hostPageBaseURL")
     private String hostPageBaseURL;

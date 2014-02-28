@@ -9,7 +9,7 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-public class Examples extends AbstractModule implements EntryPoint {
+public class ExamplesModule extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         GWT.log("initializing " + getClass().getName());
