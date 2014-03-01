@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>gwt-angular-demo</artifactId>
   <packaging>war</packaging>
@@ -15,10 +16,17 @@
     <resources>
       <resource>
         <directory>src/main/java</directory>
+        <filtering>true</filtering>
         <includes>
-          <include>**/*.java</include>
           <include>**/*.gwt.xml</include>
         </includes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/*.gwt.xml</exclude>
+        </excludes>
       </resource>
     </resources>
     <plugins>
@@ -55,11 +63,9 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <!--
-                This configuration is used to make the Java source code 
-                available on the website.
-              -->
-              <outputDirectory>${basedir}/target/${project.build.finalName}/demo/partials/examples/java</outputDirectory>
+              <!-- This configuration is used to make the Java source code available on the website. -->
+              <!-- <outputDirectory>${basedir}/target/${project.build.finalName}/${project.version}/partials/examples/java</outputDirectory> -->
+              <outputDirectory>${project.build.directory}/${project.build.finalName}/demo/partials/examples/java</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/java/</directory>
@@ -97,11 +103,13 @@
     </dependency>
 
     <!-- Testing -->
+    <!--
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    -->
 
   </dependencies>
 </project>
