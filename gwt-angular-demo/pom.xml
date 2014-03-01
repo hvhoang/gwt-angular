@@ -36,7 +36,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.asayama.demo.DemoEntryPoint</module>
+              <module>com.asayama.gwt.angular.demo.DemoEntryPoint</module>
             </configuration>
             <goals>
               <goal>compile</goal>

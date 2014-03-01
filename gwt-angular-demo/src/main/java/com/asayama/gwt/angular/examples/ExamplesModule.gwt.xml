@@ -12,5 +12,5 @@
   <source path="client" />
   <source path="shared" />
   
-  <entry-point class="com.asayama.demo.examples.client.ExamplesModule" />
+  <entry-point class="com.asayama.gwt.angular.examples.client.ExamplesModule" />
 </module>
