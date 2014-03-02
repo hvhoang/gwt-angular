@@ -64,8 +64,7 @@
             </goals>
             <configuration>
               <!-- This configuration is used to make the Java source code available on the website. -->
-              <!-- <outputDirectory>${basedir}/target/${project.build.finalName}/${project.version}/partials/examples/java</outputDirectory> -->
-              <outputDirectory>${project.build.directory}/${project.build.finalName}/demo/partials/examples/java</outputDirectory>
+              <outputDirectory>${project.build.directory}/${project.build.finalName}/demo/src/main/java</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/java/</directory>
