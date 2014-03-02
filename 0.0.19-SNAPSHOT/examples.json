@@ -18,7 +18,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/gwt/angular/examples/client/TextInputExample.java"
+					"filename" : "com/asayama/gwt/angular/examples/client/TextInputExample.java"
 				}
 			]
 		},{
@@ -39,7 +39,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/gwt/angular/examples/client/OnClickEventExample.java"
+					"filename" : "com/asayama/gwt/angular/examples/client/OnClickEventExample.java"
 				}
 			]
 		},{
@@ -60,7 +60,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/gwt/angular/examples/client/UrlHashParameterExample.java"
+					"filename" : "com/asayama/gwt/angular/examples/client/UrlHashParameterExample.java"
 				}
 			]
 		},{
@@ -81,7 +81,7 @@
 					"id" : "java",
 					"displayName" : "Java",
 					"template" : "partials/templates/java.html",
-					"filename" : "partials/examples/java/com/asayama/gwt/angular/examples/client/HttpClientExample.java"
+					"filename" : "com/asayama/gwt/angular/examples/client/HttpClientExample.java"
 				},{
 					"id" : "data",
 					"displayName" : "Data",
