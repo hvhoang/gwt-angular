@@ -16,12 +16,13 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examplesURL", "examples.json");
         controller(new NavbarController());
+        controller(new JumbotronController());
         controller(new ExamplesController());
         config(new RouteProvider(), new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider
-                    .when("/jumbotron", Template.create("partials/jumbotron.html", ExamplesController.class))
+                    .when("/jumbotron", Template.create("partials/jumbotron.html", JumbotronController.class))
                     .when("/examples", Template.create("partials/examples.html", ExamplesController.class))
                     .otherwise(Redirect.create("/jumbotron"));
             }
