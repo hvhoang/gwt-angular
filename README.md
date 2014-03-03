@@ -24,7 +24,7 @@ AngularJS to Java programmers.
 
 gwt-angular provides a GWT wrapper around AngularJS, so that the controller
 component of AngularJS can be written in Java language, in a manner that is 
-more natural to a programmer with little background in JavaScript but come with
+natural to a programmer with little background in JavaScript but with
 more experience in Java. gwt-angular aims to bridge the gap in paradigm.
 
 The purpose of gwt-angular is to introduce a clear separation between the view
