@@ -48,32 +48,17 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
-          <warSourceDirectory>war</warSourceDirectory>
           <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+          <webResources>
+            <resource>
+              <directory>${project.basedir}</directory>
+              <targetPath>demo</targetPath>
+              <includes>
+                <include>src/main/java/**/*</include>
+              </includes>
+            </resource>
+          </webResources>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.6</version>
-        <executions>
-          <execution>
-            <id>copy-resources</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <!-- This configuration is used to make the Java source code available on the website. -->
-              <outputDirectory>${project.build.directory}/${project.build.finalName}/demo/src/main/java</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>src/main/java/</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
