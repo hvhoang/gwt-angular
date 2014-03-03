@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+</style>
 </head>
 <body>
   <div data-ng-include="'partials/navbar.html'" data-ng-controller="com.asayama.gwt.angular.demo.client.NavbarController"></div>

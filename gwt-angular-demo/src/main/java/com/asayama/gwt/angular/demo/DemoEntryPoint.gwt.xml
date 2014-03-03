@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to="demo">
-  
+
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.google.gwt.i18n.I18N" />
-  
+
   <inherits name="com.asayama.gwt.angular.NG" />
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
-  
-  <stylesheet src="lib/bootstrap/3.0.3/css/bootstrap.min.css" />
-  <stylesheet src="lib/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+
+  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <!--<stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" /> -->
   <script src="lib/jquery/1.10.2/jquery.min.js" />
-  <script src="lib/bootstrap/3.0.3/js/bootstrap.min.js" />
- 
+  <script src="lib/bootstrap/3.1.1/js/bootstrap.min.js" />
+
   <source path="client" />
   <source path="shared" />
-  
+
   <entry-point class="com.asayama.gwt.angular.demo.client.DemoEntryPoint" />
 
 </module>

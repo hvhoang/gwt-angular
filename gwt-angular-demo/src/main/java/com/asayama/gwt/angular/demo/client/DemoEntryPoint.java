@@ -21,8 +21,9 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider
+                    .when("/jumbotron", Template.create("partials/jumbotron.html", ExamplesController.class))
                     .when("/examples", Template.create("partials/examples.html", ExamplesController.class))
-                    .otherwise(Redirect.create("/examples"));
+                    .otherwise(Redirect.create("/jumbotron"));
             }
         });
         Angular.bootstrap();
