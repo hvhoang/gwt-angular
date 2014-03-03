@@ -4,7 +4,7 @@ WARNING
 The API is in very early stages of development, and it is not yet ready for
 beta.
 
-See the demo: kyoken74.github.io/gwt-angular/
+See the demo: http://kyoken74.github.io/gwt-angular/
 
 
 Collaborators Wanted
