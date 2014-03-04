@@ -50,6 +50,6 @@ interface UrlHashParameterExampleConstants extends Constants {
     static final UrlHashParameterExampleConstants INSTANCE = 
             GWT.create(UrlHashParameterExampleConstants.class);
 
-    @DefaultStringValue("You can modify the URL hash parameter")
+    @DefaultStringValue("Modify URL Hash Parameter")
     String title();
 }

@@ -15,6 +15,7 @@ public class TextInputExample implements Controller {
 
     @Override
     public void onControllerLoad() {
+        //noop
     }
 
     // Public getters and setters are automatically wired to AngularJS's $scope.
@@ -25,7 +26,6 @@ public class TextInputExample implements Controller {
     public void setName(String name) {
         this.name = name;
     }
-
 }
 
 interface TextInputExampleConstants extends Constants {
