@@ -1,6 +1,5 @@
 package com.asayama.gwt.core.client.util;
 
-import java.util.List;
 
 
 public class Arrays {
@@ -12,8 +11,9 @@ public class Arrays {
         if (array.length == 0) {
             throw new IndexOutOfBoundsException("Cannot shift 0 length array");
         }
-        List<R> list = java.util.Arrays.asList(array);
-        list.remove(0);
-        return list.toArray(array);
+        for (int i = 1; i < array.length; i++) {
+            array[i - 1] = array[i];
+        }
+        return array;
     }
 }

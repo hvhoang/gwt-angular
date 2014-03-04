@@ -4,6 +4,7 @@ import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
+import com.asayama.gwt.core.client.JSFunction;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
@@ -40,6 +41,14 @@ public abstract class AbstractModule implements Module {
     public <V> V constant(String name, V value) {
         jso.constant(name, value);
         return value;
+    }
+    
+    //
+    // Filter
+    //
+    
+    public <F extends AbstractFilter> void filter(String name, F filter) {
+        jso.filter(name, JSFunction.create(filter));
     }
 
     //
@@ -179,6 +188,12 @@ class JSModule extends JSObject {
     
     final native void constant(String name, Object value) /*-{
         this.constant(name, value);
+    }-*/;
+    
+    final native void filter(String name, JSFunction<String> filter) /*-{
+        this.filter(name, function() {
+            return filter;
+        });
     }-*/;
 
     final native void config(JavaScriptObject constructor) /*-{

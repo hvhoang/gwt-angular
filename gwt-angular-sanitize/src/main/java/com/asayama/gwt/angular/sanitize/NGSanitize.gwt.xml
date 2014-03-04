@@ -3,7 +3,7 @@
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.core.Core" />
   <inherits name="com.asayama.gwt.angular.NG" />
-  <script src="lib/angular/1.2.9/angular-sanitize.min.js" />
+  <script src="lib/angular/1.2.14/angular-sanitize.js" />
   <source path="client" />
   <source path="shared" />
   <entry-point class="com.asayama.gwt.angular.sanitize.client.NGSanitize" />

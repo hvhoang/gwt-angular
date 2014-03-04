@@ -4,10 +4,10 @@ import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.util.Arrays;
 
 
-public abstract class Filter implements Function<String> {
+public abstract class AbstractFilter implements Function<String> {
 
     public abstract String filter(String input);
-
+    
     public String filter(String input, Object... options) {
         return filter(input);
     }
