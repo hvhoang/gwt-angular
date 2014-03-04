@@ -8,12 +8,12 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "partials/templates/demo.html",
-					"filename" : "partials/examples/demo/TextInputExample.html"
+					"filename" : "partials/examples/TextInputExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "partials/templates/html.html",
-					"filename" : "partials/examples/demo/TextInputExample.html"
+					"filename" : "partials/examples/TextInputExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
@@ -29,12 +29,12 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "partials/templates/demo.html",
-					"filename" : "partials/examples/demo/OnClickEventExample.html"
+					"filename" : "partials/examples/OnClickEventExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "partials/templates/html.html",
-					"filename" : "partials/examples/demo/OnClickEventExample.html"
+					"filename" : "partials/examples/OnClickEventExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
@@ -50,12 +50,12 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "partials/templates/demo.html",
-					"filename" : "partials/examples/demo/UrlHashParameterExample.html"
+					"filename" : "partials/examples/UrlHashParameterExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "partials/templates/html.html",
-					"filename" : "partials/examples/demo/UrlHashParameterExample.html"
+					"filename" : "partials/examples/UrlHashParameterExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
@@ -71,12 +71,12 @@
 					"id" : "demo",
 					"displayName" : "Demo",
 					"template" : "partials/templates/demo.html",
-					"filename" : "partials/examples/demo/HttpClientExample.html"
+					"filename" : "partials/examples/HttpClientExample.html"
 				},{
 					"id" : "html",
 					"displayName" : "HTML",
 					"template" : "partials/templates/html.html",
-					"filename" : "partials/examples/demo/HttpClientExample.html"
+					"filename" : "partials/examples/HttpClientExample.html"
 				},{
 					"id" : "java",
 					"displayName" : "Java",
@@ -86,7 +86,7 @@
 					"id" : "data",
 					"displayName" : "Data",
 					"template" : "partials/templates/json.html",
-					"filename" : "partials/examples/data/customers.json"
+					"filename" : "partials/examples/HttpClientExample.json"
 				}
 			]
 		}

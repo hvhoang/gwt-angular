@@ -10,7 +10,7 @@ import com.google.gwt.http.client.Response;
 
 public class HttpClientExample implements Controller {
 
-    // Fields of type that implements Injectable are injected by the framework
+    // Fields of type Injectable are injected by the framework
     private HttpClient http;
 
     // Other fields are used to represent the state of this controller
@@ -18,7 +18,7 @@ public class HttpClientExample implements Controller {
 
     @Override
     public void onControllerLoad() {
-        String url = "partials/examples/data/customers.json";
+        String url = "partials/examples/HttpClientExample.json";
         HttpClientCallback callback = new HttpClientCallback() {
             @Override
             public void onSuccess(Request request, Response response) {
@@ -43,9 +43,11 @@ public class HttpClientExample implements Controller {
     public void setCustomers(Customers customers) {
         this.customers = customers;
     }
-
 }
 
+/**
+ * Represents a model object.
+ */
 class Customers extends JSON {
 
     protected Customers() {
