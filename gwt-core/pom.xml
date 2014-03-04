@@ -35,8 +35,6 @@
     </plugins>
   </build>
   <dependencies>
-
-    <!-- GWT Client -->
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
@@ -46,13 +44,5 @@
       <artifactId>gwt-dev</artifactId>
       <scope>provided</scope>
     </dependency>
-
-    <!-- Testing -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-
   </dependencies>
 </project>

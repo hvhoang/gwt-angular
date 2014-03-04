@@ -36,8 +36,7 @@
     </plugins>
   </build>
   <dependencies>
-
-    <!-- GWT Client -->
+    <!-- GWT -->
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
@@ -47,25 +46,14 @@
       <artifactId>gwt-dev</artifactId>
       <scope>provided</scope>
     </dependency>
-
-    <!-- GWT Utils -->
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-core</artifactId>
     </dependency>
-
-    <!-- Code Generator -->
+    <!-- Velocity Code Generator -->
     <dependency>
       <groupId>org.apache.velocity</groupId>
       <artifactId>velocity</artifactId>
     </dependency>
-
-    <!-- Testing -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-
   </dependencies>
 </project>
