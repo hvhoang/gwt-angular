@@ -34,6 +34,9 @@ interface DependenciesFactory<T> {
     String[] create(T object);
 }
 
+interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
+}
+
 interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
 }
 
@@ -82,6 +85,9 @@ interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
  */
 interface BinderFactory<T> {
     JSClosure create(T object);
+}
+
+interface DirectiveBinderFactory extends BinderFactory<Directive> {
 }
 
 interface ProviderBinderFactory extends BinderFactory<Provider> {

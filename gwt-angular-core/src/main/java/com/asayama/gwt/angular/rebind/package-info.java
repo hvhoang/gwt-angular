@@ -213,8 +213,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
         List<JClassType> supportedClassTypes = new ArrayList<JClassType>();
         if (supportedSubClassTypes == null || supportedSubClassTypes.length == 0) {
             String m = "Unable to find supported sub classTypes for " + supportedRootClassType;
-            LOG.logp(Level.SEVERE, CLASS, METHOD, m);
-            throw new RebindException(m);
+            LOG.logp(Level.WARNING, CLASS, METHOD, m);
         }
         for (JClassType returnClassType : supportedSubClassTypes) {
             if (returnClassType.isDefaultInstantiable()) {

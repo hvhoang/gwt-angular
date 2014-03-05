@@ -52,6 +52,29 @@ public abstract class AbstractModule implements Module {
     }
 
     //
+    // Directive
+    //
+    
+    DirectiveDependenciesFactory directiveDependenciesFactory = GWT.create(DirectiveDependenciesFactory.class);
+    DirectiveBinderFactory directiveBinderFactory = GWT.create(DirectiveBinderFactory.class);
+    
+    public <D extends Directive> D directive(String name, final D directive) {
+        final JSClosure injector = directiveBinderFactory.create(directive);
+        Function<D> initializer = new Function<D>() {
+
+            @Override
+            public D function(Object... args) {
+                injector.apply(args);
+                return directive;
+            }
+        };
+        String[] dependencies = directiveDependenciesFactory.create(directive);
+        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
+        jso.directive(name, constructor);
+        return directive;
+    }
+    
+    //
     // Provider
     //
     
@@ -65,7 +88,7 @@ public abstract class AbstractModule implements Module {
      * @param provider Provider to be configured.
      * @param configurator Configures the provider.
      */
-    public <P extends Provider> void config(final P provider, final Configurator<P> configurator) {
+    public <P extends Provider> P config(final P provider, final Configurator<P> configurator) {
         final JSClosure injector = providerBinderFactory.create(provider);
         Function<P> initializer = new Function<P>() {
 
@@ -79,6 +102,7 @@ public abstract class AbstractModule implements Module {
         String[] dependencies = providerDependenciesFactory.create(provider);
         NGConstructor constructor = NGConstructor.create(initializer, dependencies);
         jso.config(constructor);
+        return provider;
     }
 
     //
