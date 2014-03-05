@@ -196,6 +196,10 @@ class JSModule extends JSObject {
         });
     }-*/;
 
+    final native void directive(String name, NGConstructor constructor) /*-{
+        this.directive(name, constructor);
+    }-*/;
+    
     final native void config(JavaScriptObject constructor) /*-{
 		this.config(constructor);
     }-*/;
