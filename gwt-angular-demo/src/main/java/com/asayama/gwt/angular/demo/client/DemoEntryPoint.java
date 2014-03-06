@@ -7,16 +7,15 @@ import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 
 public class DemoEntryPoint extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
-        GWT.log("initializing " + getClass().getName());
         Angular.module(this);
         constant("examplesURL", "examples.json");
         controller(new NavbarController());
         controller(new JumbotronController());
+        controller(new DocumentationController());
         controller(new ExamplesController());
         config(new RouteProvider(), new Configurator<RouteProvider>() {
             @Override
@@ -24,6 +23,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
                 routeProvider
                     .when("/jumbotron", Template.create("partials/jumbotron.html", JumbotronController.class))
                     .when("/examples", Template.create("partials/examples.html", ExamplesController.class))
+                    .when("/documentation", Template.create("partials/documentation.html", DocumentationController.class))
                     .otherwise(Redirect.create("/jumbotron"));
             }
         });

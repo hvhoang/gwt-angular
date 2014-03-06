@@ -10,9 +10,8 @@ public class NG extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        String m = "";
+        String m = "initializing " + getClass().getName();
         try {
-            GWT.log(m = "initializing " + getClass().getName());
             NG module = Angular.module(this, "ng");
             module.factory(new Q());
             module.factory(new Location());

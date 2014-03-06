@@ -46,6 +46,7 @@ public class Angular {
 		JSArray<String> jsrequires = JSArray.create(requires);
 		JSClosure jsclosure = JSClosure.create(closure);
 		module.bind(_module(name, jsrequires, jsclosure));
+		GWT.log("Angular.module(" + module.getClass().getName() + ")");
 		return module;
 	}
 	

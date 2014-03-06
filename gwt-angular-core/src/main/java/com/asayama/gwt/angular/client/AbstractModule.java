@@ -157,6 +157,7 @@ public abstract class AbstractModule implements Module {
                 }
                 binder.apply(args);
                 injector.apply(shiftedArgs);
+                GWT.log(controller.getClass().getName() + ".onControllerLoad()");
                 controller.onControllerLoad();
             }
         };

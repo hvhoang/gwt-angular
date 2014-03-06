@@ -9,9 +9,8 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        String m = "";
+        String m = "initializing " + getClass().getName();
         try {
-            GWT.log(m = "initializing " + getClass().getName());
             Angular.module(this, "ngSanitize");
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
