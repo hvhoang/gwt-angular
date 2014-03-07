@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.demo.client;
 
-import com.asayama.gwt.angular.client.AbstractController;
+import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.http.client.HttpClient;
@@ -11,7 +11,7 @@ import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
-public class ExamplesController extends AbstractController {
+public class ExamplesController implements Controller {
 
     // Services
     protected HttpClient http;
@@ -27,9 +27,6 @@ public class ExamplesController extends AbstractController {
 
     @Override
     public void onControllerLoad() {
-        
-        log.debug("calling ExamplesController.onControllerLoad()");
-        
         // https://github.com/kyoken74/gwt-angular/issues/33
         final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
