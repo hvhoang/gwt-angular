@@ -3,9 +3,12 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
+import com.asayama.gwt.angular.demo.client.model.Page;
+import com.asayama.gwt.angular.demo.client.model.Tab;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
+import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.util.Objects;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
@@ -22,7 +25,7 @@ public class ExamplesController implements Controller {
     private String examplesURL;
 
     // Models
-    private Examples examples = null;
+    private JSArray<Page> pages = null;
     private Page selectedPage = null;
 
     @Override
@@ -34,8 +37,8 @@ public class ExamplesController implements Controller {
 
             @Override
             public void onSuccess(Request request, Response response) {
-                examples = Examples.parse(response.getText());
-                setSelectedPage(examples.getPages().get(pageIndex));
+                pages = JSArray.eval(response.getText());
+                setSelectedPage(pages.get(pageIndex));
                 getSelectedPage().setSelectedTab(
                         getSelectedPage().getTabs().get(tabIndex));
             }
@@ -86,12 +89,12 @@ public class ExamplesController implements Controller {
 
     // Getters and Setters
 
-    public Examples getExamples() {
-        return examples;
+    public JSArray<Page> getPages() {
+        return pages;
     }
 
-    public void setExamples(Examples examples) {
-        this.examples = examples;
+    public void setPages(JSArray<Page> examples) {
+        this.pages = examples;
     }
 
     public Page getSelectedPage() {

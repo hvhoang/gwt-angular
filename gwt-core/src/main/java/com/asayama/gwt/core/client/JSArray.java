@@ -29,7 +29,11 @@ public class JSArray<T> extends JavaScriptObject {
 		return [];
 	}-*/;
 
-	public static  <T> JSArray<T> create(T... objects) {
+    public static native <T> JSArray<T> eval(String expr) /*-{
+        return eval('('+expr+')');
+    }-*/;
+
+    public static  <T> JSArray<T> create(T... objects) {
 		JSArray<T> array = null;
 		if (objects != null) {
 			array = create();
