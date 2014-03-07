@@ -39,8 +39,7 @@ public class ExamplesController implements Controller {
             public void onSuccess(Request request, Response response) {
                 pages = JSArray.eval(response.getText());
                 setSelectedPage(pages.get(pageIndex));
-                getSelectedPage().setSelectedTab(
-                        getSelectedPage().getTabs().get(tabIndex));
+                getSelectedPage().setSelectedTab(getSelectedPage().getTabs().get(tabIndex));
             }
 
             @Override
@@ -53,8 +52,7 @@ public class ExamplesController implements Controller {
         selectedPage = page;
         // https://github.com/kyoken74/gwt-angular/issues/33
         if (getSelectedPage().getSelectedTab() == null) {
-            getSelectedPage()
-                    .setSelectedTab(getSelectedPage().getTabs().get(0));
+            getSelectedPage().setSelectedTab(getSelectedPage().getTabs().get(0));
         }
     }
 
