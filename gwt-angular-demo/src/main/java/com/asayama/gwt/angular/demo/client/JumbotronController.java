@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.demo.client;
 
-import com.asayama.gwt.angular.client.AbstractController;
+import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
 
-public class JumbotronController extends AbstractController {
+public class JumbotronController implements Controller {
 
     private static JumbotronConstants CONSTANTS = GWT.create(JumbotronConstants.class);
     
