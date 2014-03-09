@@ -1,8 +1,6 @@
 package com.asayama.gwt.angular.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
 
@@ -15,9 +13,6 @@ public class NavigationController implements Controller {
     public static final String EXAMPLES = CONSTANTS.examples();
     public static final String DOWNLOADS = CONSTANTS.downloads();
     public static final String DEVELOP = CONSTANTS.develop();
-
-    private Location location;
-    private RouteParams routeParams;
 
     @Override
     public void onControllerLoad() {

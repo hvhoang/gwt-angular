@@ -30,11 +30,7 @@ public class DownloadsController implements Controller {
             public void onSuccess(Request request, Response response) {
                 //TODO https://github.com/kyoken74/gwt-angular/issues/39
                 JSArray<RepoTag> tags = JSArray.eval(response.getText());
-                if (tags != null && tags.size() > 0) {
-                    setLatestTag(tags.get(0));
-                    tags.remove(0);
-                    setPreviousTags(tags);
-                }
+                onTagsLoaded(tags);
             }
 
             @Override
@@ -43,6 +39,16 @@ public class DownloadsController implements Controller {
                 GWT.log(downloadsURL, exception);
             }
         });
+    }
+    
+    private void onTagsLoaded(JSArray<RepoTag> tags) {
+        if (tags == null || tags.size() == 0) {
+            GWT.log("Repository does not contain any tags");
+            return;
+        }
+        setLatestTag(tags.get(0));
+        tags.remove(0);
+        setPreviousTags(tags);
     }
 
     // Getters and Setters
@@ -66,4 +72,5 @@ public class DownloadsController implements Controller {
     public void setLatestTag(RepoTag latestTag) {
         this.latestTag = latestTag;
     }
+    
 }
