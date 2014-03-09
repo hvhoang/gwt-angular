@@ -3,17 +3,15 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.demo.client.model.Page;
-import com.asayama.gwt.angular.demo.client.model.Tab;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.core.client.JSON;
 import com.asayama.gwt.core.client.util.Objects;
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class ExamplesController implements Controller {
 
@@ -26,22 +24,21 @@ public class ExamplesController implements Controller {
     private String examplesURL;
 
     // Models
-    private JSArray<Page> pages = null;
-    private Page selectedPage = null;
+    private String selectedPage = null;
+    private String selectedTab = null;
+    private JSON pages = null;
 
     @Override
     public void onControllerLoad() {
         //TODO https://github.com/kyoken74/gwt-angular/issues/33
-        final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
-        final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
+        selectedPage = Objects.coalesce(routeParams.getString("page"), "textInput");
+        selectedTab = Objects.coalesce(routeParams.getString("tab"), "demo");
         http.get(getExamplesURL(), new HttpClientCallback() {
 
             @Override
             public void onSuccess(Request request, Response response) {
                 //TODO https://github.com/kyoken74/gwt-angular/issues/39
-                pages = JSArray.eval(response.getText());
-                setSelectedPage(pages.get(pageIndex));
-                getSelectedPage().setSelectedTab(getSelectedPage().getTabs().get(tabIndex));
+                pages = JSON.parse(response.getText());
             }
 
             @Override
@@ -51,63 +48,38 @@ public class ExamplesController implements Controller {
             }
         });
     }
-
-    public void onClickPage(Page page) {
-        selectedPage = page;
-        // https://github.com/kyoken74/gwt-angular/issues/33
-        if (getSelectedPage().getSelectedTab() == null) {
-            getSelectedPage().setSelectedTab(getSelectedPage().getTabs().get(0));
-        }
+    
+    public void onClickPage(String key) {
+        location.setHashParam("page", key);
     }
-
-    public void onClickTab(Tab tab) {
-        getSelectedPage().setSelectedTab(tab);
-        if (tab.getSource() != null) {
-            return;
-        }
-        // https://github.com/kyoken74/gwt-angular/issues/33
-        String url = getSelectedPage().getSelectedTab().getFilename();
-        http.get(url, new HttpClientCallback() {
-
-            @Override
-            public void onSuccess(Request request, Response response) {
-                getSelectedPage().getSelectedTab().setSource(
-                        SafeHtmlUtils.htmlEscape(response.getText()));
-            }
-
-            @Override
-            public void onError(Request request, Exception exception) {
-            }
-        });
+    
+    public void onClickTab(String key) {
+        location.setHashParam("tab", key);
     }
-
-    public String isPageActive(Page page) {
-        return page.equals(getSelectedPage()) ? "active" : "";
+    
+    public JSArray<String> getTabKeys() {
+        return getSelectedPage().getJSON("tabs").keys();
     }
-
-    public String isTabActive(Tab tab) {
-        return tab.equals(getSelectedPage().getSelectedTab()) ? "active" : "";
+    
+    public JSON getTab(String key) {
+        return getSelectedPage().getJSON("tabs").getJSON(key);
     }
-
+    
     // Getters and Setters
-
-    public JSArray<Page> getPages() {
-        return pages;
-    }
-
-    public void setPages(JSArray<Page> examples) {
-        this.pages = examples;
-    }
-
-    public Page getSelectedPage() {
-        return selectedPage;
-    }
-
-    public void setSelectedPage(Page selectedPage) {
-        this.selectedPage = selectedPage;
-    }
 
     public String getExamplesURL() {
         return examplesURL;
+    }
+    
+    public JSON getSelectedPage() {
+        return pages.getJSON(selectedPage);
+    }
+    
+    public String getStylePageActive(String key) {
+        return key.equalsIgnoreCase(selectedPage) ? "active" : "";
+    }
+
+    public String getStyleTabActive(String key) {
+        return key.equalsIgnoreCase(selectedTab) ? "active" : "";
     }
 }
