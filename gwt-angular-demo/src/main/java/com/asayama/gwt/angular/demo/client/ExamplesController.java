@@ -10,6 +10,7 @@ import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.util.Objects;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -30,13 +31,14 @@ public class ExamplesController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        // https://github.com/kyoken74/gwt-angular/issues/33
+        //TODO https://github.com/kyoken74/gwt-angular/issues/33
         final int pageIndex = Objects.coalesce(routeParams.getInteger("page"), 0);
         final int tabIndex = Objects.coalesce(routeParams.getInteger("tab"), 0);
         http.get(getExamplesURL(), new HttpClientCallback() {
 
             @Override
             public void onSuccess(Request request, Response response) {
+                //TODO https://github.com/kyoken74/gwt-angular/issues/39
                 pages = JSArray.eval(response.getText());
                 setSelectedPage(pages.get(pageIndex));
                 getSelectedPage().setSelectedTab(getSelectedPage().getTabs().get(tabIndex));
@@ -44,6 +46,8 @@ public class ExamplesController implements Controller {
 
             @Override
             public void onError(Request request, Exception exception) {
+                //TODO https://github.com/kyoken74/gwt-angular/issues/40
+                GWT.log(examplesURL, exception);
             }
         });
     }

@@ -13,17 +13,20 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("examplesURL", "examples.json");
-        controller(new NavbarController());
-        controller(new JumbotronController());
+        constant("downloadsURL", "https://api.github.com/repos/kyoken74/gwt-angular/tags");
         controller(new DocumentationController());
+        controller(new DownloadsController());
         controller(new ExamplesController());
+        controller(new JumbotronController());
+        controller(new NavbarController());
         config(new RouteProvider(), new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider
-                    .when("/jumbotron", Template.create("partials/jumbotron.html", JumbotronController.class))
-                    .when("/examples", Template.create("partials/examples.html", ExamplesController.class))
                     .when("/documentation", Template.create("partials/documentation.html", DocumentationController.class))
+                    .when("/downloads", Template.create("partials/downloads.html", DownloadsController.class))
+                    .when("/examples", Template.create("partials/examples.html", ExamplesController.class))
+                    .when("/jumbotron", Template.create("partials/jumbotron.html", JumbotronController.class))
                     .otherwise(Redirect.create("/jumbotron"));
             }
         });
