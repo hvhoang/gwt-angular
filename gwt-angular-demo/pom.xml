@@ -17,6 +17,7 @@
         <filtering>true</filtering>
         <includes>
           <include>**/*.gwt.xml</include>
+          <include>**/*.java</include>
         </includes>
       </resource>
       <resource>
@@ -24,6 +25,7 @@
         <filtering>false</filtering>
         <excludes>
           <exclude>**/*.gwt.xml</exclude>
+          <exclude>**/*.java</exclude>
         </excludes>
       </resource>
     </resources>
