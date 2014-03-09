@@ -7,13 +7,11 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.i18n.client.Constants;
 
 public class UrlHashParameterExample implements Controller {
 
     // Public final fields are directly bound to AngularJS's $scope
-    public static final String TITLE = UrlHashParameterExampleConstants.INSTANCE.title();
+    public static final String TITLE = "Modify URL Hash Parameter";
 
     // Injectable fields are automatically injected by the framework
     private RouteParams routeParams;
@@ -43,13 +41,4 @@ public class UrlHashParameterExample implements Controller {
     public void setName(String name) {
         this.name = name;
     }
-}
-
-interface UrlHashParameterExampleConstants extends Constants {
-
-    static final UrlHashParameterExampleConstants INSTANCE = 
-            GWT.create(UrlHashParameterExampleConstants.class);
-
-    @DefaultStringValue("Modify URL Hash Parameter")
-    String title();
 }

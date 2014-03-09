@@ -13,7 +13,7 @@ public class NavigationController implements Controller {
     public static final String PROJECT_NAME = CONSTANTS.projectName();
     public static final String PROJECT_DISPLAY_NAME = CONSTANTS.projectDisplayName();
     public static final String EXAMPLES = CONSTANTS.examples();
-    public static final String DOWNLOAD = CONSTANTS.download();
+    public static final String DOWNLOADS = CONSTANTS.downloads();
     public static final String DEVELOP = CONSTANTS.develop();
 
     private Location location;
@@ -36,8 +36,8 @@ interface NavigationConstants extends Constants {
     @DefaultStringValue("Examples")
     String examples();
     
-    @DefaultStringValue("Download")
-    String download();
+    @DefaultStringValue("Downloads")
+    String downloads();
 
     @DefaultStringValue("Develop")
     String develop();
