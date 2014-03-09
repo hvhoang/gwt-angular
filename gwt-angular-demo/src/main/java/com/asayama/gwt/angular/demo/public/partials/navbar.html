@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="com.asayama.gwt.angular.demo.client.NavbarController">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,9 +13,9 @@
           <span class="glyphicon glyphicon-home"></span> Home</a></li>
         <li class="{{ getStyleNavlinkLearn() }}"><a href="#/documentation">
           <span class="glyphicon glyphicon-eye-open"></span> Learn</a></li>
+        <li class="{{ getStyleNavlinkDownloads() }}"><a href="#/downloads">
+          <span class="glyphicon glyphicon-download"></span> Downloads</a></li>
         <!--
-        <li class="getStyleNavlinkDownload()"><a href="https://github.com/kyoken74/gwt-angular/releases">
-          <span class="glyphicon glyphicon-download"></span> Download</a></li>
         <li class="getStyleNavlinkDevelop()"><a href=https://github.com/kyoken74/gwt-angular">
           <span class="glyphicon glyphicon-wrench"></span> Develop</a></li>
         -->

@@ -19,6 +19,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
         controller(new ExamplesController());
         controller(new JumbotronController());
         controller(new NavbarController());
+        controller(new NavigationController());
         config(new RouteProvider(), new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider routeProvider) {

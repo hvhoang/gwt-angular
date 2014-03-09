@@ -1,17 +1,22 @@
 package com.asayama.gwt.angular.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-    private Location location;
-    private RouteParams routeParams;
-
     @Override
     public void onControllerLoad() {
+    }
+
+    public String getStyleNavlinkDownloads() {
+        String hash = Window.Location.getHash();
+        return hash.equalsIgnoreCase("#/downloads") ? "active" : "";
+    }
+
+    public String getStyleNavlinkExamples() {
+        String hash = Window.Location.getHash();
+        return hash.equalsIgnoreCase("#/examples") ? "active" : "";
     }
 
     public String getStyleNavlinkHome() {
@@ -24,8 +29,4 @@ public class NavbarController implements Controller {
         return hash.equalsIgnoreCase("#/documentation") ? "active" : "";
     }
 
-    public String getStyleNavlinkExamples() {
-        String hash = Window.Location.getHash();
-        return hash.equalsIgnoreCase("#/examples") ? "active" : "";
-    }
 }
