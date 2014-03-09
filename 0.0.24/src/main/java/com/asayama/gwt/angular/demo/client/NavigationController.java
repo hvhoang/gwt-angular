@@ -9,6 +9,7 @@ public class NavigationController implements Controller {
     private static NavigationConstants CONSTANTS = GWT.create(NavigationConstants.class);
 
     public static final String PROJECT_NAME = CONSTANTS.projectName();
+    public static final String PROJECT_VERSION = CONSTANTS.projectVersion();
     public static final String PROJECT_DISPLAY_NAME = CONSTANTS.projectDisplayName();
     public static final String EXAMPLES = CONSTANTS.examples();
     public static final String DOWNLOADS = CONSTANTS.downloads();
@@ -24,6 +25,9 @@ interface NavigationConstants extends Constants {
     
     @DefaultStringValue("gwt-angular")
     String projectName();
+    
+    @DefaultStringValue("${project.version}")
+    String projectVersion();
     
     @DefaultStringValue("GWT Angular")
     String projectDisplayName();
