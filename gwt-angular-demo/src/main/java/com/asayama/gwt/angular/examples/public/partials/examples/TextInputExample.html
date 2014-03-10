@@ -1,7 +1,18 @@
 <div data-ng-controller="com.asayama.gwt.angular.examples.client.TextInputExample">
   <div>
+    <p>
+      In this example, we demonstrate how to associate a text &lt;INPUT&gt; 
+      field with a model called "name". This model can be used elsewhere in the
+      code. When the value of the model is updated, the view is automatically 
+      refreshed.
+    </p><p>
+      To see this code in action, try typing in something into the text field
+      below. Before you enter any values into the field, the caption above the
+      field should read "<b>{{ GREETING }}, {{ STRANGER }}!</b>". Once you enter
+      a value in the field, e.g. "Jack", then you will see that caption updated 
+      to "<b>{{ GREETING }}, Jack!</b>" as you type in the value.
+    </p>
     <h1>{{ GREETING }}, {{ getName()||STRANGER }}!</h1>
-    Enter Name: <input type="text" data-ng-model="name"
-      data-ng-change="setName(name||null)" data-ng-init="name = getName()" />
+    Enter Name: <input type="text" data-ng-model="name" data-ng-change="setName(name||null)" data-ng-init="name = getName()" />
   </div>
 </div>

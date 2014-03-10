@@ -8,7 +8,6 @@ import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
-import com.asayama.gwt.core.client.util.Objects;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
@@ -31,8 +30,14 @@ public class ExamplesController implements Controller {
     @Override
     public void onControllerLoad() {
         //TODO https://github.com/kyoken74/gwt-angular/issues/33
-        selectedPage = Objects.coalesce(routeParams.getString("page"), "textInput");
-        selectedTab = Objects.coalesce(routeParams.getString("tab"), "demo");
+        selectedPage = routeParams.getString("page");
+        if (selectedPage == null || selectedPage.isEmpty()) {
+            location.setHashParam("page", "textInput");
+        }
+        selectedTab = routeParams.getString("tab");
+        if (selectedTab == null || selectedTab.isEmpty()) {
+            location.setHashParam("tab", "demo");
+        }
         http.get(getExamplesURL(), new HttpClientCallback() {
 
             @Override
