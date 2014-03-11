@@ -11,8 +11,8 @@ public class NGRoute extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            NGRoute module = Angular.module(this, "ngRoute");
-            module.factory(new RouteParams());
+            Angular.module(this, "ngRoute");
+            factory(RouteParams.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

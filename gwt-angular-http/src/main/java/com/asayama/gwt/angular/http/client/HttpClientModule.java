@@ -13,7 +13,7 @@ public class HttpClientModule extends AbstractModule implements EntryPoint {
         String m = "initializing " + getClass().getName();
         try {
             Angular.module(this);
-            factory(new HttpClient());
+            factory(HttpClient.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

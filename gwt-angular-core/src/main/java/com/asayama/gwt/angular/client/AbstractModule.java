@@ -58,7 +58,10 @@ public abstract class AbstractModule implements Module {
     DirectiveDependenciesFactory directiveDependenciesFactory = GWT.create(DirectiveDependenciesFactory.class);
     DirectiveBinderFactory directiveBinderFactory = GWT.create(DirectiveBinderFactory.class);
     
-    public <D extends Directive> D directive(String name, final D directive) {
+    public <D extends Directive> D directive(String name, final Class<D> klass) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+        final D directive = GWT.create(klass);
         final JSClosure injector = directiveBinderFactory.create(directive);
         Function<D> initializer = new Function<D>() {
 
@@ -85,10 +88,13 @@ public abstract class AbstractModule implements Module {
      * Configures a previously created service object. Use the {@link Configurator}
      * to configure the provider injected into the module.
      * 
-     * @param provider Provider to be configured.
+     * @param klass Provider to be configured.
      * @param configurator Configures the provider.
      */
-    public <P extends Provider> P config(final P provider, final Configurator<P> configurator) {
+    public <P extends Provider> P config(final Class<P> klass, final Configurator<P> configurator) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+        final P provider = GWT.create(klass);
         final JSClosure injector = providerBinderFactory.create(provider);
         Function<P> initializer = new Function<P>() {
 
@@ -112,11 +118,14 @@ public abstract class AbstractModule implements Module {
     ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
     ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
     
-    public <S extends Service> S factory(S service) {
-        return factory(service.getClass().getName(), service);
+    public <S extends Service> S factory(Class<S> klass) {
+        return factory(klass.getName(), klass);
     }
     
-    public <S extends Service> S factory(String name, final S service) {
+    public <S extends Service> S factory(String name, final Class<S> klass) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+        final S service = GWT.create(klass);
         final JSClosure injector = serviceBinderFactory.create(service);
         Function<S> initializer = new Function<S>() {
 
@@ -140,11 +149,14 @@ public abstract class AbstractModule implements Module {
     ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
     ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
 
-    public <C extends Controller> C controller(C controller) {
-        return controller(controller.getClass().getName(), controller);
+    public <C extends Controller> C controller(Class<C> klass) {
+        return controller(klass.getName(), klass);
     }
 
-    public <C extends Controller> C controller(String name, final C controller) {
+    public <C extends Controller> C controller(String name, final Class<C> klass) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+        final C controller = GWT.create(klass);
         final JSClosure binder = controllerScopeBinderFactory.create(controller);
         final JSClosure injector = controllerBinderFactory.create(controller);
         Closure initializer = new Closure() {
@@ -157,7 +169,7 @@ public abstract class AbstractModule implements Module {
                 }
                 binder.apply(args);
                 injector.apply(shiftedArgs);
-                GWT.log(controller.getClass().getName() + ".onControllerLoad()");
+                GWT.log(klass.getName() + ".onControllerLoad()");
                 controller.onControllerLoad();
             }
         };

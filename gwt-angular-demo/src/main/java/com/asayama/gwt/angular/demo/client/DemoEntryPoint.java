@@ -14,13 +14,13 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examplesURL", "examples.json");
         constant("downloadsURL", "https://api.github.com/repos/kyoken74/gwt-angular/tags");
-        controller(new DocumentationController());
-        controller(new DownloadsController());
-        controller(new ExamplesController());
-        controller(new JumbotronController());
-        controller(new NavbarController());
-        controller(new NavigationController());
-        config(new RouteProvider(), new Configurator<RouteProvider>() {
+        controller(DocumentationController.class);
+        controller(DownloadsController.class);
+        controller(ExamplesController.class);
+        controller(JumbotronController.class);
+        controller(NavbarController.class);
+        controller(NavigationController.class);
+        config(RouteProvider.class, new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider

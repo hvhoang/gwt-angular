@@ -9,10 +9,10 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         filter("reverse", new ReverseFilter());
-        controller(new HttpClientExample());
-        controller(new OnClickEventExample());
-        controller(new TextInputExample());
-        controller(new UrlHashParameterExample());
-        controller(new ReverseFilterExample());
+        controller(HttpClientExample.class);
+        controller(OnClickEventExample.class);
+        controller(TextInputExample.class);
+        controller(UrlHashParameterExample.class);
+        controller(ReverseFilterExample.class);
     }
 }
