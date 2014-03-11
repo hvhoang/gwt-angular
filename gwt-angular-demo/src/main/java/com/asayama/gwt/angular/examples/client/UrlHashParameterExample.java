@@ -1,10 +1,6 @@
 package com.asayama.gwt.angular.examples.client;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.location.HashParam;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
 
@@ -18,27 +14,24 @@ public class UrlHashParameterExample implements Controller {
     private Location location;
 
     // Other fields are used to represent the state of this controller
-    private String name;
+    private String page;
 
     @Override
     public void onControllerLoad() {
-        String name = routeParams.getString("name");
-        setName(name);
+        page = routeParams.getString("page");
     }
 
     // Public event handlers are automatically wired to AngularJS's $scope.
-    public void onClickModify(String name) {
-        List<HashParam> params = new ArrayList<HashParam>();
-        params.add(new HashParam("name", name));
-        location.setHashParam(params);
+    public void onClickModify(String page) {
+        location.setHashParam("page", page);
     }
 
     // Public getters and setters are automatically wired to AngularJS's $scope.
     public String getName() {
-        return name;
+        return page;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setPage(String page) {
+        this.page = page;
     }
 }
