@@ -13,6 +13,12 @@
       to "<b>{{ GREETING }}, Jack!</b>" as you type in the value.
     </p>
     <h1>{{ GREETING }}, {{ getName()||STRANGER }}!</h1>
-    Enter Name: <input type="text" data-ng-model="name" data-ng-change="setName(name||null)" data-ng-init="name = getName()" />
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <label for="nameInput">Enter Name: </label>
+        <input type="text" id="nameInput" data-ng-model="name" 
+          data-ng-change="setName(name||null)" data-ng-init="name = getName()" />
+      </div>
+    </div>
   </div>
 </div>

@@ -1,12 +1,41 @@
 <div data-ng-controller="com.asayama.gwt.angular.examples.client.UrlHashParameterExample">
-  <h1>{{ TITLE }}</h1>
-  <div class="col-md-5 input-group">
-    <input type="text" class="form-control" 
-      placeholder="Enter some text an click Modify"
-      data-ng-model="name" data-ng-init="name = getName()">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button" 
-        data-ng-click="onClickModify(name)">Modify</button>
-    </span>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        GWT Angular provides a mechanism for controlling the hash parameters in
+        the URL. The "hash" refers to the part of URL that begins with '#', and
+        the parameters are expressed in the form of key value pair.
+      </p><p>
+        For example, if you see the URL right now, you should see the hash,
+      </p>
+      <pre>#/examples?page=urlHashParameter&tab=demo</pre>
+      <p>
+        The hash param <code>page=urlHashParameter</code> instructs Angular to
+        show the current example page, and, the hash param <code>tab=demo</code>
+        instructs Angular to show the live demo tab.
+      </p><p>
+        Enter one of the below page name values in the text input, and click 
+        "Go." This action will update the <code>page</code> hash param, so that
+        you will be taken to that page.
+      </p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="pageNameInput">Page Name: </label>
+              <input type="text" id="pageNameInput" data-ng-model="pageName">
+            </div>
+            <button type="button" class="btn btn-default" 
+              data-ng-click="onClickGo(pageName)">Go</button>
+          </form>
+        </div>
+      </div>
+      <p>
+        List of page names:
+      </p>
+      <ul>
+        <li data-ng-repeat="pageKey in getPageKeys()">{{ pageKey }}</li>
+      </ul>
+    </div>
   </div>
 </div>
