@@ -34,7 +34,7 @@ public class NavbarController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        // TODO https://github.com/kyoken74/gwt-angular/issues/33
+        // TODO https://github.com/kyoken74/gwt-angular/issues/42
         http.get(getExamplesURL(), new HttpClientCallback() {
 
             @Override

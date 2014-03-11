@@ -29,7 +29,7 @@ public class ExamplesController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        //TODO https://github.com/kyoken74/gwt-angular/issues/33
+        //TODO https://github.com/kyoken74/gwt-angular/issues/42
         selectedPage = routeParams.getString("page");
         if (selectedPage == null || selectedPage.isEmpty()) {
             location.setHashParam("page", "textInput");
