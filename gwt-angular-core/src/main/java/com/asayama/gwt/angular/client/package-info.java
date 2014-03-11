@@ -30,6 +30,45 @@ import com.asayama.gwt.core.client.JSClosure;
  * @see DependenciesFactoryGenerator
  * @param <T>
  */
+interface CreatorFactory<T> {
+    <X extends T> X create(Class<X> klass);
+}
+
+interface DirectiveCreatorFactory extends CreatorFactory<Directive> {
+    @Override
+    public <X extends Directive> X create(Class<X> klass);
+}
+
+interface ProviderCreatorFactory extends CreatorFactory<Provider> {
+    @Override
+    public <X extends Provider> X create(Class<X> klass);
+}
+
+interface ServiceCreatorFactory extends CreatorFactory<Service> {
+    @Override
+    public <X extends Service> X create(Class<X> klass);
+}
+
+interface ControllerCreatorFactory extends CreatorFactory<Controller> {
+    @Override
+    public <X extends Controller> X create(Class<X> klass);
+}
+
+/**
+ * Provides interfaces for an object creator. This interface is intended to be
+ * used with {@link DependenciesFactoryGenerator}, which inspects the types eligible for
+ * creation at compile time.
+ * <p>
+ * The decision to separate the code generator from the underlying classes was
+ * made to work around a limitation in GWT, which prevents us from implementing
+ * multiple JavaScriptObject extensions sharing an interface.
+ * </p>
+ * 
+ * @author kyoken74
+ *
+ * @see DependenciesFactoryGenerator
+ * @param <T>
+ */
 interface DependenciesFactory<T> {
     String[] create(T object);
 }
