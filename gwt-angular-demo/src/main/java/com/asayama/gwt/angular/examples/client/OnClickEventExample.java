@@ -7,27 +7,34 @@ import com.google.gwt.user.client.Event;
 
 public class OnClickEventExample implements Controller {
 
-    // Represents the state of this controller
-    private String caption = "Click Me";
+    // Public final fields are directly bound to AngularJS's $scope, and 
+    // they are available for use in the HTML.
+    public static final String TITLE = "Click Me";
+    
+    // Other fields are used to represent the state of this controller.
+    private String caption = "You have not clicked me";
 
     @Override
     public void onControllerLoad() {
         //noop
     }
 
-    // Public event handlers are automatically wired to AngularJS's $scope.
-    
+    // Public methods are automatically wired to AngularJS's $scope, and
+    // they are availabe for use in the HTML.
+
     public void onClickTitle(Event event) {
-        setCaption("You clicked me at " + new Date());
+        setCaption("Clicked at " + new Date());
     }
 
-    // Public getters and setters are automatically wired to AngularJS's $scope.
-    
+    public void onClickCaption(Event event) {
+        setCaption("Hey!");
+    }
+
     public String getCaption() {
         return caption;
     }
     
-    public void setCaption(String clickable) {
-        this.caption = clickable;
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 }

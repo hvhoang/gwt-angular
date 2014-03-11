@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.Controller;
 public class TextInputExample implements Controller {
 
     // Public final fields are directly bound to AngularJS's $scope, and 
-    // therefore they are available for use in the HTML.
+    // they are available for use in the HTML.
     public static final String GREETING = "Hello";
     public static final String STRANGER = "Stranger";
 
@@ -18,7 +18,7 @@ public class TextInputExample implements Controller {
     }
 
     // Public methods are automatically wired to AngularJS's $scope, and
-    // therfore they are availabe for use in the HTML.
+    // they are availabe for use in the HTML.
     public String getName() {
         return name;
     }

@@ -17,9 +17,7 @@ public class NavbarController implements Controller {
 
     private static NavigationConstants CONSTANTS = GWT.create(NavigationConstants.class);
 
-    public static final String PROJECT_NAME = CONSTANTS.projectName();
     public static final String PROJECT_VERSION = CONSTANTS.projectVersion();
-    public static final String PROJECT_DISPLAY_NAME = CONSTANTS.projectDisplayName();
     public static final String EXAMPLES = CONSTANTS.examples();
     public static final String DOWNLOADS = CONSTANTS.downloads();
     public static final String DEVELOP = CONSTANTS.develop();
@@ -78,7 +76,7 @@ public class NavbarController implements Controller {
     }
     
     public JSArray<String> getPageKeys() {
-        return pages.keys();
+        return pages == null ? null : pages.keys();
     }
 
     public JSON getPage(String key) {
@@ -88,14 +86,8 @@ public class NavbarController implements Controller {
 
 interface NavigationConstants extends Constants {
 
-    @DefaultStringValue("gwt-angular")
-    String projectName();
-
     @DefaultStringValue("${project.version}")
     String projectVersion();
-
-    @DefaultStringValue("GWT Angular")
-    String projectDisplayName();
 
     @DefaultStringValue("Examples")
     String examples();

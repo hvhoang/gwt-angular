@@ -7,15 +7,15 @@
       </div>
     </div>
     <div class="col-md-9">
-      <h1>{{ getSelectedPage().title }}</h1>
       <ul class="nav nav-tabs" data-tabs="tabs">
         <li class="{{ getStyleTabActive(tabKey) }}" 
           data-ng-repeat="tabKey in getTabKeys()" 
           data-ng-click="onClickTab(tabKey)">
           <a data-toggle="tab" href="#{{ tabKey }} ">{{ getTab(tabKey).title }}</a></li>
       </ul>
+      <h1>{{ getSelectedPage().title }}</h1>
       <div class="tab-content">
-        <div id="{{ tabKey }}" class="tab-pane {{ getStyleTabActive(tabKey) }}" style="padding: 2em;"
+        <div id="{{ tabKey }}" class="tab-pane {{ getStyleTabActive(tabKey) }}"
           data-ng-repeat="tabKey in getTabKeys()" 
           data-ng-include="getTab(tabKey).template"></div>
       </div>
