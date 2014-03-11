@@ -1,0 +1,107 @@
+{
+	"textInput" : {
+		"title" : "Text Input",
+		"tabs" : {
+			"demo" : {
+				"title" : "Demo",
+				"template" : "partials/templates/demo.html",
+				"filename" : "partials/examples/TextInputExample.html"
+			},
+			"html" : {
+				"title" : "HTML",
+				"template" : "partials/templates/html.html",
+				"filename" : "partials/examples/TextInputExample.html"
+			},
+			"java" : {
+				"title" : "Java",
+				"template" : "partials/templates/java.html",
+				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/TextInputExample.java"
+			}
+		}
+	},
+	"onClickEvent" : {
+		"title" : "OnClick Event",
+		"tabs" : {
+			"demo" : {
+				"title" : "Demo",
+				"template" : "partials/templates/demo.html",
+				"filename" : "partials/examples/OnClickEventExample.html"
+			},
+			"html" : {
+				"title" : "HTML",
+				"template" : "partials/templates/html.html",
+				"filename" : "partials/examples/OnClickEventExample.html"
+			},
+			"java" : {
+				"title" : "Java",
+				"template" : "partials/templates/java.html",
+				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/OnClickEventExample.java"
+			}
+		}
+	},
+	"urlHashParameter" : {
+		"title" : "URL Hash Parameter",
+		"tabs" : {
+			"demo" : {
+				"title" : "Demo",
+				"template" : "partials/templates/demo.html",
+				"filename" : "partials/examples/UrlHashParameterExample.html"
+			},
+			"html" : {
+				"title" : "HTML",
+				"template" : "partials/templates/html.html",
+				"filename" : "partials/examples/UrlHashParameterExample.html"
+			},
+			"java" : {
+				"title" : "Java",
+				"template" : "partials/templates/java.html",
+				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/UrlHashParameterExample.java"
+			}
+		}
+	},
+	"httpClient" : {
+		"title" : "HTTP Client",
+		"tabs" : {
+			"demo" : {
+				"title" : "Demo",
+				"template" : "partials/templates/demo.html",
+				"filename" : "partials/examples/HttpClientExample.html"
+			},
+			"html" : {
+				"title" : "HTML",
+				"template" : "partials/templates/html.html",
+				"filename" : "partials/examples/HttpClientExample.html"
+			},
+			"java" : {
+				"title" : "Java",
+				"template" : "partials/templates/java.html",
+				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/HttpClientExample.java"
+			},
+			"data" : {
+				"title" : "Data",
+				"template" : "partials/templates/json.html",
+				"filename" : "partials/examples/HttpClientExample.json"
+			}
+		}
+	},
+	"reverseFilter" : {
+		"title" : "Reverse Filter",
+		"tabs" : {
+			"demo" : {
+				"title" : "Demo",
+				"template" : "partials/templates/demo.html",
+				"filename" : "partials/examples/ReverseFilterExample.html"
+			},
+			"html" : {
+				"title" : "HTML",
+				"template" : "partials/templates/html.html",
+				"filename" : "partials/examples/ReverseFilterExample.html"
+			},
+			"java" : {
+				"title" : "Java",
+				"template" : "partials/templates/java.html",
+				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/ReverseFilterExample.java"
+			}
+		}
+	}
+}
