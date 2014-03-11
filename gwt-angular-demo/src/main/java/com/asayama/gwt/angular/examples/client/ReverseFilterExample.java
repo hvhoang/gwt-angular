@@ -14,7 +14,7 @@ import com.asayama.gwt.angular.client.Controller;
  *     // In this example, we override the default filter name (which is the 
  *     // class name, with a short-hand "reverse").
  *     filter("reverse", new ReverseFilter());
- *     controller(new ReverseFilterExample());
+ *     controller(ReverseFilterExample.class);
  *     ...
  *   }
  * }</pre>
