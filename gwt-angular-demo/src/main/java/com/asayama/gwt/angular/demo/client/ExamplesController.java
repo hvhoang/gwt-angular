@@ -43,6 +43,8 @@ public class ExamplesController implements Controller {
     
     public void onClickTab(String key) {
         location.setHashParam("tab", key);
+        
+        //TODO https://github.com/kyoken74/gwt-angular/issues/42
         final Tab tab = getTab(key);
         if (tab.getString("source") == null) {
             http.get(tab.getFilename(), new HttpClientCallback() {
