@@ -8,7 +8,4 @@ public class DownloadsController implements Controller {
     public void onControllerLoad() {
     }
     
-    // Getters and Setters
-    
-    
 }
