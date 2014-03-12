@@ -26,7 +26,7 @@ public class ExamplesController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        //TODO https://github.com/kyoken74/gwt-angular/issues/42
+
         selectedPage = routeParams.getString("page");
         if (selectedPage == null || selectedPage.isEmpty()) {
             location.setHashParam("page", "textInput");
@@ -35,7 +35,7 @@ public class ExamplesController implements Controller {
         if (selectedTab == null || selectedTab.isEmpty()) {
             location.setHashParam("tab", "demo");
         }
-        //TODO https://github.com/kyoken74/gwt-angular/issues/42
+
         final Tab tab = getTab(selectedTab);
         if (tab.getString("source") == null) {
             http.get(tab.getFilename(), new HttpClientCallback() {
