@@ -3,28 +3,18 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.http.client.HttpClient;
-import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.Response;
 
 public class ExamplesController implements Controller {
 
-    // Services
-    protected HttpClient http;
     protected RouteParams routeParams;
     protected Location location;
-    
-    @Bind("examplesURL")
-    private String examplesURL;
-
-    // Models
     private String selectedPage = null;
     private String selectedTab = null;
+    
+    @Bind("pages")
     private JSON pages = null;
 
     @Override
@@ -38,20 +28,6 @@ public class ExamplesController implements Controller {
         if (selectedTab == null || selectedTab.isEmpty()) {
             location.setHashParam("tab", "demo");
         }
-        http.get(getExamplesURL(), new HttpClientCallback() {
-
-            @Override
-            public void onSuccess(Request request, Response response) {
-                //TODO https://github.com/kyoken74/gwt-angular/issues/39
-                pages = JSON.parse(response.getText());
-            }
-
-            @Override
-            public void onError(Request request, Exception exception) {
-                //TODO https://github.com/kyoken74/gwt-angular/issues/40
-                GWT.log(examplesURL, exception);
-            }
-        });
     }
     
     public void onClickPage(String key) {
@@ -72,10 +48,6 @@ public class ExamplesController implements Controller {
     
     // Getters and Setters
 
-    public String getExamplesURL() {
-        return examplesURL;
-    }
-    
     public JSON getSelectedPage() {
         return pages.getJSON(selectedPage);
     }
