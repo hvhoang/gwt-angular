@@ -4,12 +4,18 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.demo.client.model.Tab;
+import com.asayama.gwt.angular.http.client.HttpClient;
+import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.Response;
 
 public class ExamplesController implements Controller {
 
+    private HttpClient http;
     private RouteParams routeParams;
     private Location location;
     private String selectedPage = null;
@@ -37,6 +43,20 @@ public class ExamplesController implements Controller {
     
     public void onClickTab(String key) {
         location.setHashParam("tab", key);
+        final Tab tab = getTab(key);
+        if (tab.getString("source") == null) {
+            http.get(tab.getFilename(), new HttpClientCallback() {
+                @Override
+                public void onSuccess(Request request, Response response) {
+                    tab.setSource(response.getText());
+                }
+                @Override
+                public void onError(Request request, Exception exception) {
+                    //TODO https://github.com/kyoken74/gwt-angular/issues/40
+                    GWT.log(request.toString(), exception);
+                }
+            });
+        }
     }
     
     public JSArray<String> getTabKeys() {
