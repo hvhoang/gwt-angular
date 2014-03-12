@@ -11,6 +11,7 @@ import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.safehtml.shared.SimpleHtmlSanitizer;
 
 public class ExamplesController implements Controller {
 
@@ -49,7 +50,7 @@ public class ExamplesController implements Controller {
             http.get(tab.getFilename(), new HttpClientCallback() {
                 @Override
                 public void onSuccess(Request request, Response response) {
-                    tab.setSource(response.getText());
+                    tab.setSource(SimpleHtmlSanitizer.sanitizeHtml(response.getText()).asString());
                 }
                 @Override
                 public void onError(Request request, Exception exception) {
