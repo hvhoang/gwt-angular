@@ -21,8 +21,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
         
         Angular.module(this);
         constant("pages", pages);
-        constant("examplesURL", "examples.json");
-        constant("downloadsURL", "https://api.github.com/repos/kyoken74/gwt-angular/tags");
+//        constant("downloadsURL", "https://api.github.com/repos/kyoken74/gwt-angular/tags");
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);
