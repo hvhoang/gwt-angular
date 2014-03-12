@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.demo.client.model.Tab;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.angular.route.client.RouteParams;

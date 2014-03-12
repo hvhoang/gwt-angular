@@ -1,9 +1,30 @@
-package com.asayama.gwt.angular.demo.client.model;
+/**
+ * @author kyoken74
+ */
+package com.asayama.gwt.angular.demo.client;
 
+import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
 
+class Page extends JSON {
 
-public class Tab extends JSON {
+    protected Page() {
+    }
+
+    public final JSArray<Tab> getTabs() {
+        return getJSArray("tabs");
+    }
+
+    public final void setSelectedTab(Tab tab) {
+        put("selectedTab", tab);
+    }
+
+    public final Tab getSelectedTab() {
+        return getJSObject("selectedTab");
+    }
+}
+
+class Tab extends JSON {
 
     protected Tab() {
     }
