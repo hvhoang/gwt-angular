@@ -9,8 +9,8 @@ import com.asayama.gwt.core.client.JSON;
 
 public class ExamplesController implements Controller {
 
-    protected RouteParams routeParams;
-    protected Location location;
+    private RouteParams routeParams;
+    private Location location;
     private String selectedPage = null;
     private String selectedTab = null;
     

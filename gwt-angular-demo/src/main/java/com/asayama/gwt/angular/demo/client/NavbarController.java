@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.shared.GWT;
@@ -18,14 +17,11 @@ public class NavbarController implements Controller {
     public static final String DOWNLOADS = CONSTANTS.downloads();
     public static final String DEVELOP = CONSTANTS.develop();
 
-    protected RouteParams routeParams;
-
     @Bind("pages.json")
     private JSON pages = null;
 
     @Override
     public void onControllerLoad() {
-        // noop
     }
     
     public String getStyleNavlinkDownloads() {
