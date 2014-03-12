@@ -6,6 +6,13 @@
         HttpClient used in this example is based on GWT's <code>RequestBuilder
         </code> which is adapted to AngularJS framework, opposed to AngularJS's
         <code>$http</code> service object.
+      </p><p>
+        The HTTP GET request is sent asynchronously without blocking the user
+        interaction. The response is a JSON object, (to be more precise, in this
+        example, an array of JSON objects), which is parsed and loaded into an
+        overlay type called <code>Customers</code>. In the HTML view, we use
+        <code>data-ng-repeat</code> directive to iterate over the JSON objects
+        in this array.
       </p>
       <div class="panel panel-default">
         <div class="panel-body">
