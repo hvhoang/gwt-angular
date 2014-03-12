@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
+import com.asayama.gwt.angular.demo.client.model.Tab;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSON;
@@ -42,13 +43,13 @@ public class ExamplesController implements Controller {
         return getSelectedPage().getJSON("tabs").keys();
     }
     
-    public JSON getTab(String key) {
+    public Tab getTab(String key) {
         return getSelectedPage().getJSON("tabs").getJSON(key);
     }
     
     // Getters and Setters
 
-    public JSON getSelectedPage() {
+    public Tab getSelectedPage() {
         return pages.getJSON(selectedPage);
     }
     
