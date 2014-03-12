@@ -28,16 +28,16 @@ public class ExamplesController implements Controller {
     public void onControllerLoad() {
 
         selectedPage = routeParams.getString("page");
-        if (selectedPage == null || selectedPage.isEmpty()) {
+        if (selectedPage == null || selectedPage.isEmpty() || pages.getJSON(selectedPage) == null) {
             location.setHashParam("page", "textInput");
         }
         selectedTab = routeParams.getString("tab");
-        if (selectedTab == null || selectedTab.isEmpty()) {
+        if (selectedTab == null || selectedTab.isEmpty() || getTab(selectedTab) == null) {
             location.setHashParam("tab", "demo");
         }
 
         final Tab tab = getTab(selectedTab);
-        if (tab.getString("source") == null) {
+        if (tab != null && tab.getString("source") == null) {
             http.get(tab.getFilename(), new HttpClientCallback() {
                 @Override
                 public void onSuccess(Request request, Response response) {
