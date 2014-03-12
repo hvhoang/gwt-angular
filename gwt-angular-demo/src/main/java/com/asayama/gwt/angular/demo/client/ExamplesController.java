@@ -14,7 +14,7 @@ public class ExamplesController implements Controller {
     private String selectedPage = null;
     private String selectedTab = null;
     
-    @Bind("pages")
+    @Bind("pages.json")
     private JSON pages = null;
 
     @Override

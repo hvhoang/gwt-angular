@@ -20,7 +20,7 @@ public class NavbarController implements Controller {
 
     protected RouteParams routeParams;
 
-    @Bind("pages")
+    @Bind("pages.json")
     private JSON pages = null;
 
     @Override

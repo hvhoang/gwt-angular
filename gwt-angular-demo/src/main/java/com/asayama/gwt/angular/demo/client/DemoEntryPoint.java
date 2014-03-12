@@ -17,7 +17,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         
         Angular.module(this);
-        constant("pages", JSArray.eval(DemoResources.INSTANCE.config().getText()));
+        constant("pages.json", JSArray.eval(DemoResources.INSTANCE.config().getText()));
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);
