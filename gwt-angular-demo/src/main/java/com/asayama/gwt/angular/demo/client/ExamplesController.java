@@ -35,17 +35,8 @@ public class ExamplesController implements Controller {
         if (selectedTab == null || selectedTab.isEmpty()) {
             location.setHashParam("tab", "demo");
         }
-    }
-    
-    public void onClickPage(String key) {
-        location.setHashParam("page", key);
-    }
-    
-    public void onClickTab(String key) {
-        location.setHashParam("tab", key);
-        
         //TODO https://github.com/kyoken74/gwt-angular/issues/42
-        final Tab tab = getTab(key);
+        final Tab tab = getTab(selectedTab);
         if (tab.getString("source") == null) {
             http.get(tab.getFilename(), new HttpClientCallback() {
                 @Override
@@ -59,6 +50,14 @@ public class ExamplesController implements Controller {
                 }
             });
         }
+    }
+    
+    public void onClickPage(String key) {
+        location.setHashParam("page", key);
+    }
+    
+    public void onClickTab(String key) {
+        location.setHashParam("tab", key);
     }
     
     public JSArray<String> getTabKeys() {
