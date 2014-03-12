@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
-import com.asayama.gwt.angular.demo.client.model.Page;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
@@ -17,11 +16,8 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         
-        JSArray<Page> pages = JSArray.eval(DemoResources.INSTANCE.config().getText());
-        
         Angular.module(this);
-        constant("pages", pages);
-//        constant("downloadsURL", "https://api.github.com/repos/kyoken74/gwt-angular/tags");
+        constant("pages", JSArray.eval(DemoResources.INSTANCE.config().getText()));
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);
