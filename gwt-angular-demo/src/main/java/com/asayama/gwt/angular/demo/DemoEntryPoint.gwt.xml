@@ -9,14 +9,14 @@
   <inherits name="com.asayama.gwt.angular.NG" />
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
 
-  <!-- Angular Feature Extension Modules -->  
+  <!-- Angular Modules for Feature Extension -->  
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
 
   <!-- Internal Dependency -->  
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
 
-  <!-- Thirdparty Resources -->
+  <!-- Third-party Resources -->
   <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
   <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
   <script src="lib/jquery/1.10.2/jquery.min.js" />
