@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="demo">
+
+  <!-- GWT -->
+  <inherits name="com.google.gwt.user.User" />
+  <inherits name="com.google.gwt.i18n.I18N" />
+
+  <!-- Angular Native Modules -->
+  <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.angular.route.NGRoute" />
+
+  <!-- Angular Modules for Feature Extension -->  
+  <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
+  <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
+
+  <!-- Internal Dependency -->  
+  <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
+
+  <!-- Third-party Resources -->
+  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+  <script src="lib/jquery/1.10.2/jquery.min.js" />
+  <script src="lib/bootstrap/3.1.1/js/bootstrap.min.js" />
+
+  <!-- Project Structure -->
+  <source path="client" />
+  <source path="shared" />
+  <entry-point class="com.asayama.gwt.angular.demo.client.DemoEntryPoint" />
+
+</module>
