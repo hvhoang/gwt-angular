@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <inherits name="com.google.gwt.user.User" />
+  <inherits name="com.asayama.gwt.angular.NG" />
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js" />
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" />
+  <source path="client" />
+  <source path="shared" />
+  <entry-point class="com.asayama.gwt.angular.prettify.client.PrettifyModule" />
+</module>

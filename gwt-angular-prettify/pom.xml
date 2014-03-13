@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>gwt-angular-prettify</artifactId>
+  <packaging>jar</packaging>
+  <name>gwt-angular-prettify</name>
+  <parent>
+    <groupId>com.asayama.gwt</groupId>
+    <artifactId>gwt-angular</artifactId>
+    <version>0.0.28-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.gwt.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/*.gwt.xml</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <!-- GWT -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-core</artifactId>
+    </dependency>
+  </dependencies>
+</project>

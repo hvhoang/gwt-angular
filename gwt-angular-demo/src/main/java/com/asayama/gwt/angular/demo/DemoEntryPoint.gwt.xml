@@ -6,7 +6,10 @@
 
   <inherits name="com.asayama.gwt.angular.NG" />
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
+  
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
+  <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
+  
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
 
   <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />

@@ -1,6 +1,5 @@
 package com.asayama.gwt.angular.demo.client;
 
-import com.asayama.gwt.angular.client.AbstractFilter;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
@@ -18,7 +17,6 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("pages.json", JSArray.eval(DemoResources.INSTANCE.config().getText()));
-        filter("prettyprint", new PrettyPrintFilter());
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);
@@ -48,10 +46,3 @@ interface DemoResources extends ClientBundle {
     public TextResource config();
 }
 
-class PrettyPrintFilter extends AbstractFilter {
-    
-    @Override
-    public native String filter(String input) /*-{
-        return $wnd.prettyPrintOne(input);
-    }-*/;
-}
