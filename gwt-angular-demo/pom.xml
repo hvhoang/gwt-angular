@@ -75,6 +75,11 @@
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-masonry</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-prettify</artifactId>
       <scope>provided</scope>
     </dependency>
