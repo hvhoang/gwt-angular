@@ -103,5 +103,25 @@
 				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/ReverseFilterExample.java"
 			}
 		}
+	},
+	"prettify" : {
+		"title" : "google-code-prettify",
+		"tabs" : {
+			"demo" : {
+				"title" : "Demo",
+				"template" : "partials/templates/demo.html",
+				"filename" : "partials/examples/PrettifyExample.html"
+			},
+			"html" : {
+				"title" : "HTML",
+				"template" : "partials/templates/html.html",
+				"filename" : "partials/examples/PrettifyExample.html"
+			},
+			"java" : {
+				"title" : "Java",
+				"template" : "partials/templates/java.html",
+				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/PrettifyExample.java"
+			}
+		}
 	}
 }

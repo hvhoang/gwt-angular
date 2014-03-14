@@ -45,4 +45,3 @@ interface DemoResources extends ClientBundle {
     @Source("pages.json")
     public TextResource config();
 }
-
