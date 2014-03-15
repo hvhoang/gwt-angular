@@ -34,11 +34,6 @@ interface CreatorFactory<T> {
     <X extends T> X create(Class<X> klass);
 }
 
-interface DirectiveCreatorFactory extends CreatorFactory<Directive> {
-    @Override
-    public <X extends Directive> X create(Class<X> klass);
-}
-
 interface ProviderCreatorFactory extends CreatorFactory<Provider> {
     @Override
     public <X extends Provider> X create(Class<X> klass);
@@ -71,9 +66,6 @@ interface ControllerCreatorFactory extends CreatorFactory<Controller> {
  */
 interface DependenciesFactory<T> {
     String[] create(T object);
-}
-
-interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
 }
 
 interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
@@ -124,9 +116,6 @@ interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
  */
 interface BinderFactory<T> {
     JSClosure create(T object);
-}
-
-interface DirectiveBinderFactory extends BinderFactory<Directive> {
 }
 
 interface ProviderBinderFactory extends BinderFactory<Provider> {
