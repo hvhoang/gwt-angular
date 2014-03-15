@@ -17,7 +17,6 @@ public class ExamplesController implements Controller {
 
     @Override
     public void onControllerLoad() {
-
         selectedPage = routeParams.getString("page");
         if (selectedPage == null || selectedPage.isEmpty() || pages.getJSON(selectedPage) == null) {
             location.setHashParam("page", "textInput");
