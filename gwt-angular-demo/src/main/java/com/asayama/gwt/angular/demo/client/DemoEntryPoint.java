@@ -50,6 +50,6 @@ interface DemoResources extends ClientBundle {
 
     public static final DemoResources INSTANCE = GWT.create(DemoResources.class);
 
-    @Source("pages.json")
+    @Source("Pages.json")
     public TextResource config();
 }
