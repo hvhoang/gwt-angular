@@ -1,11 +1,17 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
-public class TextInputExample implements Controller {
+public class TextInputExampleController implements Controller {
 
-    // Public final fields are directly bound to AngularJS's $scope, and 
-    // they are available for use in the HTML.
+    public static final String HTML = SafeHtmlUtils.htmlEscape(
+            TextInputExampleResource.INSTANCE.html().getText());
+    public static final String JAVA = SafeHtmlUtils.htmlEscape(
+            TextInputExampleResource.INSTANCE.java().getText());
+
+    // Public final fields are directly bound to AngularJS's $scope, and they 
+    // are available for use in the HTML.
     public static final String GREETING = "Hello";
     public static final String STRANGER = "Stranger";
 
@@ -27,3 +33,5 @@ public class TextInputExample implements Controller {
         this.name = name;
     }
 }
+
+

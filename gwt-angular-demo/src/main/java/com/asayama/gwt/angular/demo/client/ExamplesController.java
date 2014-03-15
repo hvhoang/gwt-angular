@@ -70,7 +70,7 @@ public class ExamplesController implements Controller {
     
     // Getters and Setters
 
-    public Tab getSelectedPage() {
+    public Page getSelectedPage() {
         return pages.getJSON(selectedPage);
     }
     

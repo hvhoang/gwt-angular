@@ -17,7 +17,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  * }</pre>
  * @author kyoken74
  */
-public class PrettifyExample implements Controller {
+public class PrettifyExampleController implements Controller {
 
     public static final String SOURCE = SafeHtmlUtils.htmlEscape(
             PrettifyExampleResources.INSTANCE.source().getText());
@@ -32,6 +32,6 @@ interface PrettifyExampleResources extends ClientBundle {
     
     public static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
 
-    @Source("PrettifyExample.java")
+    @Source("PrettifyExampleController.java")
     public TextResource source();
 }

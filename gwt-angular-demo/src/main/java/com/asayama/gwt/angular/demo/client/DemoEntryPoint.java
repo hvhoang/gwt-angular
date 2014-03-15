@@ -3,6 +3,8 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
+import com.asayama.gwt.angular.client.TemplateDirective;
+import com.asayama.gwt.angular.examples.client.TextInputExampleResource;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
@@ -17,6 +19,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("pages.json", JSArray.eval(DemoResources.INSTANCE.config().getText()));
+        directive("myTextInputExample", new TemplateDirective(TextInputExampleResource.INSTANCE.html()));
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);

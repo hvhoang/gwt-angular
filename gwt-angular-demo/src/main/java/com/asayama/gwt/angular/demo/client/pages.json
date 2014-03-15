@@ -1,127 +1,26 @@
 {
 	"textInput" : {
 		"title" : "Text Input",
-		"tabs" : {
-			"demo" : {
-				"title" : "Demo",
-				"template" : "partials/templates/demo.html",
-				"filename" : "partials/examples/TextInputExample.html"
-			},
-			"html" : {
-				"title" : "HTML",
-				"template" : "partials/templates/html.html",
-				"filename" : "partials/examples/TextInputExample.html"
-			},
-			"java" : {
-				"title" : "Java",
-				"template" : "partials/templates/java.html",
-				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/TextInputExample.java"
-			}
-		}
+		"filename" : "partials/examples/TextInputExample.html"
 	},
 	"onClickEvent" : {
 		"title" : "OnClick Event",
-		"tabs" : {
-			"demo" : {
-				"title" : "Demo",
-				"template" : "partials/templates/demo.html",
-				"filename" : "partials/examples/OnClickEventExample.html"
-			},
-			"html" : {
-				"title" : "HTML",
-				"template" : "partials/templates/html.html",
-				"filename" : "partials/examples/OnClickEventExample.html"
-			},
-			"java" : {
-				"title" : "Java",
-				"template" : "partials/templates/java.html",
-				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/OnClickEventExample.java"
-			}
-		}
+		"filename" : "partials/examples/OnClickEventExample.html"
 	},
 	"urlHashParameter" : {
 		"title" : "URL Hash Parameter",
-		"tabs" : {
-			"demo" : {
-				"title" : "Demo",
-				"template" : "partials/templates/demo.html",
-				"filename" : "partials/examples/UrlHashParameterExample.html"
-			},
-			"html" : {
-				"title" : "HTML",
-				"template" : "partials/templates/html.html",
-				"filename" : "partials/examples/UrlHashParameterExample.html"
-			},
-			"java" : {
-				"title" : "Java",
-				"template" : "partials/templates/java.html",
-				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/UrlHashParameterExample.java"
-			}
-		}
+		"filename" : "partials/examples/UrlHashParameterExample.html"
 	},
 	"httpClient" : {
 		"title" : "HTTP Client",
-		"tabs" : {
-			"demo" : {
-				"title" : "Demo",
-				"template" : "partials/templates/demo.html",
-				"filename" : "partials/examples/HttpClientExample.html"
-			},
-			"html" : {
-				"title" : "HTML",
-				"template" : "partials/templates/html.html",
-				"filename" : "partials/examples/HttpClientExample.html"
-			},
-			"java" : {
-				"title" : "Java",
-				"template" : "partials/templates/java.html",
-				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/HttpClientExample.java"
-			},
-			"data" : {
-				"title" : "Data",
-				"template" : "partials/templates/json.html",
-				"filename" : "partials/examples/HttpClientExample.json"
-			}
-		}
+		"filename" : "partials/examples/HttpClientExample.html"
 	},
 	"reverseFilter" : {
 		"title" : "Reverse Filter",
-		"tabs" : {
-			"demo" : {
-				"title" : "Demo",
-				"template" : "partials/templates/demo.html",
-				"filename" : "partials/examples/ReverseFilterExample.html"
-			},
-			"html" : {
-				"title" : "HTML",
-				"template" : "partials/templates/html.html",
-				"filename" : "partials/examples/ReverseFilterExample.html"
-			},
-			"java" : {
-				"title" : "Java",
-				"template" : "partials/templates/java.html",
-				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/ReverseFilterExample.java"
-			}
-		}
+		"filename" : "partials/examples/ReverseFilterExample.html"
 	},
 	"prettify" : {
 		"title" : "google-code-prettify",
-		"tabs" : {
-			"demo" : {
-				"title" : "Demo",
-				"template" : "partials/templates/demo.html",
-				"filename" : "partials/examples/PrettifyExample.html"
-			},
-			"html" : {
-				"title" : "HTML",
-				"template" : "partials/templates/html.html",
-				"filename" : "partials/examples/PrettifyExample.html"
-			},
-			"java" : {
-				"title" : "Java",
-				"template" : "partials/templates/java.html",
-				"filename" : "src/main/java/com/asayama/gwt/angular/examples/client/PrettifyExample.java"
-			}
-		}
+		"filename" : "partials/examples/PrettifyExample.html"
 	}
 }

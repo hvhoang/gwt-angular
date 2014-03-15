@@ -20,7 +20,7 @@ import com.asayama.gwt.angular.client.Controller;
  * }</pre>
  * @author kyoken74
  */
-public class ReverseFilterExample implements Controller {
+public class ReverseFilterExampleController implements Controller {
 
     private String caption = "Hello, World!";
 
