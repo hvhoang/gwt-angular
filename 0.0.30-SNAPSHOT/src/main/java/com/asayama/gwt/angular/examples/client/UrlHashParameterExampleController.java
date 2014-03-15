@@ -4,7 +4,7 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
 
-public class UrlHashParameterExample implements Controller {
+public class UrlHashParameterExampleController implements Controller {
 
     // Injectable fields are automatically injected by the framework
     private RouteParams routeParams;
@@ -18,12 +18,12 @@ public class UrlHashParameterExample implements Controller {
         page = routeParams.getString("page");
     }
 
-    // Public event handlers are automatically wired to AngularJS's $scope.
+    // Public methods are automatically wired to AngularJS's $scope.
+
     public void onClickGo(String page) {
         location.setHashParam("page", page);
     }
 
-    // Public getters and setters are automatically wired to AngularJS's $scope.
     public String getName() {
         return page;
     }
