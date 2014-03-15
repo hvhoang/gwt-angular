@@ -19,7 +19,7 @@ import com.google.gwt.core.shared.GWT;
  */
 public abstract class AbstractModule implements Module {
 
-    JSModule jso;
+    private JSModule jso;
 
     /**
      * Defines a value as a service to the module.
@@ -55,26 +55,8 @@ public abstract class AbstractModule implements Module {
     // Directive
     //
     
-    DirectiveCreatorFactory directiveCreatorFactory = GWT.create(DirectiveCreatorFactory.class);
-    DirectiveDependenciesFactory directiveDependenciesFactory = GWT.create(DirectiveDependenciesFactory.class);
-    DirectiveBinderFactory directiveBinderFactory = GWT.create(DirectiveBinderFactory.class);
-    
-    public <D extends Directive> D directive(String name, final Class<D> klass) {
-        // TODO Defer instantiation until the time of construction
-        // https://github.com/kyoken74/gwt-angular/issues/41
-        final D directive = directiveCreatorFactory.create(klass);
-        final JSClosure injector = directiveBinderFactory.create(directive);
-        Function<D> initializer = new Function<D>() {
-
-            @Override
-            public D function(Object... args) {
-                injector.apply(args);
-                return directive;
-            }
-        };
-        String[] dependencies = directiveDependenciesFactory.create(directive);
-        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
-        jso.directive(name, constructor);
+    public <D extends AbstractDirective> D directive(String name, final D directive) {
+        jso.directive(name, JSFunction.create(directive));
         return directive;
     }
     
@@ -82,9 +64,9 @@ public abstract class AbstractModule implements Module {
     // Provider
     //
     
-    ProviderCreatorFactory providerCreatorFactory = GWT.create(ProviderCreatorFactory.class);
-    ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
-    ProviderBinderFactory providerBinderFactory = GWT.create(ProviderBinderFactory.class);
+    private ProviderCreatorFactory providerCreatorFactory = GWT.create(ProviderCreatorFactory.class);
+    private ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
+    private ProviderBinderFactory providerBinderFactory = GWT.create(ProviderBinderFactory.class);
 
     /**
      * Configures a previously created service object. Use the {@link Configurator}
@@ -117,9 +99,9 @@ public abstract class AbstractModule implements Module {
     // Service
     //
     
-    ServiceCreatorFactory serviceCreatorFactory = GWT.create(ServiceCreatorFactory.class);
-    ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
-    ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
+    private ServiceCreatorFactory serviceCreatorFactory = GWT.create(ServiceCreatorFactory.class);
+    private ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
+    private ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
     
     public <S extends Service> S factory(Class<S> klass) {
         return factory(klass.getName(), klass);
@@ -148,10 +130,10 @@ public abstract class AbstractModule implements Module {
     // Controller
     //
     
-    ControllerCreatorFactory controllerCreatorFactory = GWT.create(ControllerCreatorFactory.class);
-    ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
-    ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
-    ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
+    private ControllerCreatorFactory controllerCreatorFactory = GWT.create(ControllerCreatorFactory.class);
+    private ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
+    private ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
+    private ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
 
     public <C extends Controller> C controller(Class<C> klass) {
         return controller(klass.getName(), klass);
@@ -237,10 +219,10 @@ class JSModule extends JSObject {
         });
     }-*/;
 
-    final native void directive(String name, NGConstructor constructor) /*-{
-        this.directive(name, constructor);
+    final native void directive(String name, JSFunction<Template> directive) /*-{
+        this.directive(name, directive);
     }-*/;
-    
+
     final native void config(JavaScriptObject constructor) /*-{
 		this.config(constructor);
     }-*/;
