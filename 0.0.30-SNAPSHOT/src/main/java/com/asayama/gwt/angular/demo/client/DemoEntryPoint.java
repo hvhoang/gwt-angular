@@ -20,8 +20,11 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("pages.json", JSArray.eval(DemoResources.INSTANCE.config().getText()));
+        
+        // TODO Can I genericise this directive? Some kind of HtmlResourceDirective to take TextResource?
         directive("myTextInputExample", new TemplateDirective(TextInputExampleResource.INSTANCE.html()));
         directive("myUrlHashParameterExample", new TemplateDirective(UrlHashParameterExampleResource.INSTANCE.html()));
+        
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);
@@ -47,6 +50,6 @@ interface DemoResources extends ClientBundle {
 
     public static final DemoResources INSTANCE = GWT.create(DemoResources.class);
 
-    @Source("pages.json")
+    @Source("Pages.json")
     public TextResource config();
 }

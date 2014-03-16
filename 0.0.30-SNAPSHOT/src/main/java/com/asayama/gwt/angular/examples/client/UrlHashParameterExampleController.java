@@ -3,8 +3,14 @@ package com.asayama.gwt.angular.examples.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class UrlHashParameterExampleController implements Controller {
+
+    public static final String HTML = SafeHtmlUtils.htmlEscape(
+            UrlHashParameterExampleResource.INSTANCE.html().getText());
+    public static final String JAVA = SafeHtmlUtils.htmlEscape(
+            UrlHashParameterExampleResource.INSTANCE.java().getText());
 
     // Injectable fields are automatically injected by the framework
     private RouteParams routeParams;
