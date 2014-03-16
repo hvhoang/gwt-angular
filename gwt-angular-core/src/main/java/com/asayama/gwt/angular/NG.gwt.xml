@@ -2,7 +2,7 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.core.Core" />
-  <script src="lib/angular/1.2.14/angular.js" />
+  <script src="lib/angular/1.2.14/angular.min.js" />
   <generate-with class="com.asayama.gwt.angular.rebind.CreatorFactoryGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.CreatorFactory" />
   </generate-with>
