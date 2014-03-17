@@ -3,15 +3,25 @@ package com.asayama.gwt.angular.examples.client;
 import java.util.Date;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Event;
 
 public class OnClickEventExampleController implements Controller {
 
+    public static final String DEMO_URL =
+            OnClickEventExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
+            OnClickEventExampleResources.INSTANCE.html().getText());
+    public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
+            OnClickEventExampleResources.INSTANCE.java().getText());
+
     // Public final fields are directly bound to AngularJS's $scope, and 
     // they are available for use in the HTML.
+    
     public static final String TITLE = "Click Me";
     
     // Other fields are used to represent the state of this controller.
+
     private String caption = "You have not clicked me";
 
     @Override

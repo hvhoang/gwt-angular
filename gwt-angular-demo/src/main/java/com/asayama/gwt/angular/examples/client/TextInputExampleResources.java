@@ -8,18 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface UrlHashParameterExampleResource extends ClientBundle {
-
-    static final UrlHashParameterExampleResource INSTANCE = GWT.create(UrlHashParameterExampleResource.class);
+public interface TextInputExampleResources extends ClientBundle {
     
+    static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
+
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("UrlHashParameterExampleDemo.html")
+    @Source("TextInputExampleDemo.html")
     public DataResource demo();
-
-    @Source("UrlHashParameterExampleDemo.html")
+    
+    @Source("TextInputExampleDemo.html")
     public TextResource html();
     
-    @Source("UrlHashParameterExampleController.java")
+    @Source("TextInputExampleController.java")
     public TextResource java();
 }

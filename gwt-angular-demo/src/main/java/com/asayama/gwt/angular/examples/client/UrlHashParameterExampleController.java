@@ -8,11 +8,11 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 public class UrlHashParameterExampleController implements Controller {
 
     public static final String DEMO_URL =
-            UrlHashParameterExampleResource.INSTANCE.demo().getSafeUri().asString();
+            UrlHashParameterExampleResources.INSTANCE.demo().getSafeUri().asString();
     public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
-            UrlHashParameterExampleResource.INSTANCE.html().getText());
+            UrlHashParameterExampleResources.INSTANCE.html().getText());
     public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
-            UrlHashParameterExampleResource.INSTANCE.java().getText());
+            UrlHashParameterExampleResources.INSTANCE.java().getText());
 
     // Injectable fields are automatically injected by the framework
     

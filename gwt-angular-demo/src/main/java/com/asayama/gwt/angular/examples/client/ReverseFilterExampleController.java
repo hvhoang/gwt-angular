@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractFilter;
 import com.asayama.gwt.angular.client.Controller;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 /**
  * <pre>{@code 
@@ -21,6 +22,13 @@ import com.asayama.gwt.angular.client.Controller;
  * @author kyoken74
  */
 public class ReverseFilterExampleController implements Controller {
+
+    public static final String DEMO_URL =
+            ReverseFilterExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
+            ReverseFilterExampleResources.INSTANCE.html().getText());
+    public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
+            ReverseFilterExampleResources.INSTANCE.java().getText());
 
     private String caption = "Hello, World!";
 

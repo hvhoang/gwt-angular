@@ -1,9 +1,6 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 /**
@@ -19,19 +16,17 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  */
 public class PrettifyExampleController implements Controller {
 
-    public static final String SOURCE = SafeHtmlUtils.htmlEscape(
-            PrettifyExampleResources.INSTANCE.source().getText());
-    
+    public static final String DEMO_URL =
+            PrettifyExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
+            PrettifyExampleResources.INSTANCE.html().getText());
+    public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
+            PrettifyExampleResources.INSTANCE.java().getText());
+    public static final String RESOURCES_CONTENT = SafeHtmlUtils.htmlEscape(
+            PrettifyExampleResources.INSTANCE.resources().getText());
+
     @Override
     public void onControllerLoad() {
     }
     
-}
-
-interface PrettifyExampleResources extends ClientBundle {
-    
-    public static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
-
-    @Source("PrettifyExampleController.java")
-    public TextResource source();
 }

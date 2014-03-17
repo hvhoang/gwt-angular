@@ -7,13 +7,23 @@ import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class HttpClientExampleController implements Controller {
 
+    public static final String DEMO_URL =
+            HttpClientExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
+            HttpClientExampleResources.INSTANCE.html().getText());
+    public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
+            HttpClientExampleResources.INSTANCE.java().getText());
+
     // Fields of type Injectable are injected by the framework
+    
     private HttpClient http;
 
     // Other fields are used to represent the state of this controller
+
     private Customers customers;
 
     @Override

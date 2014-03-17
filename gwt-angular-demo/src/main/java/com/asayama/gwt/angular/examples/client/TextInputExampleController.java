@@ -6,11 +6,11 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 public class TextInputExampleController implements Controller {
 
     public static final String DEMO_URL =
-            TextInputExampleResource.INSTANCE.demo().getSafeUri().asString();
+            TextInputExampleResources.INSTANCE.demo().getSafeUri().asString();
     public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
-            TextInputExampleResource.INSTANCE.html().getText());
+            TextInputExampleResources.INSTANCE.html().getText());
     public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
-            TextInputExampleResource.INSTANCE.java().getText());
+            TextInputExampleResources.INSTANCE.java().getText());
 
     // Public final fields are directly bound to AngularJS's $scope, and they 
     // are available for use in the HTML.

@@ -8,18 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputExampleResource extends ClientBundle {
-    
-    static final TextInputExampleResource INSTANCE = GWT.create(TextInputExampleResource.class);
+public interface OnClickEventExampleResources extends ClientBundle {
 
+    static final OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
+    
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("TextInputExampleDemo.html")
+    @Source("OnClickEventExampleDemo.html")
     public DataResource demo();
-    
-    @Source("TextInputExampleDemo.html")
+
+    @Source("OnClickEventExampleDemo.html")
     public TextResource html();
     
-    @Source("TextInputExampleController.java")
+    @Source("OnClickEventExampleController.java")
     public TextResource java();
 }

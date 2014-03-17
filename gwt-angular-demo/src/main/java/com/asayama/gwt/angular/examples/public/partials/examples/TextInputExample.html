@@ -7,8 +7,7 @@
     to "<b>{{ GREETING }}, Jack!</b>" as you type in the value.
   </p>
   <div class="panel panel-default">
-    <div class="panel-body" data-ng-include="DEMO_URL">
-    </div>
+    <div class="panel-body" data-ng-include="DEMO_URL"></div>
   </div>
   <p>
     A text <code>&lt;INPUT&gt;</code> field is associated with an Angular 
@@ -19,8 +18,7 @@
     change is communicated to the controller via <code>data-ng-change</code>
     directive, which calls <code>setName()</code> method.
   </p>
-  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint">
-  </pre>
+  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
   <p>
     The controller code bound to the view above is shown below. The view 
     communicates with the controller via the <code>getName()</code> and 
@@ -32,6 +30,5 @@
     These public final constants are bound to the view, so that they can be
     inserted into the view via the use of double mustache notation, {{ }}.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint">
-  </pre>
+  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
 </div>
