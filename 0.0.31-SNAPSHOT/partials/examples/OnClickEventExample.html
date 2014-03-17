@@ -8,10 +8,17 @@
     Click the label, "<b>{{ TITLE }}</b>". You will see that the caption below
     the label is automatically refreshed.
   </p>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h2 data-ng-click="onClickTitle($event)" style="cursor:pointer;">{{ TITLE }}</h2>
-        <h3 data-ng-click="onClickCaption($event)">{{ getCaption() }}</h3>
-      </div>
-    </div>
+  <div class="panel panel-default">
+    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+  </div>
+  <p>
+    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
+      TODO Bring some structure to the description of examples.</a>
+  </p>
+  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  <p>
+    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
+      TODO Bring some structure to the description of examples.</a>
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
 </div>
