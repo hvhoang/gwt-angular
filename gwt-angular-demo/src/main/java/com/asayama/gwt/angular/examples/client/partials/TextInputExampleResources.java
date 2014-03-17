@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.partials;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -8,18 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface HttpClientExampleResources extends ClientBundle {
-
-    static final HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
+public interface TextInputExampleResources extends ClientBundle {
     
+    static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
+
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("HttpClientExampleDemo.html")
+    @Source("TextInputExampleDemo.html")
     public DataResource demo();
-
-    @Source("HttpClientExampleDemo.html")
+    
+    @Source("TextInputExampleDemo.html")
     public TextResource html();
     
-    @Source("HttpClientExampleController.java")
+    @Source("com/asayama/gwt/angular/examples/client/TextInputExampleController.java")
     public TextResource java();
 }

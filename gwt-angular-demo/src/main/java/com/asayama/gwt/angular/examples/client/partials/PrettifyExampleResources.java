@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.partials;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -8,18 +8,21 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface UrlHashParameterExampleResources extends ClientBundle {
+public interface PrettifyExampleResources extends ClientBundle {
 
-    static final UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
+    static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("UrlHashParameterExampleDemo.html")
+    @Source("PrettifyExampleDemo.html")
     public DataResource demo();
 
-    @Source("UrlHashParameterExampleDemo.html")
+    @Source("PrettifyExampleDemo.html")
     public TextResource html();
     
-    @Source("UrlHashParameterExampleController.java")
+    @Source("com/asayama/gwt/angular/examples/client/PrettifyExampleController.java")
     public TextResource java();
+    
+    @Source("PrettifyExampleResources.java")
+    public TextResource resources();
 }

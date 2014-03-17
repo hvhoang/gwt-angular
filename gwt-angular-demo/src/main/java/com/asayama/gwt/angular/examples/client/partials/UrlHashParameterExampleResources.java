@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.partials;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -8,18 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputExampleResources extends ClientBundle {
-    
-    static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
+public interface UrlHashParameterExampleResources extends ClientBundle {
 
+    static final UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
+    
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("TextInputExampleDemo.html")
+    @Source("UrlHashParameterExampleDemo.html")
     public DataResource demo();
-    
-    @Source("TextInputExampleDemo.html")
+
+    @Source("UrlHashParameterExampleDemo.html")
     public TextResource html();
     
-    @Source("TextInputExampleController.java")
+    @Source("com/asayama/gwt/angular/examples/client/UrlHashParameterExampleController.java")
     public TextResource java();
 }

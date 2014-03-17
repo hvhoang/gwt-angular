@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.partials;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -8,18 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface OnClickEventExampleResources extends ClientBundle {
+public interface HttpClientExampleResources extends ClientBundle {
 
-    static final OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
+    static final HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("OnClickEventExampleDemo.html")
+    @Source("HttpClientExampleDemo.html")
     public DataResource demo();
 
-    @Source("OnClickEventExampleDemo.html")
+    @Source("HttpClientExampleDemo.html")
     public TextResource html();
     
-    @Source("OnClickEventExampleController.java")
+    @Source("com/asayama/gwt/angular/examples/client/HttpClientExampleController.java")
     public TextResource java();
 }

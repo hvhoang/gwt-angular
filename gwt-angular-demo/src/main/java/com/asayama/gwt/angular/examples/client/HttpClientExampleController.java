@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.examples.client.partials.HttpClientExampleResources;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.core.client.JSON;

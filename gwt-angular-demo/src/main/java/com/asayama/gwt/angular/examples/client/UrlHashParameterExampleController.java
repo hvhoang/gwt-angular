@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.Location;
+import com.asayama.gwt.angular.examples.client.partials.UrlHashParameterExampleResources;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 

@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.partials;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -8,21 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface PrettifyExampleResources extends ClientBundle {
+public interface ReverseFilterExampleResources extends ClientBundle {
 
-    static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
+    static final ReverseFilterExampleResources INSTANCE = GWT.create(ReverseFilterExampleResources.class);
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("PrettifyExampleDemo.html")
+    @Source("ReverseFilterExampleDemo.html")
     public DataResource demo();
 
-    @Source("PrettifyExampleDemo.html")
+    @Source("ReverseFilterExampleDemo.html")
     public TextResource html();
     
-    @Source("PrettifyExampleController.java")
+    @Source("com/asayama/gwt/angular/examples/client/ReverseFilterExampleController.java")
     public TextResource java();
-    
-    @Source("PrettifyExampleResources.java")
-    public TextResource resources();
 }

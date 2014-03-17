@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.examples.client.partials.TextInputExampleResources;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class TextInputExampleController implements Controller {

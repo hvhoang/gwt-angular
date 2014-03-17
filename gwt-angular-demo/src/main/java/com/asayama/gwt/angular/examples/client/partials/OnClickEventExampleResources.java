@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.partials;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -8,18 +8,18 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface ReverseFilterExampleResources extends ClientBundle {
+public interface OnClickEventExampleResources extends ClientBundle {
 
-    static final ReverseFilterExampleResources INSTANCE = GWT.create(ReverseFilterExampleResources.class);
+    static final OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("ReverseFilterExampleDemo.html")
+    @Source("OnClickEventExampleDemo.html")
     public DataResource demo();
 
-    @Source("ReverseFilterExampleDemo.html")
+    @Source("OnClickEventExampleDemo.html")
     public TextResource html();
     
-    @Source("ReverseFilterExampleController.java")
+    @Source("com/asayama/gwt/angular/examples/client/OnClickEventExampleController.java")
     public TextResource java();
 }

@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.examples.client.partials.PrettifyExampleResources;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 /**

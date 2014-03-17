@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.examples.client;
 import java.util.Date;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.examples.client.partials.OnClickEventExampleResources;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Event;
 
