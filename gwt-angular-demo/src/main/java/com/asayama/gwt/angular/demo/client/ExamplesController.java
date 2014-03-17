@@ -12,7 +12,7 @@ public class ExamplesController implements Controller {
     private Location location;
     private String selectedPage = null;
     
-    @Bind("pages.json")
+    @Bind("Pages.json")
     private JSON pages = null;
 
     @Override

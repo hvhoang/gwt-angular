@@ -17,7 +17,7 @@ public class NavbarController implements Controller {
     public static final String DOWNLOADS = CONSTANTS.downloads();
     public static final String DEVELOP = CONSTANTS.develop();
 
-    @Bind("pages.json")
+    @Bind("Pages.json")
     private JSON pages = null;
 
     @Override
