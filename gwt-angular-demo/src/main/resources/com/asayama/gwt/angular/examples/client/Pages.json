@@ -1,46 +1,26 @@
 {
 	"textInput" : {
 		"title" : "Text Input",
-		"modules" : [
-			"com.asayama.gwt.angular.NG"
-		],
 		"filename" : "partials/examples/TextInputExample.html"
 	},
 	"onClickEvent" : {
 		"title" : "OnClick Event",
-		"modules" : [
-			"com.asayama.gwt.angular.NG"
-		],
 		"filename" : "partials/examples/OnClickEventExample.html"
 	},
 	"urlHashParameter" : {
 		"title" : "URL Hash Parameter",
-		"modules" : [
-			"com.asayama.gwt.angular.NG",
-			"com.asayama.gwt.angular.route.NGRoute"
-		],
 		"filename" : "partials/examples/UrlHashParameterExample.html"
 	},
 	"httpClient" : {
 		"title" : "HTTP Client",
-		"modules" : [
-			"com.asayama.gwt.angular.NG",
-			"com.asayama.gwt.angular.http.HttpClientModule"
-		],
 		"filename" : "partials/examples/HttpClientExample.html"
 	},
 	"reverseFilter" : {
 		"title" : "Reverse Filter",
-		"modules" : [
-			"com.asayama.gwt.angular.NG"
-		],
 		"filename" : "partials/examples/ReverseFilterExample.html"
 	},
 	"prettify" : {
 		"title" : "google-code-prettify",
-		"modules" : [
-			"com.asayama.gwt.angular.NG", "com.asayama.gwt.angular.prettify.PrettifyModule"
-		],
 		"filename" : "partials/examples/PrettifyExample.html"
 	}
 }

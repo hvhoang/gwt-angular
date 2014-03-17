@@ -9,7 +9,8 @@
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
   <inherits name="com.asayama.gwt.angular.sanitize.NGSanitize" />
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
-  
+  <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
+
   <source path="client" />
   <source path="shared" />
   
