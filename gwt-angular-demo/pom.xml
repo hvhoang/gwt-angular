@@ -55,6 +55,9 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+          <!-- TODO remove this when #44 is done
+          https://github.com/kyoken74/gwt-angular/issues/44
+          -->
           <webResources>
             <resource>
               <directory>${project.basedir}</directory>

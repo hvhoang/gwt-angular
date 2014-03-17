@@ -14,10 +14,10 @@ public interface TextInputExampleResource extends ClientBundle {
 
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("TextInputExample.html")
+    @Source("TextInputExampleDemo.html")
     public DataResource demo();
     
-    @Source("TextInputExample.html")
+    @Source("TextInputExampleDemo.html")
     public TextResource html();
     
     @Source("TextInputExampleController.java")

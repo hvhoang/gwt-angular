@@ -7,16 +7,20 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class UrlHashParameterExampleController implements Controller {
 
-    public static final String HTML = SafeHtmlUtils.htmlEscape(
+    public static final String DEMO_URL =
+            UrlHashParameterExampleResource.INSTANCE.demo().getSafeUri().asString();
+    public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
             UrlHashParameterExampleResource.INSTANCE.html().getText());
-    public static final String JAVA = SafeHtmlUtils.htmlEscape(
+    public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
             UrlHashParameterExampleResource.INSTANCE.java().getText());
 
     // Injectable fields are automatically injected by the framework
+    
     private RouteParams routeParams;
     private Location location;
 
     // Other fields are used to represent the state of this controller
+
     private String page;
 
     @Override
