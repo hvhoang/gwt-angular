@@ -1,0 +1,17 @@
+<div data-ng-controller="com.asayama.gwt.angular.examples.client.OnClickEventExampleController">
+  <p>
+    In this example, we demonstrate how we capture <code>onClick</code> event
+    using GWT Angular. <code>data-ng-click</code> directive is used to pass
+    events to the controller. The controller modifies it state, which is 
+    automatically reflected in the view. In this case, <code>getCaption()</code>.
+  </p><p>
+    Click the label, "<b>{{ TITLE }}</b>". You will see that the caption below
+    the label is automatically refreshed.
+  </p>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h2 data-ng-click="onClickTitle($event)" style="cursor:pointer;">{{ TITLE }}</h2>
+        <h3 data-ng-click="onClickCaption($event)">{{ getCaption() }}</h3>
+      </div>
+    </div>
+</div>
