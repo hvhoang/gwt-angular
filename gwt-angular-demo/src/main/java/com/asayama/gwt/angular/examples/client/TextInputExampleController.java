@@ -9,6 +9,9 @@ public class TextInputExampleController implements Controller {
             TextInputExampleResource.INSTANCE.html().getText());
     public static final String JAVA = SafeHtmlUtils.htmlEscape(
             TextInputExampleResource.INSTANCE.java().getText());
+    
+    public static final String DEMO =
+            TextInputExampleResource.INSTANCE.demo().getSafeUri().asString();
 
     // Public final fields are directly bound to AngularJS's $scope, and they 
     // are available for use in the HTML.
@@ -32,6 +35,5 @@ public class TextInputExampleController implements Controller {
     public void setName(String name) {
         this.name = name;
     }
+
 }
-
-
