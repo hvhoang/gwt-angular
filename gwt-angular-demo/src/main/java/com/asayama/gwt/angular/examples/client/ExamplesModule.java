@@ -22,27 +22,37 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     
     private Pages getPages() {
         Pages pages = Pages.create();
-        pages.put("textInput", Page.create("Text Input", Partials.INSTANCE.textInput().getSafeUri().asString()));
-        pages.put("onClickEvent", Page.create("OnClick Event", Partials.INSTANCE.onClickEvent().getSafeUri().asString()));
-        pages.put("reverseFilter", Page.create("Reverse Filter", Partials.INSTANCE.reverseFilter().getSafeUri().asString()));
-        pages.put("urlHashParameter", Page.create("URL Hash Parameter", Partials.INSTANCE.urlHashParameter().getSafeUri().asString()));
-        pages.put("httpClient", Page.create("HTTP Client", Partials.INSTANCE.httpClient().getSafeUri().asString()));
-        pages.put("prettify", Page.create("Prettify", Partials.INSTANCE.prettify().getSafeUri().asString()));
+        pages.put("textInput", Page.create("Text Input",
+                Partials.INSTANCE.textInput().getSafeUri().asString()));
+        pages.put("onClickEvent", Page.create("OnClick Event",
+                Partials.INSTANCE.onClickEvent().getSafeUri().asString()));
+        pages.put("reverseFilter", Page.create("Reverse Filter",
+                Partials.INSTANCE.reverseFilter().getSafeUri().asString()));
+        pages.put("urlHashParameter", Page.create("URL Hash Parameter",
+                Partials.INSTANCE.urlHashParameter().getSafeUri().asString()));
+        pages.put("httpClient", Page.create("HTTP Client",
+                Partials.INSTANCE.httpClient().getSafeUri().asString()));
+        pages.put("prettify", Page.create("Prettify",
+                Partials.INSTANCE.prettify().getSafeUri().asString()));
        return pages;
     }
 }
 
 class Pages extends JSON {
+    
     protected Pages() {
     }
 }
+
 class Page extends JSON {
+    
     static Page create(String title, String filename) {
         Page page = create();
         page.put("title", title);
         page.put("filename", filename);
         return page;
     }
+    
     protected Page() {
     }
 }
