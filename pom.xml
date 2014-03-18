@@ -61,7 +61,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>gwt-maven-plugin</artifactId>
-          <version>2.5.1</version>
+          <version>2.6.0</version>
           <configuration>
             <gen>${project.build.directory}/generated</gen>
           </configuration>
@@ -74,7 +74,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.4.2</version>
+          <version>2.5</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -128,12 +128,12 @@
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
-        <version>2.5.1</version>
+        <version>2.6.0</version>
       </dependency>
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-dev</artifactId>
-        <version>2.5.1</version>
+        <version>2.6.0</version>
       </dependency>
 
       <!-- Code Generator -->
