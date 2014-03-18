@@ -1,0 +1,40 @@
+<div data-ng-controller="com.asayama.gwt.angular.examples.client.TextInputExampleController">
+  <p>
+    To see this example in action, try typing in something into the text field
+    below. Before you enter any values into the field, the caption above the
+    field should read "<b>{{ GREETING }}, {{ STRANGER }}!</b>" Once you enter
+    a value in the field, e.g. "Jack", then you will see that caption updated
+    to "<b>{{ GREETING }}, Jack!</b>" as you type in the value.
+  </p>
+  <div class="panel panel-default">
+    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+  </div>
+  <p>
+    A text <code>&lt;INPUT&gt;</code> field is associated with an Angular 
+    model called <code>name</code> using <code>data-ng-model</code> directive.
+    When the element is first rendered, the controller's 
+    <code>getName()</code> is called and the value is from this method is 
+    assigned to the model. When the value of the input box is changed, the
+    change is communicated to the controller via <code>data-ng-change</code>
+    directive, which calls <code>setName()</code> method.
+  </p>
+  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  <p>
+    The controller code bound to the view above is shown below. The view 
+    communicates with the controller via the <code>getName()</code> and 
+    <code>setName()</code> methods.
+  </p><p>
+    There are two other variables that are defined in this controller that 
+    are bound to the view. They are <code>GREETING</code> and <code>STRANGER
+    </code>. You may recognize these variables from the HTML code above.
+    These public final constants are bound to the view, so that they can be
+    inserted into the view via the use of double mustache notation, {{ }}.
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+  <p>
+    The following modules are required in the gwt.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;inherits name="com.asayama.gwt.angular.NG" /&gt;</pre>
+
+</div>
