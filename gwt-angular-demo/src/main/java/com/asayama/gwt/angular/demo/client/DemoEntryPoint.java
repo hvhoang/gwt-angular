@@ -12,11 +12,6 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         Angular.module(this);
-        
-        // TODO Can I genericise this directive? Some kind of HtmlResourceDirective to take TextResource?
-//        directive("myTextInputExample", new TemplateDirective(TextInputExampleResources.INSTANCE.html()));
-//        directive("myUrlHashParameterExample", new TemplateDirective(UrlHashParameterExampleResources.INSTANCE.html()));
-        
         controller(DocumentationController.class);
         controller(DownloadsController.class);
         controller(ExamplesController.class);
