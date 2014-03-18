@@ -11,6 +11,8 @@ import com.google.gwt.user.client.Window;
 public class NavbarController implements Controller {
 
     private static NavigationConstants CONSTANTS = GWT.create(NavigationConstants.class);
+    
+    public static final String PARTIAL = Partials.INSTANCE.navbar().getSafeUri().asString();
 
     public static final String PROJECT_VERSION = CONSTANTS.projectVersion();
     public static final String EXAMPLES = CONSTANTS.examples();
