@@ -3,9 +3,6 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
-import com.asayama.gwt.angular.client.TemplateDirective;
-import com.asayama.gwt.angular.examples.client.partials.TextInputExampleResources;
-import com.asayama.gwt.angular.examples.client.partials.UrlHashParameterExampleResources;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
@@ -17,8 +14,8 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
         Angular.module(this);
         
         // TODO Can I genericise this directive? Some kind of HtmlResourceDirective to take TextResource?
-        directive("myTextInputExample", new TemplateDirective(TextInputExampleResources.INSTANCE.html()));
-        directive("myUrlHashParameterExample", new TemplateDirective(UrlHashParameterExampleResources.INSTANCE.html()));
+//        directive("myTextInputExample", new TemplateDirective(TextInputExampleResources.INSTANCE.html()));
+//        directive("myUrlHashParameterExample", new TemplateDirective(UrlHashParameterExampleResources.INSTANCE.html()));
         
         controller(DocumentationController.class);
         controller(DownloadsController.class);

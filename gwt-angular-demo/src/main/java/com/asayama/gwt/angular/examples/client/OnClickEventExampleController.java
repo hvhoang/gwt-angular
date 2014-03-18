@@ -3,7 +3,12 @@ package com.asayama.gwt.angular.examples.client;
 import java.util.Date;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.examples.client.partials.OnClickEventExampleResources;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.DataResource.DoNotEmbed;
+import com.google.gwt.resources.client.DataResource.MimeType;
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Event;
 
@@ -48,4 +53,20 @@ public class OnClickEventExampleController implements Controller {
     public void setCaption(String caption) {
         this.caption = caption;
     }
+}
+
+interface OnClickEventExampleResources extends ClientBundle {
+
+    static final OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
+    
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("OnClickEventExampleDemo.html")
+    public DataResource demo();
+
+    @Source("OnClickEventExampleDemo.html")
+    public TextResource html();
+    
+    @Source("OnClickEventExampleController.java")
+    public TextResource java();
 }

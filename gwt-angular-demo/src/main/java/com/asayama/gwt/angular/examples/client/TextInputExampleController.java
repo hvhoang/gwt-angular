@@ -1,7 +1,12 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.examples.client.partials.TextInputExampleResources;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.DataResource.DoNotEmbed;
+import com.google.gwt.resources.client.DataResource.MimeType;
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class TextInputExampleController implements Controller {
@@ -38,4 +43,20 @@ public class TextInputExampleController implements Controller {
     public void setName(String name) {
         this.name = name;
     }
+}
+
+interface TextInputExampleResources extends ClientBundle {
+    
+    static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
+
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("TextInputExampleDemo.html")
+    public DataResource demo();
+    
+    @Source("TextInputExampleDemo.html")
+    public TextResource html();
+    
+    @Source("TextInputExampleController.java")
+    public TextResource java();
 }
