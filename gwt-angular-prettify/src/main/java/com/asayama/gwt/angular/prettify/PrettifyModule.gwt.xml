@@ -2,8 +2,6 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
-  <stylesheet src="lib/prettify/prettify.css" />
-  <script src="lib/prettify/prettify.js" />
   <source path="client" />
   <source path="shared" />
   <entry-point class="com.asayama.gwt.angular.prettify.client.PrettifyModule" />

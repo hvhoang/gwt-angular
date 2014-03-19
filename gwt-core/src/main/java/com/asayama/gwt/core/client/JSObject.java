@@ -15,7 +15,18 @@ import com.google.gwt.core.client.JavaScriptObject;
  * @see Invoker
  */
 public class JSObject extends JavaScriptObject {
-
+    
+    public static final JavaScriptObject $wnd = $wnd();
+    public static final JavaScriptObject $doc = $doc();
+    
+    private static final native JavaScriptObject $wnd() /*-{
+        return $wnd;
+    }-*/;
+    
+    private static final native JavaScriptObject $doc() /*-{
+        return $doc;
+    }-*/;
+    
     public static native <T extends JSObject> T create() /*-{
         return {};
     }-*/;
