@@ -2,8 +2,9 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
+import com.asayama.gwt.angular.examples.client.model.Page;
+import com.asayama.gwt.angular.examples.client.model.Pages;
 import com.asayama.gwt.angular.examples.client.partials.Partials;
-import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.client.EntryPoint;
 
 public class ExamplesModule extends AbstractModule implements EntryPoint {
@@ -38,21 +39,3 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     }
 }
 
-class Pages extends JSON {
-    
-    protected Pages() {
-    }
-}
-
-class Page extends JSON {
-    
-    static Page create(String title, String filename) {
-        Page page = create();
-        page.put("title", title);
-        page.put("filename", filename);
-        return page;
-    }
-    
-    protected Page() {
-    }
-}

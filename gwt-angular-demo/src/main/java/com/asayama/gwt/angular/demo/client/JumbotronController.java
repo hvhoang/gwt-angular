@@ -6,10 +6,10 @@ import com.google.gwt.i18n.client.Constants;
 
 public class JumbotronController implements Controller {
 
-    private static JumbotronConstants CONSTANTS = GWT.create(JumbotronConstants.class);
     
-    public static final String LEARN_MORE = CONSTANTS.learnMore();
-    public static final String MORE = CONSTANTS.more();
+//    public static final String IMG_MVC = JumbotronResources.INSTANCE.mvc().getSafeUri().asString();
+    public static final String LEARN_MORE = JumbotronConstants.INSTANCE.learnMore();
+    public static final String MORE = JumbotronConstants.INSTANCE.more();
     
     @Override
     public void onControllerLoad() {
@@ -17,11 +17,22 @@ public class JumbotronController implements Controller {
 }
 
 interface JumbotronConstants extends Constants {
-    
+
+    static JumbotronConstants INSTANCE = GWT.create(JumbotronConstants.class);
+
     @DefaultStringValue("Learn more »")
     String learnMore();
     
     @DefaultStringValue("More details »")
     String more();
-    
 }
+
+//interface JumbotronResources extends ClientBundle {
+//
+//    static JumbotronResources INSTANCE = GWT.create(JumbotronResources.class);
+//    
+//    @DoNotEmbed
+//    @MimeType("image/png")
+//    @Source("resources/MVC.png")
+//    public DataResource mvc();
+//}
