@@ -1,0 +1,42 @@
+<div data-ng-controller="com.asayama.gwt.angular.examples.client.HttpClientExampleController">
+  <p>
+    Use of HttpClient is demonstrated in this example. Note that the 
+    HttpClient used in this example is based on GWT's <code>RequestBuilder
+    </code> which is adapted to AngularJS framework, opposed to AngularJS's
+    <code>$http</code> service object.
+  </p><p>
+    The HTTP GET request is sent asynchronously without blocking the user
+    interaction. The response is a JSON object, (to be more precise, in this
+    example, an array of JSON objects), which is parsed and loaded into an
+    overlay type called <code>Customers</code>. In the HTML view, we use
+    <code>data-ng-repeat</code> directive to iterate over the JSON objects
+    in this array.
+  </p>
+  <div class="panel panel-primary">
+    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+  </div>
+  <p>
+    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
+      TODO Bring some structure to the description of examples.</a>
+  </p>
+  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  <p>
+    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
+      TODO Bring some structure to the description of examples.</a>
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+  <!--
+  <p>
+    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
+      TODO Bring some structure to the description of examples.</a>
+  </p>
+  <pre class="prettyprint lang-js" data-ng-bind-html="JSON_CONTENT | prettyprint"></pre>
+  -->
+  <p>
+    The following modules are required in the gwt.xml.
+  </p>
+  <ul>
+    <li>com.asayama.gwt.angular.NG</li>
+    <li>com.asayama.gwt.angular.http.HttpClientModule</li>
+  </ul>
+</div>
