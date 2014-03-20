@@ -20,6 +20,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(TextInputExampleController.class);
         controller(TextInputDemoController.class);
         controller(UrlHashParameterExampleController.class);
+        controller(UrlHashParameterDemoController.class);
         controller(ReverseFilterExampleController.class);
         controller(ReverseFilterDemoController.class);
     }

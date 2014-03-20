@@ -1,8 +1,6 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.location.Location;
-import com.asayama.gwt.angular.route.client.RouteParams;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
@@ -20,32 +18,8 @@ public class UrlHashParameterExampleController implements Controller {
     public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
             UrlHashParameterExampleResources.INSTANCE.java().getText());
 
-    // Injectable fields are automatically injected by the framework
-    
-    private RouteParams routeParams;
-    private Location location;
-
-    // Other fields are used to represent the state of this controller
-
-    private String page;
-
     @Override
     public void onControllerLoad() {
-        page = routeParams.getString("page");
-    }
-
-    // Public methods are automatically wired to AngularJS's $scope.
-
-    public void onClickGo(String page) {
-        location.setHashParam("page", page);
-    }
-
-    public String getName() {
-        return page;
-    }
-    
-    public void setPage(String page) {
-        this.page = page;
     }
 }
 
@@ -55,12 +29,12 @@ interface UrlHashParameterExampleResources extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("UrlHashParameterExampleDemo.html")
+    @Source("UrlHashParameterDemo.html")
     public DataResource demo();
 
-    @Source("UrlHashParameterExampleDemo.html")
+    @Source("UrlHashParameterDemo.html")
     public TextResource html();
     
-    @Source("UrlHashParameterExampleController.java")
+    @Source("UrlHashParameterDemoController.java")
     public TextResource java();
 }
