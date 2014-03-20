@@ -8,9 +8,12 @@
     Click the label, "<b>Click Me</b>". You will see that the caption below
     the label is automatically refreshed.
   </p>
+  
   <div class="panel panel-primary">
     <div class="panel-body" data-ng-include="DEMO_URL"></div>
   </div>
+  
+  <h2>View</h2>
   <p>
     The directive <code>data-ng-click</code> binds the browser's onClick event
     to the controller's <code>onClickTitle()</code> method. <code>$event</code>
@@ -19,6 +22,8 @@
     the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> mark-ups.
   </p>
   <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+
+  <h2>Controller</h2>
   <p>
     Even though the view passes the browser's event to the controller, in this
     implementation, <code>onClickTitle()</code> method ignores this value. In a
@@ -32,10 +37,22 @@
     is modified, the change is reflected on the screen.
   </p>
   <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+
+  <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
   <pre class="prettyprint">
 &lt;inherits name="com.asayama.gwt.angular.NG" /&gt;</pre>
+
+  <p>
+    The following Maven dependencies are required in the pom.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;</pre>
 
 </div>

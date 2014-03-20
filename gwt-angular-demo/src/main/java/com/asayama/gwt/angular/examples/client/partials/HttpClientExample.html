@@ -18,9 +18,12 @@
     objects in this array, and print the attributes of the objects to the screen
     as a list.
   </p>
+  
   <div class="panel panel-primary">
     <div class="panel-body" data-ng-include="DEMO_URL"></div>
   </div>
+
+  <h2>Controller</h2>
   <p>
     The HTTP call is made upon controller's <code>onControllerLoad()</code> 
     method. In order not to block the UI, the returned value is trapped by a
@@ -30,6 +33,8 @@
     this example.
   </p>
   <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+
+  <h2>View</h2>
   <p>
     The model object, <code>mayors</code> is wired to the HTML view via the
     method <code>getMayors()</code>. The directive, <code>data-ng-repeat</code>
@@ -45,11 +50,28 @@
   </p>
   <pre class="prettyprint lang-js" data-ng-bind-html="JSON_CONTENT | prettyprint"></pre>
   -->
+
+  <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
   <pre class="prettyprint">
 &lt;inherits name="com.asayama.gwt.angular.NG" /&gt;
 &lt;inherits name="com.asayama.gwt.angular.http.HttpClientModule" /&gt;</pre>
+
+  <p>
+    The following Maven dependencies are required in the pom.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-http&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;</pre>
 
 </div>
