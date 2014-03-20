@@ -33,7 +33,7 @@ public class HttpClientExampleController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        String url = "HttpClientExample.nocache.json";
+        String url = "HttpClientExample.json";
         HttpClientCallback callback = new HttpClientCallback() {
             @Override
             public void onSuccess(Request request, Response response) {
