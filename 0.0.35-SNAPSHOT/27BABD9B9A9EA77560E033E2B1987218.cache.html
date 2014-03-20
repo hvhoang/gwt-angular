@@ -25,12 +25,16 @@
   <ul>
     <li data-ng-repeat="pageKey in getPageKeys()">{{ pageKey }}</li>
   </ul>
+
+  <h2>View</h2>
   <p>
     The view code is fairly straight forward. An input box wired to a model
     named <code>pageName</code>. The model is passed to the controller via
     <code>onClickGo()</code> method when the "Go" button is clicked.
   </p>
   <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+
+  <h2>Controller</h2>
   <p>
     The controller demonstrates two things. One is how to read the hash
     parameter, and the other is how to set the hash parameter.
@@ -44,6 +48,8 @@
     to set the "page" parameter value to the new value passed from the view.
   </p>
   <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+
+  <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>

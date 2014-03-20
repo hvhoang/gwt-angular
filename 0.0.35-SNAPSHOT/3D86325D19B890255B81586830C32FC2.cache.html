@@ -12,6 +12,11 @@
   <div class="panel panel-primary">
     <div class="panel-body" data-ng-include="DEMO_URL"></div>
   </div>
+
+  <h2>View</h2>
+  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  
+  <h2>Controller</h2>
   <p>
     <code>HTML_CONTENT</code> is a public static final variable, which is
     initialized by TextResource defined in <code>PrettifyExampleResources</code>.
@@ -28,6 +33,8 @@
   </p>
   <pre class="prettyprint lang-java" data-ng-bind-html="RESOURCES_CONTENT | prettyprint"></pre>
   -->
+
+  <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
