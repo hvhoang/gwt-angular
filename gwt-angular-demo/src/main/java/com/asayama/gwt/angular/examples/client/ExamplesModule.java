@@ -17,6 +17,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(OnClickEventExampleController.class);
         controller(PrettifyExampleController.class);
         controller(TextInputExampleController.class);
+        controller(TextInputDemoController.class);
         controller(UrlHashParameterExampleController.class);
         controller(ReverseFilterExampleController.class);
     }
