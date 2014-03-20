@@ -15,6 +15,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         filter("reverse", new ReverseFilter());
         controller(HttpClientExampleController.class);
         controller(OnClickEventExampleController.class);
+        controller(OnClickEventDemoController.class);
         controller(PrettifyExampleController.class);
         controller(TextInputExampleController.class);
         controller(TextInputDemoController.class);
