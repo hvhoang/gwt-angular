@@ -10,14 +10,15 @@ import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-    private static NavigationConstants CONSTANTS = GWT.create(NavigationConstants.class);
-    
     public static final String PARTIAL = Partials.INSTANCE.navbar().getSafeUri().asString();
 
-    public static final String PROJECT_VERSION = CONSTANTS.projectVersion();
-    public static final String EXAMPLES = CONSTANTS.examples();
-    public static final String DOWNLOADS = CONSTANTS.downloads();
-    public static final String DEVELOP = CONSTANTS.develop();
+    public static final String PROJECT_GROUP_ID = DemoConstants.INSTANCE.projectGroupId();
+    public static final String PROJECT_ARTIFACT_ID = DemoConstants.INSTANCE.projectArtifactId();
+    public static final String PROJECT_VERSION = DemoConstants.INSTANCE.projectVersion();
+    
+    public static final String EXAMPLES = NavbarConstants.INSTANCE.examples();
+    public static final String DOWNLOADS = NavbarConstants.INSTANCE.downloads();
+    public static final String DEVELOP = NavbarConstants.INSTANCE.develop();
 
     @Bind("Pages.json")
     private JSON pages = null;
@@ -55,10 +56,9 @@ public class NavbarController implements Controller {
     }
 }
 
-interface NavigationConstants extends Constants {
+interface NavbarConstants extends Constants {
 
-    @DefaultStringValue("${project.version}")
-    String projectVersion();
+    static NavbarConstants INSTANCE = GWT.create(NavbarConstants.class);
 
     @DefaultStringValue("Examples")
     String examples();

@@ -17,12 +17,6 @@
   <!-- Internal Dependency -->  
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
 
-  <!-- Third-party Resources -->
-  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
-  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
-  <script src="lib/jquery/1.10.2/jquery.min.js" />
-  <script src="lib/bootstrap/3.1.1/js/bootstrap.min.js" />
-
   <!-- Project Structure -->
   <source path="client" />
   <source path="shared" />
