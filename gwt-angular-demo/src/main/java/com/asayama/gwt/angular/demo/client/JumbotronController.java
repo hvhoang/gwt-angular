@@ -26,13 +26,3 @@ interface JumbotronConstants extends Constants {
     @DefaultStringValue("More details »")
     String more();
 }
-
-//interface JumbotronResources extends ClientBundle {
-//
-//    static JumbotronResources INSTANCE = GWT.create(JumbotronResources.class);
-//    
-//    @DoNotEmbed
-//    @MimeType("image/png")
-//    @Source("resources/MVC.png")
-//    public DataResource mvc();
-//}

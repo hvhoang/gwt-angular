@@ -37,5 +37,4 @@ public class ExamplesController implements Controller {
     public String getStylePageActive(String key) {
         return key.equalsIgnoreCase(selectedPage) ? "active" : "";
     }
-
 }
