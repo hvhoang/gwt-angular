@@ -10,5 +10,8 @@ public interface AngularScripts extends ClientBundle {
     public static final AngularScripts INSTANCE = GWT.create(AngularScripts.class);
     
     @Source("angular.min.js")
-    public TextResource js();
+    public TextResource min();
+    
+    @Source("angular.js")
+    public TextResource debug();
 }

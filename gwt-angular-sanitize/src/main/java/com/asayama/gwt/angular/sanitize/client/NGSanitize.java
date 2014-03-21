@@ -13,8 +13,15 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            ScriptInjector.fromString(AngularSanitizeScripts.INSTANCE.js().getText())
-                .setWindow(JSObject.$wnd).inject();
+            if (GWT.isClient() && GWT.isProdMode()) {
+                ScriptInjector
+                    .fromString(AngularSanitizeScripts.INSTANCE.min().getText())
+                    .setWindow(JSObject.$wnd).inject();
+            } else {
+                ScriptInjector
+                    .fromString(AngularSanitizeScripts.INSTANCE.debug().getText())
+                    .setWindow(JSObject.$wnd).inject();
+            }
             Angular.module(this, "ngSanitize");
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);

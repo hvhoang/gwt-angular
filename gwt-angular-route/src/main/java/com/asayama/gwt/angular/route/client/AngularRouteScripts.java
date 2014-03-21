@@ -10,5 +10,8 @@ public interface AngularRouteScripts extends ClientBundle {
     public static final AngularRouteScripts INSTANCE = GWT.create(AngularRouteScripts.class);
     
     @Source("angular-route.min.js")
-    public TextResource js();
+    public TextResource min();
+    
+    @Source("angular-route.js")
+    public TextResource debug();
 }

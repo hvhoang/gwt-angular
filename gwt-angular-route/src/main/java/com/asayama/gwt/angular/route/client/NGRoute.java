@@ -13,8 +13,15 @@ public class NGRoute extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            ScriptInjector.fromString(AngularRouteScripts.INSTANCE.js().getText())
-                .setWindow(JSObject.$wnd).inject();
+            if (GWT.isClient() && GWT.isProdMode()) {
+                ScriptInjector
+                    .fromString(AngularRouteScripts.INSTANCE.min().getText())
+                    .setWindow(JSObject.$wnd).inject();
+            } else {
+                ScriptInjector
+                    .fromString(AngularRouteScripts.INSTANCE.debug().getText())
+                    .setWindow(JSObject.$wnd).inject();
+            }
             Angular.module(this, "ngRoute");
             factory(RouteParams.class);
         } catch (Exception e) {

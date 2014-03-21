@@ -10,5 +10,8 @@ public interface AngularSanitizeScripts extends ClientBundle {
     public static final AngularSanitizeScripts INSTANCE = GWT.create(AngularSanitizeScripts.class);
     
     @Source("angular-sanitize.min.js")
-    public TextResource js();
+    public TextResource min();
+    
+    @Source("angular-sanitize.js")
+    public TextResource debug();
 }

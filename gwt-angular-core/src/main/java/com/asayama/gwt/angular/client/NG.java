@@ -14,8 +14,15 @@ public class NG extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            ScriptInjector.fromString(AngularScripts.INSTANCE.js().getText())
-                .setWindow(JSObject.$wnd).inject();
+            if (GWT.isClient() && GWT.isProdMode()) {
+                ScriptInjector
+                    .fromString(AngularScripts.INSTANCE.min().getText())
+                    .setWindow(JSObject.$wnd).inject();
+            } else {
+                ScriptInjector
+                    .fromString(AngularScripts.INSTANCE.debug().getText())
+                    .setWindow(JSObject.$wnd).inject();
+            }
             Angular.module(this, "ng");
             factory(Q.class);
             factory(Location.class);
@@ -24,5 +31,4 @@ public class NG extends AbstractModule implements EntryPoint {
             GWT.log("Exception while " + m, e);
         }
     }
-
 }
