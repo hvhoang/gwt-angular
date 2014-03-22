@@ -137,20 +137,20 @@ public class JSArray<T> extends JavaScriptObject {
     public final Iterator<T> iterator() {
         return new Iterator<T>() {
             
-            int pos = 0;
+            int pos = -1;
             
             @Override
             public boolean hasNext() {
-                return pos < size();
+                return pos + 1 < size();
             }
 
             @Override
             public T next() {
+                pos++;
                 if (pos >= size()) {
                     throw new IndexOutOfBoundsException("index=" + pos + ", size=" + size());
                 }
                 T item = get(pos);
-                pos++;
                 return item;
             }
 
