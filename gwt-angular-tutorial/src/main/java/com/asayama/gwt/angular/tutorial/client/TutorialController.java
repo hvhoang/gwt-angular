@@ -9,22 +9,28 @@ import com.google.gwt.user.client.Event;
 public class TutorialController extends AbstractController {
 
     private JSArray<Entry> entries = JSArray.create();
-    private String quickEntryInputValue = "";
+    private String quickEntryCaption = "";
     
     @Override
     public void onControllerLoad() {
     }
     
-    public void onChangeQuickEntry(String quickEntryInputValue) {
-        setQuickEntryInputValue(quickEntryInputValue);
+    public void onChangeQuickEntry(String quickEntryCaption) {
+        setQuickEntryCaption(quickEntryCaption);
     }
     
-    public void onKeyPressQuickEntry(Event event) {
+    public String onKeyPressQuickEntry(Event event) {
         int keyCode = event.getKeyCode();
         if (keyCode == 13) {
-            getEntries().add(Entry.create(quickEntryInputValue));
-            setQuickEntryInputValue("");
+            getEntries().add(Entry.create(quickEntryCaption));
+            setQuickEntryCaption("");
         }
+        return getQuickEntryCaption();
+    }
+    
+    public void onClickClear() {
+        entries.clear();
+        setQuickEntryCaption("");
     }
     
     public JSArray<Entry> getEntries() {
@@ -35,12 +41,12 @@ public class TutorialController extends AbstractController {
         this.entries = entries;
     }
     
-    public String getQuickEntryInputValue() {
-        return quickEntryInputValue;
+    public String getQuickEntryCaption() {
+        return quickEntryCaption;
     }
     
-    public void setQuickEntryInputValue(String quickEntryInputValue) {
-        this.quickEntryInputValue = quickEntryInputValue;
+    public void setQuickEntryCaption(String quickEntryCaption) {
+        this.quickEntryCaption = quickEntryCaption;
     }
 }
 
