@@ -139,24 +139,47 @@ public abstract class AbstractModule implements Module {
         return controller(klass.getName(), klass);
     }
 
-    public <C extends Controller> C controller(String name, final Class<C> klass) {
+    public <C extends Controller> C controller(final String name, final Class<C> klass) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
         final C controller = controllerCreatorFactory.create(klass);
+        if (controller == null) {
+            String message = "Unable to create " + klass.getName();
+            GWT.log(message, new IllegalStateException(message));
+            return controller;
+        }
         final JSClosure binder = controllerScopeBinderFactory.create(controller);
+        if (binder == null) {
+            String message = "Unable to create binder for " + klass.getName();
+            GWT.log(message, new IllegalStateException(message));
+            return controller;
+        }
         final JSClosure injector = controllerBinderFactory.create(controller);
+        if (injector == null) {
+            String message = "Unable to create injector for " + klass.getName();
+            GWT.log(message, new IllegalStateException(message));
+            return controller;
+        }
         Closure initializer = new Closure() {
 
             @Override
             public void closure(Object... args) {
-                Object[] shiftedArgs = new Object[args.length - 1];
-                for (int i = 0; i < shiftedArgs.length; i++) {
-                    shiftedArgs[i] = args[i + 1];
+                String m = "";
+                try {
+                    m = "shifing args";
+                    Object[] shiftedArgs = new Object[args.length - 1];
+                    for (int i = 0; i < shiftedArgs.length; i++) {
+                        shiftedArgs[i] = args[i + 1];
+                    }
+                    m = "binding args";
+                    binder.apply(args);
+                    m = "injecting shiftedArgs";
+                    injector.apply(shiftedArgs);
+                    GWT.log(m = klass.getName() + ".onControllerLoad()");
+                    controller.onControllerLoad();
+                } catch (Exception e) {
+                    GWT.log("Exception while " + m, e);
                 }
-                binder.apply(args);
-                injector.apply(shiftedArgs);
-                GWT.log(klass.getName() + ".onControllerLoad()");
-                controller.onControllerLoad();
             }
         };
         String [] dependencies;
