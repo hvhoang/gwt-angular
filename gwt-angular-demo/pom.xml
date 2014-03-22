@@ -81,5 +81,10 @@
       <artifactId>gwt-angular-sanitize</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-tutorial</artifactId>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 </project>
