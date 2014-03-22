@@ -33,7 +33,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.asayama.gwt.angular.tutorial.TutorialModule</module>
+              <module>com.asayama.gwt.angular.tutorial.TutorialEntryPoint</module>
             </configuration>
             <goals>
               <goal>compile</goal>

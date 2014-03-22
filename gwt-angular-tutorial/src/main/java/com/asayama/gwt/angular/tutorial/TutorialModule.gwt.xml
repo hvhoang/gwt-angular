@@ -9,8 +9,7 @@
   <!-- GWT Angular Modules used in this tutorial -->
   <inherits name="com.asayama.gwt.angular.NG" />
 
-  <!-- GWT code organization and this module's EntryPoint -->
+  <!-- GWT code organization and this module initializer -->
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.tutorial.client.TutorialModule" />
-
 </module>

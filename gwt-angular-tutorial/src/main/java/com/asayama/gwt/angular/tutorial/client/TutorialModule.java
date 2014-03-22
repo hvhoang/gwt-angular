@@ -11,6 +11,5 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         controller(TutorialController.class);
-        Angular.bootstrap();
     }
 }
