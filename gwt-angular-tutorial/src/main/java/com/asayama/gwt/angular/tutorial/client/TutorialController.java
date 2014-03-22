@@ -8,13 +8,11 @@ import com.google.gwt.user.client.Event;
 
 public class TutorialController extends AbstractController {
 
-    private JSArray<Entry> entries;
-    private String quickEntryInputValue;
+    private JSArray<Entry> entries = JSArray.create();
+    private String quickEntryInputValue = "";
     
     @Override
     public void onControllerLoad() {
-        JSArray<Entry> entries = JSArray.create();
-        setEntries(entries);
     }
     
     public void onChangeQuickEntry(String quickEntryInputValue) {

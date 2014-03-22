@@ -13,9 +13,12 @@
       data-ng-model="quickEntryInputValue"
       data-ng-keypress="onKeyPressQuickEntry($event)"
       data-ng-change="onChangeQuickEntry(quickEntryInputValue)">
-
-    <h2 data-ng-switch-when="0">My List is Empty</h2>
-    <h2 data-ng-switch-default>My List has {{ getEntries().length }} Items</h2>
+    
+    <div data-ng-switch="getEntries().length">
+      <h2 data-ng-switch-when="0">My List is Empty</h2>
+      <h2 data-ng-switch-when="1">My List has {{ getEntries().length }} Item</h2>
+      <h2 data-ng-switch-default>My List has {{ getEntries().length }} Items</h2>
+    </div>
 
     <p data-ng-repeat="entry in getEntries() | orderBy:'caption'">{{ entry.caption }}</p>
   </div>
