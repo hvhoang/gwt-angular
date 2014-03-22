@@ -1,5 +1,5 @@
 /target
-/gwt-unitCache
+gwt-unitCache
 /war
 /.gwt
 /.settings
