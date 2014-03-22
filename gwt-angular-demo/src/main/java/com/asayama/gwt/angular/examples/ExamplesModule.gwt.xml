@@ -11,7 +11,6 @@
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
 
   <source path="client" />
-  <source path="shared" />
-  
   <entry-point class="com.asayama.gwt.angular.examples.client.ExamplesModule" />
+
 </module>

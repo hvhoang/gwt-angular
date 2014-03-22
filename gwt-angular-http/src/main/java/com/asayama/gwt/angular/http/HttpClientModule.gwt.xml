@@ -4,6 +4,5 @@
   <inherits name="com.google.gwt.http.HTTP" />
   <inherits name="com.asayama.gwt.angular.NG" />
   <source path="client" />
-  <source path="shared" />
   <entry-point class="com.asayama.gwt.angular.http.client.HttpClientModule" />
 </module>

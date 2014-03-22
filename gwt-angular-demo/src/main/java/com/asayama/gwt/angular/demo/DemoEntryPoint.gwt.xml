@@ -19,7 +19,6 @@
 
   <!-- Project Structure -->
   <source path="client" />
-  <source path="shared" />
   <entry-point class="com.asayama.gwt.angular.demo.client.DemoEntryPoint" />
 
 </module>
