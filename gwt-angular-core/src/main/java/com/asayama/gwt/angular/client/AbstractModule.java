@@ -162,9 +162,10 @@ public abstract class AbstractModule implements Module {
         String [] dependencies;
         {
             String[] d = controllerDependenciesFactory.create(controller);
-            dependencies = new String[d.length + 1];
+            int len = d == null ? 0 : d.length;
+            dependencies = new String[len + 1];
             dependencies[0] = "$scope";
-            for (int i = 0; i < d.length; i++) {
+            for (int i = 0; i < len; i++) {
                 dependencies[i + 1] = d[i];
             }
         }
