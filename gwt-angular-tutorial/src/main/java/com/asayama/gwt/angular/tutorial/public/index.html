@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GWT Angular Tutorial</title>
+</head>
+<body>
+
+  <h1>GWT Angular Tutorial</h1>
+  <div data-ng-controller="com.asayama.gwt.angular.tutorial.client.TutorialController">
+
+    <label for="quickEntryInput">Quick Entry</label>
+    <input type="text" id="quickEntryInput" style="width:400px;" 
+      data-ng-model="quickEntryInputValue"
+      data-ng-keypress="onKeyPressQuickEntry($event)"
+      data-ng-change="onChangeQuickEntry(quickEntryInputValue)">
+
+    <h2 data-ng-switch-when="0">My List is Empty</h2>
+    <h2 data-ng-switch-default>My List has {{ getEntries().length }} Items</h2>
+
+    <p data-ng-repeat="entry in getEntries() | orderBy:'caption'">{{ entry.caption }}</p>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="tutorial.nocache.js"></script>
+</body>
+</html>

@@ -198,7 +198,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
             }
         }
         if (supportedRootClassType == null) {
-            String m = "Unable to find the supported root classType for " + classType;
+            String m = "Unable to find the supportedRootClassType for " + classType;
             LOG.logp(Level.SEVERE, CLASS, METHOD, m);
             throw new RebindException(m);
         }
