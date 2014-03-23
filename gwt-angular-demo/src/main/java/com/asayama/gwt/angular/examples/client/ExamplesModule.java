@@ -30,17 +30,17 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     private Pages getPages() {
         Pages pages = Pages.create();
         pages.put("textInput", Page.create("Text Input",
-                ExamplesPartials.INSTANCE.textInput().getSafeUri().asString()));
+                ExamplesPartials.INSTANCE.textInput()));
         pages.put("onClickEvent", Page.create("OnClick Event",
-                ExamplesPartials.INSTANCE.onClickEvent().getSafeUri().asString()));
+                ExamplesPartials.INSTANCE.onClickEvent()));
         pages.put("reverseFilter", Page.create("Reverse Filter",
-                ExamplesPartials.INSTANCE.reverseFilter().getSafeUri().asString()));
+                ExamplesPartials.INSTANCE.reverseFilter()));
         pages.put("urlHashParameter", Page.create("URL Hash Parameter",
-                ExamplesPartials.INSTANCE.urlHashParameter().getSafeUri().asString()));
+                ExamplesPartials.INSTANCE.urlHashParameter()));
         pages.put("httpClient", Page.create("HTTP Client",
-                ExamplesPartials.INSTANCE.httpClient().getSafeUri().asString()));
+                ExamplesPartials.INSTANCE.httpClient()));
         pages.put("prettify", Page.create("Prettify",
-                ExamplesPartials.INSTANCE.prettify().getSafeUri().asString()));
+                ExamplesPartials.INSTANCE.prettify()));
        return pages;
     }
 }

@@ -1,5 +1,7 @@
 package com.asayama.gwt.angular.examples.client;
 
+import java.util.Iterator;
+
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
@@ -33,6 +35,21 @@ public class ExamplesController implements Controller {
 
     public Page getSelectedPage() {
         return pages.getJSON(selectedPage);
+    }
+    
+    public Page getNextPage() {
+        Iterator<String> keys = pages.keys().iterator();
+        boolean isNextNext = false;
+        while (keys.hasNext()) {
+            String key = keys.next();
+            if (isNextNext) {
+                return pages.getJSON(key);
+            }
+            if (key.equalsIgnoreCase(selectedPage)) {
+                isNextNext = true;
+            }
+        }
+        return null;
     }
     
     public String getStylePageActive(String key) {

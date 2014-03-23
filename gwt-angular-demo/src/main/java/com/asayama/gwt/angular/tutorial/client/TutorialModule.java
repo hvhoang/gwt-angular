@@ -20,9 +20,9 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
     private Pages getPages() {
         Pages pages = Pages.create();
         pages.put("introduction", Page.create("Introduction",
-                TutorialPartials.INSTANCE.introduction().getSafeUri().asString()));
+                TutorialPartials.INSTANCE.introduction()));
         pages.put("projectSetup", Page.create("Project Setup",
-                TutorialPartials.INSTANCE.projectSetup().getSafeUri().asString()));
+                TutorialPartials.INSTANCE.projectSetup()));
        return pages;
     }
 }

@@ -3,6 +3,14 @@
     <div class="col-md-9" style="margin-top:2em;">
       <h1>{{ getSelectedPage().title }}</h1>
       <div data-ng-include="getSelectedPage().filename"></div>
+      <div data-ng-if="getNextPage()">
+        <h3 style="text-align:right;">
+          <a href="#/examples?page={{ getNextPage().name }}">
+          Next: {{ getNextPage().title }}
+          <span class="glyphicon glyphicon-arrow-right"></span>
+          </a>
+        </h3>
+      </div>
     </div>
     <div class="col-md-3" style="margin-top:4em;">
       <div class="list-group">
