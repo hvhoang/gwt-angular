@@ -13,6 +13,7 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("tutorial", getPages());
+        controller(SampleController.class);
         controller(TutorialController.class);
     }
     

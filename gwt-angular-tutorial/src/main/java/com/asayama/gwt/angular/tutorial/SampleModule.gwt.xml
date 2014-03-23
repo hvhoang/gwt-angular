@@ -8,6 +8,7 @@
   
   <!-- GWT Angular Modules used in this tutorial -->
   <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.angular.route.NGRoute" />
 
   <!-- GWT code organization and this module initializer -->
   <source path="client" />

@@ -10,6 +10,9 @@ import com.asayama.gwt.core.client.JSON;
 
 public class TutorialController implements Controller {
 
+    public static final String SAMPLE_HTML =
+            SamplePartials.INSTANCE.sample().getSafeUri().asString();
+    
     private RouteParams routeParams;
     private Location location;
     private String selectedPage = null;
