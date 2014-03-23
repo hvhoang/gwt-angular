@@ -9,19 +9,37 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="{{ getStyleNavlinkHome() }}"><a href="#">
-          <span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li class="{{ getStyleNavlinkDownloads() }}"><a href="#/downloads">
-          <span class="glyphicon glyphicon-download"></span> {{ DOWNLOADS }}</a></li>
-        <li class="{{ getStyleNavlinkDocumentation() }}"><a href="#/documentation">
-          <span class="glyphicon glyphicon-book"></span> Documentation</a></li>
-        <li class="{{ getStyleNavlinkTutorail() }}"><a href="#/tutorial">
-          <span class="glyphicon glyphicon-eye-open"></span> Tutorial</a></li>
-        <li class="dropdown {{ getStyleNavlinkExamples() }}"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-file"></span> Examples <b class="caret"></b></a>
+        <li class="{{ getStyleNavlinkHome() }}">
+          <a href="#">
+            <span class="glyphicon glyphicon-home"></span> Home
+          </a>
+        </li>
+        <li class="{{ getStyleNavlinkDownloads() }}">
+          <a href="#/downloads">
+            <span class="glyphicon glyphicon-download"></span> {{ DOWNLOADS }}
+          </a>
+        </li>
+        <li class="{{ getStyleNavlinkDocumentation() }}">
+          <a href="#/documentation">
+            <span class="glyphicon glyphicon-book"></span> {{ DOCUMENTATION }}
+          </a>
+        </li>
+        <li class="{{ getStyleNavlinkTutorial() }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-file"></span> {{ TUTORIAL }} <b class="caret"></b>
+          </a>
           <ul class="dropdown-menu">
-            <li><a data-ng-repeat="pageKey in getPageKeys()" href="#/examples?page={{ pageKey }}">{{ getPage(pageKey).title }}</a></li>
-          </ul></li>
+            <li><a data-ng-repeat="tutorialKey in getTutorialKeys()" href="#/tutorial?page={{ tutorialKey }}">{{ getTutorial(tutorialKey).title }}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown {{ getStyleNavlinkExamples() }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-file"></span> {{ EXAMPLES }} <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a data-ng-repeat="exampleKey in getExampleKeys()" href="#/examples?page={{ exampleKey }}">{{ getExample(exampleKey).title }}</a></li>
+          </ul>
+        </li>
       </ul>
       <!--
       <form class="navbar-form navbar-left" role="search">
