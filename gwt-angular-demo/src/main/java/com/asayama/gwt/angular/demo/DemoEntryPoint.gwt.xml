@@ -16,6 +16,7 @@
 
   <!-- Internal Dependency -->  
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
+  <inherits name="com.asayama.gwt.angular.tutorial.TutorialModule" />
 
   <!-- Project Structure -->
   <source path="client" />

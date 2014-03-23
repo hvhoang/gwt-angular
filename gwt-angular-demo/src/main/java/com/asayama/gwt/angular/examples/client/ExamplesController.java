@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.demo.client;
+package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
@@ -7,13 +7,14 @@ import com.asayama.gwt.angular.examples.client.model.Page;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.core.client.JSON;
 
+
 public class ExamplesController implements Controller {
 
     private RouteParams routeParams;
     private Location location;
     private String selectedPage = null;
     
-    @Bind("Pages.json")
+    @Bind("examples")
     private JSON pages = null;
 
     @Override
