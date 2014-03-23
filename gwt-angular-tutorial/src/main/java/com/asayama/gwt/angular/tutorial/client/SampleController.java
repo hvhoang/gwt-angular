@@ -6,7 +6,7 @@ import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.user.client.Event;
 
 
-public class TutorialController extends AbstractController {
+public class SampleController extends AbstractController {
 
     private JSArray<Entry> entries = JSArray.create();
     private String quickEntryCaption = "";

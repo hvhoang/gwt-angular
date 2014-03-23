@@ -11,5 +11,5 @@
 
   <!-- GWT code organization and this module initializer -->
   <source path="client" />
-  <entry-point class="com.asayama.gwt.angular.tutorial.client.TutorialModule" />
+  <entry-point class="com.asayama.gwt.angular.tutorial.client.SampleModule" />
 </module>

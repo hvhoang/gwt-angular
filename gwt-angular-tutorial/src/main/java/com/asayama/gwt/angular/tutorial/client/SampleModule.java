@@ -5,11 +5,11 @@ import com.asayama.gwt.angular.client.Angular;
 import com.google.gwt.core.client.EntryPoint;
 
 
-public class TutorialModule extends AbstractModule implements EntryPoint {
+public class SampleModule extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
         Angular.module(this);
-        controller(TutorialController.class);
+        controller(SampleController.class);
     }
 }

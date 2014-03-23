@@ -10,7 +10,7 @@ import com.google.gwt.core.client.EntryPoint;
  * 
  * @author kyoken74
  */
-public class TutorialEntryPoint implements EntryPoint {
+public class SampleEntryPoint implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
