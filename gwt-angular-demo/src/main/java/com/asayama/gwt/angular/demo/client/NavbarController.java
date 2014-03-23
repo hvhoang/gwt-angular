@@ -43,9 +43,14 @@ public class NavbarController implements Controller {
         return hash.equalsIgnoreCase("#/jumbotron") ? "active" : "";
     }
 
-    public String getStyleNavlinkLearn() {
+    public String getStyleNavlinkDocumentation() {
         String hash = Window.Location.getHash();
         return hash.equalsIgnoreCase("#/documentation") ? "active" : "";
+    }
+    
+    public String getStyleNavlinkTutorial() {
+        String hash = Window.Location.getHash();
+        return hash.equalsIgnoreCase("#/tutorial") ? "active" : "";
     }
     
     public JSArray<String> getPageKeys() {

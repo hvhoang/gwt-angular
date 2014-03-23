@@ -26,6 +26,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
                     .when("/downloads", Template.create(Partials.INSTANCE.downloads(), DownloadsController.class))
                     .when("/examples", Template.create(Partials.INSTANCE.examples(), ExamplesController.class))
                     .when("/jumbotron", Template.create(Partials.INSTANCE.jumbotron(), JumbotronController.class))
+                    .when("/tutorial", Template.create(Partials.INSTANCE.tutorial(), TutorialController.class))
                     .otherwise(Redirect.create("/jumbotron"));
             }
         });

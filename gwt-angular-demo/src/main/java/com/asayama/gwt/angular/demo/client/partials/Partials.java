@@ -35,5 +35,10 @@ public interface Partials extends ClientBundle {
     @MimeType("text/html")
     @Source("navbar.html")
     public DataResource navbar();
+
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("tutorial.html")
+    public DataResource tutorial();
     
 }
