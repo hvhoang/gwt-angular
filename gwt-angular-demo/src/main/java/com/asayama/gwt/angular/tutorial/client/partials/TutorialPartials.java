@@ -13,7 +13,12 @@ public interface TutorialPartials extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("introduction.html")
+    @Source("Introduction.html")
     public DataResource introduction();
+
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("ProjectSetup.html")
+    public DataResource projectSetup();
 
 }

@@ -13,32 +13,32 @@ public interface DemoPartials extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("documentation.html")
+    @Source("Documentation.html")
     public DataResource documentation();
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("downloads.html")
+    @Source("Downloads.html")
     public DataResource downloads();
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("examples.html")
+    @Source("Examples.html")
     public DataResource examples();
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("jumbotron.html")
+    @Source("Jumbotron.html")
     public DataResource jumbotron();
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("navbar.html")
+    @Source("Navbar.html")
     public DataResource navbar();
 
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("tutorial.html")
+    @Source("Tutorial.html")
     public DataResource tutorial();
     
 }
