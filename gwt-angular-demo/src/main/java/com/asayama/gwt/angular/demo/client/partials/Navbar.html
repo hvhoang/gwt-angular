@@ -29,7 +29,7 @@
             <span class="glyphicon glyphicon-file"></span> {{ TUTORIAL }} <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a data-ng-repeat="tutorialKey in getTutorialKeys()" href="#/tutorial?page={{ tutorialKey }}">{{ getTutorial(tutorialKey).title }}</a></li>
+            <li><a data-ng-repeat="tutorialPage in getTutorial()" href="#/tutorial?page={{ tutorialPage.name }}">{{ tutorialPage.title }}</a></li>
           </ul>
         </li>
         <li class="dropdown {{ getStyleNavlinkExamples() }}">
@@ -37,7 +37,7 @@
             <span class="glyphicon glyphicon-file"></span> {{ EXAMPLES }} <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a data-ng-repeat="exampleKey in getExampleKeys()" href="#/examples?page={{ exampleKey }}">{{ getExample(exampleKey).title }}</a></li>
+            <li><a data-ng-repeat="examplePage in getExamples()" href="#/examples?page={{ examplePage.name }}">{{ examplePage.title }}</a></li>
           </ul>
         </li>
       </ul>

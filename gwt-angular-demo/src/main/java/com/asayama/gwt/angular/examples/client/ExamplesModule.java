@@ -3,8 +3,8 @@ package com.asayama.gwt.angular.examples.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.examples.client.model.Page;
-import com.asayama.gwt.angular.examples.client.model.Pages;
 import com.asayama.gwt.angular.examples.client.partials.ExamplesPartials;
+import com.asayama.gwt.core.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
 
 public class ExamplesModule extends AbstractModule implements EntryPoint {
@@ -27,19 +27,19 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(ReverseFilterDemoController.class);
     }
     
-    private Pages getPages() {
-        Pages pages = Pages.create();
-        pages.put("textInput", Page.create("Text Input",
+    private JSArray<Page> getPages() {
+        JSArray<Page> pages = JSArray.create();
+        pages.add(Page.create("Text Input",
                 ExamplesPartials.INSTANCE.textInput()));
-        pages.put("onClickEvent", Page.create("OnClick Event",
+        pages.add(Page.create("OnClick Event",
                 ExamplesPartials.INSTANCE.onClickEvent()));
-        pages.put("reverseFilter", Page.create("Reverse Filter",
+        pages.add(Page.create("Reverse Filter",
                 ExamplesPartials.INSTANCE.reverseFilter()));
-        pages.put("urlHashParameter", Page.create("URL Hash Parameter",
+        pages.add(Page.create("URL Hash Parameter",
                 ExamplesPartials.INSTANCE.urlHashParameter()));
-        pages.put("httpClient", Page.create("HTTP Client",
+        pages.add(Page.create("HTTP Client",
                 ExamplesPartials.INSTANCE.httpClient()));
-        pages.put("prettify", Page.create("Prettify",
+        pages.add(Page.create("Prettify",
                 ExamplesPartials.INSTANCE.prettify()));
        return pages;
     }

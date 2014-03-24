@@ -14,9 +14,9 @@
     </div>
     <div class="col-md-3" style="margin-top:4em;">
       <div class="list-group">
-        <a class="list-group-item {{ getStylePageActive(exampleKey) }}"
-          data-ng-repeat="exampleKey in getExampleKeys()" 
-          data-ng-click="onClickPage(exampleKey)">{{ getExample(exampleKey).title }}</a>
+        <a class="list-group-item {{ getStylePageActive(page.name) }}"
+          data-ng-repeat="page in getExamples()" 
+          data-ng-click="onClickPage(page)">{{ page.title }}</a>
       </div>
     </div>
   </div>

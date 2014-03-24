@@ -3,8 +3,8 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.demo.client.partials.DemoPartials;
+import com.asayama.gwt.angular.examples.client.model.Page;
 import com.asayama.gwt.core.client.JSArray;
-import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.user.client.Window;
@@ -24,10 +24,10 @@ public class NavbarController implements Controller {
     public static final String TUTORIAL = NavbarConstants.INSTANCE.tutorial();
 
     @Bind("examples")
-    private JSON examples = null;
+    private JSArray<Page> examples = null;
 
     @Bind("tutorial")
-    private JSON tutorial = null;
+    private JSArray<Page> tutorial = null;
 
     @Override
     public void onControllerLoad() {
@@ -58,20 +58,12 @@ public class NavbarController implements Controller {
         return hash.equalsIgnoreCase("#/tutorial") ? "active" : "";
     }
     
-    public JSArray<String> getExampleKeys() {
-        return examples == null ? null : examples.keys();
-    }
-
-    public JSON getExample(String key) {
-        return examples.getJSON(key);
+    public JSArray<Page> getExamples() {
+        return examples;
     }
     
-    public JSArray<String> getTutorialKeys() {
-        return tutorial == null ? null : tutorial.keys();
-    }
-
-    public JSON getTutorial(String key) {
-        return tutorial.getJSON(key);
+    public JSArray<Page> getTutorial() {
+        return tutorial;
     }
 }
 

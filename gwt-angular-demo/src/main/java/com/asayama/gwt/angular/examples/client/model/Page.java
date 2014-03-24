@@ -16,4 +16,8 @@ public class Page extends JSON {
     
     protected Page() {
     }
+    
+    public final String getName() {
+        return getString("name");
+    }
 }

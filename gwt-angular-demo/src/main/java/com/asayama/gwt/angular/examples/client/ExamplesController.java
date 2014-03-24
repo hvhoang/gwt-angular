@@ -7,7 +7,7 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.examples.client.model.Page;
 import com.asayama.gwt.angular.route.client.RouteParams;
-import com.asayama.gwt.core.client.JSON;
+import com.asayama.gwt.core.client.JSArray;
 
 
 public class ExamplesController implements Controller {
@@ -17,35 +17,46 @@ public class ExamplesController implements Controller {
     private String selectedPage = null;
     
     @Bind("examples")
-    private JSON pages = null;
+    private JSArray<Page> pages = null;
 
     @Override
     public void onControllerLoad() {
         selectedPage = routeParams.getString("page");
-        if (selectedPage == null || selectedPage.isEmpty() || pages.getJSON(selectedPage) == null) {
+        if (selectedPage == null || selectedPage.isEmpty() || getPage(selectedPage) == null) {
             location.setHashParam("page", "textInput");
         }
     }
     
-    public void onClickPage(String key) {
-        location.setHashParam("page", key);
+    public void onClickPage(Page page) {
+        location.setHashParam("page", page.getName());
     }
     
     // Getters and Setters
 
+    public Page getPage(String name) {
+        Iterator<Page> it = pages.iterator();
+        while (it.hasNext()) {
+            Page p = it.next();
+            if (p.getName().equalsIgnoreCase(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
+    
     public Page getSelectedPage() {
-        return pages.getJSON(selectedPage);
+        return getPage(selectedPage);
     }
     
     public Page getNextPage() {
-        Iterator<String> keys = pages.keys().iterator();
+        Iterator<Page> it = pages.iterator();
         boolean isNextNext = false;
-        while (keys.hasNext()) {
-            String key = keys.next();
+        while (it.hasNext()) {
+            Page p = it.next();
             if (isNextNext) {
-                return pages.getJSON(key);
+                return p;
             }
-            if (key.equalsIgnoreCase(selectedPage)) {
+            if (p.getName().equalsIgnoreCase(selectedPage)) {
                 isNextNext = true;
             }
         }
