@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.0.35
+version=0.0.36-SNAPSHOT
 
 jar xvf ~/Workspace/github.com/kyoken74/gwt-angular/gwt-angular-demo/target/gwt-angular-demo-${version}.war demo
 
