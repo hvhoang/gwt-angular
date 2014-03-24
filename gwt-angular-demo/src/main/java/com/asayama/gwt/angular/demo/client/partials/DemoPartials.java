@@ -23,11 +23,6 @@ public interface DemoPartials extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("Examples.html")
-    public DataResource examples();
-    
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Jumbotron.html")
     public DataResource jumbotron();
     
@@ -35,10 +30,5 @@ public interface DemoPartials extends ClientBundle {
     @MimeType("text/html")
     @Source("Navbar.html")
     public DataResource navbar();
-
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("Tutorial.html")
-    public DataResource tutorial();
     
 }

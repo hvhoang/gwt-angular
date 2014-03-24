@@ -13,6 +13,11 @@ public interface ExamplesPartials extends ClientBundle {
 
     @DoNotEmbed
     @MimeType("text/html")
+    @Source("Examples.html")
+    public DataResource examples();
+    
+    @DoNotEmbed
+    @MimeType("text/html")
     @Source("HttpClientExample.html")
     public DataResource httpClient();
 

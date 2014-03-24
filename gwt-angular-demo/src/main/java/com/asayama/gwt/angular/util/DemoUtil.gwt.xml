@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="demo">
+  <inherits name="com.google.gwt.user.User" />
+  <inherits name="com.asayama.gwt.angular.NG" />
+  <source path="client" />
+</module>

@@ -10,6 +10,11 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 public interface TutorialPartials extends ClientBundle {
 
     public static final TutorialPartials INSTANCE = GWT.create(TutorialPartials.class);
+
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("Tutorial.html")
+    public DataResource tutorial();
     
     @DoNotEmbed
     @MimeType("text/html")

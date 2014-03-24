@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.model;
+package com.asayama.gwt.angular.util.client.model;
 
 import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.resources.client.DataResource;

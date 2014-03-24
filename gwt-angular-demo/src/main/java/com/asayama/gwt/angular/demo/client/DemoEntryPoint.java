@@ -5,10 +5,12 @@ import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
 import com.asayama.gwt.angular.demo.client.partials.DemoPartials;
 import com.asayama.gwt.angular.examples.client.ExamplesController;
+import com.asayama.gwt.angular.examples.client.partials.ExamplesPartials;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
 import com.asayama.gwt.angular.tutorial.client.TutorialController;
+import com.asayama.gwt.angular.tutorial.client.partials.TutorialPartials;
 import com.google.gwt.core.client.EntryPoint;
 
 public class DemoEntryPoint extends AbstractModule implements EntryPoint {
@@ -25,9 +27,9 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
                 routeProvider
                     .when("/documentation", Template.create(DemoPartials.INSTANCE.documentation(), DocumentationController.class))
                     .when("/downloads", Template.create(DemoPartials.INSTANCE.downloads(), DownloadsController.class))
-                    .when("/examples", Template.create(DemoPartials.INSTANCE.examples(), ExamplesController.class))
+                    .when("/examples", Template.create(ExamplesPartials.INSTANCE.examples(), ExamplesController.class))
                     .when("/jumbotron", Template.create(DemoPartials.INSTANCE.jumbotron(), JumbotronController.class))
-                    .when("/tutorial", Template.create(DemoPartials.INSTANCE.tutorial(), TutorialController.class))
+                    .when("/tutorial", Template.create(TutorialPartials.INSTANCE.tutorial(), TutorialController.class))
                     .otherwise(Redirect.create("/jumbotron"));
             }
         });
