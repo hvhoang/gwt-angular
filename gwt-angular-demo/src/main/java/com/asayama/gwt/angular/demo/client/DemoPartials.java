@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.demo.client.partials;
+package com.asayama.gwt.angular.demo.client;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;

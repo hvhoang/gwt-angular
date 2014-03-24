@@ -3,14 +3,13 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
-import com.asayama.gwt.angular.demo.client.partials.DemoPartials;
 import com.asayama.gwt.angular.examples.client.ExamplesController;
 import com.asayama.gwt.angular.examples.client.partials.ExamplesPartials;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
 import com.asayama.gwt.angular.tutorial.client.TutorialController;
-import com.asayama.gwt.angular.tutorial.client.partials.TutorialPartials;
+import com.asayama.gwt.angular.tutorial.client.TutorialPartials;
 import com.google.gwt.core.client.EntryPoint;
 
 public class DemoEntryPoint extends AbstractModule implements EntryPoint {

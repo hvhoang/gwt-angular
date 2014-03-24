@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.angular.demo.client.partials.DemoPartials;
 import com.asayama.gwt.angular.util.client.model.Page;
 import com.asayama.gwt.core.client.JSArray;
 import com.google.gwt.core.shared.GWT;
