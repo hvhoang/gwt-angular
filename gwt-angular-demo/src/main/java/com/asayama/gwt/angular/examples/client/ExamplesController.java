@@ -6,7 +6,7 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
-import com.asayama.gwt.angular.util.client.model.Page;
+import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;
 
 
