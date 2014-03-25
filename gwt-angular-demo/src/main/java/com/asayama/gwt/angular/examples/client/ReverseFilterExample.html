@@ -18,7 +18,15 @@
     <code>filter(String)</code>. The argument is the original model, and the
     returned string is the formatted string that appears on the screen.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+  <pre class="prettyprint lang-java" data-ng-bind-html="FILTER_CONTENT | prettyprint">
+  </pre>
+  <p>
+    When you create a custom filter, such as ReverseFilter, you must register 
+    it with your module. In this example, we associate the ReverseFilter with a
+    name "reverse".
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="MODULE_CONTENT | prettyprint">
+  </pre>
 
   <h2>View</h2>
   <p>
@@ -28,7 +36,8 @@
     course, being the <code>reverse</code>. The filter should be place to the
     right of the model you wish to process.
   </p>
-  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint">
+  </pre>
   <p>
     Note that the use of filter does not alter the state of the underlying 
     model. In another words, if you inspect the value of the <code>caption</code>

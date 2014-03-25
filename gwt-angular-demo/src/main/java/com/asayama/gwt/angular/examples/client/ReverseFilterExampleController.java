@@ -18,7 +18,11 @@ public class ReverseFilterExampleController implements Controller {
             ReverseFilterExampleResources.INSTANCE.html().getText());
     public static final String JAVA_CONTENT = SafeHtmlUtils.htmlEscape(
             ReverseFilterExampleResources.INSTANCE.java().getText());
-
+    public static final String FILTER_CONTENT = SafeHtmlUtils.htmlEscape(
+            ReverseFilterExampleResources.INSTANCE.filter().getText());
+    public static final String MODULE_CONTENT = SafeHtmlUtils.htmlEscape(
+            ReverseFilterExampleResources.INSTANCE.module().getText());
+    
     @Override
     public void onControllerLoad() {
     }
@@ -41,4 +45,7 @@ interface ReverseFilterExampleResources extends ClientBundle {
 
     @Source("demo/ReverseFilter.java")
     public TextResource filter();
+
+    @Source("demo/ReverseFilterModule.txt")
+    public TextResource module();
 }

@@ -1,0 +1,7 @@
+public class SomeExampleModule extends AbstractModule implements EntryPoint {
+  public void onModuleLoad() {
+    Angular.module(this);
+    this.filter("reverse", new ReverseFilter());
+    this.controller(ReverseFilterDemoController.class);
+  }
+}
