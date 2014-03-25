@@ -29,12 +29,12 @@ interface OnClickEventExampleResources extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("OnClickEventDemo.html")
+    @Source("demo/OnClickEventDemo.html")
     public DataResource demo();
 
-    @Source("OnClickEventDemo.html")
+    @Source("demo/OnClickEventDemo.html")
     public TextResource html();
     
-    @Source("OnClickEventDemoController.java")
+    @Source("demo/OnClickEventDemoController.java")
     public TextResource java();
 }

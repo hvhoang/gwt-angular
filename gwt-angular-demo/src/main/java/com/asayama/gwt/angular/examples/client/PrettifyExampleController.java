@@ -41,10 +41,10 @@ interface PrettifyExampleResources extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("PrettifyDemo.html")
+    @Source("demo/PrettifyDemo.html")
     public DataResource demo();
 
-    @Source("PrettifyDemo.html")
+    @Source("demo/PrettifyDemo.html")
     public TextResource html();
     
     @Source("PrettifyExampleController.java")

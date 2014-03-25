@@ -2,7 +2,12 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.examples.client.partials.ExamplesPartials;
+import com.asayama.gwt.angular.examples.client.demo.HttpClientDemoController;
+import com.asayama.gwt.angular.examples.client.demo.OnClickEventDemoController;
+import com.asayama.gwt.angular.examples.client.demo.ReverseFilter;
+import com.asayama.gwt.angular.examples.client.demo.ReverseFilterDemoController;
+import com.asayama.gwt.angular.examples.client.demo.TextInputDemoController;
+import com.asayama.gwt.angular.examples.client.demo.UrlHashParameterDemoController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;

@@ -29,12 +29,12 @@ interface HttpClientExampleResources extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("HttpClientDemo.html")
+    @Source("demo/HttpClientDemo.html")
     public DataResource demo();
 
-    @Source("HttpClientDemo.html")
+    @Source("demo/HttpClientDemo.html")
     public TextResource html();
     
-    @Source("HttpClientDemoController.java")
+    @Source("demo/HttpClientDemoController.java")
     public TextResource java();
 }

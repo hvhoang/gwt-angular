@@ -29,12 +29,12 @@ interface TextInputExampleResources extends ClientBundle {
 
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("TextInputDemo.html")
+    @Source("demo/TextInputDemo.html")
     public DataResource demo();
     
-    @Source("TextInputDemo.html")
+    @Source("demo/TextInputDemo.html")
     public TextResource html();
     
-    @Source("TextInputDemoController.java")
+    @Source("demo/TextInputDemoController.java")
     public TextResource java();
 }

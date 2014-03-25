@@ -4,7 +4,7 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
 import com.asayama.gwt.angular.examples.client.ExamplesController;
-import com.asayama.gwt.angular.examples.client.partials.ExamplesPartials;
+import com.asayama.gwt.angular.examples.client.ExamplesPartials;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;

@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.partials;
+package com.asayama.gwt.angular.examples.client;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -18,19 +18,14 @@ public interface ExamplesPartials extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("HttpClientExample.html")
-    public DataResource httpClient();
-
+    @Source("TextInputExample.html")
+    public DataResource textInput();
+    
     @DoNotEmbed
     @MimeType("text/html")
     @Source("OnClickEventExample.html")
     public DataResource onClickEvent();
-
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("PrettifyExample.html")
-    public DataResource prettify();
-
+    
     @DoNotEmbed
     @MimeType("text/html")
     @Source("ReverseFilterExample.html")
@@ -38,12 +33,16 @@ public interface ExamplesPartials extends ClientBundle {
 
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("TextInputExample.html")
-    public DataResource textInput();
+    @Source("UrlHashParameterExample.html")
+    public DataResource urlHashParameter();
+    
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("HttpClientExample.html")
+    public DataResource httpClient();
 
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("UrlHashParameterExample.html")
-    public DataResource urlHashParameter();
-
+    @Source("PrettifyExample.html")
+    public DataResource prettify();
 }

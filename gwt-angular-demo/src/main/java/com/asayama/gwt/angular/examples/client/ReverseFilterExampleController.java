@@ -30,12 +30,15 @@ interface ReverseFilterExampleResources extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("ReverseFilterDemo.html")
+    @Source("demo/ReverseFilterDemo.html")
     public DataResource demo();
 
-    @Source("ReverseFilterDemo.html")
+    @Source("demo/ReverseFilterDemo.html")
     public TextResource html();
     
-    @Source("ReverseFilterDemoController.java")
+    @Source("demo/ReverseFilterDemoController.java")
     public TextResource java();
+
+    @Source("demo/ReverseFilter.java")
+    public TextResource filter();
 }

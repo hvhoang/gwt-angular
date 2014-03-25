@@ -29,12 +29,12 @@ interface UrlHashParameterExampleResources extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("UrlHashParameterDemo.html")
+    @Source("demo/UrlHashParameterDemo.html")
     public DataResource demo();
 
-    @Source("UrlHashParameterDemo.html")
+    @Source("demo/UrlHashParameterDemo.html")
     public TextResource html();
     
-    @Source("UrlHashParameterDemoController.java")
+    @Source("demo/UrlHashParameterDemoController.java")
     public TextResource java();
 }
