@@ -13,6 +13,6 @@ public interface SamplePartials extends ClientBundle {
     
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("sample.html")
+    @Source("Sample.html")
     public DataResource sample();
 }
