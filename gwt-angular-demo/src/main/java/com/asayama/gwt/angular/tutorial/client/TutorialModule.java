@@ -20,8 +20,8 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
         JSArray<Page> pages = JSArray.create();
         pages.add(Page.create("Introduction",
                 TutorialPartials.INSTANCE.introduction()));
-        pages.add(Page.create("Project Setup",
-                TutorialPartials.INSTANCE.projectSetup()));
+        pages.add(Page.create("Project Structure",
+                TutorialPartials.INSTANCE.projectStructure()));
        return pages;
     }
 }
