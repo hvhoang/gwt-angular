@@ -7,11 +7,17 @@
     <a href="https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">
     Maven project structure.</a>
   </p><p>
+    One thing we should note in this project is that the <code>webapp</code>
+    directory is under <code>src/test</code>. This is because there is really
+    nothing in that directory we need in our build output. Because this
+    application is a <i>client-only</i> application, there are not server-side
+    components to store in this directory. The <code>web.xml</code> we find here
+    is there to support Hosted Mode for testing.
+  </p><p>
     Shown all the way at the bottom of the directory structure, you will find a
     file named <code>pom.xml</code>. This is a Maven project descriptor. You
     will find more information about in the next chapter, 
     <a href="#tutorial?page=projectObjectModel">Project Object Model</a>.
   </p>
-  <img style="margin: 0 auto;" class="img-rounded" 
-    alt="Project Structure" src="tutorial_001.png" />
+  <img class="img-rounded" alt="Project Structure" src="tutorial_001.png" />
 </div>
