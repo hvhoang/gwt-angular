@@ -1,13 +1,19 @@
 <div>
   <p>
-    "Project Object Model" is a fancy name for a Maven project descriptor. Among
-    other things, it declares the project's depenency. If you have worked with
-    GWT and Maven before, most of it is what you might expect.
+    "Project Object Model" is a fancy name for a Maven project descriptor. Most
+    people refer to this as "pom," and its filename is <code>pom.xml</code>.
+    Among many other things, it declares the project's depenency. For this
+    tutorial project, we have two notable dependencies.
   </p>
   <pre class="prettify" data-ng-bind-html="POM_DEPENDENCIES_XML | prettyprint">
   </pre>
   <p>
-    
+    <code>com.asayama.gwt:gwt-angular-core</code> project refers to the
+    core API for <a href="http://kyoken74.github.io/gwt-angular/">GWT Angular
+    </a>. It provides the GWT wrapper around AngularJS's "ng" module.
+  </p><p>
+    <code>com.asayama.gwt:gwt-angular-route</code> provides the GWT wrapper 
+    around AngularJS's "ngRoute" module.
   </p>
   <pre class="prettify" data-ng-bind-html="POM_GWT_MAVEN_PLUGIN_XML | prettyprint">
   </pre>
