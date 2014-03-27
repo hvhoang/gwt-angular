@@ -22,6 +22,8 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
                 TutorialPartials.INSTANCE.introduction()));
         pages.add(Page.create("Project Structure",
                 TutorialPartials.INSTANCE.projectStructure()));
+        pages.add(Page.create("Project Object Model",
+                TutorialPartials.INSTANCE.projectObjectModel()));
        return pages;
     }
 }
