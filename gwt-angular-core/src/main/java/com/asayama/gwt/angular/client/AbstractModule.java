@@ -243,7 +243,7 @@ class JSModule extends JSObject {
         });
     }-*/;
 
-    final native void directive(String name, JSFunction<Template> directive) /*-{
+    final native void directive(String name, JSFunction<JSDirective> directive) /*-{
         this.directive(name, directive);
     }-*/;
 
