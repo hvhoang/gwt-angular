@@ -6,15 +6,15 @@ import com.google.gwt.core.shared.GWT;
 
 public abstract class AbstractDirective implements Directive, Function<Template> {
 
-    public abstract Template template(Object... args);
+    public abstract Template getTemplate();
     
     @Override
-    public final Template function(Object... args) {
+    public final Template call(Object... args) {
         try {
-            return template(args);
+            return getTemplate();
         } catch (Exception e) {
             GWT.log("Exception while building template", e);
-            return template("");
+            return getTemplate();
         }
     }
 }

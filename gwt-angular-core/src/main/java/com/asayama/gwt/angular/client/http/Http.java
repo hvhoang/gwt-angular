@@ -29,7 +29,7 @@ public class Http implements Service {
         ngo.get(url, JSClosure.create(new Closure() {
 
             @Override
-            public void closure(Object... args) {
+            public void exec(Object... args) {
                 String data = (String) args[0];
                 int status = (Integer) args[1];
                 callback.onSuccess(status, data);
@@ -37,7 +37,7 @@ public class Http implements Service {
         }), JSClosure.create(new Closure() {
 
             @Override
-            public void closure(Object... args) {
+            public void exec(Object... args) {
                 String data = (String) args[0];
                 int status = (Integer) args[1];
                 callback.onSuccess(status, data);

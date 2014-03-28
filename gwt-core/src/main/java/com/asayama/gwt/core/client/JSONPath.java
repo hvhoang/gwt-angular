@@ -10,7 +10,7 @@ public class JSONPath {
     public static <T> T getObject(JSON json, String path) {
         return get(json, path, new Function<T>() {
             @Override
-            public T function(Object... args) {
+            public T call(Object... args) {
                 return ((JSON) args[0]).getObject((String) args[1]);
             }
         });
@@ -19,7 +19,7 @@ public class JSONPath {
     public static <T extends JSON> T getJSON(JSON json, String path) {
         return get(json, path, new Function<T>() {
             @Override
-            public T function(Object... args) {
+            public T call(Object... args) {
                 return ((JSON) args[0]).getJSON((String) args[1]);
             }
         });
@@ -28,7 +28,7 @@ public class JSONPath {
     public static <T extends JSObject> T getJSObject(JSON json, String path) {
         return get(json, path, new Function<T>() {
             @Override
-            public T function(Object... args) {
+            public T call(Object... args) {
                 return ((JSON) args[0]).getJSObject((String) args[1]);
             }
         });
@@ -37,7 +37,7 @@ public class JSONPath {
     public static <T> JSArray<T> getJSArray(JSON json, String path) {
         return get(json, path, new Function<JSArray<T>>() {
             @Override
-            public JSArray<T> function(Object... args) {
+            public JSArray<T> call(Object... args) {
                 return ((JSON) args[0]).getJSArray((String) args[1]);
             }
         });
@@ -46,7 +46,7 @@ public class JSONPath {
     public static <T> JSFunction<T> getJSFunction(JSON json, String path) {
         return get(json, path, new Function<JSFunction<T>>() {
             @Override
-            public JSFunction<T> function(Object... args) {
+            public JSFunction<T> call(Object... args) {
                 return ((JSON) args[0]).getJSFunction((String) args[1]);
             }
         });
@@ -55,7 +55,7 @@ public class JSONPath {
     public static JSClosure getJSClosure(JSON json, String path) {
         return get(json, path, new Function<JSClosure>() {
             @Override
-            public JSClosure function(Object... args) {
+            public JSClosure call(Object... args) {
                 return ((JSON) args[0]).getJSClosure((String) args[1]);
             }
         });
@@ -64,7 +64,7 @@ public class JSONPath {
     public static String getString(JSON json, String path) {
         return get(json, path, new Function<String>() {
             @Override
-            public String function(Object... args) {
+            public String call(Object... args) {
                 return ((JSON) args[0]).getString((String) args[1]);
             }
         });
@@ -73,7 +73,7 @@ public class JSONPath {
     public static Integer getInteger(JSON json, String path) {
         return get(json, path, new Function<Integer>() {
             @Override
-            public Integer function(Object... args) {
+            public Integer call(Object... args) {
                 return ((JSON) args[0]).getInteger((String) args[1]);
             }
         });
@@ -82,7 +82,7 @@ public class JSONPath {
     public static Double getDouble(JSON json, String path) {
         return get(json, path, new Function<Double>() {
             @Override
-            public Double function(Object... args) {
+            public Double call(Object... args) {
                 return ((JSON) args[0]).getDouble((String) args[1]);
             }
         });
@@ -91,7 +91,7 @@ public class JSONPath {
     public static Boolean getBoolean(JSON json, String path) {
         return get(json, path, new Function<Boolean>() {
             @Override
-            public Boolean function(Object... args) {
+            public Boolean call(Object... args) {
                 return ((JSON) args[0]).getBoolean((String) args[1]);
             }
         });
@@ -100,7 +100,7 @@ public class JSONPath {
     public static Long getLong(JSON json, String path) {
         return get(json, path, new Function<Long>() {
             @Override
-            public Long function(Object... args) {
+            public Long call(Object... args) {
                 return ((JSON) args[0]).getLong((String) args[1]);
             }
         });
@@ -109,7 +109,7 @@ public class JSONPath {
     public static Date getDate(JSON json, String path) {
         return get(json, path, new Function<Date>() {
             @Override
-            public Date function(Object... args) {
+            public Date call(Object... args) {
                 return ((JSON) args[0]).getDate((String) args[1]);
             }
         });
@@ -153,7 +153,7 @@ public class JSONPath {
             } else {
                 String key = s;
                 if (i == split.length - 1) {
-                    return getter.function(node, key);
+                    return getter.call(node, key);
                 } else {
                     node = node.getJSON(key);
                     if (node == null) {

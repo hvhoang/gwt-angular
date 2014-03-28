@@ -29,7 +29,7 @@ public class Angular {
 	public static <T extends Module> T module(T module, String... requires) {
 		Closure closure = new Closure() {
 			@Override
-			public void closure(Object... args) {
+			public void exec(Object... args) {
 				//noop
 			}
 		};

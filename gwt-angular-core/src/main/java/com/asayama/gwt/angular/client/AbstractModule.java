@@ -56,7 +56,6 @@ public abstract class AbstractModule implements Module {
     //
     
     public <D extends AbstractDirective> D directive(String name, final D directive) {
-        
         jso.directive(name, JSFunction.create(directive));
         return directive;
     }
@@ -84,7 +83,7 @@ public abstract class AbstractModule implements Module {
         Function<P> initializer = new Function<P>() {
 
             @Override
-            public P function(Object... args) {
+            public P call(Object... args) {
                 injector.apply(args);
                 configurator.configure(provider);
                 return provider;
@@ -116,7 +115,7 @@ public abstract class AbstractModule implements Module {
         Function<S> initializer = new Function<S>() {
 
             @Override
-            public S function(Object... args) {
+            public S call(Object... args) {
                 injector.apply(args);
                 return service;
             }
@@ -164,7 +163,7 @@ public abstract class AbstractModule implements Module {
         Closure initializer = new Closure() {
 
             @Override
-            public void closure(Object... args) {
+            public void exec(Object... args) {
                 String m = "";
                 try {
                     m = "shifing args";

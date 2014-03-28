@@ -13,7 +13,7 @@ public abstract class AbstractFilter implements Function<String> {
     }
     
     @Override
-    public final String function(Object... args) {
+    public final String call(Object... args) {
         if (args == null) {
             return "";
         }

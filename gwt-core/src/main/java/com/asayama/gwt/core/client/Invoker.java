@@ -22,7 +22,7 @@ public class Invoker {
 	}
 	
 	public Object invoke() {
-		return (Object) delegate.function();
+		return (Object) delegate.call();
 	}
 	
 	public Object invoke(JSArray<?> jsarray) {
@@ -34,7 +34,7 @@ public class Invoker {
 				args[i] = object;
 			}
 		}
-		return (Object) delegate.function(args);
+		return (Object) delegate.call(args);
 	}
 
 }

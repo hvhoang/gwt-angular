@@ -12,17 +12,17 @@ public class Promise extends JSObject {
 	public final Promise then(final PromiseCallback callback) {
 		_then(new Invoker(new Closure() {
 			@Override
-			public void closure(Object... args) {
+			public void exec(Object... args) {
 				callback.success(args);
 			}
 		}), new Invoker(new Closure() {
 			@Override
-			public void closure(Object... args) {
+			public void exec(Object... args) {
 				callback.error(args);
 			}
 		}), new Invoker(new Closure() {
 			@Override
-			public void closure(Object... args) {
+			public void exec(Object... args) {
 				callback.notify(args);
 			}
 		}));
