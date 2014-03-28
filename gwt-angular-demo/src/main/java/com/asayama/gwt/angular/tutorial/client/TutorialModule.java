@@ -24,8 +24,8 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
                 TutorialPartials.INSTANCE.projectStructure()));
         pages.add(Page.create("Project Object Model",
                 TutorialPartials.INSTANCE.projectObjectModel()));
-        pages.add(Page.create("SampleEntryPoint",
-                TutorialPartials.INSTANCE.sampleEntryPoint()));
+        pages.add(Page.create("GWT Module XML",
+                TutorialPartials.INSTANCE.gwtModuleXML()));
        return pages;
     }
 }

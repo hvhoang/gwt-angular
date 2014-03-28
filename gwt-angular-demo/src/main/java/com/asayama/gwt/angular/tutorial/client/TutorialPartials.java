@@ -33,7 +33,7 @@ public interface TutorialPartials extends ClientBundle {
 
     @DoNotEmbed
     @MimeType("text/html")
-    @Source("SampleEntryPoint.html")
-    public DataResource sampleEntryPoint();
+    @Source("GwtModuleXml.html")
+    public DataResource gwtModuleXML();
 
 }
