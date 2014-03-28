@@ -31,4 +31,9 @@ public interface TutorialPartials extends ClientBundle {
     @Source("ProjectObjectModel.html")
     public DataResource projectObjectModel();
 
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("SampleEntryPoint.html")
+    public DataResource sampleEntryPoint();
+
 }

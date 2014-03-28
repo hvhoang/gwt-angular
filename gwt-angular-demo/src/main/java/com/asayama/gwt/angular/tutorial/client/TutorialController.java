@@ -8,18 +8,12 @@ import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 
 public class TutorialController implements Controller {
 
     public static final String SAMPLE_HTML = 
             SamplePartials.INSTANCE.sample().getSafeUri().asString();
-    
-    public static final String POM_DEPENDENCIES_XML = SafeHtmlUtils.htmlEscape(
-            TutorialResources.INSTANCE.pomDependencies().getText());
-    public static final String POM_GWT_MAVEN_PLUGIN_XML = SafeHtmlUtils.htmlEscape(
-            TutorialResources.INSTANCE.pomGwtMavenPlugin().getText());
     
     private RouteParams routeParams;
     private Location location;
