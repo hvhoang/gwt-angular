@@ -4,17 +4,21 @@ import com.asayama.gwt.core.client.Function;
 import com.google.gwt.core.shared.GWT;
 
 
-public abstract class AbstractDirective implements Directive, Function<Template> {
+class DirectiveWrapper implements Function<Template> {
 
-    public abstract Template getTemplate();
+    final Directive directive;
+    
+    DirectiveWrapper(Directive directive) {
+        this.directive = directive;
+    }
     
     @Override
     public final Template call(Object... args) {
         try {
-            return getTemplate();
+            return directive.getTemplate();
         } catch (Exception e) {
             GWT.log("Exception while building template", e);
-            return getTemplate();
+            return directive.getTemplate();
         }
     }
 }

@@ -55,8 +55,8 @@ public abstract class AbstractModule implements Module {
     // Directive
     //
     
-    public <D extends AbstractDirective> D directive(String name, final D directive) {
-        jso.directive(name, JSFunction.create(directive));
+    public <D extends Directive> D directive(String name, final D directive) {
+        jso.directive(name, JSFunction.create(new DirectiveWrapper(directive)));
         return directive;
     }
     
