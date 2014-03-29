@@ -1,4 +1,4 @@
-<div data-ng-controller="com.asayama.gwt.angular.examples.client.UrlHashParameterExampleController">
+<div>
   <p>
     GWT Angular provides a mechanism for controlling the hash parameters in
     the URL. The "hash" refers to the part of URL that begins with '#', and
@@ -17,7 +17,7 @@
     recognize, you will be taken to <code>textInput</code> page.
   </p>
   <div class="panel panel-primary">
-    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+    <div class="panel-body" data-ng-include="URL_HASH_PARAMETER_DEMO_URL"></div>
   </div>
   <p>
     List of valid page names:
@@ -32,7 +32,7 @@
     named <code>pageName</code>. The model is passed to the controller via
     <code>onClickGo()</code> method when the "Go" button is clicked.
   </p>
-  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  <pre class="prettyprint lang-html" data-ng-bind-html="URL_HASH_PARAMETER_VIEW_CONTENT | prettyprint"></pre>
 
   <h2>Controller</h2>
   <p>
@@ -47,7 +47,7 @@
     method is invoked. This method uses the <code>Location</code> service
     to set the "page" parameter value to the new value passed from the view.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+  <pre class="prettyprint lang-java" data-ng-bind-html="URL_HASH_PARAMETER_CONTROLLER_CONTENT | prettyprint"></pre>
 
   <h2>Configuration</h2>
   <p>
