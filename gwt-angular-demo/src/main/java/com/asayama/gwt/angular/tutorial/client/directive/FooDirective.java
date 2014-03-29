@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.http.client;
+package com.asayama.gwt.angular.tutorial.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.core.client.JSON;
@@ -13,21 +13,21 @@ import com.google.gwt.user.client.Element;
 //**
 //* {{ agIncludeRemote }}
 //*
-public class IncludeRemoteDirective extends AbstractDirective {
+public class FooDirective extends AbstractDirective {
 
-    public IncludeRemoteDirective(String name) {
+    public FooDirective(String name) {
         super(name);
     }
     
     @Override
     public TextResource getTemplate() {
-        return null;//IncludeRemoteDirectiveResource.INSTANCE.template();
+        return FooDirectiveResource.INSTANCE.template();
     }
     
-    @Override
-    public DataResource getPartial() {
-        return IncludeRemoteDirectiveResource.INSTANCE.partial();
-    }
+//    @Override
+//    public DataResource getPartial() {
+//        return IncludeRemoteDirectiveResource.INSTANCE.partial();
+//    }
     
     @Override
     public void getCompile(Element element, JSON attrs) {
@@ -35,16 +35,16 @@ public class IncludeRemoteDirective extends AbstractDirective {
     }
 }
 
-interface IncludeRemoteDirectiveResource extends ClientBundle {
+interface FooDirectiveResource extends ClientBundle {
     
-    static final IncludeRemoteDirectiveResource INSTANCE =
-            GWT.create(IncludeRemoteDirectiveResource.class);
+    static final FooDirectiveResource INSTANCE =
+            GWT.create(FooDirectiveResource.class);
     
-    @Source("IncludeRemoteDirective.java")
+    @Source("FooDirective.html")
     TextResource template();
     
     @DoNotEmbed
     @MimeType("text/plain")
-    @Source("IncludeRemoteDirective.java")
+    @Source("FooDirective.html")
     DataResource partial();
 }
