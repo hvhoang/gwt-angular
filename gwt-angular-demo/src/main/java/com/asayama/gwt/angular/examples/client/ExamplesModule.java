@@ -8,6 +8,7 @@ import com.asayama.gwt.angular.examples.client.demo.ReverseFilter;
 import com.asayama.gwt.angular.examples.client.demo.ReverseFilterDemoController;
 import com.asayama.gwt.angular.examples.client.demo.TextInputDemoController;
 import com.asayama.gwt.angular.examples.client.demo.UrlHashParameterDemoController;
+import com.asayama.gwt.angular.examples.client.view.ExamplesPartials;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;

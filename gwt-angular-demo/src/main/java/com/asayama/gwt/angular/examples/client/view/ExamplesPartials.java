@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.examples.client.view;
 
 import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.angular.client.Partials;
