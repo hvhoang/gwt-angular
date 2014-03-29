@@ -9,24 +9,24 @@ public interface ExamplesPartials extends Partials {
     
     public static final ExamplesPartials INSTANCE = GWT.create(ExamplesPartials.class);
 
-    @Source("Examples.html")
+    @Resource("Examples.html")
     public Partial examples();
     
-    @Source("TextInputExample.html")
+    @Resource("TextInputExample.html")
     public Partial textInput();
     
-    @Source("OnClickEventExample.html")
+    @Resource("OnClickEventExample.html")
     public Partial onClickEvent();
     
-    @Source("ReverseFilterExample.html")
+    @Resource("ReverseFilterExample.html")
     public Partial reverseFilter();
 
-    @Source("UrlHashParameterExample.html")
+    @Resource("UrlHashParameterExample.html")
     public Partial urlHashParameter();
     
-    @Source("HttpClientExample.html")
+    @Resource("HttpClientExample.html")
     public Partial httpClient();
 
-    @Source("PrettifyExample.html")
+    @Resource("PrettifyExample.html")
     public Partial prettify();
 }

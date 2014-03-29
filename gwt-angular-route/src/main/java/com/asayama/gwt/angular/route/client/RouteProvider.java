@@ -1,6 +1,8 @@
 package com.asayama.gwt.angular.route.client;
 
+import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -9,8 +11,15 @@ public class RouteProvider implements Provider {
 
     private NGRouteProvider ngo;
 
+    @Deprecated
     public RouteProvider when(String route, Template action) {
         ngo.when(route, action);
+        return this;
+    }
+
+    public <C extends Controller> RouteProvider when(String route, Partial partial, Class<C> controllerClass) {
+        Template template = Template.create(partial, controllerClass);
+        ngo.when(route, template);
         return this;
     }
 

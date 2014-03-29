@@ -6,5 +6,4 @@ public class BinderFactoryGenerator extends AbstractFactoryGenerator {
 	String getFilename() {
 		return "com/asayama/gwt/angular/rebind/BinderFactory.vm";
 	}
-
 }

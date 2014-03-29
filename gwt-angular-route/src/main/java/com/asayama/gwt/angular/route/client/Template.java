@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.route.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.core.client.JSObject;
 import com.google.gwt.resources.client.DataResource;
 
@@ -9,7 +10,12 @@ public class Template extends JSObject {
 	protected Template() {
 	}
 	
-	public static Template create(String templateUrl) {
+    public static <T extends Controller> Template create(Partial partial, Class<T> controllerClass) {
+        String templateUrl = partial.url();
+        return create(templateUrl).setController(controllerClass);
+    }
+
+    public static Template create(String templateUrl) {
 		return JSObject.create().<Template>cast().setTemplateUrl(templateUrl);
 	}
 
@@ -18,6 +24,7 @@ public class Template extends JSObject {
 //        return create(templateUrl).setController(controllerClass);
 //    }
     
+	@Deprecated
     public static <T extends Controller> Template create(DataResource partial, Class<T> controllerClass) {
         String templateUrl = partial.getSafeUri().asString();
         return create(templateUrl).setController(controllerClass);

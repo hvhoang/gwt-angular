@@ -28,20 +28,18 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
-
-//        pages.add(Page.create("Text Input",
-//                ExamplesPartials.INSTANCE.textInput()));
-        
+        pages.add(Page.create("Text Input",
+                ExamplesPartials.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event",
-                ExamplesBundle.INSTANCE.onClickEvent()));
+                ExamplesPartials.INSTANCE.onClickEvent()));
         pages.add(Page.create("Reverse Filter",
-                ExamplesBundle.INSTANCE.reverseFilter()));
+                ExamplesPartials.INSTANCE.reverseFilter()));
         pages.add(Page.create("URL Hash Parameter",
-                ExamplesBundle.INSTANCE.urlHashParameter()));
+                ExamplesPartials.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client",
-                ExamplesBundle.INSTANCE.httpClient()));
+                ExamplesPartials.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify",
-                ExamplesBundle.INSTANCE.prettify()));
+                ExamplesPartials.INSTANCE.prettify()));
        return pages;
     }
 }

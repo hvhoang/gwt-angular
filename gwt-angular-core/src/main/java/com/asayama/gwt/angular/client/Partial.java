@@ -4,23 +4,28 @@ import com.google.gwt.resources.client.DataResource;
 
 
 
-public interface Partial {
+public class Partial {
 
-    public String name();
-    public String url();
+    private DataResource resource;
 
-    public static class PartialDataResource implements Partial {
-        final DataResource resource;
-        public PartialDataResource(DataResource resource) {
-            this.resource = resource;
-        }
-        @Override
-        public String name() {
-            return resource.getName();
-        }
-        @Override
-        public String url() {
-            return resource.getSafeUri().asString();
-        }
+    public Partial() {
+    }
+    
+    public String name() {
+        return resource == null ? null : resource.getName();
+    }
+    
+    public String url() {
+        return resource == null ? null : resource.getSafeUri().asString();
+    }
+    
+    // Getters and Setters
+    
+    public DataResource getResource() {
+        return resource;
+    }
+    
+    public void setResource(DataResource resource) {
+        this.resource = resource;
     }
 }
