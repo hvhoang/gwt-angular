@@ -27,6 +27,15 @@ public class RouteProvider implements Provider {
         return this;
     }
 
+    @Deprecated
+    public <C extends Controller> RouteProvider when(String route, String templateUrl, Class<C> controllerClass) {
+        JSON json = JSON.create();
+        json.put("templateUrl", templateUrl);
+        json.put("controller", controllerClass.getName());
+        ngo.when(route, json);
+        return this;
+    }
+
     public RouteProvider when(String route, String redirectTo) {
         JSON redirect = JSON.create();
         redirect.put("redirectTo", redirectTo);
