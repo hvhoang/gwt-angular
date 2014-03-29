@@ -7,7 +7,7 @@
     coloring provided by google-code-prettify.
   </p><p>
     Below example shows a string, <code>HTML_CONTENT</code>, filtered through
-    the <code>prettify</code> filter, which is defined in the PrettifyModule.
+    the <code>prettyprint</code> filter, which is defined in the PrettifyModule.
   </p>
   <div class="panel panel-primary">
     <div class="panel-body" data-ng-include="PRETTIFY_DEMO_URL"></div>
@@ -19,20 +19,13 @@
   <h2>Controller</h2>
   <p>
     <code>HTML_CONTENT</code> is a public static final variable, which is
-    initialized by TextResource defined in <code>PrettifyExampleResources</code>.
+    initialized by TextResource defined in <code>PrettifyDemoResources</code>.
     Because an outright HTML would be rendered by the browser, we must escape
     all the mark-ups prior to injecting it into the view using the directive,
     <code>data-ng-bind-html</code>. <code>SafeHtmlUtils.htmlEscape()</code> is
     used for this purpose.
   </p>
   <pre class="prettyprint lang-java" data-ng-bind-html="PRETTIFY_CONTROLLER_CONTENT | prettyprint"></pre>
-  <!--
-  <p>
-    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
-      TODO Bring some structure to the description of examples.</a>
-  </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="RESOURCES_CONTENT | prettyprint"></pre>
-  -->
 
   <h2>Configuration</h2>
   <p>
