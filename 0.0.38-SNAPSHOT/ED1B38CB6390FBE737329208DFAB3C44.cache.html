@@ -1,0 +1,61 @@
+<div>
+  <p>
+    gwt-angular-prettify offers <a target="https://code.google.com/p/google-code-prettify/"
+    href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a> 
+    right inside your GWT Angular code. Together with AngularJS's ngSantizie 
+    module, you can embed a code fragment into your screen with basic syntax 
+    coloring provided by google-code-prettify.
+  </p><p>
+    Below example shows a string, <code>HTML_CONTENT</code>, filtered through
+    the <code>prettify</code> filter, which is defined in the PrettifyModule.
+  </p>
+  <div class="panel panel-primary">
+    <div class="panel-body" data-ng-include="PRETTIFY_DEMO_URL"></div>
+  </div>
+
+  <h2>View</h2>
+  <pre class="prettyprint lang-html" data-ng-bind-html="PRETTIFY_VIEW_CONTENT | prettyprint"></pre>
+  
+  <h2>Controller</h2>
+  <p>
+    <code>HTML_CONTENT</code> is a public static final variable, which is
+    initialized by TextResource defined in <code>PrettifyExampleResources</code>.
+    Because an outright HTML would be rendered by the browser, we must escape
+    all the mark-ups prior to injecting it into the view using the directive,
+    <code>data-ng-bind-html</code>. <code>SafeHtmlUtils.htmlEscape()</code> is
+    used for this purpose.
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="PRETTIFY_CONTROLLER_CONTENT | prettyprint"></pre>
+  <!--
+  <p>
+    <a href="https://github.com/kyoken74/gwt-angular/issues/44">
+      TODO Bring some structure to the description of examples.</a>
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="RESOURCES_CONTENT | prettyprint"></pre>
+  -->
+
+  <h2>Configuration</h2>
+  <p>
+    The following modules are required in the gwt.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;inherits name="com.asayama.gwt.angular.NG" /&gt;
+&lt;inherits name="com.asayama.gwt.angular.sanitize.NGSanitize" /&gt;
+&lt;inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" /&gt;</pre>
+
+  <p>
+    The following Maven dependencies are required in the pom.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-prettify&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-sanitize&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+
+</div>

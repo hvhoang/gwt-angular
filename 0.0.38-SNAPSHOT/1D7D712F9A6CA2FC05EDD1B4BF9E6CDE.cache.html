@@ -1,0 +1,65 @@
+<div>
+  <p>
+    GWT Angular allows the users to write the <i>filter</i> code in Java.
+    In this example, we write a <code>ReverseFilter</code>, which takes a
+    string, and simply reverses the order so that the entire string appears
+    backwards. It is important to note that this filter does not modify the
+    underlying model. The original string remains "as is" while the filter
+    only formats the string on the screen.
+  </p>
+  <div class="panel panel-primary">
+    <div class="panel-body" data-ng-include="REVERSE_FILTER_DEMO_URL"></div>
+  </div>
+
+  <h2>Filter</h2>
+  <p>
+    In order to define your own filter, you must extend an abstract class named
+    <code>AbstractFilter</code> and provide an implementation for the method
+    <code>filter(String)</code>. The argument is the original model, and the
+    returned string is the formatted string that appears on the screen.
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="REVERSE_FILTER_FILTER_CONTENT | prettyprint">
+  </pre>
+  <p>
+    When you create a custom filter, such as ReverseFilter, you must register 
+    it with your module. In this example, we associate the ReverseFilter with a
+    name "reverse".
+  </p>
+  <pre class="prettyprint lang-java" data-ng-bind-html="REVERSE_FILTER_MODULE_CONTENT | prettyprint">
+  </pre>
+
+  <h2>View</h2>
+  <p>
+    Using this filter in the view is easy. You can simply use the broken pipe
+    <code>|</code> between the model and the filter (where model in this 
+    example is returned by <code>getCaption()</code> and the custom filter, of
+    course, being the <code>reverse</code>. The filter should be place to the
+    right of the model you wish to process.
+  </p>
+  <pre class="prettyprint lang-html" data-ng-bind-html="REVERSE_FILTER_VIEW_CONTENT | prettyprint">
+  </pre>
+  <p>
+    Note that the use of filter does not alter the state of the underlying 
+    model. In another words, if you inspect the value of the <code>caption</code>
+    variable in the controller after the filter is evaluated in the view, the
+    model will still show "Hello, World!", and not the "!dlroW ,olleH".
+  </p>
+  
+  <h2>Configuration</h2>
+  <p>
+    The following modules are required in the gwt.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;inherits name="com.asayama.gwt.angular.NG" /&gt;</pre>
+
+  <p>
+    The following Maven dependencies are required in the pom.xml.
+  </p>
+  <pre class="prettyprint">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+
+</div>
