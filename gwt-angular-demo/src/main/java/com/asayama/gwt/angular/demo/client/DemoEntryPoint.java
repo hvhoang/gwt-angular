@@ -4,7 +4,7 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
 import com.asayama.gwt.angular.examples.client.ExamplesController;
-import com.asayama.gwt.angular.examples.client.ExamplesPartials;
+import com.asayama.gwt.angular.examples.client.ExamplesBundle;
 import com.asayama.gwt.angular.route.client.Redirect;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.route.client.Template;
@@ -26,7 +26,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
                 routeProvider
                     .when("/documentation", Template.create(DemoPartials.INSTANCE.documentation(), DocumentationController.class))
                     .when("/downloads", Template.create(DemoPartials.INSTANCE.downloads(), DownloadsController.class))
-                    .when("/examples", Template.create(ExamplesPartials.INSTANCE.examples(), ExamplesController.class))
+                    .when("/examples", Template.create(ExamplesBundle.INSTANCE.examples(), ExamplesController.class))
                     .when("/jumbotron", Template.create(DemoPartials.INSTANCE.jumbotron(), JumbotronController.class))
                     .when("/tutorial", Template.create(TutorialPartials.INSTANCE.tutorial(), TutorialController.class))
                     .otherwise(Redirect.create("/jumbotron"));

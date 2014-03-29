@@ -1,48 +1,32 @@
 package com.asayama.gwt.angular.examples.client;
 
+import com.asayama.gwt.angular.client.Partial;
+import com.asayama.gwt.angular.client.Partials;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.DataResource.DoNotEmbed;
-import com.google.gwt.resources.client.DataResource.MimeType;
 
 
-public interface ExamplesPartials extends ClientBundle {
+public interface ExamplesPartials extends Partials {
     
     public static final ExamplesPartials INSTANCE = GWT.create(ExamplesPartials.class);
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Examples.html")
-    public DataResource examples();
+    public Partial examples();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("TextInputExample.html")
-    public DataResource textInput();
+    public Partial textInput();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("OnClickEventExample.html")
-    public DataResource onClickEvent();
+    public Partial onClickEvent();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("ReverseFilterExample.html")
-    public DataResource reverseFilter();
+    public Partial reverseFilter();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("UrlHashParameterExample.html")
-    public DataResource urlHashParameter();
+    public Partial urlHashParameter();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("HttpClientExample.html")
-    public DataResource httpClient();
+    public Partial httpClient();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("PrettifyExample.html")
-    public DataResource prettify();
+    public Partial prettify();
 }
