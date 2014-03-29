@@ -12,7 +12,7 @@ public class TutorialController extends AbstractMultiPageController {
     
     @Bind("tutorial")
     private JSArray<Page> pages = null;
-    private String defaultPageName = null;
+    private String defaultPageName = "introduction";
 
     // Getters and Setters
 

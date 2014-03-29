@@ -71,7 +71,7 @@ public class ExamplesController extends AbstractMultiPageController {
 
     @Bind("examples")
     private JSArray<Page> pages = null;
-    private String defaultPageName = null;
+    private String defaultPageName = "textInput";
     
     // Getters and Setters
 
