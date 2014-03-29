@@ -15,7 +15,6 @@ public class PrettifyDemoController implements Controller {
     @Override
     public void onControllerLoad() {
         //noop
-        GWT.log(HTML_CONTENT);
     }
 }
 
