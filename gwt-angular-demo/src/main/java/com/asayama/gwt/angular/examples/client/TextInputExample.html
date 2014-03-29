@@ -1,4 +1,4 @@
-<div data-ng-controller="com.asayama.gwt.angular.examples.client.TextInputExampleController">
+<div>
   <p>
     This example demonstrates the declaration of Angular model and the 
     communication between the view (HTML) and the controller (Java) using this
@@ -11,7 +11,7 @@
     "<b>Hello, Jack!</b>" as you type in the value.
   </p>
   <div class="panel panel-primary">
-    <div class="panel-body" data-ng-include="DEMO_URL">
+    <div class="panel-body" data-ng-include="TEXT_INPUT_DEMO_URL">
     </div>
   </div>
 
@@ -25,7 +25,7 @@
     controller via <code>data-ng-change</code> directive, which calls 
     <code>setName()</code> method.
   </p>
-  <pre class="prettyprint lang-html" data-ng-bind-html="HTML_CONTENT | prettyprint"></pre>
+  <pre class="prettyprint lang-html" data-ng-bind-html="TEXT_INPUT_VIEW_CONTENT | prettyprint"></pre>
 
   <h2>Controller</h2>
   <p>
@@ -39,7 +39,7 @@
     These public final constants are bound to the view, so that they can be
     inserted into the view via the use of double mustache notation, {{ }}.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="JAVA_CONTENT | prettyprint"></pre>
+  <pre class="prettyprint lang-java" data-ng-bind-html="TEXT_INPUT_CONTROLLER_CONTENT | prettyprint"></pre>
 
   <h2>Configuration</h2>
   <p>
