@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.DataResource.DoNotEmbed;
 import com.google.gwt.resources.client.DataResource.MimeType;
 
-
+@Deprecated
 public interface ExamplesBundle extends ClientBundle {
     
     public static final ExamplesBundle INSTANCE = GWT.create(ExamplesBundle.class);
