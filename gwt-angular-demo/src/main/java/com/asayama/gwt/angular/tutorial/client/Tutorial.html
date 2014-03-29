@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9" style="margin-top:2em;">
       <h1>{{ getSelectedPage().title }}</h1>
-      <div data-ng-include="getSelectedPage().filename"></div>
+      <div data-ng-include="getSelectedPage().url"></div>
       <div data-ng-if="getNextPage()">
         <h3 style="text-align:right;">
           <a href="#/tutorial?page={{ getNextPage().name }}">

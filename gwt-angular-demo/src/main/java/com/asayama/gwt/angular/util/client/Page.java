@@ -7,10 +7,14 @@ import com.google.gwt.resources.client.DataResource;
 public class Page extends JSON {
     
     public static Page create(String title, DataResource partial) {
+        return create(title, partial.getName(), partial.getSafeUri().asString());
+    }
+    
+    public static Page create(String title, String name, String url) {
         Page page = create();
-        page.put("name", partial.getName());
+        page.put("name", name);
         page.put("title", title);
-        page.put("filename", partial.getSafeUri().asString());
+        page.put("url", url);
         return page;
     }
     
