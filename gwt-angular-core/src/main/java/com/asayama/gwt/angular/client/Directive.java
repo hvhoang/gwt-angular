@@ -84,13 +84,14 @@ class DirectiveWrapper implements Function<JSDirective> {
             
             JSON scope = JSON.create();
             //FIXME the value of the attribute directive is not properly passed to the template
+            //https://github.com/kyoken74/gwt-angular/issues/36
             scope.put(directive.getName(), "=");
             jso.setScope(scope);
             
             return jso;
             
         } catch (Exception e) {
-            GWT.log("Exception while building template", e);
+            GWT.log("Exception while building a directive", e);
             return jso;
         }
     }

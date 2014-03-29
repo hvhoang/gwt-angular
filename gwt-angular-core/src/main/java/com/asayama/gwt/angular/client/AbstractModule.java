@@ -48,7 +48,7 @@ public abstract class AbstractModule implements Module {
     //
     
     public <F extends AbstractFilter> void filter(String name, F filter) {
-        jso.filter(name, JSFunction.create(filter));
+        jso.filter(name, JSFunction.create(new FilterWrapper(filter)));
     }
 
     //
@@ -237,10 +237,8 @@ class JSModule extends JSObject {
         this.constant(name, value);
     }-*/;
     
-    final native void filter(String name, JSFunction<String> filter) /*-{
-        this.filter(name, function() {
-            return filter;
-        });
+    final native void filter(String name, JSFunction<JSFilter> filter) /*-{
+        this.filter(name, filter);
     }-*/;
 
     final native void directive(String name, JSFunction<JSDirective> directive) /*-{
