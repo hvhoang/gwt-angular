@@ -12,21 +12,18 @@ public class RouteProvider implements Provider {
 
     private NGRouteProvider ngo;
 
-    @Deprecated
-    public RouteProvider when(String route, Template action) {
-        ngo.when(route, action);
-        return this;
-    }
-
     public RouteProvider when(String route, Partial partial) {
-        Template template = Template.create(partial.url());
-        ngo.when(route, template);
+        JSON json = JSON.create();
+        json.put("templateUrl", partial.url());
+        ngo.when(route, json);
         return this;
     }
 
     public <C extends Controller> RouteProvider when(String route, Partial partial, Class<C> controllerClass) {
-        Template template = Template.create(partial, controllerClass);
-        ngo.when(route, template);
+        JSON json = JSON.create();
+        json.put("templateUrl", partial.url());
+        json.put("controller", controllerClass.getName());
+        ngo.when(route, json);
         return this;
     }
 
@@ -43,23 +40,6 @@ public class RouteProvider implements Provider {
         ngo.otherwise(redirect);
         return this;
     }
-
-//    @Deprecated
-//    public RouteProvider when(String route, Redirect action) {
-//        ngo.when(route, action);
-//        return this;
-//    }
-//
-    public RouteProvider otherwise(Template action) {
-        ngo.otherwise(action);
-        return this;
-    }
-
-//    @Deprecated
-//    public RouteProvider otherwise(Redirect action) {
-//        ngo.otherwise(action);
-//        return this;
-//    }
 }
 
 @Bind("$routeProvider")
