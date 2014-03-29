@@ -48,7 +48,9 @@ public abstract class AbstractModule implements Module {
     //
     
     public <F extends AbstractFilter> void filter(String name, F filter) {
-        jso.filter(name, JSFunction.create(new FilterWrapper(filter)));
+        JSArray<String> dependencies = JSArray.create();
+        jso.filter(name, dependencies,
+                JSFunction.create(new FilterWrapper(filter)));
     }
 
     //
@@ -56,7 +58,9 @@ public abstract class AbstractModule implements Module {
     //
     
     public <D extends Directive> D directive(final D directive) {
-        jso.directive(directive.getName(), JSFunction.create(new DirectiveWrapper(directive)));
+        JSArray<String> dependencies = JSArray.create();
+        jso.directive(directive.getName(), dependencies,
+                JSFunction.create(new DirectiveWrapper(directive)));
         return directive;
     }
     
@@ -237,12 +241,14 @@ class JSModule extends JSObject {
         this.constant(name, value);
     }-*/;
     
-    final native void filter(String name, JSFunction<JSFilter> filter) /*-{
-        this.filter(name, filter);
+    final native void filter(String name, JSArray<String> dependencies, JSFunction<JSFilter> filter) /*-{
+        dependencies.push(filter);
+        this.filter(name, dependencies);
     }-*/;
 
-    final native void directive(String name, JSFunction<JSDirective> directive) /*-{
-        this.directive(name, directive);
+    final native void directive(String name, JSArray<String> dependencies, JSFunction<JSDirective> directive) /*-{
+        dependencies.push(directive);
+        this.directive(name, dependencies);
     }-*/;
 
     final native void config(JavaScriptObject constructor) /*-{
