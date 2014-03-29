@@ -48,8 +48,8 @@ public abstract class AbstractModule implements Module {
     //
     
     public <F extends AbstractFilter> void filter(String name, F filter) {
-        JSArray<String> dependencies = JSArray.create();
-        jso.filter(name, dependencies,
+        String[] dependencies = {};
+        jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new FilterWrapper(filter)));
     }
 
@@ -58,8 +58,8 @@ public abstract class AbstractModule implements Module {
     //
     
     public <D extends Directive> D directive(final D directive) {
-        JSArray<String> dependencies = JSArray.create();
-        jso.directive(directive.getName(), dependencies,
+        String[] dependencies = {};
+        jso.directive(directive.getName(), JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(directive)));
         return directive;
     }
@@ -94,8 +94,7 @@ public abstract class AbstractModule implements Module {
             }
         };
         String[] dependencies = providerDependenciesFactory.create(provider);
-        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
-        jso.config(constructor);
+        jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return provider;
     }
 
@@ -125,8 +124,7 @@ public abstract class AbstractModule implements Module {
             }
         };
         String[] dependencies = serviceDependencyFactory.create(service);
-        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
-        jso.factory(name, constructor);
+        jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return service;
     }
     
@@ -196,8 +194,7 @@ public abstract class AbstractModule implements Module {
                 dependencies[i + 1] = d[i];
             }
         }
-        NGConstructor constructor = NGConstructor.create(initializer, dependencies);
-        jso.controller(name, constructor);
+        jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
         return controller;
     }
 
@@ -251,16 +248,18 @@ class JSModule extends JSObject {
         this.directive(name, dependencies);
     }-*/;
 
-    final native void config(JavaScriptObject constructor) /*-{
-		this.config(constructor);
+    final native void config(JSArray<String> dependencies, JavaScriptObject constructor) /*-{
+        dependencies.push(constructor);
+        this.config(dependencies);
     }-*/;
-
-    final native void factory(String name, NGConstructor constructor) /*-{
-		this.factory(name, constructor);
+    
+    final native <S extends Service> void factory(String name, JSArray<String> dependencies, JSFunction<S> constructor) /*-{
+        dependencies.push(constructor);
+        this.factory(name, dependencies);
     }-*/;
-
-    final native void controller(String name, NGConstructor constructor) /*-{
-		this.controller(name, constructor);
+    
+    final native void controller(String name, JSArray<String> dependencies, JSClosure constructor) /*-{
+        dependencies.push(constructor);
+        this.controller(name, dependencies);
     }-*/;
-
 }

@@ -20,10 +20,6 @@ public class Injector implements Service {
         return ngo.get(name);
     }
     
-    public void invoke(NGConstructor constructor) {
-        ngo.invoke(constructor);
-    }
-    
     public boolean has(String name) {
         return ngo.has(name);
     }
@@ -51,10 +47,6 @@ class NGInjector extends NGObject {
         return this.get(name);
     }-*/;
     
-    final native void invoke(NGConstructor constructor) /*-{
-        this.invoke(constructor);
-    }-*/;
-
     final native boolean has(String name) /*-{
         return this.has(name);
     }-*/;
