@@ -72,4 +72,15 @@ public interface ExamplesDemoResources {
         @Source("UrlHashParameterDemoController.java")
         public TextResource controller();
     }
+
+    public interface PrettifyExampleResources extends ClientBundle {
+
+        static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
+
+        @Source("PrettifyDemo.html")
+        public TextResource view();
+        
+        @Source("PrettifyDemoController.java")
+        public TextResource controller();
+    }
 }

@@ -4,6 +4,7 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoPartials;
 import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.HttpClientExampleResources;
 import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.OnClickEventExampleResources;
+import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.PrettifyExampleResources;
 import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.ReverseFilterExampleResources;
 import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.TextInputExampleResources;
 import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.UrlHashParameterExampleResources;
@@ -65,9 +66,9 @@ public class ExamplesController extends AbstractMultiPageController {
 
     // Prettify Example Resources
     public static final String PRETTIFY_VIEW_CONTENT = SafeHtmlUtils.htmlEscape(
-            PrettifyExampleResources.INSTANCE.html().getText());
+            PrettifyExampleResources.INSTANCE.view().getText());
     public static final String PRETTIFY_CONTROLLER_CONTENT = SafeHtmlUtils.htmlEscape(
-            PrettifyExampleResources.INSTANCE.java().getText());
+            PrettifyExampleResources.INSTANCE.controller().getText());
 
     @Bind("examples")
     private JSArray<Page> pages = null;

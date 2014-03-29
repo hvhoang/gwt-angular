@@ -4,6 +4,7 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.examples.client.demo.HttpClientDemoController;
 import com.asayama.gwt.angular.examples.client.demo.OnClickEventDemoController;
+import com.asayama.gwt.angular.examples.client.demo.PrettifyDemoController;
 import com.asayama.gwt.angular.examples.client.demo.ReverseFilter;
 import com.asayama.gwt.angular.examples.client.demo.ReverseFilterDemoController;
 import com.asayama.gwt.angular.examples.client.demo.TextInputDemoController;
@@ -25,6 +26,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(TextInputDemoController.class);
         controller(UrlHashParameterDemoController.class);
         controller(ReverseFilterDemoController.class);
+        controller(PrettifyDemoController.class);
     }
     
     private JSArray<Page> getPages() {
