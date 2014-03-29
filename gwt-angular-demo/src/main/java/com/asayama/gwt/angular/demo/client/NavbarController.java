@@ -10,7 +10,7 @@ import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-    public static final String PARTIAL = DemoPartials.INSTANCE.navbar().getSafeUri().asString();
+    public static final String PARTIAL = DemoPartials.INSTANCE.navbar().url();
 
     public static final String PROJECT_GROUP_ID = DemoConstants.INSTANCE.projectGroupId();
     public static final String PROJECT_ARTIFACT_ID = DemoConstants.INSTANCE.projectArtifactId();

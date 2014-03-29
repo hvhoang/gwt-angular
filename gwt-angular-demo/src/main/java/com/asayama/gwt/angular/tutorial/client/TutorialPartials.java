@@ -1,39 +1,26 @@
 package com.asayama.gwt.angular.tutorial.client;
 
+import com.asayama.gwt.angular.client.Partial;
+import com.asayama.gwt.angular.client.Partials;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.DataResource.DoNotEmbed;
-import com.google.gwt.resources.client.DataResource.MimeType;
 
 
-public interface TutorialPartials extends ClientBundle {
+public interface TutorialPartials extends Partials {
 
     public static final TutorialPartials INSTANCE = GWT.create(TutorialPartials.class);
 
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("Tutorial.html")
-    public DataResource tutorial();
+    @Resource("Tutorial.html")
+    public Partial tutorial();
     
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("Introduction.html")
-    public DataResource introduction();
+    @Resource("Introduction.html")
+    public Partial introduction();
 
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("ProjectStructure.html")
-    public DataResource projectStructure();
+    @Resource("ProjectStructure.html")
+    public Partial projectStructure();
 
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("ProjectObjectModel.html")
-    public DataResource projectObjectModel();
+    @Resource("ProjectObjectModel.html")
+    public Partial projectObjectModel();
 
-    @DoNotEmbed
-    @MimeType("text/html")
-    @Source("GwtModuleXml.html")
-    public DataResource gwtModuleXML();
-
+    @Resource("GwtModuleXml.html")
+    public Partial gwtModuleXML();
 }

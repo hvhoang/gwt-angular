@@ -8,8 +8,7 @@ import com.asayama.gwt.core.client.JSArray;
 
 public class TutorialController extends AbstractMultiPageController {
 
-    public static final String SAMPLE_HTML = 
-            SamplePartials.INSTANCE.sample().getSafeUri().asString();
+    public static final String SAMPLE_HTML = SamplePartials.INSTANCE.sample().url();
     
     @Bind("tutorial")
     private JSArray<Page> pages = null;

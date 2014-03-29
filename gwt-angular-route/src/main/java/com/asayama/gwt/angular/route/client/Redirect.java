@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.route.client;
 
 import com.asayama.gwt.core.client.JSObject;
 
+@Deprecated
 public class Redirect extends JSObject {
 
 	protected Redirect() {
