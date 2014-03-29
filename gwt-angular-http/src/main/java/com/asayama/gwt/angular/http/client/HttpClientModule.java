@@ -14,7 +14,7 @@ public class HttpClientModule extends AbstractModule implements EntryPoint {
         try {
             Angular.module(this);
             factory(HttpClient.class);
-            directive("agIncludeRemote", new IncludeRemoteDirective());
+            directive(new IncludeRemoteDirective("agIncludeRemote"));
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

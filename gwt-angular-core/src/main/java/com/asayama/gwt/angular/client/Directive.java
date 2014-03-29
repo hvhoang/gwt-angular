@@ -1,5 +1,6 @@
 package com.asayama.gwt.angular.client;
 
+import com.asayama.gwt.angular.client.Directive.Restrict;
 import com.asayama.gwt.core.client.Closure;
 import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.JSClosure;
@@ -7,14 +8,30 @@ import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.user.client.Element;
 
 
 public interface Directive extends Injectable {
+    
+    public static enum Restrict {
+        
+        Attribute('A'),
+        Class('C'),
+        Element('E'),
+        Comment('M');
+        
+        final char code;
+        
+        Restrict(char code) {
+            this.code = code;
+        }
+    }
 
+    String getName();
     TextResource getTemplate();
     DataResource getPartial();
-    String getRestrict();
-    Closure getCompile();
+    Restrict[] getRestrict();
+    void getCompile(Element element, JSON attrs);
 }
 
 class DirectiveWrapper implements Function<JSDirective> {
@@ -27,21 +44,51 @@ class DirectiveWrapper implements Function<JSDirective> {
     
     @Override
     public final JSDirective call(Object... args) {
-        JSDirective jso = JSDirective.create("");
+
+        JSDirective jso = JSDirective.create();
+        
         try {
-            if (directive.getRestrict() != null) {
-                jso.setRestrict(directive.getRestrict());
+            
+            Restrict[] rs = directive.getRestrict();
+            if (rs != null) {
+                StringBuilder sb = new StringBuilder();
+                for (Restrict r : rs) {
+                    sb.append(r.code);
+                }
+                jso.setRestrict(sb.toString());
             }
-            if (directive.getTemplate() != null) {
-                jso.setTemplate(directive.getTemplate().getText());
+            
+            TextResource template = directive.getTemplate();
+            if (template != null) {
+                jso.setTemplate(template.getText());
             }
-            if (directive.getPartial() != null) {
-                jso.setTemplateUrl(directive.getPartial().getSafeUri().asString());
+            
+            DataResource partial = directive.getPartial();
+            if (partial != null) {
+                jso.setTemplateUrl(partial.getSafeUri().asString());
             }
-            if (directive.getCompile() != null) {
-                jso.setCompile(JSClosure.create(directive.getCompile()));
-            }
+            
+            jso.setCompile(JSClosure.create(new Closure() {
+                @Override
+                public void exec(Object... args) {
+                    try {
+                        assert (args == null || args.length < 2);
+                        Element element = (Element) args[0];
+                        JSON attrs = (JSON) args[1];
+                        directive.getCompile(element, attrs);
+                    } catch (Exception e) {
+                        GWT.log("Exception while calling Directive.getCompile");
+                    }
+                }
+            }));
+            
+            JSON scope = JSON.create();
+            //FIXME the value of the attribute directive is not properly passed to the template
+            scope.put(directive.getName(), "=");
+            jso.setScope(scope);
+            
             return jso;
+            
         } catch (Exception e) {
             GWT.log("Exception while building template", e);
             return jso;
@@ -51,12 +98,6 @@ class DirectiveWrapper implements Function<JSDirective> {
 
 class JSDirective extends JSON {
 
-    static native JSDirective create(String defaultTemplate) /*-{
-        return {
-            "restrict" : "A"
-        };
-    }-*/;
-    
     protected JSDirective() {
     }
     
@@ -77,6 +118,11 @@ class JSDirective extends JSON {
     
     final JSDirective setCompile(JSClosure compile) {
         put("compile", compile);
+        return this;
+    }
+    
+    final JSDirective setScope(JSON scope) {
+        put("scope", scope);
         return this;
     }
 }
