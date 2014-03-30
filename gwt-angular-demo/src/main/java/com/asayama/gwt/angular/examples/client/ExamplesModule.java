@@ -39,7 +39,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
                 ExamplesDocsPartials.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event",
                 ExamplesDocsPartials.INSTANCE.onClickEvent()));
-        pages.add(Page.create("Reverse Filter",
+        pages.add(Page.create("Custom Filter",
                 ExamplesDocsPartials.INSTANCE.reverseFilter()));
         pages.add(Page.create("Custom Directive",
                 ExamplesDocsPartials.INSTANCE.customDirective()));
