@@ -1,7 +1,8 @@
-package com.asayama.gwt.angular.demo.client;
+package com.asayama.gwt.angular.demo.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.annotations.Bind;
+import com.asayama.gwt.angular.demo.client.ProjectConstants;
 import com.asayama.gwt.angular.demo.client.view.DemoPartials;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;
@@ -13,9 +14,9 @@ public class NavbarController implements Controller {
 
     public static final String PARTIAL = DemoPartials.INSTANCE.navbar().url();
 
-    public static final String PROJECT_GROUP_ID = DemoConstants.INSTANCE.projectGroupId();
-    public static final String PROJECT_ARTIFACT_ID = DemoConstants.INSTANCE.projectArtifactId();
-    public static final String PROJECT_VERSION = DemoConstants.INSTANCE.projectVersion();
+    public static final String PROJECT_GROUP_ID = ProjectConstants.INSTANCE.projectGroupId();
+    public static final String PROJECT_ARTIFACT_ID = ProjectConstants.INSTANCE.projectArtifactId();
+    public static final String PROJECT_VERSION = ProjectConstants.INSTANCE.projectVersion();
     
     public static final String DEVELOP = NavbarConstants.INSTANCE.develop();
     public static final String DOCUMENTATION = NavbarConstants.INSTANCE.documentation();

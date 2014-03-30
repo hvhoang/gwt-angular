@@ -4,9 +4,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;
 
 
-public interface DemoConstants extends Constants {
+public interface ProjectConstants extends Constants {
 
-    public static final DemoConstants INSTANCE = GWT.create(DemoConstants.class);
+    public static final ProjectConstants INSTANCE = GWT.create(ProjectConstants.class);
     
     public String projectGroupId();
     public String projectArtifactId();
