@@ -8,7 +8,7 @@ public abstract class AbstractDirective implements Directive {
     
     @Override
     public Restrict[] getRestrict() {
-        return null;
+        return new Restrict[]{ Restrict.Attribute };
     }
 
     @Override
@@ -22,6 +22,6 @@ public abstract class AbstractDirective implements Directive {
     
     @Override
     public JSON getScope() {
-        return NGScope.create();
+        return JSON.create();
     }
 }

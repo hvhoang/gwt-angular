@@ -10,7 +10,7 @@ import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.Element;
 
 
-public interface Directive extends Injectable {
+public interface Directive {
     
     public static enum Restrict {
         
@@ -81,7 +81,9 @@ class DirectiveWrapper implements Function<JSDirective> {
                 }
             }));
             
-            jso.setScope(directive.getScope());
+            if (directive.getScope() != null) {
+                jso.setScope(directive.getScope());
+            }
             
             return jso;
             
@@ -97,28 +99,23 @@ class JSDirective extends JSON {
     protected JSDirective() {
     }
     
-    final JSDirective setRestrict(String restrict) {
+    final void setRestrict(String restrict) {
         put("restrict", restrict);
-        return this;
     }
     
-    final JSDirective setTemplate(String template) {
+    final void setTemplate(String template) {
         put("template", template);
-        return this;
     }
 
-    final JSDirective setTemplateUrl(String templateUrl) {
+    final void setTemplateUrl(String templateUrl) {
         put("templateUrl", templateUrl);
-        return this;
     }
     
-    final JSDirective setCompile(JSClosure compile) {
+    final void setCompile(JSClosure compile) {
         put("compile", compile);
-        return this;
     }
     
-    final JSDirective setScope(JSON scope) {
+    final void setScope(JSON scope) {
         put("scope", scope);
-        return this;
     }
 }
