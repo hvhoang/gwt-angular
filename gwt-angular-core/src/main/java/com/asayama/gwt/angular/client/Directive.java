@@ -25,11 +25,12 @@ public interface Directive {
             this.code = code;
         }
     }
-
+    
+    String getName();
+    void setName(String name);
     Restrict[] getRestrict();
     TextResource getTemplate();
     Partial getPartial();
-    JSON getScope();
     void compile(Element element, JSON attrs);
 }
 
@@ -80,9 +81,9 @@ class DirectiveWrapper implements Function<JSDirective> {
                 }
             }));
             
-            if (directive.getScope() != null) {
-                jso.setScope(directive.getScope());
-            }
+            JSON json = JSON.create();
+            json.put(directive.getName(), "=");
+            jso.setScope(json);
             
             return jso;
             

@@ -5,6 +5,18 @@ import com.google.gwt.user.client.Element;
 
 
 public abstract class AbstractDirective implements Directive {
+
+    private String name = null;
+    
+    @Override
+    public String getName() {
+        return name;
+    }
+    
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
     
     @Override
     public Restrict[] getRestrict() {
@@ -19,10 +31,5 @@ public abstract class AbstractDirective implements Directive {
     @Override
     public void compile(Element element, JSON attrs) {
         //noop by default
-    }
-    
-    @Override
-    public JSON getScope() {
-        return JSON.create();
     }
 }
