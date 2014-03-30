@@ -18,6 +18,7 @@ public abstract class AbstractDirective implements Directive {
 
     @Override
     public void compile(Element element, JSON attrs) {
+        //noop by default
     }
     
     @Override

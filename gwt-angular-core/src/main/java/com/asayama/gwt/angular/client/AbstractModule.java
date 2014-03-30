@@ -6,6 +6,7 @@ import com.asayama.gwt.core.client.JSArray;
 import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSFunction;
 import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.core.client.util.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
 
@@ -48,9 +49,8 @@ public abstract class AbstractModule implements Module {
     //
     
     public <F extends Filter> F filter(final F filter) {
-        String[] split = filter.getClass().getName().split("\\.");
-        String name = split[split.length - 1];
-        return filter(name, filter);
+        String className = Strings.simpleClassName(filter);
+        return filter(Strings.decapitalize(className), filter);
     }
     
     public <F extends Filter> F filter(String name, F filter) {
@@ -65,12 +65,15 @@ public abstract class AbstractModule implements Module {
     // Directive
     //
     
-    public <D extends Directive> D directive(String prefix, final D directive) {
+    public <D extends Directive> D directive(final D directive) {
+        String className = Strings.simpleClassName(directive);
+        return directive(Strings.decapitalize(className), directive);
+    }
+    
+    public <D extends Directive> D directive(String name, final D directive) {
         // TODO https://github.com/kyoken74/gwt-angular/issues/52
-        String[] split = directive.getClass().getName().split("\\.");
-        String className = split[split.length - 1];
         String[] dependencies = {};
-        jso.directive(prefix + className, JSArray.create(dependencies),
+        jso.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(directive)));
         return directive;
     }

@@ -49,7 +49,7 @@ class DirectiveWrapper implements Function<JSDirective> {
         try {
             
             Restrict[] rs = directive.getRestrict();
-            if (rs != null) {
+            if (rs != null && rs.length > 0) {
                 StringBuilder sb = new StringBuilder();
                 for (Restrict r : rs) {
                     sb.append(r.code);
@@ -71,7 +71,6 @@ class DirectiveWrapper implements Function<JSDirective> {
                 @Override
                 public void exec(Object... args) {
                     try {
-                        assert (args == null || args.length < 2);
                         Element element = (Element) args[0];
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);

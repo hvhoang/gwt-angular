@@ -9,7 +9,7 @@ import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleControl
 import com.asayama.gwt.angular.examples.client.controller.ReverseFilterExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
 import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
-import com.asayama.gwt.angular.examples.client.directive.Hello;
+import com.asayama.gwt.angular.examples.client.directive.MyHello;
 import com.asayama.gwt.angular.examples.client.filter.ReverseFilter;
 import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsPartials;
 import com.asayama.gwt.angular.util.client.Page;
@@ -21,7 +21,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("examples", getPages());
-        directive("my", new Hello());
+        directive(new MyHello());
         filter("reverse", new ReverseFilter());
         controller(ExamplesController.class);
         controller(HttpClientExampleController.class);

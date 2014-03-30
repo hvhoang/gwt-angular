@@ -6,7 +6,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
-public class Hello extends AbstractDirective {
+public class MyHello extends AbstractDirective {
 
     @Override
     public TextResource getTemplate() {
@@ -25,6 +25,6 @@ interface MyHelloResource extends ClientBundle {
     
     static final MyHelloResource INSTANCE = GWT.create(MyHelloResource.class);
     
-    @Source("Hello.html")
+    @Source("MyHello.html")
     TextResource template();
 }
