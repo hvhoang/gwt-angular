@@ -48,6 +48,7 @@ public abstract class AbstractModule implements Module {
     //
     
     public <F extends AbstractFilter> void filter(String name, F filter) {
+        // TODO https://github.com/kyoken74/gwt-angular/issues/52
         String[] dependencies = {};
         jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new FilterWrapper(filter)));
@@ -58,6 +59,7 @@ public abstract class AbstractModule implements Module {
     //
     
     public <D extends Directive> D directive(final D directive) {
+        // TODO https://github.com/kyoken74/gwt-angular/issues/52
         String[] dependencies = {};
         jso.directive(directive.getName(), JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(directive)));
