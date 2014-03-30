@@ -20,6 +20,9 @@ public interface ExamplesDocsPartials extends Partials {
     
     @Resource("ReverseFilterExample.html")
     public Partial reverseFilter();
+    
+    @Resource("CustomDirectiveExample.html")
+    public Partial customDirective();
 
     @Resource("UrlHashParameterExample.html")
     public Partial urlHashParameter();

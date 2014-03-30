@@ -23,6 +23,8 @@ public class ExamplesController extends AbstractMultiPageController {
             ExamplesDemoPartials.INSTANCE.onClickEvent().url();
     public static final String REVERSE_FILTER_DEMO_URL =
             ExamplesDemoPartials.INSTANCE.reverseFilter().url();
+    public static final String CUSTOM_DIRECTIVE_DEMO_URL =
+            ExamplesDemoPartials.INSTANCE.customDirectiveExample().url();
     public static final String URL_HASH_PARAMETER_DEMO_URL =
             ExamplesDemoPartials.INSTANCE.urlHashParameter().url();
     public static final String HTTP_CLIENT_DEMO_URL =

@@ -47,21 +47,30 @@ public abstract class AbstractModule implements Module {
     // Filter
     //
     
-    public <F extends AbstractFilter> void filter(String name, F filter) {
+    public <F extends Filter> F filter(final F filter) {
+        String[] split = filter.getClass().getName().split("\\.");
+        String name = split[split.length - 1];
+        return filter(name, filter);
+    }
+    
+    public <F extends Filter> F filter(String name, F filter) {
         // TODO https://github.com/kyoken74/gwt-angular/issues/52
         String[] dependencies = {};
         jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new FilterWrapper(filter)));
+        return filter;
     }
 
     //
     // Directive
     //
     
-    public <D extends Directive> D directive(final D directive) {
+    public <D extends Directive> D directive(String prefix, final D directive) {
         // TODO https://github.com/kyoken74/gwt-angular/issues/52
+        String[] split = directive.getClass().getName().split("\\.");
+        String className = split[split.length - 1];
         String[] dependencies = {};
-        jso.directive(directive.getName(), JSArray.create(dependencies),
+        jso.directive(prefix + className, JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(directive)));
         return directive;
     }

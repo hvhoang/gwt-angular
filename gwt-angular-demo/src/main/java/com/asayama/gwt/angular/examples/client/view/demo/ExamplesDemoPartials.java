@@ -9,6 +9,9 @@ public interface ExamplesDemoPartials extends Partials {
 
     static final ExamplesDemoPartials INSTANCE = GWT.create(ExamplesDemoPartials.class);
     
+    @Resource("CustomDirectiveExample.html")
+    Partial customDirectiveExample();
+    
     @Resource("HttpClientExample.html")
     Partial httpClient();
 

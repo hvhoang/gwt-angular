@@ -27,11 +27,11 @@ public interface Directive extends Injectable {
         }
     }
 
-    String getName();
     TextResource getTemplate();
     DataResource getPartial();
     Restrict[] getRestrict();
-    void getCompile(Element element, JSON attrs);
+    JSON getScope();
+    void compile(Element element, JSON attrs);
 }
 
 class DirectiveWrapper implements Function<JSDirective> {
@@ -75,18 +75,14 @@ class DirectiveWrapper implements Function<JSDirective> {
                         assert (args == null || args.length < 2);
                         Element element = (Element) args[0];
                         JSON attrs = (JSON) args[1];
-                        directive.getCompile(element, attrs);
+                        directive.compile(element, attrs);
                     } catch (Exception e) {
                         GWT.log("Exception while calling Directive.getCompile");
                     }
                 }
             }));
             
-            JSON scope = JSON.create();
-            //FIXME the value of the attribute directive is not properly passed to the template
-            //https://github.com/kyoken74/gwt-angular/issues/36
-            scope.put(directive.getName(), "=");
-            jso.setScope(scope);
+            jso.setScope(directive.getScope());
             
             return jso;
             

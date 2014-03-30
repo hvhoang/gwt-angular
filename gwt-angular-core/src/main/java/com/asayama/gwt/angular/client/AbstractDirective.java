@@ -6,17 +6,6 @@ import com.google.gwt.user.client.Element;
 
 
 public abstract class AbstractDirective implements Directive {
-
-    private final String name;
-    
-    public AbstractDirective(String name) {
-        this.name = name;
-    }
-    
-    @Override
-    public String getName() {
-        return name;
-    }
     
     @Override
     public Restrict[] getRestrict() {
@@ -29,6 +18,11 @@ public abstract class AbstractDirective implements Directive {
     }
 
     @Override
-    public void getCompile(Element element, JSON attrs) {
+    public void compile(Element element, JSON attrs) {
+    }
+    
+    @Override
+    public JSON getScope() {
+        return NGScope.create();
     }
 }
