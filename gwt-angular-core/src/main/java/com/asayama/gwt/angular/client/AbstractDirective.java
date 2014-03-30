@@ -1,7 +1,6 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.JSON;
-import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.user.client.Element;
 
 
@@ -13,7 +12,7 @@ public abstract class AbstractDirective implements Directive {
     }
 
     @Override
-    public DataResource getPartial() {
+    public Partial getPartial() {
         return null;
     }
 

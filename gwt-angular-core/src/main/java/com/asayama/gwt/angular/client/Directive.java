@@ -6,7 +6,6 @@ import com.asayama.gwt.core.client.Function;
 import com.asayama.gwt.core.client.JSClosure;
 import com.asayama.gwt.core.client.JSON;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.Element;
 
@@ -27,9 +26,9 @@ public interface Directive extends Injectable {
         }
     }
 
-    TextResource getTemplate();
-    DataResource getPartial();
     Restrict[] getRestrict();
+    TextResource getTemplate();
+    Partial getPartial();
     JSON getScope();
     void compile(Element element, JSON attrs);
 }
@@ -63,9 +62,9 @@ class DirectiveWrapper implements Function<JSDirective> {
                 jso.setTemplate(template.getText());
             }
             
-            DataResource partial = directive.getPartial();
+            Partial partial = directive.getPartial();
             if (partial != null) {
-                jso.setTemplateUrl(partial.getSafeUri().asString());
+                jso.setTemplateUrl(partial.url());
             }
             
             jso.setCompile(JSClosure.create(new Closure() {

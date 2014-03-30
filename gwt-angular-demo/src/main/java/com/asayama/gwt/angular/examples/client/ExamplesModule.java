@@ -41,8 +41,8 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
                 ExamplesDocsPartials.INSTANCE.onClickEvent()));
         pages.add(Page.create("Reverse Filter",
                 ExamplesDocsPartials.INSTANCE.reverseFilter()));
-//        pages.add(Page.create("Custom Directive",
-//                ExamplesDocsPartials.INSTANCE.customDirective()));
+        pages.add(Page.create("Custom Directive",
+                ExamplesDocsPartials.INSTANCE.customDirective()));
         pages.add(Page.create("URL Hash Parameter",
                 ExamplesDocsPartials.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client",
