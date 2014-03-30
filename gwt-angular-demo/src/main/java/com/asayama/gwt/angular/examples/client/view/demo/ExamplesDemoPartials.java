@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.demo;
+package com.asayama.gwt.angular.examples.client.view.demo;
 
 import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.angular.client.Partials;
@@ -9,22 +9,22 @@ public interface ExamplesDemoPartials extends Partials {
 
     static final ExamplesDemoPartials INSTANCE = GWT.create(ExamplesDemoPartials.class);
     
-    @Resource("HttpClientDemo.html")
+    @Resource("HttpClientExample.html")
     Partial httpClient();
 
-    @Resource("OnClickEventDemo.html")
+    @Resource("OnClickEventExample.html")
     Partial onClickEvent();
 
-    @Resource("PrettifyDemo.html")
+    @Resource("PrettifyExample.html")
     Partial prettify();
 
-    @Resource("ReverseFilterDemo.html")
+    @Resource("ReverseFilterExample.html")
     Partial reverseFilter();
 
-    @Resource("TextInputDemo.html")
+    @Resource("TextInputExample.html")
     Partial textInput();
 
-    @Resource("UrlHashParameterDemo.html")
+    @Resource("UrlHashParameterExample.html")
     Partial urlHashParameter();
     
 }

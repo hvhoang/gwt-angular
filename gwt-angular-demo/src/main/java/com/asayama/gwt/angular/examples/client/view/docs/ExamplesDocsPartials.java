@@ -1,13 +1,13 @@
-package com.asayama.gwt.angular.examples.client.view;
+package com.asayama.gwt.angular.examples.client.view.docs;
 
 import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.angular.client.Partials;
 import com.google.gwt.core.shared.GWT;
 
 
-public interface ExamplesPartials extends Partials {
+public interface ExamplesDocsPartials extends Partials {
     
-    public static final ExamplesPartials INSTANCE = GWT.create(ExamplesPartials.class);
+    public static final ExamplesDocsPartials INSTANCE = GWT.create(ExamplesDocsPartials.class);
 
     @Resource("Examples.html")
     public Partial examples();

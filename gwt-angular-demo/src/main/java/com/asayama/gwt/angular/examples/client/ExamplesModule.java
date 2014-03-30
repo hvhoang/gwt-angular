@@ -2,14 +2,14 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.examples.client.demo.HttpClientDemoController;
-import com.asayama.gwt.angular.examples.client.demo.OnClickEventDemoController;
-import com.asayama.gwt.angular.examples.client.demo.PrettifyDemoController;
-import com.asayama.gwt.angular.examples.client.demo.ReverseFilter;
-import com.asayama.gwt.angular.examples.client.demo.ReverseFilterDemoController;
-import com.asayama.gwt.angular.examples.client.demo.TextInputDemoController;
-import com.asayama.gwt.angular.examples.client.demo.UrlHashParameterDemoController;
-import com.asayama.gwt.angular.examples.client.view.ExamplesPartials;
+import com.asayama.gwt.angular.examples.client.controller.HttpClientExampleController;
+import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
+import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleController;
+import com.asayama.gwt.angular.examples.client.controller.ReverseFilterExampleController;
+import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
+import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
+import com.asayama.gwt.angular.examples.client.filter.ReverseFilter;
+import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsPartials;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -21,28 +21,28 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         constant("examples", getPages());
         filter("reverse", new ReverseFilter());
         controller(ExamplesController.class);
-        controller(HttpClientDemoController.class);
-        controller(OnClickEventDemoController.class);
-        controller(TextInputDemoController.class);
-        controller(UrlHashParameterDemoController.class);
-        controller(ReverseFilterDemoController.class);
-        controller(PrettifyDemoController.class);
+        controller(HttpClientExampleController.class);
+        controller(OnClickEventExampleController.class);
+        controller(TextInputExampleController.class);
+        controller(UrlHashParameterExampleController.class);
+        controller(ReverseFilterExampleController.class);
+        controller(PrettifyExampleController.class);
     }
     
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
         pages.add(Page.create("Text Input",
-                ExamplesPartials.INSTANCE.textInput()));
+                ExamplesDocsPartials.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event",
-                ExamplesPartials.INSTANCE.onClickEvent()));
+                ExamplesDocsPartials.INSTANCE.onClickEvent()));
         pages.add(Page.create("Reverse Filter",
-                ExamplesPartials.INSTANCE.reverseFilter()));
+                ExamplesDocsPartials.INSTANCE.reverseFilter()));
         pages.add(Page.create("URL Hash Parameter",
-                ExamplesPartials.INSTANCE.urlHashParameter()));
+                ExamplesDocsPartials.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client",
-                ExamplesPartials.INSTANCE.httpClient()));
+                ExamplesDocsPartials.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify",
-                ExamplesPartials.INSTANCE.prettify()));
+                ExamplesDocsPartials.INSTANCE.prettify()));
        return pages;
     }
 }

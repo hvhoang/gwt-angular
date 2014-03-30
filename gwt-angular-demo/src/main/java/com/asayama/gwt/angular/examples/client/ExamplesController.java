@@ -1,13 +1,13 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoPartials;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.HttpClientExampleResources;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.OnClickEventExampleResources;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.PrettifyExampleResources;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.ReverseFilterExampleResources;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.TextInputExampleResources;
-import com.asayama.gwt.angular.examples.client.demo.ExamplesDemoResources.UrlHashParameterExampleResources;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.HttpClientExampleResources;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.OnClickEventExampleResources;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.PrettifyExampleResources;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.ReverseFilterExampleResources;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.TextInputExampleResources;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.UrlHashParameterExampleResources;
+import com.asayama.gwt.angular.examples.client.view.demo.ExamplesDemoPartials;
 import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.core.client.JSArray;

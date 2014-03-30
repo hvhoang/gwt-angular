@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.demo;
+package com.asayama.gwt.angular.examples.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.http.client.HttpClient;
@@ -9,7 +9,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 
-public class HttpClientDemoController implements Controller {
+public class HttpClientExampleController implements Controller {
 
     // Fields of type Injectable are injected by the framework
     

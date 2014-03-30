@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.demo;
+package com.asayama.gwt.angular.examples.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
 
@@ -17,7 +17,7 @@ import com.asayama.gwt.angular.client.Controller;
  * }</pre>
  * @author kyoken74
  */
-public class ReverseFilterDemoController implements Controller {
+public class ReverseFilterExampleController implements Controller {
 
     private String caption = "Hello, World!";
 

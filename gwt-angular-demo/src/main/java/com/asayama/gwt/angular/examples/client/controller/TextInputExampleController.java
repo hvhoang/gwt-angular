@@ -1,8 +1,8 @@
-package com.asayama.gwt.angular.examples.client.demo;
+package com.asayama.gwt.angular.examples.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
 
-public class TextInputDemoController implements Controller {
+public class TextInputExampleController implements Controller {
 
     // Public final fields are directly bound to AngularJS's $scope, and they 
     // are available for use in the HTML.

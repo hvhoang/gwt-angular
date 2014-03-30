@@ -9,7 +9,7 @@ import com.asayama.gwt.angular.demo.client.controller.JumbotronController;
 import com.asayama.gwt.angular.demo.client.controller.NavbarController;
 import com.asayama.gwt.angular.demo.client.view.DemoPartials;
 import com.asayama.gwt.angular.examples.client.ExamplesController;
-import com.asayama.gwt.angular.examples.client.view.ExamplesPartials;
+import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsPartials;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.tutorial.client.TutorialController;
 import com.asayama.gwt.angular.tutorial.client.view.TutorialPartials;
@@ -29,7 +29,7 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
                 routeProvider
                     .when("/documentation", DemoPartials.INSTANCE.documentation(), DocumentationController.class)
                     .when("/downloads", DemoPartials.INSTANCE.downloads(), DownloadsController.class)
-                    .when("/examples", ExamplesPartials.INSTANCE.examples(), ExamplesController.class)
+                    .when("/examples", ExamplesDocsPartials.INSTANCE.examples(), ExamplesController.class)
                     .when("/jumbotron", DemoPartials.INSTANCE.jumbotron(), JumbotronController.class)
                     .when("/tutorial", TutorialPartials.INSTANCE.tutorial(), TutorialController.class)
                     .otherwise("/jumbotron");

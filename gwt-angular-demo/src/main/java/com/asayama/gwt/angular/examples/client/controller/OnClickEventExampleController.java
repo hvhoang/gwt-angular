@@ -1,11 +1,11 @@
-package com.asayama.gwt.angular.examples.client.demo;
+package com.asayama.gwt.angular.examples.client.controller;
 
 import java.util.Date;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.user.client.Event;
 
-public class OnClickEventDemoController implements Controller {
+public class OnClickEventExampleController implements Controller {
 
     // Public final fields are directly bound to AngularJS's $scope, and 
     // they are available for use in the HTML.

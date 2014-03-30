@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.demo;
+package com.asayama.gwt.angular.examples.client.filter;
 
 import com.asayama.gwt.angular.client.AbstractFilter;
 
