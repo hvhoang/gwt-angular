@@ -10,8 +10,8 @@
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
 
   <!-- Angular Modules for Feature Extension -->  
+  <inherits name="com.asayama.gwt.angular.resource.ResourceModule" />
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
-  <!--<inherits name="com.asayama.gwt.angular.masonry.MasonryModule" />-->
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
 
   <!-- Internal Dependency -->  
