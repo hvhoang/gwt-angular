@@ -19,5 +19,8 @@ public interface DemoPartials extends Partials {
     public Partial jumbotron();
     
     @Resource("Navbar.html")
-    public Partial navbar();   
+    public Partial navbar();
+    
+    @Resource("Footer.html")
+    public Partial footer();
 }
