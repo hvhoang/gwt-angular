@@ -16,7 +16,7 @@
     <module>gwt-angular-route</module>
     <module>gwt-angular-sanitize</module>
     <module>gwt-angular-tutorial</module>
-    <module>gwt-core</module>
+    <module>kyoken74-gwt</module>
   </modules>
   <licenses>
     <license>
@@ -87,7 +87,7 @@
       <!-- Project -->
       <dependency>
         <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-core</artifactId>
+        <artifactId>kyoken74-gwt</artifactId>
         <version>0.0.40-SNAPSHOT</version>
       </dependency>
       <dependency>
