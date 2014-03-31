@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.JSClosure;
-import com.asayama.gwt.core.client.JSFunction;
+import com.asayama.gwt.jsni.client.Closure;
+import com.asayama.gwt.jsni.client.Function;
+import com.asayama.gwt.jsni.client.JSClosure;
+import com.asayama.gwt.jsni.client.JSFunction;
 
 /**
  * Provide registers {@link Provider} with {@link Injector}.

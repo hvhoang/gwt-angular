@@ -1,12 +1,12 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.JSArray;
-import com.asayama.gwt.core.client.JSClosure;
-import com.asayama.gwt.core.client.JSFunction;
-import com.asayama.gwt.core.client.JSObject;
-import com.asayama.gwt.core.client.util.Strings;
+import com.asayama.gwt.jsni.client.Closure;
+import com.asayama.gwt.jsni.client.Function;
+import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.jsni.client.JSClosure;
+import com.asayama.gwt.jsni.client.JSFunction;
+import com.asayama.gwt.jsni.client.JSObject;
+import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
 

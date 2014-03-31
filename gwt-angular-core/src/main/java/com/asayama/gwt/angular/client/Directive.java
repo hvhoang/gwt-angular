@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.angular.client.Directive.Restrict;
-import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.JSClosure;
-import com.asayama.gwt.core.client.JSON;
+import com.asayama.gwt.jsni.client.Closure;
+import com.asayama.gwt.jsni.client.Function;
+import com.asayama.gwt.jsni.client.JSClosure;
+import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.Element;

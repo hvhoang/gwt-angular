@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.Invoker;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.jsni.client.Closure;
+import com.asayama.gwt.jsni.client.Invoker;
+import com.asayama.gwt.jsni.client.JSObject;
 
 public class Promise extends JSObject {
 
@@ -42,11 +42,11 @@ public class Promise extends JSObject {
 	final native void _then(Invoker successInvoker, Invoker errorInvoker, Invoker notifyInvoker) /*-{
 		this.then(
 			function (jsarray) {
-				successInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
+				successInvoker.@com.asayama.gwt.jsni.client.Invoker::invoke(Lcom/asayama/gwt/jsni/client/JSArray;)(jsarray);
 			}, function (jsarray) {
-				errorInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
+				errorInvoker.@com.asayama.gwt.jsni.client.Invoker::invoke(Lcom/asayama/gwt/jsni/client/JSArray;)(jsarray);
 			}, function (jsarray) {
-				notifyInvoker.@com.asayama.gwt.core.client.Invoker::invoke(Lcom/asayama/gwt/core/client/JSArray;)(jsarray);
+				notifyInvoker.@com.asayama.gwt.jsni.client.Invoker::invoke(Lcom/asayama/gwt/jsni/client/JSArray;)(jsarray);
 			});
 	}-*/;
 	

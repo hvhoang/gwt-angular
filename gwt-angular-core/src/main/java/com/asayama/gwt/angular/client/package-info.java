@@ -13,7 +13,7 @@
  */
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.JSClosure;
+import com.asayama.gwt.jsni.client.JSClosure;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be

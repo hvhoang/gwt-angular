@@ -11,7 +11,7 @@ import com.asayama.gwt.angular.examples.client.ExamplesResources.UrlHashParamete
 import com.asayama.gwt.angular.examples.client.view.demo.ExamplesDemoPartials;
 import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.util.client.Page;
-import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 

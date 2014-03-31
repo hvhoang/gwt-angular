@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.demo.client.ProjectConstants;
 import com.asayama.gwt.angular.demo.client.view.DemoPartials;
 import com.asayama.gwt.angular.util.client.Page;
-import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.user.client.Window;

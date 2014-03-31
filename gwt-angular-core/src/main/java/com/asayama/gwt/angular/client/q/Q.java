@@ -3,7 +3,7 @@ package com.asayama.gwt.angular.client.q;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.jsni.client.JSObject;
 
 public class Q implements Service {
 

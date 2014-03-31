@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.JSArray;
-import com.asayama.gwt.core.client.JSClosure;
-import com.asayama.gwt.core.client.JSFunction;
+import com.asayama.gwt.jsni.client.Closure;
+import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.jsni.client.JSClosure;
+import com.asayama.gwt.jsni.client.JSFunction;
 import com.google.gwt.core.client.GWT;
 
 /**

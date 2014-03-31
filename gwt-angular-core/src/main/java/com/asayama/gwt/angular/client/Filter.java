@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.core.client.Function;
-import com.asayama.gwt.core.client.JSFunction;
-import com.asayama.gwt.core.client.util.Arrays;
+import com.asayama.gwt.jsni.client.Function;
+import com.asayama.gwt.jsni.client.JSFunction;
+import com.asayama.gwt.util.client.Arrays;
 
 
 public interface Filter {

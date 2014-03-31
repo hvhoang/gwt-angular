@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.util.client;
 
 import com.asayama.gwt.angular.client.Partial;
-import com.asayama.gwt.core.client.JSON;
+import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.resources.client.DataResource;
 
 

@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.tutorial.client;
 
 import com.asayama.gwt.angular.client.AbstractController;
-import com.asayama.gwt.core.client.JSArray;
-import com.asayama.gwt.core.client.JSON;
+import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.user.client.Event;
 
 

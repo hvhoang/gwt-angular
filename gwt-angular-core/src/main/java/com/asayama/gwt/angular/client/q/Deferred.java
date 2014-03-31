@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.core.client.JSArray;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.jsni.client.JSObject;
 
 public class Deferred {
 

@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.client.location;
 
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.jsni.client.JSObject;
 
 public class HashParam extends KeyValuePair<String,String> {
 

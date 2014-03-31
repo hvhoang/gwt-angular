@@ -5,7 +5,7 @@ import java.util.Iterator;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
-import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.jsni.client.JSArray;
 
 
 public abstract class AbstractMultiPageController implements Controller {

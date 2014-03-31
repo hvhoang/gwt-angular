@@ -13,7 +13,7 @@ import com.asayama.gwt.angular.examples.client.directive.MyHello;
 import com.asayama.gwt.angular.examples.client.filter.Reverse;
 import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsPartials;
 import com.asayama.gwt.angular.util.client.Page;
-import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
 
 public class ExamplesModule extends AbstractModule implements EntryPoint {

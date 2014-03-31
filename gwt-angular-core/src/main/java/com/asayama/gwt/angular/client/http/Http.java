@@ -3,8 +3,8 @@ package com.asayama.gwt.angular.client.http;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.Closure;
-import com.asayama.gwt.core.client.JSClosure;
+import com.asayama.gwt.jsni.client.Closure;
+import com.asayama.gwt.jsni.client.JSClosure;
 
 /**
  * <h1>This class does not work!</h1> I get the following error when unit

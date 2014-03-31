@@ -4,7 +4,7 @@
  */
 package ${packageName};
 
-import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.jsni.client.JSArray;
 
 public class __${className} implements ${className} {
 

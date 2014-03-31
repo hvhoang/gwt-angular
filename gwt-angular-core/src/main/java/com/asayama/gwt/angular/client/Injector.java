@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.JSArray;
+import com.asayama.gwt.jsni.client.JSArray;
 
 /**
  * Used to retrieve object instances.

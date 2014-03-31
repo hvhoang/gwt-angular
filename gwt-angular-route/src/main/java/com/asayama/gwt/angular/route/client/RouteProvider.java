@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.annotations.Bind;
-import com.asayama.gwt.core.client.JSON;
+import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider {

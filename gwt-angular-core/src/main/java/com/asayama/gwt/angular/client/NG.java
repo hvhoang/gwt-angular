@@ -3,7 +3,7 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.log.Log;
 import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.core.client.JSObject;
+import com.asayama.gwt.jsni.client.JSObject;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
