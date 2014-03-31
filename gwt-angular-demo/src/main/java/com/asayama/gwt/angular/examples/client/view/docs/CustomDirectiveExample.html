@@ -1,7 +1,5 @@
 <div>
-  <div class="panel panel-danger">
-    <div class="panel-heading">WARNING: This page is still under construction.</div>
-  </div>
+
   <p>
     GWT Angular wraps AngularJS's mechanism for defining directives, so that the
     directives can be defined in Java language. We demonstrate this feature
@@ -14,6 +12,15 @@
     </div>
   </div>
   <p>
+    Known Issues
+  </p>
+  <ul>
+    <li><a href="https://github.com/kyoken74/gwt-angular/issues/54">
+      #54 Support the use of template directives inside partials.</a></li>
+  </ul>
+  
+  <h2>View</h2>
+  <p>
     In order to print the above code, here is the HTML mark-up that was used.
     The important bit, of course, is the inner <code>&lt;DIV&gt;</code> with
     the directive <code>data-my-hello</code>. If you are familiar with 
@@ -23,6 +30,8 @@
     of <code>data-ng-my-*</code>.
   </p>
   <pre class="prettyprint lang-html" data-ng-bind-html="CUSTOM_DIRECTIVE_VIEW_CONTENT | prettyprint"></pre>
+
+  <h2>Directive</h2>
   <p>
     Let's take a look at the Java code that was written to support this 
     directive.
@@ -44,6 +53,8 @@
     code if and when the complexity of the template used for the directive
     increases.
   </p>
+  
+  <h2>Template</h2>
   <pre class="prettyprint lang-html" data-ng-bind-html="CUSTOM_DIRECTIVE_TEMPLATE_CONTENT | prettyprint"></pre>
   <p>
     The template HTML for this example is shown above. This is the content of
@@ -57,7 +68,11 @@
     getName()</code> method of <code>CustomDirectiveExampleController</code>,
     to a variable of the same name as the directive.
   </p>
+  
+  <h2>Controller</h2>
   <pre class="prettyprint lang-java" data-ng-bind-html="CUSTOM_DIRECTIVE_CONTROLLER_CONTENT | prettyprint"></pre>
+
+  <h2>Module</h2>
   <p>
     Of course, both the directive and controller code must be registered with an
     Angular module, e.g.
