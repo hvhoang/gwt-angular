@@ -20,7 +20,6 @@ import com.asayama.gwt.core.client.JSClosure;
  * 
  * @author kyoken74
  */
-@Deprecated
 public class Http implements Service {
 
     private NGHttp ngo;

@@ -22,8 +22,10 @@
   </pre>
   <p>
     When you create a custom filter, such as ReverseFilter, you must register 
-    it with your module. In this example, we associate the ReverseFilter with a
-    name "reverse".
+    it with your module. In this example, we let the GWT Angular figure out the
+    name for this filter. By default, the filter name is the same as the class
+    name, except that the first letter is not capitalized, i.e. "Reverse" 
+    becomes "reverse".
   </p>
   <pre class="prettyprint lang-java" data-ng-bind-html="REVERSE_FILTER_MODULE_CONTENT | prettyprint">
   </pre>

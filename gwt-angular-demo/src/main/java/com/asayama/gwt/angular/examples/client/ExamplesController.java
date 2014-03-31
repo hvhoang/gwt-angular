@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.annotations.Bind;
+import com.asayama.gwt.angular.examples.client.ExamplesResources.CustomDirectiveExampleResources;
 import com.asayama.gwt.angular.examples.client.ExamplesResources.HttpClientExampleResources;
 import com.asayama.gwt.angular.examples.client.ExamplesResources.OnClickEventExampleResources;
 import com.asayama.gwt.angular.examples.client.ExamplesResources.PrettifyExampleResources;
@@ -72,6 +73,20 @@ public class ExamplesController extends AbstractMultiPageController {
     public static final String PRETTIFY_CONTROLLER_CONTENT = SafeHtmlUtils.htmlEscape(
             PrettifyExampleResources.INSTANCE.controller().getText());
 
+    // Custome Directive Example Resources
+    public static final String CUSTOM_DIRECTIVE_VIEW_CONTENT = SafeHtmlUtils.htmlEscape(
+            CustomDirectiveExampleResources.INSTANCE.view().getText());
+    public static final String CUSTOM_DIRECTIVE_CONTROLLER_CONTENT = SafeHtmlUtils.htmlEscape(
+            CustomDirectiveExampleResources.INSTANCE.controller().getText());
+    public static final String CUSTOM_DIRECTIVE_DIRECTIVE_CONTENT = SafeHtmlUtils.htmlEscape(
+            CustomDirectiveExampleResources.INSTANCE.directive().getText());
+    public static final String CUSTOM_DIRECTIVE_TEMPLATE_CONTENT = SafeHtmlUtils.htmlEscape(
+            CustomDirectiveExampleResources.INSTANCE.template().getText());
+    public static final String CUSTOM_DIRECTIVE_MODULE_CONTENT = SafeHtmlUtils.htmlEscape(
+            CustomDirectiveExampleResources.INSTANCE.module().getText());
+    
+    
+    
     @Bind("examples")
     private JSArray<Page> pages = null;
     private String defaultPageName = "textInput";

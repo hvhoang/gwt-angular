@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.core.client.JSON;
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.Element;
 
 
@@ -9,12 +10,12 @@ public abstract class AbstractDirective implements Directive {
     private String name = null;
     
     @Override
-    public String getName() {
+    public final String getName() {
         return name;
     }
     
     @Override
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
     
@@ -31,5 +32,10 @@ public abstract class AbstractDirective implements Directive {
     @Override
     public void compile(Element element, JSON attrs) {
         //noop by default
+    }
+
+    @Override
+    public TextResource getTemplate() {
+        return null;
     }
 }

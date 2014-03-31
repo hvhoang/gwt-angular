@@ -42,7 +42,7 @@ public interface ExamplesResources {
         @Source("controller/ReverseFilterExampleController.java")
         public TextResource controller();
 
-        @Source("filter/ReverseFilter.java")
+        @Source("filter/Reverse.java")
         public TextResource filter();
 
         @Source("view/demo/ReverseFilterModule.txt")
@@ -81,6 +81,26 @@ public interface ExamplesResources {
         public TextResource view();
         
         @Source("controller/PrettifyExampleController.java")
+        public TextResource controller();
+    }
+
+    public interface CustomDirectiveExampleResources extends ClientBundle {
+
+        static final CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
+
+        @Source("view/demo/CustomDirectiveExample.html")
+        public TextResource view();
+
+        @Source("view/demo/CustomeDirectiveModule.txt")
+        public TextResource module();
+        
+        @Source("directive/MyHello.java")
+        public TextResource directive();
+        
+        @Source("directive/MyHello.html")
+        public TextResource template();
+
+        @Source("controller/CustomDirectiveExampleController.java")
         public TextResource controller();
     }
 }

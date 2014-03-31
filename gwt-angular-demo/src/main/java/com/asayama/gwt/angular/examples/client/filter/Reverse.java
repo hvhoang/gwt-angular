@@ -2,7 +2,7 @@ package com.asayama.gwt.angular.examples.client.filter;
 
 import com.asayama.gwt.angular.client.AbstractFilter;
 
-public class ReverseFilter extends AbstractFilter {
+public class Reverse extends AbstractFilter {
 
     @Override
     public String filter(String input) {
