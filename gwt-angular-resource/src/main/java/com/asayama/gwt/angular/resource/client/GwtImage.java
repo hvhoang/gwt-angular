@@ -1,9 +1,14 @@
 package com.asayama.gwt.angular.resource.client;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
+import com.asayama.gwt.angular.client.NGScope;
+import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.Image;
 
 
 public class GwtImage extends AbstractDirective {
@@ -11,6 +16,13 @@ public class GwtImage extends AbstractDirective {
     @Override
     public TextResource getTemplate() {
         return GwtImageResource.INSTANCE.template();
+    }
+    
+    @Override
+    public void link(NGScope scope, Element element, JSON attrs) {
+        GWT.log("GwtImage.link " + attrs.getString("gwtImage"));
+        Image gwtImage = new Image((ImageResource) attrs.getObject("gwtImage"));
+        element.appendChild(gwtImage.asWidget().getElement());
     }
 }
 

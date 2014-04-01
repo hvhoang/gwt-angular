@@ -32,6 +32,7 @@ public interface Directive {
     TextResource getTemplate();
     Partial getPartial();
     void compile(Element element, JSON attrs);
+    void link(NGScope scope, Element element, JSON attrs);
 }
 
 class DirectiveWrapper implements Function<JSDirective> {
@@ -76,7 +77,23 @@ class DirectiveWrapper implements Function<JSDirective> {
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);
                     } catch (Exception e) {
-                        GWT.log("Exception while calling Directive.getCompile");
+                        String name = directive == null ? null : directive.getName();
+                        GWT.log("Exception while calling " + name + ".compile()", e);
+                    }
+                }
+            }));
+            
+            jso.setLink(JSClosure.create(new Closure() {
+                @Override
+                public void exec(Object... args) {
+                    try {
+                        NGScope scope = (NGScope) args[0];
+                        Element element = (Element) args[1];
+                        JSON attrs = (JSON) args[2];
+                        directive.link(scope, element, attrs);
+                    } catch (Exception e) {
+                        String name = directive == null ? null : directive.getName();
+                        GWT.log("Exception while calling " + name + ".link()", e);
                     }
                 }
             }));
@@ -113,6 +130,10 @@ class JSDirective extends JSON {
     
     final void setCompile(JSClosure compile) {
         put("compile", compile);
+    }
+    
+    final void setLink(JSClosure link) {
+        put("link", link);
     }
     
     final void setScope(JSON scope) {

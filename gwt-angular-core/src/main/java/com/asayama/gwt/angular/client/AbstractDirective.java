@@ -25,6 +25,11 @@ public abstract class AbstractDirective implements Directive {
     }
 
     @Override
+    public TextResource getTemplate() {
+        return null;
+    }
+
+    @Override
     public Partial getPartial() {
         return null;
     }
@@ -33,9 +38,9 @@ public abstract class AbstractDirective implements Directive {
     public void compile(Element element, JSON attrs) {
         //noop by default
     }
-
+    
     @Override
-    public TextResource getTemplate() {
-        return null;
+    public void link(NGScope scope, Element element, JSON attrs) {
+        // noop by default
     }
 }

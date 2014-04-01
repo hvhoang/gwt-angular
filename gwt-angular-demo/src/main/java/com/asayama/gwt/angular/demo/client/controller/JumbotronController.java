@@ -7,6 +7,7 @@ import com.google.gwt.i18n.client.Constants;
 
 public class JumbotronController implements Controller {
 
+//    public static final ImageResource MVC_PNG = DemoResources.INSTANCE.mvc(); //.getSafeUri().asString();
     public static final String MVC_PNG = DemoResources.INSTANCE.mvc().getSafeUri().asString();
 
     public static final String LEARN_MORE = JumbotronConstants.INSTANCE.learnMore();
