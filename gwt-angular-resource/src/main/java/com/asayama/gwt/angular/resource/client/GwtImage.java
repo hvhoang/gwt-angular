@@ -15,14 +15,13 @@ public class GwtImage extends AbstractDirective {
 
     @Override
     public TextResource getTemplate() {
-        return GwtImageResource.INSTANCE.template();
+        return null; //GwtImageResource.INSTANCE.template();
     }
     
     @Override
     public void link(NGScope scope, Element element, JSON attrs) {
-        GWT.log("GwtImage.link " + attrs.getString("gwtImage"));
-        Image gwtImage = new Image((ImageResource) attrs.getObject("gwtImage"));
-        element.appendChild(gwtImage.asWidget().getElement());
+        Image gwtImage = new Image(scope.<ImageResource>get(getName()));
+        GWT.log("" + gwtImage.asWidget().getElement());
     }
 }
 

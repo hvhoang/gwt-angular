@@ -4,6 +4,7 @@ import com.asayama.gwt.angular.client.Directive.Restrict;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
+import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.TextResource;
@@ -49,6 +50,7 @@ class DirectiveWrapper implements Function<JSDirective> {
         JSDirective jso = JSDirective.create();
         
         try {
+            final String name = directive == null ? null : directive.getName();
             
             Restrict[] rs = directive.getRestrict();
             if (rs != null && rs.length > 0) {
@@ -69,31 +71,34 @@ class DirectiveWrapper implements Function<JSDirective> {
                 jso.setTemplateUrl(partial.url());
             }
             
-            jso.setCompile(JSClosure.create(new Closure() {
+            jso.setCompile(JSFunction.create(new Function<JSClosure>() {
+                
                 @Override
-                public void exec(Object... args) {
+                public JSClosure call(Object... args) {
                     try {
                         Element element = (Element) args[0];
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);
+                        return JSClosure.create(new Closure() {
+                            @Override
+                            public void exec(Object... args) {
+                                try {
+                                    NGScope scope = (NGScope) args[0];
+                                    Element element = (Element) args[1];
+                                    JSON attrs = (JSON) args[2];
+                                    directive.link(scope, element, attrs);
+                                } catch (Exception e) {
+                                    GWT.log("Exception while calling " + name + ".link()", e);
+                                }
+                            }
+                        });
                     } catch (Exception e) {
-                        String name = directive == null ? null : directive.getName();
                         GWT.log("Exception while calling " + name + ".compile()", e);
-                    }
-                }
-            }));
-            
-            jso.setLink(JSClosure.create(new Closure() {
-                @Override
-                public void exec(Object... args) {
-                    try {
-                        NGScope scope = (NGScope) args[0];
-                        Element element = (Element) args[1];
-                        JSON attrs = (JSON) args[2];
-                        directive.link(scope, element, attrs);
-                    } catch (Exception e) {
-                        String name = directive == null ? null : directive.getName();
-                        GWT.log("Exception while calling " + name + ".link()", e);
+                        return JSClosure.create(new Closure() {
+                            public void exec(Object... args) {
+                                GWT.log("Unable to call " + name + ".link(). See previous compile() errors");
+                            }
+                        });
                     }
                 }
             }));
@@ -128,12 +133,8 @@ class JSDirective extends JSON {
         put("templateUrl", templateUrl);
     }
     
-    final void setCompile(JSClosure compile) {
+    final void setCompile(JSFunction<JSClosure> compile) {
         put("compile", compile);
-    }
-    
-    final void setLink(JSClosure link) {
-        put("link", link);
     }
     
     final void setScope(JSON scope) {
