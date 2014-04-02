@@ -2,5 +2,6 @@
 <module rename-to="demo">
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.angular.resources.ResourcesModule" />
   <source path="client" />
 </module>

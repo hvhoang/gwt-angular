@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.resource.client;
+package com.asayama.gwt.angular.resources.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
@@ -6,7 +6,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
 
-public class ResourceModule extends AbstractModule implements EntryPoint {
+public class ResourcesModule extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
