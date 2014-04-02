@@ -17,6 +17,10 @@ public class NGScope extends NGObject {
         return this.<JSON>cast().getObject(key);
     }
     
+    public final <T> void put(String key, T value) {
+        this.<JSON>cast().put(key, value);
+    }
+    
     public final native void digest() /*-{
         if(!this.$$phase) {
           this.$digest();

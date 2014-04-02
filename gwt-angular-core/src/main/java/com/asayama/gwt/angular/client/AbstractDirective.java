@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.Element;
 
 
 public abstract class AbstractDirective implements Directive {
@@ -35,12 +34,12 @@ public abstract class AbstractDirective implements Directive {
     }
 
     @Override
-    public void compile(Element element, JSON attrs) {
+    public void compile(NGElement element, JSON attrs) {
         //noop by default
     }
     
     @Override
-    public void link(NGScope scope, Element element, JSON attrs) {
+    public void link(NGScope scope, NGElement element, JSON attrs) {
         // noop by default
     }
 }

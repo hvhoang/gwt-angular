@@ -8,7 +8,6 @@ import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.Element;
 
 
 public interface Directive {
@@ -32,8 +31,8 @@ public interface Directive {
     Restrict[] getRestrict();
     TextResource getTemplate();
     Partial getPartial();
-    void compile(Element element, JSON attrs);
-    void link(NGScope scope, Element element, JSON attrs);
+    void compile(NGElement element, JSON attrs);
+    void link(NGScope scope, NGElement element, JSON attrs);
 }
 
 class DirectiveWrapper implements Function<JSDirective> {
@@ -76,7 +75,7 @@ class DirectiveWrapper implements Function<JSDirective> {
                 @Override
                 public JSClosure call(Object... args) {
                     try {
-                        Element element = (Element) args[0];
+                        NGElement element = (NGElement) args[0];
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);
                         return JSClosure.create(new Closure() {
@@ -84,7 +83,7 @@ class DirectiveWrapper implements Function<JSDirective> {
                             public void exec(Object... args) {
                                 try {
                                     NGScope scope = (NGScope) args[0];
-                                    Element element = (Element) args[1];
+                                    NGElement element = (NGElement) args[1];
                                     JSON attrs = (JSON) args[2];
                                     directive.link(scope, element, attrs);
                                 } catch (Exception e) {
