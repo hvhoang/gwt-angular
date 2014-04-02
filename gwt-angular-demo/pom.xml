@@ -73,7 +73,7 @@
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-resource</artifactId>
+      <artifactId>gwt-angular-resources</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

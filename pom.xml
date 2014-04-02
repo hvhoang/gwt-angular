@@ -12,7 +12,7 @@
     <module>gwt-angular-http</module>
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
-    <module>gwt-angular-resource</module>
+    <module>gwt-angular-resources</module>
     <module>gwt-angular-route</module>
     <module>gwt-angular-sanitize</module>
     <module>gwt-angular-tutorial</module>
@@ -117,7 +117,7 @@
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-resource</artifactId>
+        <artifactId>gwt-angular-resources</artifactId>
         <version>0.0.42-SNAPSHOT</version>
       </dependency>
       <dependency>
