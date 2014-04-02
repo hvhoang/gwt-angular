@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.resources.client;
+package com.asayama.gwt.angular.resources.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGElement;

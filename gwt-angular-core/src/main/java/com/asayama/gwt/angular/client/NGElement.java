@@ -11,4 +11,16 @@ public class NGElement extends JSObject {
     public final native void append(Object o) /*-{
         this.append(o);
     }-*/;
+
+    public final native void empty() /*-{
+        this.empty();
+    }-*/;
+
+    public final native String html() /*-{
+        return this.html();
+    }-*/;
+
+    public final native String replaceWith(Object o) /*-{
+        this.replaceWith(o);
+    }-*/;
 }

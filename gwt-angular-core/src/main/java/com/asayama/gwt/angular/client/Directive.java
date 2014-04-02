@@ -26,6 +26,7 @@ public interface Directive {
         }
     }
     
+    boolean getTransclude();
     String getName();
     void setName(String name);
     Restrict[] getRestrict();
@@ -59,7 +60,9 @@ class DirectiveWrapper implements Function<JSDirective> {
                 }
                 jso.setRestrict(sb.toString());
             }
-            
+
+            //jso.setTransclude(directive.getTransclude());
+
             TextResource template = directive.getTemplate();
             if (template != null) {
                 jso.setTemplate(template.getText());
@@ -130,6 +133,10 @@ class JSDirective extends JSON {
 
     final void setTemplateUrl(String templateUrl) {
         put("templateUrl", templateUrl);
+    }
+    
+    final void setTransclude(boolean transclude) {
+        put("transclude", transclude);
     }
     
     final void setCompile(JSFunction<JSClosure> compile) {

@@ -11,7 +11,8 @@ public class PrettifyExampleController implements Controller {
 
     public static final String HTML_CONTENT = SafeHtmlUtils.htmlEscape(
             PrettifyExampleResources.INSTANCE.demoHtml().getText());
-    
+//    public static final TextResource HTML = PrettifyExampleResources.INSTANCE.demoHtml();
+
     @Override
     public void onControllerLoad() {
         //noop

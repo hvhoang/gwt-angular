@@ -9,6 +9,11 @@ public abstract class AbstractDirective implements Directive {
     private String name = null;
     
     @Override
+    public boolean getTransclude() {
+        return false;
+    }
+    
+    @Override
     public final String getName() {
         return name;
     }
