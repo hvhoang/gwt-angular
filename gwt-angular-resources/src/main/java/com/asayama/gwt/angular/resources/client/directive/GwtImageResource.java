@@ -8,7 +8,7 @@ import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.Image;
 
 
-public class GwtImage extends AbstractDirective {
+public class GwtImageResource extends AbstractDirective {
 
     @Override
     public void link(NGScope scope, NGElement element, JSON attrs) {

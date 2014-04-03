@@ -7,7 +7,7 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.resources.client.TextResource;
 
 
-public class GwtText extends AbstractDirective {
+public class GwtTextResource extends AbstractDirective {
 
     @Override
     public void link(NGScope scope, NGElement element, JSON attrs) {
