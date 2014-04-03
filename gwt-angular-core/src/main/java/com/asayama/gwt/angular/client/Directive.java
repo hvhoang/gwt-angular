@@ -26,8 +26,8 @@ public interface Directive {
         }
     }
     
-    boolean getTransclude();
     String getName();
+    boolean getTransclude();
     void setName(String name);
     Restrict[] getRestrict();
     TextResource getTemplate();
@@ -61,7 +61,7 @@ class DirectiveWrapper implements Function<JSDirective> {
                 jso.setRestrict(sb.toString());
             }
 
-            //jso.setTransclude(directive.getTransclude());
+//            jso.setTransclude(directive.getTransclude());
 
             TextResource template = directive.getTemplate();
             if (template != null) {
