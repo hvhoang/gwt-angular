@@ -2,10 +2,30 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.DataResource.DoNotEmbed;
+import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
 public interface ExamplesResources {
+
+    public static interface TextInputExampleResources extends ClientBundle {
+        
+        static final TextInputExampleResources INSTANCE = 
+                GWT.create(TextInputExampleResources.class);
+
+        @Source("view/demo/TextInputExample.html")
+        public TextResource view();
+        
+        @Source("controller/TextInputExampleController.java")
+        public TextResource controller();
+        
+        @DoNotEmbed
+        @MimeType("text/html")
+        @Source("view/demo/TextInputExample.html")
+        public DataResource partial();
+    }
 
     public static interface HttpClientExampleResources extends ClientBundle {
 
@@ -47,18 +67,6 @@ public interface ExamplesResources {
 
         @Source("view/demo/ReverseFilterModule.txt")
         public TextResource module();
-    }
-
-    public static interface TextInputExampleResources extends ClientBundle {
-        
-        static final TextInputExampleResources INSTANCE = 
-                GWT.create(TextInputExampleResources.class);
-
-        @Source("view/demo/TextInputExample.html")
-        public TextResource view();
-        
-        @Source("controller/TextInputExampleController.java")
-        public TextResource controller();
     }
 
     public static interface UrlHashParameterExampleResources extends ClientBundle {

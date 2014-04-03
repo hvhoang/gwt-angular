@@ -19,14 +19,10 @@ public class TutorialModule extends AbstractModule implements EntryPoint {
     
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
-        pages.add(Page.create("Introduction",
-                TutorialPartials.INSTANCE.introduction()));
-        pages.add(Page.create("Project Structure",
-                TutorialPartials.INSTANCE.projectStructure()));
-        pages.add(Page.create("Project Object Model",
-                TutorialPartials.INSTANCE.projectObjectModel()));
-        pages.add(Page.create("GWT Module XML",
-                TutorialPartials.INSTANCE.gwtModuleXML()));
+        pages.add(Page.create("Introduction", TutorialPartials.INSTANCE.introduction()));
+        pages.add(Page.create("Project Structure", TutorialResources.INSTANCE.projectStructure()));
+        pages.add(Page.create("Project Object Model", TutorialPartials.INSTANCE.projectObjectModel()));
+        pages.add(Page.create("GWT Module XML", TutorialPartials.INSTANCE.gwtModuleXML()));
        return pages;
     }
 }

@@ -3,9 +3,8 @@ package com.asayama.gwt.angular.resources.client.directive;
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGElement;
 import com.asayama.gwt.angular.client.NGScope;
+import com.asayama.gwt.angular.resources.client.StringTextResource;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeUri;
@@ -15,7 +14,7 @@ public class GwtDataResource extends AbstractDirective {
 
     @Override
     public TextResource getTemplate() {
-        return GwtDataResources.INSTANCE.template();
+        return new StringTextResource("hello");
     }
     
     @Override
@@ -28,12 +27,4 @@ public class GwtDataResource extends AbstractDirective {
             return;
         }
     }
-}
-
-interface GwtDataResources extends ClientBundle {
-    
-    static GwtDataResources INSTANCE = GWT.create(GwtDataResources.class);
-    
-    @Source("GwtDataResource.html")
-    public TextResource template();
 }

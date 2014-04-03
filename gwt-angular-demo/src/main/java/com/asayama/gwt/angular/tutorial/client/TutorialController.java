@@ -4,8 +4,6 @@ import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
 
@@ -40,12 +38,4 @@ public class TutorialController extends AbstractMultiPageController {
     public void setDefaultPageName(String defaultPageName) {
         this.defaultPageName = defaultPageName;
     }
-}
-
-interface TutorialResources extends ClientBundle {
-    
-    static final TutorialResources INSTANCE = GWT.create(TutorialResources.class);
-    
-    @Source("tutorial_001.png")
-    ImageResource tutorial001();
 }
