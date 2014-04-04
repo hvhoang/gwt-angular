@@ -2,9 +2,9 @@ package com.asayama.gwt.angular.route.client;
 
 import java.util.Date;
 
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.jsni.client.JSObject;
 
 public class RouteParams implements Service {

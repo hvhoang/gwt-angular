@@ -18,6 +18,10 @@ import com.google.gwt.core.client.GWT;
  */
 public class Angular {
 	
+    public @interface Bind {
+        String value();
+    }
+    
     static final Module[] MODULE_ARRAY = new Module[0];
     static List<Module> modules = new ArrayList<Module>();
     static Map<String, Module> index = new HashMap<String, Module>();

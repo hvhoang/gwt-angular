@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.client.log;
 
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.annotations.Bind;
 
 public class Log implements Service {
 

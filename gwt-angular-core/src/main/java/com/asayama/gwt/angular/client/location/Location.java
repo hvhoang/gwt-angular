@@ -2,9 +2,10 @@ package com.asayama.gwt.angular.client.location;
 
 import java.util.List;
 
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.annotations.Bind;
+
 
 public class Location implements Service {
 

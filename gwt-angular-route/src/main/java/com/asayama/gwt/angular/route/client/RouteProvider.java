@@ -1,9 +1,9 @@
 package com.asayama.gwt.angular.route.client;
 
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
-import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.resources.client.DataResource;

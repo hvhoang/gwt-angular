@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.NGObject;
-import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.rebind.util.ClassTypeFields;
 import com.asayama.gwt.angular.rebind.util.Field;
 import com.asayama.gwt.rebind.JClassTypeUtils;

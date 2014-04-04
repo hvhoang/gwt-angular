@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.demo.client.controller;
 
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.angular.demo.client.ProjectConstants;
 import com.asayama.gwt.angular.demo.client.view.DemoPartials;
 import com.asayama.gwt.angular.util.client.Page;

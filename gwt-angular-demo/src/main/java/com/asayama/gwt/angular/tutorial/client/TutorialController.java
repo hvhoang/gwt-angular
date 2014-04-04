@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.tutorial.client;
 
-import com.asayama.gwt.angular.client.annotations.Bind;
+import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
