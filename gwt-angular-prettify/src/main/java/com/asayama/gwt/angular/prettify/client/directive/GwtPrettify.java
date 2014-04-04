@@ -33,10 +33,10 @@ public class GwtPrettify extends AbstractDirective {
     }
     
     //TODO https://github.com/kyoken74/gwt-angular/issues/62
-//    @Override
-//    public boolean getTransclude() {
-//        return true;
-//    }
+    @Override
+    public boolean getTransclude() {
+        return true;
+    }
     
     @Override
     public void link(NGScope scope, NGElement element, JSON attrs) {

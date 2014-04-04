@@ -21,8 +21,8 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("examples", getPages());
-        directive(new MyHello());
-        filter(new Reverse());
+        directive(MyHello.class);
+        filter(Reverse.class);
         controller(ExamplesController.class);
         controller(HttpClientExampleController.class);
         controller(OnClickEventExampleController.class);

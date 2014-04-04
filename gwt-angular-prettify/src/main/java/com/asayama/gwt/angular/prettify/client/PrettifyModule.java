@@ -19,8 +19,8 @@ public class PrettifyModule extends AbstractModule implements EntryPoint {
         ScriptInjector.fromString(PrettifyScripts.INSTANCE.js().getText())
             .setWindow(JSObject.$wnd).inject();
         Angular.module(this);
-        filter(new Prettify());
-        directive(new GwtPrettify());
-        directive(new GwtTextPrettify());
+        filter(Prettify.class);
+        directive(GwtPrettify.class);
+        directive(GwtTextPrettify.class);
     }
 }

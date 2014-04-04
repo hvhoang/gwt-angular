@@ -12,7 +12,7 @@ public class NGScope extends NGObject {
 
     protected NGScope() {
     }
-
+    
     public final <T> T get(String key) {
         return this.<JSON>cast().getObject(key);
     }

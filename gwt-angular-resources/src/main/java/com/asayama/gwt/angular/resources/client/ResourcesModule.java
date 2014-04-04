@@ -16,9 +16,9 @@ public class ResourcesModule extends AbstractModule implements EntryPoint {
         String m = "initializing " + getClass().getName();
         try {
             Angular.module(this);
-            directive(new GwtDataResource());
-            directive(new GwtImageResource());
-            directive(new GwtTextResource());
+            directive(GwtDataResource.class);
+            directive(GwtImageResource.class);
+            directive(GwtTextResource.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

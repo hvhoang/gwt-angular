@@ -18,7 +18,7 @@ import com.google.gwt.core.client.GWT;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
- * used with {@link DependenciesFactoryGenerator}, which inspects the types eligible for
+ * used with {@link CreatorGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -27,36 +27,29 @@ import com.google.gwt.core.client.GWT;
  * </p>
  * 
  * @author kyoken74
- *
- * @see DependenciesFactoryGenerator
- * @param <T>
  */
-interface CreatorFactory<T> {
+interface Creator<T> {
     <X extends T> X create(Class<X> klass);
 }
-
-interface ProviderCreatorFactory extends CreatorFactory<Provider> {
-    
-    static ProviderCreatorFactory INSTANCE = GWT.create(ProviderCreatorFactory.class);
-    
-    @Override
-    public <X extends Provider> X create(Class<X> klass);
+interface FilterCreator extends Creator<Filter> {
+    static FilterCreator INSTANCE = GWT.create(FilterCreator.class);
+    @Override <X extends Filter> X create(Class<X> klass);
 }
-
-interface ServiceCreatorFactory extends CreatorFactory<Service> {
-    
-    static ServiceCreatorFactory INSTANCE = GWT.create(ServiceCreatorFactory.class);
-    
-    @Override
-    public <X extends Service> X create(Class<X> klass);
+interface DirectiveCreator extends Creator<Directive> {
+    static DirectiveCreator INSTANCE = GWT.create(DirectiveCreator.class);
+    @Override <X extends Directive> X create(Class<X> klass);
 }
-
-interface ControllerCreatorFactory extends CreatorFactory<Controller> {
-    
-    static ControllerCreatorFactory INSTANCE = GWT.create(ControllerCreatorFactory.class);
-    
-    @Override
-    public <X extends Controller> X create(Class<X> klass);
+interface ProviderCreator extends Creator<Provider> {
+    static ProviderCreator INSTANCE = GWT.create(ProviderCreator.class);
+    @Override <X extends Provider> X create(Class<X> klass);
+}
+interface ServiceCreator extends Creator<Service> {
+    static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
+    @Override <X extends Service> X create(Class<X> klass);
+}
+interface ControllerCreator extends Creator<Controller> {
+    static ControllerCreator INSTANCE = GWT.create(ControllerCreator.class);
+    @Override <X extends Controller> X create(Class<X> klass);
 }
 
 /**
