@@ -12,8 +12,8 @@ import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-    public static final String NAVBAR_HTML = DemoPartials.INSTANCE.navbar().url();
-    public static final String FOOTER_HTML = DemoPartials.INSTANCE.footer().url();
+    public static final String NAVBAR_HTML = DemoPartials.INSTANCE.navbar().getSafeUri().asString();
+    public static final String FOOTER_HTML = DemoPartials.INSTANCE.footer().getSafeUri().asString();
 
     public static final String PROJECT_GROUP_ID = ProjectConstants.INSTANCE.projectGroupId();
     public static final String PROJECT_ARTIFACT_ID = ProjectConstants.INSTANCE.projectArtifactId();

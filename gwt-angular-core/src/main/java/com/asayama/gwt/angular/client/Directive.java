@@ -31,8 +31,6 @@ public interface Directive {
     void setName(String name);
     Restrict[] getRestrict();
     TextResource getTemplate();
-    @Deprecated
-    Partial getPartial();
     String getTemplateUrl();
     void compile(NGElement element, JSON attrs);
     void link(NGScope scope, NGElement element, JSON attrs);
@@ -72,11 +70,6 @@ class DirectiveWrapper implements Function<JSDirective> {
             TextResource template = directive.getTemplate();
             if (template != null) {
                 jso.setTemplate(template.getText());
-            }
-            
-            Partial partial = directive.getPartial();
-            if (partial != null) {
-                jso.setTemplateUrl(partial.url());
             }
             
             String templateUrl = directive.getTemplateUrl();

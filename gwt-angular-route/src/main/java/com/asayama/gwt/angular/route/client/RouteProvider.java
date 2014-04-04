@@ -2,26 +2,19 @@ package com.asayama.gwt.angular.route.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.NGObject;
-import com.asayama.gwt.angular.client.Partial;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.annotations.Bind;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.resources.client.DataResource;
 
 public class RouteProvider implements Provider {
 
     private NGRouteProvider ngo;
 
-    public RouteProvider when(String route, Partial partial) {
+    public <C extends Controller> RouteProvider when(String route, DataResource partial, Class<C> controllerClass) {
         JSON json = JSON.create();
-        json.put("templateUrl", partial.url());
-        ngo.when(route, json);
-        return this;
-    }
-
-    public <C extends Controller> RouteProvider when(String route, Partial partial, Class<C> controllerClass) {
-        JSON json = JSON.create();
-        json.put("templateUrl", partial.url());
+        json.put("templateUrl", partial.getSafeUri().asString());
         json.put("controller", controllerClass.getName());
         ngo.when(route, json);
         return this;

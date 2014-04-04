@@ -1,33 +1,49 @@
 package com.asayama.gwt.angular.examples.client.view.demo;
 
-import com.asayama.gwt.angular.client.Partial;
-import com.asayama.gwt.angular.client.Partials;
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.DataResource.DoNotEmbed;
+import com.google.gwt.resources.client.DataResource.MimeType;
 
 
-public interface ExamplesDemoPartials extends Partials {
+public interface ExamplesDemoPartials extends ClientBundle {
 
     static final ExamplesDemoPartials INSTANCE = GWT.create(ExamplesDemoPartials.class);
     
-    @Resource("CustomDirectiveExample.html")
-    Partial customDirectiveExample();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("CustomDirectiveExample.html")
+    DataResource customDirectiveExample();
     
-    @Resource("HttpClientExample.html")
-    Partial httpClient();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("HttpClientExample.html")
+    DataResource httpClient();
 
-    @Resource("OnClickEventExample.html")
-    Partial onClickEvent();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("OnClickEventExample.html")
+    DataResource onClickEvent();
 
-    @Resource("PrettifyExample.html")
-    Partial prettify();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("PrettifyExample.html")
+    DataResource prettify();
 
-    @Resource("ReverseFilterExample.html")
-    Partial reverseFilter();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("ReverseFilterExample.html")
+    DataResource reverseFilter();
 
-    @Resource("TextInputExample.html")
-    Partial textInput();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("TextInputExample.html")
+    DataResource textInput();
 
-    @Resource("UrlHashParameterExample.html")
-    Partial urlHashParameter();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("UrlHashParameterExample.html")
+    DataResource urlHashParameter();
     
 }

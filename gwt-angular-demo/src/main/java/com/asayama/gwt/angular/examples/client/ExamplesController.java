@@ -12,22 +12,19 @@ import com.asayama.gwt.angular.examples.client.view.demo.ExamplesDemoPartials;
 import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
-import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
 
 
 public class ExamplesController extends AbstractMultiPageController {
 
-    public static final DataResource TEXT_INPUT_DEMO = TextInputExampleResources.INSTANCE.partial();
-    
     // Partials
-    public static final String TEXT_INPUT_DEMO_URL = ExamplesDemoPartials.INSTANCE.textInput().url();
-    public static final String ONCLICK_DEMO_URL = ExamplesDemoPartials.INSTANCE.onClickEvent().url();
-    public static final String REVERSE_FILTER_DEMO_URL = ExamplesDemoPartials.INSTANCE.reverseFilter().url();
-    public static final String CUSTOM_DIRECTIVE_DEMO_URL = ExamplesDemoPartials.INSTANCE.customDirectiveExample().url();
-    public static final String URL_HASH_PARAMETER_DEMO_URL = ExamplesDemoPartials.INSTANCE.urlHashParameter().url();
-    public static final String HTTP_CLIENT_DEMO_URL = ExamplesDemoPartials.INSTANCE.httpClient().url();
-    public static final String PRETTIFY_DEMO_URL = ExamplesDemoPartials.INSTANCE.prettify().url();
+    public static final String TEXT_INPUT_DEMO_URL = ExamplesDemoPartials.INSTANCE.textInput().getSafeUri().asString();
+    public static final String ONCLICK_DEMO_URL = ExamplesDemoPartials.INSTANCE.onClickEvent().getSafeUri().asString();
+    public static final String REVERSE_FILTER_DEMO_URL = ExamplesDemoPartials.INSTANCE.reverseFilter().getSafeUri().asString();
+    public static final String CUSTOM_DIRECTIVE_DEMO_URL = ExamplesDemoPartials.INSTANCE.customDirectiveExample().getSafeUri().asString();
+    public static final String URL_HASH_PARAMETER_DEMO_URL = ExamplesDemoPartials.INSTANCE.urlHashParameter().getSafeUri().asString();
+    public static final String HTTP_CLIENT_DEMO_URL = ExamplesDemoPartials.INSTANCE.httpClient().getSafeUri().asString();
+    public static final String PRETTIFY_DEMO_URL = ExamplesDemoPartials.INSTANCE.prettify().getSafeUri().asString();
     
     // Text Input Example Resources
     public static final TextResource TEXT_INPUT_VIEW = TextInputExampleResources.INSTANCE.view();

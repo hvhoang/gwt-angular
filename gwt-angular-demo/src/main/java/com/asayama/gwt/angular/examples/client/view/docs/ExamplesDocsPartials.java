@@ -1,35 +1,53 @@
 package com.asayama.gwt.angular.examples.client.view.docs;
 
-import com.asayama.gwt.angular.client.Partial;
-import com.asayama.gwt.angular.client.Partials;
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.DataResource.DoNotEmbed;
+import com.google.gwt.resources.client.DataResource.MimeType;
 
 
-public interface ExamplesDocsPartials extends Partials {
+public interface ExamplesDocsPartials extends ClientBundle {
     
     public static final ExamplesDocsPartials INSTANCE = GWT.create(ExamplesDocsPartials.class);
 
-    @Resource("Examples.html")
-    public Partial examples();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("Examples.html")
+    public DataResource examples();
     
-    @Resource("TextInputExample.html")
-    public Partial textInput();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("TextInputExample.html")
+    public DataResource textInput();
     
-    @Resource("OnClickEventExample.html")
-    public Partial onClickEvent();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("OnClickEventExample.html")
+    public DataResource onClickEvent();
     
-    @Resource("ReverseFilterExample.html")
-    public Partial reverseFilter();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("ReverseFilterExample.html")
+    public DataResource reverseFilter();
     
-    @Resource("CustomDirectiveExample.html")
-    public Partial customDirective();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("CustomDirectiveExample.html")
+    public DataResource customDirective();
 
-    @Resource("UrlHashParameterExample.html")
-    public Partial urlHashParameter();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("UrlHashParameterExample.html")
+    public DataResource urlHashParameter();
     
-    @Resource("HttpClientExample.html")
-    public Partial httpClient();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("HttpClientExample.html")
+    public DataResource httpClient();
 
-    @Resource("PrettifyExample.html")
-    public Partial prettify();
+    @DoNotEmbed
+    @MimeType("text/html")
+    @Source("PrettifyExample.html")
+    public DataResource prettify();
 }

@@ -34,11 +34,6 @@ public abstract class AbstractDirective implements Directive {
     }
 
     @Override
-    public Partial getPartial() {
-        return null;
-    }
-    
-    @Override
     public String getTemplateUrl() {
         return null;
     }
