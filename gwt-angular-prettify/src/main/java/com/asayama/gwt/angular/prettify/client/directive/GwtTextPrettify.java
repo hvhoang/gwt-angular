@@ -37,7 +37,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 public class GwtTextPrettify extends AbstractDirective {
 
     //TODO https://github.com/kyoken74/gwt-angular/issues/52
-    Prettify filter = new Prettify();
+    private Prettify filter = new Prettify();
     
     @Override
     public void link(NGScope scope, NGElement element, JSON attrs) {

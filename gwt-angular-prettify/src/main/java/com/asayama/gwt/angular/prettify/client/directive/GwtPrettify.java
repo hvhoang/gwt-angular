@@ -25,8 +25,7 @@ import com.asayama.gwt.jsni.client.JSON;
 public class GwtPrettify extends AbstractDirective {
 
     //TODO https://github.com/kyoken74/gwt-angular/issues/52
-    Prettify filter = new Prettify();
-//    private Prettify filter;
+    private Prettify filter = new Prettify();
     
     @Override
     public Restrict[] getRestrict() {
