@@ -64,6 +64,9 @@ public abstract class AbstractModule implements Module {
     // Directive
     //
     
+    DirectiveDependenciesFactory directiveDependenciesFactory = GWT.create(DirectiveDependenciesFactory.class);
+    DirectiveBinderFactory directiveBinderFactory = GWT.create(DirectiveBinderFactory.class);
+    
     public <D extends Directive> D directive(final D directive) {
         String className = Strings.simpleClassName(directive);
         return directive(Strings.decapitalize(className), directive);
@@ -74,9 +77,10 @@ public abstract class AbstractModule implements Module {
             return null;
         }
         directive.setName(name);
-        String[] dependencies = {}; // TODO https://github.com/kyoken74/gwt-angular/issues/52
+        String[] dependencies = directiveDependenciesFactory.create(directive);
+        JSClosure binder = directiveBinderFactory.create(directive);
         jso.directive(name, JSArray.create(dependencies),
-                JSFunction.create(new DirectiveWrapper(directive)));
+                JSFunction.create(new DirectiveWrapper(binder, directive)));
         return directive;
     }
     
@@ -99,12 +103,12 @@ public abstract class AbstractModule implements Module {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
         final P provider = providerCreatorFactory.create(klass);
-        final JSClosure injector = providerBinderFactory.create(provider);
+        final JSClosure binder = providerBinderFactory.create(provider);
         Function<P> initializer = new Function<P>() {
 
             @Override
             public P call(Object... args) {
-                injector.apply(args);
+                binder.apply(args);
                 configurator.configure(provider);
                 return provider;
             }
@@ -130,12 +134,12 @@ public abstract class AbstractModule implements Module {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
         final S service = serviceCreatorFactory.create(klass);
-        final JSClosure injector = serviceBinderFactory.create(service);
+        final JSClosure binder = serviceBinderFactory.create(service);
         Function<S> initializer = new Function<S>() {
 
             @Override
             public S call(Object... args) {
-                injector.apply(args);
+                binder.apply(args);
                 return service;
             }
         };
@@ -166,14 +170,14 @@ public abstract class AbstractModule implements Module {
             GWT.log(message, new IllegalStateException(message));
             return controller;
         }
-        final JSClosure binder = controllerScopeBinderFactory.create(controller);
-        if (binder == null) {
+        final JSClosure scopeBinder = controllerScopeBinderFactory.create(controller);
+        if (scopeBinder == null) {
             String message = "Unable to create binder for " + klass.getName();
             GWT.log(message, new IllegalStateException(message));
             return controller;
         }
-        final JSClosure injector = controllerBinderFactory.create(controller);
-        if (injector == null) {
+        final JSClosure binder = controllerBinderFactory.create(controller);
+        if (binder == null) {
             String message = "Unable to create injector for " + klass.getName();
             GWT.log(message, new IllegalStateException(message));
             return controller;
@@ -190,9 +194,9 @@ public abstract class AbstractModule implements Module {
                         shiftedArgs[i] = args[i + 1];
                     }
                     m = "binding args";
-                    binder.apply(args);
+                    scopeBinder.apply(args);
                     m = "injecting shiftedArgs";
-                    injector.apply(shiftedArgs);
+                    binder.apply(shiftedArgs);
                     GWT.log(m = klass.getName() + ".onControllerLoad()");
                     controller.onControllerLoad();
                 } catch (Exception e) {

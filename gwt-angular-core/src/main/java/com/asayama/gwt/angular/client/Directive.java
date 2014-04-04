@@ -31,16 +31,20 @@ public interface Directive {
     void setName(String name);
     Restrict[] getRestrict();
     TextResource getTemplate();
+    @Deprecated
     Partial getPartial();
+    String getTemplateUrl();
     void compile(NGElement element, JSON attrs);
     void link(NGScope scope, NGElement element, JSON attrs);
 }
 
 class DirectiveWrapper implements Function<JSDirective> {
 
+    final JSClosure binder;
     final Directive directive;
     
-    DirectiveWrapper(Directive directive) {
+    DirectiveWrapper(JSClosure binder, Directive directive) {
+        this.binder = binder;
         this.directive = directive;
     }
     
@@ -52,6 +56,8 @@ class DirectiveWrapper implements Function<JSDirective> {
         try {
             final String name = directive == null ? null : directive.getName();
             
+            binder.apply(args);
+            
             Restrict[] rs = directive.getRestrict();
             if (rs != null && rs.length > 0) {
                 StringBuilder sb = new StringBuilder();
@@ -61,7 +67,7 @@ class DirectiveWrapper implements Function<JSDirective> {
                 jso.setRestrict(sb.toString());
             }
 
-//            jso.setTransclude(directive.getTransclude());
+            jso.setTransclude(directive.getTransclude());
 
             TextResource template = directive.getTemplate();
             if (template != null) {
@@ -71,6 +77,11 @@ class DirectiveWrapper implements Function<JSDirective> {
             Partial partial = directive.getPartial();
             if (partial != null) {
                 jso.setTemplateUrl(partial.url());
+            }
+            
+            String templateUrl = directive.getTemplateUrl();
+            if (templateUrl != null) {
+                jso.setTemplateUrl(templateUrl);
             }
             
             jso.setCompile(JSFunction.create(new Function<JSClosure>() {

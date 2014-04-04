@@ -37,6 +37,11 @@ public abstract class AbstractDirective implements Directive {
     public Partial getPartial() {
         return null;
     }
+    
+    @Override
+    public String getTemplateUrl() {
+        return null;
+    }
 
     @Override
     public void compile(NGElement element, JSON attrs) {

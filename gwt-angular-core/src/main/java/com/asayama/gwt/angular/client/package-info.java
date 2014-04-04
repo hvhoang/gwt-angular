@@ -77,6 +77,9 @@ interface ServiceDependenciesFactory extends DependenciesFactory<Service> {
 interface ControllerDependenciesFactory extends DependenciesFactory<Controller> {
 }
 
+interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
+}
+
 /**
  * Provides interfaces for an object binder. This interface is intended to be
  * used with {@link ScopeBinderFactoryGenerator}, which inspects the types eligible for
@@ -125,4 +128,7 @@ interface ServiceBinderFactory extends BinderFactory<Service> {
 }
 
 interface ControllerBinderFactory extends BinderFactory<Controller> {
+}
+
+interface DirectiveBinderFactory extends BinderFactory<Directive> {
 }
