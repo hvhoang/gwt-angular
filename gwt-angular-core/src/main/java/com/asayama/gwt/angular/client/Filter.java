@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.jsni.client.Function;
+import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.util.client.Arrays;
 
@@ -13,9 +14,11 @@ public interface Filter {
 
 class FilterWrapper implements Function<JSFilter> {
     
+    final JSClosure binder;
     final Filter filter;
     
-    FilterWrapper(Filter filter) {
+    FilterWrapper(JSClosure binder, Filter filter) {
+        this.binder = binder;
         this.filter = filter;
     }
     
@@ -27,6 +30,9 @@ class FilterWrapper implements Function<JSFilter> {
                 if (args == null) {
                     return "";
                 }
+
+                binder.apply(args);
+                
                 String input = null;
                 if (args.length > 0) {
                     input = (String) args[0];

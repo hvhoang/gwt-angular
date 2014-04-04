@@ -54,18 +54,16 @@ public abstract class AbstractModule implements Module {
     }
     
     public <F extends Filter> F filter(String name, F filter) {
-        String[] dependencies = {}; // TODO https://github.com/kyoken74/gwt-angular/issues/52
+        String[] dependencies = FilterDependenciesFactory.INSTANCE.create(filter);
+        JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
         jso.filter(name, JSArray.create(dependencies),
-                JSFunction.create(new FilterWrapper(filter)));
+                JSFunction.create(new FilterWrapper(binder, filter)));
         return filter;
     }
 
     //
     // Directive
     //
-    
-    DirectiveDependenciesFactory directiveDependenciesFactory = GWT.create(DirectiveDependenciesFactory.class);
-    DirectiveBinderFactory directiveBinderFactory = GWT.create(DirectiveBinderFactory.class);
     
     public <D extends Directive> D directive(final D directive) {
         String className = Strings.simpleClassName(directive);
@@ -77,8 +75,8 @@ public abstract class AbstractModule implements Module {
             return null;
         }
         directive.setName(name);
-        String[] dependencies = directiveDependenciesFactory.create(directive);
-        JSClosure binder = directiveBinderFactory.create(directive);
+        String[] dependencies = DirectiveDependenciesFactory.INSTANCE.create(directive);
+        JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
         jso.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(binder, directive)));
         return directive;
@@ -88,10 +86,6 @@ public abstract class AbstractModule implements Module {
     // Provider
     //
     
-    private ProviderCreatorFactory providerCreatorFactory = GWT.create(ProviderCreatorFactory.class);
-    private ProviderDependenciesFactory providerDependenciesFactory = GWT.create(ProviderDependenciesFactory.class);
-    private ProviderBinderFactory providerBinderFactory = GWT.create(ProviderBinderFactory.class);
-
     /**
      * Configures a previously created service object. Use the {@link Configurator}
      * to configure the provider injected into the module.
@@ -102,8 +96,8 @@ public abstract class AbstractModule implements Module {
     public <P extends Provider> P config(final Class<P> klass, final Configurator<P> configurator) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        final P provider = providerCreatorFactory.create(klass);
-        final JSClosure binder = providerBinderFactory.create(provider);
+        final P provider = ProviderCreatorFactory.INSTANCE.create(klass);
+        final JSClosure binder = ProviderBinderFactory.INSTANCE.create(provider);
         Function<P> initializer = new Function<P>() {
 
             @Override
@@ -113,7 +107,7 @@ public abstract class AbstractModule implements Module {
                 return provider;
             }
         };
-        String[] dependencies = providerDependenciesFactory.create(provider);
+        String[] dependencies = ProviderDependenciesFactory.INSTANCE.create(provider);
         jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return provider;
     }
@@ -122,10 +116,6 @@ public abstract class AbstractModule implements Module {
     // Service
     //
     
-    private ServiceCreatorFactory serviceCreatorFactory = GWT.create(ServiceCreatorFactory.class);
-    private ServiceDependenciesFactory serviceDependencyFactory = GWT.create(ServiceDependenciesFactory.class);
-    private ServiceBinderFactory serviceBinderFactory = GWT.create(ServiceBinderFactory.class);
-    
     public <S extends Service> S factory(Class<S> klass) {
         return factory(klass.getName(), klass);
     }
@@ -133,8 +123,8 @@ public abstract class AbstractModule implements Module {
     public <S extends Service> S factory(String name, final Class<S> klass) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        final S service = serviceCreatorFactory.create(klass);
-        final JSClosure binder = serviceBinderFactory.create(service);
+        final S service = ServiceCreatorFactory.INSTANCE.create(klass);
+        final JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
         Function<S> initializer = new Function<S>() {
 
             @Override
@@ -143,7 +133,7 @@ public abstract class AbstractModule implements Module {
                 return service;
             }
         };
-        String[] dependencies = serviceDependencyFactory.create(service);
+        String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(service);
         jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return service;
     }
@@ -152,11 +142,6 @@ public abstract class AbstractModule implements Module {
     // Controller
     //
     
-    private ControllerCreatorFactory controllerCreatorFactory = GWT.create(ControllerCreatorFactory.class);
-    private ControllerDependenciesFactory controllerDependenciesFactory = GWT.create(ControllerDependenciesFactory.class);
-    private ControllerBinderFactory controllerBinderFactory = GWT.create(ControllerBinderFactory.class);
-    private ControllerScopeBinderFactory controllerScopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
-
     public <C extends Controller> C controller(Class<C> klass) {
         return controller(klass.getName(), klass);
     }
@@ -164,19 +149,19 @@ public abstract class AbstractModule implements Module {
     public <C extends Controller> C controller(final String name, final Class<C> klass) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        final C controller = controllerCreatorFactory.create(klass);
+        final C controller = ControllerCreatorFactory.INSTANCE.create(klass);
         if (controller == null) {
             String message = "Unable to create " + klass.getName();
             GWT.log(message, new IllegalStateException(message));
             return controller;
         }
-        final JSClosure scopeBinder = controllerScopeBinderFactory.create(controller);
+        final JSClosure scopeBinder = ControllerScopeBinderFactory.INSTANCE.create(controller);
         if (scopeBinder == null) {
             String message = "Unable to create binder for " + klass.getName();
             GWT.log(message, new IllegalStateException(message));
             return controller;
         }
-        final JSClosure binder = controllerBinderFactory.create(controller);
+        final JSClosure binder = ControllerBinderFactory.INSTANCE.create(controller);
         if (binder == null) {
             String message = "Unable to create injector for " + klass.getName();
             GWT.log(message, new IllegalStateException(message));
@@ -206,7 +191,7 @@ public abstract class AbstractModule implements Module {
         };
         String [] dependencies;
         {
-            String[] d = controllerDependenciesFactory.create(controller);
+            String[] d = ControllerDependenciesFactory.INSTANCE.create(controller);
             int len = d == null ? 0 : d.length;
             dependencies = new String[len + 1];
             dependencies[0] = "$scope";

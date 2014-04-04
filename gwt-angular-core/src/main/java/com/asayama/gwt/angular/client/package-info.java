@@ -14,6 +14,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.jsni.client.JSClosure;
+import com.google.gwt.core.client.GWT;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
@@ -35,16 +36,25 @@ interface CreatorFactory<T> {
 }
 
 interface ProviderCreatorFactory extends CreatorFactory<Provider> {
+    
+    static ProviderCreatorFactory INSTANCE = GWT.create(ProviderCreatorFactory.class);
+    
     @Override
     public <X extends Provider> X create(Class<X> klass);
 }
 
 interface ServiceCreatorFactory extends CreatorFactory<Service> {
+    
+    static ServiceCreatorFactory INSTANCE = GWT.create(ServiceCreatorFactory.class);
+    
     @Override
     public <X extends Service> X create(Class<X> klass);
 }
 
 interface ControllerCreatorFactory extends CreatorFactory<Controller> {
+    
+    static ControllerCreatorFactory INSTANCE = GWT.create(ControllerCreatorFactory.class);
+    
     @Override
     public <X extends Controller> X create(Class<X> klass);
 }
@@ -69,15 +79,23 @@ interface DependenciesFactory<T> {
 }
 
 interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
+    static ProviderDependenciesFactory INSTANCE = GWT.create(ProviderDependenciesFactory.class);
 }
 
 interface ServiceDependenciesFactory extends DependenciesFactory<Service> {
+    static ServiceDependenciesFactory INSTANCE = GWT.create(ServiceDependenciesFactory.class);
 }
 
 interface ControllerDependenciesFactory extends DependenciesFactory<Controller> {
+    static ControllerDependenciesFactory INSTANCE = GWT.create(ControllerDependenciesFactory.class);
 }
 
 interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
+    static DirectiveDependenciesFactory INSTANCE = GWT.create(DirectiveDependenciesFactory.class);
+}
+
+interface FilterDependenciesFactory extends DependenciesFactory<Filter> {
+    static FilterDependenciesFactory INSTANCE = GWT.create(FilterDependenciesFactory.class);
 }
 
 /**
@@ -100,6 +118,7 @@ interface ScopeBinderFactory<T> {
 }
 
 interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
+    static ControllerScopeBinderFactory INSTANCE = GWT.create(ControllerScopeBinderFactory.class);
 }
 
 /**
@@ -122,13 +141,21 @@ interface BinderFactory<T> {
 }
 
 interface ProviderBinderFactory extends BinderFactory<Provider> {
+    static ProviderBinderFactory INSTANCE = GWT.create(ProviderBinderFactory.class);
 }
 
 interface ServiceBinderFactory extends BinderFactory<Service> {
+    static ServiceBinderFactory INSTANCE = GWT.create(ServiceBinderFactory.class);
 }
 
 interface ControllerBinderFactory extends BinderFactory<Controller> {
+    static ControllerBinderFactory INSTANCE = GWT.create(ControllerBinderFactory.class);
 }
 
 interface DirectiveBinderFactory extends BinderFactory<Directive> {
+    static DirectiveBinderFactory INSTANCE = GWT.create(DirectiveBinderFactory.class);
+}
+
+interface FilterBinderFactory extends BinderFactory<Filter> {
+    static FilterBinderFactory INSTANCE = GWT.create(FilterBinderFactory.class);
 }
