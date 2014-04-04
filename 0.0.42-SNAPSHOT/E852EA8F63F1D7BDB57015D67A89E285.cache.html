@@ -31,14 +31,14 @@
     <code>data-ng-*</code>. The directive shown here, however, has the prefix
     of <code>data-ng-my-*</code>.
   </p>
-  <pre class="prettyprint lang-html" data-ng-bind-html="CUSTOM_DIRECTIVE_VIEW_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="CUSTOM_DIRECTIVE_VIEW"></pre>
 
   <h2>Directive</h2>
   <p>
     Let's take a look at the Java code that was written to support this 
     directive.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="CUSTOM_DIRECTIVE_DIRECTIVE_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="CUSTOM_DIRECTIVE_DIRECTIVE"></pre>
   <p>
     In order to define a custom directive, you must implement GWT Angular's
     <code>Directive</code> interface, for which there is a convenient abstract
@@ -57,7 +57,7 @@
   </p>
   
   <h2>Template</h2>
-  <pre class="prettyprint lang-html" data-ng-bind-html="CUSTOM_DIRECTIVE_TEMPLATE_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="CUSTOM_DIRECTIVE_TEMPLATE"></pre>
   <p>
     The template HTML for this example is shown above. This is the content of
     <code>MyHello.html</code> that was bound to the Java code via <code>
@@ -72,14 +72,14 @@
   </p>
   
   <h2>Controller</h2>
-  <pre class="prettyprint lang-java" data-ng-bind-html="CUSTOM_DIRECTIVE_CONTROLLER_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="CUSTOM_DIRECTIVE_CONTROLLER"></pre>
 
   <h2>Module</h2>
   <p>
     Of course, both the directive and controller code must be registered with an
     Angular module, e.g.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="CUSTOM_DIRECTIVE_MODULE_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="CUSTOM_DIRECTIVE_MODULE"></pre>
   <p>
     We need to clarify what we mean by the "name of the directive." In the view
     code, we used the directive <code>data-my-hello</code>, but inside the 
@@ -108,13 +108,13 @@
   <p>
     The following modules are required in the gwt.xml.
   </p>
-  <pre class="prettyprint">
+  <pre class="gwt-prettify">
 &lt;inherits name="com.asayama.gwt.angular.NG" /&gt;</pre>
 
   <p>
     The following Maven dependencies are required in the pom.xml.
   </p>
-  <pre class="prettyprint">
+  <pre class="gwt-prettify">
 &lt;dependency&gt;
   &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
   &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;

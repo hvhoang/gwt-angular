@@ -25,7 +25,7 @@
     controller via <code>data-ng-change</code> directive, which calls 
     <code>setName()</code> method.
   </p>
-  <pre class="prettyprint lang-html" data-ng-bind-html="TEXT_INPUT_VIEW_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="TEXT_INPUT_VIEW"></pre>
 
   <h2>Controller</h2>
   <p>
@@ -39,19 +39,19 @@
     These public final constants are bound to the view, so that they can be
     inserted into the view via the use of double mustache notation, {{ }}.
   </p>
-  <pre class="prettyprint lang-java" data-ng-bind-html="TEXT_INPUT_CONTROLLER_CONTENT | prettyprint"></pre>
+  <pre data-gwt-text-prettify="TEXT_INPUT_CONTROLLER"></pre>
 
   <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
-  <pre class="prettyprint">
+  <pre class="gwt-prettify">
 &lt;inherits name="com.asayama.gwt.angular.NG" /&gt;</pre>
 
   <p>
     The following Maven dependencies are required in the pom.xml.
   </p>
-  <pre class="prettyprint">
+  <pre class="gwt-prettify">
 &lt;dependency&gt;
   &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
   &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;
