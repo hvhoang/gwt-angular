@@ -28,9 +28,10 @@ public abstract class AbstractModule implements Module {
      * @param value Value object to register with {@link Injector}
      * @return Value object registered with {@link Injector}
      */
-    public <V> V value(String name, V value) {
+    @Override
+    public Module value(String name, Object value) {
         jso.value(name, value);
-        return value;
+        return this;
     }
 
     /**
@@ -39,48 +40,51 @@ public abstract class AbstractModule implements Module {
      * @param value Value object to register with {@link Injector}
      * @return Value object registered with {@link Injector}
      */
-    public <V> V constant(String name, V value) {
+    @Override
+    public Module constant(String name, Object value) {
         jso.constant(name, value);
-        return value;
+        return this;
     }
     
     //
     // Filter
     //
     
-    public <F extends Filter> F filter(Class<F> klass) {
+    @Override
+    public <F extends Filter> Module filter(Class<F> klass) {
         F filter = FilterCreator.INSTANCE.create(klass);
         return filter(filter);
     }
     
-    public <F extends Filter> F filter(F filter) {
+    protected Module filter(Filter filter) {
         String className = Strings.simpleClassName(filter);
         return filter(Strings.decapitalize(className), filter);
     }
     
-    public <F extends Filter> F filter(String name, F filter) {
+    protected Module filter(String name, Filter filter) {
         String[] dependencies = FilterDependenciesFactory.INSTANCE.create(filter);
         JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
         jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new FilterWrapper(binder, filter)));
-        return filter;
+        return this;
     }
 
     //
     // Directive
     //
     
-    public <D extends Directive> D directive(Class<D> klass) {
+    @Override
+    public <D extends Directive> Module directive(Class<D> klass) {
         D directive = DirectiveCreator.INSTANCE.create(klass);
         return directive(directive);
     }
     
-    public <D extends Directive> D directive(D directive) {
+    protected Module directive(Directive directive) {
         String className = Strings.simpleClassName(directive);
         return directive(Strings.decapitalize(className), directive);
     }
     
-    public <D extends Directive> D directive(String name, final D directive) {
+    protected Module directive(String name, final Directive directive) {
         if (directive == null) {
             return null;
         }
@@ -89,7 +93,7 @@ public abstract class AbstractModule implements Module {
         JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
         jso.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(binder, directive)));
-        return directive;
+        return this;
     }
     
     //
@@ -103,7 +107,8 @@ public abstract class AbstractModule implements Module {
      * @param klass Provider to be configured.
      * @param configurator Configures the provider.
      */
-    public <P extends Provider> P config(final Class<P> klass, final Configurator<P> configurator) {
+    @Override
+    public <P extends Provider> Module config(final Class<P> klass, final Configurator<P> configurator) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
         final P provider = ProviderCreator.INSTANCE.create(klass);
@@ -119,63 +124,65 @@ public abstract class AbstractModule implements Module {
         };
         String[] dependencies = ProviderDependenciesFactory.INSTANCE.create(provider);
         jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
-        return provider;
+        return this;
     }
 
     //
     // Service
     //
     
-    public <S extends Service> S factory(Class<S> klass) {
-        return factory(klass.getName(), klass);
+    @Override
+    public <S extends Service> Module factory(Class<S> klass) {
+        S service = ServiceCreator.INSTANCE.create(klass);
+        return factory(klass.getName(), service);
     }
     
-    public <S extends Service> S factory(String name, final Class<S> klass) {
+    protected Module factory(String name, final Service service) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        final S service = ServiceCreator.INSTANCE.create(klass);
         final JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
-        Function<S> initializer = new Function<S>() {
+        Function<Service> initializer = new Function<Service>() {
 
             @Override
-            public S call(Object... args) {
+            public Service call(Object... args) {
                 binder.apply(args);
                 return service;
             }
         };
         String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(service);
         jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
-        return service;
+        return this;
     }
     
     //
     // Controller
     //
     
-    public <C extends Controller> C controller(Class<C> klass) {
-        return controller(klass.getName(), klass);
+    @Override
+    public <C extends Controller> Module controller(Class<C> klass) {
+        C controller = ControllerCreator.INSTANCE.create(klass);
+        return controller(klass.getName(), controller);
     }
 
-    public <C extends Controller> C controller(final String name, final Class<C> klass) {
+    protected Module controller(final String name, final Controller controller) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        final C controller = ControllerCreator.INSTANCE.create(klass);
         if (controller == null) {
-            String message = "Unable to create " + klass.getName();
+            String message = "Unable to create " + name;
             GWT.log(message, new IllegalStateException(message));
-            return controller;
+            return this;
         }
         final JSClosure scopeBinder = ControllerScopeBinderFactory.INSTANCE.create(controller);
         if (scopeBinder == null) {
-            String message = "Unable to create binder for " + klass.getName();
+            String message = "Unable to create binder for " + name;
             GWT.log(message, new IllegalStateException(message));
-            return controller;
+            return this;
         }
         final JSClosure binder = ControllerBinderFactory.INSTANCE.create(controller);
         if (binder == null) {
-            String message = "Unable to create injector for " + klass.getName();
+            String message = "Unable to create injector for " + name;
             GWT.log(message, new IllegalStateException(message));
-            return controller;
+            return this;
         }
         Closure initializer = new Closure() {
 
@@ -192,7 +199,7 @@ public abstract class AbstractModule implements Module {
                     scopeBinder.apply(args);
                     m = "injecting shiftedArgs";
                     binder.apply(shiftedArgs);
-                    GWT.log(m = klass.getName() + ".onControllerLoad()");
+                    GWT.log(m = name + ".onControllerLoad()");
                     controller.onControllerLoad();
                 } catch (Exception e) {
                     GWT.log("Exception while " + m, e);
@@ -210,13 +217,15 @@ public abstract class AbstractModule implements Module {
             }
         }
         jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
-        return controller;
+        return this;
     }
 
+    @Override
     public String getName() {
         return jso.getName();
     }
 
+    @Override
     public String[] requires() {
         return jso.requires().toArray(JSArray.STRING_ARRAY);
     }

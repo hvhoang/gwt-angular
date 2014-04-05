@@ -30,7 +30,7 @@ public class Angular {
         return modules.toArray(MODULE_ARRAY);
     }
     
-	public static <T extends Module> T module(T module, String... requires) {
+	public static Module module(Module module, String... requires) {
 		Closure closure = new Closure() {
 			@Override
 			public void exec(Object... args) {
@@ -40,11 +40,11 @@ public class Angular {
 		return module(module, closure, requires);
 	}
 	
-    public static <T extends Module> T module(T module, Closure closure, String... requires) {
+    public static Module module(Module module, Closure closure, String... requires) {
         return module(module.getClass().getName(), module, closure, requires);
     }
     
-	public static <T extends Module> T module(String name, T module, Closure closure, String... requires) {
+	public static Module module(String name, Module module, Closure closure, String... requires) {
 	    modules.add(module);
 	    index.put(name, module);
 		JSArray<String> jsrequires = JSArray.create(requires);

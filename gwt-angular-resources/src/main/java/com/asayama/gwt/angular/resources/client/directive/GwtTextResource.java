@@ -17,4 +17,10 @@ public class GwtTextResource extends AbstractDirective {
             element.append(text);
         }
     }
+    
+    @Override
+    public boolean getTransclude() {
+        //TODO https://github.com/kyoken74/gwt-angular/issues/62
+        return true;
+    }
 }
