@@ -43,7 +43,7 @@ GWT (http://www.gwtproject.org)
 AngularJS (http://angularjs.org/)
 
 
-Demo App (gwt-angular-demo)
+Demo App (gwt-angular-site)
 ===========================
 
 The demo application gwt-angular-demo demonstrates the usage of gwt-angular API
