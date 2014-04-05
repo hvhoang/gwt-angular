@@ -47,7 +47,7 @@ public abstract class AbstractModule implements Module {
     
     @Override
     public <F extends Filter> Module filter(Class<F> klass) {
-        F filter = FilterCreator.INSTANCE.create(klass);
+        Filter filter = FilterCreator.INSTANCE.create(klass);
         return filter(filter);
     }
     
@@ -66,7 +66,7 @@ public abstract class AbstractModule implements Module {
 
     @Override
     public <D extends Directive> Module directive(Class<D> klass) {
-        D directive = DirectiveCreator.INSTANCE.create(klass);
+        Directive directive = DirectiveCreator.INSTANCE.create(klass);
         return directive(directive);
     }
     
@@ -84,6 +84,29 @@ public abstract class AbstractModule implements Module {
         JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
         jso.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(binder, directive)));
+        return this;
+    }
+
+    @Override
+    public <S extends Service> Module factory(Class<S> klass) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+        S service = ServiceCreator.INSTANCE.create(klass);
+        return factory(klass.getName(), service);
+    }
+    
+    protected Module factory(String name, final Service service) {
+        final JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
+        Function<Service> initializer = new Function<Service>() {
+
+            @Override
+            public Service call(Object... args) {
+                binder.apply(args);
+                return service;
+            }
+        };
+        String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(service);
+        jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
     
@@ -108,37 +131,14 @@ public abstract class AbstractModule implements Module {
     }
 
     @Override
-    public <S extends Service> Module factory(Class<S> klass) {
-        S service = ServiceCreator.INSTANCE.create(klass);
-        return factory(klass.getName(), service);
-    }
-    
-    protected Module factory(String name, final Service service) {
+    public <C extends Controller> Module controller(Class<C> klass) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        final JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
-        Function<Service> initializer = new Function<Service>() {
-
-            @Override
-            public Service call(Object... args) {
-                binder.apply(args);
-                return service;
-            }
-        };
-        String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(service);
-        jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
-        return this;
-    }
-    
-    @Override
-    public <C extends Controller> Module controller(Class<C> klass) {
-        C controller = ControllerCreator.INSTANCE.create(klass);
+        Controller controller = ControllerCreator.INSTANCE.create(klass);
         return controller(klass.getName(), controller);
     }
 
     protected Module controller(final String name, final Controller controller) {
-        // TODO Defer instantiation until the time of construction
-        // https://github.com/kyoken74/gwt-angular/issues/41
         if (controller == null) {
             String message = "Unable to create " + name;
             GWT.log(message, new IllegalStateException(message));
