@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.controller;
+package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.demo.client.DemoResources;
