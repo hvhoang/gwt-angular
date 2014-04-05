@@ -3,7 +3,7 @@ package com.asayama.gwt.angular.demo.client.controller;
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.demo.client.ProjectConstants;
-import com.asayama.gwt.angular.demo.client.view.DemoPartials;
+import com.asayama.gwt.angular.demo.client.view.DemoResources;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.shared.GWT;
@@ -12,8 +12,8 @@ import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-    public static final String NAVBAR_HTML = DemoPartials.INSTANCE.navbar().getSafeUri().asString();
-    public static final String FOOTER_HTML = DemoPartials.INSTANCE.footer().getSafeUri().asString();
+    public static final String NAVBAR_HTML = DemoResources.INSTANCE.navbar().getSafeUri().asString();
+    public static final String FOOTER_HTML = DemoResources.INSTANCE.footer().getSafeUri().asString();
 
     public static final String PROJECT_GROUP_ID = ProjectConstants.INSTANCE.projectGroupId();
     public static final String PROJECT_ARTIFACT_ID = ProjectConstants.INSTANCE.projectArtifactId();

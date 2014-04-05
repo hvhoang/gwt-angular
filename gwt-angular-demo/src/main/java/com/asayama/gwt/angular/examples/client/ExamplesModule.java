@@ -11,7 +11,7 @@ import com.asayama.gwt.angular.examples.client.controller.TextInputExampleContro
 import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
 import com.asayama.gwt.angular.examples.client.directive.MyHello;
 import com.asayama.gwt.angular.examples.client.filter.Reverse;
-import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsPartials;
+import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsResources;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -36,19 +36,19 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
         pages.add(Page.create("Text Input",
-                ExamplesDocsPartials.INSTANCE.textInput()));
+                ExamplesDocsResources.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event",
-                ExamplesDocsPartials.INSTANCE.onClickEvent()));
+                ExamplesDocsResources.INSTANCE.onClickEvent()));
         pages.add(Page.create("Custom Filter",
-                ExamplesDocsPartials.INSTANCE.reverseFilter()));
+                ExamplesDocsResources.INSTANCE.reverseFilter()));
         pages.add(Page.create("Custom Directive",
-                ExamplesDocsPartials.INSTANCE.customDirective()));
+                ExamplesDocsResources.INSTANCE.customDirective()));
         pages.add(Page.create("URL Hash Parameter",
-                ExamplesDocsPartials.INSTANCE.urlHashParameter()));
+                ExamplesDocsResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client",
-                ExamplesDocsPartials.INSTANCE.httpClient()));
+                ExamplesDocsResources.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify",
-                ExamplesDocsPartials.INSTANCE.prettify()));
+                ExamplesDocsResources.INSTANCE.prettify()));
        return pages;
     }
 }

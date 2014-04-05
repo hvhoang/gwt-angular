@@ -4,9 +4,9 @@ import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
-public interface DemoPartials extends ClientBundle {
+public interface DemoResources extends ClientBundle {
     
-    public static final DemoPartials INSTANCE = GWT.create(DemoPartials.class);
+    public static final DemoResources INSTANCE = GWT.create(DemoResources.class);
     
     @Source("Documentation.html")
     public HtmlResource documentation();

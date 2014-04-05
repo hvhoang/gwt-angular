@@ -7,9 +7,9 @@ import com.google.gwt.resources.client.DataResource.DoNotEmbed;
 import com.google.gwt.resources.client.DataResource.MimeType;
 
 
-public interface ExamplesDemoPartials extends ClientBundle {
+public interface ExamplesDemoResources extends ClientBundle {
 
-    static final ExamplesDemoPartials INSTANCE = GWT.create(ExamplesDemoPartials.class);
+    static final ExamplesDemoResources INSTANCE = GWT.create(ExamplesDemoResources.class);
     
     @DoNotEmbed
     @MimeType("text/html")

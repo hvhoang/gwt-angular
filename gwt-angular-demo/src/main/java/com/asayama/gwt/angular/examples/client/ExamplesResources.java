@@ -8,13 +8,14 @@ import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface ExamplesResources {
+public interface ExamplesResources extends ClientBundle {
+    
+    static ExamplesResources INSTANCE = GWT.create(ExamplesResources.class);
+    
+    TextInput textInput();
 
-    public static interface TextInputExampleResources extends ClientBundle {
+    static interface TextInput extends ClientBundle {
         
-        static final TextInputExampleResources INSTANCE = 
-                GWT.create(TextInputExampleResources.class);
-
         @Source("view/demo/TextInputExample.html")
         public TextResource view();
         
@@ -27,10 +28,9 @@ public interface ExamplesResources {
         public DataResource partial();
     }
 
-    public static interface HttpClientExampleResources extends ClientBundle {
-
-        static final HttpClientExampleResources INSTANCE = 
-                GWT.create(HttpClientExampleResources.class);
+    HttpClient httpClient();
+    
+    static interface HttpClient extends ClientBundle {
 
         @Source("view/demo/HttpClientExample.html")
         public TextResource view();
@@ -39,10 +39,9 @@ public interface ExamplesResources {
         public TextResource controller();
     }
 
-    public static interface OnClickEventExampleResources extends ClientBundle {
-
-        static final OnClickEventExampleResources INSTANCE = 
-                GWT.create(OnClickEventExampleResources.class);
+    OnClickEvent onClickEvent();
+    
+    public static interface OnClickEvent extends ClientBundle {
 
         @Source("view/demo/OnClickEventExample.html")
         public TextResource view();
@@ -51,10 +50,10 @@ public interface ExamplesResources {
         public TextResource controller();
     }
 
-    public static interface ReverseFilterExampleResources extends ClientBundle {
-
-        static final ReverseFilterExampleResources INSTANCE = 
-                GWT.create(ReverseFilterExampleResources.class);
+    
+    ReverseFilter reverseFilter();
+    
+    static interface ReverseFilter extends ClientBundle {
 
         @Source("view/demo/ReverseFilterExample.html")
         public TextResource view();
@@ -68,11 +67,10 @@ public interface ExamplesResources {
         @Source("view/demo/ReverseFilterModule.txt")
         public TextResource module();
     }
+    
+    UrlHashParameter urlHashParameter();
 
-    public static interface UrlHashParameterExampleResources extends ClientBundle {
-
-        static final UrlHashParameterExampleResources INSTANCE = 
-                GWT.create(UrlHashParameterExampleResources.class);
+    static interface UrlHashParameter extends ClientBundle {
 
         @Source("view/demo/UrlHashParameterExample.html")
         public TextResource view();
@@ -80,10 +78,10 @@ public interface ExamplesResources {
         @Source("controller/UrlHashParameterExampleController.java")
         public TextResource controller();
     }
+    
+    Prettify prettify();
 
-    public interface PrettifyExampleResources extends ClientBundle {
-
-        static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
+    public interface Prettify extends ClientBundle {
 
         @Source("view/demo/PrettifyExample.html")
         public TextResource view();
@@ -91,10 +89,10 @@ public interface ExamplesResources {
         @Source("controller/PrettifyExampleController.java")
         public TextResource controller();
     }
+    
+    CustomDirectiveExampleResources customDirective();
 
     public interface CustomDirectiveExampleResources extends ClientBundle {
-
-        static final CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
 
         @Source("view/demo/CustomDirectiveExample.html")
         public TextResource view();

@@ -7,9 +7,9 @@ import com.asayama.gwt.angular.demo.client.controller.DocumentationController;
 import com.asayama.gwt.angular.demo.client.controller.DownloadsController;
 import com.asayama.gwt.angular.demo.client.controller.JumbotronController;
 import com.asayama.gwt.angular.demo.client.controller.NavbarController;
-import com.asayama.gwt.angular.demo.client.view.DemoPartials;
+import com.asayama.gwt.angular.demo.client.view.DemoResources;
 import com.asayama.gwt.angular.examples.client.ExamplesController;
-import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsPartials;
+import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsResources;
 import com.asayama.gwt.angular.route.client.RouteProvider;
 import com.asayama.gwt.angular.tutorial.client.TutorialController;
 import com.asayama.gwt.angular.tutorial.client.view.TutorialPartials;
@@ -27,10 +27,10 @@ public class DemoEntryPoint extends AbstractModule implements EntryPoint {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider
-                    .when("/documentation", DemoPartials.INSTANCE.documentation(), DocumentationController.class)
-                    .when("/downloads", DemoPartials.INSTANCE.downloads(), DownloadsController.class)
-                    .when("/examples", ExamplesDocsPartials.INSTANCE.examples(), ExamplesController.class)
-                    .when("/jumbotron", DemoPartials.INSTANCE.jumbotron(), JumbotronController.class)
+                    .when("/documentation", DemoResources.INSTANCE.documentation(), DocumentationController.class)
+                    .when("/downloads", DemoResources.INSTANCE.downloads(), DownloadsController.class)
+                    .when("/examples", ExamplesDocsResources.INSTANCE.examples(), ExamplesController.class)
+                    .when("/jumbotron", DemoResources.INSTANCE.jumbotron(), JumbotronController.class)
                     .when("/tutorial", TutorialPartials.INSTANCE.tutorial(), TutorialController.class)
                     .otherwise("/jumbotron");
             }

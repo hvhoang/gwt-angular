@@ -5,9 +5,9 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
 
-public interface ExamplesDocsPartials extends ClientBundle {
+public interface ExamplesDocsResources extends ClientBundle {
     
-    public static final ExamplesDocsPartials INSTANCE = GWT.create(ExamplesDocsPartials.class);
+    public static final ExamplesDocsResources INSTANCE = GWT.create(ExamplesDocsResources.class);
 
     @Source("Examples.html")
     public HtmlResource examples();
