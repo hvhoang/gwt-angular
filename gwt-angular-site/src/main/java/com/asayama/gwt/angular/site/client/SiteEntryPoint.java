@@ -26,12 +26,12 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider
-                    .when("/documentation", SiteResources.INSTANCE.documentation(), DocumentationController.class)
-                    .when("/downloads", SiteResources.INSTANCE.downloads(), DownloadsController.class)
-                    .when("/examples", ExamplesResources.INSTANCE.examples(), ExamplesController.class)
-                    .when("/jumbotron", SiteResources.INSTANCE.jumbotron(), JumbotronController.class)
-                    .when("/tutorial", TutorialResources.INSTANCE.tutorial(), TutorialController.class)
-                    .otherwise("/jumbotron");
+                    .when(SiteResources.INSTANCE.documentation(), DocumentationController.class)
+                    .when(SiteResources.INSTANCE.downloads(), DownloadsController.class)
+                    .when(SiteResources.INSTANCE.jumbotron(), JumbotronController.class)
+                    .when(ExamplesResources.INSTANCE.examples(), ExamplesController.class)
+                    .when(TutorialResources.INSTANCE.tutorial(), TutorialController.class)
+                    .otherwise(SiteResources.INSTANCE.jumbotron());
             }
         });
         Angular.bootstrap();

@@ -7,34 +7,31 @@ import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.resources.client.DataResource;
 
 public class RouteProvider implements Provider {
 
     private NGRouteProvider ngo;
 
+    public <C extends Controller> RouteProvider when(HtmlResource partial) {
+        String route = "/" + partial.getName();
+        return when(route, partial);
+    }
+
+    public <C extends Controller> RouteProvider when(HtmlResource partial, Class<C> controllerClass) {
+        String route = "/" + partial.getName();
+        return when(route, partial, controllerClass);
+    }
+
+    public <C extends Controller> RouteProvider when(String route, HtmlResource partial) {
+        return when(route, partial, null);
+    }
+    
     public <C extends Controller> RouteProvider when(String route, HtmlResource partial, Class<C> controllerClass) {
         JSON json = JSON.create();
         json.put("templateUrl", partial.getSafeUri().asString());
-        json.put("controller", controllerClass.getName());
-        ngo.when(route, json);
-        return this;
-    }
-
-    @Deprecated
-    public <C extends Controller> RouteProvider when(String route, DataResource partial, Class<C> controllerClass) {
-        JSON json = JSON.create();
-        json.put("templateUrl", partial.getSafeUri().asString());
-        json.put("controller", controllerClass.getName());
-        ngo.when(route, json);
-        return this;
-    }
-
-    @Deprecated
-    public <C extends Controller> RouteProvider when(String route, String templateUrl, Class<C> controllerClass) {
-        JSON json = JSON.create();
-        json.put("templateUrl", templateUrl);
-        json.put("controller", controllerClass.getName());
+        if (controllerClass != null) {
+            json.put("controller", controllerClass.getName());
+        }
         ngo.when(route, json);
         return this;
     }
@@ -44,6 +41,11 @@ public class RouteProvider implements Provider {
         redirect.put("redirectTo", redirectTo);
         ngo.when(route, redirect);
         return this;
+    }
+
+    public RouteProvider otherwise(HtmlResource partial) {
+        String redirectTo = partial.getName();
+        return otherwise(redirectTo);
     }
 
     public RouteProvider otherwise(String redirectTo) {
