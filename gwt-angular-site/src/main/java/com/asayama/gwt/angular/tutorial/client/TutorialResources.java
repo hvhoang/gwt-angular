@@ -10,7 +10,7 @@ public interface TutorialResources extends ClientBundle {
 
     public static final TutorialResources INSTANCE = GWT.create(TutorialResources.class);
 
-    @Source("tutorial_001.png")
+    @Source("ProjectStructure.png")
     public ImageResource projectStructureImage();
     
     @Source("Tutorial.html")

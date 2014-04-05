@@ -18,7 +18,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         JSArray<Page> pages = JSArray.create();
         pages.add(Page.create("Text Input", ExamplesResources.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event", ExamplesResources.INSTANCE.onClickEvent()));
-        pages.add(Page.create("Custom Filter", ExamplesResources.INSTANCE.reverseFilter()));
+        pages.add(Page.create("Custom Filter", ExamplesResources.INSTANCE.customFilter()));
         pages.add(Page.create("Custom Directive", ExamplesResources.INSTANCE.customDirective()));
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));

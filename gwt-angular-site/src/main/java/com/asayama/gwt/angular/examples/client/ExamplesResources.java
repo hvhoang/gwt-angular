@@ -18,8 +18,8 @@ public interface ExamplesResources extends ClientBundle {
     @Source("OnClickEventExample.html")
     public HtmlResource onClickEvent();
     
-    @Source("ReverseFilterExample.html")
-    public HtmlResource reverseFilter();
+    @Source("CustomFilterExample.html")
+    public HtmlResource customFilter();
     
     @Source("CustomDirectiveExample.html")
     public HtmlResource customDirective();

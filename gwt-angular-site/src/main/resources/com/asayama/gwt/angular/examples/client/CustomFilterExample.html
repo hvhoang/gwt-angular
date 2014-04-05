@@ -8,7 +8,7 @@
     only formats the string on the screen.
   </p>
   <div class="panel panel-primary">
-    <div class="panel-body" data-ng-include="REVERSE_FILTER_DEMO_URL"></div>
+    <div class="panel-body" data-ng-include="CUSTOM_FILTER_DEMO_URL"></div>
   </div>
 
   <h2>Filter</h2>
@@ -18,7 +18,7 @@
     <code>filter(String)</code>. The argument is the original model, and the
     returned string is the formatted string that appears on the screen.
   </p>
-  <pre data-gwt-prettify="REVERSE_FILTER_FILTER"></pre>
+  <pre data-gwt-prettify="CUSTOM_FILTER_FILTER"></pre>
   <p>
     When you create a custom filter, such as ReverseFilter, you must register 
     it with your module. In this example, we let the GWT Angular figure out the
@@ -26,7 +26,7 @@
     name, except that the first letter is not capitalized, i.e. "Reverse" 
     becomes "reverse".
   </p>
-  <pre data-gwt-prettify="REVERSE_FILTER_MODULE"></pre>
+  <pre data-gwt-prettify="CUSTOM_FILTER_MODULE"></pre>
 
   <h2>View</h2>
   <p>
@@ -36,7 +36,7 @@
     course, being the <code>reverse</code>. The filter should be place to the
     right of the model you wish to process.
   </p>
-  <pre data-gwt-prettify="REVERSE_FILTER_VIEW"></pre>
+  <pre data-gwt-prettify="CUSTOM_FILTER_VIEW"></pre>
   <p>
     Note that the use of filter does not alter the state of the underlying 
     model. In another words, if you inspect the value of the <code>caption</code>

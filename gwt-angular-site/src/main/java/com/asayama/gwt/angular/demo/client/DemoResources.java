@@ -50,9 +50,9 @@ public interface DemoResources extends ClientBundle {
         DataResource partial();
     }
 
-    HttpClient httpClientResources();
+    HttpClientResources httpClientResources();
     
-    interface HttpClient extends ClientBundle {
+    interface HttpClientResources extends ClientBundle {
 
         @Source("HttpClientDemo.html")
         TextResource view();
@@ -73,9 +73,9 @@ public interface DemoResources extends ClientBundle {
     }
 
     
-    ReverseFilter reverseFilterResources();
+    CustomFilterResources customFilterResources();
     
-    interface ReverseFilter extends ClientBundle {
+    interface CustomFilterResources extends ClientBundle {
 
         @Source("ReverseFilterDemo.html")
         TextResource view();
@@ -90,9 +90,9 @@ public interface DemoResources extends ClientBundle {
         TextResource module();
     }
     
-    UrlHashParameter urlHashParameterResources();
+    UrlHashParameterResources urlHashParameterResources();
 
-    interface UrlHashParameter extends ClientBundle {
+    interface UrlHashParameterResources extends ClientBundle {
 
         @Source("UrlHashParameterDemo.html")
         TextResource view();

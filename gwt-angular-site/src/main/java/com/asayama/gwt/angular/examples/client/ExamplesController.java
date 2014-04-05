@@ -13,7 +13,7 @@ public class ExamplesController extends AbstractMultiPageController {
     // Partials
     public static final String TEXT_INPUT_DEMO_URL = DemoResources.INSTANCE.textInput().getSafeUri().asString();
     public static final String ONCLICK_DEMO_URL = DemoResources.INSTANCE.onClickEvent().getSafeUri().asString();
-    public static final String REVERSE_FILTER_DEMO_URL = DemoResources.INSTANCE.reverseFilter().getSafeUri().asString();
+    public static final String CUSTOM_FILTER_DEMO_URL = DemoResources.INSTANCE.reverseFilter().getSafeUri().asString();
     public static final String CUSTOM_DIRECTIVE_DEMO_URL = DemoResources.INSTANCE.customDirectiveExample().getSafeUri().asString();
     public static final String URL_HASH_PARAMETER_DEMO_URL = DemoResources.INSTANCE.urlHashParameter().getSafeUri().asString();
     public static final String HTTP_CLIENT_DEMO_URL = DemoResources.INSTANCE.httpClient().getSafeUri().asString();
@@ -28,10 +28,10 @@ public class ExamplesController extends AbstractMultiPageController {
     public static final TextResource ONCLICK_CONTROLLER = DemoResources.INSTANCE.onClickEventResources().controller();
 
     // Reverse Filter Example Resources
-    public static final TextResource REVERSE_FILTER_VIEW = DemoResources.INSTANCE.reverseFilterResources().view();
-    public static final TextResource REVERSE_FILTER_CONTROLLER = DemoResources.INSTANCE.reverseFilterResources().controller();
-    public static final TextResource REVERSE_FILTER_FILTER = DemoResources.INSTANCE.reverseFilterResources().filter();
-    public static final TextResource REVERSE_FILTER_MODULE = DemoResources.INSTANCE.reverseFilterResources().module();
+    public static final TextResource CUSTOM_FILTER_VIEW = DemoResources.INSTANCE.customFilterResources().view();
+    public static final TextResource CUSTOM_FILTER_CONTROLLER = DemoResources.INSTANCE.customFilterResources().controller();
+    public static final TextResource CUSTOM_FILTER_FILTER = DemoResources.INSTANCE.customFilterResources().filter();
+    public static final TextResource CUSTOM_FILTER_MODULE = DemoResources.INSTANCE.customFilterResources().module();
 
     // Custome Directive Example Resources
     public static final TextResource CUSTOM_DIRECTIVE_VIEW = DemoResources.INSTANCE.customDirectiveResources().view();
