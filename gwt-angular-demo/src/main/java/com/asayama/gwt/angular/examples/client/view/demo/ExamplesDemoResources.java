@@ -1,49 +1,32 @@
 package com.asayama.gwt.angular.examples.client.view.demo;
 
+import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.DataResource.DoNotEmbed;
-import com.google.gwt.resources.client.DataResource.MimeType;
 
 
 public interface ExamplesDemoResources extends ClientBundle {
 
     static final ExamplesDemoResources INSTANCE = GWT.create(ExamplesDemoResources.class);
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("CustomDirectiveExample.html")
-    DataResource customDirectiveExample();
+    HtmlResource customDirectiveExample();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("HttpClientExample.html")
-    DataResource httpClient();
+    HtmlResource httpClient();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("OnClickEventExample.html")
-    DataResource onClickEvent();
+    HtmlResource onClickEvent();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("PrettifyExample.html")
-    DataResource prettify();
+    HtmlResource prettify();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("ReverseFilterExample.html")
-    DataResource reverseFilter();
+    HtmlResource reverseFilter();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("TextInputExample.html")
-    DataResource textInput();
+    HtmlResource textInput();
 
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("UrlHashParameterExample.html")
-    DataResource urlHashParameter();
-    
+    HtmlResource urlHashParameter();
 }
