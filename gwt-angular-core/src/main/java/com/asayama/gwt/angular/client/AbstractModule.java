@@ -10,10 +10,18 @@ import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
 
-
+/**
+ * Provides abstract implementation of {@link Module}. See the javadoc comments
+ * on {@link Module} for more details.
+ * 
+ * @author kyoken74
+ */
 public abstract class AbstractModule implements Module {
 
     JSModule jso;
+
+    @Override
+    public abstract void onModuleLoad();
     
     @Override
     public void bind(JSModule jso) {

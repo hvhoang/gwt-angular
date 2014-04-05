@@ -1,14 +1,110 @@
 package com.asayama.gwt.angular.client;
 
+import com.google.gwt.core.client.EntryPoint;
+
 /**
- * Provides GWT Java interface for AngularJS's Module object. 
+ * Provides GWT Java interface for AngularJS's Module object, and acts as an
+ * adapter for GWT module (represented by the EntryPoint interface) and Angular
+ * module (represented by the added interfaces in this class.
+ * 
  * <p>
  * http://docs.angularjs.org/api/angular.Module
+ * </p><p>
+ * An Angular module represents a set of Angular components, such as controllers,
+ * services, filters, and directives. In and of itself, module component does
+ * not offer any added functionality. The task of registering various components
+ * relevant to the module is done by implementing the <code>onModuleLoad()</code>
+ * method.
+ * </p><p>
+ * It is recommended the code to be organized such that a single GWT module
+ * represents a single Angular module. This will help the code organized, and
+ * easier to understand, though this is not strictly enforced by the code. More
+ * advanced users may create separate sets of GWT and Angular module hierarchies
+ * and assemble them any way he wishes.
+ * </p><p>
+ * If you choose to mirror the GWT and Angular modules, then be sure to register
+ * your implementation of your Module to the GWT module descriptor as an
+ * entry point, e.g. com/example/app/MyModule.gwt.xml
+ * <pre>{@code 
+ * <?xml version="1.0" encoding="UTF-8"?>
+ * <module>
+ *   <inherits name="com.google.gwt.user.User" />
+ *   <inherits name="com.asayama.gwt.angular.NG" />
+ *   <source path="client" />
+ *   <entry-point class="com.example.app.client.MyModule" />
+ * </module>
+ * }</pre>
+ * 
+ * The corresponding MyModule class definition may look like
+ * <pre>
+ * // In this hypothetical example, the module consists of a constant named
+ * // "pages", directive named "myHello", filter named "reverse", and two
+ * // controllers, "com.exmaple.client.FooController" and 
+ * // "com.example.client.BarController".
+ * 
+ * package com.example.app.client;
+ * 
+ * public class MyModule extends AbstractModule {
+ *   public void onModuleLoad() {
+ *     Angular.module(this);
+ *     constant("pages", JSArray.create(new String[]{
+ *       "Introduction", "Theory", "Design", "Implementation", 
+ *       "Test Methods", "Test Results", "Analysis", "Reference"
+ *     }));
+ *     directive(MyHello.class);
+ *     filter(Reverse.class);
+ *     controller(FooController.class);
+ *     controller(BarController.class);
+ *   }
+ * }
+ * </pre>
+ * 
+ * Note that this module focuses on registering the components into a single
+ * module, and is not concerned with building the user interface. The work of
+ * building the user interface (or bootstrapping) should be the job of a GWT
+ * module, and it is recommended that this is separated from the rest of the
+ * Angular module hierarchy. For example, com/example/ui/MyEntryPoint.gwt.xml
+ * <pre>{@code 
+ * <?xml version="1.0" encoding="UTF-8"?>
+ * <module>
+ *   <inherits name="com.google.gwt.user.User" />
+ *   <inherits name="com.example.app.MyModule" />
+ *   <source path="client" />
+ *   <entry-point class="com.example.ui.client.MyEntryPoint" />
+ * </module>
+ * }</pre>
+ * 
+ * The corresponding MyEntryPoint class definition may look like
+ * <pre>
+ * package com.example.ui.client;
+ * 
+ * public class MyEntryPoint extends EntryPoint {
+ *   public void onModuleLoad() {
+ *     Angular.bootstrap();
+ *   }
+ * }
+ * </pre>
+ * 
+ * If you follow this code organization convention, then the module dependency
+ * declared with {@code <inherits>} statements in *.gwt.xml files will be
+ * consistent with the Angular module dependency (i.e. "requires" property
+ * in AngularJS). You should have only one entry point that bootstraps the user
+ * interface per application.
+ * <p>
+ * Users should consider extending {@link AbstractModule} rather than directly
+ * implementing this interface.
  * </p>
  * 
  * @author kyoken74
+ * @see AbstractModule
  */
-public interface Module {
+public interface Module extends EntryPoint {
+
+    /**
+     * 
+     */
+    @Override
+    public void onModuleLoad();
     
     /**
      * This method is used to bind the underlying AngularJS module object to
