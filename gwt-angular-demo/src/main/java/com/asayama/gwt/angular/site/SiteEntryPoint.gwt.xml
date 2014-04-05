@@ -9,18 +9,18 @@
   <inherits name="com.asayama.gwt.angular.NG" />
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
 
-  <!-- Angular Modules for Feature Extension -->  
+  <!-- Angular Modules for Feature Extension -->
   <inherits name="com.asayama.gwt.angular.resources.ResourcesModule" />
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
 
-  <!-- Internal Dependency -->  
+  <!-- Internal Dependency -->
   <inherits name="com.asayama.gwt.angular.util.DemoUtil" />
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
   <inherits name="com.asayama.gwt.angular.tutorial.TutorialModule" />
 
   <!-- Project Structure -->
   <source path="client" />
-  <entry-point class="com.asayama.gwt.angular.demo.client.DemoEntryPoint" />
+  <entry-point class="com.asayama.gwt.angular.site.client.SiteEntryPoint" />
 
 </module>

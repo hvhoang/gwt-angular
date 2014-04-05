@@ -1,6 +1,5 @@
 package com.asayama.gwt.resources.client;
 
-import com.asayama.gwt.resources.rebind.HtmlResourceGenerator;
 import com.google.gwt.resources.client.ResourcePrototype;
 import com.google.gwt.resources.ext.ResourceGeneratorType;
 import com.google.gwt.safehtml.shared.SafeUri;

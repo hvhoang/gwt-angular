@@ -5,6 +5,7 @@
   <inherits name="com.google.gwt.i18n.I18N" />
   
   <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.resources.Resources" />
   <inherits name="com.asayama.gwt.angular.route.NGRoute" />
   <inherits name="com.asayama.gwt.angular.sanitize.NGSanitize" />
   <inherits name="com.asayama.gwt.angular.resources.ResourcesModule" />

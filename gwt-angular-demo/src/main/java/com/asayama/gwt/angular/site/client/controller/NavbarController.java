@@ -1,9 +1,9 @@
-package com.asayama.gwt.angular.demo.client.controller;
+package com.asayama.gwt.angular.site.client.controller;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.demo.client.ProjectConstants;
-import com.asayama.gwt.angular.demo.client.view.DemoResources;
+import com.asayama.gwt.angular.site.client.ProjectConstants;
+import com.asayama.gwt.angular.site.client.view.DemoResources;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.shared.GWT;

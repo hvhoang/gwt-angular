@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.demo.client;
+package com.asayama.gwt.angular.site.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Constants;

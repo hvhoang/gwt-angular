@@ -17,9 +17,7 @@ public class SampleModule extends AbstractModule implements EntryPoint {
             @Override
             public void configure(RouteProvider routeProvider) {
                 routeProvider
-                    .when("/sample",
-                            SamplePartials.INSTANCE.sample(), 
-                            SampleController.class)
+                    .when("/sample", SampleResources.INSTANCE.sample(), SampleController.class)
                     .otherwise("/sample");
             }
         });

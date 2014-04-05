@@ -1,8 +1,7 @@
-package com.asayama.gwt.resources.rebind;
+package com.asayama.gwt.resources.client;
 
 import java.net.URL;
 
-import com.asayama.gwt.resources.client.HtmlResourcePrototype;
 import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.typeinfo.JMethod;

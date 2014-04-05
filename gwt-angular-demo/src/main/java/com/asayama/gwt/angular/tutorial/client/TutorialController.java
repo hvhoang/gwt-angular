@@ -11,7 +11,7 @@ public class TutorialController extends AbstractMultiPageController {
 
     public static final ImageResource TUTORIAL_001 = TutorialResources.INSTANCE.tutorial001();
     
-    public static final String SAMPLE_HTML = SamplePartials.INSTANCE.sample().getSafeUri().asString();
+    public static final String SAMPLE_HTML = SampleResources.INSTANCE.sample().getSafeUri().asString();
     
     @Bind("tutorial")
     private JSArray<Page> pages = null;
