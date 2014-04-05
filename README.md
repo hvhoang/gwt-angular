@@ -46,7 +46,7 @@ AngularJS (http://angularjs.org/)
 Demo App (gwt-angular-site)
 ===========================
 
-The demo application gwt-angular-demo demonstrates the usage of gwt-angular API
+The demo application gwt-angular-site demonstrates the usage of gwt-angular API
 in a live application. It is more a documentation than an application.
 
 The demo application uses Twitter's Bootstrap as the view framework.
