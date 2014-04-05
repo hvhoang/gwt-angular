@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.directive;
+package com.asayama.gwt.angular.demo.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.google.gwt.core.client.GWT;

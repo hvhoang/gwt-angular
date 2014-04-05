@@ -2,16 +2,16 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.examples.client.controller.CustomDirectiveExampleController;
-import com.asayama.gwt.angular.examples.client.controller.HttpClientExampleController;
-import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
-import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleController;
-import com.asayama.gwt.angular.examples.client.controller.ReverseFilterExampleController;
-import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
-import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
-import com.asayama.gwt.angular.examples.client.directive.MyHello;
-import com.asayama.gwt.angular.examples.client.filter.Reverse;
-import com.asayama.gwt.angular.examples.client.view.docs.ExamplesDocsResources;
+import com.asayama.gwt.angular.demo.client.controller.CustomDirectiveExampleController;
+import com.asayama.gwt.angular.demo.client.controller.HttpClientExampleController;
+import com.asayama.gwt.angular.demo.client.controller.OnClickEventExampleController;
+import com.asayama.gwt.angular.demo.client.controller.PrettifyExampleController;
+import com.asayama.gwt.angular.demo.client.controller.ReverseFilterExampleController;
+import com.asayama.gwt.angular.demo.client.controller.TextInputExampleController;
+import com.asayama.gwt.angular.demo.client.controller.UrlHashParameterExampleController;
+import com.asayama.gwt.angular.demo.client.directive.MyHello;
+import com.asayama.gwt.angular.demo.client.filter.Reverse;
+import com.asayama.gwt.angular.examples.client.controller.ExamplesController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -36,19 +36,19 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
         pages.add(Page.create("Text Input",
-                ExamplesDocsResources.INSTANCE.textInput()));
+                ExamplesResources.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event",
-                ExamplesDocsResources.INSTANCE.onClickEvent()));
+                ExamplesResources.INSTANCE.onClickEvent()));
         pages.add(Page.create("Custom Filter",
-                ExamplesDocsResources.INSTANCE.reverseFilter()));
+                ExamplesResources.INSTANCE.reverseFilter()));
         pages.add(Page.create("Custom Directive",
-                ExamplesDocsResources.INSTANCE.customDirective()));
+                ExamplesResources.INSTANCE.customDirective()));
         pages.add(Page.create("URL Hash Parameter",
-                ExamplesDocsResources.INSTANCE.urlHashParameter()));
+                ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client",
-                ExamplesDocsResources.INSTANCE.httpClient()));
+                ExamplesResources.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify",
-                ExamplesDocsResources.INSTANCE.prettify()));
+                ExamplesResources.INSTANCE.prettify()));
        return pages;
     }
 }

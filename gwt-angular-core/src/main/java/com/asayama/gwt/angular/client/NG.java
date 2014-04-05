@@ -23,7 +23,7 @@ public class NG extends AbstractModule implements EntryPoint {
                     .fromString(AngularScripts.INSTANCE.debug().getText())
                     .setWindow(JSObject.$wnd).inject();
             }
-            Angular.module(this, "ng");
+            Angular.moduleWithDependency(this, "ng");
             factory(Q.class);
             factory(Location.class);
             factory(Log.class);

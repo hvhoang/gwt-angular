@@ -29,8 +29,12 @@ public class Angular {
     public static Module[] modules() {
         return modules.toArray(MODULE_ARRAY);
     }
-    
-	public static Module module(Module module, String... requires) {
+
+    public static Module module(Module module) {
+        return moduleWithDependency(module);
+    }
+
+	public static Module moduleWithDependency(Module module, String... requires) {
 		Closure closure = new Closure() {
 			@Override
 			public void exec(Object... args) {

@@ -13,7 +13,7 @@ public class MasonryModule extends AbstractModule implements EntryPoint {
         String m = "";
         try {
             GWT.log(m = "initializing " + getClass().getName());
-            Angular.module(this, "wu.masonry");
+            Angular.moduleWithDependency(this, "wu.masonry");
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

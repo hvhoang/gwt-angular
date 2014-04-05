@@ -1,25 +1,25 @@
-package com.asayama.gwt.angular.site.client.view;
+package com.asayama.gwt.angular.site.client;
 
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
-public interface DemoResources extends ClientBundle {
+public interface SiteResources extends ClientBundle {
     
-    public static final DemoResources INSTANCE = GWT.create(DemoResources.class);
+    public static final SiteResources INSTANCE = GWT.create(SiteResources.class);
     
-    @Source("Documentation.html")
+    @Source("view/Documentation.html")
     public HtmlResource documentation();
     
-    @Source("Downloads.html")
+    @Source("view/Downloads.html")
     public HtmlResource downloads();
     
-    @Source("Jumbotron.html")
+    @Source("view/Jumbotron.html")
     public HtmlResource jumbotron();
     
-    @Source("Navbar.html")
+    @Source("view/Navbar.html")
     public HtmlResource navbar();
     
-    @Source("Footer.html")
+    @Source("view/Footer.html")
     public HtmlResource footer();
 }

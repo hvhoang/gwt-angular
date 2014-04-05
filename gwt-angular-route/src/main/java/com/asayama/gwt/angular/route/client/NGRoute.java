@@ -22,7 +22,7 @@ public class NGRoute extends AbstractModule implements EntryPoint {
                     .fromString(AngularRouteScripts.INSTANCE.debug().getText())
                     .setWindow(JSObject.$wnd).inject();
             }
-            Angular.module(this, "ngRoute");
+            Angular.moduleWithDependency(this, "ngRoute");
             factory(RouteParams.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);

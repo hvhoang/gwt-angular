@@ -22,7 +22,7 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
                     .fromString(AngularSanitizeScripts.INSTANCE.debug().getText())
                     .setWindow(JSObject.$wnd).inject();
             }
-            Angular.module(this, "ngSanitize");
+            Angular.moduleWithDependency(this, "ngSanitize");
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

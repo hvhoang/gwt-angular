@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.controller;
+package com.asayama.gwt.angular.demo.client.controller;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.controller;
+package com.asayama.gwt.angular.demo.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.client.GWT;
@@ -24,6 +24,6 @@ interface PrettifyExampleResources extends ClientBundle {
     static final PrettifyExampleResources INSTANCE =
             GWT.create(PrettifyExampleResources.class);
     
-    @Source("com/asayama/gwt/angular/examples/client/view/demo/PrettifyExample.html")
+    @Source("com/asayama/gwt/angular/demo/client/view/PrettifyExample.html")
     TextResource demoHtml();
 }
