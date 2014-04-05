@@ -10,17 +10,20 @@ import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
 
-/**
- * Provides GWT Java representation of AngularJS's Module object.
- * <p>
- * http://docs.angularjs.org/api/angular.Module
- * </p>
- * 
- * @author kyoken74
- */
+
 public abstract class AbstractModule implements Module {
 
-    private JSModule jso;
+    JSModule jso;
+    
+    @Override
+    public void bind(JSModule jso) {
+        this.jso = jso;
+    }
+
+    @Override
+    public String getName() {
+        return jso.getName();
+    }
 
     @Override
     public Module value(String name, Object value) {
@@ -96,10 +99,6 @@ public abstract class AbstractModule implements Module {
         return this;
     }
 
-    //
-    // Service
-    //
-    
     @Override
     public <S extends Service> Module factory(Class<S> klass) {
         S service = ServiceCreator.INSTANCE.create(klass);
@@ -122,10 +121,6 @@ public abstract class AbstractModule implements Module {
         jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
-    
-    //
-    // Controller
-    //
     
     @Override
     public <C extends Controller> Module controller(Class<C> klass) {
@@ -187,26 +182,6 @@ public abstract class AbstractModule implements Module {
         }
         jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
         return this;
-    }
-
-    @Override
-    public String getName() {
-        return jso.getName();
-    }
-
-    @Override
-    public String[] requires() {
-        return jso.requires().toArray(JSArray.STRING_ARRAY);
-    }
-    
-    @Override
-    public void bind(JSModule jso) {
-        this.jso = jso;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
     }
 }
 

@@ -1,11 +1,31 @@
 package com.asayama.gwt.angular.client;
 
-
+/**
+ * Provides GWT Java interface for AngularJS's Module object. 
+ * <p>
+ * http://docs.angularjs.org/api/angular.Module
+ * </p>
+ * 
+ * @author kyoken74
+ */
 public interface Module {
-
-    String getName();
-    String[] requires();
+    
+    /**
+     * This method is used to bind the underlying AngularJS module object to
+     * the Java wrapper.
+     * <ul>
+     * <li>https://github.com/kyoken74/gwt-angular/issues/64</li>
+     * </ul>
+     */
     void bind(JSModule jso);
+
+    /**
+     * Returns the name of the module. Every Angular module must be registered
+     * with Angular framework, and give a name at the time of the registration.
+     * This ensures that only one instance of the module per name exists at
+     * runtime. See {@link Angular } class methods for more details.
+     */
+    String getName();
 
     /**
      * Defines a value as a service to the module.
@@ -16,7 +36,7 @@ public interface Module {
     Module value(String name, Object value);
 
     /**
-     * Defines a value as a serive to the module.
+     * Defines a value as a service to the module.
      * @param name Name by which to register the value with {@link Injector}
      * @param value Value object to register with {@link Injector}
      * @return Value object registered with {@link Injector}
@@ -56,7 +76,7 @@ public interface Module {
     <P extends Provider> Module config(Class<P> klass, Configurator<P> configurator);
     
     /**
-     * Registers a service component with the modle. The name of the component
+     * Registers a service component with the module. The name of the component
      * is derived from the class name, e.g.
      * <pre>
      * // Derived name is "com.example.MyService".
@@ -66,7 +86,7 @@ public interface Module {
     <S extends Service> Module factory(Class<S> klass);
     
     /**
-     * Registers a controller component with the modle. The name of the 
+     * Registers a controller component with the module. The name of the 
      * component is derived from the class name, e.g.
      * <pre>
      * // Derived name is "com.example.MyController".
