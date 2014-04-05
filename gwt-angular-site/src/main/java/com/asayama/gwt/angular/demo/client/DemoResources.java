@@ -13,122 +13,122 @@ public interface DemoResources extends ClientBundle {
 
     static final DemoResources INSTANCE = GWT.create(DemoResources.class);
     
-    @Source("CustomDirectiveExample.html")
+    @Source("CustomDirectiveDemo.html")
     HtmlResource customDirectiveExample();
     
-    @Source("HttpClientExample.html")
+    @Source("HttpClientDemo.html")
     HtmlResource httpClient();
 
-    @Source("OnClickEventExample.html")
+    @Source("OnClickEventDemo.html")
     HtmlResource onClickEvent();
 
-    @Source("PrettifyExample.html")
+    @Source("PrettifyDemo.html")
     HtmlResource prettify();
 
-    @Source("ReverseFilterExample.html")
+    @Source("ReverseFilterDemo.html")
     HtmlResource reverseFilter();
 
-    @Source("TextInputExample.html")
+    @Source("TextInputDemo.html")
     HtmlResource textInput();
 
-    @Source("UrlHashParameterExample.html")
+    @Source("UrlHashParameterDemo.html")
     HtmlResource urlHashParameter();
 
     TextInput textInputResources();
 
-    static interface TextInput extends ClientBundle {
+    interface TextInput extends ClientBundle {
         
-        @Source("TextInputExample.html")
-        public TextResource view();
+        @Source("TextInputDemo.html")
+        TextResource view();
         
-        @Source("controller/TextInputExampleController.java")
-        public TextResource controller();
+        @Source("controller/TextInputDemoController.java")
+        TextResource controller();
         
         @DoNotEmbed
         @MimeType("text/html")
-        @Source("TextInputExample.html")
-        public DataResource partial();
+        @Source("TextInputDemo.html")
+        DataResource partial();
     }
 
     HttpClient httpClientResources();
     
-    static interface HttpClient extends ClientBundle {
+    interface HttpClient extends ClientBundle {
 
-        @Source("HttpClientExample.html")
-        public TextResource view();
+        @Source("HttpClientDemo.html")
+        TextResource view();
         
-        @Source("controller/HttpClientExampleController.java")
-        public TextResource controller();
+        @Source("controller/HttpClientDemoController.java")
+        TextResource controller();
     }
 
     OnClickEvent onClickEventResources();
     
-    public static interface OnClickEvent extends ClientBundle {
+    interface OnClickEvent extends ClientBundle {
 
-        @Source("OnClickEventExample.html")
-        public TextResource view();
+        @Source("OnClickEventDemo.html")
+        TextResource view();
         
-        @Source("controller/OnClickEventExampleController.java")
-        public TextResource controller();
+        @Source("controller/OnClickEventDemoController.java")
+        TextResource controller();
     }
 
     
     ReverseFilter reverseFilterResources();
     
-    static interface ReverseFilter extends ClientBundle {
+    interface ReverseFilter extends ClientBundle {
 
-        @Source("ReverseFilterExample.html")
-        public TextResource view();
+        @Source("ReverseFilterDemo.html")
+        TextResource view();
         
-        @Source("controller/ReverseFilterExampleController.java")
-        public TextResource controller();
+        @Source("controller/ReverseFilterDemoController.java")
+        TextResource controller();
 
         @Source("filter/Reverse.java")
-        public TextResource filter();
+        TextResource filter();
 
         @Source("ReverseFilterModule.txt")
-        public TextResource module();
+        TextResource module();
     }
     
     UrlHashParameter urlHashParameterResources();
 
-    static interface UrlHashParameter extends ClientBundle {
+    interface UrlHashParameter extends ClientBundle {
 
-        @Source("UrlHashParameterExample.html")
-        public TextResource view();
+        @Source("UrlHashParameterDemo.html")
+        TextResource view();
         
-        @Source("controller/UrlHashParameterExampleController.java")
-        public TextResource controller();
+        @Source("controller/UrlHashParameterDemoController.java")
+        TextResource controller();
     }
     
     Prettify prettifyResources();
 
-    public interface Prettify extends ClientBundle {
+    interface Prettify extends ClientBundle {
 
-        @Source("PrettifyExample.html")
-        public TextResource view();
+        @Source("PrettifyDemo.html")
+        TextResource view();
         
-        @Source("controller/PrettifyExampleController.java")
-        public TextResource controller();
+        @Source("controller/PrettifyDemoController.java")
+        TextResource controller();
     }
     
     CustomDirectiveExampleResources customDirectiveResources();
 
-    public interface CustomDirectiveExampleResources extends ClientBundle {
+    interface CustomDirectiveExampleResources extends ClientBundle {
 
-        @Source("CustomDirectiveExample.html")
-        public TextResource view();
+        @Source("CustomDirectiveDemo.html")
+        TextResource view();
 
         @Source("CustomeDirectiveModule.txt")
-        public TextResource module();
+        TextResource module();
         
         @Source("directive/MyHello.java")
-        public TextResource directive();
+        TextResource directive();
         
         @Source("directive/MyHello.html")
-        public TextResource template();
+        TextResource template();
 
-        @Source("controller/CustomDirectiveExampleController.java")
-        public TextResource controller();
+        @Source("controller/CustomDirectiveDemoController.java")
+        TextResource controller();
     }
 }

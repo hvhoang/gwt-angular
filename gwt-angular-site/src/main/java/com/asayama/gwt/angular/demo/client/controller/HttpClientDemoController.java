@@ -9,7 +9,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 
-public class HttpClientExampleController implements Controller {
+public class HttpClientDemoController implements Controller {
 
     // Fields of type Injectable are injected by the framework
     

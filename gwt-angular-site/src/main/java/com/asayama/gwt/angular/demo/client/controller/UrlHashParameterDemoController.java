@@ -4,7 +4,7 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
 
-public class UrlHashParameterExampleController implements Controller {
+public class UrlHashParameterDemoController implements Controller {
 
     // Injectable fields are automatically injected by the framework
     

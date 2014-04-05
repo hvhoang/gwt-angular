@@ -3,7 +3,7 @@ package com.asayama.gwt.angular.demo.client.controller;
 import com.asayama.gwt.angular.client.Controller;
 
 
-public class CustomDirectiveExampleController implements Controller {
+public class CustomDirectiveDemoController implements Controller {
 
     private String name = null;
     
