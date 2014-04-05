@@ -22,33 +22,17 @@ public abstract class AbstractModule implements Module {
 
     private JSModule jso;
 
-    /**
-     * Defines a value as a service to the module.
-     * @param name Name by which to register the value with {@link Injector}
-     * @param value Value object to register with {@link Injector}
-     * @return Value object registered with {@link Injector}
-     */
     @Override
     public Module value(String name, Object value) {
         jso.value(name, value);
         return this;
     }
 
-    /**
-     * Defines a value as a serive to the module.
-     * @param name Name by which to register the value with {@link Injector}
-     * @param value Value object to register with {@link Injector}
-     * @return Value object registered with {@link Injector}
-     */
     @Override
     public Module constant(String name, Object value) {
         jso.constant(name, value);
         return this;
     }
-    
-    //
-    // Filter
-    //
     
     @Override
     public <F extends Filter> Module filter(Class<F> klass) {
@@ -69,10 +53,6 @@ public abstract class AbstractModule implements Module {
         return this;
     }
 
-    //
-    // Directive
-    //
-    
     @Override
     public <D extends Directive> Module directive(Class<D> klass) {
         D directive = DirectiveCreator.INSTANCE.create(klass);
@@ -96,17 +76,6 @@ public abstract class AbstractModule implements Module {
         return this;
     }
     
-    //
-    // Provider
-    //
-    
-    /**
-     * Configures a previously created service object. Use the {@link Configurator}
-     * to configure the provider injected into the module.
-     * 
-     * @param klass Provider to be configured.
-     * @param configurator Configures the provider.
-     */
     @Override
     public <P extends Provider> Module config(final Class<P> klass, final Configurator<P> configurator) {
         // TODO Defer instantiation until the time of construction
