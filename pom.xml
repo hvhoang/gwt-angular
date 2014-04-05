@@ -8,13 +8,13 @@
   <name>gwt-angular</name>
   <modules>
     <module>gwt-angular-core</module>
-    <module>gwt-angular-demo</module>
     <module>gwt-angular-http</module>
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-resources</module>
     <module>gwt-angular-route</module>
     <module>gwt-angular-sanitize</module>
+    <module>gwt-angular-site</module>
     <module>gwt-angular-tutorial</module>
     <module>kyoken74-gwt</module>
   </modules>
