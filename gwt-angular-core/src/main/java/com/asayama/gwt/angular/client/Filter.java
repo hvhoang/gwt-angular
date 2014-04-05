@@ -6,7 +6,7 @@ import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.util.client.Arrays;
 
 
-public interface Filter {
+public interface Filter { //extends Injectable {
 
     String filter(String input, Object... options);
 

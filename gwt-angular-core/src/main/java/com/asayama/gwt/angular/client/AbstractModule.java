@@ -53,6 +53,7 @@ public abstract class AbstractModule implements Module {
     
     protected Module filter(Filter filter) {
         String className = Strings.simpleClassName(filter);
+        filter(className, filter);
         return filter(Strings.decapitalize(className), filter);
     }
     

@@ -5,20 +5,32 @@ import com.asayama.gwt.angular.client.NGElement;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jsni.client.JSON;
+import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 /**
- * Applies google-code-prettify style to an inline HTML text. This is a class
+ * Applies google-code-prettify style to a TextResource. This is an attribute
  * directive.
  * <pre>{@code 
- * <pre class="gwt-prettify">
- * &lt;h1&gt;Hello, World!&lt;/h1&gt;
- * </pre>
+ * <pre data-gwt-prettify="MY_TEXT"></pre>
  * }</pre>
  * 
- * Note that, if you want to inline an HTML or XML text, you must escape all the
- * HTML code manually. While this is feasible for small code snippets, for 
- * larger text, consider separating the text into its own file, and use a 
- * TextResource based {@link GwtTextPrettify} instead.
+ * The above code shows the scope variable MY_TEXT of type TextResource is bound
+ * to the &lt;pre&gt; element.
+ * <pre>
+ * // Controller defines MY_TEXT which is bound the the controller's scope.
+ * public MyController implements Controller {
+ *   public static final TextResource MY_TEXT = MyResource.INSTANCE.myText();
+ *   ...
+ * }
+ * 
+ * // my.txt file content is bound to myText() method.
+ * public MyResource extends ClientBundle {
+ *   public static MyResource INSTANCE = GWT.create(MyResource.class);
+ *   @Source("my.txt")
+ *   public TextResource myText();
+ * }
+ * </pre>
  * 
  * @author kyoken74
  */
@@ -29,19 +41,15 @@ public class GwtPrettify extends AbstractDirective {
     
     @Override
     public Restrict[] getRestrict() {
-        return new Restrict[]{ Restrict.Class };
+        return new Restrict[]{ Restrict.Attribute, Restrict.Class };
     }
-    
-    //TODO https://github.com/kyoken74/gwt-angular/issues/62
-    @Override
-    public boolean getTransclude() {
-        return true;
-    }
-    
+
     @Override
     public void link(NGScope scope, NGElement element, JSON attrs) {
-        String text = element.html();
-        element.empty();
+        TextResource resource = scope.get(getName());
+        String text = resource == null ? element.html() : 
+                    SafeHtmlUtils.htmlEscape(resource.getText());
+        //element.empty();
         element.append(filter.filter(text));
     }
 }
