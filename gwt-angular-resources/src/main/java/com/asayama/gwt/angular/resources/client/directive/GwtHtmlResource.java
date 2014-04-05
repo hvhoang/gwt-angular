@@ -7,18 +7,18 @@ import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.q.SuccessCallback;
 import com.asayama.gwt.jsni.client.JSON;
+import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.safehtml.shared.SafeUri;
 
 
-public class GwtDataResource extends AbstractDirective {
+public class GwtHtmlResource extends AbstractDirective {
     
     private Q q;
 
     @Override
     public void link(final NGScope scope, final NGElement element, JSON attrs) {
-        DataResource resource = scope.get(getName());
+        HtmlResource resource = scope.get(getName());
         if (resource != null) {
             SafeUri safeUri = resource.getSafeUri();
             String url = safeUri.asString();

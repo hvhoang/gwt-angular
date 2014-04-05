@@ -2,6 +2,7 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.resources.Resources" />
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.route.client.NGRoute" />
 </module>

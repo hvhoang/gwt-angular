@@ -35,5 +35,9 @@
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-resources</artifactId>
+    </dependency>
   </dependencies>
 </project>

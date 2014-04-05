@@ -1,38 +1,25 @@
 package com.asayama.gwt.angular.demo.client.view;
 
+import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.DataResource.DoNotEmbed;
-import com.google.gwt.resources.client.DataResource.MimeType;
-
 
 public interface DemoPartials extends ClientBundle {
     
     public static final DemoPartials INSTANCE = GWT.create(DemoPartials.class);
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Documentation.html")
-    public DataResource documentation();
+    public HtmlResource documentation();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Downloads.html")
-    public DataResource downloads();
+    public HtmlResource downloads();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Jumbotron.html")
-    public DataResource jumbotron();
+    public HtmlResource jumbotron();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Navbar.html")
-    public DataResource navbar();
+    public HtmlResource navbar();
     
-    @DoNotEmbed
-    @MimeType("text/html")
     @Source("Footer.html")
-    public DataResource footer();
+    public HtmlResource footer();
 }

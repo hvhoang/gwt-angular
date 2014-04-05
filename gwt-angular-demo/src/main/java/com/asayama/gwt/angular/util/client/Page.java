@@ -1,12 +1,12 @@
 package com.asayama.gwt.angular.util.client;
 
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.resources.client.DataResource;
+import com.asayama.gwt.resources.client.HtmlResource;
 
 
 public class Page extends JSON {
     
-    public static Page create(String title, DataResource partial) {
+    public static Page create(String title, HtmlResource partial) {
         return create(title, partial.getName(), partial.getSafeUri().asString());
     }
     
