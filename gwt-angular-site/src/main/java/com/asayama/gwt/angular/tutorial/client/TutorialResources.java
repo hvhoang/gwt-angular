@@ -7,12 +7,24 @@ import com.google.gwt.resources.client.ImageResource;
 
 
 public interface TutorialResources extends ClientBundle {
-    
-    static final TutorialResources INSTANCE = GWT.create(TutorialResources.class);
-    
+
+    public static final TutorialResources INSTANCE = GWT.create(TutorialResources.class);
+
     @Source("tutorial_001.png")
-    ImageResource tutorial001();
+    public ImageResource projectStructureImage();
     
-    @Source("view/ProjectStructure.html")
-    HtmlResource projectStructure();
+    @Source("Tutorial.html")
+    public HtmlResource tutorial();
+    
+    @Source("Introduction.html")
+    public HtmlResource introduction();
+
+    @Source("ProjectStructure.html")
+    public HtmlResource projectStructure();
+
+    @Source("ProjectObjectModel.html")
+    public HtmlResource projectObjectModel();
+
+    @Source("GwtModuleXml.html")
+    public HtmlResource gwtModuleXML();
 }

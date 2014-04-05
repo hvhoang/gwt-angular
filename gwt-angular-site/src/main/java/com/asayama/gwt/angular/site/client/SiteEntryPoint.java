@@ -11,7 +11,7 @@ import com.asayama.gwt.angular.site.client.controller.DownloadsController;
 import com.asayama.gwt.angular.site.client.controller.JumbotronController;
 import com.asayama.gwt.angular.site.client.controller.NavbarController;
 import com.asayama.gwt.angular.tutorial.client.TutorialController;
-import com.asayama.gwt.angular.tutorial.client.view.TutorialPartials;
+import com.asayama.gwt.angular.tutorial.client.TutorialResources;
 import com.google.gwt.core.client.EntryPoint;
 
 public class SiteEntryPoint extends AbstractModule implements EntryPoint {
@@ -30,7 +30,7 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
                     .when("/downloads", SiteResources.INSTANCE.downloads(), DownloadsController.class)
                     .when("/examples", ExamplesResources.INSTANCE.examples(), ExamplesController.class)
                     .when("/jumbotron", SiteResources.INSTANCE.jumbotron(), JumbotronController.class)
-                    .when("/tutorial", TutorialPartials.INSTANCE.tutorial(), TutorialController.class)
+                    .when("/tutorial", TutorialResources.INSTANCE.tutorial(), TutorialController.class)
                     .otherwise("/jumbotron");
             }
         });

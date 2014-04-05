@@ -8,18 +8,18 @@ public interface SiteResources extends ClientBundle {
     
     public static final SiteResources INSTANCE = GWT.create(SiteResources.class);
     
-    @Source("view/Documentation.html")
+    @Source("Documentation.html")
     public HtmlResource documentation();
     
-    @Source("view/Downloads.html")
+    @Source("Downloads.html")
     public HtmlResource downloads();
     
-    @Source("view/Jumbotron.html")
+    @Source("Jumbotron.html")
     public HtmlResource jumbotron();
     
-    @Source("view/Navbar.html")
+    @Source("Navbar.html")
     public HtmlResource navbar();
     
-    @Source("view/Footer.html")
+    @Source("Footer.html")
     public HtmlResource footer();
 }

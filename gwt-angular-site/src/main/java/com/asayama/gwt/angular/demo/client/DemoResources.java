@@ -13,32 +13,32 @@ public interface DemoResources extends ClientBundle {
 
     static final DemoResources INSTANCE = GWT.create(DemoResources.class);
     
-    @Source("view/CustomDirectiveExample.html")
+    @Source("CustomDirectiveExample.html")
     HtmlResource customDirectiveExample();
     
-    @Source("view/HttpClientExample.html")
+    @Source("HttpClientExample.html")
     HtmlResource httpClient();
 
-    @Source("view/OnClickEventExample.html")
+    @Source("OnClickEventExample.html")
     HtmlResource onClickEvent();
 
-    @Source("view/PrettifyExample.html")
+    @Source("PrettifyExample.html")
     HtmlResource prettify();
 
-    @Source("view/ReverseFilterExample.html")
+    @Source("ReverseFilterExample.html")
     HtmlResource reverseFilter();
 
-    @Source("view/TextInputExample.html")
+    @Source("TextInputExample.html")
     HtmlResource textInput();
 
-    @Source("view/UrlHashParameterExample.html")
+    @Source("UrlHashParameterExample.html")
     HtmlResource urlHashParameter();
 
     TextInput textInputResources();
 
     static interface TextInput extends ClientBundle {
         
-        @Source("view/TextInputExample.html")
+        @Source("TextInputExample.html")
         public TextResource view();
         
         @Source("controller/TextInputExampleController.java")
@@ -46,7 +46,7 @@ public interface DemoResources extends ClientBundle {
         
         @DoNotEmbed
         @MimeType("text/html")
-        @Source("view/TextInputExample.html")
+        @Source("TextInputExample.html")
         public DataResource partial();
     }
 
@@ -54,7 +54,7 @@ public interface DemoResources extends ClientBundle {
     
     static interface HttpClient extends ClientBundle {
 
-        @Source("view/HttpClientExample.html")
+        @Source("HttpClientExample.html")
         public TextResource view();
         
         @Source("controller/HttpClientExampleController.java")
@@ -65,7 +65,7 @@ public interface DemoResources extends ClientBundle {
     
     public static interface OnClickEvent extends ClientBundle {
 
-        @Source("view/OnClickEventExample.html")
+        @Source("OnClickEventExample.html")
         public TextResource view();
         
         @Source("controller/OnClickEventExampleController.java")
@@ -77,7 +77,7 @@ public interface DemoResources extends ClientBundle {
     
     static interface ReverseFilter extends ClientBundle {
 
-        @Source("view/ReverseFilterExample.html")
+        @Source("ReverseFilterExample.html")
         public TextResource view();
         
         @Source("controller/ReverseFilterExampleController.java")
@@ -86,7 +86,7 @@ public interface DemoResources extends ClientBundle {
         @Source("filter/Reverse.java")
         public TextResource filter();
 
-        @Source("view/ReverseFilterModule.txt")
+        @Source("ReverseFilterModule.txt")
         public TextResource module();
     }
     
@@ -94,7 +94,7 @@ public interface DemoResources extends ClientBundle {
 
     static interface UrlHashParameter extends ClientBundle {
 
-        @Source("view/UrlHashParameterExample.html")
+        @Source("UrlHashParameterExample.html")
         public TextResource view();
         
         @Source("controller/UrlHashParameterExampleController.java")
@@ -105,7 +105,7 @@ public interface DemoResources extends ClientBundle {
 
     public interface Prettify extends ClientBundle {
 
-        @Source("view/PrettifyExample.html")
+        @Source("PrettifyExample.html")
         public TextResource view();
         
         @Source("controller/PrettifyExampleController.java")
@@ -116,10 +116,10 @@ public interface DemoResources extends ClientBundle {
 
     public interface CustomDirectiveExampleResources extends ClientBundle {
 
-        @Source("view/CustomDirectiveExample.html")
+        @Source("CustomDirectiveExample.html")
         public TextResource view();
 
-        @Source("view/CustomeDirectiveModule.txt")
+        @Source("CustomeDirectiveModule.txt")
         public TextResource module();
         
         @Source("directive/MyHello.java")

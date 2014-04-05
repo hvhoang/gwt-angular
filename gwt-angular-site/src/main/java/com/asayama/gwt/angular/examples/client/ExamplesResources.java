@@ -9,27 +9,27 @@ public interface ExamplesResources extends ClientBundle {
     
     public static final ExamplesResources INSTANCE = GWT.create(ExamplesResources.class);
 
-    @Source("view/Examples.html")
+    @Source("Examples.html")
     public HtmlResource examples();
     
-    @Source("view/TextInputExample.html")
+    @Source("TextInputExample.html")
     public HtmlResource textInput();
     
-    @Source("view/OnClickEventExample.html")
+    @Source("OnClickEventExample.html")
     public HtmlResource onClickEvent();
     
-    @Source("view/ReverseFilterExample.html")
+    @Source("ReverseFilterExample.html")
     public HtmlResource reverseFilter();
     
-    @Source("view/CustomDirectiveExample.html")
+    @Source("CustomDirectiveExample.html")
     public HtmlResource customDirective();
 
-    @Source("view/UrlHashParameterExample.html")
+    @Source("UrlHashParameterExample.html")
     public HtmlResource urlHashParameter();
     
-    @Source("view/HttpClientExample.html")
+    @Source("HttpClientExample.html")
     public HtmlResource httpClient();
 
-    @Source("view/PrettifyExample.html")
+    @Source("PrettifyExample.html")
     public HtmlResource prettify();
 }
