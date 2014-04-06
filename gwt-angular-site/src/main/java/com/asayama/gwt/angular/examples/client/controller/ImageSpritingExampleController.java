@@ -7,7 +7,7 @@ import com.google.gwt.resources.client.TextResource;
 
 public class ImageSpritingExampleController implements Controller {
 
-    public static final String DEMO_URL = ImageSpritingDemoResources.INSTANCE.imageSpriting().getSafeUri().asString();
+    public static final String DEMO_URL = ImageSpritingDemoResources.INSTANCE.partial().getSafeUri().asString();
     public static final TextResource VIEW_CODE = ImageSpritingDemoResources.INSTANCE.view();
     public static final TextResource CONTROLLER_CODE = ImageSpritingDemoResources.INSTANCE.controller();
 

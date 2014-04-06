@@ -11,7 +11,7 @@ public interface ImageSpritingDemoResources extends ClientBundle {
     static ImageSpritingDemoResources INSTANCE = GWT.create(ImageSpritingDemoResources.class);
 
     @Source("ImageSpritingDemo.html")
-    HtmlResource imageSpriting();
+    HtmlResource partial();
 
     @Source("ImageSpritingDemo.html")
     TextResource view();

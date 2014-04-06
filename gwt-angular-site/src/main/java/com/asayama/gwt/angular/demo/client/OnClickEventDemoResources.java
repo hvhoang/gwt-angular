@@ -6,16 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputDemoResources extends ClientBundle {
+public interface OnClickEventDemoResources extends ClientBundle {
 
-    static TextInputDemoResources INSTANCE = GWT.create(TextInputDemoResources.class);
-    
-    @Source("TextInputDemo.html")
+    static OnClickEventDemoResources INSTANCE = GWT.create(OnClickEventDemoResources.class);
+
+    @Source("OnClickEventDemo.html")
     HtmlResource partial();
 
-    @Source("TextInputDemo.html")
+    @Source("OnClickEventDemo.html")
     TextResource view();
     
-    @Source("controller/TextInputDemoController.java")
+    @Source("controller/OnClickEventDemoController.java")
     TextResource controller();
 }

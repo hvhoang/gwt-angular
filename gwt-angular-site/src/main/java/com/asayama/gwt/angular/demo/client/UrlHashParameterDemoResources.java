@@ -6,16 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputDemoResources extends ClientBundle {
+public interface UrlHashParameterDemoResources extends ClientBundle {
 
-    static TextInputDemoResources INSTANCE = GWT.create(TextInputDemoResources.class);
-    
-    @Source("TextInputDemo.html")
+    static UrlHashParameterDemoResources INSTANCE = GWT.create(UrlHashParameterDemoResources.class);
+
+    @Source("UrlHashParameterDemo.html")
     HtmlResource partial();
 
-    @Source("TextInputDemo.html")
+    @Source("UrlHashParameterDemo.html")
     TextResource view();
     
-    @Source("controller/TextInputDemoController.java")
+    @Source("controller/UrlHashParameterDemoController.java")
     TextResource controller();
 }

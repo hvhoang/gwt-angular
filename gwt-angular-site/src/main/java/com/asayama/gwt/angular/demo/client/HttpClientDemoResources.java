@@ -6,16 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputDemoResources extends ClientBundle {
+public interface HttpClientDemoResources extends ClientBundle {
 
-    static TextInputDemoResources INSTANCE = GWT.create(TextInputDemoResources.class);
-    
-    @Source("TextInputDemo.html")
+    static HttpClientDemoResources INSTANCE = GWT.create(HttpClientDemoResources.class);
+
+    @Source("HttpClientDemo.html")
     HtmlResource partial();
 
-    @Source("TextInputDemo.html")
+    @Source("HttpClientDemo.html")
     TextResource view();
     
-    @Source("controller/TextInputDemoController.java")
+    @Source("controller/HttpClientDemoController.java")
     TextResource controller();
 }
