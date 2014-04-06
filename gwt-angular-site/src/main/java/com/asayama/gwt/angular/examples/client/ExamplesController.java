@@ -51,7 +51,7 @@ public class ExamplesController extends AbstractMultiPageController {
     // Prettify Example Resources
     public static final TextResource PRETTIFY_VIEW = DemoResources.INSTANCE.prettifyResources().view();
     public static final TextResource PRETTIFY_CONTROLLER = DemoResources.INSTANCE.prettifyResources().controller();
-
+    
     
     
     @Bind("examples")

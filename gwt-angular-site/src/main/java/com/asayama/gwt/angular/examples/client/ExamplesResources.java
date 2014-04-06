@@ -32,4 +32,7 @@ public interface ExamplesResources extends ClientBundle {
 
     @Source("PrettifyExample.html")
     public HtmlResource prettify();
+    
+    @Source("ImageSpritingExample.html")
+    public HtmlResource imageSpriting();
 }

@@ -34,6 +34,9 @@ public interface DemoResources extends ClientBundle {
     @Source("UrlHashParameterDemo.html")
     HtmlResource urlHashParameter();
 
+
+    
+    
     TextInput textInputResources();
 
     interface TextInput extends ClientBundle {

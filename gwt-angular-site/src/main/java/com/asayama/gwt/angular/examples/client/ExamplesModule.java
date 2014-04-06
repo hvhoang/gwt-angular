@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
+import com.asayama.gwt.angular.examples.client.controller.ImageSpritingExampleController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -12,6 +13,8 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examples", getPages());
         controller(ExamplesController.class);
+        
+        controller(ImageSpritingExampleController.class);
     }
     
     private JSArray<Page> getPages() {
@@ -23,6 +26,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify", ExamplesResources.INSTANCE.prettify()));
+        pages.add(Page.create("Image Spriting", ExamplesResources.INSTANCE.imageSpriting()));
        return pages;
     }
 }
