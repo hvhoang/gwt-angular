@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.examples.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.examples.client.controller.ImageSpritingExampleController;
+import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
@@ -16,6 +17,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(ExamplesController.class);
         
         controller(ImageSpritingExampleController.class);
+        controller(OnClickEventExampleController.class);
         controller(TextInputExampleController.class);
     }
     
