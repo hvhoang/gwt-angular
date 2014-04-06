@@ -11,18 +11,10 @@ import com.google.gwt.resources.client.TextResource;
 public class ExamplesController extends AbstractMultiPageController {
 
     // Partials
-    public static final String CUSTOM_DIRECTIVE_DEMO_URL = DemoResources.INSTANCE.customDirectiveExample().getSafeUri().asString();
     public static final String URL_HASH_PARAMETER_DEMO_URL = DemoResources.INSTANCE.urlHashParameter().getSafeUri().asString();
     public static final String HTTP_CLIENT_DEMO_URL = DemoResources.INSTANCE.httpClient().getSafeUri().asString();
     public static final String PRETTIFY_DEMO_URL = DemoResources.INSTANCE.prettify().getSafeUri().asString();
     
-    // Custome Directive Example Resources
-    public static final TextResource CUSTOM_DIRECTIVE_VIEW = DemoResources.INSTANCE.customDirectiveResources().view();
-    public static final TextResource CUSTOM_DIRECTIVE_CONTROLLER = DemoResources.INSTANCE.customDirectiveResources().controller();
-    public static final TextResource CUSTOM_DIRECTIVE_DIRECTIVE = DemoResources.INSTANCE.customDirectiveResources().directive();
-    public static final TextResource CUSTOM_DIRECTIVE_TEMPLATE = DemoResources.INSTANCE.customDirectiveResources().template();
-    public static final TextResource CUSTOM_DIRECTIVE_MODULE = DemoResources.INSTANCE.customDirectiveResources().module();
-
     // URL Hash Parameter Example Resources
     public static final TextResource URL_HASH_PARAMETER_VIEW = DemoResources.INSTANCE.urlHashParameterResources().view();
     public static final TextResource URL_HASH_PARAMETER_CONTROLLER = DemoResources.INSTANCE.urlHashParameterResources().controller();
