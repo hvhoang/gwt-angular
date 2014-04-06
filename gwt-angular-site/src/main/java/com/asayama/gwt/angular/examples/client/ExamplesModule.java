@@ -7,6 +7,7 @@ import com.asayama.gwt.angular.examples.client.controller.CustomerDirectiveExamp
 import com.asayama.gwt.angular.examples.client.controller.ImageSpritingExampleController;
 import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
+import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -23,6 +24,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(ImageSpritingExampleController.class);
         controller(OnClickEventExampleController.class);
         controller(TextInputExampleController.class);
+        controller(UrlHashParameterExampleController.class);
     }
     
     private JSArray<Page> getPages() {
