@@ -11,17 +11,12 @@ import com.google.gwt.resources.client.TextResource;
 public class ExamplesController extends AbstractMultiPageController {
 
     // Partials
-    public static final String TEXT_INPUT_DEMO_URL = DemoResources.INSTANCE.textInput().getSafeUri().asString();
     public static final String ONCLICK_DEMO_URL = DemoResources.INSTANCE.onClickEvent().getSafeUri().asString();
     public static final String CUSTOM_FILTER_DEMO_URL = DemoResources.INSTANCE.reverseFilter().getSafeUri().asString();
     public static final String CUSTOM_DIRECTIVE_DEMO_URL = DemoResources.INSTANCE.customDirectiveExample().getSafeUri().asString();
     public static final String URL_HASH_PARAMETER_DEMO_URL = DemoResources.INSTANCE.urlHashParameter().getSafeUri().asString();
     public static final String HTTP_CLIENT_DEMO_URL = DemoResources.INSTANCE.httpClient().getSafeUri().asString();
     public static final String PRETTIFY_DEMO_URL = DemoResources.INSTANCE.prettify().getSafeUri().asString();
-    
-    // Text Input Example Resources
-    public static final TextResource TEXT_INPUT_VIEW = DemoResources.INSTANCE.textInputResources().view();
-    public static final TextResource TEXT_INPUT_CONTROLLER = DemoResources.INSTANCE.textInputResources().controller();
     
     // OnClick Example Resources
     public static final TextResource ONCLICK_VIEW = DemoResources.INSTANCE.onClickEventResources().view();

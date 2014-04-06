@@ -3,9 +3,6 @@ package com.asayama.gwt.angular.demo.client;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
-import com.google.gwt.resources.client.DataResource.DoNotEmbed;
-import com.google.gwt.resources.client.DataResource.MimeType;
 import com.google.gwt.resources.client.TextResource;
 
 
@@ -28,31 +25,12 @@ public interface DemoResources extends ClientBundle {
     @Source("ReverseFilterDemo.html")
     HtmlResource reverseFilter();
 
-    @Source("TextInputDemo.html")
-    HtmlResource textInput();
-
     @Source("UrlHashParameterDemo.html")
     HtmlResource urlHashParameter();
 
 
     
     
-    TextInput textInputResources();
-
-    interface TextInput extends ClientBundle {
-        
-        @Source("TextInputDemo.html")
-        TextResource view();
-        
-        @Source("controller/TextInputDemoController.java")
-        TextResource controller();
-        
-        @DoNotEmbed
-        @MimeType("text/html")
-        @Source("TextInputDemo.html")
-        DataResource partial();
-    }
-
     HttpClientResources httpClientResources();
     
     interface HttpClientResources extends ClientBundle {
