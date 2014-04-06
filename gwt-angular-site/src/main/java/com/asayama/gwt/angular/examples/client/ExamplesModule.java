@@ -4,6 +4,7 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.examples.client.controller.CustomFilterExampleController;
 import com.asayama.gwt.angular.examples.client.controller.CustomerDirectiveExampleController;
+import com.asayama.gwt.angular.examples.client.controller.HttpClientExampleController;
 import com.asayama.gwt.angular.examples.client.controller.ImageSpritingExampleController;
 import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
@@ -21,6 +22,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
 
         controller(CustomerDirectiveExampleController.class);
         controller(CustomFilterExampleController.class);
+        controller(HttpClientExampleController.class);
         controller(ImageSpritingExampleController.class);
         controller(OnClickEventExampleController.class);
         controller(TextInputExampleController.class);

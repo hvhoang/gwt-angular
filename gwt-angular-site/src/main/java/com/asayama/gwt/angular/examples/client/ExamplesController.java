@@ -11,12 +11,8 @@ import com.google.gwt.resources.client.TextResource;
 public class ExamplesController extends AbstractMultiPageController {
 
     // Partials
-    public static final String HTTP_CLIENT_DEMO_URL = DemoResources.INSTANCE.httpClient().getSafeUri().asString();
     public static final String PRETTIFY_DEMO_URL = DemoResources.INSTANCE.prettify().getSafeUri().asString();
     
-    // HttpClient Example Resources
-    public static final TextResource HTTP_CLIENT_VIEW = DemoResources.INSTANCE.httpClientResources().view();
-    public static final TextResource HTTP_CLIENT_CONTROLLER = DemoResources.INSTANCE.httpClientResources().controller();
 
     // Prettify Example Resources
     public static final TextResource PRETTIFY_VIEW = DemoResources.INSTANCE.prettifyResources().view();
