@@ -11,18 +11,11 @@ import com.google.gwt.resources.client.TextResource;
 public class ExamplesController extends AbstractMultiPageController {
 
     // Partials
-    public static final String CUSTOM_FILTER_DEMO_URL = DemoResources.INSTANCE.reverseFilter().getSafeUri().asString();
     public static final String CUSTOM_DIRECTIVE_DEMO_URL = DemoResources.INSTANCE.customDirectiveExample().getSafeUri().asString();
     public static final String URL_HASH_PARAMETER_DEMO_URL = DemoResources.INSTANCE.urlHashParameter().getSafeUri().asString();
     public static final String HTTP_CLIENT_DEMO_URL = DemoResources.INSTANCE.httpClient().getSafeUri().asString();
     public static final String PRETTIFY_DEMO_URL = DemoResources.INSTANCE.prettify().getSafeUri().asString();
     
-    // Reverse Filter Example Resources
-    public static final TextResource CUSTOM_FILTER_VIEW = DemoResources.INSTANCE.customFilterResources().view();
-    public static final TextResource CUSTOM_FILTER_CONTROLLER = DemoResources.INSTANCE.customFilterResources().controller();
-    public static final TextResource CUSTOM_FILTER_FILTER = DemoResources.INSTANCE.customFilterResources().filter();
-    public static final TextResource CUSTOM_FILTER_MODULE = DemoResources.INSTANCE.customFilterResources().module();
-
     // Custome Directive Example Resources
     public static final TextResource CUSTOM_DIRECTIVE_VIEW = DemoResources.INSTANCE.customDirectiveResources().view();
     public static final TextResource CUSTOM_DIRECTIVE_CONTROLLER = DemoResources.INSTANCE.customDirectiveResources().controller();
