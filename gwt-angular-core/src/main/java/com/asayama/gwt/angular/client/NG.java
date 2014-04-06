@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.client;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.client.log.Log;
 import com.asayama.gwt.angular.client.q.Q;
+import com.asayama.gwt.jsni.client.JSObject;
 import com.asayama.gwt.resources.client.ScriptResource;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -14,7 +15,7 @@ public class NG extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            NGScripts.INSTANCE.script().ensureInjected();
+            NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
             Angular.moduleWithDependency(this, "ng");
             factory(Q.class);
             factory(Location.class);
