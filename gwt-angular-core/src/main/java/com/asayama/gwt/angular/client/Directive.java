@@ -55,8 +55,6 @@ class DirectiveWrapper implements Function<JSDirective> {
         try {
             final String name = directive == null ? null : directive.getName();
             
-            binder.apply(args);
-            
             Restrict[] rs = directive.getRestrict();
             if (rs != null && rs.length > 0) {
                 StringBuilder sb = new StringBuilder();
@@ -113,6 +111,8 @@ class DirectiveWrapper implements Function<JSDirective> {
             JSON json = JSON.create();
             json.put(directive.getName(), "=");
             jso.setScope(json);
+            
+            binder.apply(args);
             
             return jso;
             
