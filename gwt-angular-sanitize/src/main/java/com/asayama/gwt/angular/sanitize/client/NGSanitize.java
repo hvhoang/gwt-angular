@@ -2,10 +2,10 @@ package com.asayama.gwt.angular.sanitize.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.jsni.client.JSObject;
+import com.asayama.gwt.resources.client.ScriptResource;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.ScriptInjector;
+import com.google.gwt.resources.client.ClientBundle;
 
 public class NGSanitize extends AbstractModule implements EntryPoint {
 
@@ -13,19 +13,18 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            if (GWT.isClient() && GWT.isProdMode()) {
-                ScriptInjector
-                    .fromString(AngularSanitizeScripts.INSTANCE.min().getText())
-                    .setWindow(JSObject.$wnd).inject();
-            } else {
-                ScriptInjector
-                    .fromString(AngularSanitizeScripts.INSTANCE.debug().getText())
-                    .setWindow(JSObject.$wnd).inject();
-            }
+            NGScripts.INSTANCE.script().ensureInjected();
             Angular.moduleWithDependency(this, "ngSanitize");
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
     }
+}
 
+interface NGScripts extends ClientBundle {
+    
+    static NGScripts INSTANCE = GWT.create(NGScripts.class);
+    
+    @Source("angular-sanitize.min.js")
+    ScriptResource script();
 }

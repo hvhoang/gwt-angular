@@ -29,13 +29,13 @@ public class GwtHtmlResource extends AbstractDirective {
                     Response response = (Response) args[1];
                     String text = response.getText();
                     element.append(text);
-                    scope.digest();
+                    element.find(">:first").addClass("ng-transclude");
                 }
             });
             return;
         }
     }
-    
+
     @Override
     public boolean getTransclude() {
         //TODO https://github.com/kyoken74/gwt-angular/issues/62

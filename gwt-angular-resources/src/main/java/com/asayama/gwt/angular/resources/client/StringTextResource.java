@@ -1,14 +1,15 @@
 package com.asayama.gwt.angular.resources.client;
 
+import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.resources.client.TextResource;
 
 
 public class StringTextResource implements TextResource {
 
-    private final String string;
+    private final String[] strings;
     
-    public StringTextResource(String string) {
-        this.string = string;
+    public StringTextResource(String... strings) {
+        this.strings = strings;
     }
     
     @Override
@@ -18,6 +19,6 @@ public class StringTextResource implements TextResource {
 
     @Override
     public String getText() {
-        return string;
+        return Strings.concat(strings);
     }
 }
