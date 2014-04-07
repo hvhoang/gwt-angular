@@ -17,13 +17,16 @@ public interface SiteResources extends ClientBundle {
     @Source("Examples.html")
     public HtmlResource examples();
 
+    @Source("Footer.html")
+    public HtmlResource footer();
+
     @Source("Jumbotron.html")
     public HtmlResource jumbotron();
     
     @Source("Navbar.html")
     public HtmlResource navbar();
     
-    @Source("Footer.html")
-    public HtmlResource footer();
-
+    @Source("Tutorial.html")
+    public HtmlResource tutorial();
+    
 }

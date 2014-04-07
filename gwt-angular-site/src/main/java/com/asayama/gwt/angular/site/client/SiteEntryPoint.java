@@ -9,8 +9,7 @@ import com.asayama.gwt.angular.site.client.controller.DownloadsController;
 import com.asayama.gwt.angular.site.client.controller.ExamplesController;
 import com.asayama.gwt.angular.site.client.controller.JumbotronController;
 import com.asayama.gwt.angular.site.client.controller.NavbarController;
-import com.asayama.gwt.angular.tutorial.client.TutorialController;
-import com.asayama.gwt.angular.tutorial.client.TutorialResources;
+import com.asayama.gwt.angular.site.client.controller.TutorialController;
 import com.google.gwt.core.client.EntryPoint;
 
 public class SiteEntryPoint extends AbstractModule implements EntryPoint {
@@ -30,7 +29,7 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
                     .when(SiteResources.INSTANCE.downloads(), DownloadsController.class)
                     .when(SiteResources.INSTANCE.jumbotron(), JumbotronController.class)
                     .when(SiteResources.INSTANCE.examples(), ExamplesController.class)
-                    .when(TutorialResources.INSTANCE.tutorial(), TutorialController.class)
+                    .when(SiteResources.INSTANCE.tutorial(), TutorialController.class)
                     .otherwise(SiteResources.INSTANCE.jumbotron());
             }
         });

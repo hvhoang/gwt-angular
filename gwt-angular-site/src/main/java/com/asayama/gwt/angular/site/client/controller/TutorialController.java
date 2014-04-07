@@ -1,18 +1,13 @@
-package com.asayama.gwt.angular.tutorial.client;
+package com.asayama.gwt.angular.site.client.controller;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
-import com.google.gwt.resources.client.ImageResource;
 
 
 public class TutorialController extends AbstractMultiPageController {
 
-    public static final ImageResource PROJECT_STRUCTURE_IMAGE = TutorialResources.INSTANCE.projectStructureImage();
-    
-    public static final String SAMPLE_HTML = SampleResources.INSTANCE.sample().getSafeUri().asString();
-    
     @Bind("tutorial")
     private JSArray<Page> pages = null;
     private String defaultPageName = "introduction";
