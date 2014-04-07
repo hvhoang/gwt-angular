@@ -10,6 +10,7 @@ public class ImageSpritingDemoController implements Controller {
     public static final ImageResource STREET = ImageSpritingDemoResources.INSTANCE.street();
     public static final ImageResource WTC = ImageSpritingDemoResources.INSTANCE.wtc();
     public static final ImageResource BOAT = ImageSpritingDemoResources.INSTANCE.boat();
+    public static final ImageResource PEOPLE = ImageSpritingDemoResources.INSTANCE.people();
     
     @Override
     public void onControllerLoad() {
@@ -29,4 +30,7 @@ interface ImageSpritingDemoResources extends ClientBundle {
     
     @Source("com/asayama/gwt/angular/demo/client/C41-00009-03.jpg")
     ImageResource boat();
+    
+    @Source("com/asayama/gwt/angular/demo/client/E6-00020-29.jpg")
+    ImageResource people();
 }
