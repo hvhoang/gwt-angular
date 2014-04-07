@@ -7,30 +7,30 @@ import com.google.gwt.resources.client.ImageResource;
 
 public class ImageResourceDemoController implements Controller {
 
-    public static final ImageResource STREET = ImageResourceDemoResources.INSTANCE.street();
-    public static final ImageResource WTC = ImageResourceDemoResources.INSTANCE.wtc();
-    public static final ImageResource BOAT = ImageResourceDemoResources.INSTANCE.boat();
-    public static final ImageResource PEOPLE = ImageResourceDemoResources.INSTANCE.people();
+    public static final ImageResource STREET = ImageResources.INSTANCE.street();
+    public static final ImageResource WTC = ImageResources.INSTANCE.wtc();
+    public static final ImageResource BOAT = ImageResources.INSTANCE.boat();
+    public static final ImageResource PEOPLE = ImageResources.INSTANCE.people();
     
     @Override
     public void onControllerLoad() {
         //noop
     }
-}
 
-interface ImageResourceDemoResources extends ClientBundle {
-    
-    static ImageResourceDemoResources INSTANCE = GWT.create(ImageResourceDemoResources.class);
-    
-    @Source("street.jpg")
-    ImageResource street();
-    
-    @Source("wtc.jpg")
-    ImageResource wtc();
-    
-    @Source("boat.jpg")
-    ImageResource boat();
-    
-    @Source("people.jpg")
-    ImageResource people();
+    public static interface ImageResources extends ClientBundle {
+        
+        static ImageResources INSTANCE = GWT.create(ImageResources.class);
+        
+        @Source("street.jpg")
+        ImageResource street();
+        
+        @Source("wtc.jpg")
+        ImageResource wtc();
+        
+        @Source("boat.jpg")
+        ImageResource boat();
+        
+        @Source("people.jpg")
+        ImageResource people();
+    }
 }
