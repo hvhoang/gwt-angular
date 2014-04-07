@@ -27,8 +27,17 @@ public class RouteProvider implements Provider {
     }
     
     public <C extends Controller> RouteProvider when(String route, HtmlResource partial, Class<C> controllerClass) {
+        String templateUrl = partial.getSafeUri().asString();
+        return when(route, templateUrl, controllerClass);
+    }
+
+    public <C extends Controller> RouteProvider when(String route, String templateUrl) {
+        return when(route, templateUrl, null);
+    }
+
+    public <C extends Controller> RouteProvider when(String route, String templateUrl, Class<C> controllerClass) {
         JSON json = JSON.create();
-        json.put("templateUrl", partial.getSafeUri().asString());
+        json.put("templateUrl", templateUrl);
         if (controllerClass != null) {
             json.put("controller", controllerClass.getName());
         }
@@ -36,7 +45,7 @@ public class RouteProvider implements Provider {
         return this;
     }
 
-    public RouteProvider when(String route, String redirectTo) {
+    public RouteProvider redirect(String route, String redirectTo) {
         JSON redirect = JSON.create();
         redirect.put("redirectTo", redirectTo);
         ngo.when(route, redirect);
