@@ -21,6 +21,7 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
         controller(ExamplesController.class);
         controller(JumbotronController.class);
         controller(NavbarController.class);
+        controller(TutorialController.class);
         config(RouteProvider.class, new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider routeProvider) {
