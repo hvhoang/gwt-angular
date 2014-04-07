@@ -22,15 +22,15 @@ interface ImageResourceDemoResources extends ClientBundle {
     
     static ImageResourceDemoResources INSTANCE = GWT.create(ImageResourceDemoResources.class);
     
-    @Source("com/asayama/gwt/angular/demo/client/C41-00005-17.jpg")
+    @Source("street.jpg")
     ImageResource street();
     
-    @Source("com/asayama/gwt/angular/demo/client/C41-00006-09.jpg")
+    @Source("wtc.jpg")
     ImageResource wtc();
     
-    @Source("com/asayama/gwt/angular/demo/client/C41-00009-03.jpg")
+    @Source("boat.jpg")
     ImageResource boat();
     
-    @Source("com/asayama/gwt/angular/demo/client/E6-00020-29.jpg")
+    @Source("people.jpg")
     ImageResource people();
 }
