@@ -9,7 +9,7 @@ import com.google.gwt.resources.client.ImageResource;
 
 public class TutorialController extends AbstractMultiPageController {
 
-    public static final ImageResource TUTORIAL_001 = TutorialResources.INSTANCE.projectStructureImage();
+    public static final ImageResource PROJECT_STRUCTURE_IMAGE = TutorialResources.INSTANCE.projectStructureImage();
     
     public static final String SAMPLE_HTML = SampleResources.INSTANCE.sample().getSafeUri().asString();
     
