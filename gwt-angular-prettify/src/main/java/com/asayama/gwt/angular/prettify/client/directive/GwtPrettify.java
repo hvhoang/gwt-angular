@@ -3,7 +3,7 @@ package com.asayama.gwt.angular.prettify.client.directive;
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
-import com.asayama.gwt.jquery.client.Element;
+import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -50,7 +50,7 @@ public class GwtPrettify extends AbstractDirective {
     }
     
     @Override
-    public void link(NGScope scope, Element element, JSON attrs) {
+    public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
         String text = resource == null ? element.text() : 
                     SafeHtmlUtils.htmlEscape(resource.getText());

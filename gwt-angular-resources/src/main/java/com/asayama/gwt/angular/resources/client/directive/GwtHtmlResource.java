@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.angular.client.q.SuccessCallback;
-import com.asayama.gwt.jquery.client.Element;
+import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.http.client.Response;
@@ -17,7 +17,7 @@ public class GwtHtmlResource extends AbstractDirective {
     private Q q;
 
     @Override
-    public void link(final NGScope scope, final Element element, JSON attrs) {
+    public void link(final NGScope scope, final JQElement element, JSON attrs) {
         HtmlResource resource = scope.get(getName());
         if (resource != null) {
             SafeUri safeUri = resource.getSafeUri();

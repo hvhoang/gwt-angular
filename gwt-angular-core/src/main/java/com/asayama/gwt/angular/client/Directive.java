@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.angular.client.Directive.Restrict;
-import com.asayama.gwt.jquery.client.Element;
+import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
@@ -33,8 +33,8 @@ public interface Directive {
     Restrict[] getRestrict();
     TextResource getTemplate();
     String getTemplateUrl();
-    void compile(Element element, JSON attrs);
-    void link(NGScope scope, Element element, JSON attrs);
+    void compile(JQElement element, JSON attrs);
+    void link(NGScope scope, JQElement element, JSON attrs);
 }
 
 class DirectiveWrapper implements Function<JSDirective> {
@@ -81,7 +81,7 @@ class DirectiveWrapper implements Function<JSDirective> {
                 @Override
                 public JSClosure call(Object... args) {
                     try {
-                        Element element = (Element) args[0];
+                        JQElement element = (JQElement) args[0];
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);
                         return JSClosure.create(new Closure() {
@@ -89,7 +89,7 @@ class DirectiveWrapper implements Function<JSDirective> {
                             public void exec(Object... args) {
                                 try {
                                     NGScope scope = (NGScope) args[0];
-                                    Element element = (Element) args[1];
+                                    JQElement element = (JQElement) args[1];
                                     JSON attrs = (JSON) args[2];
                                     directive.link(scope, element, attrs);
                                 } catch (Exception e) {

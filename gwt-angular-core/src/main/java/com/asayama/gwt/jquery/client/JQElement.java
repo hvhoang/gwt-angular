@@ -4,16 +4,16 @@ import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSObject;
 
 
-public class Element extends JSObject {
+public class JQElement extends JSObject {
     
-    protected Element() {
+    protected JQElement() {
     }
 
-    public final native Element addClass(String string) /*-{
+    public final native JQElement addClass(String string) /*-{
         return this.addClass(string);
     }-*/;
     
-    public final native Element append(Object o) /*-{
+    public final native JQElement append(Object o) /*-{
         return this.append(o);
     }-*/;
 
@@ -21,15 +21,15 @@ public class Element extends JSObject {
         return this.attr(key);
     }-*/;
 
-    public final native Element attr(String key, String value) /*-{
+    public final native JQElement attr(String key, String value) /*-{
         return this.attr(key, value);
     }-*/;
 
-    public final native Element empty() /*-{
+    public final native JQElement empty() /*-{
         return this.empty();
     }-*/;
 
-    public final native Element find(String selector) /*-{
+    public final native JQElement find(String selector) /*-{
         return this.find(selector);
     }-*/;
 
@@ -37,11 +37,11 @@ public class Element extends JSObject {
         return this.html();
     }-*/;
     
-    public final native Element ready(JSClosure closure) /*-{
+    public final native JQElement ready(JSClosure closure) /*-{
         return this.ready(closure);
     }-*/;
 
-    public final native Element removeClass(String string) /*-{
+    public final native JQElement removeClass(String string) /*-{
         return this.removeClass(string);
     }-*/;
     
