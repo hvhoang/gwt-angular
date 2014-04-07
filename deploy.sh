@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.0.43
+version=0.0.44-SNAPSHOT
 
 jar xvf ~/Workspace/github.com/kyoken74/gwt-angular/gwt-angular-site/target/gwt-angular-site-${version}.war site
 
