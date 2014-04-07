@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.examples.client.controller.CustomFilterExampleController;
 import com.asayama.gwt.angular.examples.client.controller.CustomerDirectiveExampleController;
 import com.asayama.gwt.angular.examples.client.controller.HttpClientExampleController;
-import com.asayama.gwt.angular.examples.client.controller.ImageSpritingExampleController;
+import com.asayama.gwt.angular.examples.client.controller.ImageResourceExampleController;
 import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
 import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
@@ -24,7 +24,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(CustomerDirectiveExampleController.class);
         controller(CustomFilterExampleController.class);
         controller(HttpClientExampleController.class);
-        controller(ImageSpritingExampleController.class);
+        controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);
         controller(PrettifyExampleController.class);
         controller(TextInputExampleController.class);
@@ -37,10 +37,10 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("OnClick Event", ExamplesResources.INSTANCE.onClickEvent()));
         pages.add(Page.create("Custom Filter", ExamplesResources.INSTANCE.customFilter()));
         pages.add(Page.create("Custom Directive", ExamplesResources.INSTANCE.customDirective()));
+        pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageSpriting()));
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify", ExamplesResources.INSTANCE.prettify()));
-        pages.add(Page.create("Image Spriting", ExamplesResources.INSTANCE.imageSpriting()));
        return pages;
     }
 }

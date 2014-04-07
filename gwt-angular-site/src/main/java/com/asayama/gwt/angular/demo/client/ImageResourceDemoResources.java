@@ -6,16 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface ImageSpritingDemoResources extends ClientBundle {
+public interface ImageResourceDemoResources extends ClientBundle {
     
-    static ImageSpritingDemoResources INSTANCE = GWT.create(ImageSpritingDemoResources.class);
+    static ImageResourceDemoResources INSTANCE = GWT.create(ImageResourceDemoResources.class);
 
-    @Source("ImageSpritingDemo.html")
+    @Source("ImageResourceDemo.html")
     HtmlResource partial();
 
-    @Source("ImageSpritingDemo.html")
+    @Source("ImageResourceDemo.html")
     TextResource view();
 
-    @Source("controller/ImageSpritingDemoController.java")
+    @Source("controller/ImageResourceDemoController.java")
     TextResource controller();
 }

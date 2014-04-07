@@ -12,27 +12,29 @@ public interface ExamplesResources extends ClientBundle {
     @Source("Examples.html")
     public HtmlResource examples();
     
-    @Source("TextInputExample.html")
-    public HtmlResource textInput();
     
-    @Source("OnClickEventExample.html")
-    public HtmlResource onClickEvent();
     
     @Source("CustomFilterExample.html")
     public HtmlResource customFilter();
     
     @Source("CustomDirectiveExample.html")
     public HtmlResource customDirective();
-
-    @Source("UrlHashParameterExample.html")
-    public HtmlResource urlHashParameter();
     
     @Source("HttpClientExample.html")
     public HtmlResource httpClient();
 
+    @Source("ImageResourceExample.html")
+    public HtmlResource imageSpriting();
+    
+    @Source("OnClickEventExample.html")
+    public HtmlResource onClickEvent();
+    
     @Source("PrettifyExample.html")
     public HtmlResource prettify();
     
-    @Source("ImageSpritingExample.html")
-    public HtmlResource imageSpriting();
+    @Source("TextInputExample.html")
+    public HtmlResource textInput();
+
+    @Source("UrlHashParameterExample.html")
+    public HtmlResource urlHashParameter();
 }

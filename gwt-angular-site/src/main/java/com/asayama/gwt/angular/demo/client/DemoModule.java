@@ -4,7 +4,7 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.demo.client.controller.CustomDirectiveDemoController;
 import com.asayama.gwt.angular.demo.client.controller.HttpClientDemoController;
-import com.asayama.gwt.angular.demo.client.controller.ImageSpritingDemoController;
+import com.asayama.gwt.angular.demo.client.controller.ImageResourceDemoController;
 import com.asayama.gwt.angular.demo.client.controller.OnClickEventDemoController;
 import com.asayama.gwt.angular.demo.client.controller.PrettifyDemoController;
 import com.asayama.gwt.angular.demo.client.controller.ReverseFilterDemoController;
@@ -28,6 +28,6 @@ public class DemoModule extends AbstractModule {
         controller(ReverseFilterDemoController.class);
         controller(PrettifyDemoController.class);
         controller(CustomDirectiveDemoController.class);
-        controller(ImageSpritingDemoController.class);
+        controller(ImageResourceDemoController.class);
     }
 }
