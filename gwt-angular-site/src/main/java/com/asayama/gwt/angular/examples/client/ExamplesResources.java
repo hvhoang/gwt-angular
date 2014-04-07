@@ -19,7 +19,7 @@ public interface ExamplesResources extends ClientBundle {
     public HtmlResource httpClient();
 
     @Source("ImageResourceExample.html")
-    public HtmlResource imageSpriting();
+    public HtmlResource imageResource();
     
     @Source("OnClickEventExample.html")
     public HtmlResource onClickEvent();

@@ -35,7 +35,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("OnClick Event", ExamplesResources.INSTANCE.onClickEvent()));
         pages.add(Page.create("Custom Filter", ExamplesResources.INSTANCE.customFilter()));
         pages.add(Page.create("Custom Directive", ExamplesResources.INSTANCE.customDirective()));
-        pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageSpriting()));
+        pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageResource()));
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
         pages.add(Page.create("Prettify", ExamplesResources.INSTANCE.prettify()));
