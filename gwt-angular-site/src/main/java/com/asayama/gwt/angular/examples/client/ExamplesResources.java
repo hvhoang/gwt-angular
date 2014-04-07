@@ -8,11 +8,6 @@ import com.google.gwt.resources.client.ClientBundle;
 public interface ExamplesResources extends ClientBundle {
     
     public static final ExamplesResources INSTANCE = GWT.create(ExamplesResources.class);
-
-    @Source("Examples.html")
-    public HtmlResource examples();
-    
-    
     
     @Source("CustomFilterExample.html")
     public HtmlResource customFilter();

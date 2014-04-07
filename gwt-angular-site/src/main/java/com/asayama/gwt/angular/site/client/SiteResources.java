@@ -14,6 +14,9 @@ public interface SiteResources extends ClientBundle {
     @Source("Downloads.html")
     public HtmlResource downloads();
     
+    @Source("Examples.html")
+    public HtmlResource examples();
+
     @Source("Jumbotron.html")
     public HtmlResource jumbotron();
     
