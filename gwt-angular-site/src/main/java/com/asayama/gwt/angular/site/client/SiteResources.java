@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.site.client;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.ImageResource;
 
 public interface SiteResources extends ClientBundle {
     
@@ -24,11 +23,4 @@ public interface SiteResources extends ClientBundle {
     @Source("Footer.html")
     public HtmlResource footer();
 
-    JumbotronResources jumbotronResources();
-    
-    interface JumbotronResources extends ClientBundle {
-
-        @Source("mvc.png")
-        ImageResource mvc();
-    }
 }
