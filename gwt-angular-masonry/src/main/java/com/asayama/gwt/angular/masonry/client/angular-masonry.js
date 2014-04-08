@@ -1,3 +1,6 @@
+/*
+ * 0.7.0
+ */
 (function () {
   'use strict';
   angular.module('wu.masonry', []).controller('MasonryCtrl', [

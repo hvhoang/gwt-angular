@@ -3,7 +3,5 @@
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
   <source path="client" />
-  <script src="lib/masonry/3.1.4/masonry.pkgd.min.js" />
-  <script src="lib/angular-masonry/0.7.0/angular-masonry.min.js" />
   <entry-point class="com.asayama.gwt.angular.masonry.client.MasonryModule" />
 </module>
