@@ -20,7 +20,6 @@ public class DemoModule extends AbstractModule {
         Angular.module(this);
         directive(MyHello.class);
         filter(Reverse.class);
-        
         controller(HttpClientDemoController.class);
         controller(OnClickEventDemoController.class);
         controller(TextInputDemoController.class);
