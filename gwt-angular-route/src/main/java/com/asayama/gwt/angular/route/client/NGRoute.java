@@ -21,7 +21,6 @@ public class NGRoute extends AbstractModule implements EntryPoint {
             GWT.log("Exception while " + m, e);
         }
     }
-
 }
 
 interface NGScripts extends ClientBundle {
