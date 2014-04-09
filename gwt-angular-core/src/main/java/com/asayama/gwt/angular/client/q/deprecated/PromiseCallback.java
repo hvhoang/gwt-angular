@@ -1,7 +1,6 @@
-package com.asayama.gwt.angular.client.q;
+package com.asayama.gwt.angular.client.q.deprecated;
 
-
-
+@Deprecated
 public abstract class PromiseCallback {
 
 	public abstract void success(Object... args);

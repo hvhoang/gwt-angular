@@ -17,6 +17,7 @@ public class NG extends AbstractModule implements EntryPoint {
         try {
             NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
             Angular.moduleWithDependency(this, "ng");
+            factory(com.asayama.gwt.angular.client.q.deprecated.Q.class);
             factory(Q.class);
             factory(Location.class);
             factory(Log.class);

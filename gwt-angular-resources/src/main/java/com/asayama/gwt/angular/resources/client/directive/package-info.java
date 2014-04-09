@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.resources.client.directive;
 
-import com.asayama.gwt.angular.client.q.Deferred;
-import com.asayama.gwt.angular.client.q.Promise;
-import com.asayama.gwt.angular.client.q.Q;
+import com.asayama.gwt.angular.client.q.deprecated.Deferred;
+import com.asayama.gwt.angular.client.q.deprecated.Promise;
+import com.asayama.gwt.angular.client.q.deprecated.Q;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;

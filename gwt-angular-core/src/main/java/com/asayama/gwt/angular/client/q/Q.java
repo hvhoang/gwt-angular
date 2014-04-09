@@ -3,16 +3,14 @@ package com.asayama.gwt.angular.client.q;
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.jsni.client.JSObject;
+
 
 public class Q implements Service {
 
     private NGQ ngo;
 
-    public <T extends JSObject> Deferred defer() {
-        Deferred deferred = new Deferred();
-        deferred.jso = ngo._defer();
-        return deferred;
+    public <T> Deferred<T> defer() {
+        return ngo._defer();
     }
 }
 
@@ -22,8 +20,8 @@ class NGQ extends NGObject {
     protected NGQ() {
     }
 
-    final native JSDeferred _defer() /*-{
-		return this.defer();
-	}-*/;
+    final native <T> Deferred<T> _defer() /*-{
+        return this.defer();
+    }-*/;
 
 }

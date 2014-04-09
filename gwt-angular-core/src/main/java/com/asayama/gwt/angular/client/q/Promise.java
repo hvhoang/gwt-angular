@@ -1,53 +1,90 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.jsni.client.Closure;
-import com.asayama.gwt.jsni.client.Invoker;
+import com.asayama.gwt.jsni.client.Function;
+import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSObject;
 
-public class Promise extends JSObject {
 
-	protected Promise() {
-	}
-	
-	public final Promise then(final PromiseCallback callback) {
-		_then(new Invoker(new Closure() {
-			@Override
-			public void exec(Object... args) {
-				callback.success(args);
-			}
-		}), new Invoker(new Closure() {
-			@Override
-			public void exec(Object... args) {
-				callback.error(args);
-			}
-		}), new Invoker(new Closure() {
-			@Override
-			public void exec(Object... args) {
-				callback.notify(args);
-			}
-		}));
-		return this;
-	}
-	
-	public final Promise success(SuccessCallback callback) {
-		then(callback);
-		return this;
-	}
-	
-	public final Promise error(ErrorCallback callback) {
-		then(callback);
-		return this;
-	}
+public class Promise<V> extends JSObject {
+    
+    protected Promise() {
+    }
 
-	final native void _then(Invoker successInvoker, Invoker errorInvoker, Invoker notifyInvoker) /*-{
-		this.then(
-			function (jsarray) {
-				successInvoker.@com.asayama.gwt.jsni.client.Invoker::invoke(Lcom/asayama/gwt/jsni/client/JSArray;)(jsarray);
-			}, function (jsarray) {
-				errorInvoker.@com.asayama.gwt.jsni.client.Invoker::invoke(Lcom/asayama/gwt/jsni/client/JSArray;)(jsarray);
-			}, function (jsarray) {
-				notifyInvoker.@com.asayama.gwt.jsni.client.Invoker::invoke(Lcom/asayama/gwt/jsni/client/JSArray;)(jsarray);
-			});
-	}-*/;
-	
+    public static interface Done<V> {
+        void exec(V value);
+    }
+
+    public static interface Success<X, V> {
+        X call(V value);
+    }
+
+    public static interface Error<X, V> {
+        X call(V value);
+    }
+
+    public static interface Notify<X, V> {
+        X call(V value);
+    }
+
+    public final <X> Promise<X> then(Success<X, V> success) {
+        return then(success, null, null);
+    }
+
+    public final <X> Promise<X> then(Error<X, V> error) {
+        return then(null, error, null);
+    }
+    
+    public final <X> Promise<X> then(Notify<X, V> notify) {
+        return then(null, null, notify);
+    }
+    
+    public final Promise<V> then(final Done<V> success) {
+        then(new Success<Object, V>() {
+            @Override
+            public Object call(V value) {
+                success.exec(value);
+                return null;
+            }
+        }, null, null);
+        return this;
+    }
+
+    public final <X> Promise<X> then(final Success<X, V> success, final Error<X, V> error, final Notify<X, V> notify) {
+        Promise<X> p = _then(
+                success == null ? null : JSFunction.create(new Function<Object>() {
+                    @SuppressWarnings("unchecked")
+                    @Override
+                    public Object call(Object... args) {
+                        if (args == null || args.length == 0) {
+                            return success.call(null);
+                        }
+                        return success.call((V) args[0]);
+                    }
+                }),
+                error == null ? null : JSFunction.create(new Function<Object>() {
+                    @SuppressWarnings("unchecked")
+                    @Override
+                    public Object call(Object... args) {
+                        if (args == null || args.length == 0) {
+                            return error.call(null);
+                        }
+                        return error.call((V) args[0]);
+                    }
+                }),
+                notify == null ? null : JSFunction.create(new Function<Object>() {
+                    @SuppressWarnings("unchecked")
+                    @Override
+                    public Object call(Object... args) {
+                        if (args == null || args.length == 0) {
+                            return notify.call(null);
+                        }
+                        return notify.call((V) args[0]);
+                    }
+                }));
+        return p;
+    }
+
+    private final native <X> Promise<X> _then(JSFunction<?> success, JSFunction<?> error, JSFunction<?> notify) /*-{
+        return this.then(success, error, notify);
+    }-*/;
 }

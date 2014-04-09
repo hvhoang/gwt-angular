@@ -1,9 +1,9 @@
 package com.asayama.gwt.angular.http.client;
 
 import com.asayama.gwt.angular.client.Service;
-import com.asayama.gwt.angular.client.q.Deferred;
-import com.asayama.gwt.angular.client.q.Promise;
-import com.asayama.gwt.angular.client.q.Q;
+import com.asayama.gwt.angular.client.q.deprecated.Deferred;
+import com.asayama.gwt.angular.client.q.deprecated.Promise;
+import com.asayama.gwt.angular.client.q.deprecated.Q;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;

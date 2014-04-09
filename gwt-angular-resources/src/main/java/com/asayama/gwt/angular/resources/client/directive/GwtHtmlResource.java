@@ -2,9 +2,9 @@ package com.asayama.gwt.angular.resources.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
-import com.asayama.gwt.angular.client.q.Promise;
-import com.asayama.gwt.angular.client.q.Q;
-import com.asayama.gwt.angular.client.q.SuccessCallback;
+import com.asayama.gwt.angular.client.q.deprecated.Promise;
+import com.asayama.gwt.angular.client.q.deprecated.Q;
+import com.asayama.gwt.angular.client.q.deprecated.SuccessCallback;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;
