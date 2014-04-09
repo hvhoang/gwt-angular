@@ -7,6 +7,7 @@ import com.asayama.gwt.angular.demo.client.controller.HttpClientDemoController;
 import com.asayama.gwt.angular.demo.client.controller.ImageResourceDemoController;
 import com.asayama.gwt.angular.demo.client.controller.OnClickEventDemoController;
 import com.asayama.gwt.angular.demo.client.controller.PrettifyDemoController;
+import com.asayama.gwt.angular.demo.client.controller.PromiseDemoController;
 import com.asayama.gwt.angular.demo.client.controller.ReverseFilterDemoController;
 import com.asayama.gwt.angular.demo.client.controller.TextInputDemoController;
 import com.asayama.gwt.angular.demo.client.controller.UrlHashParameterDemoController;
@@ -26,6 +27,7 @@ public class DemoModule extends AbstractModule {
         controller(UrlHashParameterDemoController.class);
         controller(ReverseFilterDemoController.class);
         controller(PrettifyDemoController.class);
+        controller(PromiseDemoController.class);
         controller(CustomDirectiveDemoController.class);
         controller(ImageResourceDemoController.class);
     }

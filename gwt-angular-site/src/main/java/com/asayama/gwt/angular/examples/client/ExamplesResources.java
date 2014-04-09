@@ -26,6 +26,9 @@ public interface ExamplesResources extends ClientBundle {
     
     @Source("PrettifyExample.html")
     public HtmlResource prettify();
+
+    @Source("PromiseExample.html")
+    public HtmlResource promise();
     
     @Source("TextInputExample.html")
     public HtmlResource textInput();

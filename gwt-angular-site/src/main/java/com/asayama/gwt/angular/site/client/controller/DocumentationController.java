@@ -8,5 +8,4 @@ public class DocumentationController implements Controller {
     @Override
     public void onControllerLoad() {
     }
-
 }

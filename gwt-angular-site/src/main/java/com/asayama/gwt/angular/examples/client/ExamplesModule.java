@@ -8,6 +8,7 @@ import com.asayama.gwt.angular.examples.client.controller.HttpClientExampleContr
 import com.asayama.gwt.angular.examples.client.controller.ImageResourceExampleController;
 import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
 import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleController;
+import com.asayama.gwt.angular.examples.client.controller.PromiseExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
 import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
 import com.asayama.gwt.angular.util.client.Page;
@@ -25,6 +26,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);
         controller(PrettifyExampleController.class);
+        controller(PromiseExampleController.class);
         controller(TextInputExampleController.class);
         controller(UrlHashParameterExampleController.class);
     }
@@ -35,6 +37,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("OnClick Event", ExamplesResources.INSTANCE.onClickEvent()));
         pages.add(Page.create("Custom Filter", ExamplesResources.INSTANCE.customFilter()));
         pages.add(Page.create("Custom Directive", ExamplesResources.INSTANCE.customDirective()));
+        pages.add(Page.create("Promise", ExamplesResources.INSTANCE.promise()));
         pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageResource()));
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
