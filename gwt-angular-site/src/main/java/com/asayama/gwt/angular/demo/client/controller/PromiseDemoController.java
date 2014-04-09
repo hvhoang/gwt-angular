@@ -32,7 +32,7 @@ public class PromiseDemoController implements Controller {
             }
         }).then(new Done<String>() {
             @Override
-            public void exec(String value) {
+            public void call(String value) {
                 foo = value;
             }
         });

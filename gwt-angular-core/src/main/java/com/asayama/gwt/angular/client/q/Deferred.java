@@ -13,7 +13,7 @@ public class Deferred<T> extends JSObject {
         return this.promise;
     }-*/;
     
-    public final native void notify(T value) /*-{
+    public final native void notify(Object value) /*-{
         this.notify(value);
     }-*/;
     
@@ -21,7 +21,7 @@ public class Deferred<T> extends JSObject {
         this.resolve(value);
     }-*/;
     
-    public final native void reject(T value) /*-{
+    public final native void reject(Throwable value) /*-{
         this.reject(value);
     }-*/;
 }

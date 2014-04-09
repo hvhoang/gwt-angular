@@ -6,7 +6,7 @@
  * following inherit statements in his or code.
  * </p>
  * <pre>{@code
- * <inherits name="com.asayama.gwt.angular.http.AngularHttp" />
+ * <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
  * }</pre>
  * <p>
  * The implementation of HTTP client is asynchronous in a sense that it does

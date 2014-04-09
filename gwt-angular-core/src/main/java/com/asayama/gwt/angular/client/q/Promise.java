@@ -11,7 +11,7 @@ public class Promise<V> extends JSObject {
     }
 
     public static interface Done<V> {
-        void exec(V value);
+        void call(V value);
     }
 
     public static interface Success<X, V> {
@@ -42,7 +42,7 @@ public class Promise<V> extends JSObject {
         then(new Success<Object, V>() {
             @Override
             public Object call(V value) {
-                success.exec(value);
+                success.call(value);
                 return null;
             }
         }, null, null);

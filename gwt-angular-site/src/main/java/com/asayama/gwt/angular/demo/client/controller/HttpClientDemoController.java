@@ -1,12 +1,12 @@
 package com.asayama.gwt.angular.demo.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.q.Promise.Done;
+import com.asayama.gwt.angular.client.q.Promise.Success;
 import com.asayama.gwt.angular.http.client.HttpClient;
-import com.asayama.gwt.angular.http.client.HttpClientCallback;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.Response;
 
 public class HttpClientDemoController implements Controller {
@@ -21,20 +21,25 @@ public class HttpClientDemoController implements Controller {
 
     @Override
     public void onControllerLoad() {
-        String url = "HttpClientExample.json";
-        HttpClientCallback callback = new HttpClientCallback() {
-            @Override
-            public void onSuccess(Request request, Response response) {
-                JSArray<Mayor> mayors = JSArray.eval(response.getText());
-                setMayors(mayors);
+        final String url = "HttpClientExample.json";
+        http.get(url).then(new Success<String, Response>() {
+            public String call(Response value) {
+                int statusCode = value.getStatusCode();
+                if (statusCode == 200) {
+                    return value.getText();
+                }
+                GWT.log("[" + statusCode + "] " + url);
+                return null;
             }
-
-            @Override
-            public void onError(Request request, Exception exception) {
-                GWT.log("onError", exception);
+        }).then(new Success<JSArray<Mayor>, String>() {
+            public JSArray<Mayor> call(String value) {
+                return JSArray.eval(value);
             }
-        };
-        http.get(url, callback);
+        }).then(new Done<JSArray<Mayor>>() {
+            public void call(JSArray<Mayor> value) {
+                setMayors(value);
+            }
+        });
     }
 
     // Public getters and setters are automatically wired to AngularJS's $scope.

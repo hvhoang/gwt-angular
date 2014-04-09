@@ -2,9 +2,9 @@ package com.asayama.gwt.angular.resources.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
-import com.asayama.gwt.angular.client.q.deprecated.Promise;
-import com.asayama.gwt.angular.client.q.deprecated.Q;
-import com.asayama.gwt.angular.client.q.deprecated.SuccessCallback;
+import com.asayama.gwt.angular.client.q.Promise;
+import com.asayama.gwt.angular.client.q.Promise.Done;
+import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.http.client.Response;
@@ -22,14 +22,12 @@ public class GwtDataResource extends AbstractDirective {
         if (resource != null) {
             SafeUri safeUri = resource.getSafeUri();
             String url = safeUri.asString();
-            Promise promise = HttpUtils.get(q, url);
-            promise.success(new SuccessCallback() {
+            Promise<Response> promise = HttpUtils.get(q, url);
+            promise.then(new Done<Response>() {
                 @Override
-                public void success(Object... args) {
-                    Response response = (Response) args[1];
-                    String text = response.getText();
+                public void call(Response value) {
+                    String text = value.getText();
                     element.append(text);
-                    scope.digest();
                 }
             });
             return;
