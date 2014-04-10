@@ -13,7 +13,8 @@ public class PromiseDemoController implements Controller {
 
     private Q q;
     
-    private String greeting = "Click Go";
+    private String greeting = "Click " + getButtonCaption();
+    private String buttonCaption = "Go";
     
     @Override
     public void onControllerLoad() {
@@ -28,11 +29,13 @@ public class PromiseDemoController implements Controller {
                 }).then(new Done<String>() {
                     public void call(String value) {
                         setGreeting(value);
+                        setButtonCaption("Go Again");
                     }
                 });
     }
     
     public Promise<JSArray<?>> promiseGreeting() {
+        setGreeting("Please wait 1 second...");
         return q.all(promiseSalutation(), promiseName());
     }
     
@@ -64,5 +67,13 @@ public class PromiseDemoController implements Controller {
     
     public void setGreeting(String greeting) {
         this.greeting = greeting;
+    }
+    
+    public String getButtonCaption() {
+        return buttonCaption;
+    }
+    
+    public void setButtonCaption(String buttonCaption) {
+        this.buttonCaption = buttonCaption;
     }
 }

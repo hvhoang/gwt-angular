@@ -18,23 +18,23 @@ public class Promise<V> extends JSObject {
         X call(V value);
     }
 
-    public static interface Error<X, V> {
-        X call(V value);
+    public static interface Error<V> {
+        void call(Throwable value);
     }
 
-    public static interface Notify<X, V> {
-        X call(V value);
+    public static interface Notify<V> {
+        void call(Double value);
     }
 
     public final <X> Promise<X> then(Continue<X, V> success) {
         return then(success, null, null);
     }
 
-    public final <X> Promise<X> then(Error<X, V> error) {
+    public final Promise<V> then(Error<V> error) {
         return then(null, error, null);
     }
     
-    public final <X> Promise<X> then(Notify<X, V> notify) {
+    public final Promise<V> then(Notify<V> notify) {
         return then(null, null, notify);
     }
     
@@ -49,7 +49,7 @@ public class Promise<V> extends JSObject {
         return this;
     }
 
-    public final <X> Promise<X> then(final Continue<X, V> success, final Error<X, V> error, final Notify<X, V> notify) {
+    public final <X> Promise<X> then(final Continue<X, V> success, final Error<V> error, final Notify<V> notify) {
         Promise<X> p = _then(
                 success == null ? null : JSFunction.create(new Function<Object>() {
                     @SuppressWarnings("unchecked")
@@ -62,23 +62,25 @@ public class Promise<V> extends JSObject {
                     }
                 }),
                 error == null ? null : JSFunction.create(new Function<Object>() {
-                    @SuppressWarnings("unchecked")
                     @Override
                     public Object call(Object... args) {
                         if (args == null || args.length == 0) {
-                            return error.call(null);
+                            error.call(null);
+                            return this;
                         }
-                        return error.call((V) args[0]);
+                        error.call((Throwable) args[0]);
+                        return this;
                     }
                 }),
                 notify == null ? null : JSFunction.create(new Function<Object>() {
-                    @SuppressWarnings("unchecked")
                     @Override
                     public Object call(Object... args) {
                         if (args == null || args.length == 0) {
-                            return notify.call(null);
+                            notify.call(null);
+                            return this;
                         }
-                        return notify.call((V) args[0]);
+                        notify.call((Double) args[0]);
+                        return this;
                     }
                 }));
         return p;
