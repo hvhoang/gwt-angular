@@ -2,7 +2,7 @@ package com.asayama.gwt.angular.demo.client.controller;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.q.Promise.Done;
-import com.asayama.gwt.angular.client.q.Promise.Success;
+import com.asayama.gwt.angular.client.q.Promise.Continue;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSON;
@@ -22,7 +22,7 @@ public class HttpClientDemoController implements Controller {
     @Override
     public void onControllerLoad() {
         final String url = "HttpClientExample.json";
-        http.get(url).then(new Success<String, Response>() {
+        http.get(url).then(new Continue<String, Response>() {
             public String call(Response value) {
                 int statusCode = value.getStatusCode();
                 if (statusCode == 200) {
@@ -31,7 +31,7 @@ public class HttpClientDemoController implements Controller {
                 GWT.log("[" + statusCode + "] " + url);
                 return null;
             }
-        }).then(new Success<JSArray<Mayor>, String>() {
+        }).then(new Continue<JSArray<Mayor>, String>() {
             public JSArray<Mayor> call(String value) {
                 return JSArray.eval(value);
             }

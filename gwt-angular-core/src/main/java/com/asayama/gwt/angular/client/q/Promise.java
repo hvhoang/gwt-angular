@@ -14,7 +14,7 @@ public class Promise<V> extends JSObject {
         void call(V value);
     }
 
-    public static interface Success<X, V> {
+    public static interface Continue<X, V> {
         X call(V value);
     }
 
@@ -26,7 +26,7 @@ public class Promise<V> extends JSObject {
         X call(V value);
     }
 
-    public final <X> Promise<X> then(Success<X, V> success) {
+    public final <X> Promise<X> then(Continue<X, V> success) {
         return then(success, null, null);
     }
 
@@ -39,7 +39,7 @@ public class Promise<V> extends JSObject {
     }
     
     public final Promise<V> then(final Done<V> success) {
-        then(new Success<Object, V>() {
+        then(new Continue<Object, V>() {
             @Override
             public Object call(V value) {
                 success.call(value);
@@ -49,7 +49,7 @@ public class Promise<V> extends JSObject {
         return this;
     }
 
-    public final <X> Promise<X> then(final Success<X, V> success, final Error<X, V> error, final Notify<X, V> notify) {
+    public final <X> Promise<X> then(final Continue<X, V> success, final Error<X, V> error, final Notify<X, V> notify) {
         Promise<X> p = _then(
                 success == null ? null : JSFunction.create(new Function<Object>() {
                     @SuppressWarnings("unchecked")
