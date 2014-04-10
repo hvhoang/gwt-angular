@@ -10,10 +10,10 @@ public interface OnClickEventDemoResources extends ClientBundle {
 
     static OnClickEventDemoResources INSTANCE = GWT.create(OnClickEventDemoResources.class);
 
-    @Source("OnClickEventDemo.html")
+    @Source("view/OnClickEventDemo.html")
     HtmlResource partial();
 
-    @Source("OnClickEventDemo.html")
+    @Source("view/OnClickEventDemo.html")
     TextResource view();
     
     @Source("controller/OnClickEventDemoController.java")

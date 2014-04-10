@@ -10,10 +10,10 @@ public interface CustomFilterDemoResources extends ClientBundle {
 
     static CustomFilterDemoResources INSTANCE = GWT.create(CustomFilterDemoResources.class);
 
-    @Source("CustomFilterDemo.html")
+    @Source("view/CustomFilterDemo.html")
     HtmlResource partial();
 
-    @Source("CustomFilterDemo.html")
+    @Source("view/CustomFilterDemo.html")
     TextResource view();
     
     @Source("controller/ReverseFilterDemoController.java")
@@ -22,6 +22,6 @@ public interface CustomFilterDemoResources extends ClientBundle {
     @Source("filter/Reverse.java")
     TextResource filter();
 
-    @Source("CustomFilterModule.txt")
+    @Source("view/CustomFilterModule.txt")
     TextResource module();
 }

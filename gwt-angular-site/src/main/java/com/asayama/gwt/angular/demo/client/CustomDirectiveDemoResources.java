@@ -10,13 +10,13 @@ public interface CustomDirectiveDemoResources extends ClientBundle {
 
     static CustomDirectiveDemoResources INSTANCE = GWT.create(CustomDirectiveDemoResources.class);
 
-    @Source("CustomDirectiveDemo.html")
+    @Source("view/CustomDirectiveDemo.html")
     HtmlResource partial();
     
-    @Source("CustomDirectiveDemo.html")
+    @Source("view/CustomDirectiveDemo.html")
     TextResource view();
 
-    @Source("CustomeDirectiveModule.txt")
+    @Source("view/CustomeDirectiveModule.txt")
     TextResource module();
     
     @Source("directive/MyHello.java")

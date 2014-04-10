@@ -25,6 +25,6 @@ interface PrettifyExampleResources extends ClientBundle {
     static final PrettifyExampleResources INSTANCE =
             GWT.create(PrettifyExampleResources.class);
     
-    @Source("com/asayama/gwt/angular/demo/client/PrettifyDemo.html")
+    @Source("com/asayama/gwt/angular/demo/client/view/PrettifyDemo.html")
     TextResource demoHtml();
 }

@@ -10,10 +10,10 @@ public interface PrettifyDemoResources extends ClientBundle {
 
     static PrettifyDemoResources INSTANCE = GWT.create(PrettifyDemoResources.class);
 
-    @Source("PrettifyDemo.html")
+    @Source("view/PrettifyDemo.html")
     HtmlResource partial();
 
-    @Source("PrettifyDemo.html")
+    @Source("view/PrettifyDemo.html")
     TextResource view();
     
     @Source("controller/PrettifyDemoController.java")

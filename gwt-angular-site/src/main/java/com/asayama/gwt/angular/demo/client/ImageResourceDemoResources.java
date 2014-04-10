@@ -10,10 +10,10 @@ public interface ImageResourceDemoResources extends ClientBundle {
     
     static ImageResourceDemoResources INSTANCE = GWT.create(ImageResourceDemoResources.class);
 
-    @Source("ImageResourceDemo.html")
+    @Source("view/ImageResourceDemo.html")
     HtmlResource partial();
 
-    @Source("ImageResourceDemo.html")
+    @Source("view/ImageResourceDemo.html")
     TextResource view();
 
     @Source("controller/ImageResourceDemoController.java")
