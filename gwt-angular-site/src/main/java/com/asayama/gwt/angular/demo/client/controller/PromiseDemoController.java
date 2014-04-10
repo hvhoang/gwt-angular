@@ -13,8 +13,8 @@ public class PromiseDemoController implements Controller {
 
     private Q q;
     
-    private String greeting = "Click " + getButtonCaption();
     private String buttonCaption = "Go";
+    private String greeting = "Click " + getButtonCaption();
     
     @Override
     public void onControllerLoad() {
@@ -45,7 +45,7 @@ public class PromiseDemoController implements Controller {
             public void run() {
                 d.resolve("World");
             }
-        }.schedule(1000);
+        }.schedule(500);
         return d.promise();
     }
     
