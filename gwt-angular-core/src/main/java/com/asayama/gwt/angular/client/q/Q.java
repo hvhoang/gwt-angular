@@ -15,7 +15,7 @@ public class Q implements Service {
     }
 
     public Promise<JSArray<?>> all(Promise<?>... promises) {
-        return ngo.all(JSArray.create(promises)).cast();
+        return ngo.all(JSArray.create(promises));
     }
 }
 
@@ -29,7 +29,7 @@ class NGQ extends NGObject {
         return this.defer();
     }-*/;
 
-    final native Promise<?> all(JSArray<Promise<?>> jsarray) /*-{
+    final native Promise<JSArray<?>> all(JSArray<Promise<?>> jsarray) /*-{
         return this.all(jsarray);
     }-*/;
 }

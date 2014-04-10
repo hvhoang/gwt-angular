@@ -13,19 +13,23 @@ public class PromiseDemoController implements Controller {
 
     private Q q;
     
-    private String greeting = "";
+    private String greeting = "Click Go";
     
     @Override
     public void onControllerLoad() {
-        promiseGreeting().then(new Continue<String, JSArray<?>>() {
-            public String call(JSArray<?> value) {
-                return value.get(0) + ", " + value.get(1) + "!";
-            }
-        }).then(new Done<String>() {
-            public void call(String value) {
-                setGreeting(value);
-            }
-        });
+    }
+    
+    public void onClickGo() {
+        promiseGreeting().then(
+                new Continue<String, JSArray<?>>() {
+                    public String call(JSArray<?> value) {
+                        return value.get(0) + ", " + value.get(1) + "!";
+                    }
+                }).then(new Done<String>() {
+                    public void call(String value) {
+                        setGreeting(value);
+                    }
+                });
     }
     
     public Promise<JSArray<?>> promiseGreeting() {
