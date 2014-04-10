@@ -11,34 +11,43 @@ import com.google.gwt.user.client.Timer;
 
 public class PromiseDemoController implements Controller {
 
+    // Q service is injected by Angular
     private Q q;
     
+    // View Models
     private String buttonCaption = "Go";
     private String greeting = "Click " + getButtonCaption();
     
     @Override
     public void onControllerLoad() {
+        // noop
     }
     
     public void onClickGo() {
-        promiseGreeting().then(
-                new Continue<String, JSArray<?>>() {
+        setGreeting("Please wait 1 second...");
+        promiseGreeting().then(new Done<String>() {
+            // Refreshes the greeting model and update the button caption.
+            @Override
+            public void call(String value) {
+                setGreeting(value);
+                setButtonCaption("Go Again");
+            }
+        });
+    }
+    
+    // Given the promises of name and greeting, returns a promise of greeting.
+    public Promise<String> promiseGreeting() {
+        return q.all(promiseSalutation(), promiseName())
+                .then(new Continue<String, JSArray<?>>() {
+                    // Formats the greeting when salutation and name are delivered.
+                    @Override
                     public String call(JSArray<?> value) {
                         return value.get(0) + ", " + value.get(1) + "!";
-                    }
-                }).then(new Done<String>() {
-                    public void call(String value) {
-                        setGreeting(value);
-                        setButtonCaption("Go Again");
                     }
                 });
     }
     
-    public Promise<JSArray<?>> promiseGreeting() {
-        setGreeting("Please wait 1 second...");
-        return q.all(promiseSalutation(), promiseName());
-    }
-    
+    // Returns a promise of name by simulating an asynchronous call with a time-out.
     public Promise<String> promiseName() {
         final Deferred<String> d = q.defer();
         new Timer() {
@@ -49,6 +58,7 @@ public class PromiseDemoController implements Controller {
         return d.promise();
     }
     
+    // Returns a promise of salutation by simulating an asynchronous call with a time-out.
     public Promise<String> promiseSalutation() {
         final Deferred<String> d = q.defer();
         new Timer() {
