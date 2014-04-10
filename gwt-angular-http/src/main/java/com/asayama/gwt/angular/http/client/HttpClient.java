@@ -53,7 +53,7 @@ import com.google.gwt.http.client.Response;
 public class HttpClient implements Service {
 
     private Q q;
-
+    
     public Promise<Response> get(final String url) {
         final Deferred<Response> deferred = q.defer();
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
@@ -63,13 +63,9 @@ public class HttpClient implements Service {
 
                 @Override
                 public void onResponseReceived(Request request, Response response) {
-                    try {
-                        int status = response.getStatusCode();
-                        GWT.log("[" + status + "] " + url);
-                        deferred.resolve(response);
-                    } catch (Exception e) {
-                        GWT.log("[GET]" + url, e);
-                    }
+                    int status = response.getStatusCode();
+                    GWT.log("[" + status + "] " + url);
+                    deferred.resolve(response);
                 }
 
                 @Override
