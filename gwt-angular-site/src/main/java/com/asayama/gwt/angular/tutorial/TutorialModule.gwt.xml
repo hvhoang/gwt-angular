@@ -11,7 +11,7 @@
   <inherits name="com.asayama.gwt.angular.resources.ResourcesModule" />
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
 
-  <inherits name="com.asayama.gwt.angular.util.DemoUtil" />
+  <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
 
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.tutorial.client.TutorialModule" />

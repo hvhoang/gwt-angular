@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.util.client;
+package com.asayama.gwt.angular.pages.client;
 
 import java.util.Iterator;
 
@@ -10,22 +10,22 @@ import com.asayama.gwt.jsni.client.JSArray;
 
 public abstract class AbstractMultiPageController implements Controller {
 
-    public static final String PAGE_NAME_PARAM = "page";
+    public static final String DEFAULT_PAGE_PARAM = "page";
     
-    private RouteParams routeParams;
-    private Location location;
-    private String selectedPageName = null;
+    protected RouteParams routeParams;
+    protected Location location;
+    protected String selectedPageName = null;
     
     @Override
     public final void onControllerLoad() {
-        setSelectedPageName(routeParams.getString(PAGE_NAME_PARAM));
+        setSelectedPageName(routeParams.getString(DEFAULT_PAGE_PARAM));
         if (isPageSelected()) {
-            getLocation().setHashParam(PAGE_NAME_PARAM, getDefaultPageName());
+            getLocation().setHashParam(DEFAULT_PAGE_PARAM, getDefaultPageName());
         }
     }
     
     public void onClickPage(Page page) {
-        getLocation().setHashParam(PAGE_NAME_PARAM, page.getName());
+        getLocation().setHashParam(DEFAULT_PAGE_PARAM, page.getName());
     }
     
     public boolean isPageSelected() {

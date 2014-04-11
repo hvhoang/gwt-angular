@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.util.client;
+package com.asayama.gwt.angular.pages.client;
 
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;

@@ -15,7 +15,7 @@
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
 
   <!-- Internal Dependency -->
-  <inherits name="com.asayama.gwt.angular.util.DemoUtil" />
+  <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
   <inherits name="com.asayama.gwt.angular.examples.ExamplesModule" />
   <inherits name="com.asayama.gwt.angular.tutorial.TutorialModule" />
 

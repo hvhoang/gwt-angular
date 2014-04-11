@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.site.client.controller;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
-import com.asayama.gwt.angular.util.client.AbstractMultiPageController;
-import com.asayama.gwt.angular.util.client.Page;
+import com.asayama.gwt.angular.pages.client.AbstractMultiPageController;
+import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 
 

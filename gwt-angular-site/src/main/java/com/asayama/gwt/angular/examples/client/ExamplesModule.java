@@ -11,7 +11,7 @@ import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleControl
 import com.asayama.gwt.angular.examples.client.controller.PromiseExampleController;
 import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
 import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
-import com.asayama.gwt.angular.util.client.Page;
+import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
 

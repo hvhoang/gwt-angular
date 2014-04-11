@@ -2,9 +2,9 @@ package com.asayama.gwt.angular.site.client.controller;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.angular.site.client.ProjectConstants;
 import com.asayama.gwt.angular.site.client.SiteResources;
-import com.asayama.gwt.angular.util.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;

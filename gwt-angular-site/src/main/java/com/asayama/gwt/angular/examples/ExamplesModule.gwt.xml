@@ -3,7 +3,7 @@
   
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
-  <inherits name="com.asayama.gwt.angular.util.DemoUtil" />
+  <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
   <inherits name="com.asayama.gwt.angular.demo.DemoModule" />
 
   <source path="client" />
