@@ -24,7 +24,7 @@ public abstract class AbstractMultiPageController implements Controller {
         }
     }
     
-    public void onClickPage(Page page) {
+    public void onSelectPage(Page page) {
         getLocation().setHashParam(DEFAULT_PAGE_PARAM, page.getName());
     }
     
@@ -64,8 +64,8 @@ public abstract class AbstractMultiPageController implements Controller {
         return null;
     }
     
-    public String getStylePageActive(String key) {
-        return key.equalsIgnoreCase(getSelectedPageName()) ? "active" : "";
+    public boolean isPageActive(String key) {
+        return key.equalsIgnoreCase(getSelectedPageName());
     }
     
     // Getters and Setters

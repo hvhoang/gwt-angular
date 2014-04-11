@@ -12,6 +12,10 @@ public class ExamplesController extends AbstractMultiPageController {
     private JSArray<Page> pages = null;
     private String defaultPageName = "textInput";
     
+    public String getStylePageActive(String key) {
+        return isPageActive(key) ? "active" : "";
+    }
+
     // Getters and Setters
 
     @Override

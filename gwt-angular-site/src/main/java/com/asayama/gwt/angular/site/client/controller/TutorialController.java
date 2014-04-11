@@ -12,6 +12,10 @@ public class TutorialController extends AbstractMultiPageController {
     private JSArray<Page> pages = null;
     private String defaultPageName = "introduction";
 
+    public String getStylePageActive(String key) {
+        return isPageActive(key) ? "active" : "";
+    }
+
     // Getters and Setters
 
     @Override
