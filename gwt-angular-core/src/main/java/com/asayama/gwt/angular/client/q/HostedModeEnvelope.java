@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.client.q;
 
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSObject;
-import com.google.gwt.core.client.GWT;
 
 /**
  * This JavaScriptObject type was defined to workaround the problem of passing
@@ -32,7 +31,6 @@ class HostedModeEnvelope<P> extends JSObject {
             return null;
         }
         HostedModeEnvelope<P> envelope = (HostedModeEnvelope<P>) o;
-        GWT.log(envelope.toJavaScript());
         P payload = envelope.getPayload();
         if (payload == null) {
             JSArray<?> array = envelope.cast();

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.asayama.gwt.jsni.client.exceptions.EmptyKeyException;
 import com.asayama.gwt.jsni.client.exceptions.UndefinedException;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONObject;
 
@@ -40,7 +41,12 @@ public class JSObject extends JavaScriptObject {
 	}
 	
 	public final String toJavaScript() {
-	    return new JSONObject(this).toString();
+	    try {
+    	    return new JSONObject(this).toString();
+	    } catch (Exception e) {
+	        GWT.log("Unable to obtain the script", e);
+	        return this.toString();
+	    }
 	}
 
 	private final native boolean _isThisUndefined() /*-{
