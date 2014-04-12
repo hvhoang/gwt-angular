@@ -52,16 +52,18 @@ public class Promise<V> extends JSObject {
     public final <X> Promise<X> then(final Continue<X, V> success, final Error<V> error, final Notify<V> notify) {
         Promise<X> p = _then(
                 success == null ? null : JSFunction.create(new Function<Object>() {
-                    @SuppressWarnings("unchecked")
+
                     @Override
                     public Object call(Object... args) {
                         if (args == null || args.length == 0) {
                             return success.call(null);
                         }
-                        return success.call((V) args[0]);
+                        V value = HostedModeEnvelope.unwrap(args[0]);
+                        return HostedModeEnvelope.wrap(success.call(value));
                     }
                 }),
                 error == null ? null : JSFunction.create(new Function<Object>() {
+
                     @Override
                     public Object call(Object... args) {
                         if (args == null || args.length == 0) {
@@ -73,6 +75,7 @@ public class Promise<V> extends JSObject {
                     }
                 }),
                 notify == null ? null : JSFunction.create(new Function<Object>() {
+
                     @Override
                     public Object call(Object... args) {
                         if (args == null || args.length == 0) {

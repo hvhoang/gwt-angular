@@ -11,7 +11,7 @@ public class Deferred<T> extends JSObject {
 
     public final void resolve(T value) {
         try {
-            _resolve(value);
+            _resolve(HostedModeEnvelope.wrap(value));
         } catch (Exception e) {
             GWT.log("Exception while resolving a value, value=" + value, e);
         }
@@ -19,7 +19,7 @@ public class Deferred<T> extends JSObject {
     
     public final void reject(Throwable value) {
         try {
-            _reject(value);
+            _reject(HostedModeEnvelope.wrap(value));
         } catch (Exception e) {
             GWT.log("Exception while rejecting a value", e);
         }
@@ -27,7 +27,7 @@ public class Deferred<T> extends JSObject {
     
     public final void notify(Object value) {
         try {
-            _notify(value);
+            _notify(HostedModeEnvelope.wrap(value));
         } catch (Exception e) {
             GWT.log("Exception while notifying progress", e);
         }
@@ -37,15 +37,15 @@ public class Deferred<T> extends JSObject {
         return this.promise;
     }-*/;
     
-    public final native void _resolve(T value) /*-{
+    public final native void _resolve(HostedModeEnvelope<T> value) /*-{
         this.resolve(value);
     }-*/;
     
-    public final native void _reject(Throwable value) /*-{
+    public final native void _reject(HostedModeEnvelope<Throwable> value) /*-{
         this.reject(value);
     }-*/;
     
-    public final native void _notify(Object value) /*-{
+    public final native void _notify(HostedModeEnvelope<Object> value) /*-{
         this.notify(value);
     }-*/;
 }

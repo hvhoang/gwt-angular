@@ -5,6 +5,7 @@ import java.util.Date;
 import com.asayama.gwt.jsni.client.exceptions.EmptyKeyException;
 import com.asayama.gwt.jsni.client.exceptions.UndefinedException;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.json.client.JSONObject;
 
 /**
  * Represents a JavaScriptObject, and used as a syntax sugar, i.e. a shorthand
@@ -36,6 +37,10 @@ public class JSObject extends JavaScriptObject {
     }-*/;
 
 	protected JSObject() {
+	}
+	
+	public final String toJavaScript() {
+	    return new JSONObject(this).toString();
 	}
 
 	private final native boolean _isThisUndefined() /*-{
