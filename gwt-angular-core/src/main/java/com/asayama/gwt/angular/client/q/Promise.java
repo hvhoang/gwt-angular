@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.client.q;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSObject;
+import com.google.gwt.core.shared.GWT;
 
 
 public class Promise<V> extends JSObject {
@@ -18,23 +19,23 @@ public class Promise<V> extends JSObject {
         X call(V value);
     }
 
-    public static interface Error<V> {
-        void call(Throwable value);
+    public static interface Fail {
+        void call(Throwable cause);
     }
 
-    public static interface Notify<V> {
-        void call(Double value);
+    public static interface Notify {
+        void call(String value);
     }
 
     public final <X> Promise<X> then(Continue<X, V> success) {
         return then(success, null, null);
     }
 
-    public final Promise<V> then(Error<V> error) {
-        return then(null, error, null);
+    public final Promise<V> then(Fail fail) {
+        return then(null, fail, null);
     }
     
-    public final Promise<V> then(Notify<V> notify) {
+    public final Promise<V> then(Notify notify) {
         return then(null, null, notify);
     }
     
@@ -49,41 +50,50 @@ public class Promise<V> extends JSObject {
         return this;
     }
 
-    public final <X> Promise<X> then(final Continue<X, V> success, final Error<V> error, final Notify<V> notify) {
+    public final <X> Promise<X> then(final Continue<X, V> success, final Fail fail, final Notify notify) {
         Promise<X> p = _then(
                 success == null ? null : JSFunction.create(new Function<Object>() {
 
                     @Override
                     public Object call(Object... args) {
-                        if (args == null || args.length == 0) {
-                            return success.call(null);
+                        try {
+                            Object object = (args == null || args.length == 0) ? null : args[0];
+                            V value = HostedModeEnvelope.unwrap(object);
+                            return HostedModeEnvelope.wrap(success.call(value));
+                        } catch (Throwable e) {
+                            GWT.log("Exception while calling promise success", e);
+                            return null; //FIXME
                         }
-                        V value = HostedModeEnvelope.unwrap(args[0]);
-                        return HostedModeEnvelope.wrap(success.call(value));
                     }
                 }),
-                error == null ? null : JSFunction.create(new Function<Object>() {
+                fail == null ? null : JSFunction.create(new Function<Object>() {
 
                     @Override
                     public Object call(Object... args) {
-                        if (args == null || args.length == 0) {
-                            error.call(null);
+                        try {
+                            Object object = (args == null || args.length == 0) ? null : args[0];
+                            Throwable value = HostedModeEnvelope.unwrap(object);
+                            fail.call(value);
                             return this;
+                        } catch (Throwable e) {
+                            GWT.log("Exception while calling promise fail", e);
+                            return null; //FIXME
                         }
-                        error.call((Throwable) args[0]);
-                        return this;
                     }
                 }),
                 notify == null ? null : JSFunction.create(new Function<Object>() {
 
                     @Override
                     public Object call(Object... args) {
-                        if (args == null || args.length == 0) {
-                            notify.call(null);
+                        try {
+                            Object object = (args == null || args.length == 0) ? null : args[0];
+                            String value = HostedModeEnvelope.unwrap(object);
+                            notify.call(value);
                             return this;
+                        } catch (Throwable e) {
+                            GWT.log("Exception while calling promise notify", e);
+                            return null; //FIXME
                         }
-                        notify.call((Double) args[0]);
-                        return this;
                     }
                 }));
         return p;

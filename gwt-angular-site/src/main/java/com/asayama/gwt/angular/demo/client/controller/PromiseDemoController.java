@@ -5,6 +5,7 @@ import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Promise.Continue;
 import com.asayama.gwt.angular.client.q.Promise.Done;
+import com.asayama.gwt.angular.client.q.Promise.Fail;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.user.client.Timer;
@@ -32,6 +33,11 @@ public class PromiseDemoController implements Controller {
                 setGreeting(value);
                 setButtonCaption("Go Again");
             }
+        }).then(new Fail() {
+            @Override
+            public void call(Throwable cause) {
+                setGreeting(cause.getMessage());
+            }
         });
     }
     
@@ -53,6 +59,7 @@ public class PromiseDemoController implements Controller {
         new Timer() {
             public void run() {
                 d.resolve("World");
+//                d.reject(new RuntimeException("promiseName failed"));
             }
         }.schedule(500);
         return d.promise();

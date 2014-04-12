@@ -37,15 +37,15 @@ public class Deferred<T> extends JSObject {
         return this.promise;
     }-*/;
     
-    public final native void _resolve(HostedModeEnvelope<T> value) /*-{
+    private final native void _resolve(HostedModeEnvelope<T> value) /*-{
         this.resolve(value);
     }-*/;
     
-    public final native void _reject(HostedModeEnvelope<Throwable> value) /*-{
+    private final native void _reject(HostedModeEnvelope<Throwable> value) /*-{
         this.reject(value);
     }-*/;
     
-    public final native void _notify(HostedModeEnvelope<Object> value) /*-{
+    private final native void _notify(HostedModeEnvelope<Object> value) /*-{
         this.notify(value);
     }-*/;
 }
