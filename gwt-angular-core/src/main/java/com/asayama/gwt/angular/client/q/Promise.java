@@ -74,7 +74,7 @@ public class Promise<V> extends JSObject {
                             Object object = (args == null || args.length == 0) ? null : args[0];
                             Throwable value = HostedModeEnvelope.unwrap(object);
                             fail.call(value);
-                            return this;
+                            return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
                             GWT.log("Exception while calling promise fail", e);
                             return null; //FIXME
@@ -89,7 +89,7 @@ public class Promise<V> extends JSObject {
                             Object object = (args == null || args.length == 0) ? null : args[0];
                             String value = HostedModeEnvelope.unwrap(object);
                             notify.call(value);
-                            return this;
+                            return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
                             GWT.log("Exception while calling promise notify", e);
                             return null; //FIXME

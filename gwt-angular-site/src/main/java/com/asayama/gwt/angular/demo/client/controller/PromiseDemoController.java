@@ -41,7 +41,7 @@ public class PromiseDemoController implements Controller {
         });
     }
     
-    // Given the promises of name and greeting, returns a promise of greeting.
+    // Given the promises of name and salutation, returns a promise of greeting.
     public Promise<String> promiseGreeting() {
         return q.all(promiseSalutation(), promiseName())
                 .then(new Continue<String, JSArray<?>>() {
@@ -59,7 +59,6 @@ public class PromiseDemoController implements Controller {
         new Timer() {
             public void run() {
                 d.resolve("World");
-//                d.reject(new RuntimeException("promiseName failed"));
             }
         }.schedule(500);
         return d.promise();
