@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt</groupId>
   <artifactId>gwt-angular-tutorial</artifactId>
-  <version>0.0.46-SNAPSHOT</version>
+  <version>0.0.46</version>
   <packaging>jar</packaging>
   <name>gwt-angular-tutorial</name>
   <build>
@@ -54,13 +54,13 @@
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-core</artifactId>
-      <version>0.0.46-SNAPSHOT</version>
+      <version>0.0.46</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-route</artifactId>
-      <version>0.0.46-SNAPSHOT</version>
+      <version>0.0.46</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
