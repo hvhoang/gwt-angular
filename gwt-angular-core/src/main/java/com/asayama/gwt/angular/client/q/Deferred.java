@@ -25,9 +25,9 @@ public class Deferred<T> extends JSObject {
         }
     }
     
-    public final void notify(Object value) {
+    public final void progress(Progress value) {
         try {
-            _notify(HostedModeEnvelope.wrap(value));
+            _progress(HostedModeEnvelope.wrap(value));
         } catch (Exception e) {
             GWT.log("Exception while notifying progress", e);
         }
@@ -45,7 +45,7 @@ public class Deferred<T> extends JSObject {
         this.reject(value);
     }-*/;
     
-    private final native void _notify(HostedModeEnvelope<Object> value) /*-{
+    private final native void _progress(HostedModeEnvelope<Progress> value) /*-{
         this.notify(value);
     }-*/;
 }

@@ -24,7 +24,7 @@ public class Promise<V> extends JSObject {
     }
 
     public static interface Notify {
-        void call(String value);
+        void call(Progress progress);
     }
 
     public final <X> Promise<X> then(Continue<X, V> success) {
@@ -87,7 +87,7 @@ public class Promise<V> extends JSObject {
                     public Object call(Object... args) {
                         try {
                             Object object = (args == null || args.length == 0) ? null : args[0];
-                            String value = HostedModeEnvelope.unwrap(object);
+                            Progress value = HostedModeEnvelope.unwrap(object);
                             notify.call(value);
                             return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
@@ -99,7 +99,7 @@ public class Promise<V> extends JSObject {
         return p;
     }
 
-    private final native <X> Promise<X> _then(JSFunction<?> success, JSFunction<?> error, JSFunction<?> notify) /*-{
-        return this.then(success, error, notify);
+    private final native <X> Promise<X> _then(JSFunction<?> fn1, JSFunction<?> fn2, JSFunction<?> fn3) /*-{
+        return this.then(fn1, fn2, fn3);
     }-*/;
 }
