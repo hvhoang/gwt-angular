@@ -33,42 +33,87 @@
 
   <h2>Controller</h2>
   <p>
-    Controller takes no action load, but when the user clicks the "Go" button,
-    it invokes <code>onClickGo()</code> method. This method is responsible for
-    communicating with the user by first showing the feedback, "Please wait 1 
-    second..." while it makes an asynchronous call to get the greeting data.
-    The <code>Done</code> callback consumes the greeting data when it is 
-    available, by refreshing the greeting value to the displayed to the screen.
+    Controller takes no action onload, but when the user clicks the "Go" button,
+    it invokes <code>onClickGo()</code> method. This method first updates the
+    greeting caption on screen, letting the user know that the loading of the
+    data is in progress. Then the method goes on to invoke the <code>getGreeting()
+    </code> method of <code>GreetingService</code> object.
   </p><p>
-    <code>promiseGreetin()</code> method returns a promise of greeting, meaning
-    that it promises that a String will be eventually returned signifying the
-    value of greeting. It depends on two other promises. One is the promise of
-    salutation, and the other is the promise of name. When the salutation and
-    name values are both available, it combines and formats the two values into
-    a single greeting object, and returns to the caller. We use <code>q.all()</code>
-    method here because we want to execute the other two asynchronous calls in
-    parallel. There is no need to wait for one to complete before start the 
-    other.
+    This service object is something we wrote for the purpose of demonstrating
+    the promise pattern in GWT Angular. We will look at the implementation of
+    this service class shortly, but for now, we'll focus on the handling of
+    the <code>Promise&lt;String&gt;</code> object returned by this service call.
   </p><p>
-    <code>promiseName()</code> method simulates an asynchronous call by using a
-    <code>Timer</code> class in GWT. Normally, we would be obtaining the data
-    from a remote source via XHR. Nevertheless, this simulated asynchronous call
-    returns the value "World" upon its completion, which happens in 500ms.
+    The returned object is a promise that, when the promised value is ready, it
+    would invoke the callback object that you register with this promise object.
+    In this case, what it promises is that the object of type <code>String</code>
+    will be returned, signifying the greeting value.
   </p><p>
-    In contrast, <code>promiseSalutation()</code> method returns its value,
-    "Hello" in 1 second.
+    We pass three different callback to this promise. First callback we pass is
+    the <code>Done</code> object. This object receives the greeting value, and
+    updates the screen caption with this value. The second callback is <code>
+    Notify</code> object, which listens to the progress of asynchronous calls
+    and updates the screen to let the user know of the progress. The third 
+    callback is the <code>Fail</code>, which displays an error message on the
+    screen if and when the promise fails to deliver the value.
   </p><p>
-    When the slower of the two promises is completed, (in this example, the
-    salutation call), the <code>q.all()</code> method is evaluated. Because 
-    the calls are not nested, it takes 1 second for this to work, not 1.5 
-    seconds. Also, besides the runtime efficiency of this model, you may have
-    noticed how easily you can abstract each promise into its own block of
-    execution. Once you define exactly how each promise is constructed, the
-    other promises depending on them do not need to know exactly how the others
-    are implemented. If the definition of one of the promises undergoes a change
-    it can be done in one place.
+    In short, the controller merely knows how to consume the promise value, if
+    and when it is delivered. It does not know any details about how the values
+    are obtained.
   </p>
   <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
+
+  <h2>Service</h2>    
+  <p>
+    <code>GreetingService</code> is the code that handles the complexity of
+    asynchronously loading the necessary data from the back-end. In this 
+    example, we decided to simulate asynchronous loading of the data rather than
+    actually setting up live web services. This is because we wanted to focus
+    on the promise and resolution of the values in the browser, and did not
+    want to distract you with the design and implementation of web service code.
+  </p><p>
+    There are three public methods in this service, <code>getGreeting()</code>,
+    which you have already seen being called from the controller, and two others,
+    <code>getName()</code> and <code>getSalutation()</code>. All three public
+    methods return an object of type <code>Promise</code>.
+  </p><p>
+    <code>getSalutation()</code> method simulates an asynchronous call by using
+    a <code>Timer</code> class in GWT. It schedule a job to run in 1 second,
+    which returns a string value "Hello" by calling the <code>resolve()</code>
+    method on the <code>Deferred</code> object obtained from <code>Q</code>.
+  </p><p>
+    <code>getName()</code> method also simulates an asynchronous call by using
+    a <code>Timer</code> class in GWT. It schedule a job to run in 0.5 seconds,
+    which returns a string value "World" by calling the <code>resolve()</code>
+    method on the <code>Deferred</code> object obtained from <code>Q</code>.
+  </p><p>
+    Note that neither of the <code>getSalutaion()</code> or <code>getName()</code>
+    methods are blocking, in a sense that the caller does not have to wait for
+    these promised string values to become available. They simply return the 
+    <code>Promise</code> values, so that the caller can later retrieve these
+    values whenever they become available.
+  </p><p>
+    You may recall that the controller for this demo does not call these two
+    service methods we have so far talked about, but the controller calls the
+    <code>getGreeting()</code> method. Let's take a look at it now.
+  </p><p>
+    <code>getGreeting()</code> method uses <code>q.all()</code> service method
+    of type <code>Q</code>, which is injected by AngularJS into our custom
+    service class. This method allows the parallel execution of promises, and
+    returns another single promise to be resolved when all promises are ready.
+  </p><p>
+    The concept of parallel execution is rather important. If we had executed
+    these three asynchronous calls in series, then the execution time of the 
+    entire pipeline would have been 1.5 seconds. But because we execute them
+    in parallel, we can execute them in 1 second, which is the slower of the
+    two promises that the <code>getGreeting()</code> depends on.
+  </p><p>
+    The purpose of <code>getGreeting()</code> method is to construct a new 
+    greeting object, given the values of salutation and name. It knows how to
+    construct this new value, but it does not have to know anything about how
+    these values are loaded.
+  </p>
+  <pre data-gwt-prettify="SERVICE_CODE"></pre>
 
   <h2>Configuration</h2>
   <p>

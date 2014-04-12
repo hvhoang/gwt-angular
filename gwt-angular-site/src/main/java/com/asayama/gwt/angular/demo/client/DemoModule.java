@@ -13,6 +13,7 @@ import com.asayama.gwt.angular.demo.client.controller.TextInputDemoController;
 import com.asayama.gwt.angular.demo.client.controller.UrlHashParameterDemoController;
 import com.asayama.gwt.angular.demo.client.directive.MyHello;
 import com.asayama.gwt.angular.demo.client.filter.Reverse;
+import com.asayama.gwt.angular.demo.client.service.GreetingService;
 
 public class DemoModule extends AbstractModule {
 
@@ -21,6 +22,7 @@ public class DemoModule extends AbstractModule {
         Angular.module(this);
         directive(MyHello.class);
         filter(Reverse.class);
+        factory(GreetingService.class);
         controller(HttpClientDemoController.class);
         controller(OnClickEventDemoController.class);
         controller(TextInputDemoController.class);
