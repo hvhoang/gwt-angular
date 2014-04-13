@@ -12,7 +12,7 @@ import com.google.gwt.http.client.Response;
 class HttpUtils {
 
     static Promise<Response> get(Q q, final String url) {
-        final Deferred<Response,Request> deferred = q.defer();
+        final Deferred<Response> deferred = q.defer();
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
         try {
             builder.sendRequest(null, new RequestCallback() {

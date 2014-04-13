@@ -4,7 +4,7 @@ import com.asayama.gwt.jsni.client.JSObject;
 import com.google.gwt.core.client.GWT;
 
 
-public class Deferred<V,H> extends JSObject {
+public class Deferred<V> extends JSObject {
 
     protected Deferred() {
     }
@@ -25,7 +25,7 @@ public class Deferred<V,H> extends JSObject {
         }
     }
     
-    public final void progress(Progress<H> progress) {
+    public final void progress(Progress progress) {
         try {
             _progress(HostedModeEnvelope.wrap(progress));
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class Deferred<V,H> extends JSObject {
         this.reject(value);
     }-*/;
     
-    private final native void _progress(HostedModeEnvelope<Progress<H>> value) /*-{
+    private final native void _progress(HostedModeEnvelope<Progress> value) /*-{
         this.notify(value);
     }-*/;
 }

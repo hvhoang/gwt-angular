@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.http.client;
 
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.q.Deferred;
-import com.asayama.gwt.angular.client.q.Progress;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Q;
 import com.google.gwt.http.client.Request;
@@ -72,14 +71,15 @@ public class HttpClient implements Service {
     }
 
     public Promise<Response> send(Method method, String url, String data) {
-        final Deferred<Response,Request> deferred = q.defer();
+        final Deferred<Response> deferred = q.defer();
         try {
             //TODO support cancellation of requests
             //TODO https://github.com/kyoken74/gwt-angular/issues/69
             RequestBuilder builder = new RequestBuilder(method, url);
             RequestCallback callback = new DeferredRequestCallback(deferred);
+
             Request request = builder.sendRequest(data, callback);
-            deferred.progress(new Progress<Request>(request));
+            deferred.progress(new HttpClientProgress(method.toString() + " " + url, request));
             
         } catch (RequestException e) {
             deferred.reject(e);
@@ -92,9 +92,9 @@ public class HttpClient implements Service {
 
 class DeferredRequestCallback implements RequestCallback {
     
-    private final Deferred<Response,Request> deferred;
+    private final Deferred<Response> deferred;
     
-    public DeferredRequestCallback(Deferred<Response,Request> deferred) {
+    public DeferredRequestCallback(Deferred<Response> deferred) {
         this.deferred = deferred;
     }
     
