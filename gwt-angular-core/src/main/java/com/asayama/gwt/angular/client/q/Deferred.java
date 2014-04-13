@@ -4,12 +4,12 @@ import com.asayama.gwt.jsni.client.JSObject;
 import com.google.gwt.core.client.GWT;
 
 
-public class Deferred<T> extends JSObject {
+public class Deferred<V,H> extends JSObject {
 
     protected Deferred() {
     }
 
-    public final void resolve(T value) {
+    public final void resolve(V value) {
         try {
             _resolve(HostedModeEnvelope.wrap(value));
         } catch (Exception e) {
@@ -17,27 +17,27 @@ public class Deferred<T> extends JSObject {
         }
     }
     
-    public final void reject(Throwable value) {
+    public final void reject(Throwable reason) {
         try {
-            _reject(HostedModeEnvelope.wrap(value));
+            _reject(HostedModeEnvelope.wrap(reason));
         } catch (Exception e) {
             GWT.log("Exception while rejecting a value", e);
         }
     }
     
-    public final void progress(Progress value) {
+    public final void progress(Progress<H> progress) {
         try {
-            _progress(HostedModeEnvelope.wrap(value));
+            _progress(HostedModeEnvelope.wrap(progress));
         } catch (Exception e) {
             GWT.log("Exception while notifying progress", e);
         }
     }
     
-    public final native Promise<T> promise() /*-{
+    public final native Promise<V> promise() /*-{
         return this.promise;
     }-*/;
     
-    private final native void _resolve(HostedModeEnvelope<T> value) /*-{
+    private final native void _resolve(HostedModeEnvelope<V> value) /*-{
         this.resolve(value);
     }-*/;
     
@@ -45,7 +45,7 @@ public class Deferred<T> extends JSObject {
         this.reject(value);
     }-*/;
     
-    private final native void _progress(HostedModeEnvelope<Progress> value) /*-{
+    private final native void _progress(HostedModeEnvelope<Progress<H>> value) /*-{
         this.notify(value);
     }-*/;
 }

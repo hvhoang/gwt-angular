@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.http.client;
 
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.q.Deferred;
+import com.asayama.gwt.angular.client.q.Progress;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Q;
 import com.google.gwt.http.client.Request;
@@ -71,29 +72,39 @@ public class HttpClient implements Service {
     }
 
     public Promise<Response> send(Method method, String url, String data) {
-        final Deferred<Response> deferred = q.defer();
+        final Deferred<Response,Request> deferred = q.defer();
         try {
-            RequestCallback callback = new RequestCallback() {
-
-                @Override
-                public void onResponseReceived(Request request, Response response) {
-                    deferred.resolve(response);
-                }
-
-                @Override
-                public void onError(Request request, Throwable exception) {
-                    deferred.reject(exception);
-                }
-            };
-            RequestBuilder builder = new RequestBuilder(method, url);
-            
             //TODO support cancellation of requests
             //TODO https://github.com/kyoken74/gwt-angular/issues/69
+            RequestBuilder builder = new RequestBuilder(method, url);
+            RequestCallback callback = new DeferredRequestCallback(deferred);
             Request request = builder.sendRequest(data, callback);
+            deferred.progress(new Progress<Request>(request));
             
         } catch (RequestException e) {
             deferred.reject(e);
+        } catch (RuntimeException e) {
+            deferred.reject(e);
         }
         return deferred.promise();
+    }
+}
+
+class DeferredRequestCallback implements RequestCallback {
+    
+    private final Deferred<Response,Request> deferred;
+    
+    public DeferredRequestCallback(Deferred<Response,Request> deferred) {
+        this.deferred = deferred;
+    }
+    
+    @Override
+    public void onResponseReceived(Request request, Response response) {
+        deferred.resolve(response);
+    }
+    
+    @Override
+    public void onError(Request request, Throwable exception) {
+        deferred.reject(exception);
     }
 }

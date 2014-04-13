@@ -30,31 +30,33 @@ public class GreetingService implements Service {
     
     // Returns a promise of salutation by simulating an asynchronous call with a time-out.
     public Promise<String> getSalutation() {
-        final Deferred<String> d = q.defer();
-        d.progress(new Progress("Loading salutation..."));
-        new Timer() {
+        final Deferred<String,Timer> d = q.defer();
+        Timer timer = new Timer() {
             
             @Override
             public void run() {
-                d.progress(new Progress("Loaded salutation"));
+                d.progress(new Progress<Timer>(this, "Loaded salutation"));
                 d.resolve("Hello");
             }
-        }.schedule(1000);
+        };
+        d.progress(new Progress<Timer>(timer, "Loading salutation..."));
+        timer.schedule(1000);
         return d.promise();
     }
 
     // Returns a promise of name by simulating an asynchronous call with a time-out.
     public Promise<String> getName() {
-        final Deferred<String> d = q.defer();
-        d.progress(new Progress("Loading name..."));
-        new Timer() {
+        final Deferred<String,Timer> d = q.defer();
+        Timer timer = new Timer() {
 
             @Override
             public void run() {
-                d.progress(new Progress("Loaded name"));
+                d.progress(new Progress<Timer>(this, "Loaded name"));
                 d.resolve("World");
             }
-        }.schedule(500);
+        };
+        d.progress(new Progress<Timer>(timer, "Loading name..."));
+        timer.schedule(500);
         return d.promise();
     }
 }

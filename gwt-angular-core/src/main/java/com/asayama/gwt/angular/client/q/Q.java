@@ -10,7 +10,7 @@ public class Q implements Service {
 
     private NGQ ngo;
 
-    public <T> Deferred<T> defer() {
+    public <V,H> Deferred<V,H> defer() {
         return ngo.defer().cast();
     }
 
@@ -25,7 +25,7 @@ class NGQ extends NGObject {
     protected NGQ() {
     }
 
-    final native Deferred<?> defer() /*-{
+    final native Deferred<?,?> defer() /*-{
         return this.defer();
     }-*/;
 
