@@ -73,8 +73,7 @@ public class HttpClient implements Service {
     public Promise<Response> send(Method method, String url, String data) {
         final Deferred<Response> deferred = q.defer();
         try {
-            RequestBuilder builder = new RequestBuilder(method, url);
-            Request request = builder.sendRequest(data, new RequestCallback() {
+            RequestCallback callback = new RequestCallback() {
 
                 @Override
                 public void onResponseReceived(Request request, Response response) {
@@ -85,7 +84,13 @@ public class HttpClient implements Service {
                 public void onError(Request request, Throwable exception) {
                     deferred.reject(exception);
                 }
-            });
+            };
+            RequestBuilder builder = new RequestBuilder(method, url);
+            
+            //TODO support cancellation of requests
+            //TODO https://github.com/kyoken74/gwt-angular/issues/69
+            Request request = builder.sendRequest(data, callback);
+            
         } catch (RequestException e) {
             deferred.reject(e);
         }
