@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Super Dev Mode
+  Main Class: com.google.gwt.dev.codeserver.CodeServer
+  Arguments: -src src/test/java com.asayama.gwt.angular.site.SuperDevMode
+  Library: gwt-codeserver-2.5.1.jar
+-->
+<module rename-to="site">
+  <inherits name="com.asayama.gwt.angular.site.SiteEntryPoint" />
+  <add-linker name="xsiframe" />
+  <set-configuration-property name="devModeRedirectEnabled" value="true" />
+</module>
