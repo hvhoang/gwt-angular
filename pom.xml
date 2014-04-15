@@ -67,7 +67,9 @@
           <version>2.5.1</version>
           <configuration>
             <gen>${project.build.directory}/generated</gen>
+            <!--
             <closureCompiler>true</closureCompiler>
+            -->
           </configuration>
         </plugin>
         <plugin>
