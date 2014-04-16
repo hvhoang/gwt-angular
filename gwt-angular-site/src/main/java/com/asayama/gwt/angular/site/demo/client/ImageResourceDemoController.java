@@ -21,16 +21,16 @@ public class ImageResourceDemoController implements Controller {
         
         static ImageResources INSTANCE = GWT.create(ImageResources.class);
         
-        @Source("view/street.jpg")
+        @Source("image/street.jpg")
         ImageResource street();
         
-        @Source("view/wtc.jpg")
+        @Source("image/wtc.jpg")
         ImageResource wtc();
         
-        @Source("view/boat.jpg")
+        @Source("image/boat.jpg")
         ImageResource boat();
         
-        @Source("view/people.jpg")
+        @Source("image/people.jpg")
         ImageResource people();
     }
 }
