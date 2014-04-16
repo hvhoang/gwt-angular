@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.site.client.controller;
+package com.asayama.gwt.angular.site.client;
 
 import com.asayama.gwt.angular.client.Controller;
 

@@ -4,12 +4,6 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
 import com.asayama.gwt.angular.route.client.RouteProvider;
-import com.asayama.gwt.angular.site.client.controller.DocumentationController;
-import com.asayama.gwt.angular.site.client.controller.DownloadsController;
-import com.asayama.gwt.angular.site.client.controller.ExamplesController;
-import com.asayama.gwt.angular.site.client.controller.JumbotronController;
-import com.asayama.gwt.angular.site.client.controller.NavbarController;
-import com.asayama.gwt.angular.site.client.controller.TutorialController;
 import com.google.gwt.core.client.EntryPoint;
 
 public class SiteEntryPoint extends AbstractModule implements EntryPoint {

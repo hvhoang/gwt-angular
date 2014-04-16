@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.site.client.controller;
+package com.asayama.gwt.angular.site.client;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.pages.client.AbstractMultiPageController;
@@ -6,12 +6,12 @@ import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 
 
-public class TutorialController extends AbstractMultiPageController {
+public class ExamplesController extends AbstractMultiPageController {
 
-    @Bind("tutorial")
+    @Bind("examples")
     private JSArray<Page> pages = null;
-    private String defaultPageName = "introduction";
-
+    private String defaultPageName = "textInput";
+    
     public String getStylePageActive(String key) {
         return isPageActive(key) ? "active" : "";
     }
