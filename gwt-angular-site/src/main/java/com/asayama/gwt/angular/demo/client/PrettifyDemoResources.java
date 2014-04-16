@@ -16,6 +16,6 @@ public interface PrettifyDemoResources extends ClientBundle {
     @Source("view/PrettifyDemo.html")
     TextResource view();
     
-    @Source("controller/PrettifyDemoController.java")
+    @Source("PrettifyDemoController.java")
     TextResource controller();
 }

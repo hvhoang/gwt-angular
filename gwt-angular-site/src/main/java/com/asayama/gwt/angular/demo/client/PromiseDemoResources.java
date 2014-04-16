@@ -16,7 +16,7 @@ public interface PromiseDemoResources extends ClientBundle {
     @Source("view/PromiseDemo.html")
     TextResource view();
     
-    @Source("controller/PromiseDemoController.java")
+    @Source("PromiseDemoController.java")
     TextResource controller();
     
     @Source("service/GreetingService.java")

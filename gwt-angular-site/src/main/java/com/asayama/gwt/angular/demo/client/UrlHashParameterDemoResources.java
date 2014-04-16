@@ -16,6 +16,6 @@ public interface UrlHashParameterDemoResources extends ClientBundle {
     @Source("view/UrlHashParameterDemo.html")
     TextResource view();
     
-    @Source("controller/UrlHashParameterDemoController.java")
+    @Source("UrlHashParameterDemoController.java")
     TextResource controller();
 }

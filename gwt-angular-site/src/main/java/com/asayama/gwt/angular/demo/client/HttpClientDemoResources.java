@@ -16,6 +16,6 @@ public interface HttpClientDemoResources extends ClientBundle {
     @Source("view/HttpClientDemo.html")
     TextResource view();
     
-    @Source("controller/HttpClientDemoController.java")
+    @Source("HttpClientDemoController.java")
     TextResource controller();
 }

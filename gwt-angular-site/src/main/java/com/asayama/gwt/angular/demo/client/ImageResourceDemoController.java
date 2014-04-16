@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.demo.client.controller;
+package com.asayama.gwt.angular.demo.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.client.GWT;
@@ -21,16 +21,16 @@ public class ImageResourceDemoController implements Controller {
         
         static ImageResources INSTANCE = GWT.create(ImageResources.class);
         
-        @Source("street.jpg")
+        @Source("view/street.jpg")
         ImageResource street();
         
-        @Source("wtc.jpg")
+        @Source("view/wtc.jpg")
         ImageResource wtc();
         
-        @Source("boat.jpg")
+        @Source("view/boat.jpg")
         ImageResource boat();
         
-        @Source("people.jpg")
+        @Source("view/people.jpg")
         ImageResource people();
     }
 }

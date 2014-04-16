@@ -16,7 +16,7 @@ public interface CustomFilterDemoResources extends ClientBundle {
     @Source("view/CustomFilterDemo.html")
     TextResource view();
     
-    @Source("controller/ReverseFilterDemoController.java")
+    @Source("ReverseFilterDemoController.java")
     TextResource controller();
 
     @Source("filter/Reverse.java")

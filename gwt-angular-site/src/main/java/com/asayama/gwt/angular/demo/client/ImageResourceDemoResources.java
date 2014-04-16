@@ -16,6 +16,6 @@ public interface ImageResourceDemoResources extends ClientBundle {
     @Source("view/ImageResourceDemo.html")
     TextResource view();
 
-    @Source("controller/ImageResourceDemoController.java")
+    @Source("ImageResourceDemoController.java")
     TextResource controller();
 }

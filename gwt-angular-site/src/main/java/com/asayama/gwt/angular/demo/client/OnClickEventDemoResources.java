@@ -16,6 +16,6 @@ public interface OnClickEventDemoResources extends ClientBundle {
     @Source("view/OnClickEventDemo.html")
     TextResource view();
     
-    @Source("controller/OnClickEventDemoController.java")
+    @Source("OnClickEventDemoController.java")
     TextResource controller();
 }
