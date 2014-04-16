@@ -1,7 +1,7 @@
 package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.demo.client.PromiseDemoResources;
+import com.asayama.gwt.angular.site.demo.client.PromiseDemoResources;
 import com.google.gwt.resources.client.TextResource;
 
 
