@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client.controller;
+package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.demo.client.TextInputDemoResources;

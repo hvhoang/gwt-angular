@@ -2,15 +2,6 @@ package com.asayama.gwt.angular.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.examples.client.controller.CustomFilterExampleController;
-import com.asayama.gwt.angular.examples.client.controller.CustomerDirectiveExampleController;
-import com.asayama.gwt.angular.examples.client.controller.HttpClientExampleController;
-import com.asayama.gwt.angular.examples.client.controller.ImageResourceExampleController;
-import com.asayama.gwt.angular.examples.client.controller.OnClickEventExampleController;
-import com.asayama.gwt.angular.examples.client.controller.PrettifyExampleController;
-import com.asayama.gwt.angular.examples.client.controller.PromiseExampleController;
-import com.asayama.gwt.angular.examples.client.controller.TextInputExampleController;
-import com.asayama.gwt.angular.examples.client.controller.UrlHashParameterExampleController;
 import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
