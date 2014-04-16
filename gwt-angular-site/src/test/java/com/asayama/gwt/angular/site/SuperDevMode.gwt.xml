@@ -7,7 +7,8 @@
     -src src/test/java  com.asayama.gwt.angular.site.SuperDevMode
 
   Library:
-    gwt-codeserver-2.5.1.jar
+    gwt-codeserver-${gwt.version}.jar
+    where ${gwt.version} is the version of GWT, e.g. 2.6.0
 -->
 <module rename-to="site">
   <inherits name="com.asayama.gwt.angular.site.SiteEntryPoint" />
