@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.tutorial.client;
+package com.asayama.gwt.angular.site.tutorial.client;
 
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.shared.GWT;
