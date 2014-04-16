@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.tutorial.client.controller;
+package com.asayama.gwt.angular.tutorial.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.shared.GWT;
@@ -19,6 +19,6 @@ interface ProjectStructureControllerResources extends ClientBundle {
 
     static ProjectStructureControllerResources INSTANCE = GWT.create(ProjectStructureControllerResources.class);
     
-    @Source("ProjectStructure.png")
+    @Source("view/ProjectStructure.png")
     public ImageResource projectStructureImage();
 }
