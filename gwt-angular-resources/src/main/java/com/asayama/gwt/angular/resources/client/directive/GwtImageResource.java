@@ -4,8 +4,8 @@ import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Image;
 
 
