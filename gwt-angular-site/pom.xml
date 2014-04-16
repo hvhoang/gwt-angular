@@ -4,12 +4,17 @@
   <artifactId>gwt-angular-site</artifactId>
   <packaging>war</packaging>
   <name>gwt-angular-site</name>
+  <url>http://kyoken74.github.io/gwt-angular</url>
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular</artifactId>
     <version>0.0.49-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
+  <properties>
+    <timestamp>${maven.build.timestamp}</timestamp>
+    <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+  </properties>
   <build>
     <finalName>gwt-angular</finalName>
     <resources>
@@ -47,6 +52,12 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+          <webResources>
+            <resource>
+              <directory>${basedir}/src/main/webapp</directory>
+              <filtering>true</filtering>
+            </resource>
+          </webResources>
         </configuration>
       </plugin>
     </plugins>
