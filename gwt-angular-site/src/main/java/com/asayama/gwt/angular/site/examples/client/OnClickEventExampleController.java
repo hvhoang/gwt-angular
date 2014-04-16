@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.demo.client.OnClickEventDemoResources;

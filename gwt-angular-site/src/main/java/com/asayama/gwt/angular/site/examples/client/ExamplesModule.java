@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;

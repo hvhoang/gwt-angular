@@ -7,6 +7,6 @@
   <inherits name="com.asayama.gwt.angular.demo.DemoModule" />
 
   <source path="client" />
-  <entry-point class="com.asayama.gwt.angular.examples.client.ExamplesModule" />
+  <entry-point class="com.asayama.gwt.angular.site.examples.client.ExamplesModule" />
 
 </module>

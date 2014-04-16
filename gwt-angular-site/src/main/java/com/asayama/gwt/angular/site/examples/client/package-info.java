@@ -4,6 +4,6 @@
  * is stored inside {@code com.asayama.gwt.angular.exmaples.client.demo }, and
  * this package is intended for page navigation and documentation.
  */
-package com.asayama.gwt.angular.examples.client;
+package com.asayama.gwt.angular.site.examples.client;
 
 
