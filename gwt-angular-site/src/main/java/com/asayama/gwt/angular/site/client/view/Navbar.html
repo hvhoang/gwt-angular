@@ -5,22 +5,22 @@
         <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
           class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">gwt-angular</a>
+      <a class="navbar-brand" href="#!/">gwt-angular</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="{{ getStyleNavlinkHome() }}">
-          <a href="#">
+          <a href="#!/">
             <span class="glyphicon glyphicon-home"></span> Home
           </a>
         </li>
         <li class="{{ getStyleNavlinkDownloads() }}">
-          <a href="#/downloads">
+          <a href="#!/downloads">
             <span class="glyphicon glyphicon-download"></span> {{ DOWNLOADS }}
           </a>
         </li>
         <li class="{{ getStyleNavlinkDocumentation() }}">
-          <a href="#/documentation">
+          <a href="#!/documentation">
             <span class="glyphicon glyphicon-book"></span> {{ DOCUMENTATION }}
           </a>
         </li>
@@ -29,7 +29,7 @@
             <span class="glyphicon glyphicon-file"></span> {{ TUTORIAL }} <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a data-ng-repeat="tutorialPage in getTutorial()" href="#/tutorial?page={{ tutorialPage.name }}">{{ tutorialPage.title }}</a></li>
+            <li><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page={{ tutorialPage.name }}">{{ tutorialPage.title }}</a></li>
           </ul>
         </li>
         <li class="dropdown {{ getStyleNavlinkExamples() }}">
@@ -37,7 +37,7 @@
             <span class="glyphicon glyphicon-file"></span> {{ EXAMPLES }} <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a data-ng-repeat="examplePage in getExamples()" href="#/examples?page={{ examplePage.name }}">{{ examplePage.title }}</a></li>
+            <li><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page={{ examplePage.name }}">{{ examplePage.title }}</a></li>
           </ul>
         </li>
       </ul>
