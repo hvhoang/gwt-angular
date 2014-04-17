@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
-      <loc>http://kyoken74.github.io/gwt-angular/0.0.49-SNAPSHOT#!/jumbotron</loc>
+      <loc>http://kyoken74.github.io/gwt-angular/0.0.49#!/jumbotron</loc>
       <lastmod>2014-04-16</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
