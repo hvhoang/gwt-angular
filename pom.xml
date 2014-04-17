@@ -42,7 +42,8 @@
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <angularjs.version>1.2.14</angularjs.version>
+    <timestamp.yyyymmdd>${maven.build.timestamp}</timestamp.yyyymmdd>
+    <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
   </properties>
   <build>
     <pluginManagement>
@@ -84,6 +85,21 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <id>parse-version</id>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <dependencyManagement>
     <dependencies>

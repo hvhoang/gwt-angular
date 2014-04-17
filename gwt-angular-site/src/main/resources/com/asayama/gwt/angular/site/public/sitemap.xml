@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>${project.url}/${project.version}#!/jumbotron</loc>
-      <lastmod>${timestamp}</lastmod>
+      <lastmod>${timestamp.yyyymmdd}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
    </url>
