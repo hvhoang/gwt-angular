@@ -13,6 +13,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         constant("examples", getPages());
         controller(CustomerDirectiveExampleController.class);
         controller(CustomFilterExampleController.class);
+        controller(GwtWidgetExampleController.class);
         controller(HttpClientExampleController.class);
         controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);
@@ -32,6 +33,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageResource()));
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
+        pages.add(Page.create("GWT Widget", ExamplesResources.INSTANCE.gwtWidget()));
         pages.add(Page.create("Prettify", ExamplesResources.INSTANCE.prettify()));
        return pages;
     }

@@ -15,6 +15,9 @@ public interface ExamplesResources extends ClientBundle {
     @Source("view/CustomDirectiveExample.html")
     public HtmlResource customDirective();
     
+    @Source("view/GwtWidgetExample.html")
+    public HtmlResource gwtWidget();
+    
     @Source("view/HttpClientExample.html")
     public HtmlResource httpClient();
 
