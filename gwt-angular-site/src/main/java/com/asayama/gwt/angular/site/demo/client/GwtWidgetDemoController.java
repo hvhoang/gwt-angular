@@ -5,11 +5,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.datepicker.client.DatePicker;
 
 public class GwtWidgetDemoController implements Controller {
 
     // TODO automatically export the IsWidget instance members?
     private Button button;
+    private DatePicker datePicker;
 
     @Override
     public void onControllerLoad() {
@@ -20,9 +22,14 @@ public class GwtWidgetDemoController implements Controller {
                 Window.alert("Hello, GWT Button");
             }
         });
+        datePicker = new DatePicker();
     }
     
     public Button getButton() {
         return button;
+    }
+    
+    public DatePicker getDatePicker() {
+        return datePicker;
     }
 }
