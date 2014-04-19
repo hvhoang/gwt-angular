@@ -33,7 +33,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageResource()));
         pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
-        pages.add(Page.create("GWT Widget", ExamplesResources.INSTANCE.gwtWidget()));
+        pages.add(Page.create("GWT Widgets", ExamplesResources.INSTANCE.gwtWidget()));
         pages.add(Page.create("Prettify", ExamplesResources.INSTANCE.prettify()));
        return pages;
     }
