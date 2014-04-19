@@ -16,39 +16,44 @@ public class GwtWidgetDemoController implements Controller {
     // TODO automatically export the IsWidget instance members?
     private Button button;
     private DatePicker datePicker;
-    private Date date;
 
     @Override
     public void onControllerLoad() {
-
-        button = new Button("This is a GWT Button");
+        button = createButton();
+        datePicker = createDatePicker();
+    }
+    
+    private Button createButton() {
+        Button button = new Button("This is a GWT Button");
         button.addClickHandler(new ClickHandler() {
 
-            @Override
             public void onClick(ClickEvent event) {
-                Window.alert("Hello, GWT Button");
+                Window.alert("You clicked GWT Button");
             }
         });
+        return button;
+    }
 
-        datePicker = new DatePicker();
+    private DatePicker createDatePicker() {
+        DatePicker datePicker = new DatePicker();
+        datePicker.setValue(new Date(), false);
         datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
 
             public void onValueChange(ValueChangeEvent<Date> event) {
-                GwtWidgetDemoController.this.date = event.getValue();
+                Date date = event.getValue();
+                Window.alert("You selected " + date);
             }
         });
-        datePicker.setValue(new Date(), true);
+        return datePicker;
     }
-
+    
+    // Getters and Setters
+    
     public Button getButton() {
         return button;
     }
 
     public DatePicker getDatePicker() {
         return datePicker;
-    }
-    
-    public Date getDate() {
-        return date;
     }
 }
