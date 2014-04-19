@@ -9,20 +9,14 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 
 public class GwtWidget extends AbstractDirective {
-
-//    @Override
-//    public void link(NGScope scope, JQElement element, JSON attrs) {
-//        IsWidget widget = scope.get(getName());
-//        Element target = widget.asWidget().getElement();
-//        String className= element.attr("class");
-//        target.addClassName(className);
-//        element.replaceWith(target);
-//    }
+    
+    private static long counter = 0L;
 
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         IsWidget widget = scope.get(getName());
-        element.attr("id", "foo");
-        RootPanel.get("foo").add(widget);
+        String id = "gwt-angular-" + counter++;
+        element.attr("id", id);
+        RootPanel.get(id).add(widget);
     }
 }
