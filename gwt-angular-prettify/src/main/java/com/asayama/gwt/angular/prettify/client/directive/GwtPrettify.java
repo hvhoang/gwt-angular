@@ -44,18 +44,20 @@ public class GwtPrettify extends AbstractDirective {
         return new Restrict[]{ Restrict.Attribute, Restrict.Class };
     }
     
-    @Override
-    public boolean getTransclude() {
-        return true;
-    }
+//    @Override
+//    public boolean getTransclude() {
+//        return true;
+//    }
     
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
-        String text = resource == null ? element.text() : 
-                    SafeHtmlUtils.htmlEscape(resource.getText());
+        String text = SafeHtmlUtils.htmlEscape(element.text());
+        if (resource != null) {
+            text = SafeHtmlUtils.htmlEscape(resource.getText());
+        }
         if (text != null && text.length() > 0) {
-            element.append(filter.filter(text));
+            element.empty().append(filter.filter(text));
         }
         element.addClass("prettyprint");
     }
