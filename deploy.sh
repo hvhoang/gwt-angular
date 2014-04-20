@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.0.51
+version=0.0.52-SNAPSHOT
 
 #jar xvf ~/Workspace/github.com/kyoken74/gwt-angular/gwt-angular-site/target/gwt-angular.war sitemap.xml
 
