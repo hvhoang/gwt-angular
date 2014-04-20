@@ -57,5 +57,6 @@ public class GwtPrettify extends AbstractDirective {
         if (text != null && text.length() > 0) {
             element.append(filter.filter(text));
         }
+        element.addClass("prettyprint");
     }
 }
