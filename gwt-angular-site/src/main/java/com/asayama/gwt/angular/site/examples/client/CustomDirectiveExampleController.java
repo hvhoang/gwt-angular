@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.site.demo.client.CustomDirectiveDemoResources;
 import com.google.gwt.resources.client.TextResource;
 
 
-public class CustomerDirectiveExampleController implements Controller {
+public class CustomDirectiveExampleController implements Controller {
 
     public static final String DEMO_URL = CustomDirectiveDemoResources.INSTANCE.partial().getSafeUri().asString();
     public static final TextResource VIEW_CODE = CustomDirectiveDemoResources.INSTANCE.view();
