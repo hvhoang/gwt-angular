@@ -34,6 +34,17 @@
   <pre data-gwt-prettify="VIEW_CODE"></pre>
   
   <h2>Controller</h2>
+  <p>
+    The HTML view obtain the reference to the GWT UI widgets via <code>
+    getButton()</code> and <code>getDatePicker()</code> methods defined in its
+    controller. The underlying widget objects are contructed by the Contrller
+    via <code>createButton()</code> and <code>createDatePicker()</code>
+    methods upon controller load time.
+  </p><p>
+    As you can see, unlike other, more Angular centric examples where event
+    callbacks from the UI is sent to the contrller, the handler of these events
+    are attached to the GWT UI widgets.
+  </p>
   <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
 
 
