@@ -10,12 +10,10 @@
     <module>gwt-angular-core</module>
     <module>gwt-angular-http</module>
     <module>gwt-angular-masonry</module>
-    <module>gwt-angular-pages</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-resources</module>
     <module>gwt-angular-route</module>
     <module>gwt-angular-sanitize</module>
-    <module>gwt-angular-tutorial</module>
     <module>kyoken74-gwt</module>
   </modules>
   <licenses>
@@ -133,11 +131,6 @@
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-pages</artifactId>
-        <version>0.0.52-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
         <version>0.0.52-SNAPSHOT</version>
       </dependency>
@@ -154,11 +147,6 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-sanitize</artifactId>
-        <version>0.0.52-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-tutorial</artifactId>
         <version>0.0.52-SNAPSHOT</version>
       </dependency>
 
