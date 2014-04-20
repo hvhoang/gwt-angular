@@ -7,6 +7,7 @@
   <packaging>pom</packaging>
   <name>gwt-angular-site</name>
   <modules>
+    <module>gwt-angular-examples</module>
     <module>gwt-angular-pages</module>
     <module>gwt-angular-tutorial</module>
     <module>gwt-angular-web</module>
