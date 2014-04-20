@@ -19,6 +19,10 @@
   <inherits name="com.asayama.gwt.angular.site.examples.ExamplesModule" />
   <inherits name="com.asayama.gwt.angular.site.tutorial.TutorialModule" />
 
+  <!--  -->
+  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+
   <!-- Project Structure -->
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.site.client.SiteEntryPoint" />
