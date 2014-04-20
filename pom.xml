@@ -15,7 +15,6 @@
     <module>gwt-angular-resources</module>
     <module>gwt-angular-route</module>
     <module>gwt-angular-sanitize</module>
-    <module>gwt-angular-site</module>
     <module>gwt-angular-tutorial</module>
     <module>kyoken74-gwt</module>
   </modules>
