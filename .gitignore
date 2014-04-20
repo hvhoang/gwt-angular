@@ -1,5 +1,7 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.next
+.DS_Store
+.classpath
+.settings
+.project
+target
+*.releaseBackup
 release.properties
