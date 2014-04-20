@@ -7,15 +7,16 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
 public class GwtWidgetDemoController implements Controller {
 
     // TODO automatically export the IsWidget instance members?
-    private Button button;
-    private DatePicker datePicker;
+    private DialogBox dialogBox = null;
+    private Button button = null;
+    private DatePicker datePicker = null;
 
     @Override
     public void onControllerLoad() {
@@ -23,12 +24,20 @@ public class GwtWidgetDemoController implements Controller {
         datePicker = createDatePicker();
     }
     
+    private void shout(String text) {
+        if (dialogBox == null) {
+            dialogBox = new GwtWidgetDemoDialogBox();
+        }
+        dialogBox.setText(text);
+        dialogBox.center();
+    }
+    
     private Button createButton() {
         Button button = new Button("This is a GWT Button");
         button.addClickHandler(new ClickHandler() {
 
             public void onClick(ClickEvent event) {
-                Window.alert("You clicked GWT Button");
+                shout("You clicked GWT Button");
             }
         });
         return button;
@@ -41,7 +50,7 @@ public class GwtWidgetDemoController implements Controller {
 
             public void onValueChange(ValueChangeEvent<Date> event) {
                 Date date = event.getValue();
-                Window.alert("You selected " + date);
+                shout("You selected " + date);
             }
         });
         return datePicker;
@@ -55,5 +64,22 @@ public class GwtWidgetDemoController implements Controller {
 
     public DatePicker getDatePicker() {
         return datePicker;
+    }
+}
+
+class GwtWidgetDemoDialogBox extends DialogBox {
+
+    public GwtWidgetDemoDialogBox() {
+        setText("GWT DialogBox");
+        setAnimationEnabled(true);
+        setGlassEnabled(true);
+        Button ok = new Button("OK");
+        ok.addClickHandler(new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                GwtWidgetDemoDialogBox.this.hide();
+            }
+        });
+        setWidget(ok);
     }
 }

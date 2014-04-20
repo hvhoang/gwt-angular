@@ -42,11 +42,32 @@
     methods upon controller load time.
   </p><p>
     As you can see, unlike other, more Angular centric examples where event
-    callbacks from the UI is sent to the contrller, the handler of these events
-    are attached to the GWT UI widgets.
+    callbacks from the UI is sent to the controller, the handler of these events
+    are directly attached to the GWT UI widgets.
+  </p><p>
+    In this example, when the user takes any actions on the GWT Button or the
+    Date Picker, the events are delegated to the controller's <code>shout()</code>
+    method, which displays GWT <code>DialogBox</code> object. The definition
+    of the object is shown as <code>GwtWidgetDemoDialogBox</code>.
   </p>
   <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
 
+  <h2>Configuration</h2>
+  <p>
+    The following modules are required in the gwt.xml.
+  </p>
+  <pre>
+&lt;inherits name="com.asayama.gwt.angular.NG" /&gt;
+&lt;inherits name="com.google.gwt.user.theme.standard.Standard" /&gt;</pre>
 
-  
+  <p>
+    The following Maven dependencies are required in the pom.xml.
+  </p>
+  <pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
+  &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;
+  &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+
 </div>
