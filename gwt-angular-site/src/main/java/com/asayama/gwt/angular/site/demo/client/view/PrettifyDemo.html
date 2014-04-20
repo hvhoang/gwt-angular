@@ -1,6 +1,19 @@
 <div data-ng-controller="com.asayama.gwt.angular.site.demo.client.PrettifyDemoController">
-  <pre data-ng-bind-html="HTML_CONTENT | prettify"></pre>
+
   <!--
-  <pre data-gwt-text-prettify="HTML"></pre>
+    Suitable for small amount of code.
+    You must manually escape the code.
   -->
+  <h2>Class Directive</h2>
+  <pre class="gwt-prettify">
+&lt;inherits name="com.asayama.gwt.angular.NG" /&gt;
+&lt;inherits name="com.asayama.gwt.angular.sanitize.NGSanitize" /&gt;
+&lt;inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" /&gt;</pre>
+
+  <!--
+    Suitable for larger code, or code that must be in a separate file.
+    There is no need to manually escape the code.
+  -->
+  <h2>Attribute Directive</h2>
+  <pre data-gwt-prettify="VIEW_CODE"></pre>
 </div>
