@@ -2,9 +2,9 @@
 
 version=0.0.52-SNAPSHOT
 
-#jar xvf ~/Workspace/github.com/kyoken74/gwt-angular/gwt-angular-site/target/gwt-angular.war sitemap.xml
+#jar xvf ~/Workspace/github.com/kyoken74/gwt-angular-site/gwt-angular-web/target/gwt-angular.war sitemap.xml
 
-jar xvf ~/Workspace/github.com/kyoken74/gwt-angular/gwt-angular-site/target/gwt-angular.war site/
+jar xvf ~/Workspace/github.com/kyoken74/gwt-angular-site/gwt-angular-web/target/gwt-angular.war site/
 
 rm -fr ${version}
 
