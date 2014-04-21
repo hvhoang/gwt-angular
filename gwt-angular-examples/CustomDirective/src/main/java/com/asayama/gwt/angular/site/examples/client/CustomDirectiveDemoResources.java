@@ -11,7 +11,7 @@ public interface CustomDirectiveDemoResources extends ClientBundle {
     static CustomDirectiveDemoResources INSTANCE = GWT.create(CustomDirectiveDemoResources.class);
 
     @Source("view/CustomDirectiveDemo.html")
-    HtmlResource partial();
+    HtmlResource demo();
     
     @Source("view/CustomDirectiveDemo.html")
     TextResource view();

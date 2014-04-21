@@ -11,7 +11,7 @@ public interface HttpClientDemoResources extends ClientBundle {
     static HttpClientDemoResources INSTANCE = GWT.create(HttpClientDemoResources.class);
 
     @Source("view/HttpClientDemo.html")
-    HtmlResource partial();
+    HtmlResource demo();
 
     @Source("view/HttpClientDemo.html")
     TextResource view();

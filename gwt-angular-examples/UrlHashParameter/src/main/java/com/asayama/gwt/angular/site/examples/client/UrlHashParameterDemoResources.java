@@ -11,7 +11,7 @@ public interface UrlHashParameterDemoResources extends ClientBundle {
     static UrlHashParameterDemoResources INSTANCE = GWT.create(UrlHashParameterDemoResources.class);
 
     @Source("view/UrlHashParameterDemo.html")
-    HtmlResource partial();
+    HtmlResource demo();
 
     @Source("view/UrlHashParameterDemo.html")
     TextResource view();

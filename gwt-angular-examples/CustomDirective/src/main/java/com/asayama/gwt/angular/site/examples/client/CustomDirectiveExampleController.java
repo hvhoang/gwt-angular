@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.TextResource;
 
 public class CustomDirectiveExampleController implements Controller {
 
-    public static final String DEMO_URL = CustomDirectiveDemoResources.INSTANCE.partial().getSafeUri().asString();
+    public static final String DEMO_URL = CustomDirectiveDemoResources.INSTANCE.demo().getSafeUri().asString();
     public static final TextResource VIEW_CODE = CustomDirectiveDemoResources.INSTANCE.view();
     public static final TextResource CONTROLLER_CODE = CustomDirectiveDemoResources.INSTANCE.controller();
     public static final TextResource DIRECTIVE_CODE = CustomDirectiveDemoResources.INSTANCE.directive();

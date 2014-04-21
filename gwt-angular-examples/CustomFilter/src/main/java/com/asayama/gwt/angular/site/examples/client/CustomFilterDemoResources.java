@@ -11,7 +11,7 @@ public interface CustomFilterDemoResources extends ClientBundle {
     static CustomFilterDemoResources INSTANCE = GWT.create(CustomFilterDemoResources.class);
 
     @Source("view/CustomFilterDemo.html")
-    HtmlResource partial();
+    HtmlResource demo();
 
     @Source("view/CustomFilterDemo.html")
     TextResource view();

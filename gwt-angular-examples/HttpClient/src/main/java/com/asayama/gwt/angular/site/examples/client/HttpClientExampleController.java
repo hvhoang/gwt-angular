@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.TextResource;
 
 public class HttpClientExampleController implements Controller {
 
-    public static final String DEMO_URL = HttpClientDemoResources.INSTANCE.partial().getSafeUri().asString();
+    public static final String DEMO_URL = HttpClientDemoResources.INSTANCE.demo().getSafeUri().asString();
     public static final TextResource VIEW_CODE = HttpClientDemoResources.INSTANCE.view();
     public static final TextResource CONTROLLER_CODE = HttpClientDemoResources.INSTANCE.controller();
 

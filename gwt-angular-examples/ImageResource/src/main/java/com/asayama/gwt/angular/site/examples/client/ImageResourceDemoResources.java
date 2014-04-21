@@ -11,7 +11,7 @@ public interface ImageResourceDemoResources extends ClientBundle {
     static ImageResourceDemoResources INSTANCE = GWT.create(ImageResourceDemoResources.class);
 
     @Source("view/ImageResourceDemo.html")
-    HtmlResource partial();
+    HtmlResource demo();
 
     @Source("view/ImageResourceDemo.html")
     TextResource view();
