@@ -7,7 +7,7 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
 
-
+//TODO Create a separate module for this.
 public class GwtWidget extends AbstractDirective {
     
     private static long counter = 0L;

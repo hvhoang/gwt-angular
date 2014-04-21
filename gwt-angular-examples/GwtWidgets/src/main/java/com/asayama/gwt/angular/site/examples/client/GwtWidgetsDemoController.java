@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
-public class GwtWidgetDemoController implements Controller {
+public class GwtWidgetsDemoController implements Controller {
 
     // TODO automatically export the IsWidget instance members?
     private DialogBox dialogBox = null;

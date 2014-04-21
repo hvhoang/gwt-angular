@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.site.examples.client;
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.pages.client.Page;
-import com.asayama.gwt.angular.site.examples.client.directive.GwtWidget;
 import com.asayama.gwt.angular.site.examples.client.service.GreetingService;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -14,10 +13,8 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examples", getPages());
         
-        directive(GwtWidget.class);
         factory(GreetingService.class);
 
-        controller(GwtWidgetDemoController.class);
         controller(HttpClientDemoController.class);
         controller(OnClickEventDemoController.class);
         controller(TextInputDemoController.class);
@@ -26,7 +23,6 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(PromiseDemoController.class);
         controller(ImageResourceDemoController.class);
 
-        controller(GwtWidgetExampleController.class);
         controller(HttpClientExampleController.class);
         controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);
@@ -46,7 +42,7 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         pages.add(Page.create("Image Resource", ImageResourceExampleResources.INSTANCE.imageResource()));
         pages.add(Page.create("URL Hash Parameter", UrlHashParameterExampleResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", HttpClientExampleResources.INSTANCE.httpClient()));
-        pages.add(Page.create("GWT Widgets", GwtWidgetExampleResources.INSTANCE.gwtWidgets()));
+        pages.add(Page.create("GWT Widgets", GwtWidgetsExampleResources.INSTANCE.gwtWidgets()));
         pages.add(Page.create("Prettify", PrettifyExampleResources.INSTANCE.prettify()));
        return pages;
     }

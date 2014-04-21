@@ -6,19 +6,19 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface GwtWidgetExampleResources extends ClientBundle {
+public interface GwtWidgetsExampleResources extends ClientBundle {
 
-    static GwtWidgetExampleResources INSTANCE = GWT.create(GwtWidgetExampleResources.class);
+    static GwtWidgetsExampleResources INSTANCE = GWT.create(GwtWidgetsExampleResources.class);
     
-    @Source("view/GwtWidgetExample.html")
+    @Source("view/GwtWidgetsExample.html")
     HtmlResource gwtWidgets();
 
-    @Source("view/GwtWidgetDemo.html")
+    @Source("view/GwtWidgetsDemo.html")
     HtmlResource demo();
 
-    @Source("view/GwtWidgetDemo.html")
+    @Source("view/GwtWidgetsDemo.html")
     TextResource view();
     
-    @Source("GwtWidgetDemoController.java")
+    @Source("GwtWidgetsDemoController.java")
     TextResource controller();
 }
