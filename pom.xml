@@ -115,11 +115,6 @@
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-pages</artifactId>
-        <version>0.0.52</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
         <version>0.0.52</version>
       </dependency>
