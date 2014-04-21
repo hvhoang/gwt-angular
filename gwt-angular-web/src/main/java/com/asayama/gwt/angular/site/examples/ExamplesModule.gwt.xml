@@ -16,6 +16,7 @@
   <inherits name="com.asayama.gwt.angular.site.examples.ImageResourceExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.OnClickEventExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.PrettifyExampleModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.PromiseExampleModule" />
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.site.examples.client.ExamplesModule" />
 </module>

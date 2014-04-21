@@ -15,13 +15,9 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         
         factory(GreetingService.class);
 
-        controller(PrettifyDemoController.class);
-        controller(PromiseDemoController.class);
         controller(TextInputDemoController.class);
         controller(UrlHashParameterDemoController.class);
 
-        controller(PrettifyExampleController.class);
-        controller(PromiseExampleController.class);
         controller(TextInputExampleController.class);
         controller(UrlHashParameterExampleController.class);
     }
