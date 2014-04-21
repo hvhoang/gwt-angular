@@ -6,9 +6,9 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface CustomDirectiveDemoResources extends ClientBundle {
+public interface CustomDirectiveExampleResources extends ClientBundle {
 
-    static CustomDirectiveDemoResources INSTANCE = GWT.create(CustomDirectiveDemoResources.class);
+    static CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
 
     @Source("view/CustomDirectiveDemo.html")
     HtmlResource demo();

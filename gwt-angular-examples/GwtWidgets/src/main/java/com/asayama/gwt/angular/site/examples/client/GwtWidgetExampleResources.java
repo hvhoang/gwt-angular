@@ -6,16 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface UrlHashParameterDemoResources extends ClientBundle {
+public interface GwtWidgetExampleResources extends ClientBundle {
 
-    static UrlHashParameterDemoResources INSTANCE = GWT.create(UrlHashParameterDemoResources.class);
-
-    @Source("view/UrlHashParameterDemo.html")
+    static GwtWidgetExampleResources INSTANCE = GWT.create(GwtWidgetExampleResources.class);
+    
+    @Source("view/GwtWidgetDemo.html")
     HtmlResource demo();
 
-    @Source("view/UrlHashParameterDemo.html")
+    @Source("view/GwtWidgetDemo.html")
     TextResource view();
     
-    @Source("UrlHashParameterDemoController.java")
+    @Source("GwtWidgetDemoController.java")
     TextResource controller();
 }

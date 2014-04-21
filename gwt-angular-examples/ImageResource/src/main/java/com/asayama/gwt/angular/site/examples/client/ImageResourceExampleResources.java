@@ -6,9 +6,9 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface ImageResourceDemoResources extends ClientBundle {
+public interface ImageResourceExampleResources extends ClientBundle {
     
-    static ImageResourceDemoResources INSTANCE = GWT.create(ImageResourceDemoResources.class);
+    static ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
 
     @Source("view/ImageResourceDemo.html")
     HtmlResource demo();

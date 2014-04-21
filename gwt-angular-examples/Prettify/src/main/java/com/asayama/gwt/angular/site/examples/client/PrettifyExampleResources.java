@@ -6,16 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputDemoResources extends ClientBundle {
+public interface PrettifyExampleResources extends ClientBundle {
 
-    static TextInputDemoResources INSTANCE = GWT.create(TextInputDemoResources.class);
-    
-    @Source("view/TextInputDemo.html")
+    static PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
+
+    @Source("view/PrettifyDemo.html")
     HtmlResource demo();
 
-    @Source("view/TextInputDemo.html")
+    @Source("view/PrettifyDemo.html")
     TextResource view();
     
-    @Source("TextInputDemoController.java")
+    @Source("PrettifyDemoController.java")
     TextResource controller();
 }

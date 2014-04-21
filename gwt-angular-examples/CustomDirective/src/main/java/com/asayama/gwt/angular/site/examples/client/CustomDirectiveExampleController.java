@@ -6,12 +6,12 @@ import com.google.gwt.resources.client.TextResource;
 
 public class CustomDirectiveExampleController implements Controller {
 
-    public static final String DEMO_URL = CustomDirectiveDemoResources.INSTANCE.demo().getSafeUri().asString();
-    public static final TextResource VIEW_CODE = CustomDirectiveDemoResources.INSTANCE.view();
-    public static final TextResource CONTROLLER_CODE = CustomDirectiveDemoResources.INSTANCE.controller();
-    public static final TextResource DIRECTIVE_CODE = CustomDirectiveDemoResources.INSTANCE.directive();
-    public static final TextResource TEMPLATE_CODE = CustomDirectiveDemoResources.INSTANCE.template();
-    public static final TextResource MODULE_CODE = CustomDirectiveDemoResources.INSTANCE.module();
+    public static final String DEMO_URL = CustomDirectiveExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final TextResource VIEW_CODE = CustomDirectiveExampleResources.INSTANCE.view();
+    public static final TextResource CONTROLLER_CODE = CustomDirectiveExampleResources.INSTANCE.controller();
+    public static final TextResource DIRECTIVE_CODE = CustomDirectiveExampleResources.INSTANCE.directive();
+    public static final TextResource TEMPLATE_CODE = CustomDirectiveExampleResources.INSTANCE.template();
+    public static final TextResource MODULE_CODE = CustomDirectiveExampleResources.INSTANCE.module();
 
     @Override
     public void onControllerLoad() {

@@ -6,9 +6,9 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface CustomFilterDemoResources extends ClientBundle {
+public interface CustomFilterExampleResources extends ClientBundle {
 
-    static CustomFilterDemoResources INSTANCE = GWT.create(CustomFilterDemoResources.class);
+    static CustomFilterExampleResources INSTANCE = GWT.create(CustomFilterExampleResources.class);
 
     @Source("view/CustomFilterDemo.html")
     HtmlResource demo();

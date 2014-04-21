@@ -6,9 +6,9 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface OnClickEventDemoResources extends ClientBundle {
+public interface OnClickEventExampleResources extends ClientBundle {
 
-    static OnClickEventDemoResources INSTANCE = GWT.create(OnClickEventDemoResources.class);
+    static OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
 
     @Source("view/OnClickEventDemo.html")
     HtmlResource demo();

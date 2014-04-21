@@ -6,19 +6,16 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface PromiseDemoResources extends ClientBundle {
+public interface HttpClientExampleResources extends ClientBundle {
 
-    static PromiseDemoResources INSTANCE = GWT.create(PromiseDemoResources.class);
+    static HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
 
-    @Source("view/PromiseDemo.html")
+    @Source("view/HttpClientDemo.html")
     HtmlResource demo();
 
-    @Source("view/PromiseDemo.html")
+    @Source("view/HttpClientDemo.html")
     TextResource view();
     
-    @Source("PromiseDemoController.java")
+    @Source("HttpClientDemoController.java")
     TextResource controller();
-    
-    @Source("service/GreetingService.java")
-    TextResource service();
 }
