@@ -10,6 +10,9 @@ public interface TextInputExampleResources extends ClientBundle {
 
     static TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
     
+    @Source("view/TextInputExample.html")
+    HtmlResource textInput();
+
     @Source("view/TextInputDemo.html")
     HtmlResource demo();
 

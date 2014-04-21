@@ -10,6 +10,9 @@ public interface PromiseExampleResources extends ClientBundle {
 
     static PromiseExampleResources INSTANCE = GWT.create(PromiseExampleResources.class);
 
+    @Source("view/PromiseExample.html")
+    HtmlResource promise();
+
     @Source("view/PromiseDemo.html")
     HtmlResource demo();
 

@@ -10,6 +10,9 @@ public interface CustomDirectiveExampleResources extends ClientBundle {
 
     static CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
 
+    @Source("view/CustomDirectiveExample.html")
+    HtmlResource customFilter();
+
     @Source("view/CustomDirectiveDemo.html")
     HtmlResource demo();
     

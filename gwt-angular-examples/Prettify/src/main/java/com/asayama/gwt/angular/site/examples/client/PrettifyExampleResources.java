@@ -10,6 +10,9 @@ public interface PrettifyExampleResources extends ClientBundle {
 
     static PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
 
+    @Source("view/PrettifyExample.html")
+    HtmlResource prettify();
+
     @Source("view/PrettifyDemo.html")
     HtmlResource demo();
 

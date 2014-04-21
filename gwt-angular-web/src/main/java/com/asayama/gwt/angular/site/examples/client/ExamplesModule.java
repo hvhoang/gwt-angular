@@ -45,16 +45,16 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
-        pages.add(Page.create("Text Input", ExamplesResources.INSTANCE.textInput()));
-        pages.add(Page.create("OnClick Event", ExamplesResources.INSTANCE.onClickEvent()));
-        pages.add(Page.create("Custom Filter", ExamplesResources.INSTANCE.customFilter()));
-        pages.add(Page.create("Custom Directive", ExamplesResources.INSTANCE.customDirective()));
-        pages.add(Page.create("Promise", ExamplesResources.INSTANCE.promise()));
-        pages.add(Page.create("Image Resource", ExamplesResources.INSTANCE.imageResource()));
-        pages.add(Page.create("URL Hash Parameter", ExamplesResources.INSTANCE.urlHashParameter()));
-        pages.add(Page.create("HTTP Client", ExamplesResources.INSTANCE.httpClient()));
-        pages.add(Page.create("GWT Widgets", ExamplesResources.INSTANCE.gwtWidget()));
-        pages.add(Page.create("Prettify", ExamplesResources.INSTANCE.prettify()));
+        pages.add(Page.create("Text Input", TextInputExampleResources.INSTANCE.textInput()));
+        pages.add(Page.create("OnClick Event", OnClickEventExampleResources.INSTANCE.onClickEvent()));
+        pages.add(Page.create("Custom Filter", CustomDirectiveExampleResources.INSTANCE.customFilter()));
+        pages.add(Page.create("Custom Directive", CustomFilterExampleResources.INSTANCE.customDirective()));
+        pages.add(Page.create("Promise", PromiseExampleResources.INSTANCE.promise()));
+        pages.add(Page.create("Image Resource", ImageResourceExampleResources.INSTANCE.imageResource()));
+        pages.add(Page.create("URL Hash Parameter", UrlHashParameterExampleResources.INSTANCE.urlHashParameter()));
+        pages.add(Page.create("HTTP Client", HttpClientExampleResources.INSTANCE.httpClient()));
+        pages.add(Page.create("GWT Widgets", GwtWidgetExampleResources.INSTANCE.gwtWidgets()));
+        pages.add(Page.create("Prettify", PrettifyExampleResources.INSTANCE.prettify()));
        return pages;
     }
 }

@@ -10,6 +10,9 @@ public interface GwtWidgetExampleResources extends ClientBundle {
 
     static GwtWidgetExampleResources INSTANCE = GWT.create(GwtWidgetExampleResources.class);
     
+    @Source("view/GwtWidgetExample.html")
+    HtmlResource gwtWidgets();
+
     @Source("view/GwtWidgetDemo.html")
     HtmlResource demo();
 

@@ -10,6 +10,9 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
 
     static UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
 
+    @Source("view/UrlHashParameterExample.html")
+    HtmlResource urlHashParameter();
+
     @Source("view/UrlHashParameterDemo.html")
     HtmlResource demo();
 
