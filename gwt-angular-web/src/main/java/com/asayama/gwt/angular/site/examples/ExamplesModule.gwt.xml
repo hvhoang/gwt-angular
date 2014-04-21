@@ -2,11 +2,6 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
-  <inherits name="com.asayama.gwt.angular.route.NGRoute" />
-  <inherits name="com.asayama.gwt.angular.sanitize.NGSanitize" />
-  <inherits name="com.asayama.gwt.angular.resources.ResourcesModule" />
-  <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
-  <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
   <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
 
   <inherits name="com.asayama.gwt.angular.site.examples.CustomDirectiveExampleModule" />
@@ -18,6 +13,8 @@
   <inherits name="com.asayama.gwt.angular.site.examples.PrettifyExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.PromiseExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.TextInputExampleModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.UrlHashParameterExampleModule" />
+
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.site.examples.client.ExamplesModule" />
 </module>

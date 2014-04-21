@@ -11,9 +11,6 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         constant("examples", getPages());
-        
-        controller(UrlHashParameterDemoController.class);
-        controller(UrlHashParameterExampleController.class);
     }
     
     private JSArray<Page> getPages() {
