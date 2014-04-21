@@ -101,42 +101,42 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-core</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-pages</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-route</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-sanitize</artifactId>
-        <version>0.0.51</version>
+        <version>0.0.52</version>
       </dependency>
 
       <!-- GWT Client -->
