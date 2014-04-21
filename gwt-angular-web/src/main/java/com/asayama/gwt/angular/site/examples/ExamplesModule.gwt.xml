@@ -9,6 +9,8 @@
   <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
   <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
+
+  <inherits name="com.asayama.gwt.angular.site.examples.CustomDirectiveExampleModule" />
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.site.examples.client.ExamplesModule" />
 </module>

@@ -19,7 +19,7 @@ public interface CustomDirectiveExampleResources extends ClientBundle {
     @Source("view/CustomDirectiveDemo.html")
     TextResource view();
 
-    @Source("view/CustomeDirectiveModule.txt")
+    @Source("CustomDirectiveExampleModule.java")
     TextResource module();
     
     @Source("directive/MyHello.java")
