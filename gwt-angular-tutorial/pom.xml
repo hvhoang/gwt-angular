@@ -6,6 +6,12 @@
   <version>0.0.52-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>gwt-angular-tutorial</name>
+  <parent>
+    <groupId>com.asayama.gwt</groupId>
+    <artifactId>gwt-angular-site</artifactId>
+    <version>0.0.52-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
   <build>
     <resources>
       <resource>
@@ -19,16 +25,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.5.1</version>
         <executions>
           <execution>
             <configuration>
@@ -43,7 +43,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-          <version>2.1</version>
         <configuration>
           <webXml>src/test/webapp/WEB-INF/web.xml</webXml>
         </configuration>
@@ -54,13 +53,11 @@
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-core</artifactId>
-      <version>0.0.52-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-route</artifactId>
-      <version>0.0.52-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
