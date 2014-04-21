@@ -4,7 +4,6 @@ import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.angular.site.examples.client.directive.GwtWidget;
-import com.asayama.gwt.angular.site.examples.client.filter.Reverse;
 import com.asayama.gwt.angular.site.examples.client.service.GreetingService;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
@@ -16,10 +15,8 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         constant("examples", getPages());
         
         directive(GwtWidget.class);
-        filter(Reverse.class);
         factory(GreetingService.class);
 
-        controller(ReverseFilterDemoController.class);
         controller(GwtWidgetDemoController.class);
         controller(HttpClientDemoController.class);
         controller(OnClickEventDemoController.class);
@@ -29,7 +26,6 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(PromiseDemoController.class);
         controller(ImageResourceDemoController.class);
 
-        controller(CustomFilterExampleController.class);
         controller(GwtWidgetExampleController.class);
         controller(HttpClientExampleController.class);
         controller(ImageResourceExampleController.class);

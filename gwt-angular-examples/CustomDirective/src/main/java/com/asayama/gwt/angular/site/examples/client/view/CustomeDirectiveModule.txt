@@ -1,7 +1,0 @@
-public class SomeExampleModule extends AbstractModule implements EntryPoint {
-    public void onModuleLoad() {
-        Angular.module(this);
-        directive(new MyHello()); //equivalent to directive("myHello", new MyHello());
-        controller(CustomDirectiveExampleController.class);
-    }
-}

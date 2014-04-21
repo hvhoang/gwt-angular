@@ -17,7 +17,7 @@ import com.asayama.gwt.angular.client.Controller;
  * }</pre>
  * @author kyoken74
  */
-public class ReverseFilterDemoController implements Controller {
+public class CustomFilterDemoController implements Controller {
 
     private String caption = "Hello, World!";
 
