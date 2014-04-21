@@ -12,6 +12,7 @@
   <inherits name="com.asayama.gwt.angular.site.examples.CustomDirectiveExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.CustomFilterExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.GwtWidgetsExampleModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.HttpClientExampleModule" />
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.site.examples.client.ExamplesModule" />
 </module>

@@ -15,7 +15,6 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         
         factory(GreetingService.class);
 
-        controller(HttpClientDemoController.class);
         controller(OnClickEventDemoController.class);
         controller(TextInputDemoController.class);
         controller(UrlHashParameterDemoController.class);
@@ -23,7 +22,6 @@ public class ExamplesModule extends AbstractModule implements EntryPoint {
         controller(PromiseDemoController.class);
         controller(ImageResourceDemoController.class);
 
-        controller(HttpClientExampleController.class);
         controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);
         controller(PrettifyExampleController.class);
