@@ -13,9 +13,9 @@
     <relativePath>..</relativePath>
   </parent>
   <modules>
-    <module>gwt-angular-examples</module>
+    <module>Examples</module>
+    <module>Tutorial</module>
     <module>gwt-angular-pages</module>
-    <module>gwt-angular-tutorial</module>
     <module>gwt-angular-web</module>
   </modules>
   <licenses>
