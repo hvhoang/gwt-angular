@@ -6,6 +6,12 @@
   <version>0.0.53-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>gwt-angular-site</name>
+  <parent>
+    <groupId>com.asayama.gwt</groupId>
+    <artifactId>gwt-angular</artifactId>
+    <version>0.0.53-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
   <modules>
     <module>gwt-angular-examples</module>
     <module>gwt-angular-pages</module>
