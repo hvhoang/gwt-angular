@@ -1,0 +1,8 @@
+.DS_Store
+.classpath
+.gwt
+.settings
+.project
+target
+*.releaseBackup
+release.properties
