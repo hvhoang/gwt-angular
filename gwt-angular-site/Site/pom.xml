@@ -158,7 +158,7 @@
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-tutorial</artifactId>
+      <artifactId>Tutorial</artifactId>
       <scope>provided</scope>
     </dependency>
   </dependencies>
