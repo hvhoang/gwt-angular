@@ -10,6 +10,7 @@
     <module>gwt-angular-core</module>
     <module>gwt-angular-http</module>
     <module>gwt-angular-masonry</module>
+    <module>gwt-angular-pages</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-resources</module>
     <module>gwt-angular-route</module>

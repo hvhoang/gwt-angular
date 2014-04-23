@@ -6,7 +6,7 @@
   <name>gwt-angular-pages</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
-    <artifactId>gwt-angular-site</artifactId>
+    <artifactId>gwt-angular</artifactId>
     <version>0.0.53-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>

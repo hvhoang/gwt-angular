@@ -13,8 +13,7 @@
   <modules>
     <module>Examples</module>
     <module>Tutorial</module>
-    <module>gwt-angular-pages</module>
-    <module>gwt-angular-web</module>
+    <module>Site</module>
   </modules>
   <licenses>
     <license>
@@ -105,37 +104,37 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-core</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-route</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-sanitize</artifactId>
-        <version>0.0.52</version>
+        <version>0.0.53-SNAPSHOT</version>
       </dependency>
 
       <!-- GWT Client -->
