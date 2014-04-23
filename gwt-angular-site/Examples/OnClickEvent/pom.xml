@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>OnClickEvent</artifactId>
   <packaging>jar</packaging>
-  <name>OnClickEvent</name>
+  <name>Example/OnClickEvent</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular-examples</artifactId>

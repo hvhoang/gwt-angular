@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>Promise</artifactId>
   <packaging>jar</packaging>
-  <name>Promise</name>
+  <name>Example/Promise</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular-examples</artifactId>

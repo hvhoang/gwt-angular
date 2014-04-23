@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>CustomFilter</artifactId>
   <packaging>jar</packaging>
-  <name>CustomFilter</name>
+  <name>Example/CustomFilter</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular-examples</artifactId>
