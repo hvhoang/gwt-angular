@@ -6,7 +6,7 @@
   <name>Example/Prettify</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
-    <artifactId>gwt-angular-examples</artifactId>
+    <artifactId>Examples</artifactId>
     <version>0.0.53-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
