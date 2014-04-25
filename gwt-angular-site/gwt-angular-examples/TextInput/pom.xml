@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>TextInput</artifactId>
   <packaging>jar</packaging>
-  <name>TextInput</name>
+  <name>gwt-angular-examples TextInput</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular-examples</artifactId>

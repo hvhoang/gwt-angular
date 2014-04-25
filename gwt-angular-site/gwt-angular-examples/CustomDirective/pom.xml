@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>CustomDirective</artifactId>
   <packaging>jar</packaging>
-  <name>CustomDirective</name>
+  <name>gwt-angular-examples CustomDirective</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular-examples</artifactId>
