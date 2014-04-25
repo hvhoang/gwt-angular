@@ -10,8 +10,11 @@ public interface CustomDirectiveExampleResources extends ClientBundle {
 
     static CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
 
+    @Source("com/asayama/gwt/angular/site/examples/CustomDirectiveExampleModule.gwt.xml")
+    TextResource config();
+    
     @Source("view/CustomDirectiveExample.html")
-    HtmlResource customFilter();
+    HtmlResource customDirective();
 
     @Source("view/CustomDirectiveDemo.html")
     HtmlResource demo();
