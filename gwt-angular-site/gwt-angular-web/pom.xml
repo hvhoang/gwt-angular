@@ -59,6 +59,7 @@
     </plugins>
   </build>
   <dependencies>
+
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-codeserver</artifactId>
