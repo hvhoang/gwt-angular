@@ -11,6 +11,11 @@ import com.google.gwt.user.client.ui.Image;
 
 public class GwtImageResource extends AbstractDirective {
 
+	@Override
+	public NGScope scope() {
+		return NGScope.create();
+	}
+	
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         ImageResource resource = scope.get(getName());

@@ -18,10 +18,10 @@ public class GoogleCodePrettify extends AbstractDirective {
         return new Restrict[]{ Restrict.Class };
     }
     
-    @Override
-    public NGScope scope() {
-    	return NGScope.create();
-    }
+//    @Override
+//    public NGScope scope() {
+//    	return NGScope.create();
+//    }
     
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
