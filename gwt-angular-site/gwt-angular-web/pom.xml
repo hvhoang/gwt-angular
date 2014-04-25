@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>Site</artifactId>
+  <artifactId>gwt-angular-web</artifactId>
   <packaging>war</packaging>
-  <name>Site</name>
+  <name>gwt-angular-web</name>
   <url>http://kyoken74.github.io/gwt-angular</url>
   <parent>
     <groupId>com.asayama.gwt</groupId>
@@ -158,7 +158,7 @@
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>Tutorial</artifactId>
+      <artifactId>gwt-angular-tutorial</artifactId>
       <scope>provided</scope>
     </dependency>
   </dependencies>
