@@ -44,6 +44,11 @@ public class GwtPrettify extends AbstractDirective {
         return new Restrict[]{ Restrict.Attribute, Restrict.Class };
     }
     
+    @Override
+    public NGScope scope() {
+    	return NGScope.create();
+    }
+    
 //    @Override
 //    public boolean getTransclude() {
 //        return true;

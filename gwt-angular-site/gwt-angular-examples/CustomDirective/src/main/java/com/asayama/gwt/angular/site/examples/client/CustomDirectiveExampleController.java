@@ -12,6 +12,7 @@ public class CustomDirectiveExampleController implements Controller {
     public static final TextResource DIRECTIVE_CODE = CustomDirectiveExampleResources.INSTANCE.directive();
     public static final TextResource TEMPLATE_CODE = CustomDirectiveExampleResources.INSTANCE.template();
     public static final TextResource MODULE_CODE = CustomDirectiveExampleResources.INSTANCE.module();
+    public static final TextResource CONFIG_CODE = CustomDirectiveExampleResources.INSTANCE.config();
 
     @Override
     public void onControllerLoad() {

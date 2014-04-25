@@ -33,6 +33,7 @@ public interface Directive {
     Restrict[] getRestrict();
     TextResource getTemplate();
     String getTemplateUrl();
+    NGScope scope();
     void compile(JQElement element, JSON attrs);
     void link(NGScope scope, JQElement element, JSON attrs);
 }
@@ -108,9 +109,15 @@ class DirectiveWrapper implements Function<JSDirective> {
                 }
             }));
             
-            JSON json = JSON.create();
-            json.put(directive.getName(), "=");
-            jso.setScope(json);
+            NGScope scope = directive.scope();
+            if (scope == null) {
+            	jso.setScope(true);
+            } else {
+            	if (scope.get(directive.getName()) == null) {
+	                scope.put(directive.getName(), "=");
+            	}
+                jso.setScope(scope);
+            }
             
             binder.apply(args);
             
@@ -148,7 +155,11 @@ class JSDirective extends JSON {
         put("compile", compile);
     }
     
-    final void setScope(JSON scope) {
+    final void setScope(NGScope scope) {
         put("scope", scope);
+    }
+    
+    final void setScope(boolean inheritParentScope) {
+        put("scope", inheritParentScope);
     }
 }

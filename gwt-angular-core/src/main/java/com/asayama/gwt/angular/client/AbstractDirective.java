@@ -38,6 +38,11 @@ public abstract class AbstractDirective implements Directive {
     public String getTemplateUrl() {
         return null;
     }
+    
+    @Override
+    public NGScope scope() {
+    	return null;
+    }
 
     @Override
     public void compile(JQElement element, JSON attrs) {
