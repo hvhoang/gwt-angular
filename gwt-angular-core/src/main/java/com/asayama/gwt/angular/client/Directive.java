@@ -110,14 +110,10 @@ class DirectiveWrapper implements Function<JSDirective> {
             }));
             
             NGScope scope = directive.scope();
-            if (scope == null) {
-            	jso.setScope(true);
-            } else {
-            	if (scope.get(directive.getName()) == null) {
-	                scope.put(directive.getName(), "=");
-            	}
-                jso.setScope(scope);
-            }
+        	if (scope != null && scope.get(directive.getName()) == null) {
+                scope.put(directive.getName(), "=");
+        	}
+            jso.setScope(scope);
             
             binder.apply(args);
             
@@ -155,11 +151,7 @@ class JSDirective extends JSON {
         put("compile", compile);
     }
     
-    final void setScope(NGScope scope) {
-        put("scope", scope);
-    }
-    
-    final void setScope(boolean inheritParentScope) {
-        put("scope", inheritParentScope);
-    }
+    final native void setScope(NGScope scope) /*-{
+		this.scope = scope ? scope : true;
+    }-*/;
 }
