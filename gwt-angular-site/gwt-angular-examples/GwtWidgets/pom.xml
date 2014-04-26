@@ -29,7 +29,7 @@
   <dependencies>
   	<dependency>
   		<groupId>com.asayama.gwt</groupId>
-  		<artifactId>gwt-angular-widget</artifactId>
+  		<artifactId>gwt-angular-ui</artifactId>
   	</dependency>
   </dependencies>
 </project>
