@@ -7,16 +7,18 @@
   <packaging>pom</packaging>
   <name>gwt-angular</name>
   <modules>
-    <module>gwt-angular-core</module>
+    <module>gwt-angular-ng</module>
+    <module>gwt-angular-ngRoute</module>
+    <module>gwt-angular-ngSanitize</module>
+
     <module>gwt-angular-http</module>
+    <module>gwt-angular-resources</module>
+    <module>gwt-angular-ui</module>
+
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-pages</module>
     <module>gwt-angular-prettify</module>
-    <module>gwt-angular-resources</module>
-    <module>gwt-angular-route</module>
-    <module>gwt-angular-sanitize</module>
     <module>gwt-angular-site</module>
-    <module>gwt-angular-ui</module>
     <module>kyoken74-gwt</module>
   </modules>
   <licenses>
@@ -95,11 +97,23 @@
         <artifactId>kyoken74-gwt</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
+
       <dependency>
         <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-core</artifactId>
+        <artifactId>gwt-angular-ng</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-ngRoute</artifactId>
+        <version>0.0.56-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-ngSanitize</artifactId>
+        <version>0.0.56-SNAPSHOT</version>
+      </dependency>
+
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-demo</artifactId>
@@ -128,16 +142,6 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.0.56-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-route</artifactId>
-        <version>0.0.56-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-sanitize</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>

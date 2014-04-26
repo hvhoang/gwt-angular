@@ -34,7 +34,7 @@
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-core</artifactId>
+      <artifactId>gwt-angular-ng</artifactId>
     </dependency>
   </dependencies>
 </project>

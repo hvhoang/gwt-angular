@@ -133,9 +133,20 @@
 
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-core</artifactId>
+      <artifactId>gwt-angular-ng</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-ngRoute</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-ngSanitize</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-pages</artifactId>
@@ -149,16 +160,6 @@
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-resources</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-route</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-sanitize</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>

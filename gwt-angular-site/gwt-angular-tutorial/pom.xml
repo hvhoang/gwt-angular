@@ -50,12 +50,12 @@
   <dependencies>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-core</artifactId>
+      <artifactId>gwt-angular-ng</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-route</artifactId>
+      <artifactId>gwt-angular-ngRoute</artifactId>
       <scope>provided</scope>
     </dependency>
   </dependencies>

@@ -33,15 +33,15 @@
   <dependencies>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-core</artifactId>
+      <artifactId>gwt-angular-ng</artifactId>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-route</artifactId>
+      <artifactId>gwt-angular-ngRoute</artifactId>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-sanitize</artifactId>
+      <artifactId>gwt-angular-ngSanitize</artifactId>
     </dependency>
   </dependencies>
 </project>
