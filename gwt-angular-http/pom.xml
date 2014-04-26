@@ -5,7 +5,7 @@
   <packaging>jar</packaging>
   <name>gwt-angular-http</name>
   <parent>
-    <groupId>com.asayama.gwt</groupId>
+    <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular</artifactId>
     <version>0.0.56-SNAPSHOT</version>
     <relativePath>..</relativePath>
@@ -32,7 +32,7 @@
       <artifactId>gwt-user</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ng</artifactId>
     </dependency>
   </dependencies>

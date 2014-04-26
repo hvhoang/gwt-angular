@@ -6,7 +6,7 @@
   <name>gwt-angular-web</name>
   <url>http://kyoken74.github.io/gwt-angular</url>
   <parent>
-    <groupId>com.asayama.gwt</groupId>
+    <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular-site</artifactId>
     <version>0.0.56-SNAPSHOT</version>
     <relativePath>..</relativePath>
@@ -71,99 +71,101 @@
     </dependency>
 
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>CustomDirective</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>CustomFilter</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>GwtWidgets</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>HttpClient</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>ImageResource</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>OnClickEvent</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>Prettify</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>Promise</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>TextInput</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>UrlHashParameter</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
-
+	
+	<!--
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-ng</artifactId>
       <scope>provided</scope>
     </dependency>
+    -->
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ngRoute</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ngSanitize</artifactId>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-pages</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-prettify</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-resources</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-tutorial</artifactId>
       <scope>provided</scope>
     </dependency>

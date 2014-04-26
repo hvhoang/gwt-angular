@@ -5,7 +5,7 @@
   <packaging>jar</packaging>
   <name>gwt-angular-tutorial</name>
   <parent>
-    <groupId>com.asayama.gwt</groupId>
+    <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular-site</artifactId>
     <version>0.0.56-SNAPSHOT</version>
     <relativePath>..</relativePath>
@@ -48,13 +48,15 @@
     </plugins>
   </build>
   <dependencies>
+  	<!--
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>gwt-angular-ng</artifactId>
       <scope>provided</scope>
     </dependency>
+    -->
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
+      <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ngRoute</artifactId>
       <scope>provided</scope>
     </dependency>

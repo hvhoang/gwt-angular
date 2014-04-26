@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.asayama.gwt</groupId>
+  <groupId>com.asayama.gwt.angular</groupId>
   <artifactId>gwt-angular</artifactId>
   <version>0.0.56-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -99,53 +99,48 @@
       </dependency>
 
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngRoute</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngSanitize</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
 
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-angular-demo</artifactId>
-        <version>0.0.42-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-http</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-pages</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-resources</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
+        <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ui</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
