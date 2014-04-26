@@ -5,5 +5,5 @@
   <inherits name="com.asayama.gwt.angular.NG" />
   <inherits name="com.asayama.gwt.resources.Resources" />
   <source path="client" />
-  <entry-point class="com.asayama.gwt.angular.ui.client.UIModule" />
+  <entry-point class="com.asayama.gwt.angular.user.client.UserModule" />
 </module>

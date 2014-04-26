@@ -13,7 +13,7 @@
 
     <module>gwt-angular-http</module>
     <module>gwt-angular-resources</module>
-    <module>gwt-angular-ui</module>
+    <module>gwt-angular-user</module>
 
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-pages</module>
@@ -141,7 +141,7 @@
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
-        <artifactId>gwt-angular-ui</artifactId>
+        <artifactId>gwt-angular-user</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
 

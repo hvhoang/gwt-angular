@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.ui.client.directive;
+package com.asayama.gwt.angular.user.client.ui.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
