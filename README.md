@@ -28,10 +28,8 @@ You may have figured out that this is a one-man project started in his kitchen
 Getting Started
 ===============
 
-
-Building the Project
---------------------
-Set up Maven (http://maven.apache.org) on your machine.
+Set up Maven (http://maven.apache.org) on your machine, and then execute the
+following commands to build the project.
 ```
 git clone https://github.com/kyoken74/gwt-angular.git
 cd gwt-angular
