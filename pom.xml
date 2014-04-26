@@ -16,10 +16,10 @@
     <module>gwt-angular-user</module>
 
     <module>gwt-angular-masonry</module>
-    <module>gwt-angular-pages</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
-    <module>kyoken74-gwt</module>
+
+    <module>gwt-util</module>
   </modules>
   <licenses>
     <license>
@@ -94,7 +94,7 @@
       <!-- Project -->
       <dependency>
         <groupId>com.asayama.gwt</groupId>
-        <artifactId>kyoken74-gwt</artifactId>
+        <artifactId>gwt-util</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
 
@@ -122,11 +122,6 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.0.56-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt.angular</groupId>
-        <artifactId>gwt-angular-pages</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>

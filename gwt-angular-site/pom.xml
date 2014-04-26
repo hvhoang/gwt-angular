@@ -13,6 +13,7 @@
   </parent>
   <modules>
     <module>gwt-angular-examples</module>
+    <module>gwt-angular-pages</module>
     <module>gwt-angular-tutorial</module>
     <module>gwt-angular-web</module>
   </modules>
@@ -21,6 +22,11 @@
       <dependency>
         <groupId>com.asayama.docs.gwt.angular.examples</groupId>
         <artifactId>gwt-angular-examples</artifactId>
+        <version>0.0.56-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.docs.gwt.angular</groupId>
+        <artifactId>gwt-angular-pages</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
       <dependency>

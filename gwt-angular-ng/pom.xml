@@ -39,7 +39,7 @@
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
-      <artifactId>kyoken74-gwt</artifactId>
+      <artifactId>gwt-util</artifactId>
     </dependency>
     <!-- Velocity Code Generator -->
     <dependency>

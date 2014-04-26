@@ -150,7 +150,7 @@
     </dependency>
 
     <dependency>
-      <groupId>com.asayama.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular</groupId>
       <artifactId>gwt-angular-pages</artifactId>
       <scope>provided</scope>
     </dependency>
