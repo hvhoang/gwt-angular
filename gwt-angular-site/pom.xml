@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular</artifactId>
-    <version>0.0.54-SNAPSHOT</version>
+    <version>0.0.54</version>
     <relativePath>..</relativePath>
   </parent>
   <modules>
@@ -20,17 +20,17 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-examples</artifactId>
-        <version>0.0.54-SNAPSHOT</version>
+        <version>0.0.54</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-web</artifactId>
-        <version>0.0.54-SNAPSHOT</version>
+        <version>0.0.54</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-tutorial</artifactId>
-        <version>0.0.54-SNAPSHOT</version>
+        <version>0.0.54</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
