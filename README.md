@@ -1,9 +1,7 @@
 Getting Started
 ===============
 
-Live Demo
----------
-http://kyoken74.github.io/gwt-angular/
+### Live Demo: http://kyoken74.github.io/gwt-angular/
 
 The demo application gwt-angular-site demonstrates the usage of gwt-angular API
 in a live application. It is more a documentation than an application.
