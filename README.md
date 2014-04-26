@@ -1,21 +1,17 @@
-### Live Demo: http://kyoken74.github.io/gwt-angular/
-
+#### Live Demo URL --> http://kyoken74.github.io/gwt-angular/
 The demo application gwt-angular-site demonstrates the usage of gwt-angular API
 in a live application. It is more a documentation than an application.
 
-The demo application uses Twitter's Bootstrap as the view framework.
+The demo application uses Twitter's [Bootstrap](http://getbootstrap.com) as the 
+view framework.
 
-Bootstrap (http://getbootstrap.com)
-
-
-WARNING
--------
+### WARNING
 The API is in very early stages of development, and it is not yet ready for
 beta.
 
 
 Collaborators Wanted
---------------------
+====================
 Although I have many years of Java and GWT development experience, my 
 understanding of AngularJS is naïve at best. If any AngularJS experts out there
 who can help me understand the core design philosophy of this powerful 
@@ -28,7 +24,8 @@ You may have figured out that this is a one-man project started in his kitchen
 Getting Started
 ===============
 
-Set up Maven (http://maven.apache.org) on your machine, and then execute the
+### Building the project
+Set up [Maven](http://maven.apache.org) on your machine, and then execute the
 following commands to build the project.
 ```
 git clone https://github.com/kyoken74/gwt-angular.git
@@ -36,20 +33,18 @@ cd gwt-angular
 mvn clean install
 ```
 
-
-Running the Live Demo
----------------------
+### Running the Live Demo
 gwt-angular-site contains the source code for our Live Demo site.
 
 If you have a JEE container, you can simply deploy the following WAR artifact
 to your server after building the project.
-
+```
 gwt-angular/gwt-angular-site/gwt-angular-web/gwt-angular.war
+```
 
 If you have a web server, you can expand the above WAR file, and deploy the
 extracted code to your web server's htdocs area. You can discard the META-INF
 and WEB-INF directories, because they are only relevant to JEE containers.
-
 ```
 gwt-angular.war
 	/site
@@ -65,7 +60,7 @@ Main Class
 	com.google.gwt.dev.codeserver.CodeServer
 
 Main Argument
-	-src src/test/java  com.asayama.gwt.angular.site.SuperDevMode
+	-src src/test/java com.asayama.gwt.angular.site.SuperDevMode
 
 Required JAR
 	gwt-codeserver.jar
@@ -73,7 +68,6 @@ Required JAR
 
 Overview
 ========
-
 The purpose of gwt-angular project is to bring the powerful MVC framework of
 AngularJS to Java programmers.
 
@@ -88,34 +82,8 @@ intended to be written in HTML/CSS, and, as such, gwt-angular does not provide
 any view components (i.e. widgets) in Java. The users are  encouraged to 
 explorer various HTML based view frameworks.
 
-GWT (http://www.gwtproject.org)
+- [GWT](http://www.gwtproject.org)
+- [AngularJS](http://angularjs.org/)
 
-AngularJS (http://angularjs.org/)
-
-
-Versioning
-==========
-
-0.0.x development will continue in develop branch, and with every release, we
-will increment the patch number. The programming interface will remain unstable
-during this cycle.
-
-The interface will become stable once we reach 1.0.0. From this point on, only
-additive changes will be introduced to the programming interface, so that the
-users can upgrade to the new versions without major code changes.
-
-The users should be aware, however, that the side effects may change without
-notice even when the interface remains unchanged. This may require code changes
-when upgrading to later versions.
-
-1.0.0 user will be able to drop in 1.0.1
-
-1.1.0 user will be able to drop in 1.1.1
-
-1.0.0 user will be able to drop in 1.2.0
-
-1.2.0 user will not be able to drop in 2.0.0 due to interface changes.
-
-When the major versions are changed, the previously deprecated interfaces may
-be removed; hecne requiring code changes to those users relying on the old 
-interface.
+*Note that while gwt-angular project uses the products provided by above 
+projects, gwt-angular itself is not affiliated with the above projects.*
