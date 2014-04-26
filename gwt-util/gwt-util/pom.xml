@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt</groupId>
   <artifactId>gwt-util</artifactId>
-  <version>0.0.57</version>
+  <version>0.0.58-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>gwt-util</name>
   <licenses>
@@ -13,7 +13,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <url>https://github.com/kyoken74/gwt-angular</url>
+  <url>https://github.com/kyoken74/gwt-util</url>
   <developers>
     <developer>
       <id>kyoken74</id>
