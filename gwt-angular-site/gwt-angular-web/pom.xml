@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.asayama.gwt</groupId>
     <artifactId>gwt-angular-site</artifactId>
-    <version>0.0.54</version>
+    <version>0.0.55-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
   <properties>
@@ -73,61 +73,61 @@
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>CustomDirective</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>CustomFilter</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>GwtWidgets</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>HttpClient</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>ImageResource</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>OnClickEvent</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>Prettify</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>Promise</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>TextInput</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.gwt</groupId>
       <artifactId>UrlHashParameter</artifactId>
-      <version>0.0.54</version>
+      <version>0.0.55-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
 
