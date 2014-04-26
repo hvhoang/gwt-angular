@@ -18,8 +18,6 @@
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
-
-    <module>gwt-util</module>
   </modules>
   <licenses>
     <license>
