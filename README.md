@@ -1,6 +1,3 @@
-Getting Started
-===============
-
 ### Live Demo: http://kyoken74.github.io/gwt-angular/
 
 The demo application gwt-angular-site demonstrates the usage of gwt-angular API
@@ -26,6 +23,10 @@ framework, please let me know. I can use your help.
 
 You may have figured out that this is a one-man project started in his kitchen
 (I do not have a garage). There is no corporate sponsor behind this project.
+
+
+Getting Started
+===============
 
 
 Building the Project
