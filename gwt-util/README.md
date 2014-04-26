@@ -1,4 +1,4 @@
 gwt-util
 ========
 
-GWT Utility Classes
+GWT utility classes which were originally developed for gwt-angular project.
