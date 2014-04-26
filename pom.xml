@@ -16,6 +16,7 @@
     <module>gwt-angular-route</module>
     <module>gwt-angular-sanitize</module>
     <module>gwt-angular-site</module>
+    <module>gwt-angular-widget</module>
     <module>kyoken74-gwt</module>
   </modules>
   <licenses>
@@ -137,6 +138,11 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-angular-sanitize</artifactId>
+        <version>0.0.56-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-angular-widget</artifactId>
         <version>0.0.56-SNAPSHOT</version>
       </dependency>
 

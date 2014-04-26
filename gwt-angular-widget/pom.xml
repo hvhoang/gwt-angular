@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>GwtWidgets</artifactId>
+  <artifactId>gwt-angular-widget</artifactId>
   <packaging>jar</packaging>
-  <name>gwt-angular-examples GwtWidgets</name>
+  <name>gwt-angular-resources</name>
   <parent>
     <groupId>com.asayama.gwt</groupId>
-    <artifactId>gwt-angular-examples</artifactId>
+    <artifactId>gwt-angular</artifactId>
     <version>0.0.56-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
@@ -27,9 +27,19 @@
     </plugins>
   </build>
   <dependencies>
-  	<dependency>
-  		<groupId>com.asayama.gwt</groupId>
-  		<artifactId>gwt-angular-widget</artifactId>
-  	</dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>com.asayama.gwt</groupId>
+      <artifactId>gwt-angular-core</artifactId>
+    </dependency>
   </dependencies>
 </project>

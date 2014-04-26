@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.site.examples.client.directive;
+package com.asayama.gwt.angular.widget.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
@@ -12,6 +12,11 @@ public class GwtWidget extends AbstractDirective {
     
     private static long counter = 0L;
 
+    @Override
+    public NGScope scope() {
+    	return NGScope.create();
+    }
+    
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         IsWidget widget = scope.get(getName());
