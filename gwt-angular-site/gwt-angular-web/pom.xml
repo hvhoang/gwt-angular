@@ -137,13 +137,6 @@
       <scope>provided</scope>
     </dependency>
 	
-	<!--
-    <dependency>
-      <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-ng</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    -->
     <dependency>
       <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ngRoute</artifactId>

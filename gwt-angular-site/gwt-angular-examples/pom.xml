@@ -31,12 +31,6 @@
     </plugins>
   </build>
   <dependencies>
-  	<!--
-    <dependency>
-      <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-angular-ng</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ngRoute</artifactId>
