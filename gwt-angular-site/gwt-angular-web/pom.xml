@@ -71,61 +71,61 @@
     </dependency>
 
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>CustomDirective</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>CustomFilter</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>GwtWidgets</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>HttpClient</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>ImageResource</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>OnClickEvent</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>Prettify</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>Promise</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>TextInput</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.docs.gwt.angular</groupId>
+      <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>UrlHashParameter</artifactId>
       <version>0.0.56-SNAPSHOT</version>
       <scope>provided</scope>
@@ -137,6 +137,7 @@
       <scope>provided</scope>
     </dependency>
 	
+    <!-- GWT Angular -->
     <dependency>
       <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ngRoute</artifactId>
@@ -163,5 +164,6 @@
       <artifactId>gwt-angular-resources</artifactId>
       <scope>provided</scope>
     </dependency>
+
   </dependencies>
 </project>
