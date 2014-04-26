@@ -8,7 +8,7 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 
-public class GoogleCodePrettify extends AbstractDirective {
+public class Prettyprint extends AbstractDirective {
 
     //TODO https://github.com/kyoken74/gwt-angular/issues/52
     private Prettify filter = new Prettify();
@@ -27,6 +27,5 @@ public class GoogleCodePrettify extends AbstractDirective {
     public void link(NGScope scope, JQElement element, JSON attrs) {
         String text = SafeHtmlUtils.htmlEscape(element.text());
         element.empty().append(filter.filter(text));
-        element.addClass("prettyprint");
     }
 }
