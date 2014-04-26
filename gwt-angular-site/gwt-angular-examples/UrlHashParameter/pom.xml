@@ -5,7 +5,7 @@
   <packaging>jar</packaging>
   <name>gwt-angular-examples UrlHashParameter</name>
   <parent>
-    <groupId>com.asayama.gwt.angular</groupId>
+    <groupId>com.asayama.docs.gwt.angular</groupId>
     <artifactId>gwt-angular-examples</artifactId>
     <version>0.0.56-SNAPSHOT</version>
     <relativePath>..</relativePath>

@@ -5,7 +5,7 @@
   <packaging>pom</packaging>
   <name>gwt-angular-examples</name>
   <parent>
-    <groupId>com.asayama.gwt.angular</groupId>
+    <groupId>com.asayama.docs.gwt.angular</groupId>
     <artifactId>gwt-angular-site</artifactId>
     <version>0.0.56-SNAPSHOT</version>
     <relativePath>..</relativePath>
