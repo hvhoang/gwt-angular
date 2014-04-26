@@ -16,6 +16,10 @@ public class NavbarController implements Controller {
     public static final String PROJECT_GROUP_ID = ProjectConstants.INSTANCE.projectGroupId();
     public static final String PROJECT_ARTIFACT_ID = ProjectConstants.INSTANCE.projectArtifactId();
     public static final String PROJECT_VERSION = ProjectConstants.INSTANCE.projectVersion();
+    public static final String PROJECT_URL = ProjectConstants.INSTANCE.projectUrl();
+    
+    public static final String GITHUB_SOURCE_URL = ProjectConstants.INSTANCE.githubSourceUrl();
+    public static final String GITHUB_ISSUE_URL = ProjectConstants.INSTANCE.githubIssueUrl();
     
     public static final String DEVELOP = NavbarConstants.INSTANCE.develop();
     public static final String DOCUMENTATION = NavbarConstants.INSTANCE.documentation();
