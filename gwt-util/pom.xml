@@ -63,7 +63,6 @@
   </build>
   <dependencyManagement>
     <dependencies>
-      <!-- GWT Client -->
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
