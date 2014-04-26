@@ -1,5 +1,12 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
+/.DS_Store
+/.classpath
+/.gwt
+/.project
+/.settings
+/gwt-unitCache
+/target
+/war
 pom.xml.next
+pom.xml.releaseBackup
+pom.xml.tag
 release.properties
