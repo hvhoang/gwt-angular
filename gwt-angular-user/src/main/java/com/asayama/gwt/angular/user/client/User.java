@@ -6,7 +6,7 @@ import com.asayama.gwt.angular.user.client.ui.directive.GwtWidget;
 import com.google.gwt.core.client.EntryPoint;
 
 
-public class UserModule extends AbstractModule implements EntryPoint {
+public class User extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
