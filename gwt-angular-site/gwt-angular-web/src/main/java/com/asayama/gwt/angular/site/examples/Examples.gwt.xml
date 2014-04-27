@@ -4,7 +4,7 @@
   <inherits name="com.asayama.gwt.angular.NG" />
   <inherits name="com.asayama.gwt.angular.pages.Pages" />
 
-  <inherits name="com.asayama.gwt.angular.site.examples.CustomDirectiveExampleModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.CustomDirectiveExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.CustomFilterExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.GwtWidgetsExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.HttpClientExampleModule" />
