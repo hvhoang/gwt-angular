@@ -8,6 +8,6 @@ public class OnClickEventExample extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         Angular.module(this);
-        controller(OnClickEventDemoController.class);
+        controller(OnClickEventController.class);
     }
 }
