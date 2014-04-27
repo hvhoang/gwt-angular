@@ -9,6 +9,5 @@ public class UrlHashParameterExample extends AbstractModule implements EntryPoin
     public void onModuleLoad() {
         Angular.module(this);
         controller(UrlHashParameterDemoController.class);
-        controller(UrlHashParameterExampleController.class);
     }
 }

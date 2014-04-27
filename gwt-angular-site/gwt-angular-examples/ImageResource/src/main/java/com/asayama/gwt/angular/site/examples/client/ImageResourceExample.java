@@ -9,6 +9,5 @@ public class ImageResourceExample extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         controller(ImageResourceDemoController.class);
-        controller(ImageResourceExampleController.class);
     }
 }

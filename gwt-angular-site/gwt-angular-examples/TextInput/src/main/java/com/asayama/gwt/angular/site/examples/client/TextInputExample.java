@@ -9,6 +9,5 @@ public class TextInputExample extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         controller(TextInputDemoController.class);
-        controller(TextInputExampleController.class);
     }
 }

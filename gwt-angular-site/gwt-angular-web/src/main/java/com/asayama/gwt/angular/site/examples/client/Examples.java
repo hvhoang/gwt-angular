@@ -12,6 +12,15 @@ public class Examples extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examples", getPages());
         controller(CustomDirectiveExampleController.class);
+        controller(CustomFilterExampleController.class);
+        controller(GwtWidgetsExampleController.class);
+        controller(HttpClientExampleController.class);
+        controller(ImageResourceExampleController.class);
+        controller(OnClickEventExampleController.class);
+        controller(PrettifyExampleController.class);
+        controller(PromiseExampleController.class);
+        controller(TextInputExampleController.class);
+        controller(UrlHashParameterExampleController.class);
     }
     
     private JSArray<Page> getPages() {
