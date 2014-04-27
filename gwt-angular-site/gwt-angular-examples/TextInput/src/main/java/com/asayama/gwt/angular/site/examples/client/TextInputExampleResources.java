@@ -13,10 +13,10 @@ public interface TextInputExampleResources extends ClientBundle {
     @Source("view/TextInputExample.html")
     HtmlResource textInput();
 
-    @Source("view/TextInputDemo.html")
+    @Source("view/TextInput.html")
     HtmlResource demo();
 
-    @Source("view/TextInputDemo.html")
+    @Source("view/TextInput.html")
     TextResource view();
     
     @Source("TextInputDemoController.java")
