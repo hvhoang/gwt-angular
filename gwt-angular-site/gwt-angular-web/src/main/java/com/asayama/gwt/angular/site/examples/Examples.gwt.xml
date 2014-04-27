@@ -13,8 +13,7 @@
   <inherits name="com.asayama.gwt.angular.site.examples.PrettifyExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.PromiseExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.TextInputExample" />
-  
-  <inherits name="com.asayama.gwt.angular.site.examples.UrlHashParameterExampleModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.UrlHashParameterExample" />
 
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.site.examples.client.Examples" />
