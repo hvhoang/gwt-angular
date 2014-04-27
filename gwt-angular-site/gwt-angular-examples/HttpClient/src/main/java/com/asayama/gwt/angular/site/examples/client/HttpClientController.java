@@ -9,7 +9,7 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Response;
 
-public class HttpClientDemoController implements Controller {
+public class HttpClientController implements Controller {
 
     // Fields of type Injectable are injected by the framework
     

@@ -13,12 +13,12 @@ public interface HttpClientExampleResources extends ClientBundle {
     @Source("view/HttpClientExample.html")
     HtmlResource httpClient();
 
-    @Source("view/HttpClientDemo.html")
+    @Source("view/HttpClient.html")
     HtmlResource demo();
 
-    @Source("view/HttpClientDemo.html")
+    @Source("view/HttpClient.html")
     TextResource view();
     
-    @Source("HttpClientDemoController.java")
+    @Source("HttpClientController.java")
     TextResource controller();
 }
