@@ -110,9 +110,9 @@ class DirectiveWrapper implements Function<JSDirective> {
             }));
             
             NGScope scope = directive.scope();
-        	if (scope != null && scope.get(directive.getName()) == null) {
-                scope.put(directive.getName(), "=");
-        	}
+//        	if (scope != null && scope.get(directive.getName()) == null) {
+//                scope.put(directive.getName(), "=");
+//        	}
             jso.setScope(scope);
             
             binder.apply(args);
@@ -126,6 +126,11 @@ class DirectiveWrapper implements Function<JSDirective> {
     }
 }
 
+/**
+ * https://docs.angularjs.org/api/ng/service/$compile
+ * 
+ * @author kyoken74
+ */
 class JSDirective extends JSON {
 
     protected JSDirective() {
@@ -151,6 +156,11 @@ class JSDirective extends JSON {
         put("compile", compile);
     }
     
+    /**
+     * If scope argument is null, this sets the scope to true, which implies
+     * that a local scope is created inheriting the parent scope. If scope
+     * value is not null, then a local isolate scope is created.
+     */
     final native void setScope(NGScope scope) /*-{
 		this.scope = scope ? scope : true;
     }-*/;

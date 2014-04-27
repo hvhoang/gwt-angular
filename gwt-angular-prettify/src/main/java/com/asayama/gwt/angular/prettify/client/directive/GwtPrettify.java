@@ -5,6 +5,7 @@ import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
@@ -36,31 +37,45 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  */
 public class GwtPrettify extends AbstractDirective {
 
-    //TODO https://github.com/kyoken74/gwt-angular/issues/52
+	// FIXME https://github.com/kyoken74/gwt-angular/issues/78
     private Prettify filter = new Prettify();
     
+    /**
+     * Returns the following restrictions.
+     * <ul>
+     * <li>{@link Restrict.Attribute}</li>
+     * </ul>
+     */
     @Override
     public Restrict[] getRestrict() {
-        return new Restrict[]{ Restrict.Attribute, Restrict.Class };
+        return new Restrict[]{ Restrict.Attribute };
     }
     
+    /**
+     * Creates isolateScope and registers the following attribute definition.
+     * <ul>
+     * <li>{@code TextResource} gwt-prettify</li>
+     * </ul>
+     */
     @Override
     public NGScope scope() {
-    	return NGScope.create();
+    	NGScope scope = NGScope.create();
+    	scope.put(getName(), "=");
+    	return scope;
     }
     
-//    @Override
-//    public boolean getTransclude() {
-//        return true;
-//    }
-    
+    /**
+     * Replaces the element body with the TextResource passed via gwt-prettify
+     * attribute. TextResource is processed by {@link Prettify} filter.
+     */
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
-        String text = SafeHtmlUtils.htmlEscape(element.text());
-        if (resource != null) {
-            text = SafeHtmlUtils.htmlEscape(resource.getText());
+        if (resource == null) {
+        	GWT.log("Mandatory attribute, " + getName() + ", was missing");
+        	return;
         }
+        String text = SafeHtmlUtils.htmlEscape(resource.getText());
         if (text != null && text.length() > 0) {
             element.empty().append(filter.filter(text));
         }
