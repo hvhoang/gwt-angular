@@ -12,8 +12,8 @@
   <inherits name="com.asayama.gwt.angular.site.examples.OnClickEventExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.PrettifyExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.PromiseExample" />
+  <inherits name="com.asayama.gwt.angular.site.examples.TextInputExample" />
   
-  <inherits name="com.asayama.gwt.angular.site.examples.TextInputExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.UrlHashParameterExampleModule" />
 
   <source path="client" />
