@@ -21,4 +21,10 @@ public interface PrettifyExampleResources extends ClientBundle {
     
     @Source("PrettifyController.java")
     TextResource controller();
+    
+    @Source("PrettifyModule.java")
+    TextResource module();
+    
+    @Source("com/asayama/gwt/angular/site/examples/PrettifyExample.gwt.xml")
+    TextResource config();
 }
