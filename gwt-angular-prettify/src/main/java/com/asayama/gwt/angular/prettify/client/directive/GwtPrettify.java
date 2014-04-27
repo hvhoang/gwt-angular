@@ -1,5 +1,6 @@
 package com.asayama.gwt.angular.prettify.client.directive;
 
+import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jquery.client.JQElement;
@@ -34,9 +35,10 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  * 
  * @author kyoken74
  */
-public class GwtPrettify extends Prettyprint {
+public class GwtPrettify extends AbstractDirective {
 
-    private Prettify filter;
+	// FIXME https://github.com/kyoken74/gwt-angular/issues/78
+    private Prettify filter = new Prettify();
     
     /**
      * Returns the following restrictions.

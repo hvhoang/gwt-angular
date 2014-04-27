@@ -9,7 +9,8 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
 public class Prettyprint extends AbstractDirective {
 
-    private Prettify filter;
+	// FIXME https://github.com/kyoken74/gwt-angular/issues/78
+    private Prettify filter = new Prettify();
     
     /**
      * Returns the following restrictions.
