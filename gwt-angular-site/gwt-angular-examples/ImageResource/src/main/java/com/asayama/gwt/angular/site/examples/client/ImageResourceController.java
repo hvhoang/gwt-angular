@@ -5,7 +5,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
-public class ImageResourceDemoController implements Controller {
+public class ImageResourceController implements Controller {
 
     public static final ImageResource STREET = ImageResources.INSTANCE.street();
     public static final ImageResource WTC = ImageResources.INSTANCE.wtc();
