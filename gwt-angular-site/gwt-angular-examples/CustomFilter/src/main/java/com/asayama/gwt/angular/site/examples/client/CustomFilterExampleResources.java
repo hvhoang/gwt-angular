@@ -27,4 +27,7 @@ public interface CustomFilterExampleResources extends ClientBundle {
 
     @Source("CustomFilterExample.java")
     TextResource module();
+
+    @Source("com/asayama/gwt/angular/site/examples/CustomFilterExample.gwt.xml")
+    TextResource config();
 }
