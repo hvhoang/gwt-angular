@@ -6,7 +6,7 @@ import com.asayama.gwt.angular.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;
 
-public class ExamplesModule extends AbstractModule implements EntryPoint {
+public class Examples extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         Angular.module(this);

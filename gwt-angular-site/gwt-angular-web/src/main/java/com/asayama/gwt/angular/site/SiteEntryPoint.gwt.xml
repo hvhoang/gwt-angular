@@ -16,7 +16,7 @@
   <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
 
   <!-- Internal Dependency -->
-  <inherits name="com.asayama.gwt.angular.site.examples.ExamplesModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.Examples" />
   <inherits name="com.asayama.gwt.angular.site.tutorial.TutorialModule" />
 
   <!-- Bootstrap CSS -->

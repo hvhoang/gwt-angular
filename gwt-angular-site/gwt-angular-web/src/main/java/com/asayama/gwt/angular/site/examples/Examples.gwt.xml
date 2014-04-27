@@ -16,5 +16,5 @@
   <inherits name="com.asayama.gwt.angular.site.examples.UrlHashParameterExampleModule" />
 
   <source path="client" />
-  <entry-point class="com.asayama.gwt.angular.site.examples.client.ExamplesModule" />
+  <entry-point class="com.asayama.gwt.angular.site.examples.client.Examples" />
 </module>
