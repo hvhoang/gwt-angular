@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.site.examples.client.filter.Reverse;
 import com.google.gwt.core.client.EntryPoint;
 
-public class CustomFilterExampleModule extends AbstractModule implements EntryPoint {
+public class CustomFilterExample extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         Angular.module(this);
