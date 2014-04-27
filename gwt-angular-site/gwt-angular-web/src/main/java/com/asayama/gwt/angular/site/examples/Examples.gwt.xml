@@ -2,7 +2,7 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.asayama.gwt.angular.NG" />
-  <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
+  <inherits name="com.asayama.gwt.angular.pages.Pages" />
 
   <inherits name="com.asayama.gwt.angular.site.examples.CustomDirectiveExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.CustomFilterExampleModule" />

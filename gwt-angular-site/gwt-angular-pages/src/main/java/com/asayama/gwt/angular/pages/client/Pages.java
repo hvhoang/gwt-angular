@@ -5,7 +5,7 @@ import com.asayama.gwt.angular.client.Angular;
 import com.google.gwt.core.client.EntryPoint;
 
 
-public class PagesModule extends AbstractModule implements EntryPoint {
+public class Pages extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
