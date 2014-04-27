@@ -9,7 +9,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
 
-public class MasonryModule extends AbstractModule implements EntryPoint {
+public class Masonry extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
