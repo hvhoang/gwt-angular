@@ -13,12 +13,12 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
     @Source("view/UrlHashParameterExample.html")
     HtmlResource urlHashParameter();
 
-    @Source("view/UrlHashParameterDemo.html")
+    @Source("view/UrlHashParameter.html")
     HtmlResource demo();
 
-    @Source("view/UrlHashParameterDemo.html")
+    @Source("view/UrlHashParameter.html")
     TextResource view();
     
-    @Source("UrlHashParameterDemoController.java")
+    @Source("UrlHashParameterController.java")
     TextResource controller();
 }
