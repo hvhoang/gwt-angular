@@ -23,72 +23,72 @@ public class JSON extends JSObject {
         return $object(key);
     }
 
-    public final <T> JSON put(String key, T value) {
+    public final <T extends JSON, V> T put(String key, V value) {
         $object(key, value);
-        return this;
+        return this.cast();
     }
     
     public final <T extends JSON> T getJSON(String key) {
         return $jsobject(key);
     }
 
-    public final JSON put(String key, JSON value) {
+    public final <T extends JSON> T put(String key, JSON value) {
         $jsobject(key, value);
-        return this;
+        return this.cast();
     }
     
     public final <T extends JSObject> T getJSObject(String key) {
         return $jsobject(key);
     }
 
-    public final JSON put(String key, JSObject value) {
+    public final <T extends JSON> T put(String key, JSObject value) {
         $jsobject(key, value);
-        return this;
+        return this.cast();
     }
     
     public final <T> JSArray<T> getJSArray(String key) {
         return $jsarray(key);
     }
     
-    public final <T> JSON put(String key, JSArray<T> value) {
+    public final <T extends JSON, V> T put(String key, JSArray<V> value) {
         $jsarray(key, value);
-        return this;
+        return this.cast();
     }
     
     public final <R> JSFunction<R> getJSFunction(String key) {
         return $jsobject(key) == null ? null : $jsobject(key).<JSFunction<R>>cast();
     }
 
-    public final <R> JSON put(String key, JSFunction<R> value) {
+    public final <T extends JSON, R> T put(String key, JSFunction<R> value) {
         $object(key, value);
-        return this;
+        return this.cast();
     }
     
     public final JSClosure getJSClosure(String key) {
         return $jsobject(key) == null ? null : $jsobject(key).<JSClosure>cast();
     }
 
-    public final JSON put(String key, JSClosure value) {
+    public final <T extends JSON> T put(String key, JSClosure value) {
         $object(key, value);
-        return this;
+        return this.cast();
     }
     
     public final String getString(String key) {
         return $string(key);
     }
     
-    public final JSON put(String key, String value) {
+    public final <T extends JSON> T put(String key, String value) {
         $string(key, value);
-        return this;
+        return this.cast();
     }
     
     public final Integer getInteger(String key) {
         return $integer(key);
     }
     
-    public final JSON put(String key, Integer value) {
+    public final <T extends JSON> T put(String key, Integer value) {
         $integer(key, value);
-        return this;
+        return this.cast();
     }
 
     public final Double getDouble(String key) {
@@ -104,27 +104,27 @@ public class JSON extends JSObject {
         return $boolean(key);
     }
     
-    public final JSON put(String key, Boolean value) {
+    public final <T extends JSON> T put(String key, Boolean value) {
         $boolean(key, value);
-        return this;
+        return this.cast();
     }
     
     public final Long getLong(String key) {
         return $long(key);
     }
     
-    public final JSON put(String key, Long value) {
+    public final <T extends JSON> T put(String key, Long value) {
         $long(key, value);
-        return this;
+        return this.cast();
     }
     
     public final Date getDate(String key) {
         return $date(key);
     }
     
-    public final JSON put(String key, Date value) {
+    public final <T extends JSON> T put(String key, Date value) {
         $date(key, value);
-        return this;
+        return this.cast();
     }
 
     public final String toJSONString() {
