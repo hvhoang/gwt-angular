@@ -9,8 +9,8 @@
   <inherits name="com.asayama.gwt.angular.site.examples.GwtWidgetsExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.HttpClientExample" />
   <inherits name="com.asayama.gwt.angular.site.examples.ImageResourceExample" />
-  
-  <inherits name="com.asayama.gwt.angular.site.examples.OnClickEventExampleModule" />
+  <inherits name="com.asayama.gwt.angular.site.examples.OnClickEventExample" />
+ 
   <inherits name="com.asayama.gwt.angular.site.examples.PrettifyExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.PromiseExampleModule" />
   <inherits name="com.asayama.gwt.angular.site.examples.TextInputExampleModule" />
