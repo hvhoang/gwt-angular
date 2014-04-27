@@ -10,7 +10,11 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.http.client.Response;
 
-
+/**
+ * Equivalent to data-ng-include directive.
+ * 
+ * @author kyoken74
+ */
 public class GwtHtmlResource extends AbstractDirective {
     
     private Q q;

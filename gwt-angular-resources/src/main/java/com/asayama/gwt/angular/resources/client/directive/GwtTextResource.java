@@ -6,7 +6,11 @@ import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.resources.client.TextResource;
 
-
+/**
+ * Equivalent to data-ng-bind-html directive.
+ * 
+ * @author kyoken74
+ */
 public class GwtTextResource extends AbstractDirective {
 
     /**
