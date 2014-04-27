@@ -21,4 +21,10 @@ public interface HttpClientExampleResources extends ClientBundle {
     
     @Source("HttpClientController.java")
     TextResource controller();
+    
+    @Source("HttpClientExample.java")
+    TextResource module();
+    
+    @Source("com/asayama/gwt/angular/site/examples/HttpClientExample.gwt.xml")
+    TextResource config();
 }
