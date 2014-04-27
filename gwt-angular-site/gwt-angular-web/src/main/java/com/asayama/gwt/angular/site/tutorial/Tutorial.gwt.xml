@@ -15,6 +15,6 @@
   <inherits name="com.asayama.gwt.angular.tutorial.SampleModule" />
 
   <source path="client" />
-  <entry-point class="com.asayama.gwt.angular.site.tutorial.client.TutorialModule" />
+  <entry-point class="com.asayama.gwt.angular.site.tutorial.client.Tutorial" />
 
 </module>
