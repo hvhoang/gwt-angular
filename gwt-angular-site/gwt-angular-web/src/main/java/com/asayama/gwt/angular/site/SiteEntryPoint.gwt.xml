@@ -11,7 +11,7 @@
 
   <!-- Extended Angular Modules -->
   <inherits name="com.asayama.gwt.angular.resources.ResourcesModule" />
-  <inherits name="com.asayama.gwt.angular.http.HttpClientModule" />
+  <inherits name="com.asayama.gwt.angular.http.HTTP" />
   <inherits name="com.asayama.gwt.angular.prettify.PrettifyModule" />
   <inherits name="com.asayama.gwt.angular.pages.PagesModule" />
 

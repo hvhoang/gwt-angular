@@ -6,7 +6,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
 
-public class HttpClientModule extends AbstractModule implements EntryPoint {
+public class HTTP extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
