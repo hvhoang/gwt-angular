@@ -18,6 +18,8 @@ import com.google.gwt.user.client.ui.Image;
  * </p><p>
  * http://www.gwtproject.org/doc/latest/DevGuideClientBundle.html#ImageResource
  * </p>
+ * 
+ * @author kyoken74
  */
 public class GwtImageResource extends AbstractDirective {
 
