@@ -21,4 +21,10 @@ public interface TextInputExampleResources extends ClientBundle {
     
     @Source("TextInputController.java")
     TextResource controller();
+    
+    @Source("TextInputExample.java")
+    TextResource module();
+    
+    @Source("com/asayama/gwt/angular/site/examples/TextInputExample.gwt.xml")
+    TextResource config();
 }
