@@ -2,7 +2,7 @@ package com.asayama.gwt.angular.site.tutorial.client;
 
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
-import com.asayama.gwt.angular.pages.client.Page;
+import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.angular.tutorial.client.SampleController;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.EntryPoint;

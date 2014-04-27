@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.pages.client;
+package com.asayama.gwt.angular.site.pages.client;
 
 import java.util.Iterator;
 
