@@ -8,7 +8,7 @@ import com.asayama.gwt.angular.client.q.Promise.Fail;
 import com.asayama.gwt.angular.client.q.Promise.Notify;
 import com.asayama.gwt.angular.site.examples.client.service.GreetingService;
 
-public class PromiseDemoController implements Controller {
+public class PromiseController implements Controller {
 
     // Our custom service to demonstrate promise pipelining.
     private GreetingService service;

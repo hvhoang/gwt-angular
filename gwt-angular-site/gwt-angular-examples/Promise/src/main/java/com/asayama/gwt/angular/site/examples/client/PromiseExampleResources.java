@@ -13,13 +13,13 @@ public interface PromiseExampleResources extends ClientBundle {
     @Source("view/PromiseExample.html")
     HtmlResource promise();
 
-    @Source("view/PromiseDemo.html")
+    @Source("view/Promise.html")
     HtmlResource demo();
 
-    @Source("view/PromiseDemo.html")
+    @Source("view/Promise.html")
     TextResource view();
     
-    @Source("PromiseDemoController.java")
+    @Source("PromiseController.java")
     TextResource controller();
     
     @Source("service/GreetingService.java")

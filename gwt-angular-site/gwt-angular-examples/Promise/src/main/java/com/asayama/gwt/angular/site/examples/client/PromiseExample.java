@@ -10,6 +10,6 @@ public class PromiseExample extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         factory(GreetingService.class);
-        controller(PromiseDemoController.class);
+        controller(PromiseController.class);
     }
 }
