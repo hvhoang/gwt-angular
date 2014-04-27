@@ -36,8 +36,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  */
 public class GwtPrettify extends AbstractDirective {
 
-    //TODO https://github.com/kyoken74/gwt-angular/issues/52
-    private Prettify filter = new Prettify();
+    private Prettify filter;
     
     @Override
     public Restrict[] getRestrict() {
