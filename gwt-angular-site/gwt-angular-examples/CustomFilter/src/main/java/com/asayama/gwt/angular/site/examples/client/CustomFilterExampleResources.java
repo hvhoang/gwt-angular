@@ -13,18 +13,21 @@ public interface CustomFilterExampleResources extends ClientBundle {
     @Source("view/CustomFilterExample.html")
     HtmlResource customFilter();
 
-    @Source("view/CustomFilterDemo.html")
+    @Source("view/CustomFilter.html")
     HtmlResource demo();
 
-    @Source("view/CustomFilterDemo.html")
+    @Source("view/CustomFilter.html")
     TextResource view();
     
-    @Source("CustomFilterDemoController.java")
+    @Source("CustomFilterController.java")
     TextResource controller();
 
     @Source("filter/Reverse.java")
     TextResource filter();
 
-    @Source("CustomFilterExampleModule.java")
+    @Source("CustomFilterExample.java")
     TextResource module();
+
+    @Source("com/asayama/gwt/angular/site/examples/CustomFilterExample.gwt.xml")
+    TextResource config();
 }

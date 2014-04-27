@@ -11,6 +11,7 @@ public class CustomFilterExampleController implements Controller {
     public static final TextResource CONTROLLER_CODE = CustomFilterExampleResources.INSTANCE.controller();
     public static final TextResource FILTER_CODE = CustomFilterExampleResources.INSTANCE.filter();
     public static final TextResource MODULE_CODE = CustomFilterExampleResources.INSTANCE.module();
+    public static final TextResource CONFIG_CODE = CustomFilterExampleResources.INSTANCE.config();
     
     @Override
     public void onControllerLoad() {

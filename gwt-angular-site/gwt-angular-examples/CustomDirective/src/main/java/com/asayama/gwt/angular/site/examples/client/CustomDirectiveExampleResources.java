@@ -10,19 +10,19 @@ public interface CustomDirectiveExampleResources extends ClientBundle {
 
     static CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
 
-    @Source("com/asayama/gwt/angular/site/examples/CustomDirectiveExampleModule.gwt.xml")
+    @Source("com/asayama/gwt/angular/site/examples/CustomDirectiveExample.gwt.xml")
     TextResource config();
     
     @Source("view/CustomDirectiveExample.html")
     HtmlResource customDirective();
 
-    @Source("view/CustomDirectiveDemo.html")
-    HtmlResource demo();
+    @Source("view/CustomDirective.html")
+    HtmlResource partial();
     
-    @Source("view/CustomDirectiveDemo.html")
+    @Source("view/CustomDirective.html")
     TextResource view();
 
-    @Source("CustomDirectiveExampleModule.java")
+    @Source("CustomDirectiveExample.java")
     TextResource module();
     
     @Source("directive/MyHello.java")
@@ -31,6 +31,6 @@ public interface CustomDirectiveExampleResources extends ClientBundle {
     @Source("directive/MyHello.html")
     TextResource template();
 
-    @Source("CustomDirectiveDemoController.java")
+    @Source("CustomDirectiveController.java")
     TextResource controller();
 }

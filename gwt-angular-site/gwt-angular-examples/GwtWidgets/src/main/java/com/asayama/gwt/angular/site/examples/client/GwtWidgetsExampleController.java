@@ -10,6 +10,7 @@ public class GwtWidgetsExampleController implements Controller {
     public static final String DEMO_URL = GwtWidgetsExampleResources.INSTANCE.demo().getSafeUri().asString();
     public static final TextResource VIEW_CODE = GwtWidgetsExampleResources.INSTANCE.view();
     public static final TextResource CONTROLLER_CODE = GwtWidgetsExampleResources.INSTANCE.controller();
+    public static final TextResource CONFIG_CODE = GwtWidgetsExampleResources.INSTANCE.config();
     
     @Override
     public void onControllerLoad() {
