@@ -19,6 +19,6 @@ public interface TextInputExampleResources extends ClientBundle {
     @Source("view/TextInput.html")
     TextResource view();
     
-    @Source("TextInputDemoController.java")
+    @Source("TextInputController.java")
     TextResource controller();
 }
