@@ -21,4 +21,10 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
     
     @Source("UrlHashParameterController.java")
     TextResource controller();
+    
+    @Source("UrlHashParameterExample.java")
+    TextResource module();
+    
+    @Source("com/asayama/gwt/angular/site/examples/UrlHashParameterExample.gwt.xml")
+    TextResource config();
 }
