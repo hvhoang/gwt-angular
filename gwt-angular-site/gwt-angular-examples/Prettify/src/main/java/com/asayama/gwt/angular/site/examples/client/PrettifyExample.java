@@ -8,6 +8,6 @@ public class PrettifyExample extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         Angular.module(this);
-        controller(PrettifyDemoController.class);
+        controller(PrettifyController.class);
     }
 }

@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public class PrettifyDemoController implements Controller {
+public class PrettifyController implements Controller {
 
     public static final TextResource VIEW_CODE = MyResources.INSTANCE.demoHtml();
 
