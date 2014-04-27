@@ -22,7 +22,6 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  * // Controller defines MY_TEXT which is bound the the controller's scope.
  * public MyController implements Controller {
  *   public static final TextResource MY_TEXT = MyResource.INSTANCE.myText();
- *   ...
  * }
  * 
  * // my.txt file content is bound to myText() method.
