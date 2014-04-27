@@ -8,17 +8,13 @@ import com.asayama.gwt.jsni.client.JSON;
  * @author kyoken74
  */
 @Bind("$scope")
-public class NGScope extends NGObject {
+public class NGScope extends JSON {
 
     protected NGScope() {
     }
     
     public final <T> T get(String key) {
-        return this.<JSON>cast().getObject(key);
-    }
-    
-    public final <T> void put(String key, T value) {
-        this.<JSON>cast().put(key, value);
+        return this.getObject(key);
     }
     
     public final native void digest() /*-{
