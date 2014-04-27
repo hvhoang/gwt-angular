@@ -21,4 +21,10 @@ public interface ImageResourceExampleResources extends ClientBundle {
 
     @Source("ImageResourceController.java")
     TextResource controller();
+    
+    @Source("ImageResourceExample.java")
+    TextResource module();
+    
+    @Source("com/asayama/gwt/angular/site/examples/ImageResourceExample.gwt.xml")
+    TextResource config();
 }
