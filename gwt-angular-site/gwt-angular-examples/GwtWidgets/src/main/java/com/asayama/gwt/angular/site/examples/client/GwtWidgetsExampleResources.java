@@ -21,4 +21,10 @@ public interface GwtWidgetsExampleResources extends ClientBundle {
     
     @Source("GwtWidgetsController.java")
     TextResource controller();
+    
+    @Source("GwtWidgetsExample.java")
+    TextResource module();
+    
+    @Source("com/asayama/gwt/angular/site/examples/GwtWidgetsExample.gwt.xml")
+    TextResource config();
 }
