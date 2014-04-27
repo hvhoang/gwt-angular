@@ -10,7 +10,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
 
-public class ResourcesModule extends AbstractModule implements EntryPoint {
+public class Resources extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
