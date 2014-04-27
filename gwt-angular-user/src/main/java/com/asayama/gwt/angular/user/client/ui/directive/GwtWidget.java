@@ -7,20 +7,36 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
 
-//TODO Create a separate module for this.
+/**
+ * 
+ * 
+ * @author kyoken74
+ */
 public class GwtWidget extends AbstractDirective {
     
     private static long counter = 0L;
 
+    /**
+     * Creates isolateScope and registers the following attribute definition.
+     * <ul>
+     * <li>{@code IsWidget} gwt-widget</li>
+     * </ul>
+     */
     @Override
     public NGScope scope() {
-    	return NGScope.create();
+    	NGScope scope = NGScope.create();
+    	scope.put(getName(), "=");
+    	return scope;
     }
-    
+
+    /**
+     * Replaces the element body with the GWT widget passed via gwt-widget
+     * attribute. GWT widget must implement IsWidget interface.
+     */
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         IsWidget widget = scope.get(getName());
-        String id = "gwt-angular-" + counter++;
+        String id = "gwt-widget-" + counter++;
         element.attr("id", id);
         RootPanel.get(id).add(widget);
     }

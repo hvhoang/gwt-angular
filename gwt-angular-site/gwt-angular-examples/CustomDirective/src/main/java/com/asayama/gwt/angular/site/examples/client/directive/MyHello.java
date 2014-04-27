@@ -12,10 +12,18 @@ public class MyHello extends AbstractDirective {
     public TextResource getTemplate() {
         return MyHelloResource.INSTANCE.template();
     }
-    
+
+    /**
+     * Creates isolateScope and registers the following attribute definition.
+     * <ul>
+     * <li>{@code String} my-hello</li>
+     * </ul>
+     */
     @Override
     public NGScope scope() {
-    	return NGScope.create();
+    	NGScope scope = NGScope.create();
+    	scope.put(getName(), "="); //register main attribute value
+    	return scope;
     }
 }
 
