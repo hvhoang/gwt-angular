@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt</groupId>
   <artifactId>gwt-util</artifactId>
-  <version>0.0.58-SNAPSHOT</version>
+  <version>0.0.59-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>gwt-util</name>
   <licenses>
@@ -22,9 +22,9 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
-    <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
-    <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
+    <connection>scm:git:git@github.com:kyoken74/gwt-util.git</connection>
+    <url>scm:git:git@github.com:kyoken74/gwt-util.git</url>
+    <developerConnection>scm:git:git@github.com:kyoken74/gwt-util.git</developerConnection>
     <tag>0.0.56</tag>
   </scm>
   <properties>
