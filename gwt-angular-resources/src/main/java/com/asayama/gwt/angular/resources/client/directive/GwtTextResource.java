@@ -9,6 +9,19 @@ import com.google.gwt.resources.client.TextResource;
 
 public class GwtTextResource extends AbstractDirective {
 
+    /**
+     * Creates isolateScope and registers the following attribute definition.
+     * <ul>
+     * <li>{@code TextResource} gwt-text-resource</li>
+     * </ul>
+     */
+    @Override
+    public NGScope scope() {
+    	NGScope scope = NGScope.create();
+    	scope.put(getName(), "=");
+    	return scope;
+    }
+	
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
@@ -16,11 +29,5 @@ public class GwtTextResource extends AbstractDirective {
             String text = resource.getText();
             element.append(text);
         }
-    }
-    
-    @Override
-    public boolean getTransclude() {
-        //TODO https://github.com/kyoken74/gwt-angular/issues/62
-        return true;
     }
 }
