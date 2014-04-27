@@ -13,12 +13,12 @@ public interface GwtWidgetsExampleResources extends ClientBundle {
     @Source("view/GwtWidgetsExample.html")
     HtmlResource gwtWidgets();
 
-    @Source("view/GwtWidgetsDemo.html")
+    @Source("view/GwtWidgets.html")
     HtmlResource demo();
 
-    @Source("view/GwtWidgetsDemo.html")
+    @Source("view/GwtWidgets.html")
     TextResource view();
     
-    @Source("GwtWidgetsDemoController.java")
+    @Source("GwtWidgetsController.java")
     TextResource controller();
 }
