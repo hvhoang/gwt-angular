@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt</groupId>
   <artifactId>gwt-util</artifactId>
-  <version>0.0.61</version>
+  <version>0.0.62-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>gwt-util</name>
   <licenses>
@@ -25,7 +25,7 @@
     <connection>scm:git:git@github.com:kyoken74/gwt-util.git</connection>
     <url>scm:git:git@github.com:kyoken74/gwt-util.git</url>
     <developerConnection>scm:git:git@github.com:kyoken74/gwt-util.git</developerConnection>
-    <tag>gwt-util-0.0.61</tag>
+    <tag>0.0.56</tag>
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
