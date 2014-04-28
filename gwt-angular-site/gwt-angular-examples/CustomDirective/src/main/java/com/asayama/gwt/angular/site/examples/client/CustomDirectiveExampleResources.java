@@ -8,7 +8,9 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface CustomDirectiveExampleResources extends ClientBundle {
 
-    static CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
+    static final CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
+
+    static final String DEMO_URL = CustomDirectiveExampleResources.INSTANCE.demo().getSafeUri().asString();
 
     @Source("view/CustomDirectiveExample.html")
     HtmlResource customDirective();
