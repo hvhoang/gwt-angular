@@ -200,6 +200,14 @@ public abstract class AbstractModule implements Module {
      * Binds ClientBundle to the scope via controller pattern.
      * </p>
      */
+    public <C extends ClientBundle> Module bundle(Class<C> klass) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+    	String name = klass.getName();
+    	ClientBundle bundle = ClientBundleCreator.INSTANCE.create(klass);
+        return bundle(name, bundle);
+    }
+    
     public Module bundle(final String name, final ClientBundle bundle) {
         if (bundle == null) {
             String message = "Unable to create " + name;

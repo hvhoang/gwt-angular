@@ -63,6 +63,12 @@ interface ControllerCreator extends Creator<Controller> {
     <X extends Controller> X create(Class<X> klass);
 }
 
+interface ClientBundleCreator extends Creator<ClientBundle> {
+    static ClientBundleCreator INSTANCE = GWT.create(ClientBundleCreator.class);
+    @Override
+    <X extends ClientBundle> X create(Class<X> klass);
+}
+
 /**
  * Provides interfaces for an object creator. This interface is intended to be
  * used with {@link DependenciesFactoryGenerator}, which inspects the types eligible for

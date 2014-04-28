@@ -7,6 +7,9 @@
   <generate-with class="com.asayama.gwt.angular.rebind.CreatorGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.Creator" />
   </generate-with>
+  <generate-with class="com.asayama.gwt.angular.rebind.ClientBundleCreatorGenerator">
+    <when-type-assignable class="com.asayama.gwt.angular.client.ClientBundleCreator" />
+  </generate-with>
   <generate-with class="com.asayama.gwt.angular.rebind.DependenciesFactoryGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.DependenciesFactory" />
   </generate-with>
