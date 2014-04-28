@@ -11,6 +11,7 @@ public class CustomDirectiveExample extends AbstractModule implements EntryPoint
         Angular.module(this);
         directive(MyHello.class);
         controller(CustomDirectiveController.class);
+        bundle(CustomDirectiveExampleResources.class);
     }
 }
 
