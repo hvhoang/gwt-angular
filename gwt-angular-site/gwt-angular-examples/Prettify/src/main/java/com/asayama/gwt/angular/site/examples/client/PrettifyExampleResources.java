@@ -16,15 +16,17 @@ public interface PrettifyExampleResources extends ClientBundle {
     @Source("view/Prettify.html")
     HtmlResource demo();
 
-    @Source("view/Prettify.html")
-    TextResource view();
+    // Core Resources
     
-    @Source("PrettifyController.java")
-    TextResource controller();
+    @Source("com/asayama/gwt/angular/site/examples/PrettifyExample.gwt.xml")
+    TextResource config();
     
     @Source("PrettifyExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/PrettifyExample.gwt.xml")
-    TextResource config();
+    @Source("PrettifyController.java")
+    TextResource controller();
+    
+    @Source("view/Prettify.html")
+    TextResource view();
 }
