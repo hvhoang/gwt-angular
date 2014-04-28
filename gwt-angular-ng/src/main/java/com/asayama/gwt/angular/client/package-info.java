@@ -19,7 +19,7 @@ import com.google.gwt.resources.client.ClientBundle;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
- * used with {@link CreatorGenerator}, which inspects the types eligible for
+ * used with {@link DefaultInstantiableCreatorGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was

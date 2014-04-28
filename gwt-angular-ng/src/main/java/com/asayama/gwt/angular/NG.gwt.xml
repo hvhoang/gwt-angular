@@ -4,10 +4,10 @@
   <inherits name="com.asayama.gwt.jquery.JQueryLite" />
   <inherits name="com.asayama.gwt.resources.Resources" />
 
-  <generate-with class="com.asayama.gwt.angular.rebind.CreatorGenerator">
+  <generate-with class="com.asayama.gwt.angular.rebind.DefaultInstantiableCreatorGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.Creator" />
   </generate-with>
-  <generate-with class="com.asayama.gwt.angular.rebind.ClientBundleCreatorGenerator">
+  <generate-with class="com.asayama.gwt.angular.rebind.PublicInterfaceCreatorGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.ClientBundleCreator" />
   </generate-with>
   <generate-with class="com.asayama.gwt.angular.rebind.DependenciesFactoryGenerator">

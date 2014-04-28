@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import com.google.gwt.core.ext.typeinfo.JClassType;
 
-public class ClientBundleCreatorGenerator extends CreatorGenerator {
+public class PublicInterfaceCreatorGenerator extends DefaultInstantiableCreatorGenerator {
 
-    private static final String CLASS = ClientBundleCreatorGenerator.class.getName();
+    private static final String CLASS = PublicInterfaceCreatorGenerator.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
 
     protected List<JClassType> getSupportedClassTypes(JClassType supportedRootClassType) {
