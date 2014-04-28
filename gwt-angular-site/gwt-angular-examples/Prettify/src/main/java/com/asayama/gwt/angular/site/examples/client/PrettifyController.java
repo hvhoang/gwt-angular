@@ -8,7 +8,7 @@ import com.google.gwt.resources.client.TextResource;
 
 public class PrettifyController implements Controller {
 
-    public static final TextResource VIEW_CODE = MyResources.INSTANCE.demoHtml();
+    public static final TextResource VIEW_CODE = MyResources.INSTANCE.view();
 
     @Override
     public void onControllerLoad() {
@@ -21,5 +21,5 @@ interface MyResources extends ClientBundle {
     static final MyResources INSTANCE = GWT.create(MyResources.class);
     
     @Source("view/Prettify.html")
-    TextResource demoHtml();
+    TextResource view();
 }
