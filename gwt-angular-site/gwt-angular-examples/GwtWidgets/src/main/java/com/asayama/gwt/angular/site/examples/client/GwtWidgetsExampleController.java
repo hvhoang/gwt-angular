@@ -6,8 +6,8 @@ import com.google.gwt.resources.client.TextResource;
 
 public class GwtWidgetsExampleController implements Controller {
 
-    // Text Input Example Resources
     public static final String DEMO_URL = GwtWidgetsExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
     public static final TextResource VIEW_CODE = GwtWidgetsExampleResources.INSTANCE.view();
     public static final TextResource CONTROLLER_CODE = GwtWidgetsExampleResources.INSTANCE.controller();
     public static final TextResource CONFIG_CODE = GwtWidgetsExampleResources.INSTANCE.config();

@@ -8,6 +8,7 @@ import com.google.gwt.resources.client.TextResource;
 public class ImageResourceExampleController implements Controller {
 
     public static final String DEMO_URL = ImageResourceExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
     public static final TextResource VIEW_CODE = ImageResourceExampleResources.INSTANCE.view();
     public static final TextResource CONTROLLER_CODE = ImageResourceExampleResources.INSTANCE.controller();
     public static final TextResource CONFIG_CODE = ImageResourceExampleResources.INSTANCE.config();
