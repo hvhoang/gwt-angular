@@ -62,7 +62,7 @@ public class Promise<V> extends JSObject {
                             return HostedModeEnvelope.wrap(success.call(value));
                         } catch (Throwable e) {
                             GWT.log("Exception while calling promise success", e);
-                            return null; //FIXME
+                            return null; //FIXME Determine the suitable behavior.
                         }
                     }
                 }),
@@ -77,7 +77,7 @@ public class Promise<V> extends JSObject {
                             return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
                             GWT.log("Exception while calling promise fail", e);
-                            return null; //FIXME
+                            return null; //FIXME Determine the suitable behavior.
                         }
                     }
                 }),
@@ -92,7 +92,7 @@ public class Promise<V> extends JSObject {
                             return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
                             GWT.log("Exception while calling promise notify", e);
-                            return null; //FIXME
+                            return null; //FIXME Determine the suitable behavior.
                         }
                     }
                 }));
