@@ -15,16 +15,18 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
 
     @Source("view/UrlHashParameter.html")
     HtmlResource demo();
-
-    @Source("view/UrlHashParameter.html")
-    TextResource view();
     
-    @Source("UrlHashParameterController.java")
-    TextResource controller();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/UrlHashParameterExample.gwt.xml")
+    TextResource config();
     
     @Source("UrlHashParameterExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/UrlHashParameterExample.gwt.xml")
-    TextResource config();
+    @Source("UrlHashParameterController.java")
+    TextResource controller();
+
+    @Source("view/UrlHashParameter.html")
+    TextResource view();
 }

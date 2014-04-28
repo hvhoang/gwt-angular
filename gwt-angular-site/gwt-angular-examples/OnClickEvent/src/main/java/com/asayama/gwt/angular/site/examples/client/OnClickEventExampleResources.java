@@ -16,15 +16,17 @@ public interface OnClickEventExampleResources extends ClientBundle {
     @Source("view/OnClickEvent.html")
     HtmlResource demo();
 
-    @Source("view/OnClickEvent.html")
-    TextResource view();
+    // Core Resources
     
-    @Source("OnClickEventController.java")
-    TextResource controller();
+    @Source("com/asayama/gwt/angular/site/examples/OnClickEventExample.gwt.xml")
+    TextResource config();
     
     @Source("OnClickEventExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/OnClickEventExample.gwt.xml")
-    TextResource config();
+    @Source("OnClickEventController.java")
+    TextResource controller();
+    
+    @Source("view/OnClickEvent.html")
+    TextResource view();
 }

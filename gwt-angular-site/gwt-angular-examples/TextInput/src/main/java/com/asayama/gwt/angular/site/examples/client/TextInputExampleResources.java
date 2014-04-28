@@ -16,15 +16,17 @@ public interface TextInputExampleResources extends ClientBundle {
     @Source("view/TextInput.html")
     HtmlResource demo();
 
-    @Source("view/TextInput.html")
-    TextResource view();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/TextInputExample.gwt.xml")
+    TextResource config();
+
+    @Source("TextInputExample.java")
+    TextResource module();
     
     @Source("TextInputController.java")
     TextResource controller();
     
-    @Source("TextInputExample.java")
-    TextResource module();
-    
-    @Source("com/asayama/gwt/angular/site/examples/TextInputExample.gwt.xml")
-    TextResource config();
+    @Source("view/TextInput.html")
+    TextResource view();
 }

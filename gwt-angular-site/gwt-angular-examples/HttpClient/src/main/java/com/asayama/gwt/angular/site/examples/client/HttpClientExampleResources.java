@@ -15,16 +15,18 @@ public interface HttpClientExampleResources extends ClientBundle {
 
     @Source("view/HttpClient.html")
     HtmlResource demo();
-
-    @Source("view/HttpClient.html")
-    TextResource view();
     
-    @Source("HttpClientController.java")
-    TextResource controller();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/HttpClientExample.gwt.xml")
+    TextResource config();
     
     @Source("HttpClientExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/HttpClientExample.gwt.xml")
-    TextResource config();
+    @Source("HttpClientController.java")
+    TextResource controller();
+
+    @Source("view/HttpClient.html")
+    TextResource view();
 }

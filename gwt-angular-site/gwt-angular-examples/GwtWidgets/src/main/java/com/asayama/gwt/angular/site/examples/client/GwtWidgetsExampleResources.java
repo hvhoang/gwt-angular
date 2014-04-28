@@ -16,15 +16,17 @@ public interface GwtWidgetsExampleResources extends ClientBundle {
     @Source("view/GwtWidgets.html")
     HtmlResource demo();
 
-    @Source("view/GwtWidgets.html")
-    TextResource view();
+    // Core Resources
     
-    @Source("GwtWidgetsController.java")
-    TextResource controller();
+    @Source("com/asayama/gwt/angular/site/examples/GwtWidgetsExample.gwt.xml")
+    TextResource config();
     
     @Source("GwtWidgetsExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/GwtWidgetsExample.gwt.xml")
-    TextResource config();
+    @Source("GwtWidgetsController.java")
+    TextResource controller();
+    
+    @Source("view/GwtWidgets.html")
+    TextResource view();
 }

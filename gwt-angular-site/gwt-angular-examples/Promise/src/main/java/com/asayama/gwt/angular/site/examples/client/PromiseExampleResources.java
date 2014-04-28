@@ -15,18 +15,22 @@ public interface PromiseExampleResources extends ClientBundle {
 
     @Source("view/Promise.html")
     HtmlResource demo();
-
-    @Source("view/Promise.html")
-    TextResource view();
     
-    @Source("PromiseController.java")
-    TextResource controller();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/PromiseExample.gwt.xml")
+    TextResource config();
     
     @Source("PromiseExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/PromiseExample.gwt.xml")
-    TextResource config();
+    @Source("PromiseController.java")
+    TextResource controller();
+
+    @Source("view/Promise.html")
+    TextResource view();
+    
+    // Other Resources
     
     @Source("service/GreetingService.java")
     TextResource service();
