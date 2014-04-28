@@ -1,4 +1,4 @@
-<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.PromiseExampleController">
+<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.PromiseExampleResources">
   <p>
     GWT Angular supports promise pattern via Java wrapper around AngularJS's
     promise framework, which is inspired by <a href="https://github.com/kriskowal/q">
@@ -19,7 +19,8 @@
   </p>
   
   <div class="panel panel-primary">
-    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+    <div class="panel-body" data-ng-include="DEMO_URL"
+      data-ng-controller="com.asayama.gwt.angular.site.examples.client.PromiseExampleController"></div>
   </div>
   
   <h2>View</h2>
@@ -29,7 +30,7 @@
     data is or will be provided, hence it calls <code>{{ getGreeting }}</code>
     method on the controller to obtain the value to print to the screen.
   </p>
-  <pre data-gwt-prettify="VIEW_CODE"></pre>
+  <pre data-gwt-prettify="view()"></pre>
 
   <h2>Controller</h2>
   <p>
@@ -61,7 +62,7 @@
     and when it is delivered. It does not know any details about how the values
     are obtained.
   </p>
-  <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
+  <pre data-gwt-prettify="controller()"></pre>
 
   <h2>Service</h2>    
   <p>
@@ -113,13 +114,13 @@
     construct this new value, but it does not have to know anything about how
     these values are loaded.
   </p>
-  <pre data-gwt-prettify="SERVICE_CODE"></pre>
+  <pre data-gwt-prettify="service()"></pre>
 
   <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
-  <pre data-gwt-prettify="CONFIG_CODE"></pre>
+  <pre data-gwt-prettify="config()"></pre>
 
   <p>
     The following Maven dependencies are required in the pom.xml.

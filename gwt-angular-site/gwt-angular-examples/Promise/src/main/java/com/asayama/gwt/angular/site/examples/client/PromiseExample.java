@@ -11,5 +11,6 @@ public class PromiseExample extends AbstractModule implements EntryPoint {
         Angular.module(this);
         factory(GreetingService.class);
         controller(PromiseController.class);
+        bundle(PromiseExampleResources.class);
     }
 }
