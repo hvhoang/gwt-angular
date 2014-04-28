@@ -1,4 +1,4 @@
-<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.UrlHashParameterExampleController">
+<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.UrlHashParameterExampleResources">
   <p>
     GWT Angular provides a mechanism for controlling the hash parameters in
     the URL. The "hash" refers to the part of URL that begins with '#', and
@@ -17,7 +17,8 @@
     recognize, you will be taken to <code>textInput</code> page.
   </p>
   <div class="panel panel-primary">
-    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+    <div class="panel-body" data-ng-include="DEMO_URL"
+      data-ng-controller="com.asayama.gwt.angular.site.examples.client.UrlHashParameterExampleController"></div>
   </div>
   <p>
     List of valid page names:
@@ -32,7 +33,7 @@
     named <code>pageName</code>. The model is passed to the controller via
     <code>onClickGo()</code> method when the "Go" button is clicked.
   </p>
-  <pre data-gwt-prettify="VIEW_CODE"></pre>
+  <pre data-gwt-prettify="view()"></pre>
 
   <h2>Controller</h2>
   <p>
@@ -47,13 +48,13 @@
     method is invoked. This method uses the <code>Location</code> service
     to set the "page" parameter value to the new value passed from the view.
   </p>
-  <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
+  <pre data-gwt-prettify="controller()"></pre>
 
   <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
-  <pre data-gwt-prettify="CONFIG_CODE"></pre>
+  <pre data-gwt-prettify="config()"></pre>
 
   <p>
     The following Maven dependencies are required in the pom.xml.
