@@ -1,11 +1,12 @@
-<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.PrettifyExampleController">
+<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.PrettifyExampleResources">
   <p>
     gwt-angular-prettify offers <a target="https://code.google.com/p/google-code-prettify/"
     href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a> 
     inside your GWT Angular code.
   </p>
   <div class="panel panel-primary">
-    <div class="panel-body" data-ng-include="DEMO_URL"></div>
+    <div class="panel-body" data-ng-include="DEMO_URL"
+      data-ng-controller="com.asayama.gwt.angular.site.examples.client.PrettifyExampleController"></div>
   </div>
   
   <h2>View</h2>
@@ -19,7 +20,7 @@
     your <code>&lt;PRE&gt;</code>. You will have to escape any occurrence of
     characters that may conflict with HTML parsing and rendering, of course.
   </p>
-  <pre data-gwt-prettify="VIEW_CODE"></pre>
+  <pre data-gwt-prettify="view()"></pre>
   
   <h2>Controller</h2>
   <p>
@@ -31,13 +32,13 @@
     code to the view via the controller in <code>VIEW_CODE</code> public final
     property.
   </p>
-  <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
+  <pre data-gwt-prettify="controller()"></pre>
 
   <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
-  <pre data-gwt-prettify="CONFIG_CODE"></pre>
+  <pre data-gwt-prettify="config()"></pre>
 
   <p>
     The following Maven dependencies are required in the pom.xml.
