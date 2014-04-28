@@ -10,6 +10,11 @@ public interface ImageResourceExampleResources extends ClientBundle {
     
     static ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
 
+    static final String STREET_URL = ImageResources.INSTANCE.street().getSafeUri().asString();
+    static final String WTC_URL = ImageResources.INSTANCE.wtc().getSafeUri().asString();
+    static final String BOAT_URL = ImageResources.INSTANCE.boat().getSafeUri().asString();
+    static final String PEOPLE_URL = ImageResources.INSTANCE.people().getSafeUri().asString();
+
     @Source("view/ImageResourceExample.html")
     HtmlResource imageResource();
 
