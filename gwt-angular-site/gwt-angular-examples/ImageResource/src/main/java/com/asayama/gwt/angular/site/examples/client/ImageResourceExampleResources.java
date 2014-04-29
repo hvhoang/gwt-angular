@@ -8,8 +8,9 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface ImageResourceExampleResources extends ClientBundle {
     
-    static ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
+    static final ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
 
+    static final String DEMO_URL = ImageResourceExampleResources.INSTANCE.demo().getSafeUri().asString();
     static final String STREET_URL = ImageResources.INSTANCE.street().getSafeUri().asString();
     static final String WTC_URL = ImageResources.INSTANCE.wtc().getSafeUri().asString();
     static final String BOAT_URL = ImageResources.INSTANCE.boat().getSafeUri().asString();
@@ -29,7 +30,7 @@ public interface ImageResourceExampleResources extends ClientBundle {
     @Source("ImageResourceExample.java")
     TextResource module();
 
-    @Source("ImageResourceController.java")
+    @Source("ImageResourceExampleController.java")
     TextResource controller();
     
     @Source("view/ImageResource.html")

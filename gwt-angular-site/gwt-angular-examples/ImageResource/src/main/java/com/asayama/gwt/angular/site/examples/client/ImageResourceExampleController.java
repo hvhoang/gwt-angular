@@ -1,13 +1,17 @@
 package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.google.gwt.resources.client.ImageResource;
 
-@Deprecated
 public class ImageResourceExampleController implements Controller {
 
-    public static final String DEMO_URL = ImageResourceExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final ImageResource STREET = ImageResources.INSTANCE.street();
+    public static final ImageResource WTC = ImageResources.INSTANCE.wtc();
+    public static final ImageResource BOAT = ImageResources.INSTANCE.boat();
+    public static final ImageResource PEOPLE = ImageResources.INSTANCE.people();
     
     @Override
     public void onControllerLoad() {
+        //noop
     }
 }
