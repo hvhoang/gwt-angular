@@ -12,10 +12,10 @@ public interface PromiseExampleResources extends ClientBundle {
 
     static final String DEMO_URL = PromiseExampleResources.INSTANCE.demo().getSafeUri().asString();
     
-    @Source("view/PromiseExample.html")
+    @Source("view/PromiseExampleDocumentation.html")
     HtmlResource promise();
 
-    @Source("view/Promise.html")
+    @Source("view/PromiseExample.html")
     HtmlResource demo();
     
     // Core Resources
@@ -29,7 +29,7 @@ public interface PromiseExampleResources extends ClientBundle {
     @Source("PromiseExampleController.java")
     TextResource controller();
 
-    @Source("view/Promise.html")
+    @Source("view/PromiseExample.html")
     TextResource view();
     
     // Other Resources
