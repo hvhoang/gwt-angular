@@ -14,8 +14,8 @@ public class Examples extends AbstractModule implements EntryPoint {
         bundle(CustomDirectiveExampleResources.class);
         bundle(CustomFilterExampleResources.class);
         bundle(GwtWidgetsExampleResources.class);
-
-        controller(HttpClientExampleController.class);
+        bundle(HttpClientExampleResources.class);
+        
         controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);
         controller(PrettifyExampleController.class);

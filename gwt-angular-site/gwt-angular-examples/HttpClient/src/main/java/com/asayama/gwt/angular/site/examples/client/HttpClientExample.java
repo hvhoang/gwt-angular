@@ -8,7 +8,6 @@ public class HttpClientExample extends AbstractModule implements EntryPoint {
 
     public void onModuleLoad() {
         Angular.module(this);
-        controller(HttpClientController.class);
-        bundle(HttpClientExampleResources.class);
+        controller(HttpClientExampleController.class);
     }
 }

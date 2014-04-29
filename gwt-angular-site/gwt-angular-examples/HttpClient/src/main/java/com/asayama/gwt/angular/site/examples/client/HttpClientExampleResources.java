@@ -8,7 +8,9 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface HttpClientExampleResources extends ClientBundle {
 
-    static HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
+    static final HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
+
+    static final String DEMO_URL = HttpClientExampleResources.INSTANCE.demo().getSafeUri().asString();
 
     @Source("view/HttpClientExample.html")
     HtmlResource httpClient();
@@ -24,7 +26,7 @@ public interface HttpClientExampleResources extends ClientBundle {
     @Source("HttpClientExample.java")
     TextResource module();
     
-    @Source("HttpClientController.java")
+    @Source("HttpClientExampleController.java")
     TextResource controller();
 
     @Source("view/HttpClient.html")
