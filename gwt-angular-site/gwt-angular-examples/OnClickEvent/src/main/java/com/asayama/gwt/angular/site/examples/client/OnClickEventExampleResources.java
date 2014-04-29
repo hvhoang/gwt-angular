@@ -12,10 +12,10 @@ public interface OnClickEventExampleResources extends ClientBundle {
 
     static final String DEMO_URL = OnClickEventExampleResources.INSTANCE.demo().getSafeUri().asString();
 
-   @Source("view/OnClickEventExample.html")
+   @Source("view/OnClickEventExampleDocumentation.html")
     HtmlResource onClickEvent();
 
-    @Source("view/OnClickEvent.html")
+    @Source("view/OnClickEventExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -29,6 +29,6 @@ public interface OnClickEventExampleResources extends ClientBundle {
     @Source("OnClickEventExampleController.java")
     TextResource controller();
     
-    @Source("view/OnClickEvent.html")
+    @Source("view/OnClickEventExample.html")
     TextResource view();
 }
