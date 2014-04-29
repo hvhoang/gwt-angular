@@ -13,8 +13,8 @@ public class Examples extends AbstractModule implements EntryPoint {
         constant("examples", getPages());
         bundle(CustomDirectiveExampleResources.class);
         bundle(CustomFilterExampleResources.class);
-        
-        controller(GwtWidgetsExampleController.class);
+        bundle(GwtWidgetsExampleResources.class);
+
         controller(HttpClientExampleController.class);
         controller(ImageResourceExampleController.class);
         controller(OnClickEventExampleController.class);

@@ -8,7 +8,9 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface GwtWidgetsExampleResources extends ClientBundle {
 
-    static GwtWidgetsExampleResources INSTANCE = GWT.create(GwtWidgetsExampleResources.class);
+    static final GwtWidgetsExampleResources INSTANCE = GWT.create(GwtWidgetsExampleResources.class);
+    
+    static final String DEMO_URL = GwtWidgetsExampleResources.INSTANCE.demo().getSafeUri().asString();
     
     @Source("view/GwtWidgetsExample.html")
     HtmlResource gwtWidgets();
@@ -24,7 +26,7 @@ public interface GwtWidgetsExampleResources extends ClientBundle {
     @Source("GwtWidgetsExample.java")
     TextResource module();
     
-    @Source("GwtWidgetsController.java")
+    @Source("GwtWidgetsExampleController.java")
     TextResource controller();
     
     @Source("view/GwtWidgets.html")
