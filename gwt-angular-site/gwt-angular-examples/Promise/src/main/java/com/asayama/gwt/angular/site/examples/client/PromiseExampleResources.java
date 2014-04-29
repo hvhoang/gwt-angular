@@ -8,8 +8,10 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface PromiseExampleResources extends ClientBundle {
 
-    static PromiseExampleResources INSTANCE = GWT.create(PromiseExampleResources.class);
+    static final PromiseExampleResources INSTANCE = GWT.create(PromiseExampleResources.class);
 
+    static final String DEMO_URL = PromiseExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
     @Source("view/PromiseExample.html")
     HtmlResource promise();
 
@@ -24,7 +26,7 @@ public interface PromiseExampleResources extends ClientBundle {
     @Source("PromiseExample.java")
     TextResource module();
     
-    @Source("PromiseController.java")
+    @Source("PromiseExampleController.java")
     TextResource controller();
 
     @Source("view/Promise.html")
