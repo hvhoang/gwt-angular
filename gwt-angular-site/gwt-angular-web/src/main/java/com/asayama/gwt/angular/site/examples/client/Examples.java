@@ -12,7 +12,8 @@ public class Examples extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examples", getPages());
         bundle(CustomDirectiveExampleResources.class);
-        controller(CustomFilterExampleController.class);
+        bundle(CustomFilterExampleResources.class);
+        
         controller(GwtWidgetsExampleController.class);
         controller(HttpClientExampleController.class);
         controller(ImageResourceExampleController.class);
