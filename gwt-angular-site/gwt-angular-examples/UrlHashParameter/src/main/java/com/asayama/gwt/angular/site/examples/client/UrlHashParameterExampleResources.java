@@ -8,23 +8,27 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface UrlHashParameterExampleResources extends ClientBundle {
 
-    static UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
+    static final UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
 
-    @Source("view/UrlHashParameterExample.html")
+    static final String DEMO_URL = UrlHashParameterExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
+    @Source("view/UrlHashParameterExampleDocumentation.html")
     HtmlResource urlHashParameter();
 
-    @Source("view/UrlHashParameter.html")
+    @Source("view/UrlHashParameterExample.html")
     HtmlResource demo();
-
-    @Source("view/UrlHashParameter.html")
-    TextResource view();
     
-    @Source("UrlHashParameterController.java")
-    TextResource controller();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/UrlHashParameterExample.gwt.xml")
+    TextResource config();
     
     @Source("UrlHashParameterExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/UrlHashParameterExample.gwt.xml")
-    TextResource config();
+    @Source("UrlHashParameterExampleController.java")
+    TextResource controller();
+
+    @Source("view/UrlHashParameterExample.html")
+    TextResource view();
 }

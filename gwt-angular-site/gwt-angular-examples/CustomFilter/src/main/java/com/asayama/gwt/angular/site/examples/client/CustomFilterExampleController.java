@@ -1,19 +1,33 @@
 package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.google.gwt.resources.client.TextResource;
 
-
+/**
+ * When you create a custom filter, such as ReverseFilter, you must register it
+ * with your module. In this example, we associate the ReverseFilter with a name
+ * "reverse".
+ * 
+ * <pre>{@code 
+ * public class SomeExampleModule extends AbstractModule implements EntryPoint {
+ *   public void onModuleLoad() {
+ *     Angular.module(this);
+ *     this.filter("reverse", new ReverseFilter());
+ *     this.controller(ReverseFilterDemoController.class);
+ *   }
+ * }</pre>
+ * @author kyoken74
+ */
 public class CustomFilterExampleController implements Controller {
 
-    public static final String DEMO_URL = CustomFilterExampleResources.INSTANCE.demo().getSafeUri().asString();
-    public static final TextResource VIEW_CODE = CustomFilterExampleResources.INSTANCE.view();
-    public static final TextResource CONTROLLER_CODE = CustomFilterExampleResources.INSTANCE.controller();
-    public static final TextResource FILTER_CODE = CustomFilterExampleResources.INSTANCE.filter();
-    public static final TextResource MODULE_CODE = CustomFilterExampleResources.INSTANCE.module();
-    public static final TextResource CONFIG_CODE = CustomFilterExampleResources.INSTANCE.config();
-    
+    private String caption = "Hello, World!";
+
     @Override
     public void onControllerLoad() {
+       //noop
+    }
+    
+    public String getCaption() {
+        return caption;
     }
 }
+

@@ -4,40 +4,57 @@ import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Promise.Done;
+import com.asayama.gwt.angular.client.q.Promise.Fail;
 import com.asayama.gwt.angular.client.q.Q;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.safehtml.shared.SafeUri;
 
-
+/**
+ * Equivalent to data-ng-include directive.
+ * 
+ * @author kyoken74
+ */
 public class GwtHtmlResource extends AbstractDirective {
     
     private Q q;
+    
+    /**
+     * Creates isolateScope and registers the following attribute definition.
+     * <ul>
+     * <li>{@code ImageResource} gwt-html-resource</li>
+     * </ul>
+     */
+    @Override
+    public NGScope scope() {
+    	NGScope scope = NGScope.create();
+    	scope.put(getName(), "=");
+    	return scope;
+    }
 
     @Override
     public void link(final NGScope scope, final JQElement element, JSON attrs) {
         HtmlResource resource = scope.get(getName());
-        if (resource != null) {
-            SafeUri safeUri = resource.getSafeUri();
-            String url = safeUri.asString();
-            Promise<Response> promise = HttpUtils.get(q, url);
-            promise.then(new Done<Response>() {
-                @Override
-                public void call(Response value) {
-                    String text = value.getText();
-                    element.append(text);
-                    element.find(">:first").addClass("ng-transclude");
-                }
-            });
-            return;
+        if (resource == null) {
+        	GWT.log("Mandatory attribute " + getName() + " value is mssing");
+        	return;
         }
-    }
-
-    @Override
-    public boolean getTransclude() {
-        //TODO https://github.com/kyoken74/gwt-angular/issues/62
-        return true;
+        String url = resource.getSafeUri().asString();
+        Promise<Response> promise = HttpUtils.get(q, url);
+        promise.then(new Done<Response>() {
+            @Override
+            public void call(Response value) {
+                String text = value.getText();
+                element.append(text);
+            }
+        }).then(new Fail() {
+        	@Override
+        	public void call(Throwable cause) {
+        		GWT.log("Failed to insert HtmlResource", cause);
+        	}
+        });
+        return;
     }
 }

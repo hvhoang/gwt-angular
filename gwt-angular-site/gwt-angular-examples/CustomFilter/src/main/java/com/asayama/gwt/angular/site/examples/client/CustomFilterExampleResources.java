@@ -8,26 +8,32 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface CustomFilterExampleResources extends ClientBundle {
 
-    static CustomFilterExampleResources INSTANCE = GWT.create(CustomFilterExampleResources.class);
+    static final CustomFilterExampleResources INSTANCE = GWT.create(CustomFilterExampleResources.class);
 
-    @Source("view/CustomFilterExample.html")
+    static final String DEMO_URL = CustomFilterExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
+    @Source("view/CustomFilterExampleDocumentation.html")
     HtmlResource customFilter();
 
-    @Source("view/CustomFilter.html")
+    @Source("view/CustomFilterExample.html")
     HtmlResource demo();
 
-    @Source("view/CustomFilter.html")
-    TextResource view();
-    
-    @Source("CustomFilterController.java")
-    TextResource controller();
-
-    @Source("filter/Reverse.java")
-    TextResource filter();
-
-    @Source("CustomFilterExample.java")
-    TextResource module();
+    // Core Resources
 
     @Source("com/asayama/gwt/angular/site/examples/CustomFilterExample.gwt.xml")
     TextResource config();
+
+    @Source("CustomFilterExample.java")
+    TextResource module();
+    
+    @Source("CustomFilterExampleController.java")
+    TextResource controller();
+    
+    @Source("view/CustomFilterExample.html")
+    TextResource view();
+
+    // Other Resources
+    
+    @Source("filter/Reverse.java")
+    TextResource filter();
 }

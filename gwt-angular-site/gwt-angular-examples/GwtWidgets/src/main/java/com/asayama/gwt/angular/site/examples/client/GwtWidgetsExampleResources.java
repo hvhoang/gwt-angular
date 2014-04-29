@@ -8,23 +8,27 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface GwtWidgetsExampleResources extends ClientBundle {
 
-    static GwtWidgetsExampleResources INSTANCE = GWT.create(GwtWidgetsExampleResources.class);
+    static final GwtWidgetsExampleResources INSTANCE = GWT.create(GwtWidgetsExampleResources.class);
     
-    @Source("view/GwtWidgetsExample.html")
+    static final String DEMO_URL = GwtWidgetsExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
+    @Source("view/GwtWidgetsExampleDocumentation.html")
     HtmlResource gwtWidgets();
 
-    @Source("view/GwtWidgets.html")
+    @Source("view/GwtWidgetsExample.html")
     HtmlResource demo();
 
-    @Source("view/GwtWidgets.html")
-    TextResource view();
+    // Core Resources
     
-    @Source("GwtWidgetsController.java")
-    TextResource controller();
+    @Source("com/asayama/gwt/angular/site/examples/GwtWidgetsExample.gwt.xml")
+    TextResource config();
     
     @Source("GwtWidgetsExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/GwtWidgetsExample.gwt.xml")
-    TextResource config();
+    @Source("GwtWidgetsExampleController.java")
+    TextResource controller();
+    
+    @Source("view/GwtWidgetsExample.html")
+    TextResource view();
 }

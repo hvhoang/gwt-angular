@@ -9,6 +9,7 @@ import com.asayama.gwt.jsni.client.JSObject;
 import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.resources.client.ClientBundle;
 
 /**
  * Provides abstract implementation of {@link Module}. See the javadoc comments
@@ -188,6 +189,54 @@ public abstract class AbstractModule implements Module {
             for (int i = 0; i < len; i++) {
                 dependencies[i + 1] = d[i];
             }
+        }
+        jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
+        return this;
+    }
+
+    /**
+     * <b>This is an experimental feature.</b>
+     * <p>
+     * Binds ClientBundle to the scope via controller pattern.
+     * </p>
+     */
+    public <C extends ClientBundle> Module bundle(Class<C> klass) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+    	String name = klass.getName();
+    	ClientBundle bundle = ClientBundleCreator.INSTANCE.create(klass);
+        return bundle(name, bundle);
+    }
+    
+    public Module bundle(final String name, final ClientBundle bundle) {
+        if (bundle == null) {
+            String message = "Unable to create " + name;
+            GWT.log(message, new IllegalStateException(message));
+            return this;
+        }
+        final JSClosure scopeBinder = ClientBundleScopeBinderFactory.INSTANCE.create(bundle);
+        if (scopeBinder == null) {
+            String message = "Unable to create binder for " + name;
+            GWT.log(message, new IllegalStateException(message));
+            return this;
+        }
+        Closure initializer = new Closure() {
+
+            @Override
+            public void exec(Object... args) {
+                String m = "";
+                try {
+                    m = "binding args";
+                    scopeBinder.apply(args);
+                } catch (Exception e) {
+                    GWT.log("Exception while " + m, e);
+                }
+            }
+        };
+        String [] dependencies;
+        {
+            dependencies = new String[1];
+            dependencies[0] = "$scope";
         }
         jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
         return this;

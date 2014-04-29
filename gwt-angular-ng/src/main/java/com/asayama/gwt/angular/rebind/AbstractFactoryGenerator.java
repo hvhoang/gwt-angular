@@ -92,11 +92,13 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                 break;
             }
         }
+        
         if (supportedRootClassType == null) {
             String m = "Unable to find the supportedRootClassType for " + classType;
             LOG.logp(Level.SEVERE, CLASS, METHOD, m);
             throw new RebindException(m);
         }
+        
         return supportedRootClassType;
     }
     
@@ -113,10 +115,12 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                 }
             }
         }
+        
         if (supportedClassTypes.size() == 0) {
             String m = "Unable to find supportedClassTypes for " + supportedRootClassType;
             LOG.logp(Level.WARNING, CLASS, METHOD, m);
         }
+        
         return supportedClassTypes;
     }
 }

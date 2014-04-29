@@ -8,29 +8,35 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface CustomDirectiveExampleResources extends ClientBundle {
 
-    static CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
+    static final CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
 
-    @Source("com/asayama/gwt/angular/site/examples/CustomDirectiveExample.gwt.xml")
-    TextResource config();
-    
-    @Source("view/CustomDirectiveExample.html")
+    static final String DEMO_URL = CustomDirectiveExampleResources.INSTANCE.demo().getSafeUri().asString();
+
+    @Source("view/CustomDirectiveExampleDocumentation.html")
     HtmlResource customDirective();
 
-    @Source("view/CustomDirective.html")
-    HtmlResource partial();
+    @Source("view/CustomDirectiveExample.html")
+    HtmlResource demo();
+
+    // Core Resources
     
-    @Source("view/CustomDirective.html")
-    TextResource view();
+    @Source("com/asayama/gwt/angular/site/examples/CustomDirectiveExample.gwt.xml")
+    TextResource config();
 
     @Source("CustomDirectiveExample.java")
     TextResource module();
     
+    @Source("CustomDirectiveExampleController.java")
+    TextResource controller();
+    
+    @Source("view/CustomDirectiveExample.html")
+    TextResource view();
+    
+    // Other Resources
+
     @Source("directive/MyHello.java")
     TextResource directive();
     
     @Source("directive/MyHello.html")
     TextResource template();
-
-    @Source("CustomDirectiveController.java")
-    TextResource controller();
 }

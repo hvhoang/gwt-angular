@@ -1,18 +1,32 @@
 package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.google.gwt.resources.client.TextResource;
-
 
 public class TextInputExampleController implements Controller {
 
-    // Text Input Example Resources
-    public static final String DEMO_URL = TextInputExampleResources.INSTANCE.demo().getSafeUri().asString();
-    public static final TextResource VIEW_CODE = TextInputExampleResources.INSTANCE.view();
-    public static final TextResource CONTROLLER_CODE = TextInputExampleResources.INSTANCE.controller();
-    public static final TextResource CONFIG_CODE = TextInputExampleResources.INSTANCE.config();
+    // Public final fields are directly bound to AngularJS's $scope, and they 
+    // are available for use in the HTML.
     
+    public static final String GREETING = "Hello";
+    public static final String STRANGER = "Stranger";
+
+    // Other fields are used to represent the state of this controller.
+    
+    private String name = null;
+
     @Override
     public void onControllerLoad() {
+        //noop
+    }
+
+    // Public methods are automatically wired to AngularJS's $scope, and
+    // they are availabe for use in the HTML.
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
 }

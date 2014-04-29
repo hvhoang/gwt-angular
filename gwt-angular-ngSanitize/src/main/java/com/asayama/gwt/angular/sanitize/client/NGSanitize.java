@@ -12,13 +12,8 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        String m = "initializing " + getClass().getName();
-        try {
-            NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
-            Angular.moduleWithDependency(this, "ngSanitize");
-        } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
-        }
+        NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
+        Angular.moduleWithDependency(this, "ngSanitize");
     }
 }
 

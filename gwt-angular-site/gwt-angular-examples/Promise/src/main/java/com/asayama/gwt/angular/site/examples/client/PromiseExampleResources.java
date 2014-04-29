@@ -8,25 +8,31 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface PromiseExampleResources extends ClientBundle {
 
-    static PromiseExampleResources INSTANCE = GWT.create(PromiseExampleResources.class);
+    static final PromiseExampleResources INSTANCE = GWT.create(PromiseExampleResources.class);
 
-    @Source("view/PromiseExample.html")
+    static final String DEMO_URL = PromiseExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
+    @Source("view/PromiseExampleDocumentation.html")
     HtmlResource promise();
 
-    @Source("view/Promise.html")
+    @Source("view/PromiseExample.html")
     HtmlResource demo();
-
-    @Source("view/Promise.html")
-    TextResource view();
     
-    @Source("PromiseController.java")
-    TextResource controller();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/PromiseExample.gwt.xml")
+    TextResource config();
     
     @Source("PromiseExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/PromiseExample.gwt.xml")
-    TextResource config();
+    @Source("PromiseExampleController.java")
+    TextResource controller();
+
+    @Source("view/PromiseExample.html")
+    TextResource view();
+    
+    // Other Resources
     
     @Source("service/GreetingService.java")
     TextResource service();

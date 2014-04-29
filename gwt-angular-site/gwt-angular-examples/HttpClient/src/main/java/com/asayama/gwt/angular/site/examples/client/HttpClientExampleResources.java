@@ -8,23 +8,27 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface HttpClientExampleResources extends ClientBundle {
 
-    static HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
+    static final HttpClientExampleResources INSTANCE = GWT.create(HttpClientExampleResources.class);
 
-    @Source("view/HttpClientExample.html")
+    static final String DEMO_URL = HttpClientExampleResources.INSTANCE.demo().getSafeUri().asString();
+
+    @Source("view/HttpClientExampleDocumentation.html")
     HtmlResource httpClient();
 
-    @Source("view/HttpClient.html")
+    @Source("view/HttpClientExample.html")
     HtmlResource demo();
-
-    @Source("view/HttpClient.html")
-    TextResource view();
     
-    @Source("HttpClientController.java")
-    TextResource controller();
+    // Core Resources
+    
+    @Source("com/asayama/gwt/angular/site/examples/HttpClientExample.gwt.xml")
+    TextResource config();
     
     @Source("HttpClientExample.java")
     TextResource module();
     
-    @Source("com/asayama/gwt/angular/site/examples/HttpClientExample.gwt.xml")
-    TextResource config();
+    @Source("HttpClientExampleController.java")
+    TextResource controller();
+
+    @Source("view/HttpClientExample.html")
+    TextResource view();
 }

@@ -8,23 +8,31 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface ImageResourceExampleResources extends ClientBundle {
     
-    static ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
+    static final ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
 
-    @Source("view/ImageResourceExample.html")
+    static final String DEMO_URL = ImageResourceExampleResources.INSTANCE.demo().getSafeUri().asString();
+    static final String STREET_URL = ImageResources.INSTANCE.street().getSafeUri().asString();
+    static final String WTC_URL = ImageResources.INSTANCE.wtc().getSafeUri().asString();
+    static final String BOAT_URL = ImageResources.INSTANCE.boat().getSafeUri().asString();
+    static final String PEOPLE_URL = ImageResources.INSTANCE.people().getSafeUri().asString();
+
+    @Source("view/ImageResourceExampleDocumentation.html")
     HtmlResource imageResource();
 
-    @Source("view/ImageResource.html")
+    @Source("view/ImageResourceExample.html")
     HtmlResource demo();
 
-    @Source("view/ImageResource.html")
-    TextResource view();
-
-    @Source("ImageResourceController.java")
-    TextResource controller();
-    
-    @Source("ImageResourceExample.java")
-    TextResource module();
+    // Core Resources
     
     @Source("com/asayama/gwt/angular/site/examples/ImageResourceExample.gwt.xml")
     TextResource config();
+    
+    @Source("ImageResourceExample.java")
+    TextResource module();
+
+    @Source("ImageResourceExampleController.java")
+    TextResource controller();
+    
+    @Source("view/ImageResourceExample.html")
+    TextResource view();
 }

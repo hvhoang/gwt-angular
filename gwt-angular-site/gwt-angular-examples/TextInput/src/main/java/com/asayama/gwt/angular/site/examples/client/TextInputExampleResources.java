@@ -8,23 +8,27 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface TextInputExampleResources extends ClientBundle {
 
-    static TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
+    static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
     
-    @Source("view/TextInputExample.html")
+    static final String DEMO_URL = TextInputExampleResources.INSTANCE.demo().getSafeUri().asString();
+
+    @Source("view/TextInputExampleDocumentation.html")
     HtmlResource textInput();
 
-    @Source("view/TextInput.html")
+    @Source("view/TextInputExample.html")
     HtmlResource demo();
 
-    @Source("view/TextInput.html")
-    TextResource view();
-    
-    @Source("TextInputController.java")
-    TextResource controller();
-    
-    @Source("TextInputExample.java")
-    TextResource module();
+    // Core Resources
     
     @Source("com/asayama/gwt/angular/site/examples/TextInputExample.gwt.xml")
     TextResource config();
+
+    @Source("TextInputExample.java")
+    TextResource module();
+    
+    @Source("TextInputExampleController.java")
+    TextResource controller();
+    
+    @Source("view/TextInputExample.html")
+    TextResource view();
 }

@@ -10,6 +10,6 @@ public class CustomFilterExample extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         Angular.module(this);
         filter(Reverse.class);
-        controller(CustomFilterController.class);
+        controller(CustomFilterExampleController.class);
     }
 }
