@@ -16,10 +16,10 @@ public interface ImageResourceExampleResources extends ClientBundle {
     static final String BOAT_URL = ImageResources.INSTANCE.boat().getSafeUri().asString();
     static final String PEOPLE_URL = ImageResources.INSTANCE.people().getSafeUri().asString();
 
-    @Source("view/ImageResourceExample.html")
+    @Source("view/ImageResourceExampleDocumentation.html")
     HtmlResource imageResource();
 
-    @Source("view/ImageResource.html")
+    @Source("view/ImageResourceExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -33,6 +33,6 @@ public interface ImageResourceExampleResources extends ClientBundle {
     @Source("ImageResourceExampleController.java")
     TextResource controller();
     
-    @Source("view/ImageResource.html")
+    @Source("view/ImageResourceExample.html")
     TextResource view();
 }
