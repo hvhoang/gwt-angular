@@ -1,4 +1,4 @@
-<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.TextInputExampleController">
+<div data-ng-controller="com.asayama.gwt.angular.site.examples.client.TextInputExampleResources">
   <p>
     This example demonstrates the declaration of Angular model and the 
     communication between the view (HTML) and the controller (Java) using this
@@ -24,7 +24,7 @@
     controller via <code>data-ng-change</code> directive, which calls 
     <code>setName()</code> method.
   </p>
-  <pre data-gwt-prettify="VIEW_CODE"></pre>
+  <pre data-gwt-prettify="view()"></pre>
 
   <h2>Controller</h2>
   <p>
@@ -38,13 +38,13 @@
     These public final constants are bound to the view, so that they can be
     inserted into the view via the use of double mustache notation, {{ }}.
   </p>
-  <pre data-gwt-prettify="CONTROLLER_CODE"></pre>
+  <pre data-gwt-prettify="controller()"></pre>
 
   <h2>Configuration</h2>
   <p>
     The following modules are required in the gwt.xml.
   </p>
-  <pre data-gwt-prettify="CONFIG_CODE"></pre>
+  <pre data-gwt-prettify="config()"></pre>
 
   <p>
     The following Maven dependencies are required in the pom.xml.
