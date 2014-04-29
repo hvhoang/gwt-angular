@@ -8,9 +8,11 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface OnClickEventExampleResources extends ClientBundle {
 
-    static OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
+    static final OnClickEventExampleResources INSTANCE = GWT.create(OnClickEventExampleResources.class);
 
-    @Source("view/OnClickEventExample.html")
+    static final String DEMO_URL = OnClickEventExampleResources.INSTANCE.demo().getSafeUri().asString();
+
+   @Source("view/OnClickEventExample.html")
     HtmlResource onClickEvent();
 
     @Source("view/OnClickEvent.html")
@@ -24,7 +26,7 @@ public interface OnClickEventExampleResources extends ClientBundle {
     @Source("OnClickEventExample.java")
     TextResource module();
     
-    @Source("OnClickEventController.java")
+    @Source("OnClickEventExampleController.java")
     TextResource controller();
     
     @Source("view/OnClickEvent.html")
