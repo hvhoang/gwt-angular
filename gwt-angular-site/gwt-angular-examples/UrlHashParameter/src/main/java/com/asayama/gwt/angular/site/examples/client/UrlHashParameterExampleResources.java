@@ -12,10 +12,10 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
 
     static final String DEMO_URL = UrlHashParameterExampleResources.INSTANCE.demo().getSafeUri().asString();
     
-    @Source("view/UrlHashParameterExample.html")
+    @Source("view/UrlHashParameterExampleDocumentation.html")
     HtmlResource urlHashParameter();
 
-    @Source("view/UrlHashParameter.html")
+    @Source("view/UrlHashParameterExample.html")
     HtmlResource demo();
     
     // Core Resources
@@ -29,6 +29,6 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
     @Source("UrlHashParameterExampleController.java")
     TextResource controller();
 
-    @Source("view/UrlHashParameter.html")
+    @Source("view/UrlHashParameterExample.html")
     TextResource view();
 }
