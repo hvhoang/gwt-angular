@@ -20,8 +20,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         bundle(PrettifyExampleResources.class);
         bundle(PromiseExampleResources.class);
         bundle(TextInputExampleResources.class);
-        
-        controller(UrlHashParameterExampleController.class);
+        bundle(UrlHashParameterExampleResources.class);
     }
     
     private JSArray<Page> getPages() {

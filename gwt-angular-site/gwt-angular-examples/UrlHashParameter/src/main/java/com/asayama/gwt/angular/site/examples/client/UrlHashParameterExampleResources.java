@@ -8,8 +8,10 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface UrlHashParameterExampleResources extends ClientBundle {
 
-    static UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
+    static final UrlHashParameterExampleResources INSTANCE = GWT.create(UrlHashParameterExampleResources.class);
 
+    static final String DEMO_URL = UrlHashParameterExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
     @Source("view/UrlHashParameterExample.html")
     HtmlResource urlHashParameter();
 
@@ -24,7 +26,7 @@ public interface UrlHashParameterExampleResources extends ClientBundle {
     @Source("UrlHashParameterExample.java")
     TextResource module();
     
-    @Source("UrlHashParameterController.java")
+    @Source("UrlHashParameterExampleController.java")
     TextResource controller();
 
     @Source("view/UrlHashParameter.html")
