@@ -12,10 +12,10 @@ public interface TextInputExampleResources extends ClientBundle {
     
     static final String DEMO_URL = TextInputExampleResources.INSTANCE.demo().getSafeUri().asString();
 
-    @Source("view/TextInputExample.html")
+    @Source("view/TextInputExampleDocumentation.html")
     HtmlResource textInput();
 
-    @Source("view/TextInput.html")
+    @Source("view/TextInputExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -29,6 +29,6 @@ public interface TextInputExampleResources extends ClientBundle {
     @Source("TextInputExampleController.java")
     TextResource controller();
     
-    @Source("view/TextInput.html")
+    @Source("view/TextInputExample.html")
     TextResource view();
 }
