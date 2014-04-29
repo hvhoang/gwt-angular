@@ -20,6 +20,6 @@ interface MyResources extends ClientBundle {
 
     static final MyResources INSTANCE = GWT.create(MyResources.class);
     
-    @Source("view/Prettify.html")
+    @Source("view/PrettifyExample.html")
     TextResource view();
 }
