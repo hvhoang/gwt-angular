@@ -12,10 +12,10 @@ public interface CustomFilterExampleResources extends ClientBundle {
 
     static final String DEMO_URL = CustomFilterExampleResources.INSTANCE.demo().getSafeUri().asString();
     
-    @Source("view/CustomFilterExample.html")
+    @Source("view/CustomFilterExampleDocumentation.html")
     HtmlResource customFilter();
 
-    @Source("view/CustomFilter.html")
+    @Source("view/CustomFilterExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -29,7 +29,7 @@ public interface CustomFilterExampleResources extends ClientBundle {
     @Source("CustomFilterExampleController.java")
     TextResource controller();
     
-    @Source("view/CustomFilter.html")
+    @Source("view/CustomFilterExample.html")
     TextResource view();
 
     // Other Resources
