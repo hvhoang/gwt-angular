@@ -8,8 +8,10 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface CustomFilterExampleResources extends ClientBundle {
 
-    static CustomFilterExampleResources INSTANCE = GWT.create(CustomFilterExampleResources.class);
+    static final CustomFilterExampleResources INSTANCE = GWT.create(CustomFilterExampleResources.class);
 
+    static final String DEMO_URL = CustomFilterExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
     @Source("view/CustomFilterExample.html")
     HtmlResource customFilter();
 
@@ -24,7 +26,7 @@ public interface CustomFilterExampleResources extends ClientBundle {
     @Source("CustomFilterExample.java")
     TextResource module();
     
-    @Source("CustomFilterController.java")
+    @Source("CustomFilterExampleController.java")
     TextResource controller();
     
     @Source("view/CustomFilter.html")
