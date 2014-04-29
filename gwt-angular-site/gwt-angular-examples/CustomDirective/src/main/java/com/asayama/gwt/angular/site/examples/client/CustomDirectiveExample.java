@@ -10,8 +10,7 @@ public class CustomDirectiveExample extends AbstractModule implements EntryPoint
     public void onModuleLoad() {
         Angular.module(this);
         directive(MyHello.class);
-        controller(CustomDirectiveController.class);
-        bundle(CustomDirectiveExampleResources.class);
+        controller(CustomDirectiveExampleController.class);
     }
 }
 

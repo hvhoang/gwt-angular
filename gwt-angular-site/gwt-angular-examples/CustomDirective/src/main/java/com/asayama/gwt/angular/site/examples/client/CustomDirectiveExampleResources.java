@@ -26,7 +26,7 @@ public interface CustomDirectiveExampleResources extends ClientBundle {
     @Source("CustomDirectiveExample.java")
     TextResource module();
     
-    @Source("CustomDirectiveController.java")
+    @Source("CustomDirectiveExampleController.java")
     TextResource controller();
     
     @Source("view/CustomDirective.html")
