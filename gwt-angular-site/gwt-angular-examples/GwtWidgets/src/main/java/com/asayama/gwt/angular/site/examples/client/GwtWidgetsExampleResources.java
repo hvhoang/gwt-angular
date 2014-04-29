@@ -12,10 +12,10 @@ public interface GwtWidgetsExampleResources extends ClientBundle {
     
     static final String DEMO_URL = GwtWidgetsExampleResources.INSTANCE.demo().getSafeUri().asString();
     
-    @Source("view/GwtWidgetsExample.html")
+    @Source("view/GwtWidgetsExampleDocumentation.html")
     HtmlResource gwtWidgets();
 
-    @Source("view/GwtWidgets.html")
+    @Source("view/GwtWidgetsExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -29,6 +29,6 @@ public interface GwtWidgetsExampleResources extends ClientBundle {
     @Source("GwtWidgetsExampleController.java")
     TextResource controller();
     
-    @Source("view/GwtWidgets.html")
+    @Source("view/GwtWidgetsExample.html")
     TextResource view();
 }
