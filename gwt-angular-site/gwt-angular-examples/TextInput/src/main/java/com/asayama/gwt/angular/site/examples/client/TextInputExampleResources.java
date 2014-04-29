@@ -8,8 +8,10 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface TextInputExampleResources extends ClientBundle {
 
-    static TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
+    static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
     
+    static final String DEMO_URL = TextInputExampleResources.INSTANCE.demo().getSafeUri().asString();
+
     @Source("view/TextInputExample.html")
     HtmlResource textInput();
 
@@ -24,7 +26,7 @@ public interface TextInputExampleResources extends ClientBundle {
     @Source("TextInputExample.java")
     TextResource module();
     
-    @Source("TextInputController.java")
+    @Source("TextInputExampleController.java")
     TextResource controller();
     
     @Source("view/TextInput.html")

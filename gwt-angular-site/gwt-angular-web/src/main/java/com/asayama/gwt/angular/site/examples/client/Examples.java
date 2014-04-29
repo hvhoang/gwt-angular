@@ -19,8 +19,8 @@ public class Examples extends AbstractModule implements EntryPoint {
         bundle(OnClickEventExampleResources.class);
         bundle(PrettifyExampleResources.class);
         bundle(PromiseExampleResources.class);
-
-        controller(TextInputExampleController.class);
+        bundle(TextInputExampleResources.class);
+        
         controller(UrlHashParameterExampleController.class);
     }
     
