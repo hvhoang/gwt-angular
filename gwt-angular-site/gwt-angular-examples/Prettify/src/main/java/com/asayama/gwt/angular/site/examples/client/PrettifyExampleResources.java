@@ -8,9 +8,11 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface PrettifyExampleResources extends ClientBundle {
 
-    static PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
+    static final PrettifyExampleResources INSTANCE = GWT.create(PrettifyExampleResources.class);
 
-    @Source("view/PrettifyExample.html")
+    static final String DEMO_URL = PrettifyExampleResources.INSTANCE.demo().getSafeUri().asString();
+    
+   @Source("view/PrettifyExample.html")
     HtmlResource prettify();
 
     @Source("view/Prettify.html")
@@ -24,7 +26,7 @@ public interface PrettifyExampleResources extends ClientBundle {
     @Source("PrettifyExample.java")
     TextResource module();
     
-    @Source("PrettifyController.java")
+    @Source("PrettifyExampleController.java")
     TextResource controller();
     
     @Source("view/Prettify.html")
