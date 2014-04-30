@@ -1,13 +1,13 @@
 ### Check out the Archetype
-
-git clone 
-
+```
+git clone git@github.com:kyoken74/gwt-angular.git
+```
 
 ### Build the Archetype
-
+```
 cd gwt-angular-simple
 make all
-
+```
 
 ### Generate a New Project from Locally Generated Archetype
 
