@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-  <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.angular.route.NGRoute" />
   <source path="client" />
-  <entry-point class="${package}.GwtAngularExample" />
+  <entry-point class="${package}.client.MyModule" />
 </module>

@@ -39,7 +39,12 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
-        <version>0.0.61-SNAPSHOT</version>
+        <version>0.0.60</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt.angular</groupId>
+        <artifactId>gwt-angular-ngRoute</artifactId>
+        <version>0.0.60</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -47,6 +52,10 @@
     <dependency>
       <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ng</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt.angular</groupId>
+      <artifactId>gwt-angular-ngRoute</artifactId>
     </dependency>
   </dependencies>
 </project>

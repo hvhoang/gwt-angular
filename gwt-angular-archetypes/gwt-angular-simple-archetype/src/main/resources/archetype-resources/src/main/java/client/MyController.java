@@ -1,11 +1,11 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package};
+package ${package}.client;
 
 import com.asayama.gwt.angular.client.Controller;
 
-public class GwtAngularExampleController implements Controller {
+public class MyController implements Controller {
 
     // Public final fields are directly bound to AngularJS's ${symbol_dollar}scope, and they 
     // are available for use in the HTML.

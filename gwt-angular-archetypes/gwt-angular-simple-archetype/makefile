@@ -1,4 +1,4 @@
-template=GwtAngularExample
+template=gwt-angular-simple
 
 all: clean build
 
