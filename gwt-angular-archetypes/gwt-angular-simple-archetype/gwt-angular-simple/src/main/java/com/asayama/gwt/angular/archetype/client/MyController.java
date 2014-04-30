@@ -1,8 +1,8 @@
-package com.asayama.gwt.angular.site.examples.client;
+package com.asayama.gwt.angular.archetype.client;
 
 import com.asayama.gwt.angular.client.Controller;
 
-public class GwtAngularExampleController implements Controller {
+public class MyController implements Controller {
 
     // Public final fields are directly bound to AngularJS's $scope, and they 
     // are available for use in the HTML.
