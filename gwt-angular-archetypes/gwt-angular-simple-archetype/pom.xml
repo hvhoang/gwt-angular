@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.asayama.docs.gwt.angular.examples</groupId>
-  <artifactId>GwtAngularExample-archetype</artifactId>
-  <version>0.0.61-SNAPSHOT</version>
+  <groupId>com.asayama.gwt.angular.archetype</groupId>
+  <artifactId>gwt-angular-simple-archetype</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
-  <name>GwtAngularExample-archetype</name>
+  <name>gwt-angular-simple-archetype</name>
 
   <build>
     <extensions>
@@ -27,29 +27,4 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <url>https://github.com/kyoken74/gwt-angular/gwt-angular-site/gwt-angular-examples/GwtAngularExample</url>
-
-  <developers>
-    <developer>
-      <id>kyoken74</id>
-      <name>Yuki Asayama</name>
-      <email>kyoken74@gmail.com</email>
-    </developer>
-  </developers>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <scm>
-    <connection>scm:git:git@github.com:kyoken74/gwt-angular.git/gwt-angular-site/gwt-angular-examples/GwtAngularExample</connection>
-    <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git/gwt-angular-site/gwt-angular-examples/GwtAngularExample</developerConnection>
-    <tag>0.0.56</tag>
-    <url>scm:git:git@github.com:kyoken74/gwt-angular.git/gwt-angular-site/gwt-angular-examples/GwtAngularExample</url>
-  </scm>
 </project>
