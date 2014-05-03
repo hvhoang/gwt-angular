@@ -13,6 +13,7 @@ public interface ProjectConstants extends Constants {
     public String projectVersion();
     public String projectUrl();
     
-    public String githubSourceUrl();
+    public String githubBlobUrl();
+    public String githubTreeUrl();
     public String githubIssueUrl();
 }

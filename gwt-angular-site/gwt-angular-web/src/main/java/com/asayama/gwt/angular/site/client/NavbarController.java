@@ -18,7 +18,10 @@ public class NavbarController implements Controller {
     public static final String PROJECT_VERSION = ProjectConstants.INSTANCE.projectVersion();
     public static final String PROJECT_URL = ProjectConstants.INSTANCE.projectUrl();
     
-    public static final String GITHUB_SOURCE_URL = ProjectConstants.INSTANCE.githubSourceUrl();
+    @Deprecated
+    public static final String GITHUB_SOURCE_URL = ProjectConstants.INSTANCE.githubTreeUrl();
+    public static final String GITHUB_TREE_URL = ProjectConstants.INSTANCE.githubTreeUrl();
+    public static final String GITHUB_BLOB_URL = ProjectConstants.INSTANCE.githubBlobUrl();
     public static final String GITHUB_ISSUE_URL = ProjectConstants.INSTANCE.githubIssueUrl();
     
     public static final String DEVELOP = NavbarConstants.INSTANCE.develop();
