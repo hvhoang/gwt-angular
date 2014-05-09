@@ -12,9 +12,10 @@
     <relativePath>..</relativePath>
   </parent>
   <properties>
-  	<github.tree.url>http://github.com/kyoken74/gwt-angular/tree/${project.version}</github.tree.url>
+    <github.archive.url>https://github.com/kyoken74/gwt-angular/archive/${project.version}</github.archive.url>
     <github.blob.url>http://github.com/kyoken74/gwt-angular/blob/${project.version}</github.blob.url>
   	<github.issue.url>https://github.com/kyoken74/gwt-angular/issues</github.issue.url>
+    <github.tree.url>http://github.com/kyoken74/gwt-angular/tree/${project.version}</github.tree.url>
   </properties>
   <build>
     <finalName>gwt-angular</finalName>
