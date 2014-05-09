@@ -5,24 +5,24 @@
     Among many other things, it declares the project's depenency. For this
     tutorial project, we have two notable dependencies.
   </p><p>
-    <code>com.asayama.gwt:gwt-angular-core</code> project refers to the
-    core API for <a href="http://kyoken74.github.io/gwt-angular/">GWT Angular
-    </a>. It provides the GWT wrapper around AngularJS's "ng" module.
+    <code>com.asayama.gwt:gwt-angular-ng</code> project refers to the core API 
+    for <a href="http://kyoken74.github.io/gwt-angular/">GWT Angular</a>. It 
+    provides the GWT wrapper around AngularJS's "ng" module.
   </p><p>
-    <code>com.asayama.gwt:gwt-angular-route</code> provides the GWT wrapper 
+    <code>com.asayama.gwt:gwt-angular-ngRoute</code> provides the GWT wrapper 
     around AngularJS's "ngRoute" module.
   </p>
-  <pre>
+  <pre class="prettyprint">
 &lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
-    &lt;artifactId&gt;gwt-angular-core&lt;/artifactId&gt;
+    &lt;artifactId&gt;gwt-angular-ng&lt;/artifactId&gt;
     &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
     &lt;scope&gt;provided&lt;/scope&gt;
   &lt;/dependency&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;com.asayama.gwt&lt;/groupId&gt;
-    &lt;artifactId&gt;gwt-angular-route&lt;/artifactId&gt;
+    &lt;artifactId&gt;gwt-angular-ngRoute&lt;/artifactId&gt;
     &lt;version&gt;{{ PROJECT_VERSION }}&lt;/version&gt;
     &lt;scope&gt;provided&lt;/scope&gt;
   &lt;/dependency&gt;
@@ -32,12 +32,12 @@
     at the time of the build. We can do this by adding the plugin, <code>
     gwt-maven-plugin</code> to our POM.
   </p><p>
-    In this example, we specify <code>com.asayama.gwt.angular.tutorial.SampleEntryPoint
-    </code> as the compile target GWT module. This module declaration references
-    the file <code>src/main/java/com/asayama/gwt/angular/tutorial/SampleEntryPoint.gwt.xml
-    </code> file in the project.
+    In this example, we specify <code>com.asayama.gwt.angular.tutorial.SampleEntryPoint</code>
+    as the compile target GWT module. This module declaration references the file
+    <code>src/main/java/com/asayama/gwt/angular/tutorial/SampleEntryPoint.gwt.xml</code>
+    file in the project.
   </p>
-  <pre>
+  <pre class="prettyprint">
 &lt;plugin&gt;
   &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
   &lt;artifactId&gt;gwt-maven-plugin&lt;/artifactId&gt;
@@ -54,4 +54,8 @@
   &lt;/executions&gt;
 &lt;/plugin&gt;</pre>
 
+  <p>
+    View the full <a href="{{ GITHUB_BLOB_URL }}/gwt-angular-site/gwt-angular-tutorial/pom.xml">pom.xml</a>
+  </p>
+  
 </div>

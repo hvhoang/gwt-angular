@@ -8,11 +8,12 @@
   <parent>
     <groupId>com.asayama.docs.gwt.angular</groupId>
     <artifactId>gwt-angular-site</artifactId>
-    <version>0.0.60</version>
+    <version>0.0.61</version>
     <relativePath>..</relativePath>
   </parent>
   <properties>
-  	<github.source.url>http://github.com/kyoken74/gwt-angular/tree/gwt-angular-${project.version}</github.source.url>
+  	<github.tree.url>http://github.com/kyoken74/gwt-angular/tree/gwt-angular-${project.version}</github.tree.url>
+    <github.blob.url>http://github.com/kyoken74/gwt-angular/blob/gwt-angular-${project.version}</github.blob.url>
   	<github.issue.url>https://github.com/kyoken74/gwt-angular/issues</github.issue.url>
   </properties>
   <build>
@@ -73,61 +74,61 @@
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>CustomDirective</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>CustomFilter</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>GwtWidgets</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>HttpClient</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>ImageResource</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>OnClickEvent</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>Prettify</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>Promise</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>TextInput</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.asayama.docs.gwt.angular.examples</groupId>
       <artifactId>UrlHashParameter</artifactId>
-      <version>0.0.60</version>
+      <version>0.0.61</version>
       <scope>provided</scope>
     </dependency>
 
