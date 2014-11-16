@@ -33,16 +33,9 @@ Set up [Maven](http://maven.apache.org) on your machine, and then execute
 the following commands to build the project.
 ```
 git clone https://github.com/kyoken74/gwt-angular.git
-cd gwt-angular/gwt-util
-mvn clean install
-cd ..
+cd gwt-angular
 mvn clean install
 ```
-
-By following the above commands, you are first cloning the repository, then
-building the utility classes. Once the utility classes are built and instlaled
-to your local maven repository, we go back to the root of the repository to
-build the entire gwt-angular project.
 
 ### Running the Live Demo
 gwt-angular-site contains the source code for our Live Demo site.

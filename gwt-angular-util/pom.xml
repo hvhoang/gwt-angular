@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>gwt-angular-ng</artifactId>
+  <groupId>com.asayama.gwt.angular</groupId>
+  <artifactId>gwt-angular-util</artifactId>
   <packaging>jar</packaging>
-  <name>gwt-angular-ng</name>
   <parent>
     <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular</artifactId>
@@ -26,8 +26,26 @@
       </plugin>
     </plugins>
   </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-user</artifactId>
+        <version>2.7.0-rc1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-dev</artifactId>
+        <version>2.7.0-rc1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-codeserver</artifactId>
+        <version>2.7.0-rc1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
-    <!-- GWT -->
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
@@ -36,15 +54,6 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.asayama.gwt.angular</groupId>
-      <artifactId>gwt-angular-util</artifactId>
-    </dependency>
-    <!-- Velocity Code Generator -->
-    <dependency>
-      <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity</artifactId>
     </dependency>
   </dependencies>
 </project>

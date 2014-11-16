@@ -18,6 +18,8 @@
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
+
+    <module>gwt-angular-util</module>
   </modules>
   <licenses>
     <license>
@@ -151,9 +153,9 @@
 
       <!-- GWT Utility -->
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-util</artifactId>
-        <version>0.1.1</version>
+        <groupId>com.asayama.gwt.angular</groupId>
+        <artifactId>gwt-angular-util</artifactId>
+        <version>0.0.64-SNAPSHOT</version>
       </dependency>
 
       <!-- GWT Client -->
