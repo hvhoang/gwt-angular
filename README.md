@@ -92,3 +92,11 @@ encouraged to explorer various HTML based view frameworks.
 
 *Note that while gwt-angular project uses the products provided by above 
 projects, gwt-angular itself is not affiliated with the above projects.*
+
+
+Thanks
+======
+I'd like to thank the following individuals who showed interest in this project
+and provided valuable feedback to make the project better.
+
+- Eyal Shaked

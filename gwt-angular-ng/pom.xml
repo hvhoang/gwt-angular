@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular</artifactId>
-    <version>0.0.63</version>
+    <version>0.0.64</version>
     <relativePath>..</relativePath>
   </parent>
   <build>
@@ -38,8 +38,8 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.asayama.gwt</groupId>
-      <artifactId>gwt-util</artifactId>
+      <groupId>com.asayama.gwt.angular</groupId>
+      <artifactId>gwt-angular-util</artifactId>
     </dependency>
     <!-- Velocity Code Generator -->
     <dependency>

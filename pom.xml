@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt.angular</groupId>
   <artifactId>gwt-angular</artifactId>
-  <version>0.0.63</version>
+  <version>0.0.64</version>
   <packaging>pom</packaging>
   <name>gwt-angular</name>
   <modules>
@@ -18,6 +18,8 @@
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
+
+    <module>gwt-angular-util</module>
   </modules>
   <licenses>
     <license>
@@ -38,7 +40,7 @@
     <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
     <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
     <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
-    <tag>0.0.63</tag>
+    <tag>0.0.64</tag>
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +67,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>gwt-maven-plugin</artifactId>
-          <version>2.7.0-rc1</version>
+          <version>2.6.0</version>
           <configuration>
             <gen>${project.build.directory}/generated</gen>
             <!--
@@ -110,67 +112,67 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngRoute</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngSanitize</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
 
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-user</artifactId>
-        <version>0.0.63</version>
+        <version>0.0.64</version>
       </dependency>
 
       <!-- GWT Utility -->
       <dependency>
-        <groupId>com.asayama.gwt</groupId>
-        <artifactId>gwt-util</artifactId>
-        <version>0.1.0</version>
+        <groupId>com.asayama.gwt.angular</groupId>
+        <artifactId>gwt-angular-util</artifactId>
+        <version>0.0.64</version>
       </dependency>
 
       <!-- GWT Client -->
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
-        <version>2.7.0-rc1</version>
+        <version>2.6.0</version>
       </dependency>
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-dev</artifactId>
-        <version>2.7.0-rc1</version>
+        <version>2.6.0</version>
       </dependency>
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-codeserver</artifactId>
-        <version>2.7.0-rc1</version>
+        <version>2.6.0</version>
       </dependency>
 
       <!-- Code Generator -->

@@ -137,12 +137,35 @@ interface ScopeBinderFactory<T> {
     JSClosure create(T object);
 }
 
+/**
+ * Represents the ScopeBinder factory for Controllers. In AngularJS, during the
+ * construction of Controller class, we assign view models to the scope, so that
+ * they are accessible from the view (HTML). This factory generates this
+ * construction method on behalf of the user.
+ * 
+ * @author kyoken74
+ */
 interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
     static ControllerScopeBinderFactory INSTANCE = GWT.create(ControllerScopeBinderFactory.class);
     @Override
     public JSClosure create(Controller object);
 }
 
+/**
+ * Represents the ScopeBinder factory for ClientBundle, so that the resources
+ * declared as ClientBundle are readily available to the view (HTML) in a 
+ * similar way the view models are available to the view via Controllers.
+ *  
+ * In AngularJS, during the construction of Controller class, we assign view 
+ * models to the scope, so that they are accessible from the view (HTML). This 
+ * factory generates this construction method on behalf of the user.
+ * 
+ * WARNING:
+ * ClientBundleScopeBinderFactory is unable to provide the proper binding for
+ * ClientBundle classes when the application is run in classic DevMode.
+ * 
+ * @author kyoken74
+ */
 interface ClientBundleScopeBinderFactory extends ScopeBinderFactory<ClientBundle> {
     static ClientBundleScopeBinderFactory INSTANCE = GWT.create(ClientBundleScopeBinderFactory.class);
     @Override
