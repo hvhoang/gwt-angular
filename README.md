@@ -96,7 +96,9 @@ projects, gwt-angular itself is not affiliated with the above projects.*
 
 Thanks
 ======
-I'd like to thank the following individuals who showed interest in this project
-and provided valuable feedback to make the project better.
+I'd like to thank the following entities and individuals.
 
-- Eyal Shaked
+- GitHub for Hosting the GIT repository
+- Sonatype for Hosting the binary artifacts
+
+- Eyal Shaked for reporting build issues
