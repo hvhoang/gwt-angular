@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt.angular</groupId>
   <artifactId>gwt-angular</artifactId>
   <version>0.0.65-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>gwt-angular</name>
+
   <modules>
+    <!-- AngularJS API -->
     <module>gwt-angular-ng</module>
     <module>gwt-angular-ngRoute</module>
     <module>gwt-angular-ngSanitize</module>
-
+    <!-- GWT Angular API -->
     <module>gwt-angular-http</module>
     <module>gwt-angular-resources</module>
     <module>gwt-angular-user</module>
-
+    <!-- Extended Features -->
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
-
+    <!-- GWT Utility -->
     <module>gwt-angular-util</module>
   </modules>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+ 
+  <url>https://github.com/kyoken74/gwt-angular</url>
+
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -28,7 +41,13 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <url>https://github.com/kyoken74/gwt-angular</url>
+
+  <scm>
+    <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
+    <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
+    <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
+    <tag>0.0.56</tag>
+  </scm>
   <developers>
     <developer>
       <id>kyoken74</id>
@@ -36,17 +55,13 @@
       <email>kyoken74@gmail.com</email>
     </developer>
   </developers>
-  <scm>
-    <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
-    <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
-    <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
-    <tag>0.0.56</tag>
-  </scm>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <timestamp.yyyymmdd>${maven.build.timestamp}</timestamp.yyyymmdd>
     <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
   </properties>
+
   <build>
     <pluginManagement>
       <plugins>
@@ -58,11 +73,6 @@
             <source>1.7</source>
             <target>1.7</target>
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.10.1</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -102,9 +112,77 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-       </plugin>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.3</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>false</autoReleaseAfterClose>
+          <!--
+            http://books.sonatype.com/nexus-book/reference/staging.html
+            1. mvn clean deploy
+            2. mvn nexus-staging:release  #to promote
+               mvn nexus-stagin:drop  #to back-out
+          -->
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>2.2.1</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.1</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.5</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <dependencyManagement>
     <dependencies>
 
@@ -124,7 +202,6 @@
         <artifactId>gwt-angular-ngSanitize</artifactId>
         <version>0.0.65-SNAPSHOT</version>
       </dependency>
-
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-http</artifactId>
@@ -184,4 +261,6 @@
 
     </dependencies>
   </dependencyManagement>
+
 </project>
+
