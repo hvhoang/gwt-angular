@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.docs.gwt.angular.examples</groupId>
   <artifactId>gwt-angular-examples</artifactId>
   <packaging>pom</packaging>
-  <name>gwt-angular-examples</name>
   <parent>
     <groupId>com.asayama.docs.gwt.angular</groupId>
     <artifactId>gwt-angular-site</artifactId>
     <version>0.0.65-patch.1</version>
     <relativePath>..</relativePath>
   </parent>
+
+  <name>gwt-angular-examples</name>
+  <description>
+    Parent project for GWT Angular examples.
+  </description>
+
   <modules>
     <module>CustomDirective</module>
     <module>CustomFilter</module>
@@ -23,6 +29,7 @@
     <module>TextInput</module>
     <module>UrlHashParameter</module>
   </modules>
+
   <build>
     <plugins>
       <plugin>
@@ -41,4 +48,5 @@
       <artifactId>gwt-angular-ngSanitize</artifactId>
     </dependency>
   </dependencies>
+
 </project>

@@ -4,19 +4,25 @@
   <groupId>com.asayama.docs.gwt.angular</groupId>
   <artifactId>gwt-angular-site</artifactId>
   <packaging>pom</packaging>
-  <name>gwt-angular-site</name>
   <parent>
     <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular</artifactId>
     <version>0.0.65-patch.1</version>
     <relativePath>..</relativePath>
   </parent>
+
+  <name>gwt-angular-site</name>
+  <description>
+    Parent project for GWT Angular demo site.
+  </description>
+
   <modules>
     <module>gwt-angular-examples</module>
     <module>gwt-angular-pages</module>
     <module>gwt-angular-tutorial</module>
     <module>gwt-angular-web</module>
   </modules>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -41,4 +47,5 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
 </project>

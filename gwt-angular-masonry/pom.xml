@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <artifactId>gwt-angular-masonry</artifactId>
   <packaging>jar</packaging>
-  <name>gwt-angular-masonry</name>
   <parent>
     <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular</artifactId>
     <version>0.0.65-patch.1</version>
     <relativePath>..</relativePath>
   </parent>
+
+  <name>gwt-angular-masonry</name>
+  <description>
+    Provides GWT Angular module for Masonry cascading grid layout library.
+    http://masonry.desandro.com
+  </description>
+
   <build>
     <resources>
       <resource>
@@ -26,6 +33,7 @@
       </plugin>
     </plugins>
   </build>
+
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -36,4 +44,5 @@
       <artifactId>gwt-angular-ng</artifactId>
     </dependency>
   </dependencies>
+
 </project>
