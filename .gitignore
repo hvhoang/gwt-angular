@@ -7,3 +7,4 @@ pom.xml.tag
 target
 *.releaseBackup
 release.properties
+pom.xml.versionsBackup

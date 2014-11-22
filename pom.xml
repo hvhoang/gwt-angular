@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt.angular</groupId>
   <artifactId>gwt-angular</artifactId>
-  <version>0.0.65-SNAPSHOT</version>
+  <version>0.0.65</version>
   <packaging>pom</packaging>
   <name>gwt-angular</name>
 
@@ -218,49 +218,49 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngRoute</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngSanitize</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-user</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
 
       <!-- GWT Utility -->
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-util</artifactId>
-        <version>0.0.65-SNAPSHOT</version>
+        <version>0.0.65</version>
       </dependency>
 
       <!-- GWT Client -->
