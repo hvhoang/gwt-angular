@@ -30,6 +30,6 @@ interface NGScripts extends ClientBundle {
     
     static NGScripts INSTANCE = GWT.create(NGScripts.class);
     
-    @Source("angular/angular.min.js")
+    @Source("bower_components/angular/angular.min.js")
     ScriptResource script();
 }

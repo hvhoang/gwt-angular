@@ -27,6 +27,6 @@ interface NGScripts extends ClientBundle {
     
     static NGScripts INSTANCE = GWT.create(NGScripts.class);
     
-    @Source("angular-route.min.js")
+    @Source("bower_components/angular-route/angular-route.min.js")
     ScriptResource script();
 }
