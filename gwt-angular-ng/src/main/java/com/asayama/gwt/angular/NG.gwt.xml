@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-  <inherits name="Angular" />
+  <inherits name="AngularJS" />
   <inherits name="com.asayama.gwt.jsni.JSNI" />
   <inherits name="com.asayama.gwt.jquery.JQueryLite" />
   <inherits name="com.asayama.gwt.resources.Resources" />
