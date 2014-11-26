@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  This GWT module in the default package is a bit of a workaround. We have some
+  resources downloaded by bower packaged inside of /angular namespace, which
+  we want to make available as part of the GWT compiler output. Because the
+  public path must be relative, we cannot declare this inside of NG.gwt.xml,
+  which is the visible interface to the GWT/Java world. We inherit this "hidden"
+  AngularJS module which is inside the default package, which makes the bower
+  managed resource available at runtime.f
+-->
+<module>
+  <public path="angular" />
+</module>
