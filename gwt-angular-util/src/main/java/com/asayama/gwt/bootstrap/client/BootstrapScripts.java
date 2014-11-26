@@ -16,6 +16,6 @@ public interface BootstrapScripts extends ClientBundle {
 
 	static BootstrapScripts INSTANCE = GWT.create(BootstrapScripts.class);
 	
-	@Source("bootstrap.min.js")
+	@Source("bower_components/bootstrap/dist/js/bootstrap.min.js")
 	ScriptResource script();
 }

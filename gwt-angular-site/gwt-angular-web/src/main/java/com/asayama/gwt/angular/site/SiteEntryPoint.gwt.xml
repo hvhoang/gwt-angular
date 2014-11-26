@@ -20,8 +20,7 @@
   <inherits name="com.asayama.gwt.angular.site.tutorial.Tutorial" />
 
   <!-- Bootstrap CSS -->
-  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
-  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+  <inherits name="com.asayama.gwt.bootstrap.Bootstrap" />
 
   <!-- Project Structure -->
   <source path="client" />

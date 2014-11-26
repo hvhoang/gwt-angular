@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
+  <inherits name="bower_components/bootstrap" />
   <inherits name="com.asayama.gwt.jquery.JQuery" />
-  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap.min.css" />
-  <stylesheet src="lib/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
   <source path="client" />
 </module>
