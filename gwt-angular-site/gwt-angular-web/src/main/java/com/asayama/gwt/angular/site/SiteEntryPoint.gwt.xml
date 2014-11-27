@@ -19,8 +19,9 @@
   <inherits name="com.asayama.gwt.angular.site.examples.Examples" />
   <inherits name="com.asayama.gwt.angular.site.tutorial.Tutorial" />
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap -->
   <inherits name="com.asayama.gwt.bootstrap.Bootstrap" />
+  <inherits name="com.asayama.gwt.bootstrap.BootstrapTheme" />
 
   <!-- Project Structure -->
   <source path="client" />
