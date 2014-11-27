@@ -31,6 +31,6 @@ interface JQueryScripts extends ClientBundle {
 
 	static JQueryScripts INSTANCE = GWT.create(JQueryScripts.class);
 	
-	@Source("bower_components/jquery/jquery.min.js")
+	@Source("bower_components/jquery/dist/jquery.min.js")
 	ScriptResource script();
 }
