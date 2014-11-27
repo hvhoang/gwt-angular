@@ -11,4 +11,7 @@ public interface JumbotronResources extends ClientBundle {
 
     @Source("view/mvc.png")
     ImageResource mvc();
+    
+    @Source("view/gwt-angular.png")
+    ImageResource logo();
 }
