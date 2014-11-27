@@ -173,6 +173,17 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.asayama.gwt.angular</groupId>
+      <artifactId>gwt-jquery</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt.angular</groupId>
+      <artifactId>gwt-bootstrap</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
   
 </project>

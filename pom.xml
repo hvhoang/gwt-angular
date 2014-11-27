@@ -33,6 +33,8 @@
     <module>gwt-angular-site</module>
     <!-- GWT Utility -->
     <module>gwt-angular-util</module>
+    <module>gwt-jquery</module>
+    <module>gwt-bootstrap</module>
   </modules>
 
   <distributionManagement>
@@ -309,6 +311,16 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-util</artifactId>
+        <version>0.0.66-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt.angular</groupId>
+        <artifactId>gwt-jquery</artifactId>
+        <version>0.0.66-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt.angular</groupId>
+        <artifactId>gwt-bootstrap</artifactId>
         <version>0.0.66-SNAPSHOT</version>
       </dependency>
 
