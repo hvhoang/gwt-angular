@@ -32,7 +32,7 @@
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
     <!-- GWT Utility -->
-    <module>gwt-angular-util</module>
+    <module>gwt-util</module>
     <module>gwt-jquery</module>
     <module>gwt-bootstrap</module>
   </modules>
@@ -309,17 +309,17 @@
 
       <!-- GWT Utility -->
       <dependency>
-        <groupId>com.asayama.gwt.angular</groupId>
-        <artifactId>gwt-angular-util</artifactId>
+        <groupId>com.asayama.gwt</groupId>
+        <artifactId>gwt-util</artifactId>
         <version>0.0.66-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt.angular</groupId>
+        <groupId>com.asayama.gwt.jquery</groupId>
         <artifactId>gwt-jquery</artifactId>
         <version>0.0.66-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.asayama.gwt.angular</groupId>
+        <groupId>com.asayama.gwt.bootstrap</groupId>
         <artifactId>gwt-bootstrap</artifactId>
         <version>0.0.66-SNAPSHOT</version>
       </dependency>
