@@ -3,4 +3,5 @@
   <inherits name="bower_components/bootstrap" />
   <inherits name="com.asayama.gwt.jquery.JQuery" />
   <source path="client" />
+  <entry-point class="com.asayama.gwt.bootstrap.client.Bootstrap" />
 </module>
