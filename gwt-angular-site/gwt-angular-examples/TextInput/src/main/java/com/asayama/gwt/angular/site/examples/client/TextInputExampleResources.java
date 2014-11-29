@@ -1,12 +1,12 @@
 package com.asayama.gwt.angular.site.examples.client;
 
+import com.asayama.gwt.angular.client.ClientResources;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface TextInputExampleResources extends ClientBundle {
+public interface TextInputExampleResources extends ClientResources {
 
     static final TextInputExampleResources INSTANCE = GWT.create(TextInputExampleResources.class);
     

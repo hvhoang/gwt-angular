@@ -15,7 +15,6 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
@@ -63,10 +62,10 @@ interface ControllerCreator extends Creator<Controller> {
     <X extends Controller> X create(Class<X> klass);
 }
 
-interface ClientBundleCreator extends Creator<ClientBundle> {
-    static ClientBundleCreator INSTANCE = GWT.create(ClientBundleCreator.class);
+interface ClientResourcesCreator extends Creator<ClientResources> {
+    static ClientResourcesCreator INSTANCE = GWT.create(ClientResourcesCreator.class);
     @Override
-    <X extends ClientBundle> X create(Class<X> klass);
+    <X extends ClientResources> X create(Class<X> klass);
 }
 
 /**
@@ -166,10 +165,10 @@ interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
  * 
  * @author kyoken74
  */
-interface ClientBundleScopeBinderFactory extends ScopeBinderFactory<ClientBundle> {
-    static ClientBundleScopeBinderFactory INSTANCE = GWT.create(ClientBundleScopeBinderFactory.class);
+interface ClientResourcesScopeBinderFactory extends ScopeBinderFactory<ClientResources> {
+    static ClientResourcesScopeBinderFactory INSTANCE = GWT.create(ClientResourcesScopeBinderFactory.class);
     @Override
-    public JSClosure create(ClientBundle object);
+    public JSClosure create(ClientResources object);
 }
 
 /**

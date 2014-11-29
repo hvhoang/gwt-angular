@@ -1,12 +1,12 @@
 package com.asayama.gwt.angular.site.examples.client;
 
+import com.asayama.gwt.angular.client.ClientResources;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface ImageResourceExampleResources extends ClientBundle {
+public interface ImageResourceExampleResources extends ClientResources {
     
     static final ImageResourceExampleResources INSTANCE = GWT.create(ImageResourceExampleResources.class);
 
@@ -32,6 +32,9 @@ public interface ImageResourceExampleResources extends ClientBundle {
 
     @Source("ImageResourceExampleController.java")
     TextResource controller();
+
+    @Source("ImageResources.java")
+    TextResource resources();
     
     @Source("view/ImageResourceExample.html")
     TextResource view();

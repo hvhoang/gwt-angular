@@ -9,7 +9,6 @@ import com.asayama.gwt.jsni.client.JSObject;
 import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
 
 /**
  * Provides abstract implementation of {@link Module}. See the javadoc comments
@@ -200,21 +199,21 @@ public abstract class AbstractModule implements Module {
      * Binds ClientBundle to the scope via controller pattern.
      * </p>
      */
-    public <C extends ClientBundle> Module bundle(Class<C> klass) {
+    public <C extends ClientResources> Module resources(Class<C> klass) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
     	String name = klass.getName();
-    	ClientBundle bundle = ClientBundleCreator.INSTANCE.create(klass);
-        return bundle(name, bundle);
+    	ClientResources resources = ClientResourcesCreator.INSTANCE.create(klass);
+        return resources(name, resources);
     }
     
-    public Module bundle(final String name, final ClientBundle bundle) {
-        if (bundle == null) {
+    public Module resources(final String name, final ClientResources resources) {
+        if (resources == null) {
             String message = "Unable to create " + name;
             GWT.log(message, new IllegalStateException(message));
             return this;
         }
-        final JSClosure scopeBinder = ClientBundleScopeBinderFactory.INSTANCE.create(bundle);
+        final JSClosure scopeBinder = ClientResourcesScopeBinderFactory.INSTANCE.create(resources);
         if (scopeBinder == null) {
             String message = "Unable to create binder for " + name;
             GWT.log(message, new IllegalStateException(message));
