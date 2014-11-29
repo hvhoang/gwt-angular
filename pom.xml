@@ -184,7 +184,7 @@
           <configuration>
             <serverId>ossrh</serverId>
             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            <autoReleaseAfterClose>true</autoReleaseAfterClose>
             <!--
               Set autoReleaseAfterClose to false to do a manual release
               deployment without SCM integration.
