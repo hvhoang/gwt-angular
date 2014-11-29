@@ -28,9 +28,9 @@ interface MasonryModuleScripts extends ClientBundle {
     
     static MasonryModuleScripts INSTANCE = GWT.create(MasonryModuleScripts.class);
 
-    @Source("angular-masonry.js")
+    @Source("bower_components/angular-masonry.js")
     ScriptResource masonry();
 
-    @Source("masonry.pkgd.js")
+    @Source("bower_components/masonry/dist/masonry.pkgd.min.js")
     ScriptResource angularMasonry();
 }
