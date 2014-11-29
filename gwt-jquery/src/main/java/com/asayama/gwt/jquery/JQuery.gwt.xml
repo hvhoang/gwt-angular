@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <inherits name="bower_components/jquery" />
+  <inherits name="com.google.gwt.user.User" />
+  <inherits name="com.google.gwt.resources.Resources" />
+  <source path="client" />
+  <entry-point class="com.asayama.gwt.jquery.client.JQuery" />
+</module>

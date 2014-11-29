@@ -21,6 +21,6 @@ interface NGScripts extends ClientBundle {
     
     static NGScripts INSTANCE = GWT.create(NGScripts.class);
     
-    @Source("angular-sanitize.min.js")
+    @Source("bower_components/angular-sanitize/angular-sanitize.min.js")
     ScriptResource script();
 }

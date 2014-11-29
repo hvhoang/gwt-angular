@@ -7,7 +7,7 @@ import com.google.gwt.resources.client.ImageResource;
 
 public class JumbotronController implements Controller {
 
-    public static final ImageResource MVC = JumbotronResources.INSTANCE.mvc();
+	public static final ImageResource LOGO = JumbotronResources.INSTANCE.logo();
     public static final String LEARN_MORE = JumbotronConstants.INSTANCE.learnMore();
     public static final String MORE = JumbotronConstants.INSTANCE.more();
     

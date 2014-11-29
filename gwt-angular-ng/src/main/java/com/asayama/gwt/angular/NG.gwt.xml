@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
+  <inherits name="bower_components/angular" />
   <inherits name="com.asayama.gwt.jsni.JSNI" />
   <inherits name="com.asayama.gwt.jquery.JQueryLite" />
   <inherits name="com.asayama.gwt.resources.Resources" />
@@ -21,5 +22,4 @@
   </generate-with>
   <source path="client" />
   <entry-point class="com.asayama.gwt.angular.client.NG" />
-
 </module>
