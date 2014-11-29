@@ -29,9 +29,9 @@ interface PrettifyScripts extends ClientBundle {
     
     static PrettifyScripts INSTANCE = GWT.create(PrettifyScripts.class);
     
-    @Source("prettify.css")
+    @Source("bower_components/google-code-prettify/bin/prettify.min.css")
     TextResource css();
 
-    @Source("prettify.js")
+    @Source("bower_components/google-code-prettify/bin/prettify.min.js")
     ScriptResource script();
 }
