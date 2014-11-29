@@ -9,9 +9,6 @@ public interface JumbotronResources extends ClientBundle {
     
     static JumbotronResources INSTANCE = GWT.create(JumbotronResources.class);
 
-    @Source("view/mvc.png")
-    ImageResource mvc();
-    
     @Source("view/gwt-angular.png")
     ImageResource logo();
 }
