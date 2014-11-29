@@ -36,7 +36,7 @@ public class NavbarController implements Controller {
 
     @Bind("tutorial")
     private JSArray<Page> tutorial = null;
-
+    
     @Override
     public void onControllerLoad() {
     }
