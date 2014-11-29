@@ -12,6 +12,7 @@ public class Bootstrap implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
+//            BootstrapScripts.INSTANCE.css().ensureInjected(true);
             BootstrapScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
@@ -33,4 +34,7 @@ interface BootstrapScripts extends ClientBundle {
 	
 	@Source("bower_components/bootstrap/dist/js/bootstrap.min.js")
 	ScriptResource script();
+	
+//	@Source("bower_components/bootstrap/dist/css/bootstrap.min.css")
+//	StyleResource css();
 }

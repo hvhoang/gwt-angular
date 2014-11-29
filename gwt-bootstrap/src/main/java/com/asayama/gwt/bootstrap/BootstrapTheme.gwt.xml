@@ -2,4 +2,5 @@
 <module>
   <inherits name="bower_components/bootstrap-theme" />
   <inherits name="com.asayama.gwt.bootstrap.Bootstrap" />
+  <entry-point class="com.asayama.gwt.bootstrap.client.BootstrapTheme" />
 </module>
