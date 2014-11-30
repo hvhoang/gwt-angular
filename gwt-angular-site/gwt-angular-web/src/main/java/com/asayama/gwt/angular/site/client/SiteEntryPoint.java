@@ -6,6 +6,7 @@ import com.asayama.gwt.angular.client.Configurator;
 import com.asayama.gwt.angular.client.location.LocationProvider;
 import com.asayama.gwt.angular.client.sce.SceProvider;
 import com.asayama.gwt.angular.route.client.RouteProvider;
+import com.asayama.gwt.util.client.SuperDevModeIndicator;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
@@ -50,7 +51,8 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
         		// SCE does not like loading resources even when we are loading
         		// from the same server, if the port number is different. We
         		// turn off the SCE when we are not running in Prod mode.
-        		provider.enabled(!GWT.isProdMode());
+        		SuperDevModeIndicator sdm = GWT.create(SuperDevModeIndicator.class);
+				provider.enabled(!sdm.isSuperDevMode());
         	}
         });
         
