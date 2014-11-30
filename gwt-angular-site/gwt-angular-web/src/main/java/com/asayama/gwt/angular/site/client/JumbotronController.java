@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.site.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
+import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
 public class JumbotronController implements Controller {
@@ -25,4 +26,12 @@ interface JumbotronConstants extends Constants {
     
     @DefaultStringValue("More details »")
     String more();
+}
+
+interface JumbotronResources extends ClientBundle {
+    
+    static JumbotronResources INSTANCE = GWT.create(JumbotronResources.class);
+
+    @Source("view/logo-large.png")
+    ImageResource logo();
 }
