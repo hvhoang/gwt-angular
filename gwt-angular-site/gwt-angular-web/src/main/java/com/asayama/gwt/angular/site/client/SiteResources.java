@@ -3,10 +3,14 @@ package com.asayama.gwt.angular.site.client;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.ImageResource;
 
 public interface SiteResources extends ClientBundle {
     
     public static final SiteResources INSTANCE = GWT.create(SiteResources.class);
+
+    @Source("view/logo-small.png")
+    public ImageResource logo();
     
     @Source("view/Documentation.html")
     public HtmlResource documentation();

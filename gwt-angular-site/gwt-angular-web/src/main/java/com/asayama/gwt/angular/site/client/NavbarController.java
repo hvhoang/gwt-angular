@@ -6,10 +6,13 @@ import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
+	public static final ImageResource LOGO = SiteResources.INSTANCE.logo();
+	
     public static final String NAVBAR_HTML = SiteResources.INSTANCE.navbar().getSafeUri().asString();
     public static final String FOOTER_HTML = SiteResources.INSTANCE.footer().getSafeUri().asString();
 
