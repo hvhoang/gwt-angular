@@ -1,0 +1,1 @@
+Resource files that are part of JAR artifact are maintained in this folder.
