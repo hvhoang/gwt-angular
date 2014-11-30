@@ -31,12 +31,12 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
             @Override
             public void configure(RouteProvider provider) {
                 provider
-                    .when(SiteResources.INSTANCE.documentation(), DocumentationController.class)
-                    .when(SiteResources.INSTANCE.downloads(), DownloadsController.class)
-                    .when(SiteResources.INSTANCE.jumbotron(), JumbotronController.class)
-                    .when(SiteResources.INSTANCE.examples(), ExamplesController.class)
-                    .when(SiteResources.INSTANCE.tutorial(), TutorialController.class)
-                    .otherwise(SiteResources.INSTANCE.jumbotron());
+                    .when(NavbarResources.INSTANCE.documentation(), DocumentationController.class)
+                    .when(NavbarResources.INSTANCE.downloads(), DownloadsController.class)
+                    .when(NavbarResources.INSTANCE.jumbotron(), JumbotronController.class)
+                    .when(NavbarResources.INSTANCE.examples(), ExamplesController.class)
+                    .when(NavbarResources.INSTANCE.tutorial(), TutorialController.class)
+                    .otherwise(NavbarResources.INSTANCE.jumbotron());
             }
         });
         

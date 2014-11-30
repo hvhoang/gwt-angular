@@ -4,17 +4,19 @@ import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
+import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-	public static final ImageResource LOGO = SiteResources.INSTANCE.logo();
+	public static final ImageResource LOGO = NavbarResources.INSTANCE.logo();
 	
-    public static final String NAVBAR_HTML = SiteResources.INSTANCE.navbar().getSafeUri().asString();
-    public static final String FOOTER_HTML = SiteResources.INSTANCE.footer().getSafeUri().asString();
+    public static final String NAVBAR_HTML = NavbarResources.INSTANCE.navbar().getSafeUri().asString();
+    public static final String FOOTER_HTML = NavbarResources.INSTANCE.footer().getSafeUri().asString();
 
     public static final String PROJECT_GROUP_ID = ProjectConstants.INSTANCE.projectGroupId();
     public static final String PROJECT_ARTIFACT_ID = ProjectConstants.INSTANCE.projectArtifactId();
@@ -96,4 +98,34 @@ interface NavbarConstants extends Constants {
 
     @DefaultStringValue("Tutorial")
     String tutorial();
+}
+
+interface NavbarResources extends ClientBundle {
+    
+    public static final NavbarResources INSTANCE = GWT.create(NavbarResources.class);
+
+    @Source("view/logo-small.png")
+    public ImageResource logo();
+    
+    @Source("view/Documentation.html")
+    public HtmlResource documentation();
+    
+    @Source("view/Downloads.html")
+    public HtmlResource downloads();
+    
+    @Source("view/Examples.html")
+    public HtmlResource examples();
+
+    @Source("view/Footer.html")
+    public HtmlResource footer();
+
+    @Source("view/Jumbotron.html")
+    public HtmlResource jumbotron();
+    
+    @Source("view/Navbar.html")
+    public HtmlResource navbar();
+    
+    @Source("view/Tutorial.html")
+    public HtmlResource tutorial();
+    
 }
