@@ -2,4 +2,10 @@
 <module>
   <inherits name="com.google.gwt.user.User" />
   <source path="client" />
+
+  <replace-with class="com.asayama.gwt.util.client.SuperDevModeIndicatorInSuperDevMode">
+    <when-type-is class="com.asayama.gwt.util.client.SuperDevModeIndicator" />
+    <when-property-is name="superdevmode" value="on" />
+  </replace-with>
+
 </module>
