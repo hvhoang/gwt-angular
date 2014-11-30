@@ -5,7 +5,10 @@ import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.angular.tutorial.client.SampleController;
 import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.resources.client.ClientBundle;
 
 
 public class Tutorial extends AbstractModule implements EntryPoint {
@@ -26,4 +29,21 @@ public class Tutorial extends AbstractModule implements EntryPoint {
         pages.add(Page.create("GWT Module XML", TutorialResources.INSTANCE.gwtModuleXML()));
        return pages;
     }
+}
+
+interface TutorialResources extends ClientBundle {
+
+    public static final TutorialResources INSTANCE = GWT.create(TutorialResources.class);
+
+    @Source("view/Introduction.html")
+    public HtmlResource introduction();
+
+    @Source("view/ProjectStructure.html")
+    public HtmlResource projectStructure();
+
+    @Source("view/ProjectObjectModel.html")
+    public HtmlResource projectObjectModel();
+
+    @Source("view/GwtModuleXml.html")
+    public HtmlResource gwtModuleXML();
 }
