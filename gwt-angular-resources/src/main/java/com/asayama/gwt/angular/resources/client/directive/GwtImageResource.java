@@ -50,8 +50,10 @@ public class GwtImageResource extends AbstractDirective {
         }
         Image image = new Image(resource);
         Element target = image.asWidget().getElement();
-        String className= element.attr("class");
+        String className = element.attr("class");
         target.addClassName(className);
+        String style = element.attr("style");
+        target.setAttribute("style", style);
         element.replaceWith(target);
     }
 }
