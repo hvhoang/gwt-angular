@@ -215,7 +215,10 @@ public abstract class AbstractModule implements Module {
         }
         final JSClosure scopeBinder = ClientResourcesScopeBinderFactory.INSTANCE.create(resources);
         if (scopeBinder == null) {
-            String message = "Unable to create binder for " + name;
+            String message = "Unable to create binder for " + name + ". "
+            		+ "Are you using this resources class as a controller in "
+            		+ "your view? If not, you should extend ClientBundle "
+            		+ "instead.";
             GWT.log(message, new IllegalStateException(message));
             return this;
         }
