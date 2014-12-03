@@ -8,41 +8,53 @@
 <div data-ng-controller="DemoController">
   result: {{ result }}
 </div>
+
 <div data-ng-controller="SecondController">
   foo: {{ foo }}
 </div>
 
 <script>
-var sqlite = angular.module('angular-sqlite', []);
-sqlite.provider('database', [function DatabaseProvider() {
-  this.$get = [function databaseFactory() {
-    return new window.SQL.Database();
-  }];
-}]);
+angular.module('angular-sqlite', [])
+  .provider('database', [function DatabaseProvider() {
+    var queries = [];
+    this.sql = function (sqlstring) {
+      if (sqlstring) {
+        queries.push(sqlstring);
+      }
+      return this;
+    };
+    this.$get = [function databaseFactory() {
+      var database = new window.SQL.Database();
+      database.run(queries.join(';'));
+      return database;
+    }];
+  }]);
 
 var myApp = angular.module('myApp', ['angular-sqlite']);
+
+myApp.config(['databaseProvider', function (databaseProvider) {
+  databaseProvider
+    .sql("CREATE TABLE hello (a int, b char)")
+    .sql("INSERT INTO hello VALUES (0, 'hello')")
+    .sql("INSERT INTO hello VALUES (1, 'world')");
+}]);
+
 myApp.controller('DemoController',
-  ['$scope', 'database', function ($scope, database){
-  var sqlstr = "CREATE TABLE hello (a int, b char);";
-  sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
-  sqlstr += "INSERT INTO hello VALUES (1, 'world');"
-  database.run(sqlstr);
+  ['$scope', 'database', function ($scope, database) {
   var stmt = database.prepare("SELECT * FROM hello WHERE a=:aval AND b=:bval");
   var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
   console.log(result);
   stmt.free();
-  $scope['result'] = result;
+  $scope.result = result;
 }]);
 
 myApp.controller('SecondController',
   ['$scope', 'database', function ($scope, database) {
-  
   var stmt = database.prepare("SELECT * FROM hello WHERE a=:aval AND b=:bval");
   var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
   console.log(result);
   stmt.free();
-  $scope['foo'] = result;
-
+  $scope.foo = result;
 }]);
 </script>
 </body>
