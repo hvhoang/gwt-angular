@@ -29,6 +29,7 @@ public class NavbarController implements Controller {
     public static final String GITHUB_BLOB_URL = ProjectConstants.INSTANCE.githubBlobUrl();
     public static final String GITHUB_ISSUE_URL = ProjectConstants.INSTANCE.githubIssueUrl();
     public static final String GITHUB_TREE_URL = ProjectConstants.INSTANCE.githubTreeUrl();
+    public static final String SONATYPE_SEARCH_URL = ProjectConstants.INSTANCE.sonatypeSearchUrl();
     
     public static final String DEVELOP = NavbarConstants.INSTANCE.develop();
     public static final String DOCUMENTATION = NavbarConstants.INSTANCE.documentation();
