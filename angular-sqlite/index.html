@@ -6,7 +6,7 @@
 <body data-ng-app="myApp">
 
 <div data-ng-controller="DemoController">
-  clientId: {{ clientId }}
+  result: {{ result }}
 </div>
 <div data-ng-controller="SecondController">
   foo: {{ foo }}
@@ -14,14 +14,15 @@
 
 <script>
 var sqlite = angular.module('angular-sqlite', []);
-sqlite.factory('database', [function(sql) {
-  return new window.SQL.Database();
+sqlite.provider('database', [function DatabaseProvider() {
+  this.$get = [function databaseFactory() {
+    return new window.SQL.Database();
+  }];
 }]);
 
 var myApp = angular.module('myApp', ['angular-sqlite']);
-myApp.value('clientId', 'a12345654321x');
 myApp.controller('DemoController',
-  ['clientId', '$scope', 'database', function (clientId, $scope, database){
+  ['$scope', 'database', function ($scope, database){
   var sqlstr = "CREATE TABLE hello (a int, b char);";
   sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
   sqlstr += "INSERT INTO hello VALUES (1, 'world');"
@@ -30,7 +31,7 @@ myApp.controller('DemoController',
   var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
   console.log(result);
   stmt.free();
-  $scope['clientId'] = result;
+  $scope['result'] = result;
 }]);
 
 myApp.controller('SecondController',
