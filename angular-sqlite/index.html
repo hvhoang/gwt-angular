@@ -1,0 +1,22 @@
+<html>
+<head>
+<script src="node_modules/sql.js/js/sql.js"></script>
+</head>
+<body>
+<script>
+  //var sql = require('sql.js');
+  var sql = window.SQL;
+  var db = new sql.Database();
+  sqlstr = "CREATE TABLE hello (a int, b char);";
+  sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
+  sqlstr += "INSERT INTO hello VALUES (1, 'world');"
+  db.run(sqlstr);
+  var stmt = db.prepare("SELECT * FROM hello WHERE a=:aval AND b=:bval");
+  var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
+  console.log(result);
+  stmt.free();
+  var binaryArray = db.export();
+  //console.log(binaryArray);
+</script>
+</body>
+</html>
