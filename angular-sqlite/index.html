@@ -1,19 +1,48 @@
 <html>
 <head>
 <script src="node_modules/sql.js/js/sql.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
 </head>
-<body>
+<body data-ng-app="myApp">
+
+<div data-ng-controller="DemoController">
+  clientId: {{ clientId }}
+</div>
+<div data-ng-controller="SecondController">
+  foo: {{ foo }}
+</div>
+
 <script>
-var sql = window.SQL;
-var db = new sql.Database();
-sqlstr = "CREATE TABLE hello (a int, b char);";
-sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
-sqlstr += "INSERT INTO hello VALUES (1, 'world');"
-db.run(sqlstr);
-var stmt = db.prepare("SELECT * FROM hello WHERE a=:aval AND b=:bval");
-var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
-console.log(result);
-stmt.free();
+var sqlite = angular.module('angular-sqlite', []);
+sqlite.factory('database', [function(sql) {
+  return new window.SQL.Database();
+}]);
+
+var myApp = angular.module('myApp', ['angular-sqlite']);
+myApp.value('clientId', 'a12345654321x');
+myApp.controller('DemoController',
+  ['clientId', '$scope', 'database', function (clientId, $scope, database){
+  var sqlstr = "CREATE TABLE hello (a int, b char);";
+  sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
+  sqlstr += "INSERT INTO hello VALUES (1, 'world');"
+  database.run(sqlstr);
+  var stmt = database.prepare("SELECT * FROM hello WHERE a=:aval AND b=:bval");
+  var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
+  console.log(result);
+  stmt.free();
+  $scope['clientId'] = result;
+}]);
+
+myApp.controller('SecondController',
+  ['$scope', 'database', function ($scope, database) {
+  
+  var stmt = database.prepare("SELECT * FROM hello WHERE a=:aval AND b=:bval");
+  var result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
+  console.log(result);
+  stmt.free();
+  $scope['foo'] = result;
+
+}]);
 </script>
 </body>
 </html>
