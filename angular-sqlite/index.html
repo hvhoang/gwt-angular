@@ -15,7 +15,8 @@
 
 <script>
 angular.module('angular-sqlite', [])
-  .provider('database', [function DatabaseProvider() {
+  .constant('sqlite', window.SQL)
+  .provider('database', ['sqlite', function DatabaseProvider(sqlite) {
     var queries = [];
     this.sql = function (sqlstring) {
       if (sqlstring) {
@@ -24,7 +25,7 @@ angular.module('angular-sqlite', [])
       return this;
     };
     this.$get = [function databaseFactory() {
-      var database = new window.SQL.Database();
+      var database = new sqlite.Database();
       database.run(queries.join(';'));
       return database;
     }];
