@@ -32,6 +32,6 @@ interface JumbotronResources extends ClientBundle {
     
     static JumbotronResources INSTANCE = GWT.create(JumbotronResources.class);
 
-    @Source("view/logo-large.png")
+    @Source("logo-large.png")
     ImageResource logo();
 }

@@ -19,6 +19,6 @@ interface DocumentationResources extends ClientBundle {
     
     static DocumentationResources INSTANCE = GWT.create(DocumentationResources.class);
 
-    @Source("view/mvc.png")
+    @Source("mvc.png")
     ImageResource mvc();
 }

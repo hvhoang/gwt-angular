@@ -19,6 +19,6 @@ interface ProjectStructureControllerResources extends ClientBundle {
 
     static ProjectStructureControllerResources INSTANCE = GWT.create(ProjectStructureControllerResources.class);
     
-    @Source("view/ProjectStructure.png")
+    @Source("ProjectStructure.png")
     public ImageResource projectStructureImage();
 }

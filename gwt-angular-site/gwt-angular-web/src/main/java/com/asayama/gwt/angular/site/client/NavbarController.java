@@ -105,28 +105,28 @@ interface NavbarResources extends ClientBundle {
     
     public static final NavbarResources INSTANCE = GWT.create(NavbarResources.class);
 
-    @Source("view/logo-small.png")
+    @Source("logo-small.png")
     public ImageResource logo();
     
-    @Source("view/Documentation.html")
+    @Source("Documentation.html")
     public HtmlResource documentation();
     
-    @Source("view/Downloads.html")
+    @Source("Downloads.html")
     public HtmlResource downloads();
     
-    @Source("view/Examples.html")
+    @Source("Examples.html")
     public HtmlResource examples();
 
-    @Source("view/Footer.html")
+    @Source("Footer.html")
     public HtmlResource footer();
 
-    @Source("view/Jumbotron.html")
+    @Source("Jumbotron.html")
     public HtmlResource jumbotron();
     
-    @Source("view/Navbar.html")
+    @Source("Navbar.html")
     public HtmlResource navbar();
     
-    @Source("view/Tutorial.html")
+    @Source("Tutorial.html")
     public HtmlResource tutorial();
     
 }
