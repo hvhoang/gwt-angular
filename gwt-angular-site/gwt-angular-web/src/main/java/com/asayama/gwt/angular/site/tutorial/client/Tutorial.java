@@ -35,15 +35,15 @@ interface TutorialResources extends ClientBundle {
 
     public static final TutorialResources INSTANCE = GWT.create(TutorialResources.class);
 
-    @Source("view/Introduction.html")
+    @Source("Introduction.html")
     public HtmlResource introduction();
 
-    @Source("view/ProjectStructure.html")
+    @Source("ProjectStructure.html")
     public HtmlResource projectStructure();
 
-    @Source("view/ProjectObjectModel.html")
+    @Source("ProjectObjectModel.html")
     public HtmlResource projectObjectModel();
 
-    @Source("view/GwtModuleXml.html")
+    @Source("GwtModuleXml.html")
     public HtmlResource gwtModuleXML();
 }
