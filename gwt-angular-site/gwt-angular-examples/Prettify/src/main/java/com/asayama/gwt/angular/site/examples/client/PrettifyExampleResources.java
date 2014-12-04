@@ -12,10 +12,10 @@ public interface PrettifyExampleResources extends ClientResources {
 
     static final String DEMO_URL = PrettifyExampleResources.INSTANCE.demo().getSafeUri().asString();
     
-   @Source("view/PrettifyExampleDocumentation.html")
+   @Source("PrettifyExampleDocumentation.html")
     HtmlResource prettify();
 
-    @Source("view/PrettifyExample.html")
+    @Source("PrettifyExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -29,6 +29,6 @@ public interface PrettifyExampleResources extends ClientResources {
     @Source("PrettifyExampleController.java")
     TextResource controller();
     
-    @Source("view/PrettifyExample.html")
+    @Source("PrettifyExample.html")
     TextResource view();
 }

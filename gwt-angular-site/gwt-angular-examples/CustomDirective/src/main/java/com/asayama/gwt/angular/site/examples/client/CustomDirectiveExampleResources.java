@@ -12,10 +12,10 @@ public interface CustomDirectiveExampleResources extends ClientResources {
 
     static final String DEMO_URL = CustomDirectiveExampleResources.INSTANCE.demo().getSafeUri().asString();
 
-    @Source("view/CustomDirectiveExampleDocumentation.html")
+    @Source("CustomDirectiveExampleDocumentation.html")
     HtmlResource customDirective();
 
-    @Source("view/CustomDirectiveExample.html")
+    @Source("CustomDirectiveExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -29,7 +29,7 @@ public interface CustomDirectiveExampleResources extends ClientResources {
     @Source("CustomDirectiveExampleController.java")
     TextResource controller();
     
-    @Source("view/CustomDirectiveExample.html")
+    @Source("CustomDirectiveExample.html")
     TextResource view();
     
     // Other Resources

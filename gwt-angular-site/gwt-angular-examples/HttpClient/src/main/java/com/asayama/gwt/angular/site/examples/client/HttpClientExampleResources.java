@@ -12,10 +12,10 @@ public interface HttpClientExampleResources extends ClientResources {
 
     static final String DEMO_URL = HttpClientExampleResources.INSTANCE.demo().getSafeUri().asString();
 
-    @Source("view/HttpClientExampleDocumentation.html")
+    @Source("HttpClientExampleDocumentation.html")
     HtmlResource httpClient();
 
-    @Source("view/HttpClientExample.html")
+    @Source("HttpClientExample.html")
     HtmlResource demo();
     
     // Core Resources
@@ -29,6 +29,6 @@ public interface HttpClientExampleResources extends ClientResources {
     @Source("HttpClientExampleController.java")
     TextResource controller();
 
-    @Source("view/HttpClientExample.html")
+    @Source("HttpClientExample.html")
     TextResource view();
 }

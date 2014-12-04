@@ -8,16 +8,16 @@ public interface ImageResources extends ClientBundle {
     
     static ImageResources INSTANCE = GWT.create(ImageResources.class);
     
-    @Source("view/street.jpg")
+    @Source("street.jpg")
     ImageResource street();
     
-    @Source("view/wtc.jpg")
+    @Source("wtc.jpg")
     ImageResource wtc();
     
-    @Source("view/boat.jpg")
+    @Source("boat.jpg")
     ImageResource boat();
     
-    @Source("view/people.jpg")
+    @Source("people.jpg")
     ImageResource people();
 }
 
