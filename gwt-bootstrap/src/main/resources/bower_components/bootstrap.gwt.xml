@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
   <public path="bootstrap/dist" />
+  <source path="bootstrap/dist" />
   <stylesheet src="css/bootstrap.min.css" />
 </module>
