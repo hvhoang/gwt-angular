@@ -1,15 +1,22 @@
 package com.asayama.gwt.angular.client.sce;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
+import com.asayama.gwt.angular.client.Service;
 
-public class SceProvider implements Provider {
+public class SceProvider implements Provider<Service> {
 
     private NGSceProvider ngo;
 
     public boolean enabled(boolean isEnabled) {
     	return ngo.enabled(isEnabled);
+    }
+    
+    @Override
+    public Factory<Service> getFactory() {
+    	return null;
     }
 }
 

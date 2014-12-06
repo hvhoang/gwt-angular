@@ -16,10 +16,10 @@ public interface ImageResourceExampleResources extends ClientResources {
     static final String BOAT_URL = ImageResources.INSTANCE.boat().getSafeUri().asString();
     static final String PEOPLE_URL = ImageResources.INSTANCE.people().getSafeUri().asString();
 
-    @Source("view/ImageResourceExampleDocumentation.html")
+    @Source("ImageResourceExampleDocumentation.html")
     HtmlResource imageResource();
 
-    @Source("view/ImageResourceExample.html")
+    @Source("ImageResourceExample.html")
     HtmlResource demo();
 
     // Core Resources
@@ -36,6 +36,6 @@ public interface ImageResourceExampleResources extends ClientResources {
     @Source("ImageResources.java")
     TextResource resources();
     
-    @Source("view/ImageResourceExample.html")
+    @Source("ImageResourceExample.html")
     TextResource view();
 }

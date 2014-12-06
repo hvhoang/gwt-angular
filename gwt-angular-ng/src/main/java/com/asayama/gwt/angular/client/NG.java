@@ -17,9 +17,9 @@ public class NG extends AbstractModule implements EntryPoint {
         try {
             NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
             Angular.moduleWithDependency(this, "ng");
-            factory(Q.class);
-            factory(Location.class);
-            factory(Log.class);
+            service(Q.class);
+            service(Location.class);
+            service(Log.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

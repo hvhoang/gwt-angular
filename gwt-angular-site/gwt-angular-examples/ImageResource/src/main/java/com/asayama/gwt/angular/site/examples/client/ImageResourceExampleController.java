@@ -9,6 +9,7 @@ public class ImageResourceExampleController implements Controller {
     public static final ImageResource WTC = ImageResources.INSTANCE.wtc();
     public static final ImageResource BOAT = ImageResources.INSTANCE.boat();
     public static final ImageResource PEOPLE = ImageResources.INSTANCE.people();
+    public static final String NOW = String.valueOf(System.currentTimeMillis());
     
     @Override
     public void onControllerLoad() {

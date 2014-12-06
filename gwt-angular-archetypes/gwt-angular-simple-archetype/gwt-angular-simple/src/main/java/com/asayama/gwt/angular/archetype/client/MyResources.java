@@ -9,6 +9,6 @@ public interface MyResources extends ClientBundle {
 
     static final MyResources INSTANCE = GWT.create(MyResources.class);
     
-    @Source("view/MyView.html")
+    @Source("MyView.html")
     HtmlResource MyView();
 }

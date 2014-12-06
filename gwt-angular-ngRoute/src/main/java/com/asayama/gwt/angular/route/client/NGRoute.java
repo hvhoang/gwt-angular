@@ -16,7 +16,7 @@ public class NGRoute extends AbstractModule implements EntryPoint {
         try {
             NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
             Angular.moduleWithDependency(this, "ngRoute");
-            factory(RouteParams.class);
+            service(RouteParams.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }

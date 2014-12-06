@@ -4,17 +4,19 @@ import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
+import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
+import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-	public static final ImageResource LOGO = SiteResources.INSTANCE.logo();
+	public static final ImageResource LOGO = NavbarResources.INSTANCE.logo();
 	
-    public static final String NAVBAR_HTML = SiteResources.INSTANCE.navbar().getSafeUri().asString();
-    public static final String FOOTER_HTML = SiteResources.INSTANCE.footer().getSafeUri().asString();
+    public static final String NAVBAR_HTML = NavbarResources.INSTANCE.navbar().getSafeUri().asString();
+    public static final String FOOTER_HTML = NavbarResources.INSTANCE.footer().getSafeUri().asString();
 
     public static final String PROJECT_GROUP_ID = ProjectConstants.INSTANCE.projectGroupId();
     public static final String PROJECT_ARTIFACT_ID = ProjectConstants.INSTANCE.projectArtifactId();
@@ -27,6 +29,7 @@ public class NavbarController implements Controller {
     public static final String GITHUB_BLOB_URL = ProjectConstants.INSTANCE.githubBlobUrl();
     public static final String GITHUB_ISSUE_URL = ProjectConstants.INSTANCE.githubIssueUrl();
     public static final String GITHUB_TREE_URL = ProjectConstants.INSTANCE.githubTreeUrl();
+    public static final String SONATYPE_SEARCH_URL = ProjectConstants.INSTANCE.sonatypeSearchUrl();
     
     public static final String DEVELOP = NavbarConstants.INSTANCE.develop();
     public static final String DOCUMENTATION = NavbarConstants.INSTANCE.documentation();
@@ -96,4 +99,34 @@ interface NavbarConstants extends Constants {
 
     @DefaultStringValue("Tutorial")
     String tutorial();
+}
+
+interface NavbarResources extends ClientBundle {
+    
+    public static final NavbarResources INSTANCE = GWT.create(NavbarResources.class);
+
+    @Source("logo-small.png")
+    public ImageResource logo();
+    
+    @Source("Documentation.html")
+    public HtmlResource documentation();
+    
+    @Source("Downloads.html")
+    public HtmlResource downloads();
+    
+    @Source("Examples.html")
+    public HtmlResource examples();
+
+    @Source("Footer.html")
+    public HtmlResource footer();
+
+    @Source("Jumbotron.html")
+    public HtmlResource jumbotron();
+    
+    @Source("Navbar.html")
+    public HtmlResource navbar();
+    
+    @Source("Tutorial.html")
+    public HtmlResource tutorial();
+    
 }

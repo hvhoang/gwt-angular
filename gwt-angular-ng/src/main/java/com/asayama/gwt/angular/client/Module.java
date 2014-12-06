@@ -163,24 +163,49 @@ public interface Module extends EntryPoint {
     <D extends Directive> Module directive(Class<D> klass);
     
     /**
-     * Configures a previously created service object. Use the {@link Configurator}
-     * to configure the provider injected into the module.
+     * Registers a service object with the module. This method should be used
+     * when the instance of the service already exists, so there is no benefit
+     * to deferring the instantiation of the object.
+     */
+    <S extends Service> Module service(S service);
+    
+    /**
+     * Registers a service class with the module, so that the service object is
+     * created if/when it is requested. This method is equivalent to
+     * <pre>
+     * factory(new DefaultFactory(com.example.MyService.class));
+     * </pre>
+     */
+    <S extends Service> Module service(Class<S> klass);
+
+    /**
+     * Deprecated since 0.0.68
+     * 
+     * @deprecated Replaced by {@link #service(Class)}
+     */
+    @Deprecated
+    <S extends Service> Module factory(Class<S> klass);
+
+    /**
+	 * Registers a service object factory with the module, so that the service
+	 * object is created if/when it is requested. The method is useful if the
+	 * service creation needs customization/configuration, e.g. the creation of
+	 * the service depends on other resources. If you merely wish to create an
+	 * object via <code>new</code> or <code>GWT.create()</code>, then there is
+	 * a convenience method {@link Module#service(Class) }.
+     */
+    <S extends Service> Module factory(Factory<S> factory);
+    
+    /**
+     * Configures a provider prior to obtaining the factory from it. 
+     * Use the {@link Configurator}  to configure the provider injected into 
+     * the module.
      * 
      * @param klass Provider to be configured.
      * @param configurator Configures the provider.
      */
-    <P extends Provider> Module config(Class<P> klass, Configurator<P> configurator);
-    
-    /**
-     * Registers a service component with the module. The name of the component
-     * is derived from the class name, e.g.
-     * <pre>
-     * // Derived name is "com.example.MyService".
-     * factory(com.example.MyService.class);
-     * </pre>
-     */
-    <S extends Service> Module factory(Class<S> klass);
-    
+    <P extends Provider<?>> Module config(Class<P> klass, Configurator<P> configurator);
+
     /**
      * Registers a controller component with the module. The name of the 
      * component is derived from the class name, e.g.

@@ -17,4 +17,6 @@ public interface ProjectConstants extends Constants {
     public String githubBlobUrl();
     public String githubIssueUrl();
     public String githubTreeUrl();
+    
+    public String sonatypeSearchUrl();
 }

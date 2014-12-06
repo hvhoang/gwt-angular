@@ -13,7 +13,7 @@ public class HTTP extends AbstractModule implements EntryPoint {
         String m = "initializing " + getClass().getName();
         try {
             Angular.module(this);
-            factory(HttpClient.class);
+            service(HttpClient.class);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
