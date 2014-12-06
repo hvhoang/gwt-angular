@@ -51,13 +51,13 @@ public abstract class AbstractModule implements Module {
         return filter(filter);
     }
     
-    protected Module filter(Filter filter) {
+    Module filter(Filter filter) {
         String className = Strings.simpleClassName(filter);
         filter(className, filter);
         return filter(Strings.decapitalize(className), filter);
     }
     
-    protected Module filter(String name, Filter filter) {
+    Module filter(String name, Filter filter) {
         String[] dependencies = FilterDependenciesFactory.INSTANCE.create(filter);
         JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
         jso.filter(name, JSArray.create(dependencies),
@@ -71,12 +71,12 @@ public abstract class AbstractModule implements Module {
         return directive(directive);
     }
     
-    protected Module directive(Directive directive) {
+    Module directive(Directive directive) {
         String className = Strings.simpleClassName(directive);
         return directive(Strings.decapitalize(className), directive);
     }
     
-    protected Module directive(String name, final Directive directive) {
+    Module directive(String name, final Directive directive) {
         if (directive == null) {
             return null;
         }
@@ -89,7 +89,13 @@ public abstract class AbstractModule implements Module {
     }
 
     @Override
-    public <S extends Service> Module factory(Class<S> klass) {
+	public <S extends Service> Module service(S service) {
+		// TODO Auto-generated method stub
+    	throw new UnsupportedOperationException("This method is not yet implemented");
+	}
+
+	@Override
+    public <S extends Service> Module service(Class<S> klass) {
         return factory(new DefaultFactory<S>(klass));
     }
     
@@ -114,7 +120,7 @@ public abstract class AbstractModule implements Module {
         jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
-    
+
     @Override
     public <P extends Provider<?>> Module config(final Class<P> klass, final Configurator<P> configurator) {
         // TODO Review the sequence of events. Configuration should be able to
@@ -134,7 +140,7 @@ public abstract class AbstractModule implements Module {
         jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
-
+    
     @Override
     public <C extends Controller> Module controller(Class<C> klass) {
         // TODO Defer instantiation until the time of construction
@@ -211,7 +217,9 @@ public abstract class AbstractModule implements Module {
         return resources(name, resources);
     }
     
-    public Module resources(final String name, final ClientResources resources) {
+    Module resources(final String name, final ClientResources resources) {
+    	GWT.log("WARNING: You are using an experimental feature of GWT Angular, Module.resources(). "
+    			+ "This method might be removed from fugure versions without notice.");
         if (resources == null) {
             String message = "Unable to create " + name;
             GWT.log(message, new IllegalStateException(message));
@@ -247,6 +255,7 @@ public abstract class AbstractModule implements Module {
         jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
         return this;
     }
+
 }
 
 class JSModule extends JSObject {
