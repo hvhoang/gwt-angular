@@ -16,8 +16,8 @@ public class Injector implements Service {
 
     NGInjector ngo;
     
-    public <S extends Service> S get(String name) {
-        return ngo.get(name);
+    public <S extends Service> S get(Class<S> klass) {
+        return ngo.getService(klass.getName());
     }
     
     public boolean has(String name) {
@@ -43,7 +43,7 @@ class NGInjector extends NGObject {
     protected NGInjector() {
     }
 
-    final native <S extends Service> S get(String name) /*-{
+    final native <S extends Service> S getService(String name) /*-{
         return this.get(name);
     }-*/;
     
