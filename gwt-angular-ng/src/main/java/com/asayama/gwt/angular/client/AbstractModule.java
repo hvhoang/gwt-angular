@@ -98,7 +98,16 @@ public abstract class AbstractModule implements Module {
     public <S extends Service> Module service(Class<S> klass) {
         return factory(new DefaultFactory<S>(klass));
     }
-    
+
+	/**
+	 * Deprecated since 0.0.68
+	 */
+	@Deprecated
+	@Override
+    public <S extends Service> Module factory(Class<S> klass) {
+        return factory(new DefaultFactory<S>(klass));
+    }
+
     @Override
     public <S extends Service> Module factory(final Factory<S> factory) {
         // TODO Defer instantiation until the time of construction

@@ -177,7 +177,15 @@ public interface Module extends EntryPoint {
      * </pre>
      */
     <S extends Service> Module service(Class<S> klass);
-    
+
+    /**
+     * Deprecated since 0.0.68
+     * 
+     * @deprecated Replaced by {@link #service(Class)}
+     */
+    @Deprecated
+    <S extends Service> Module factory(Class<S> klass);
+
     /**
 	 * Registers a service object factory with the module, so that the service
 	 * object is created if/when it is requested. The method is useful if the
