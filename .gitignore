@@ -8,3 +8,4 @@ target
 *.releaseBackup
 release.properties
 pom.xml.versionsBackup
+*.swp
