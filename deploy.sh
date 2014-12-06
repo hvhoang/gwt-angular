@@ -1,10 +1,8 @@
 #!/bin/sh
 
-version=0.0.68
+version=0.0.69-SNAPSHOT
 
-#jar xvf ~/GitHub/gwt-angular/gwt-angular-site/gwt-angular-web/target/gwt-angular.war sitemap.xml
-
-jar xvf ~/GitHub/gwt-angular/gwt-angular-site/gwt-angular-web/target/gwt-angular.war site/
+jar xvf ~/GitHub/gwt-angular/gwt-angular-site/gwt-angular-web/target/gwt-angular-web-${version}.war site/
 
 rm -fr ${version}
 
