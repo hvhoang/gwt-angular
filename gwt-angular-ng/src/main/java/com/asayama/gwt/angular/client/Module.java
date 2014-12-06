@@ -172,14 +172,22 @@ public interface Module extends EntryPoint {
     <P extends Provider> Module config(Class<P> klass, Configurator<P> configurator);
     
     /**
-     * Registers a service component with the module. The name of the component
-     * is derived from the class name, e.g.
+     * Convenience method that is equivalent to
      * <pre>
-     * // Derived name is "com.example.MyService".
-     * factory(com.example.MyService.class);
+     * factory(new DefaultFactory(com.example.MyService.class));
      * </pre>
      */
     <S extends Service> Module factory(Class<S> klass);
+    
+    /**
+     * Registers a service factory component with the module. The name of the 
+     * resulting service is derived from the class name, e.g.
+     * <pre>
+     * // Derived name is "com.example.MyService".
+     * factory(new DefaultFactory(com.example.MyService.class));
+     * </pre>
+     */
+    <S extends Service> Module factory(Factory<S> factory);
     
     /**
      * Registers a controller component with the module. The name of the 

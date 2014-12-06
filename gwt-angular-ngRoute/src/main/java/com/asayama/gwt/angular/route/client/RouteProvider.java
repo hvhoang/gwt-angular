@@ -2,6 +2,7 @@ package com.asayama.gwt.angular.route.client;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.jsni.client.JSON;
@@ -12,6 +13,12 @@ public class RouteProvider implements Provider {
 
     private NGRouteProvider ngo;
 
+    @Override
+    public Factory getFactory() {
+    	// TODO Auto-generated method stub
+    	return null;
+    }
+    
     public <C extends Controller> RouteProvider when(HtmlResource partial) {
         String route = "/" + partial.getName();
         return when(route, partial);

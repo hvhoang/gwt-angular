@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client.sce;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
 
@@ -10,6 +11,11 @@ public class SceProvider implements Provider {
 
     public boolean enabled(boolean isEnabled) {
     	return ngo.enabled(isEnabled);
+    }
+    
+    @Override
+    public Factory getFactory() {
+    	return null;
     }
 }
 

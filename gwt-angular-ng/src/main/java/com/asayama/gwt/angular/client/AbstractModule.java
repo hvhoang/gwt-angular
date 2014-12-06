@@ -90,18 +90,20 @@ public abstract class AbstractModule implements Module {
 
     @Override
     public <S extends Service> Module factory(Class<S> klass) {
-        // TODO Defer instantiation until the time of construction
-        // https://github.com/kyoken74/gwt-angular/issues/41
-        S service = ServiceCreator.INSTANCE.create(klass);
-        return factory(klass.getName(), service);
+        return factory(new DefaultFactory<S>(klass));
     }
     
-    protected Module factory(String name, final Service service) {
-        final JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
+    @Override
+    public <S extends Service> Module factory(final Factory<S> factory) {
+        // TODO Defer instantiation until the time of construction
+        // https://github.com/kyoken74/gwt-angular/issues/41
+        final Service service = factory.create();
+        String name = factory.getName();
         Function<Service> initializer = new Function<Service>() {
 
             @Override
             public Service call(Object... args) {
+            	JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
                 binder.apply(args);
                 return service;
             }

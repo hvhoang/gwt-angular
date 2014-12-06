@@ -7,5 +7,7 @@ package com.asayama.gwt.angular.client;
  * @author kyoken74
  * @see Provide
  */
-public interface Provider extends Injectable {
+public interface Provider<S extends Service> extends Injectable {
+
+	Factory<S> getFactory();
 }
