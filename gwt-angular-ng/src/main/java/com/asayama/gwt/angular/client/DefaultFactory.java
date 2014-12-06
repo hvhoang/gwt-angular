@@ -19,6 +19,11 @@ public class DefaultFactory<S extends Service> implements Factory<S> {
 	}
 	
 	@Override
+	public Class<S> getServiceClass() {
+		return klass;
+	}
+	
+	@Override
 	public String getName() {
 		return name;
 	}
