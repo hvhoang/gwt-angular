@@ -5,16 +5,17 @@ import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
+import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class RouteProvider implements Provider {
+public class RouteProvider implements Provider<Service> {
 
     private NGRouteProvider ngo;
 
     @Override
-    public Factory getFactory() {
+    public Factory<Service> getFactory() {
     	// TODO Auto-generated method stub
     	return null;
     }

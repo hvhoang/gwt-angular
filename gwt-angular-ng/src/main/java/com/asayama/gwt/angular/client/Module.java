@@ -169,7 +169,7 @@ public interface Module extends EntryPoint {
      * @param klass Provider to be configured.
      * @param configurator Configures the provider.
      */
-    <P extends Provider> Module config(Class<P> klass, Configurator<P> configurator);
+    <P extends Provider<?>> Module config(Class<P> klass, Configurator<P> configurator);
     
     /**
      * Convenience method that is equivalent to

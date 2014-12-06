@@ -4,8 +4,9 @@ import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
+import com.asayama.gwt.angular.client.Service;
 
-public class SceProvider implements Provider {
+public class SceProvider implements Provider<Service> {
 
     private NGSceProvider ngo;
 
@@ -14,7 +15,7 @@ public class SceProvider implements Provider {
     }
     
     @Override
-    public Factory getFactory() {
+    public Factory<Service> getFactory() {
     	return null;
     }
 }

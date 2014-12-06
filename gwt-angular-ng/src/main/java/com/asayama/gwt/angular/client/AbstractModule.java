@@ -97,6 +97,8 @@ public abstract class AbstractModule implements Module {
     public <S extends Service> Module factory(final Factory<S> factory) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
+    	// Need to inject dependency into the factory before invoking the
+    	// creation method.
         final Service service = factory.create();
         String name = factory.getName();
         Function<Service> initializer = new Function<Service>() {
@@ -114,9 +116,9 @@ public abstract class AbstractModule implements Module {
     }
     
     @Override
-    public <P extends Provider> Module config(final Class<P> klass, final Configurator<P> configurator) {
-        // TODO Defer instantiation until the time of construction
-        // https://github.com/kyoken74/gwt-angular/issues/41
+    public <P extends Provider<?>> Module config(final Class<P> klass, final Configurator<P> configurator) {
+        // TODO Review the sequence of events. Configuration should be able to
+    	// alter the behavior of the factory function that is returned.
         final P provider = ProviderCreator.INSTANCE.create(klass);
         final JSClosure binder = ProviderBinderFactory.INSTANCE.create(provider);
         Function<P> initializer = new Function<P>() {
