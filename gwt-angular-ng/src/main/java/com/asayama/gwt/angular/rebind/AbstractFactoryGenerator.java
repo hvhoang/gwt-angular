@@ -33,7 +33,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
         JClassType classType = getClassType(context, qualifiedClassName);
         String packageName = classType.getPackage().getName();
         String className = classType.getSimpleSourceName();
-        JClassType supportedRootClassType = getSupportedRootClassType(classType);
+        JClassType supportedRootClassType = getSupportedRootClassType(context, classType);
         List<JClassType> supportedClassTypes = getSupportedClassTypes(supportedRootClassType);
 
         VelocityGenerator velocity = new VelocityGenerator(getFilename());
@@ -76,7 +76,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
         return generate(logger, context, velocity, packageName, className);
     }
 
-    protected JClassType getSupportedRootClassType(JClassType classType) {
+    protected JClassType getSupportedRootClassType(GeneratorContext context, JClassType classType) {
         
         final String METHOD = "getSupportedRootClassType(JClassType)";
         

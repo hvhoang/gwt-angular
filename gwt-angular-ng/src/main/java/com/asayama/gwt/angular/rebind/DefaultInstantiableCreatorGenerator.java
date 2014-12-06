@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.asayama.gwt.rebind.exceptions.RebindException;
+import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JType;
@@ -19,7 +20,7 @@ public class DefaultInstantiableCreatorGenerator extends AbstractFactoryGenerato
 	}
 
 	@Override
-    protected JClassType getSupportedRootClassType(JClassType classType) {
+    protected JClassType getSupportedRootClassType(GeneratorContext context, JClassType classType) {
         
         final String METHOD = "getSupportedRootClassType(JClassType)";
         
