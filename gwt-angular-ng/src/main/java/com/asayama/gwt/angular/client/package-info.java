@@ -52,7 +52,7 @@ interface ProviderCreator extends Creator<Provider> {
 }
 
 interface ServiceCreator extends Creator<Service> {
-    //static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
+    static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
     @Override
     <X extends Service> X create(Class<X> klass);
 }
