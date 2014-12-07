@@ -84,45 +84,33 @@ interface ClientResourcesCreator extends Creator<ClientResources> {
  * @see DependenciesFactoryGenerator
  * @param <T>
  */
-interface DependenciesFactory<T> {
-	@Deprecated
-    String[] create(T object);
-	String[] create(Class<T> klass);
+interface DependenciesFactory {
+	String[] create(Class<?> klass);
 }
 
 @SupportedRootClass(Provider.class)
-interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
+interface ProviderDependenciesFactory extends DependenciesFactory {
     static ProviderDependenciesFactory INSTANCE = GWT.create(ProviderDependenciesFactory.class);
-    @Override
-    public String[] create(Provider object);
 }
 
 @SupportedRootClass(Service.class)
-interface ServiceDependenciesFactory extends DependenciesFactory<Service> {
+interface ServiceDependenciesFactory extends DependenciesFactory {
     static ServiceDependenciesFactory INSTANCE = GWT.create(ServiceDependenciesFactory.class);
-    @Override
-    public String[] create(Service object);
 }
 
 @SupportedRootClass(Controller.class)
-interface ControllerDependenciesFactory extends DependenciesFactory<Controller> {
+interface ControllerDependenciesFactory extends DependenciesFactory {
     static ControllerDependenciesFactory INSTANCE = GWT.create(ControllerDependenciesFactory.class);
-    @Override
-    public String[] create(Controller object);
 }
 
 @SupportedRootClass(Directive.class)
-interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
+interface DirectiveDependenciesFactory extends DependenciesFactory {
     static DirectiveDependenciesFactory INSTANCE = GWT.create(DirectiveDependenciesFactory.class);
-    @Override
-    public String[] create(Directive object);
 }
 
 @SupportedRootClass(Filter.class)
-interface FilterDependenciesFactory extends DependenciesFactory<Filter> {
+interface FilterDependenciesFactory extends DependenciesFactory {
     static FilterDependenciesFactory INSTANCE = GWT.create(FilterDependenciesFactory.class);
-    @Override
-    public String[] create(Filter object);
 }
 
 /**

@@ -47,18 +47,15 @@ public abstract class AbstractModule implements Module {
     
     @Override
     public <F extends Filter> Module filter(Class<F> klass) {
+        String className = Strings.simpleName(klass);
+        String name = Strings.decapitalize(className);
+        return filter(name, klass);
+    }
+    
+    <F extends Filter> Module filter(String name, Class<F> klass) {
+        String[] dependencies = FilterDependenciesFactory.INSTANCE.create(klass);
+        //TODO #88 defer instantiation of filter object?
         Filter filter = FilterCreator.INSTANCE.create(klass);
-        return filter(filter);
-    }
-    
-    Module filter(Filter filter) {
-        String className = Strings.simpleClassName(filter);
-        filter(className, filter);
-        return filter(Strings.decapitalize(className), filter);
-    }
-    
-    Module filter(String name, Filter filter) {
-        String[] dependencies = FilterDependenciesFactory.INSTANCE.create(filter);
         JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
         jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new FilterWrapper(binder, filter)));
@@ -67,21 +64,14 @@ public abstract class AbstractModule implements Module {
 
     @Override
     public <D extends Directive> Module directive(Class<D> klass) {
+        String className = Strings.simpleName(klass);
+        return directive(Strings.decapitalize(className), klass);
+    }
+    
+    <D extends Directive> Module directive(String name, Class<D> klass) {
+        String[] dependencies = DirectiveDependenciesFactory.INSTANCE.create(klass);
         Directive directive = DirectiveCreator.INSTANCE.create(klass);
-        return directive(directive);
-    }
-    
-    Module directive(Directive directive) {
-        String className = Strings.simpleClassName(directive);
-        return directive(Strings.decapitalize(className), directive);
-    }
-    
-    Module directive(String name, final Directive directive) {
-        if (directive == null) {
-            return null;
-        }
         directive.setName(name);
-        String[] dependencies = DirectiveDependenciesFactory.INSTANCE.create(directive);
         JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
         jso.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new DirectiveWrapper(binder, directive)));
@@ -125,7 +115,7 @@ public abstract class AbstractModule implements Module {
                 return service;
             }
         };
-        String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(service);
+        String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(factory.getServiceClass());
         jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
@@ -145,7 +135,7 @@ public abstract class AbstractModule implements Module {
                 return provider;
             }
         };
-        String[] dependencies = ProviderDependenciesFactory.INSTANCE.create(provider);
+        String[] dependencies = ProviderDependenciesFactory.INSTANCE.create(klass);
         jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
@@ -154,11 +144,11 @@ public abstract class AbstractModule implements Module {
     public <C extends Controller> Module controller(Class<C> klass) {
         // TODO Defer instantiation until the time of construction
         // https://github.com/kyoken74/gwt-angular/issues/41
-        Controller controller = ControllerCreator.INSTANCE.create(klass);
-        return controller(klass.getName(), controller);
+        return controller(klass.getName(), klass);
     }
 
-    protected Module controller(final String name, final Controller controller) {
+    <C extends Controller> Module controller(final String name, Class<C> klass) {
+        final Controller controller = ControllerCreator.INSTANCE.create(klass);
         if (controller == null) {
             String message = "Unable to create " + name;
             GWT.log(message, new IllegalStateException(message));
@@ -200,7 +190,7 @@ public abstract class AbstractModule implements Module {
         };
         String [] dependencies;
         {
-            String[] d = ControllerDependenciesFactory.INSTANCE.create(controller);
+            String[] d = ControllerDependenciesFactory.INSTANCE.create(klass);
             int len = d == null ? 0 : d.length;
             dependencies = new String[len + 1];
             dependencies[0] = "$scope";
