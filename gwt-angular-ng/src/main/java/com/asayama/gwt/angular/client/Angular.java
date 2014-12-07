@@ -22,6 +22,10 @@ public class Angular {
         String value();
     }
     
+    public @interface SupportedRootClass {
+    	Class<?> value();
+    }
+    
     static final Module[] MODULE_ARRAY = new Module[0];
     static List<Module> modules = new ArrayList<Module>();
     static Map<String, Module> index = new HashMap<String, Module>();
