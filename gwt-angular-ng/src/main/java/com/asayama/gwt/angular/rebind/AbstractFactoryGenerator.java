@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.rebind.util.ClassTypeFields;
@@ -81,16 +82,33 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
         final String METHOD = "getSupportedRootClassType(JClassType)";
         
         JClassType supportedRootClassType = null;
-        JMethod[] methods = classType.getInheritableMethods();
-        for (JMethod method : methods) {
-            JType[] parameterTypes = method.getParameterTypes();
-            if (parameterTypes == null || parameterTypes.length == 0) {
-                continue;
-            }
-            supportedRootClassType = parameterTypes[0].isClassOrInterface();
-            if (supportedRootClassType != null) {
-                break;
-            }
+        
+        SupportedRootClass a = classType.getAnnotation(SupportedRootClass.class);
+        Class<?> supportedRootClass = a == null ? null : a.value();
+        supportedRootClassType = supportedRootClass == null ?
+        		null : getClassType(context, supportedRootClass.getName());
+        
+        if (supportedRootClassType == null) {
+	        LOG.logp(Level.WARNING, CLASS, METHOD, classType.getName() + 
+	        		" does not provide SupportedRootClass annotation. Falling" +
+	        		" back to the legacy convention, which is deprecated as" +
+	        		" of 0.0.69. This feature may be remved in future without" +
+	        		" releases without further notice.");
+        	
+            //++ start of legacy code
+            // #88 the new annotation drive code to replace this section
+	        JMethod[] methods = classType.getInheritableMethods();
+	        for (JMethod method : methods) {
+	            JType[] parameterTypes = method.getParameterTypes();
+	            if (parameterTypes == null || parameterTypes.length == 0) {
+	                continue;
+	            }
+	            supportedRootClassType = parameterTypes[0].isClassOrInterface();
+	            if (supportedRootClassType != null) {
+	                break;
+	            }
+	        }
+	        //-- end of legacy code
         }
         
         if (supportedRootClassType == null) {
