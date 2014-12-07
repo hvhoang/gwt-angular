@@ -87,6 +87,7 @@ interface ClientResourcesCreator extends Creator<ClientResources> {
 interface DependenciesFactory<T> {
 	@Deprecated
     String[] create(T object);
+	String[] create(Class<T> klass);
 }
 
 @SupportedRootClass(Provider.class)
@@ -140,7 +141,6 @@ interface FilterDependenciesFactory extends DependenciesFactory<Filter> {
  * @param <T>
  */
 interface ScopeBinderFactory<T> {
-	@Deprecated
     JSClosure create(T object);
 }
 
@@ -197,7 +197,6 @@ interface ClientResourcesScopeBinderFactory extends ScopeBinderFactory<ClientRes
  * @param <T>
  */
 interface BinderFactory<T> {
-	@Deprecated
     JSClosure create(T object);
 }
 
