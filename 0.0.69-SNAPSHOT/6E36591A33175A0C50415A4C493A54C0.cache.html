@@ -22,24 +22,24 @@
         </a>
       </li>
       <li class="{{ getStyleNavlinkDownloads() }}">
-        <a href="#!/downloads">
+        <a href="#!/downloads" onclick="collapseNavbar()">
           <span class="glyphicon glyphicon-download"></span> {{ DOWNLOADS }}
         </a>
       </li>
       <li class="{{ getStyleNavlinkDocumentation() }}">
-        <a href="#!/documentation">
+        <a href="#!/documentation" onclick="collapseNavbar()">
           <span class="glyphicon glyphicon-book"></span> {{ DOCUMENTATION }}
         </a>
       </li>
-      <li class="{{ getStyleNavlinkTutorial() }}">
+      <li class="{{ getStyleNavlinkTutorial() }}" onclick="collapseNavbar()">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <span class="glyphicon glyphicon-file"></span> {{ TUTORIAL }} <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" onclick="collapseNavbar()">
           <li><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page={{ tutorialPage.name }}">{{ tutorialPage.title }}</a></li>
         </ul>
       </li>
-      <li class="dropdown {{ getStyleNavlinkExamples() }}">
+      <li class="dropdown {{ getStyleNavlinkExamples() }}" onclick="collapseNavbar()">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <span class="glyphicon glyphicon-file"></span> {{ EXAMPLES }} <b class="caret"></b>
         </a>
