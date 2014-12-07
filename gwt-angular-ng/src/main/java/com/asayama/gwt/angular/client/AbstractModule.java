@@ -72,14 +72,18 @@ public abstract class AbstractModule implements Module {
         return directive(Strings.decapitalize(className), klass);
     }
     
-    <D extends Directive> Module directive(String name, Class<D> klass) {
+    <D extends Directive> Module directive(final String name, final Class<D> klass) {
         String[] dependencies = DirectiveDependencyInspector.INSTANCE.inspect(klass);
-        //TODO #88 defer instantiation of directive object?
-        Directive directive = DirectiveCreator.INSTANCE.create(klass);
-        directive.setName(name);
-        JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
         jso.directive(name, JSArray.create(dependencies),
-                JSFunction.create(new DirectiveWrapper(binder, directive)));
+                JSFunction.create(new AbstractDirectiveWrapper() {
+                	@Override
+                	public JSDirective call(Object... args) {
+                		this.directive = DirectiveCreator.INSTANCE.create(klass);
+                        directive.setName(name);
+                        this.binder = DirectiveBinderFactory.INSTANCE.create(directive);
+                		return super.call(args);
+                	}
+                }));
         return this;
     }
 

@@ -38,18 +38,13 @@ public interface Directive {
     void link(NGScope scope, JQElement element, JSON attrs);
 }
 
-class DirectiveWrapper implements Function<JSDirective> {
+abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
 
-    final JSClosure binder;
-    final Directive directive;
-    
-    DirectiveWrapper(JSClosure binder, Directive directive) {
-        this.binder = binder;
-        this.directive = directive;
-    }
-    
+    JSClosure binder;
+    Directive directive;
+
     @Override
-    public final JSDirective call(Object... args) {
+    public JSDirective call(Object... args) {
 
         JSDirective jso = JSDirective.create();
         
