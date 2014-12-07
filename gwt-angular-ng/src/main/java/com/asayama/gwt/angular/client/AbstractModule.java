@@ -52,13 +52,17 @@ public abstract class AbstractModule implements Module {
         return filter(name, klass);
     }
     
-    <F extends Filter> Module filter(String name, Class<F> klass) {
+    <F extends Filter> Module filter(String name, final Class<F> klass) {
         String[] dependencies = FilterDependencyInspector.INSTANCE.inspect(klass);
-        //TODO #88 defer instantiation of filter object?
-        Filter filter = FilterCreator.INSTANCE.create(klass);
-        JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
         jso.filter(name, JSArray.create(dependencies),
-                JSFunction.create(new FilterWrapper(binder, filter)));
+                JSFunction.create(new AbstractFilterWrapper() {
+                	@Override
+                	public JSFilter call(Object... args) {
+                        this.filter = FilterCreator.INSTANCE.create(klass);
+                		this.binder = FilterBinderFactory.INSTANCE.create(filter);
+                		return super.call(args);
+                	}
+                }));
         return this;
     }
 

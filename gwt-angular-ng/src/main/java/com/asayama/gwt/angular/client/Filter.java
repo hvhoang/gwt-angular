@@ -12,15 +12,10 @@ public interface Filter { //extends Injectable {
 
 }
 
-class FilterWrapper implements Function<JSFilter> {
+abstract class AbstractFilterWrapper implements Function<JSFilter> {
     
-    final JSClosure binder;
-    final Filter filter;
-    
-    FilterWrapper(JSClosure binder, Filter filter) {
-        this.binder = binder;
-        this.filter = filter;
-    }
+    JSClosure binder;
+    Filter filter;
     
     @Override
     public JSFilter call(Object... args) {
