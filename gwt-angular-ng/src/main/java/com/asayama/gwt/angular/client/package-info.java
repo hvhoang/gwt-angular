@@ -13,6 +13,7 @@
  */
 package com.asayama.gwt.angular.client;
 
+import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.google.gwt.core.client.GWT;
 
@@ -87,30 +88,35 @@ interface DependenciesFactory<T> {
     String[] create(T object);
 }
 
+@SupportedRootClass(Provider.class)
 interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
     static ProviderDependenciesFactory INSTANCE = GWT.create(ProviderDependenciesFactory.class);
     @Override
     public String[] create(Provider object);
 }
 
+@SupportedRootClass(Service.class)
 interface ServiceDependenciesFactory extends DependenciesFactory<Service> {
     static ServiceDependenciesFactory INSTANCE = GWT.create(ServiceDependenciesFactory.class);
     @Override
     public String[] create(Service object);
 }
 
+@SupportedRootClass(Controller.class)
 interface ControllerDependenciesFactory extends DependenciesFactory<Controller> {
     static ControllerDependenciesFactory INSTANCE = GWT.create(ControllerDependenciesFactory.class);
     @Override
     public String[] create(Controller object);
 }
 
+@SupportedRootClass(Directive.class)
 interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
     static DirectiveDependenciesFactory INSTANCE = GWT.create(DirectiveDependenciesFactory.class);
     @Override
     public String[] create(Directive object);
 }
 
+@SupportedRootClass(Filter.class)
 interface FilterDependenciesFactory extends DependenciesFactory<Filter> {
     static FilterDependenciesFactory INSTANCE = GWT.create(FilterDependenciesFactory.class);
     @Override
@@ -144,6 +150,7 @@ interface ScopeBinderFactory<T> {
  * 
  * @author kyoken74
  */
+@SupportedRootClass(Controller.class)
 interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
     static ControllerScopeBinderFactory INSTANCE = GWT.create(ControllerScopeBinderFactory.class);
     @Override
@@ -165,6 +172,7 @@ interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
  * 
  * @author kyoken74
  */
+@SupportedRootClass(ClientResources.class)
 interface ClientResourcesScopeBinderFactory extends ScopeBinderFactory<ClientResources> {
     static ClientResourcesScopeBinderFactory INSTANCE = GWT.create(ClientResourcesScopeBinderFactory.class);
     @Override
@@ -190,30 +198,35 @@ interface BinderFactory<T> {
     JSClosure create(T object);
 }
 
+@SupportedRootClass(Provider.class)
 interface ProviderBinderFactory extends BinderFactory<Provider> {
     static ProviderBinderFactory INSTANCE = GWT.create(ProviderBinderFactory.class);
     @Override
     public JSClosure create(Provider object);
 }
 
+@SupportedRootClass(Service.class)
 interface ServiceBinderFactory extends BinderFactory<Service> {
     static ServiceBinderFactory INSTANCE = GWT.create(ServiceBinderFactory.class);
     @Override
     public JSClosure create(Service object);
 }
 
+@SupportedRootClass(Controller.class)
 interface ControllerBinderFactory extends BinderFactory<Controller> {
     static ControllerBinderFactory INSTANCE = GWT.create(ControllerBinderFactory.class);
     @Override
     public JSClosure create(Controller object);
 }
 
+@SupportedRootClass(Directive.class)
 interface DirectiveBinderFactory extends BinderFactory<Directive> {
     static DirectiveBinderFactory INSTANCE = GWT.create(DirectiveBinderFactory.class);
     @Override
     public JSClosure create(Directive object);
 }
 
+@SupportedRootClass(Filter.class)
 interface FilterBinderFactory extends BinderFactory<Filter> {
     static FilterBinderFactory INSTANCE = GWT.create(FilterBinderFactory.class);
     @Override
