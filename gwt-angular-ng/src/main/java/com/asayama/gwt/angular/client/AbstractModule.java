@@ -53,7 +53,7 @@ public abstract class AbstractModule implements Module {
     }
     
     <F extends Filter> Module filter(String name, Class<F> klass) {
-        String[] dependencies = FilterDependenciesFactory.INSTANCE.create(klass);
+        String[] dependencies = FilterDependencyInspector.INSTANCE.inspect(klass);
         //TODO #88 defer instantiation of filter object?
         Filter filter = FilterCreator.INSTANCE.create(klass);
         JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
@@ -69,7 +69,7 @@ public abstract class AbstractModule implements Module {
     }
     
     <D extends Directive> Module directive(String name, Class<D> klass) {
-        String[] dependencies = DirectiveDependenciesFactory.INSTANCE.create(klass);
+        String[] dependencies = DirectiveDependencyInspector.INSTANCE.inspect(klass);
         Directive directive = DirectiveCreator.INSTANCE.create(klass);
         directive.setName(name);
         JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
@@ -115,7 +115,7 @@ public abstract class AbstractModule implements Module {
                 return service;
             }
         };
-        String[] dependencies = ServiceDependenciesFactory.INSTANCE.create(factory.getServiceClass());
+        String[] dependencies = ServiceDependencyInspector.INSTANCE.inspect(factory.getServiceClass());
         jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
@@ -135,7 +135,7 @@ public abstract class AbstractModule implements Module {
                 return provider;
             }
         };
-        String[] dependencies = ProviderDependenciesFactory.INSTANCE.create(klass);
+        String[] dependencies = ProviderDependencyInspector.INSTANCE.inspect(klass);
         jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
@@ -190,7 +190,7 @@ public abstract class AbstractModule implements Module {
         };
         String [] dependencies;
         {
-            String[] d = ControllerDependenciesFactory.INSTANCE.create(klass);
+            String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
             int len = d == null ? 0 : d.length;
             dependencies = new String[len + 1];
             dependencies[0] = "$scope";

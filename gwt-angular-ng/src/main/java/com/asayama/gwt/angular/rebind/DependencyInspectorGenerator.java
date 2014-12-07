@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.rebind;
 
-public class DependenciesFactoryGenerator extends AbstractFactoryGenerator {
+public class DependencyInspectorGenerator extends AbstractFactoryGenerator {
 
 	@Override
 	String getFilename() {

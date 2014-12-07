@@ -9,7 +9,7 @@ import com.asayama.gwt.jsni.client.JSArray;
 public class __${className} implements ${className} {
 
     @Override
-    public String[] create(Class<?> klass) {
+    public String[] inspect(Class<?> klass) {
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
         if (klass.getName().equals("${supportedClassType.qualifiedSourceName}")) {
             return new String[] {

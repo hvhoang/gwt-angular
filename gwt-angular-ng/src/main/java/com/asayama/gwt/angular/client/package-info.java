@@ -71,7 +71,7 @@ interface ClientResourcesCreator extends Creator<ClientResources> {
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
- * used with {@link DependenciesFactoryGenerator}, which inspects the types eligible for
+ * used with {@link DependencyInspectorGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -81,36 +81,36 @@ interface ClientResourcesCreator extends Creator<ClientResources> {
  * 
  * @author kyoken74
  *
- * @see DependenciesFactoryGenerator
+ * @see DependencyInspectorGenerator
  * @param <T>
  */
-interface DependenciesFactory {
-	String[] create(Class<?> klass);
+interface DependencyInspector {
+	String[] inspect(Class<?> klass);
 }
 
 @SupportedRootClass(Provider.class)
-interface ProviderDependenciesFactory extends DependenciesFactory {
-    static ProviderDependenciesFactory INSTANCE = GWT.create(ProviderDependenciesFactory.class);
+interface ProviderDependencyInspector extends DependencyInspector {
+    static ProviderDependencyInspector INSTANCE = GWT.create(ProviderDependencyInspector.class);
 }
 
 @SupportedRootClass(Service.class)
-interface ServiceDependenciesFactory extends DependenciesFactory {
-    static ServiceDependenciesFactory INSTANCE = GWT.create(ServiceDependenciesFactory.class);
+interface ServiceDependencyInspector extends DependencyInspector {
+    static ServiceDependencyInspector INSTANCE = GWT.create(ServiceDependencyInspector.class);
 }
 
 @SupportedRootClass(Controller.class)
-interface ControllerDependenciesFactory extends DependenciesFactory {
-    static ControllerDependenciesFactory INSTANCE = GWT.create(ControllerDependenciesFactory.class);
+interface ControllerDependencyInspector extends DependencyInspector {
+    static ControllerDependencyInspector INSTANCE = GWT.create(ControllerDependencyInspector.class);
 }
 
 @SupportedRootClass(Directive.class)
-interface DirectiveDependenciesFactory extends DependenciesFactory {
-    static DirectiveDependenciesFactory INSTANCE = GWT.create(DirectiveDependenciesFactory.class);
+interface DirectiveDependencyInspector extends DependencyInspector {
+    static DirectiveDependencyInspector INSTANCE = GWT.create(DirectiveDependencyInspector.class);
 }
 
 @SupportedRootClass(Filter.class)
-interface FilterDependenciesFactory extends DependenciesFactory {
-    static FilterDependenciesFactory INSTANCE = GWT.create(FilterDependenciesFactory.class);
+interface FilterDependencyInspector extends DependencyInspector {
+    static FilterDependencyInspector INSTANCE = GWT.create(FilterDependencyInspector.class);
 }
 
 /**
