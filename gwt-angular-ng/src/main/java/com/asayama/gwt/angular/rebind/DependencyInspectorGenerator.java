@@ -4,7 +4,7 @@ public class DependencyInspectorGenerator extends AbstractFactoryGenerator {
 
 	@Override
 	String getFilename() {
-		return "com/asayama/gwt/angular/rebind/DependenciesFactory.vm";
+		return "com/asayama/gwt/angular/rebind/DependencyInspector.vm";
 	}
 
 }
