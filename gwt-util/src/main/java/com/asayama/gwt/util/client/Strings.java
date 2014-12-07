@@ -36,11 +36,4 @@ public class Strings {
         String[] split = klass.getName().split("\\.");
         return split[split.length - 1];
     }
-    
-    public static String simpleClassName(Object object) {
-        if (object == null) {
-            return null;
-        }
-        return simpleName(object.getClass());
-    }
 }

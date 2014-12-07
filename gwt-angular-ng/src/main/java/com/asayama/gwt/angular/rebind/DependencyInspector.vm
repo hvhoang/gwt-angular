@@ -9,9 +9,9 @@ import com.asayama.gwt.jsni.client.JSArray;
 public class __${className} implements ${className} {
 
     @Override
-    public String[] create(${supportedRootClassType} object) {
+    public String[] inspect(Class<?> klass) {
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
-        if (object instanceof ${supportedClassType.qualifiedSourceName}) {
+        if (klass.getName().equals("${supportedClassType.qualifiedSourceName}")) {
             return new String[] {
 #foreach($field in ${classTypeFields.getInjectables($supportedClassType)})
                 "${field.dependency}"#if(${foreach.hasNext}),#end

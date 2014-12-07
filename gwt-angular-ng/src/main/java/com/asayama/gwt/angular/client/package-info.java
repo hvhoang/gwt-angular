@@ -13,6 +13,7 @@
  */
 package com.asayama.gwt.angular.client;
 
+import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.google.gwt.core.client.GWT;
 
@@ -32,45 +33,51 @@ interface Creator<T> {
     <X extends T> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Filter.class)
 interface FilterCreator extends Creator<Filter> {
     static FilterCreator INSTANCE = GWT.create(FilterCreator.class);
     @Override
-    <X extends Filter> X create(Class<X> klass);
+    public <X extends Filter> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Directive.class)
 interface DirectiveCreator extends Creator<Directive> {
     static DirectiveCreator INSTANCE = GWT.create(DirectiveCreator.class);
     @Override
-    <X extends Directive> X create(Class<X> klass);
+    public <X extends Directive> X create(Class<X> klass);
 }
 
-interface ProviderCreator extends Creator<Provider> {
+@SupportedRootClass(Provider.class)
+interface ProviderCreator extends Creator<Provider<?>> {
     static ProviderCreator INSTANCE = GWT.create(ProviderCreator.class);
     @Override
-    <X extends Provider> X create(Class<X> klass);
+    public <X extends Provider<?>> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Service.class)
 interface ServiceCreator extends Creator<Service> {
-    //static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
+    static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
     @Override
-    <X extends Service> X create(Class<X> klass);
+    public <X extends Service> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Controller.class)
 interface ControllerCreator extends Creator<Controller> {
     static ControllerCreator INSTANCE = GWT.create(ControllerCreator.class);
     @Override
-    <X extends Controller> X create(Class<X> klass);
+    public <X extends Controller> X create(Class<X> klass);
 }
 
+@SupportedRootClass(ClientResources.class)
 interface ClientResourcesCreator extends Creator<ClientResources> {
     static ClientResourcesCreator INSTANCE = GWT.create(ClientResourcesCreator.class);
     @Override
-    <X extends ClientResources> X create(Class<X> klass);
+    public <X extends ClientResources> X create(Class<X> klass);
 }
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
- * used with {@link DependenciesFactoryGenerator}, which inspects the types eligible for
+ * used with {@link DependencyInspectorGenerator}, which inspects the types eligible for
  * creation at compile time.
  * <p>
  * The decision to separate the code generator from the underlying classes was
@@ -80,41 +87,36 @@ interface ClientResourcesCreator extends Creator<ClientResources> {
  * 
  * @author kyoken74
  *
- * @see DependenciesFactoryGenerator
+ * @see DependencyInspectorGenerator
  * @param <T>
  */
-interface DependenciesFactory<T> {
-    String[] create(T object);
+interface DependencyInspector {
+	String[] inspect(Class<?> klass);
 }
 
-interface ProviderDependenciesFactory extends DependenciesFactory<Provider> {
-    static ProviderDependenciesFactory INSTANCE = GWT.create(ProviderDependenciesFactory.class);
-    @Override
-    public String[] create(Provider object);
+@SupportedRootClass(Provider.class)
+interface ProviderDependencyInspector extends DependencyInspector {
+    static ProviderDependencyInspector INSTANCE = GWT.create(ProviderDependencyInspector.class);
 }
 
-interface ServiceDependenciesFactory extends DependenciesFactory<Service> {
-    static ServiceDependenciesFactory INSTANCE = GWT.create(ServiceDependenciesFactory.class);
-    @Override
-    public String[] create(Service object);
+@SupportedRootClass(Service.class)
+interface ServiceDependencyInspector extends DependencyInspector {
+    static ServiceDependencyInspector INSTANCE = GWT.create(ServiceDependencyInspector.class);
 }
 
-interface ControllerDependenciesFactory extends DependenciesFactory<Controller> {
-    static ControllerDependenciesFactory INSTANCE = GWT.create(ControllerDependenciesFactory.class);
-    @Override
-    public String[] create(Controller object);
+@SupportedRootClass(Controller.class)
+interface ControllerDependencyInspector extends DependencyInspector {
+    static ControllerDependencyInspector INSTANCE = GWT.create(ControllerDependencyInspector.class);
 }
 
-interface DirectiveDependenciesFactory extends DependenciesFactory<Directive> {
-    static DirectiveDependenciesFactory INSTANCE = GWT.create(DirectiveDependenciesFactory.class);
-    @Override
-    public String[] create(Directive object);
+@SupportedRootClass(Directive.class)
+interface DirectiveDependencyInspector extends DependencyInspector {
+    static DirectiveDependencyInspector INSTANCE = GWT.create(DirectiveDependencyInspector.class);
 }
 
-interface FilterDependenciesFactory extends DependenciesFactory<Filter> {
-    static FilterDependenciesFactory INSTANCE = GWT.create(FilterDependenciesFactory.class);
-    @Override
-    public String[] create(Filter object);
+@SupportedRootClass(Filter.class)
+interface FilterDependencyInspector extends DependencyInspector {
+    static FilterDependencyInspector INSTANCE = GWT.create(FilterDependencyInspector.class);
 }
 
 /**
@@ -144,6 +146,7 @@ interface ScopeBinderFactory<T> {
  * 
  * @author kyoken74
  */
+@SupportedRootClass(Controller.class)
 interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
     static ControllerScopeBinderFactory INSTANCE = GWT.create(ControllerScopeBinderFactory.class);
     @Override
@@ -165,6 +168,7 @@ interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
  * 
  * @author kyoken74
  */
+@SupportedRootClass(ClientResources.class)
 interface ClientResourcesScopeBinderFactory extends ScopeBinderFactory<ClientResources> {
     static ClientResourcesScopeBinderFactory INSTANCE = GWT.create(ClientResourcesScopeBinderFactory.class);
     @Override
@@ -190,30 +194,35 @@ interface BinderFactory<T> {
     JSClosure create(T object);
 }
 
+@SupportedRootClass(Provider.class)
 interface ProviderBinderFactory extends BinderFactory<Provider> {
     static ProviderBinderFactory INSTANCE = GWT.create(ProviderBinderFactory.class);
     @Override
     public JSClosure create(Provider object);
 }
 
+@SupportedRootClass(Service.class)
 interface ServiceBinderFactory extends BinderFactory<Service> {
     static ServiceBinderFactory INSTANCE = GWT.create(ServiceBinderFactory.class);
     @Override
     public JSClosure create(Service object);
 }
 
+@SupportedRootClass(Controller.class)
 interface ControllerBinderFactory extends BinderFactory<Controller> {
     static ControllerBinderFactory INSTANCE = GWT.create(ControllerBinderFactory.class);
     @Override
     public JSClosure create(Controller object);
 }
 
+@SupportedRootClass(Directive.class)
 interface DirectiveBinderFactory extends BinderFactory<Directive> {
     static DirectiveBinderFactory INSTANCE = GWT.create(DirectiveBinderFactory.class);
     @Override
     public JSClosure create(Directive object);
 }
 
+@SupportedRootClass(Filter.class)
 interface FilterBinderFactory extends BinderFactory<Filter> {
     static FilterBinderFactory INSTANCE = GWT.create(FilterBinderFactory.class);
     @Override
