@@ -10,7 +10,7 @@ import com.google.gwt.core.client.GWT;
 public class __${className} implements ${className} {
 
     @Override
-    public <${supportedRootClassType}> X create(Class<X> klass) {
+    public <${creatorReturnType}> X create(Class<X> klass) {
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
         if (klass.equals(${supportedClassType.qualifiedSourceName}.class)) {
             return GWT.create(${supportedClassType.qualifiedSourceName}.class);

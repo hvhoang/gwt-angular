@@ -33,40 +33,46 @@ interface Creator<T> {
     <X extends T> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Filter.class)
 interface FilterCreator extends Creator<Filter> {
     static FilterCreator INSTANCE = GWT.create(FilterCreator.class);
     @Override
-    <X extends Filter> X create(Class<X> klass);
+    public <X extends Filter> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Directive.class)
 interface DirectiveCreator extends Creator<Directive> {
     static DirectiveCreator INSTANCE = GWT.create(DirectiveCreator.class);
     @Override
-    <X extends Directive> X create(Class<X> klass);
+    public <X extends Directive> X create(Class<X> klass);
 }
 
-interface ProviderCreator extends Creator<Provider> {
+@SupportedRootClass(Provider.class)
+interface ProviderCreator extends Creator<Provider<?>> {
     static ProviderCreator INSTANCE = GWT.create(ProviderCreator.class);
     @Override
-    <X extends Provider> X create(Class<X> klass);
+    public <X extends Provider<?>> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Service.class)
 interface ServiceCreator extends Creator<Service> {
     static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
     @Override
-    <X extends Service> X create(Class<X> klass);
+    public <X extends Service> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Controller.class)
 interface ControllerCreator extends Creator<Controller> {
     static ControllerCreator INSTANCE = GWT.create(ControllerCreator.class);
     @Override
-    <X extends Controller> X create(Class<X> klass);
+    public <X extends Controller> X create(Class<X> klass);
 }
 
+@SupportedRootClass(ClientResources.class)
 interface ClientResourcesCreator extends Creator<ClientResources> {
     static ClientResourcesCreator INSTANCE = GWT.create(ClientResourcesCreator.class);
     @Override
-    <X extends ClientResources> X create(Class<X> klass);
+    public <X extends ClientResources> X create(Class<X> klass);
 }
 
 /**

@@ -3,11 +3,11 @@ package com.asayama.gwt.angular.rebind;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.asayama.gwt.rebind.exceptions.RebindException;
 import com.google.gwt.core.ext.GeneratorContext;
+import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JMethod;
-import com.google.gwt.core.ext.typeinfo.JType;
+
 
 public class DefaultInstantiableCreatorGenerator extends AbstractFactoryGenerator {
 
@@ -18,27 +18,29 @@ public class DefaultInstantiableCreatorGenerator extends AbstractFactoryGenerato
 	String getFilename() {
 		return "com/asayama/gwt/angular/rebind/CreatorFactory.vm";
 	}
-
+	
 	@Override
-    protected JClassType getSupportedRootClassType(GeneratorContext context, JClassType classType) {
-        
-        final String METHOD = "getSupportedRootClassType(JClassType)";
-        
-        JClassType supportedRootClassType = null;
-        JMethod[] methods = classType.getInheritableMethods();
+	protected String generate(TreeLogger logger, GeneratorContext context, VelocityGenerator velocity, String packageName, String className) {
+        JClassType classType = getClassType(context, packageName + "." + className);
+		String creatorReturnType = getCreatorReturnType(classType);
+		velocity.put("creatorReturnType", creatorReturnType);
+		return super.generate(logger, context, velocity, packageName, className);
+	}
+
+    protected String getCreatorReturnType(JClassType classType) {
+    	final String METHOD = "getCreatorReturnType(JClassType)";
+        String creatorReturnType = null;
+        JMethod[] methods = classType.getMethods();
         for (JMethod method : methods) {
-            JType returnType = method.getReturnType();
-            supportedRootClassType = returnType.isClassOrInterface();
-            if (supportedRootClassType != null) {
-                break;
-            }
+	        creatorReturnType = method.getReturnType().getQualifiedSourceName();
+	        if (creatorReturnType != null) {
+	        	break;//we expect to see only one creator method
+	        }
         }
-        if (supportedRootClassType == null) {
-            String m = "Unable to find the supported root classType for " + classType;
-            LOG.logp(Level.SEVERE, CLASS, METHOD, m);
-            throw new RebindException(m);
+        if (creatorReturnType == null) {
+        	LOG.logp(Level.WARNING, CLASS, METHOD, "Unable to identify creatorReturnType.");
         }
-        return supportedRootClassType;
+        return creatorReturnType;
     }
 
 }
