@@ -6,6 +6,7 @@ import com.asayama.gwt.angular.client.Service;
 
 public class Log implements Service {
 
+	@Injector.Inject
     private NGLog ngo;
 
     public void log(String message) {

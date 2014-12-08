@@ -21,6 +21,7 @@ import com.asayama.gwt.jsni.client.JSFunction;
  */
 public class Provide implements Service {
     
+	@Injector.Inject
     NGProvide ngo;
     
     public <S extends Service> void provider(String name, Function<S> provider) {

@@ -8,6 +8,7 @@ import com.asayama.gwt.jsni.client.JSArray;
 
 public class Q implements Service {
 
+	@Injector.Inject
     private NGQ ngo;
 
     public <V> Deferred<V> defer() {

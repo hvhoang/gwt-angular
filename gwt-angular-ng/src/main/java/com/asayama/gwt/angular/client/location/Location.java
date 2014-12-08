@@ -9,6 +9,7 @@ import com.asayama.gwt.angular.client.Service;
 
 public class Location implements Service {
 
+	@Injector.Inject
     private NGLocation ngo;
 
     public String getHash() {

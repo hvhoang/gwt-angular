@@ -12,6 +12,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider<Service> {
 
+	@Injector.Inject
     private NGRouteProvider ngo;
 
     @Override

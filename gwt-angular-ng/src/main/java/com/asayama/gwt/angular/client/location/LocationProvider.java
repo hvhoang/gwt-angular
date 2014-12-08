@@ -9,6 +9,7 @@ import com.asayama.gwt.angular.client.Provider;
 
 public class LocationProvider implements Provider<Location> {
 
+	@Injector.Inject
     NGLocationProvider ngo;
     
     @Override

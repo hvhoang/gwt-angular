@@ -22,6 +22,7 @@ import com.asayama.gwt.jsni.client.JSClosure;
  */
 public class Http implements Service {
 
+	@Injector.Inject
     private NGHttp ngo;
 
     public void get(String url, final HttpCallback callback) {

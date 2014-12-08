@@ -8,6 +8,7 @@ import com.asayama.gwt.angular.client.Service;
 
 public class SceProvider implements Provider<Service> {
 
+	@Injector.Inject
     private NGSceProvider ngo;
 
     public boolean enabled(boolean isEnabled) {
