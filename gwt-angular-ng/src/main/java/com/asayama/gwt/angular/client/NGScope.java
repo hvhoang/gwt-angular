@@ -1,6 +1,5 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.jsni.client.JSObject;
 

@@ -9,7 +9,6 @@ import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.rebind.util.ClassTypeFields;
 import com.asayama.gwt.angular.rebind.util.Field;

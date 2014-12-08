@@ -2,7 +2,6 @@ package com.asayama.gwt.angular.site.client;
 
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.resources.client.HtmlResource;

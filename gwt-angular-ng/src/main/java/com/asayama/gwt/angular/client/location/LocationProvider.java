@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.client.location;
 import com.asayama.gwt.angular.client.DefaultFactory;
 import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
 

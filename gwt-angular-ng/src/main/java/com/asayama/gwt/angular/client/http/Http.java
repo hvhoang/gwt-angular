@@ -1,7 +1,6 @@
 package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.Closure;
