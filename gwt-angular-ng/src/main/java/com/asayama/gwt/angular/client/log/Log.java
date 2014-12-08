@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client.log;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 
@@ -29,7 +30,7 @@ public class Log implements Service {
     }
 }
 
-@Bind("$log")
+@Injector.Inject("$log")
 class NGLog extends NGObject {
 
     protected NGLog() {

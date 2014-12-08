@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
@@ -52,7 +52,7 @@ public class Provide implements Service {
     }
 }
 
-@Bind("$provide")
+@Injector.Inject("$provide")
 class NGProvide extends NGObject {
 
     protected NGProvide() {

@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.jsni.client.JSArray;
 
 /**
@@ -14,7 +14,11 @@ import com.asayama.gwt.jsni.client.JSArray;
  */
 public class Injector implements Service {
 
-    NGInjector ngo;
+    public @interface Inject {
+	    String value();
+	}
+
+	NGInjector ngo;
     
     public <S extends Service> S get(Class<S> klass) {
         return ngo.getService(klass.getName());
@@ -37,7 +41,7 @@ public class Injector implements Service {
     
 }
 
-@Bind("$injector")
+@Injector.Inject("$injector")
 class NGInjector extends NGObject {
 
     protected NGInjector() {

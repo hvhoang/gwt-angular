@@ -18,6 +18,10 @@ import com.google.gwt.core.client.GWT;
  */
 public class Angular {
 	
+	/**
+	 * @deprecated Replaced by {@link Injector.Inject }
+	 */
+	@Deprecated
     public @interface Bind {
         String value();
     }

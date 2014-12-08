@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.angular.client.Injectable;
+import com.asayama.gwt.angular.client.Injector;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.rebind.util.ClassTypeFields;
 import com.asayama.gwt.angular.rebind.util.Field;
@@ -31,6 +33,8 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
     @Override
     public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
         
+    	final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
+    	
         JClassType classType = getClassType(context, qualifiedClassName);
         String packageName = classType.getPackage().getName();
         String className = classType.getSimpleSourceName();
@@ -56,13 +60,21 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                 for (JField field : fields) {
                     String cname = supportedSuperClassType.getQualifiedSourceName();
                     String dependency = null;
+                    Injector.Inject inject = field.getAnnotation(Injector.Inject.class);
                     Bind bind = field.getAnnotation(Bind.class);
-                    if (bind != null) {
+                    if (inject != null) {
                         //direct annotation supersedes other criteria
+                        dependency = inject.value();
+                    } else if (bind != null) {
+                    	LOG.logp(Level.WARNING, CLASS, METHOD, 
+                    			"Bind annotation has been deprecated since 0.0.70, and"
+                    			+ " replaced by Inject annotation. The continued use of"
+                    			+ " the old annoation is not supported, and will be"
+                    			+ " removed from future versions without further notice.");
                         dependency = bind.value();
                     } else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
-                        bind = field.getType().isClass().getAnnotation(Bind.class);
-                        dependency = bind.value();
+                        inject = field.getType().isClass().getAnnotation(Injector.Inject.class);
+                        dependency = inject.value();
                     } else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
                         dependency = field.getType().getQualifiedSourceName();
                     }

@@ -2,7 +2,8 @@ package com.asayama.gwt.angular.client.location;
 
 import java.util.List;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 
@@ -38,7 +39,7 @@ public class Location implements Service {
     }
 }
 
-@Bind("$location")
+@Injector.Inject("$location")
 class NGLocation extends NGObject {
 
     protected NGLocation() {

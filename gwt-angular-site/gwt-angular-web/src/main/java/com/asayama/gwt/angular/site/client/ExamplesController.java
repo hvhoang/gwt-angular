@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.site.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.site.pages.client.AbstractMultiPageController;
 import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
@@ -8,7 +9,7 @@ import com.asayama.gwt.jsni.client.JSArray;
 
 public class ExamplesController extends AbstractMultiPageController {
 
-    @Bind("examples")
+    @Injector.Inject("examples")
     private JSArray<Page> pages = null;
     private String defaultPageName = "textInput";
     

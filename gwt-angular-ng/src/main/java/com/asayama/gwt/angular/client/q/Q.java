@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.JSArray;
@@ -19,7 +20,7 @@ public class Q implements Service {
     }
 }
 
-@Bind("$q")
+@Injector.Inject("$q")
 class NGQ extends NGObject {
 
     protected NGQ() {

@@ -1,6 +1,6 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.jsni.client.JSObject;
 
@@ -8,7 +8,7 @@ import com.asayama.gwt.jsni.client.JSObject;
  * https://github.com/kyoken74/gwt-angular/issues/6
  * @author kyoken74
  */
-@Bind("$scope")
+@Injector.Inject("$scope")
 public class NGScope extends JSON {
 
 	@SuppressWarnings("unchecked")

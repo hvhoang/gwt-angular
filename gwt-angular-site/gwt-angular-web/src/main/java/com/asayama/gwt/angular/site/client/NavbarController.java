@@ -1,7 +1,8 @@
 package com.asayama.gwt.angular.site.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.Injector;
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.angular.site.pages.client.Page;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.resources.client.HtmlResource;
@@ -37,10 +38,10 @@ public class NavbarController implements Controller {
     public static final String EXAMPLES = NavbarConstants.INSTANCE.examples();
     public static final String TUTORIAL = NavbarConstants.INSTANCE.tutorial();
 
-    @Bind("examples")
+    @Injector.Inject("examples")
     private JSArray<Page> examples = null;
 
-    @Bind("tutorial")
+    @Injector.Inject("tutorial")
     private JSArray<Page> tutorial = null;
     
     @Override
