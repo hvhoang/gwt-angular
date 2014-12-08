@@ -50,7 +50,7 @@ public class Injector implements Service {
 	 */
 	@Target(ElementType.FIELD)
     public @interface Inject {
-	    String value();
+	    String value() default "";
 	}
 
 	/**
@@ -74,6 +74,7 @@ public class Injector implements Service {
 	    String value();
 	}
 
+	@Injector.Inject
 	NGInjector ngo;
     
     public <S extends Service> S get(Class<S> klass) {

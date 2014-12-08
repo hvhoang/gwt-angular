@@ -60,23 +60,40 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                     String cname = supportedSuperClassType.getQualifiedSourceName();
                     String dependency = null;
                     Injector.Inject inject = field.getAnnotation(Injector.Inject.class);
-                    Angular.Bind bindLegacy = field.getAnnotation(Angular.Bind.class);
                     if (inject != null) {
                         //direct annotation supersedes other criteria
                         dependency = inject.value();
-                    } else if (bindLegacy != null) {
+                        if (dependency == null || dependency.length() == 0) {
+                            Injector.Bind bind = field.getType().isClass().getAnnotation(Injector.Bind.class);
+                            dependency = bind.value();
+                            if (dependency == null || dependency.length() == 0) {
+	                        	dependency = field.getType().getQualifiedSourceName();
+                            }
+                        }
+                    }
+                    //++ start of legacy code #90
+                    else if (field.getAnnotation(Angular.Bind.class) != null) {
                     	LOG.logp(Level.WARNING, CLASS, METHOD, 
                     			"Bind annotation has been deprecated since 0.0.70, and"
                     			+ " replaced by Inject annotation. The continued use of"
                     			+ " the old annoation is not supported, and will be"
                     			+ " removed from future versions without further notice.");
-                        dependency = bindLegacy.value();
-                    } else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
+                        dependency = field.getAnnotation(Angular.Bind.class).value();
+                    }
+                    //-- end of legacy code
+                    //++ start of legacy code #91
+                    else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
+                    	LOG.logp(Level.WARNING, CLASS, METHOD, field.getType().getSimpleSourceName() +
+                    			": NGObject interface has been deprecated. Use Injector.Inject annotation instead.");
                         Injector.Bind bind = field.getType().isClass().getAnnotation(Injector.Bind.class);
                         dependency = bind.value();
-                    } else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
+                    }
+                    else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
+                    	LOG.logp(Level.WARNING, CLASS, METHOD, field.getType().getSimpleSourceName() +
+                    			": Injectable interface has been deprecated. Use Injector.Inject annotation instead.");
                         dependency = field.getType().getQualifiedSourceName();
                     }
+                    //-- end of legacy code #91
                     String name = field.getName();
                     fieldList.add(new Field(field, cname, dependency, name));
                 }

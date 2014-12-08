@@ -9,5 +9,6 @@ package com.asayama.gwt.angular.client;
  * @see BinderFactory
  * @see Configurator
  */
+@Deprecated
 public interface Injectable {
 }
