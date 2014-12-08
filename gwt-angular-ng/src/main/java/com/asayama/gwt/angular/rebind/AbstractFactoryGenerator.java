@@ -65,7 +65,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                         dependency = inject.value();
                         if (dependency == null || dependency.length() == 0) {
                             Injector.Bind bind = field.getType().isClass().getAnnotation(Injector.Bind.class);
-                            dependency = bind.value();
+                            dependency = bind == null ? null : bind.value();
                             if (dependency == null || dependency.length() == 0) {
 	                        	dependency = field.getType().getQualifiedSourceName();
                             }
