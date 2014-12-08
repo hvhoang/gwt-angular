@@ -1,10 +1,13 @@
 package com.asayama.gwt.angular.client;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSClosure;
@@ -19,14 +22,15 @@ import com.google.gwt.core.client.GWT;
 public class Angular {
 	
 	/**
-	 * @deprecated Replaced by {@link Injector.Inject }
+	 * @deprecated Replaced by {@link Inject }
 	 */
 	@Deprecated
-    public @interface Bind {
-        String value();
-    }
-    
-    public @interface SupportedRootClass {
+	@Target(ElementType.FIELD)
+	public @interface Bind {
+	    String value();
+	}
+
+	public @interface SupportedRootClass {
     	Class<?> value();
     }
     
@@ -37,7 +41,7 @@ public class Angular {
     public static Module[] modules() {
         return modules.toArray(MODULE_ARRAY);
     }
-
+    
     public static Module module(Module module) {
         return moduleWithDependency(module);
     }

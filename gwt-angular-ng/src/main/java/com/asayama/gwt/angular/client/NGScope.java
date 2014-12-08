@@ -7,7 +7,7 @@ import com.asayama.gwt.jsni.client.JSObject;
  * https://github.com/kyoken74/gwt-angular/issues/6
  * @author kyoken74
  */
-@Injector.Inject("$scope")
+@Injector.Bind("$scope")
 public class NGScope extends JSON {
 
 	@SuppressWarnings("unchecked")

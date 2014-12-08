@@ -29,7 +29,7 @@ public class Log implements Service {
     }
 }
 
-@Injector.Inject("$log")
+@Injector.Bind("$log")
 class NGLog extends NGObject {
 
     protected NGLog() {

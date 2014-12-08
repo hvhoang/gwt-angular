@@ -15,6 +15,7 @@
  * </dependency>
  * }</pre>
  * 
- * @see com.asayama.gwt.angular.client.Inject.Bind
+ * @see com.asayama.gwt.angular.client.Injector.Inject
+ * @see com.asayama.gwt.angular.client.Injector.Bind
  */
 package com.asayama.gwt.angular.rebind;

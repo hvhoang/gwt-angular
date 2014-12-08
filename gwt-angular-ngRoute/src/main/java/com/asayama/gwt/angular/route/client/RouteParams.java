@@ -32,7 +32,7 @@ public class RouteParams implements Service {
     }
 }
 
-@Injector.Inject("$routeParams")
+@Injector.Bind("$routeParams")
 class NGRouteParams extends NGObject {
 
     protected NGRouteParams() {

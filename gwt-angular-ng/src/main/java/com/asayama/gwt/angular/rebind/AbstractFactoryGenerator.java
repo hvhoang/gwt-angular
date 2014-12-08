@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
+import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Injector;
@@ -60,20 +60,20 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                     String cname = supportedSuperClassType.getQualifiedSourceName();
                     String dependency = null;
                     Injector.Inject inject = field.getAnnotation(Injector.Inject.class);
-                    Bind bind = field.getAnnotation(Bind.class);
+                    Angular.Bind bindLegacy = field.getAnnotation(Angular.Bind.class);
                     if (inject != null) {
                         //direct annotation supersedes other criteria
                         dependency = inject.value();
-                    } else if (bind != null) {
+                    } else if (bindLegacy != null) {
                     	LOG.logp(Level.WARNING, CLASS, METHOD, 
                     			"Bind annotation has been deprecated since 0.0.70, and"
                     			+ " replaced by Inject annotation. The continued use of"
                     			+ " the old annoation is not supported, and will be"
                     			+ " removed from future versions without further notice.");
-                        dependency = bind.value();
+                        dependency = bindLegacy.value();
                     } else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
-                        inject = field.getType().isClass().getAnnotation(Injector.Inject.class);
-                        dependency = inject.value();
+                        Injector.Bind bind = field.getType().isClass().getAnnotation(Injector.Bind.class);
+                        dependency = bind.value();
                     } else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
                         dependency = field.getType().getQualifiedSourceName();
                     }

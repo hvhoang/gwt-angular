@@ -45,7 +45,7 @@ public class Http implements Service {
     }
 }
 
-@Injector.Inject("$http")
+@Injector.Bind("$http")
 class NGHttp extends NGObject {
 
     protected NGHttp() {

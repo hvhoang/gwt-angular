@@ -27,7 +27,7 @@ public class LocationProvider implements Provider<Location> {
     }
 }
 
-@Injector.Inject("$locationProvider")
+@Injector.Bind("$locationProvider")
 class NGLocationProvider extends NGObject {
 
     protected NGLocationProvider() {

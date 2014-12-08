@@ -51,7 +51,7 @@ public class Provide implements Service {
     }
 }
 
-@Injector.Inject("$provide")
+@Injector.Bind("$provide")
 class NGProvide extends NGObject {
 
     protected NGProvide() {

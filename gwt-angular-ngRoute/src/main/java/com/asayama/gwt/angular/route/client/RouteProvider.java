@@ -73,7 +73,7 @@ public class RouteProvider implements Provider<Service> {
     }
 }
 
-@Injector.Inject("$routeProvider")
+@Injector.Bind("$routeProvider")
 class NGRouteProvider extends NGObject {
 
     protected NGRouteProvider() {

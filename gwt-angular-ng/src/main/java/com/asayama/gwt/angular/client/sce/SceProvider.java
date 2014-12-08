@@ -20,7 +20,7 @@ public class SceProvider implements Provider<Service> {
     }
 }
 
-@Injector.Inject("$sceProvider")
+@Injector.Bind("$sceProvider")
 class NGSceProvider extends NGObject {
 
     protected NGSceProvider() {

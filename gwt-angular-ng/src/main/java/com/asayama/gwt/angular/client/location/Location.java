@@ -38,7 +38,7 @@ public class Location implements Service {
     }
 }
 
-@Injector.Inject("$location")
+@Injector.Bind("$location")
 class NGLocation extends NGObject {
 
     protected NGLocation() {

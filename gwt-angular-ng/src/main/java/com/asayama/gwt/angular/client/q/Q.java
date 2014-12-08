@@ -19,7 +19,7 @@ public class Q implements Service {
     }
 }
 
-@Injector.Inject("$q")
+@Injector.Bind("$q")
 class NGQ extends NGObject {
 
     protected NGQ() {
