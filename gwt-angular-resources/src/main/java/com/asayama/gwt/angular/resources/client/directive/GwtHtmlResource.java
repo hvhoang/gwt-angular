@@ -1,6 +1,7 @@
 package com.asayama.gwt.angular.resources.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.client.q.Promise;
 import com.asayama.gwt.angular.client.q.Promise.Done;
@@ -19,6 +20,7 @@ import com.google.gwt.http.client.Response;
  */
 public class GwtHtmlResource extends AbstractDirective {
     
+	@Injector.Inject
     private Q q;
     
     /**

@@ -80,7 +80,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                     			+ " removed from future versions without further notice.");
                         dependency = field.getAnnotation(Angular.Bind.class).value();
                     }
-                    //-- end of legacy code
+                    //-- end of legacy code #90
                     //++ start of legacy code #91
                     else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
                     	LOG.logp(Level.WARNING, CLASS, METHOD, field.getType().getSimpleSourceName() +

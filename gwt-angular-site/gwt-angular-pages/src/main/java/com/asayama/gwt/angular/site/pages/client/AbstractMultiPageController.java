@@ -3,6 +3,7 @@ package com.asayama.gwt.angular.site.pages.client;
 import java.util.Iterator;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
 import com.asayama.gwt.jsni.client.JSArray;
@@ -12,8 +13,12 @@ public abstract class AbstractMultiPageController implements Controller {
 
     public static final String DEFAULT_PAGE_PARAM = "page";
     
+    @Injector.Inject
     protected RouteParams routeParams;
+
+    @Injector.Inject
     protected Location location;
+    
     protected String selectedPageName = null;
     
     @Override
