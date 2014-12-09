@@ -1,21 +1,25 @@
+Live Demo
+=========
+
+http://gwt-angular.asayama.com/
+
+
 Introduction
 ============
 
-#### Live Demo URL --> http://kyoken74.github.io/gwt-angular/
-
-The demo application gwt-angular-site demonstrates the usage of gwt-angular API in a live application (documentation).
-
-The demo application uses Twitter's [Bootstrap](http://getbootstrap.com) as the view framework.
+The demo application gwt-angular-site demonstrates the usage of gwt-angular API in a live application. The demo application uses Twitter's [Bootstrap](http://getbootstrap.com) as the view framework.
 
 ### WARNING
 
 The API is in very early stages of development, and it is not yet ready for beta.
 
-* 0.0.x The interface is still volatile. From build to build, any interfaces may be removed without any prior notice.
-* 0.1.x The interface is frozen. Deprecated interfaces will be annotated prior to removal in v0.2.
-* 0.x.x Any subsequent releases with minor version (the second numeral) increase indicate that the methods previously deprecated may be removed.
-* 1.0.0-alpha.x The API will become available for early developer preview.
-* 1.0.0-beta.x The API will become available for beta testing.
+|Version|Stability|
+|-------|---------|
+| 0.0.x |The interface is still volatile. From build to build, any interfaces may be removed without any prior notice. |
+| 0.1.x | The public interface is frozen. Deprecated interfaces will be annotated prior to removal in v0.2. |
+| 0.x.x |Any subsequent releases with minor version (the second numeral) increase indicate that the interfaces previously deprecated may be removed. |
+| 1.0.0-alpha.x | The API will become available for early preview. |
+| 1.0.0-beta.x  | The API will become available for beta testing. |
 
 
 Collaborators Wanted
