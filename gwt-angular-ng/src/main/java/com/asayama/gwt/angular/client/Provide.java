@@ -4,6 +4,7 @@ import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Provide registers {@link Provider} with {@link Injector}.
@@ -53,7 +54,7 @@ public class Provide implements Service {
 }
 
 @Injector.Bind("$provide")
-class NGProvide extends NGObject {
+class NGProvide extends JavaScriptObject {
 
     protected NGProvide() {
     }

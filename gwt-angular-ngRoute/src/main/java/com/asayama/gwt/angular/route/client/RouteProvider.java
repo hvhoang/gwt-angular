@@ -3,7 +3,6 @@ package com.asayama.gwt.angular.route.client;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.JSON;
@@ -75,7 +74,7 @@ public class RouteProvider implements Provider<Service> {
 }
 
 @Injector.Bind("$routeProvider")
-class NGRouteProvider extends NGObject {
+class NGRouteProvider extends JavaScriptObject {
 
     protected NGRouteProvider() {
     }

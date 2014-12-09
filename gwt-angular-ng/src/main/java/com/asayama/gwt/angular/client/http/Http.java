@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client.http;
 
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSClosure;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <h1>This class does not work!</h1> I get the following error when unit
@@ -47,7 +47,7 @@ public class Http implements Service {
 }
 
 @Injector.Bind("$http")
-class NGHttp extends NGObject {
+class NGHttp extends JavaScriptObject {
 
     protected NGHttp() {
     }

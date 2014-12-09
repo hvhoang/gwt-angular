@@ -4,6 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
 import com.asayama.gwt.jsni.client.JSArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Used to retrieve object instances.
@@ -99,7 +100,7 @@ public class Injector implements Service {
 }
 
 @Injector.Bind("$injector")
-class NGInjector extends NGObject {
+class NGInjector extends JavaScriptObject {
 
     protected NGInjector() {
     }

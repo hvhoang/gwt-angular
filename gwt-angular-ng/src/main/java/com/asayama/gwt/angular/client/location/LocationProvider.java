@@ -3,8 +3,8 @@ package com.asayama.gwt.angular.client.location;
 import com.asayama.gwt.angular.client.DefaultFactory;
 import com.asayama.gwt.angular.client.Factory;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Provider;
+import com.google.gwt.core.client.JavaScriptObject;
 
 
 public class LocationProvider implements Provider<Location> {
@@ -29,7 +29,7 @@ public class LocationProvider implements Provider<Location> {
 }
 
 @Injector.Bind("$locationProvider")
-class NGLocationProvider extends NGObject {
+class NGLocationProvider extends JavaScriptObject {
 
     protected NGLocationProvider() {
     }

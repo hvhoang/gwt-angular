@@ -1,8 +1,8 @@
 package com.asayama.gwt.angular.client.log;
 
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.client.Service;
+import com.google.gwt.core.client.JavaScriptObject;
 
 public class Log implements Service {
 
@@ -31,7 +31,7 @@ public class Log implements Service {
 }
 
 @Injector.Bind("$log")
-class NGLog extends NGObject {
+class NGLog extends JavaScriptObject {
 
     protected NGLog() {
     }
