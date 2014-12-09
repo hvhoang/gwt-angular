@@ -1,0 +1,181 @@
+<html lang="en"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+<title>GWT Angular</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/ico" href="favicon.ico">
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px !important;
+  padding-bottom: 20px !important;
+}
+pre.prettyprint {
+  font-size: 12px !important;
+}
+</style>
+<link rel="stylesheet" href="http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT/gwt-angular/clean/clean.css"><link rel="stylesheet" href="http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT/css/bootstrap.min.css"><link rel="stylesheet" href="http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT/css/bootstrap-theme.min.css"><script src="http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT/44CDB33A38D527E14A0D15C9773FC01D.cache.js"></script><style>.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}pre.prettyprint{padding:2px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}</style></head>
+<body data-ng-controller="com.asayama.gwt.angular.site.client.NavbarController" class="ng-scope">
+  <!-- ngInclude: NAVBAR_HTML --><div data-ng-include="NAVBAR_HTML" class="ng-scope"><div class="navbar navbar-inverse navbar-fixed-top ng-scope" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#!/">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAFOUlEQVR42o1WW0hVaRQ+SsMMgw/jyIhYXkoTL6VmeM1StLyEhJciIjEVUUiEVATFK+J4w2tRoo7meEkrb6WkWCQ+ehlFg3nqZZj3GQghPNuz/vm+Hz0cz8zDbPjd273/9a21vrW+9R+T6ehSSjmsrq6eqq+vP2Wyu968eeOOlT03NzdztLL5zn4fbYlBLNv3Gth+86tXr34CUDqAfpmZmfljenpajYyM6MVnvuM37uFee/sjzBOOTN3d3T/AIAmG3bOzs7+/fv1aTUxMqNbWVpWTkyNhYWHG1atXjYKCAmlvb1eTk5OKe7iXNrQlhn1ajoggen5+/mds2nj58qVlampKdXV1qcLCQhUTE2N2dnY2zpw5Y4mMjJTExETBOwudJSUlmYuLi1VPT4+CHZcFTjaIRUximxChM6LYW1hYUL29vaqkpEQlJCSYXV1dCWwJDg6W6Oho4d3T01O8vLzkwoULEhsbK/Hx8XLp0iVLaGio+datW+aysjL15MkTRSxiEtuEf74Hn7+1tLQoJLTv5uZ2eP78eQkPD1egQwOfO3dO4FTy8vKkqqpKHj16JCkpKRIQEKAzunHjhoqKiqKzQxcXl33SR0xia5qQ0mxnZ6dycHAwEJlixDTw9fXVAI2NjTIwMCCISjY3N2VnZ0c+fPggHR0dEhERQcq0QywVGBhooA6sy6y1Dm/fvh3s7+9XiNR8+fJlIdfMAmnLs2fPBHxKX1+fNDc36zsdra+vy6dPnwSFlrS0NGG2DAYOzYODg4qYtg6ahoeHFbg1UDwBp3LlyhV5/PixoHBSW1urnbIGzIqU5efny/v372VtbU3u37+vMyGNYMB4/vw5HTRZHSwuLpaMjo4qgFpCQkJ0IVEwDc6oCezv769pu379uqSmpgr35ebmysOHD3X06CgdFGiyjI2NKWJaHbx79+4uX968eVMBzEKa0HoyPj4ud+7cEW9vb91JXOweFpcOYapXUFAQC80sLZmZmQp2iphWB0tLS4lwIPfu3WMnHTJK1ETApcTFxcnFixc1Rbynp6frTqqpqdGLDVBeXn6c1eGDBw8UsYhpdbCyshKKnv1SVFREBwbbjl1DB9euXdN9zzujLS0tlY2NDV3gra0t3VEAY0Mwe4M6evHixRdi2mbgjU75E5HQgRkFo+iEkWRlZWmKyLOfn59kZ2fr7BgAv+/u7groYAfpLqysrFTEIqbVwfLy8o8YYLt1dXXKycnJ7OPjoyoqKnR7NjU1CcaE5p1FJGXodZ1NW1ub7O3tCQYgvyuI0gzKtIqJaVvkb6GLj1Sgu7v7AdpUEejp06e6k6qrq4WFP336tG7Rs2fP6jpQC1yYR1SxgvoPKFio+CMxTww9qHmKAw6PB1Qzo7x9+7amg8Kis4aGBiF1AJDt7W29EBTBtYohzgMOPmLZj286GOQUBf9fHR0dDc4iFFdRpRjXMjQ0JKDROipAgYBSCkxh6GmRog5fOVWJdeLA4R9EmQnO/6Ie2Ako6AE1ccStQCOCLtOgFGFycjJroThNMYsO0F26/4HxN5xk2WJbTx1EGIQz4VdsOuRsgi6ENeF4oJg8PDy0qvlMJZNzTljOHtrAdoQY9sGb7I82HBqpSHOVpxULjzFg8NCh2ChCABsZGRkGC8rjk3tpY8e6g30ZHCCcb2xOuu8wsIrQXZ/JK/sb3WWgVQ0MP0bMkfyZe7j32O4I41/gJptfF46gx+oI49gdB0cbstnnxOXiM+ho47fjfbShren/Xkc/YawGaM0wULHIxWfbM/2/fpUcX/8AvHP32moA1TQAAAAASUVORK5CYII=" width="24" height="24" class="gwt-Image ng-isolate-scope" style="margin-top:-2px;float:left;margin-right:6px;">
+      gwt-angular
+    </a>
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="">
+        <a href="#!/">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </a>
+      </li>
+      <li class="">
+        <a href="#!/downloads" class="ng-binding">
+          <span class="glyphicon glyphicon-download"></span> Downloads
+        </a>
+      </li>
+      <li class="">
+        <a href="#!/documentation" class="ng-binding">
+          <span class="glyphicon glyphicon-book"></span> Documenation
+        </a>
+      </li>
+      <li class="">
+        <a href="#" class="dropdown-toggle ng-binding" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-file"></span> Tutorial <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><!-- ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=introduction" class="ng-binding ng-scope">Introduction</a><!-- end ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=projectStructure" class="ng-binding ng-scope">Project Structure</a><!-- end ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=projectObjectModel" class="ng-binding ng-scope">Project Object Model</a><!-- end ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=gwtModuleXML" class="ng-binding ng-scope">GWT Module XML</a><!-- end ngRepeat: tutorialPage in getTutorial() --></li>
+        </ul>
+      </li>
+      <li class="dropdown ">
+        <a href="#" class="dropdown-toggle ng-binding" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-file"></span> Examples <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><!-- ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=textInput" class="ng-binding ng-scope">Text Input</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=onClickEvent" class="ng-binding ng-scope">OnClick Event</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=customDirective" class="ng-binding ng-scope">Custom Directive</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=customFilter" class="ng-binding ng-scope">Custom Filter</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=promise" class="ng-binding ng-scope">Promise</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=imageResource" class="ng-binding ng-scope">Image Resource</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=urlHashParameter" class="ng-binding ng-scope">URL Hash Parameter</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=httpClient" class="ng-binding ng-scope">HTTP Client</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=gwtWidgets" class="ng-binding ng-scope">GWT Widgets</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=prettify" class="ng-binding ng-scope">Prettify</a><!-- end ngRepeat: examplePage in getExamples() --></li>
+        </ul>
+      </li>
+    </ul>
+    <!--
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    -->
+    <!--
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Link</a></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul></li>
+    </ul>
+    -->
+  </div>
+  <!-- /.navbar-collapse -->
+</div>
+</div>
+<!--
+  <div class="panel panel-danger" style="margin: 0;">
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <b>WARNING</b>: This documentation is outated!
+      <a href="../">View the latest version.</a>
+    </div>
+  </div>
+-->
+  <!--[if lte IE 8]>
+  <div class="panel panel-danger" style="margin: 0;">
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <b>WARNING</b>: Internet Explorer 8 and below are not supported.
+      <a href="ie8.html">Why is IE8 not supported?</a>
+    </div>
+  </div>
+  <![endif]-->
+
+  <!-- ngView:  --><div data-ng-view="" class="ng-scope"><div class="jumbotron ng-scope">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADYCAYAAACJIC3tAAAxuUlEQVR42u2dCbQdVZWGk1bbblpXtyAyo4yCyCAioDKLgEDAJEAwQJBEEjRAmEJEgihDGIMYMJJIQBmCMiQGGYQQJIwCghC7XdqKy2WLLtrW1hal2wzV56t19lvnFXXvPTWcU6fuPbVWcfMu791bw/5r7/3v/+w9YkTcQt1G3n777W9g7/QLxv8fGS9X3OJWElT33HPP29R749R+l97H8V4EW9ziZrGdf/75f6f2N5rvfec731nrW9/61sFqX6D23y5ZsiS5++67051/857+fwfzu5nPeyOfGa9s3AYaVN/73vfemPVCd9xxx57f/OY3r1b/fmnRokWJ8lTJnXfemaj3ViswrWLn37zH/+N3+F3+hr/Nej++I4ItbgOxJUkyEoPn1XxfgeV9CjgXqP1HCiQpcO666y68FKBaqfY1ak8y+xr9/1bzu/wNf8tn8Fl8ps13xy1urQdVXsimPM7WyttMV2B4CrAAkMWLF+ONhoCTA6pOewpE/pbP4LM0AJ/iO/iuvJA0gi1ufUVWKE+zsTL6k9T7D6r9f1XulHz7298WkKwk9NMAS8rs/K0OJQFo+tl8B9/Fd/LdHEMkR+LWN6BSOdI66r3xsH/KwP9HSAr1c6KBsKpDCFh1X6M/G8+WCEnCMWgmcjzHFsEWt9BDwNcxgMpI36IMeZTav6H+/QrGjSfROdIqh6DqBbZVHAPHokH+CsfIsXLMmTCSEDKSI3Hzv+XR6vPmzXuTMt59VIh2jTLWX5ILYciwfRi2em+lZ1B1BJs+llUcG8eoc79fcuycA+eSBVtkIuPmhQHMhk/KSHdRxjpL7T8W6tyCAQxlfx0TqR8IP+acOLdsGByZyLj5YAC3VQZ4jtqfwVClHmUabMCg6spEcg5Sf9Pvc47ncM6RiYxbLaAi0c/mH+q9TZWhTVWvy9Tr37IMIAZahQG02ZWRp7vL79Dn8DomknPW58412DSbh+prFsEWN3sGUP28rspJJqjXJcqw/pzHAPoEFeGbDuF8gi2Pifwz10Rfm3UjExk3awZQGdFblYGMVkZ0i9p/J0blkwHMgor8iJ/nzJmTXHvttem/eU8fkxewZZlIQxP5O64V14xrF5nIyADm0ep/r4xkf/U6V73+KssA+gYVBqyJkuS6665Lzj333GTs2LHJe9/73uTDH/5wctxxxyVf+MIXkq997Wvp7zQJNpOJ5Nrpa8i1/PvIRA4QqHIYwJHKOHZTxnCZ2n8iLJpPBlDAwA5AtHA3uf7665MvfvGLyfjx45P3ve99yQYbbJC85z3vSXbddddk3333TUG28847J/vtt18yadKk5OKLL05uuOGG9G85fl49AS2XidTX8CdcW65x9rpHAXIfMYDZxFsZ3XvVjZ+p9ucwxCYYQDF+AQTguvHGG5NZs2YlJ5xwQrLbbrslG264YbLNNtsku+yyS7L77run4PrABz6QAmz//fdPPvrRj6YA++AHP5iC7YADDkg+/elPJ5dffnnyjW98Y8gLegbb65hIna8+xzXn2tvco7gFzgBmn47qvc3UPk3tj2AAIqw1GUDfoCK0uummm1JAnHTSScmee+6ZbLzxxsmWW26ZvP/97x8CFQAz93322ScFluwCNoAHMPmdgw8+OJk2bVpy1VVXJTfffPNQHtcQ2BJDgAxZ8oi+F5tlo4zIRLaIAVQJ93rqKX6Cuqn3qP/3F5EH1SWsLZpXCahuvfXW5Etf+lJy6qmnJh/5yEeSd73rXclmm22WhoKACpDgqbLA6gSwPLDxO3wGAP34xz+eTJ8+PSVIFi5c2AgTaQqQRTbGPeHecI+4V5GJDGzrQKv/s9qPUDfuNrX/QRhAHaY0xgDedtttyTXXXJOcddZZqXfZaqutkk022STZaaedUkD1ApUtwGQHuAANwO21116pRySUPPLII5PPfe5zydy5c9NjEtA3QY5wTwwm8g/cM+4d97DXfY6bRwZQ5S7/oG7OgWqfr/aXpTDaFK0uuQ8/f/WrX00NevTo0cl2222X5lU77LBD6lnwVragKgqwPLDxShhKvsbrMccck6hrmcyfP79xJlIEyLpw/7K+lwdybyMT6Y8BHPaeuikfUjfhSrX/zNTRGeGIV1AJAwh1juEeffTRqYeCAQRcgKksqKoArBPYYCIJS8ndJk6cmFx00UXJggULGmUizVYImon8GfeYe50FVmQi3TCAO6oLfr7aX5Cl9RkGcE1TDCAGevzxx6cAAlRZBrAKqOoCWB7YTCaSn6dMmZJceumlyde//vWmmMg1WSZSe9YXuPfYQGQiK4Aq+1RavHjxFuoGn6Eu7uMwU6EwgFDhl112WTJ58uRkjz32SDbaaKM0t+rGAIYEsG5MJOdArnjKKacks2fPDo2J5L3HsQlsIy+FiGDrwQCqBHxDdRFPVO/fr15fq3tpfVkG8JZbbkmpbwwPw3znO9+ZbL755unTXxhAF6ByDbBeTOThhx+enHnmmcmXv/zllAVtmok0BMivaRs5EZuJTGQXUNFIU13Eo9X7t6sL9kfpAcgTUxYINsEAQm1DcWNgBx10UFqn2nTTTUsxgG0AmBlCAjb2vffee4iJPOKII5Jzzjkn+cpXvtIoE4lNCBOpBch/xHawoYFsytqtuaaKsdPmmk0zgKawFiobQ+Lpve2226YhIAwggKqDrAgdYJ1of2EiCYuRcn3+859P5s2bF4QA2Yh0fqttqr+bsnZqrqlOfC/1erV6/UVOc81GGED+DWWNwRx11FHJjjvumJIVCGyr0Or9ALBOTCQgg4nkmD75yU8mF154YaqjNAkgU2/pm4nU9/UX2tb26oumrJ0aXKoT31ld8LS5ZlNL602ygouPASCSxTBQqGPAgAqPJbS6K7KirQDrxER+6EMfSj0bXg7i55JLLknZ1YaZyGwrBBq7XoAt2ths8Ayg2VyTRNVgABsV1sIAQkV/6lOfSg2D8G/rrbd2zgD2G8A6MZFcQ64lOevJJ5+cXHnllanusmEmcqgpqybIgm/K2rG5prqQJ6kTWOqiuWZZBhCqmRs9derU1EiRKm2xxRZeGcB+BlgnJlJWAYwaNSo544wzkquvvnqIiZQ1b00ykdgotorNhtCUtWNzTXXwx6gDXaT2P3lsrtmTAYRa5saynANAQa3bCmsjwOoBmzCRUnhn8eiMGTPS1dkNayKzrRD+hA1jy16bsnZYBfwWtR+mQq6vS3PNEJbWc8OgkLmBPDVRVLAMBNKiaQZwEAHWSYBM5IBcC0nZeeedl67cDqkVAjatbfuwvKasTsgRGlKqA9lXfeFQc00jgfTSXLPT0nqo4pkzZ6Z1mu233z4lK3gNiQEcZID1YiLxcBMmTEhXcjfZCsFsymoM5PglNo/tZ5uy1rU05P1NN9fMW1qPOJUbgjKcpFqW1tclrI0Aa4aJ5D0IKFZ4w0SG0grBbMoKJirnW/znvvvuezMI/u53vyugapQBRIQKBUwvCkDEEpB3v/vdToS1EWDNM5EHHnhg8pnPfCa54oorgmiFwHeDBTABNkyslAIYsab64Kc1uFb6YgBNYS0MIBeYnhPE7zCASJaEAex3UA0KwLoxkZz7oYcempx22mnpinB0oU0wkWBAf+fTRh42snR9i1f1YUs0y7LKB63ODpULpcsF5UIjqmV5fZsZwAiwephI7j2LWM8+++x0pThssUcmcpXGwhITI6WX5evXedK0xDUDCHXLhTvkkEPS4i/eShjAQQXVoAOsWysE8rZx48alvSNZQe6BiVypi9XzTIyU2kRHqD70QhVvpv3JXTfXlKX1/cgARoC5YSLNVggemrL+TWPhQhMjVQE2Va+/WVUWVHnNNbkQKLK5OHUvrY8AG0yweWjKukpjYWplgIn7Ux821liaX7m5JsrrTs01I4giwOpuhVBzU9Y1GgtjK4eI0rhffcgemfpAzwPp1lzTx9L6CLC45zVlJbfPa8paoDYmjOIeJkZKS6Q0wLbUk+qtAAarU6W5ZtwjwHy0Qsg2ZbVUeiQaC1uaGKlE0y9evPhf1Af+t6ZB13QLC3GfF1xwQcKfU6tqaml9BFjcbZhI7JKIilwN2+0RLq4BA2ABTFSm6aWApsf7/FTHnqt7AYwFjISC6MwiqCLAQgYba9ZIV1AHWQBstcbAT43xTPWo69WHLtfrulZ1AxjxLDkXS0PassYqAmywQ0fIEHIy6cfSjUHUGFhe62pl7cVu76Xm4OBwocS0NIiJ3isCrA07ChGWOOm+MD1VHGChjvAwS9XPuffee7uqOaTWRY1LKNIIsuo711B2UzokO6FOdo/Asdt5YEHjUyuTJj3dVBwaA3MqU/Q5xeaZuoK9socgMtURcpOROEWAFQMS7JYsDBViiBwBBhbCCGkQxVQeYPyO/EwJhKRdPByJPEp0jMcEYQTV8BwM78XCXGxWs+RdAaYxMLNykdlcvanROkmPmlnVC2BQniifkTtFgHUHlLnKmgcS69nIX9dff/20vQFt4/gdAEQ9hwWlrH9jEiZrplikyKrgMWPGpIYCqAAZn0WDVDpkAVpAyN8DOPYItv2GZFZoGdHBWgBslV7tPMnERi0honKdh/ai6c1QkZsuNzeCaTioTEBBEctYIzwNPRkpytP0lMWkEEbkB/RsRAnz2GOPJd///veH7U899VTy5JNPJsuXL0+WLl2aLg7EYAjVYcfo7MT9wKuxdg4QAzgMDECK8mEQCQ4iAKbLWKo51ug87dDaQkQppKkP3kV35ekJMp4E9MaLTOJwUPGwwavLCgE8CTeXVgd0vGKFNlIeFAYAhJ3QhbVPvMe/AdRzzz2XPPvss8kPfvCDYTvvP//888kPf/jD5IUXXkhefPHF9Oenn346BeEDDzyQKmsoo3ziE59IjYtlQByjgG2QPBsA454wa8DCe63RzoPGprtULjJnWURaWqkv+KtWJq/pxSRSIUfAi2ENKrAknyJ3ItzDcxA6M+kSpQseScAEePg3AABkeTv/H08FuJ555pn0VXZ+zu4AS34PAAI2QAcQ+RzCHVYyIB2iZsnyIEImgD8IXo1zJLdlSKIFg7hG2/5fpb1bLSyiQdPTReoVWzUH4c0666yTJuODCizyJ2Ri3EhkY3gpQEWO2glQ/Jy3C8DwRIDFBJftboKOzxBPx8+wY6waZ8mQCLA57n4GGudGJMFstwIqjleky1RdzUlHCmOiPvhF3Zm3p5oD1TxqjkHyYAIsPBXay8MOOyyddkkuBKDYTUB1ApMrgOUBTjwcYGN/9NFH0+/igcA5iRqdcKofAcY5MufNosi8WneYetFgD+vtkai+5MFeTKKoOXhaE3IMAskhORb5FfpLmD7yHPFWAKMMqFwDLA9shI94Nd7jQUn4yHkRifRbjsa5kIfSmsJGxaFt/0EnjUd1mHiTbje8slcOBvNFfNvv4JKJkFDiLIXAcwMGgFXWWzUBsE5ejVfuKeUAHpjy5O8XkFG6oNVArxwMm9e2f1NtBEe22KySvCt0JftvvdQctFeTppL9WAuTGhY0Oz9D6qAGMIFVFVRNACwLNl7xaE888UQqgZPGM3iztnsv6oWIfWUedQ8P9jdsHwzUVmTOUXOcZdP8RorNxO79qEkEWOQmlCEYfE6jHjMUrBNYTQJMdogRvhOgoWSgToc3E6lWWwGG8oU1Ydw7GxWHtv2zageYVKzVhx9LomfUw7ouuuTgZYBdv4CLXEu6B9NTBKOnTlVXKBgiwMzQkbCRWhx5C9eDKIUHaRsBJlM6KZNYiCdWa4Lv2NpUHFk1h4pT95cOPb0akOJukfRA+fYDwCQkhHZnrKysgnUNrFAAZgJNKH7yFphS0oC2hYyyTOXEE0+0bTiahpFgoDYVRw7JsT2xqE3rAH6HlsfQ1W1Xc8gDgnOheQq5FpS7D2CFBjDTmxEyLlu2LJViIYtrE8gAGA/N008/3Sb/WqNtHtvfvnaSQwpqixYteof6kldt1BzQnlTI11133VYXm3k48ISGqmZ+s8iWfIIrD2BZJUcTO7kZ6hBCRoQFlCikfVobamAobLinFhS9qDheBQN1FpmzrQP+UX3Jr4zJKj1bB7QZYICLSj+EBiNnfYaEWYUHTBfvZaVSWWmUKDV8AVBCRupnDDvkQQTAQic/BGCUVWxaBWib/xUYcFFkNgdBPNOL6BCAoeRGg9fGEFGkTrKcXMDlC1D8LAQK383OdZX6VFbgK+Jedv4/74unMzWJLul8vpfwmQcS9aWQQSZCX+RhvTyYQXA8U3ngg8UgiLtt1RwYZhuXrAAuugzzJJbhAi7pd1PMK2DiZ4yV78d7Irki5EYhw88wmLQbJzTDSCjs0y4aT4cxIHkCWABNBL7ZQrKrvIyHAmwrdaZQi9LCIkJW2bQK0DZ/t4vwMNs6YH6vWpioOVBqY7AoHdpSCxNwYRhz585NjV3CMxfAElDxypROvD7DL1hOgiHwcKIswBIXFmFSe+OhRShGiMMra7yIFDbaaKO08I3XhelkQSYA5HsgI6SWBdhcAo3vgBRgzRmF6RBBhocFZKyzs2kVoG1+fu0MYrbYrD78IptBEFxgjIanGIbQBoABLgrjPNmkeFw3uARYIv7F66DmZl0YS0UAC0ABRFw3Hk4iIgY4ZisA/s0rP7OjShC9IEVUvAgPCz7zYx/7WLpMhjVngI1wjtDSBdBMkIknCylclFYBBx98cGqjFkXmdOADtl97kTkHYCfbDIIQNQc3tg1qDoxYHgQUUesGlwksQihCP+htjI9FjzBwsJUyUYZXaXRTpquUEA3SIoC/Izfie7gnKMhZgAnIXABNQIZn4OEQUk4mrQJYmmOp4lildYgnOwOYMSvsiF4NSGWnQi4jiULOw6SxDA8ClujXnXPxWYBKhgpOmTIlNXYZKFik83HZtm3S0VZ6diAA4JVcjqezECfkbXWDDC/BeYbSeEemsDDqyEbFIQ1HsX1nIaI0uVfx6p7ZCne3nUkq6NZCZhIBP2EUZYU6wSWfw2cS6+OxyJlkmX6ZduJ19EXEwETexMOPkJgV1gh6ZQFmXd5M5FXkl4S9IXgxjoEoAdGArYpDKzn2rDzwwaI3x1Y2gyBEVc8IWBL0UBdeclwsNeE461RniNfi6Y2XIETCY4nkKpTGo9JhigcMT3TuGSFjncVs8WR4b+qKTZMefD8RCysgbFUc2Dy2X7uKI28QhPrSP9qoOXCr0Mtrr712kMVmDB3vStsuAVZda7fEa9FejQcM+V0dDxkXnX2l4Q2LD/FoMJmoM6RhTlVwwVqiQKGsQLTQNMBklQcMq02rAG3rf6xr4EPXYvOcOXPerND877aDIGDIoJdD82B4EoyeZJcFd6KIr4PIAFzUADEkaPU6J3a6bJ0tpAhUP+Hsww8/PBQylgUXICX0JELgc0Og7KXZTZGBD9g8tu+kyJxDeDxqOwgCtoqcI7QcjCcpiT4XuY68S/6eMBN9G7kWe90PFh+96fFmGODo0aPTzlPkUEVBJjpFCt5Tp05NVTF8LqFyKDnY7NmzrQc+YPMjXG+GmuMOm0EQHLzo00Ki6bm45EPc+DryLhNcM2bMGCIxXDCnvoY/AAaYNq4V51XEkwEuQPnII4+ky0EIx0JT2lMnpNZpO/ABm3cZHmap+mtsB0FQSOUmhTIIQkJDnqTkSFVDQ/lbPocwCEWF1LDaPl1FJkJCCHB+NiATcBFestpb1oqF4LlMFQfnRtHdduADNu+Mos9pHXCe7SAIbgwnFcogCPFeMHtVQ0MTXLQ5owV2nflWCOOLCKcwSL67F8gEXLTvRuoFMEMDlznwgfMpMPDhPGdF5hyAndjGQRDkgdDR3Py6qHjCJ7SDUP0+iJwm5oOZION883IywAX4UIcgLuBehwYuU8XBDADLIrMIfU90DjBD8DvKdhAEJwENHoKqXgYuUI+pmnsJuCA0YApdhoUhDOATkHGeJP2ASSh8Adf999+fthDgQQMbGRq4zIEPlE+KDHzA5p2HiEbrgF0Nir5n6wASXTRwTTKJfDdAQGFeR96FZ2aZCA8OAW+/T7gkb0H1QXj10EMPDa1mBlyozdE4Uu8MFVxlBz5g69i8syJzTp/6TRX6X7NRc4QyCAIAQBUjCarivUShgfRHckufnrnpEbKAh9yKhyb1rRUrVqQeDcOFdQwZXGYNjPFQNgMfsHFt65s6ZxHNQRDqy/+zyCCIJtUc0iAUVquufhp8Fl7Z90OjaYABHnIrrucFF1yQlmI4JmnfFjK4TBUHulPbgQ/Yet0DH2wGQaywVXNcfPHF6RqnpjyYFJUJ6ap6L0JDVhY3dT6hDEHHYwEqHpqwcpKj9dvAB63iWOFs4EOXQRBLiwyC4InXBMkh4GLCYx3iXWRVJMlN1fVCAZgwcm2b/SwDH0gVCgx8WDrC1yZJnvrSm20HQVAxp7jbpFoetq9K3UsAxloulBpNeeOQADYoAx+wdecER04t7MperQNEzcEYnyYGQfBdeBqeWFUEvULJ44mb7lQcAeZ34IO28Sud18ByWgdM7yWXanoQBOQGRAQ1D5kmWXbn71kv1fTi0QgwvwMftExqujeASdN79aXHQc/2GgQhAKPLke9BEACBdtdVViqL9yJmD2GQRQSY34EPWkl/XO0DH3qpOdSXHxDyIAgR9WKQiHrL0vOSe02ePDktVDe97CYCrPrAB8QGRQY+YOvOVRw5rQN2wIWGOghC+mwwmbEqc0hTT5lk2bRYOQKs+sAHVj2Ic7AY+LASW/dGckihTYVc6xUdBPGOd7zDW7EZlg91OxX7KuEhfztz5kxvYt4IMPf96M8777xCAx+wdR9F5tcNglD7f9gOgqDq//a3v90bwKQjLgXFqstSUN+H0gI8Aqw6wBA+2A58wMZdDXzoCjBaV6kvfrbIIAi8gI8QUfIvFAYs+CyTf0l4SINQ6ZsYwmrsCLDqIWKRgQ/YuNGmbaSverO0DrgnxEEQfAffVWXdFwCDaaIr1sYbbxxM054IMO8DH+7xDS6TSbzedhAEhV5fgyAAA6A488wzS2sPxYPRnDKkpj0RYNUHPrASwnbgAzbujUHMUXNcbKPmgI3BaAnZfAyCEIIDeRReqGz+RbU/lNXYEWD1DXzg3toOfMDGvRWZswBTT4FTeukRzWIzEhUfag6h6JleWIbgyKPnI8DaD7AiAx9Eh4iNeweY0TrgqCKDIMaMGeNtEASgKNsaQOh52CakUSENrogA8zvwARv3HiIaANsrtEEQJoN4/fXXl2YQheBoch1bBFj9zUZPOumkQgMfsHHvAJOKtsqvtlYH8H+2gyCmTZvmvGALwMiZyJ3KzvcSD8bAugiw/qmBEdVwT20HPmDb2Lg3FUdWzaHCr7epg/iT7SAISAfXrQMI5whDibWrDtBDhR/a6KVeADMXQbZlD3jgw5+wcZ8qjmF1sPvuu+/N6iB+XmQQxHrrrefUI0gNjBXMVTtHHXnkkakapC05GDQ0dZ427SwfCXXgA7aNjXuvg5lfplzpY0UGQbgW/AqDSDJbxXvh/Rh+EMISFRuASTvoI444In0whL5znDT/pI+ij14e5GDYXcGBD4/l2bzXMFEdzJ1FBkFgsC4pb+kgNWnSpEqLLFmFHVoNrBPAJIFnGcbjjz+ezuJ68skn09dQd1q+MeSPewQp5WOsUYmBD3c2ER4OYxJVrHptSIMgABjKCxQYZVsEcNMBmK+6XV0Ao1ehDLzDeEPe6Qj84osvpmwt19g1wMoMfMC2vTOI2WKzOtDPhzQIAoAx3IHOrVUBxg0JZWiFLcDotCvD7+oaZu5il3bbsLWux8qaAx+oi9oOfMC2vReZswBTT6DJRQZBHHLIIU7DLvFg1DvKrmIWgNEKum0eDICJhwh5l7nN2IRrD2YOfLDsxZEKfbHtxgBmzAo7TK8Jsx4E4ZKZkxxs4sSJlXIwSA4S8DblYG0CmHgwogzKKtDorgc+IHSwHfig14Id1liIKIU3BZrdbAdBsJOIuxwEIY1Gjz322MosIrU0X9KuQQQYORjXmvvlGmDYG3Oniwx8wLa9F5mzLKJC+jvVwVgPgqCSLoPqXK5kxlNWrYNRS2tDHazNAONBRsThcsQs4SfEWpGBD9g0tt0YiyhfumDBgreqg/md7SAIJku6VHOIkgNhcRUlB+FlKJ2k+hlgN9xwQ1obdQmwkgMffodtNwYwKbzNmzfvTeqA/zWUQRDkS1xMCAqIijJ5mIh9P/vZzybrr79+8FrENgMM2hx9qmsPhg4RoYOtigObxrYbKTLnEB4PFR0E4corADAkMbBGZfshCsDQrTHUPHowdwDjHvHApeYY0sAHbHpE05sxCOKW0AZB8B30ASm7Hoy/u/zyy50rTwaZpmfWM9Il1zkYO9dt7ty5RQY+3NIYwZHTRnu2VnMEMQhCetIjLi67ohnPR++GJoZWDALA2DlOehS6LDTLwAcAjO3ZDHzQ/ehne2uXbdGb42zbQRB4BtcKCYyN3ImbV6UnB39HcTIkJrFflBxyjKeeempqBy4BhgaR2QhFBj5g040VmbMeTD0VJoQ0CAJjI3eqIpcyF12G3ratE8Bc71WAhffiWCn+wihzDi5btdHCr8jAB2y6cQ9mtA44ENfLUusQBkHwuQCY5SZVx8WyfiikvhydAEZYTFkBA37++edTwa/rvSrAUNWzdAUAuFp4aQ586KXiEPvViy0PbEzFkSU5Fi1atCPJoe0gCNe9BusYvCd5GCsAUGL7aDdXFmAiZmXuFS3KyT2p+fDqYoddhZGDCSwLMB4CS5cuTXMjzsklwGTgg42Kg9/BlrHpxkkOKcCpA1q/yCAIKuoMgnAZdgnRQd2t6mww35Nhyq5oBmR4bgrtrnYeNGuttVZ6TcqGiSL0xSaoT7kU+ko/egZ4FBn4gE03WWR+3SAIdVC/7iX69TkIoq7uvoCTXuZtGP6AF0C14HKncScCaOh1aPYyIDOLzOTKrovMEGqWAx/WaBv+te+BD70A9gZ1UD8oOgjCdW8O2D9i/CqaRFndzFqiOOFyvxQMyMe4JoCkTJgoIeKll17qRehLiEhN03bgA7Zs5F7NqjiMQRD3FhkE4XrapUxEIayjQ29VNpEQg6dt02xikwCTPIlQFCobkFQJE1G3YwOuGESz4SjtKgoMfLg3FHCNkNEu6qAWFB0EIUBwHSYy/K9KHgbZQTjD07vpBZhNAwxjhQWGAYQJLAowYRDpHULjG5cMorQK4BXRgAXAVmobXmDadqObUWyeFdogiLrCxJAmXTYJMB4wRB6IZst6L5FIkSoQXbj2XiUHPsxqvMicBZg6+Gm9PFgTgyBEl0iIUIXsEC+GSp8kv6lcrEmAQRhwDOQpsIBlAcbfEsW4XqYirQJYumSr4sCGseVgAGa0DhinE8SgBkHgbTbZZJNk+vTplUbJmoVnl6sBQgWYFLMp2IpapMoOu+uaopeQltXttgMf9FTLcY0XmXMAtrc8IWzUHBMmTEgbhLo2VDwkNC0eEw9UthGOOdaIhjo8fZsIFZsCmISHLGKt4r3Ivx599NG0KI5G0GX+JRKyKVOmWA980IXmvYMBmFS61dN9myKDIBB5+mLlADHfxbSUql4MgLGGCUMHuL5DxSYAJnIjuiXT0LQMuZEtMLtu1WaGtEUHPmDLjas4smoOFbsWHgSxzjrrOC02Z7WJdImiflOlJibqDhJ9is94SJ+sYhMAw3tBFuH9y3ovARgaRlY5kMe6rH+ZrQJoU1Fk4AO2HIKK43WDINQT4CVdCQ9iEETWixHWlV0jlpePIfnyzSr6BhhGirchZ6qyzkyKy8uWLXOuPyw78EG3anupqYEPNoMgHg9pEEQeZU/tpaqyQ3YZks6Sdx+e2DfAZLEirw888EClwrL0QSS89rGC2SRmaFNRYODD440NfLAQ/d5lOwiC8a6+l+NL119Chjq8GCETST+Eja980ifAhNjgXKuGhrL+izVrrutf2cWW11xzjfXAB2w4pPBwGJOoTmBukUEQvgeMC6PIxedJWlY+lQUZeR0goye+a0/mC2CwrkQYhFdVPJdJbpC7uu7imzfwgVHCtgMfsOFgGMQcNcf5vdQcPgdBdFvtDItZtvDczZMhzXIJMh8AA1wQOLStE+9T1XshraKG5tN7oeJgBBW2VkDFcX4wReacSStTeoWIPgdB9JrjzKLBukGGEVHYxpBcnJdrgAm4aLcAJQ/rV8V7Se7FdaLu6SP3MlUcyORsBz5gu9hwcAAzZoUdXmQQRFMNZTB+jIiLDyiqFJ+zIGOHcWOxJ6uq6yZxXAIMcJFzsfoXMW5VcIn3Aqh4d5e9N+oa+IANBxciiupYncjuBrh6gowplC4HQdiEiqeffnotXkxAxiufx6JS8kuAXCf54QJgGCN5ETkkpQfCuargMoW96EABri/vZTKIU6dOLTLwYQ02HIySPssiKq/0rqKDIFy20bah7mlow8K/qqyiCTKpk82ZMyfVXAJkvquOB0ndAANYfCbkA3S2FIPrAhfiWTwJIZvrulfewAfyyCIDH7Dh4FhEOZglS5a8VR3of4UyCMIGYCjtoXLLNsfppfggBMVL4snEm1XJzeoCGE94PIrMR+bcAUQVQiMbGpJ/USfkuH3MYK468AHbxYaDA5g5CEId7L8VGQThcpSRbT6GFxs/fvzQVJU6QcbnATR6WJBzEobBnJYFWlWA4UUAFgQApAP54oMPPjhU56qjYanQ8rRJ90ls5A18IDqxHfiA7QYz8KEL4bHMVs1BM5mmcrBsPkbNh05JPMnNfKqukFHyPATH3HwkVjxh+e4iJE9ZgInH4u8xetTsrC6QPop1dQIW1hCPIO0AfIaGWYGy7cAHreJYNiLUzRgEsdB2EAQV9lCGjMu6sSpdqGwIEHIzCp/nnntuutKW/AwCQI4Bo+x2PYoAzOwyRR6Ep+Y7UdEsX748BUKdbbbNfoeUYPCSvljDmgY+LAxGRd+ljfZVtmoOhq+xIC6U4QoipaI1QF2kR6ewkc/Hg9DEk7bOfD8Ap2zB9QBoAI5jEtCxo04QjyDEgezCBuKppGU0eR+SNBYd0vzn4YcfToFVB5GRp5SHgUQORXjmS7FRw8CHVMWB7TbeLttCzTEjpEEQRQvQ7HgU8sMqgyNswkYBGu/hzWG8yNMABt4GhhVhLACBjIAVQ51gMnIAjvd4UAFGfpdwl/CIz+I8uN5PPPFECiwJB+sGF6QGO8uQeEg0kXfVMPBhRnBF5qwHUwd5fJFBEKzRCqHfoMks8vSVZpXiyVwCTZT58l10QJo1a1ba5mDixIlpvgSQCPOkbRr/FrAR9jFPmpXW1N/wjCx9B1QACmAJO1j31BX5PD6fpUBNkRp1DHzAdoP1YEbrgIOEprdpHQB757pHYhmQ4S14ElNKwNPWSXz0Apt4NnaRYAEagEddiR2DIG+4//77E/XETUMzCAbCNBqCmpS7C2CZ4OI7eSBAWDUNLpPgQMhgM/DBoOkPCk7FkSU51MHtVGQQBE9dl4MgqoCMV4wGdYMPkGXBZgJOFCJSwJVdJqnIYkj+P0BzBapsWCgdekMBl9nNd9q0aYUGPmC7wZIcUphTxrCBOui/FBkE4XNlc9GcDKCR05xxxhlpGFdnnawMOYKuL2/+l+/BeTK+SMY7hQKuCgMf/oLthlhkzhab11IH+3KRQRC+enOUBRnelQIxSnlCNRc0vi3ApKNuk8PL8ZyIgWfMmOFdY+hw4MPL2G7IRWZzEMRzIQ2CqKtORigLoYB41SX5ESLAxFNCmKD8QKUOORUauCoMfHgupIEPvUB2n+0gCCREoZEc3UCGKBaWEfKDkLFO/WKoAJN8C3Bxz3jIYMAhgis78MFGxYGtYrOhg8scBHGDroxbDYLAYF0PgqizGM3xMsKHhpYwe1LLcs0y+gaYeC1CQr4X2REPQhQaFJFlsEKou+3AB22rNwS3TKVLn/pLbAdBYDgUBUMZ0VokLyNkpBaFvlBYPpc1M18AEyYSIgNw8YSnHgeZQfjVpPzJVsXBDAEZ+NADYGmrAGw22CJzTuuA04oMguBitAlgZsiIrAkChKImGj9A5gJoPgAmHkvCQYgMQnh5oIQaEub14hg7dmyhgQ/YbPAAM1oHHF1kEAQAI+RCndA2kHG8AA0FA2BDkY/sidysTqC5BFgWWChAECSjDqHYjsfyvZ6ryjow7gkysSIDH7DZYIvMOQDbx3YQBL8H28OTh45Mkue0CWTmMVMzQwVCfkaSLRIoqZ9V6YtfJ8DMGprIqaixIcBGGEw4iNyoKcFuGWqenJD8GGkZnreX9zIHPmCzwQNMKuDK3W5rMwhCdpgejOjss89OL5AoO9rALHYCGudALYbaGUoHqZ+ZipAigKsDYKbKQ7wVeRbLSyCboN7xxEQShIMh51omJS+0PA9plgFxnbRcz0rFga1is8GqOHI6/K5tMwgiS3gANJgfjBIDJTypusS+SaBx3IS+0iqabk3Mp0ZbCNDwbOYCz26gKwIw0zuZgMJToVMEVI899lj6/Sj4MVCOkWI/HqsNwAJMeC3oeGyEec80s9X95a07ScnAB2w2ZBXHsDoYzfPVQf+i1yCILMiEuuekMcTRo0enSzbIbUIvRHcDGp4Yb0ZBnX6MhDD06UB9jueQFc/kDAI60R9mAUZ+lNUbmlIpWTYC+4eHEkABTJZkEALCetKyjpoex0Vo1RaPJeEgRAbRDvOiCcWxGVn3ZQmuoYEP2GpoAx+6AoyngDroJ22WreQBTcJGjI2CLheTxYjCZrURaEKG8IoCgvPBS+M1eJDg3ThXlC30sgAIeDoR+7IDQMCzYsWKFDgACCCJ2Beg0f8d9g9mTBZ10viFvIrriEcF5FLLwlibWNJfNhzkFWDRsVfW7EkxuQCwsstUnjQ8V9AAGzYIopeawxZorErFADEMQpmifSxC283VyhAiAA7vBsnDCmT+P0YP8I4//vh0hTD9/RAcw1DC8BEOAURareEJmblFGzxZPyYDAvlcPJWsJcNTAay2gErCQelzyEOCXB2Prr1PYWDlqDjuakN4OIxJVCd9I2uV6DVX8uSHtRcgdKS/gkwyAWxtzc/yFPucizw4ZMEnwIN0YCkI7CRej52wmZ3rANsnoR5gxSPinSSUEkA11XymjjwLNpPrBDN73XXXDaURFYAl+2vYKLYaPIOYBZg6+LHS71sTHauqgEzyM36G1qepCkaGUbU1P+vVugCwScNSds4TsNDimh3wCIAk3BMgtQ1MeXkWXpj7S01LaHeRPlUEF7a4xpijMLY1ADOpTnUxNldPmoW4cqOV2+oqQJOwESIASpYndp2dc0PfmxqC7jPP4uHAufLwkBXlNYSDQrilLdp0H/qF2Gjw9Hw3kOknw37qxJ7miaEv1Eob+t6G1icfQT2BIp+9H8LGQQSYhIM8MKHeYVkhegrS7t16z6/ks7TXehqbzLPV1oHMdLuMhlEn9xsYLl3gW1k1bJT8jD7wSHsgCqp0zo0AayYcRPDN+Z1wwglpe7ka86y0fYXWxv5GxhNJSNhacOXlZVKEVvtsTlzPY1pdR34mVC3ULTeszbKrQQGYKW+CMWVuN/e0rjwL29IeC5DNlmJyq/KtIjUyU6msTnB7deJ3I7TUwuCVdeVn/SK76leAdZI31ZhnrTTs6m5sLbPiY+SIft2oNZh959TJH6Yuwo9Y9KZZwtryM5FdUVxts+yqXwBWk7ypa56FDekFlD/Ctsy+na2oc9W5+lniXyZaqHj7THVRfq8vTlIXrd9Psqs2A8yUN6EqqSBv6kS7C7B+jy3JlBRsLOhVyj7zsyVLlmyoLtB8nmaiAikqtep32VXbAFa3vCkrdTLUGLw3Hxvq5zyrlvyMMZ6MkuHC6blNlcPGPNkVCom2ya7aAjCH8qahcBDb0OBaJqNfByLPqpHWP0btL0Gx6mUFK13IrpAktSU/Cx1gpryJB5cDedNKPkcv838JG+k72t1H2CgJ6U033fRP6qJ+Qe2v6hi7NtmVrKYmdGmL7CpkgJnypnHjxqW5b93yJm0Dr2IT2IYQZzEcLOfRhsLGxYsXb8GAtEGXXYUIMFPehEbSpbwJG8AW8mwkbiVp/Uz9zJnsirVTIrtCxR5i2BgSwJqUN2ETA0W7+87PVBzuXHYF2xia7CoUgPmUN3GvY57VkOxKXfwrXcuuyM9CkV01DTCRN5FnuZY3cW/7Xd4UZVeBya6aAlhW3sRooChvGoD8bNBkV74BlidvYolQlDcNFtC8yq7GjBnTmOzKJ8CivCluHfOz2267rXbZleRnTcqufADMt7yJexXzrJbmZ8rz7OZDduWr25VLgPmWN3FvYp7VJ7S++vf4fpBduQCYh+5Nw+RN3ItIu/dR2OhDdiXdrlzLruoGWFbe5KJ7U5Q3DYZH6wvZVV0Ai/KmuDmh9bOyK7V/37Xsqs5uV1UB5lPexLWN8qaYn0m3q5fb0O2qCsA8ypte7svuTXErT+u3RXZVBmCmvIkaXpQ3xa0xWj902VURgIm8SYZJxO5NcWs0P/Mlu5o/f37pIYM2AJM8i4kqUd4Ut9CAFrTsqhfAorwpbq3Lz5DyqJ/nhSC76gQwU940atQop/ImrkWUN8Wt9vwsBNlVFmBR3hS3vqP1kfoow/u5K9kVUy07ya4EYD67N3GuUd4UNy9hY5PdrgAadHvs3hS3fvdojciuCAPxXlHeFLdBYBu9yq4Ygo7kCrAxDD3Km+I2kPmZS9nV1VdfnUqvorwpbgOZnxn/XlsZrBPZlQt5E8ca5U1xa8PmXHYV5U1xi/lZRnalvM4oZcgr6pJdVZU3cSwck0lgxDwrbm0E2jDZlTLy2mRXZeVNHEOUN8Wtb/MzJEYqzKtNdmUrb+I7o7wpbgOTn9Utu4ryprjFbYRz2VWUN8UtbmLwNcquorwpbnHr4NHM2dRbKDDcWkB2NUzexN/yGXmfHbe4DexWQnYV5U1xi1sN+dnkjOwKj7bKlDfxOzHPilvcCuZnxr+HZFeEgjp0jPKmuMWt4jYsbFy4cOF2CkQPsfNvMxwcEWn3YLf/B1pnswwuP6oZAAAAAElFTkSuQmCC" width="216" height="216" class="gwt-Image ng-isolate-scope" style="undefined">
+      </div>
+      <div class="col-md-9">
+        <h1> GWT Angular</h1>
+        <p><small class="ng-binding">0.0.70-SNAPSHOT</small></p>
+        <h2><small>AngularJS for the Rest of Us</small></h2>
+      </div>
+    </div><!-- /.row -->
+    <p>
+      The purpose of gwt-angular project is to bring the powerful MVC framework 
+      of <a href="http://angularjs.org">AngularJS</a> to Java programmers. 
+      gwt-angular provides a <a href="http://www.gwtproject.org">GWT</a> wrapper
+      around <a href="http://angularjs.org">AngularJS</a>, so that components of
+      <a href="http://angularjs.org">AngularJS</a> can be written in Java 
+      language, in a manner that is natural to a programmer with that 
+      background. The project aims to leverage the runtime efficiency of 
+      AngularJS and the build time optimization of GWT.
+    </p><p>
+      <a class="btn btn-primary btn-lg ng-binding" role="button" href="#!/documentation">Learn more »</a>
+    </p>
+  </div><!-- /.container -->
+</div><!-- /.jumbotron -->
+
+<div class="container ng-scope">
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="ng-binding"><span class="glyphicon glyphicon-file"></span> Examples</h2>
+      <p>
+        Live examples with source code is available online. Learn how to write 
+        the model in JSON, view in HTML, and controller in Java.
+      </p><p>
+        <a class="btn btn-default ng-binding" role="button" href="#!/examples">More details »</a>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h2 class="ng-binding"><span class="glyphicon glyphicon-download"></span> Downloads</h2>
+      <p>
+        If you are interested in building an App using gwt-angular, you can 
+        download the release builds of gwt-angular from github.
+      </p><p>
+        <a class="btn btn-default ng-binding" role="button" href="#!/downloads">More details »</a>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h2 class="ng-binding"><span class="glyphicon glyphicon-wrench"></span> Develop</h2>
+      <p>
+        gwt-angular is an Open Source project. If you are interested in 
+        contributing to the project, source code repository is available at 
+        GitHub.
+      </p><p>
+        <a class="btn btn-default ng-binding" role="button" href="https://github.com/kyoken74/gwt-angular">More details »</a>
+      </p>
+    </div>
+  </div><!-- ./row -->
+</div><!-- /container -->
+</div>
+  <hr style="margin-top:4em;">
+  <!-- ngInclude: FOOTER_HTML --><div class="container ng-scope" data-ng-include="FOOTER_HTML"><footer class="ng-scope">
+  <p>© Yuki Asayama 2014</p>
+  <small>
+    GWT Angular project is not affiliated with Google, GWT Project, or AngularJS.
+    GWT Angular is not an official project of GWT Project. Use of names, such as
+    Google, GWT, AngularJS, and other product and company names on this web site
+    or in the code does not imply endorsement of GWT Angular project by these 
+    entities.
+  </small>
+</footer>
+</div>
+
+  <script src="site.nocache.js"></script>
+
+
+<iframe src='javascript:""' id="site" style="position: absolute; width: 0px; height: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; left: -1000px; top: -1000px; " tabindex="-1"></iframe></body></html>

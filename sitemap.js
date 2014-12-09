@@ -1,3 +1,5 @@
+(function (){ //++ start of sitemap.js
+
 var Judo = require('judo');
 
 var options = {
@@ -7,15 +9,45 @@ var options = {
 
 var judo = new Judo();
 var urlConfig = {
-  baseUrl: 'http://kyoken74.github.io/gwt-angular/',
+  baseUrl: 'http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT',
   siteMapPath: 'sitemap.xml',
   urls: [{
-    url: '/index.html',
-      siteMap: {
-        changefreq: 'daily',
-        priority:   '0.8',
-        lastmod:    lastmod(new Date())
-      }
+    url: '#!/jumbotron',
+    siteMap: {
+      changefreq: 'weekly',
+      priority:   '0.9',
+      lastmod:    lastmod(new Date())
+    }
+/*
+  },{
+    url: '#!/downloads',
+    siteMap: {
+      changefreq: 'daily',
+      priority:   '0.8',
+      lastmod:    lastmod(new Date())
+    }
+  },{
+    url: '#!/documentation',
+    siteMap: {
+      changefreq: 'weekly',
+      priority:   '0.5',
+      lastmod:    lastmod(new Date())
+    }
+  },{
+    url: '#!/tutorial',
+    siteMap: {
+      changefreq: 'weekly',
+      priority:   '0.5',
+      lastmod:    lastmod(new Date())
+    }
+  },{
+    url: '#!/examples',
+    siteMap: {
+      changefreq: 'weekly',
+      priority:   '0.6',
+      lastmod:    lastmod(new Date())
+    }
+*/
   }]
 };
 
@@ -31,3 +63,5 @@ function lastmod(date) {
   var dd = date.getDate().toString();
   return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]);
 }
+
+})(); //-- end of sitemap.js
