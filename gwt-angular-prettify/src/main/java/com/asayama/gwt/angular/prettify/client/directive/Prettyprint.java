@@ -1,7 +1,6 @@
 package com.asayama.gwt.angular.prettify.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
-import com.asayama.gwt.angular.client.Directive.Restrict;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
