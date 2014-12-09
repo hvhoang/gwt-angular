@@ -24,9 +24,9 @@ public class GwtWidget extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-    	NGScope scope = NGScope.create();
-    	scope.put(getName(), "=");
-    	return scope;
+        NGScope scope = NGScope.create();
+        scope.put(getName(), "=");
+        return scope;
     }
 
     /**

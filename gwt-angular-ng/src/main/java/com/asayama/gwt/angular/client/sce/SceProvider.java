@@ -8,16 +8,16 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class SceProvider implements Provider<Service> {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGSceProvider ngo;
 
     public boolean enabled(boolean isEnabled) {
-    	return ngo.enabled(isEnabled);
+        return ngo.enabled(isEnabled);
     }
     
     @Override
     public Factory<Service> getFactory() {
-    	return null;
+        return null;
     }
 }
 
@@ -28,6 +28,6 @@ class NGSceProvider extends JavaScriptObject {
     }
 
     final native boolean enabled(boolean isEnabled) /*-{
-    	return this.enabled(isEnabled);
+        return this.enabled(isEnabled);
     }-*/;
 }

@@ -37,39 +37,39 @@ public class JSObject extends JavaScriptObject {
         return eval('('+expr+')');
     }-*/;
 
-	protected JSObject() {
-	}
-	
-	public final String toJavaScript() {
-	    try {
-    	    return new JSONObject(this).toString();
-	    } catch (Exception e) {
-	        GWT.log("Unable to obtain the script", e);
-	        return this.toString();
-	    }
-	}
+    protected JSObject() {
+    }
 
-	private final native boolean _isThisUndefined() /*-{
-		return (typeof(this) == "undefined");
-	}-*/;
+    public final String toJavaScript() {
+        try {
+            return new JSONObject(this).toString();
+        } catch (Exception e) {
+            GWT.log("Unable to obtain the script", e);
+            return this.toString();
+        }
+    }
 
-	protected final void _checkUndefined() throws UndefinedException {
-		if (_isThisUndefined()) {
-			throw new UndefinedException();
-		}
-	}
-	
-	private final void _checkEmptyKey(String key) throws EmptyKeyException {
-		if (key == null || key.length() == 0) {
-			throw new EmptyKeyException();
-		}
-	}
-	
-	private final native boolean _isPropUndefined(String key) /*-{
+    private final native boolean _isThisUndefined() /*-{
+        return (typeof(this) == "undefined");
+    }-*/;
+
+    protected final void _checkUndefined() throws UndefinedException {
+        if (_isThisUndefined()) {
+            throw new UndefinedException();
+        }
+    }
+
+    private final void _checkEmptyKey(String key) throws EmptyKeyException {
+        if (key == null || key.length() == 0) {
+            throw new EmptyKeyException();
+        }
+    }
+
+    private final native boolean _isPropUndefined(String key) /*-{
         return (typeof(this[key]) == "undefined");
     }-*/;
     
-	private final native boolean _isPropNull(String key) /*-{
+    private final native boolean _isPropNull(String key) /*-{
         return (this[key] == null);
     }-*/;
     
@@ -102,36 +102,37 @@ public class JSObject extends JavaScriptObject {
     }-*/;
     
     /*
-	 * JSObject
-	 */
+     * JSObject
+     */
 
-	protected final <T extends JSObject> T $jsobject(String key) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
-		if (_isPropUndefined(key) || _isPropNull(key)) {
-		    return null;
-		}
-		return _jsobject(key).cast();
-	}
-	
-	private final native JSObject _jsobject(String key) /*-{
-		return this[key];
-	}-*/;
-	
-	protected final <T extends JSObject> void $jsobject(String key, T value) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
-		value._checkUndefined();
-		_jsobject(key, value);
-	}
-	
-	private final native void _jsobject(String key, JSObject value) /*-{
-		this[key] = value;
-	}-*/;
-	
-	/*
-	 * Array
-	 */
+    protected final <T extends JSObject> T $jsobject(String key) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        if (_isPropUndefined(key) || _isPropNull(key)) {
+            return null;
+        }
+        return _jsobject(key).cast();
+    }
+
+    private final native JSObject _jsobject(String key) /*-{
+        return this[key];
+    }-*/;
+
+    protected final <T extends JSObject> void $jsobject(String key, T value)
+            throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        value._checkUndefined();
+        _jsobject(key, value);
+    }
+
+    private final native void _jsobject(String key, JSObject value) /*-{
+        this[key] = value;
+    }-*/;
+    
+    /*
+     * Array
+     */
     protected final <T> JSArray<T> $jsarray(String key) throws UndefinedException, EmptyKeyException {
         JSObject value = $jsobject(key);
         return value == null ? null : value.<JSArray<T>>cast();
@@ -139,141 +140,141 @@ public class JSObject extends JavaScriptObject {
 
     protected final <T> void $jsarray(String key, JSArray<T> value) throws UndefinedException, EmptyKeyException {
         $jsobject(key, value == null ? null : value.<JSObject>cast());
-    }	
-	
+    }
 
-	/*
-	 * String
-	 */
-	
-	protected final String $string(String key) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
+    /*
+     * String
+     */
+
+    protected final String $string(String key) throws UndefinedException,
+            EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _string(key);
-	}
-	
-	private final native String _string(String key) /*-{
-		return this[key];
-	}-*/;
-	
-	protected final void $string(String key, String value) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
-		_string(key, value);
-	}
-	
-	private final native void _string(String key, String value) /*-{
-		this[key] = value;
-	}-*/;
+        return _string(key);
+    }
 
-	/*
-	 * Integer
-	 */
-	
-	protected final Integer $integer(String key) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
+    private final native String _string(String key) /*-{
+        return this[key];
+    }-*/;
+
+    protected final void $string(String key, String value) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        _string(key, value);
+    }
+
+    private final native void _string(String key, String value) /*-{
+        this[key] = value;
+    }-*/;
+
+    /*
+     * Integer
+     */
+
+    protected final Integer $integer(String key) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _integer(key);
-	}
-	
-	private final native int _integer(String key) /*-{
-		return Number(this[key]);
-	}-*/;
-	
-	protected final void $integer(String key, Integer value) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
-		_integer(key, value);
-	}
-	
-	private final native void _integer(String key, Integer value) /*-{
-		this[key] = value;
-	}-*/;
+        return _integer(key);
+    }
 
-	/*
-	 * Double
-	 */
-	
-	protected final Double $double(String key) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
+    private final native int _integer(String key) /*-{
+        return Number(this[key]);
+    }-*/;
+
+    protected final void $integer(String key, Integer value) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        _integer(key, value);
+    }
+    
+    private final native void _integer(String key, Integer value) /*-{
+        this[key] = value;
+    }-*/;
+
+    /*
+     * Double
+     */
+    
+    protected final Double $double(String key) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _double(key);
-	}
-	
-	private final native double _double(String key) /*-{
-		return Number(this[key]);
-	}-*/;
+        return _double(key);
+    }
+    
+    private final native double _double(String key) /*-{
+        return Number(this[key]);
+    }-*/;
 
-	protected final void $double(String key, Double value) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
-		_double(key, value);
-	}
-	
-	private final native void _double(String key, Double value) /*-{
-		this[key] = value;
-	}-*/;
+    protected final void $double(String key, Double value) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        _double(key, value);
+    }
+    
+    private final native void _double(String key, Double value) /*-{
+        this[key] = value;
+    }-*/;
 
-	/*
-	 * Boolean
-	 */
-	
-	protected final Boolean $boolean(String key) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
+    /*
+     * Boolean
+     */
+    
+    protected final Boolean $boolean(String key) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
         if (_isPropUndefined(key) || _isPropNull(key)) {
             return null;
         }
-		return _boolean(key);
-	}
+        return _boolean(key);
+    }
 
-	private final native boolean _boolean(String key) /*-{
-		return this[key];
-	}-*/;
-	
-	protected final void $boolean(String key, Boolean value) throws UndefinedException, EmptyKeyException {
-		_checkUndefined();
-		_checkEmptyKey(key);
-		_boolean(key, value);
-	}
-	
-	private final native void _boolean(String key, Boolean value) /*-{
-		this[key] = value;
-	}-*/;
+    private final native boolean _boolean(String key) /*-{
+        return this[key];
+    }-*/;
+    
+    protected final void $boolean(String key, Boolean value) throws UndefinedException, EmptyKeyException {
+        _checkUndefined();
+        _checkEmptyKey(key);
+        _boolean(key, value);
+    }
+    
+    private final native void _boolean(String key, Boolean value) /*-{
+        this[key] = value;
+    }-*/;
 
-	/*
-	 * Long
-	 */
-	
-	protected final Long $long(String key) throws UndefinedException, EmptyKeyException {
-		String value = $string(key);
-		return value == null ? null : Long.valueOf(value);
-	}
+    /*
+     * Long
+     */
+    
+    protected final Long $long(String key) throws UndefinedException, EmptyKeyException {
+        String value = $string(key);
+        return value == null ? null : Long.valueOf(value);
+    }
 
-	protected final void $long(String key, Long value) throws UndefinedException, EmptyKeyException {
-		$string(key, value+"");
-	}
+    protected final void $long(String key, Long value) throws UndefinedException, EmptyKeyException {
+        $string(key, value+"");
+    }
 
-	/*
-	 * Date
-	 */
-	
-	protected final Date $date(String key) throws UndefinedException, EmptyKeyException {
-		Long value = $long(key);
-		return value == null ? null : new Date(value);
-	}
+    /*
+     * Date
+     */
+    
+    protected final Date $date(String key) throws UndefinedException, EmptyKeyException {
+        Long value = $long(key);
+        return value == null ? null : new Date(value);
+    }
 
-	protected final void $date(String key, Date value) throws UndefinedException, EmptyKeyException {
-		$long(key, value.getTime());
-	}
-	
+    protected final void $date(String key, Date value) throws UndefinedException, EmptyKeyException {
+        $long(key, value.getTime());
+    }
+    
 }

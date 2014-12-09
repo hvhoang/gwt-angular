@@ -9,12 +9,12 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class LocationProvider implements Provider<Location> {
 
-	@Injector.Inject
+    @Injector.Inject
     NGLocationProvider ngo;
     
     @Override
     public Factory<Location> getFactory() {
-    	return new DefaultFactory<Location>(Location.class);
+        return new DefaultFactory<Location>(Location.class);
     }
     
     public LocationProvider html5Mode(boolean isHtml5) {

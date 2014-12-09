@@ -25,67 +25,67 @@ public class JSArray<T> extends JavaScriptObject {
     public static final Double[] DOUBLE_ARRAY = new Double[0];
     public static final Date[] DATE_ARRAY = new Date[0];
 
-	public static native <T> JSArray<T> create() /*-{
-		return [];
-	}-*/;
+    public static native <T> JSArray<T> create() /*-{
+        return [];
+    }-*/;
 
     public static native <T> JSArray<T> eval(String expr) /*-{
         return eval('('+expr+')');
     }-*/;
 
     public static  <T> JSArray<T> create(T[] objects) {
-		JSArray<T> array = null;
-		if (objects != null) {
-			array = create();
-			for (T object : objects) {
-				array.add(object);
-			}
-		}
-		return array;
-	}
+        JSArray<T> array = null;
+        if (objects != null) {
+            array = create();
+            for (T object : objects) {
+                array.add(object);
+            }
+        }
+        return array;
+    }
 
-	protected JSArray() {
-	}
+    protected JSArray() {
+    }
 
-	public final T get(int i) {
-		if (i < 0 || size() < i) {
-			throw new ArrayIndexOutOfBoundsException();
-		}
-		return _get(i);
-	}
+    public final T get(int i) {
+        if (i < 0 || size() < i) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return _get(i);
+    }
 
-	public final native T _get(int i) /*-{
-		return this[i];
-	}-*/;
+    public final native T _get(int i) /*-{
+        return this[i];
+    }-*/;
+    
+    public final native boolean add(T e) /*-{
+        this.push(e);
+        return true;
+    }-*/;
+    
+    public final native void add(int index, T element) /*-{
+        this.splice(index, 0, element);
+    }-*/;
+    
+    public final native int size() /*-{
+        return this.length;
+    }-*/;
 
-	public final native boolean add(T e) /*-{
-		this.push(e);
-		return true;
-	}-*/;
+    public final Object[] toArray() {
+        Object[] array = new Object[size()];
+        for (int i = 0; i < size(); i++) {
+            array[i] = get(i);
+        }
+        return array;
+    }
 
-	public final native void add(int index, T element) /*-{
-		this.splice(index, 0, element);
-	}-*/;
-	
-	public final native int size() /*-{
-		return this.length;
-	}-*/;
-
-	public final Object[] toArray() {
-	    Object[] array = new Object[size()];
-	    for (int i = 0; i < size(); i++) {
-	        array[i] = get(i);
-	    }
-	    return array;
-	}
-
-	public final <U extends Object> U[] toArray(U[] a) {
-	    ArrayList<T> list = new ArrayList<T>();
-	    for (int i = 0; i < size(); i++) {
-	        list.add(get(i));
-	    }
-	    return list.toArray(a);
-	}
+    public final <U extends Object> U[] toArray(U[] a) {
+        ArrayList<T> list = new ArrayList<T>();
+        for (int i = 0; i < size(); i++) {
+            list.add(get(i));
+        }
+        return list.toArray(a);
+    }
 
     public final boolean addAll(Collection<? extends T> c) {
         Iterator<? extends T> it = c.iterator();

@@ -22,17 +22,17 @@ public class GwtTextResource extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-    	NGScope scope = NGScope.create();
-    	scope.put(getName(), "=");
-    	return scope;
+        NGScope scope = NGScope.create();
+        scope.put(getName(), "=");
+        return scope;
     }
-	
+
     @Override
     public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
         if (resource == null) {
-        	GWT.log("Mandatory attribute " + getName() + " value is mssing");
-        	return;
+            GWT.log("Mandatory attribute " + getName() + " value is mssing");
+            return;
         }
         String text = resource.getText();
         element.append(text);

@@ -10,12 +10,12 @@ import com.asayama.gwt.jsni.client.JSObject;
 @Injector.Bind("$scope")
 public class NGScope extends JSON {
 
-	@SuppressWarnings("unchecked")
-	public static NGScope create() {
-		NGScope instance = JSObject.create();
-		return instance;
-	}
-	
+    @SuppressWarnings("unchecked")
+    public static NGScope create() {
+        NGScope instance = JSObject.create();
+        return instance;
+    }
+
     protected NGScope() {
     }
     

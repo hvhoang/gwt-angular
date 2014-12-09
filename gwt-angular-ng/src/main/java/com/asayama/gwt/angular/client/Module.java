@@ -187,12 +187,12 @@ public interface Module extends EntryPoint {
     <S extends Service> Module factory(Class<S> klass);
 
     /**
-	 * Registers a service object factory with the module, so that the service
-	 * object is created if/when it is requested. The method is useful if the
-	 * service creation needs customization/configuration, e.g. the creation of
-	 * the service depends on other resources. If you merely wish to create an
-	 * object via <code>new</code> or <code>GWT.create()</code>, then there is
-	 * a convenience method {@link Module#service(Class) }.
+     * Registers a service object factory with the module, so that the service
+     * object is created if/when it is requested. The method is useful if the
+     * service creation needs customization/configuration, e.g. the creation of
+     * the service depends on other resources. If you merely wish to create an
+     * object via <code>new</code> or <code>GWT.create()</code>, then there is
+     * a convenience method {@link Module#service(Class) }.
      */
     <S extends Service> Module factory(Factory<S> factory);
     

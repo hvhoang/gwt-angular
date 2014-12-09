@@ -11,13 +11,13 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider<Service> {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGRouteProvider ngo;
 
     @Override
     public Factory<Service> getFactory() {
-    	// TODO Auto-generated method stub
-    	return null;
+        // TODO Auto-generated method stub
+        return null;
     }
     
     public <C extends Controller> RouteProvider when(HtmlResource partial) {
@@ -80,10 +80,10 @@ class NGRouteProvider extends JavaScriptObject {
     }
 
     final native void when(String route, JavaScriptObject action) /*-{
-		this.when(route, action);
+        this.when(route, action);
     }-*/;
 
     final native void otherwise(JavaScriptObject action) /*-{
-		this.otherwise(action);
-	}-*/;
+        this.otherwise(action);
+    }-*/;
 }

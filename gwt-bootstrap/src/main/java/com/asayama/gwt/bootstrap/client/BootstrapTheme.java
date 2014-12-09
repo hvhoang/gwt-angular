@@ -27,8 +27,8 @@ public class BootstrapTheme implements EntryPoint {
  */
 interface BootstrapThemeScripts extends ClientBundle {
 
-	static BootstrapThemeScripts INSTANCE = GWT.create(BootstrapThemeScripts.class);
-	
-//	@Source("bower_components/bootstrap/dist/css/bootstrap-theme.min.css")
-//	StyleResource css();
+    static BootstrapThemeScripts INSTANCE = GWT.create(BootstrapThemeScripts.class);
+
+    // @Source("bower_components/bootstrap/dist/css/bootstrap-theme.min.css")
+    // StyleResource css();
 }

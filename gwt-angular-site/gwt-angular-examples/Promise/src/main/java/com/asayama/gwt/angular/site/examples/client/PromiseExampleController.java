@@ -12,7 +12,7 @@ import com.asayama.gwt.angular.site.examples.client.service.GreetingService;
 public class PromiseExampleController implements Controller {
 
     // Our custom service to demonstrate promise pipelining.
-	@Injector.Inject
+    @Injector.Inject
     private GreetingService service;
     
     // View Models

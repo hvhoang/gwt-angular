@@ -22,7 +22,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Http implements Service {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGHttp ngo;
 
     public void get(String url, final HttpCallback callback) {
@@ -52,8 +52,7 @@ class NGHttp extends JavaScriptObject {
     protected NGHttp() {
     }
 
-    final native void get(String url, JSClosure successCallback,
-            JSClosure errorCallback) /*-{
-		this.get(url).success(successCallback).error(errorCallback);
-	}-*/;
+    final native void get(String url, JSClosure successCallback, JSClosure errorCallback) /*-{
+        this.get(url).success(successCallback).error(errorCallback);
+    }-*/;
 }

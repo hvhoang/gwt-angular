@@ -9,10 +9,10 @@ public class UrlHashParameterExampleController implements Controller {
 
     // Fields annotated Injector.Inject are injected by the framework
     
-	@Injector.Inject
+    @Injector.Inject
     private RouteParams routeParams;
 
-	@Injector.Inject
+    @Injector.Inject
     private Location location;
 
     // Other fields are used to represent the state of this controller

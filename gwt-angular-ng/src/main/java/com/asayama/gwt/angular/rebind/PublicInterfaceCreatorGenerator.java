@@ -20,8 +20,8 @@ public class PublicInterfaceCreatorGenerator extends DefaultInstantiableCreatorG
         List<JClassType> supportedClassTypes = new ArrayList<JClassType>();
         if (supportedSubClassTypes != null) {
             for (JClassType returnClassType : supportedSubClassTypes) {
-            	if (returnClassType.isAbstract() && returnClassType.isPublic()) {
-            		supportedClassTypes.add(returnClassType);
+                if (returnClassType.isAbstract() && returnClassType.isPublic()) {
+                    supportedClassTypes.add(returnClassType);
                 }
             }
         }

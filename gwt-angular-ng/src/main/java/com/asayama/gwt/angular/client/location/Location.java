@@ -9,7 +9,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class Location implements Service {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGLocation ngo;
 
     public String getHash() {
@@ -46,19 +46,19 @@ class NGLocation extends JavaScriptObject {
     }
 
     final native String hash() /*-{
-		return this.hash();
+        return this.hash();
     }-*/;
-
+    
     final native void hash(String hash) /*-{
-		this.hash(hash);
+        this.hash(hash);
     }-*/;
-
+    
     final native void search(String key, String value) /*-{
-		this.search(key, value);
-	}-*/;
-
+        this.search(key, value);
+    }-*/;
+    
     final native void search(JSHashParam param) /*-{
-		this.search(param);
-	}-*/;
+        this.search(param);
+    }-*/;
 
 }

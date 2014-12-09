@@ -20,7 +20,7 @@ import com.google.gwt.http.client.Response;
  */
 public class GwtHtmlResource extends AbstractDirective {
     
-	@Injector.Inject
+    @Injector.Inject
     private Q q;
     
     /**
@@ -31,17 +31,17 @@ public class GwtHtmlResource extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-    	NGScope scope = NGScope.create();
-    	scope.put(getName(), "=");
-    	return scope;
+        NGScope scope = NGScope.create();
+        scope.put(getName(), "=");
+        return scope;
     }
 
     @Override
     public void link(final NGScope scope, final JQElement element, JSON attrs) {
         HtmlResource resource = scope.get(getName());
         if (resource == null) {
-        	GWT.log("Mandatory attribute " + getName() + " value is mssing");
-        	return;
+            GWT.log("Mandatory attribute " + getName() + " value is mssing");
+            return;
         }
         String url = resource.getSafeUri().asString();
         Promise<Response> promise = HttpUtils.get(q, url);
@@ -52,10 +52,10 @@ public class GwtHtmlResource extends AbstractDirective {
                 element.append(text);
             }
         }).then(new Fail() {
-        	@Override
-        	public void call(Throwable cause) {
-        		GWT.log("Failed to insert HtmlResource", cause);
-        	}
+            @Override
+            public void call(Throwable cause) {
+                GWT.log("Failed to insert HtmlResource", cause);
+            }
         });
         return;
     }

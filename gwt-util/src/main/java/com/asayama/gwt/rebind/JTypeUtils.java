@@ -5,9 +5,9 @@ import com.google.gwt.core.ext.typeinfo.JType;
 
 public class JTypeUtils {
 
-	public static boolean isVoid(JType type) {
-		JPrimitiveType primitiveType = type.isPrimitive();
-		return primitiveType != null && primitiveType.equals(JPrimitiveType.VOID);
-	}
+    public static boolean isVoid(JType type) {
+        JPrimitiveType primitiveType = type.isPrimitive();
+        return primitiveType != null && primitiveType.equals(JPrimitiveType.VOID);
+    }
 
 }

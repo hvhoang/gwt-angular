@@ -13,7 +13,7 @@ import com.asayama.gwt.jsni.client.JSObject;
 @Deprecated
 public abstract class NGObject extends JSObject implements Injectable {
 
-	protected NGObject() {
-	}
+    protected NGObject() {
+    }
 
 }

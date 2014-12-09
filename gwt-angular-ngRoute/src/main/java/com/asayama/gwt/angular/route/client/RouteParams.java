@@ -8,7 +8,7 @@ import com.asayama.gwt.jsni.client.JSObject;
 
 public class RouteParams implements Service {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGRouteParams ngo;
 
     public String getString(String key) {

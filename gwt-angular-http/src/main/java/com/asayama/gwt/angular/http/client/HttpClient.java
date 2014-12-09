@@ -53,7 +53,7 @@ import com.google.gwt.http.client.Response;
  */
 public class HttpClient implements Service {
 
-	@Injector.Inject
+    @Injector.Inject
     private Q q;
     
     public Promise<Response> get(String url) {

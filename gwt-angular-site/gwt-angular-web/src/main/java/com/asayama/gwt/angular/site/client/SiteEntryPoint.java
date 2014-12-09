@@ -41,19 +41,19 @@ public class SiteEntryPoint extends AbstractModule implements EntryPoint {
         });
         
         config(SceProvider.class, new Configurator<SceProvider>() {
-        	@Override
-        	public void configure(SceProvider provider) {
-        		// This is a workaround for supporting SuperDevMode via Eclipse
-        		// plugin. ngInclude requires that the included HTML is trusted
-        		// as per SCE policy. When we run the App in SuperDevMode via
-        		// Eclipse plugin, we are unable to load the page because we
-        		// first load in port 8888, which then gets redirected to 9876.
-        		// SCE does not like loading resources even when we are loading
-        		// from the same server, if the port number is different. We
-        		// turn off the SCE when we are not running in Prod mode.
-        		SuperDevModeIndicator sdm = GWT.create(SuperDevModeIndicator.class);
-				provider.enabled(!sdm.isSuperDevMode());
-        	}
+            @Override
+            public void configure(SceProvider provider) {
+                // This is a workaround for supporting SuperDevMode via Eclipse
+                // plugin. ngInclude requires that the included HTML is trusted
+                // as per SCE policy. When we run the App in SuperDevMode via
+                // Eclipse plugin, we are unable to load the page because we
+                // first load in port 8888, which then gets redirected to 9876.
+                // SCE does not like loading resources even when we are loading
+                // from the same server, if the port number is different. We
+                // turn off the SCE when we are not running in Prod mode.
+                SuperDevModeIndicator sdm = GWT.create(SuperDevModeIndicator.class);
+                provider.enabled(!sdm.isSuperDevMode());
+            }
         });
         
         Angular.bootstrap();

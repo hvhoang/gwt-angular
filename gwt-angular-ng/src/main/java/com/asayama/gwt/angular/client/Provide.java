@@ -22,7 +22,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Provide implements Service {
     
-	@Injector.Inject
+    @Injector.Inject
     NGProvide ngo;
     
     public <S extends Service> void provider(String name, Function<S> provider) {

@@ -8,7 +8,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class Q implements Service {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGQ ngo;
 
     public <V> Deferred<V> defer() {

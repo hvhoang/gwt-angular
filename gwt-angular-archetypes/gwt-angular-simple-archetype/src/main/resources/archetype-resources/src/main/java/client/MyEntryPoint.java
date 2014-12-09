@@ -11,9 +11,9 @@ import com.google.gwt.core.client.EntryPoint;
 
 public class MyEntryPoint extends AbstractModule implements EntryPoint {
 
-	@Override
-	public void onModuleLoad() {
-		Angular.module(this);
+    @Override
+    public void onModuleLoad() {
+        Angular.module(this);
         config(RouteProvider.class, new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider provider) {
@@ -22,6 +22,6 @@ public class MyEntryPoint extends AbstractModule implements EntryPoint {
                     .otherwise(MyResources.INSTANCE.MyView());
             }
         });
-		Angular.bootstrap();
-	}
+        Angular.bootstrap();
+    }
 }

@@ -13,7 +13,7 @@ import com.google.gwt.user.client.Timer;
 public class GreetingService implements Service {
 
     // Q service is injected by Angular
-	@Injector.Inject
+    @Injector.Inject
     private Q q;
     
     // Given the promises of name and salutation, returns a promise of greeting.

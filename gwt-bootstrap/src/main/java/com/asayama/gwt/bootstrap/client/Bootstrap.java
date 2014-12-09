@@ -30,11 +30,11 @@ public class Bootstrap implements EntryPoint {
  */
 interface BootstrapScripts extends ClientBundle {
 
-	static BootstrapScripts INSTANCE = GWT.create(BootstrapScripts.class);
-	
-	@Source("bower_components/bootstrap/dist/js/bootstrap.min.js")
-	ScriptResource script();
-	
-//	@Source("bower_components/bootstrap/dist/css/bootstrap.min.css")
-//	StyleResource css();
+    static BootstrapScripts INSTANCE = GWT.create(BootstrapScripts.class);
+
+    @Source("bower_components/bootstrap/dist/js/bootstrap.min.js")
+    ScriptResource script();
+
+//  @Source("bower_components/bootstrap/dist/css/bootstrap.min.css")
+//  StyleResource css();
 }

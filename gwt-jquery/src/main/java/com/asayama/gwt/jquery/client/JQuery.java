@@ -12,7 +12,7 @@ public class JQuery implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-        	JQueryScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
+            JQueryScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
         } catch (Exception e) {
             GWT.log("Exception while " + m, e);
         }
@@ -29,8 +29,8 @@ public class JQuery implements EntryPoint {
  */
 interface JQueryScripts extends ClientBundle {
 
-	static JQueryScripts INSTANCE = GWT.create(JQueryScripts.class);
-	
-	@Source("bower_components/jquery/dist/jquery.min.js")
-	ScriptResource script();
+    static JQueryScripts INSTANCE = GWT.create(JQueryScripts.class);
+
+    @Source("bower_components/jquery/dist/jquery.min.js")
+    ScriptResource script();
 }

@@ -32,9 +32,9 @@ public class GwtImageResource extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-    	NGScope scope = NGScope.create();
-    	scope.put(getName(), "=");
-    	return scope;
+        NGScope scope = NGScope.create();
+        scope.put(getName(), "=");
+        return scope;
     }
 
     /**
@@ -45,8 +45,8 @@ public class GwtImageResource extends AbstractDirective {
     public void link(NGScope scope, JQElement element, JSON attrs) {
         ImageResource resource = scope.get(getName());
         if (resource == null) {
-        	GWT.log("Mandatory attribute " + getName() + " value is mssing");
-        	return;
+            GWT.log("Mandatory attribute " + getName() + " value is mssing");
+            return;
         }
         Image image = new Image(resource);
         Element target = image.asWidget().getElement();

@@ -6,7 +6,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class Log implements Service {
 
-	@Injector.Inject
+    @Injector.Inject
     private NGLog ngo;
 
     public void log(String message) {
@@ -37,23 +37,23 @@ class NGLog extends JavaScriptObject {
     }
 
     final native void log(String message) /*-{
-		this.log(message);
+        this.log(message);
     }-*/;
-
+    
     final native void info(String message) /*-{
-		this.info(message);
+        this.info(message);
     }-*/;
-
+    
     final native void warn(String message) /*-{
-		this.warn(message);
+        this.warn(message);
     }-*/;
-
+    
     final native void error(String message) /*-{
-		this.error(message);
+        this.error(message);
     }-*/;
-
+    
     final native void debug(String message) /*-{
-		this.debug(message);
-	}-*/;
+        this.debug(message);
+    }-*/;
 
 }

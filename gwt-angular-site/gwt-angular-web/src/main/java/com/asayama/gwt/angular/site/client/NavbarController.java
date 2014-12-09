@@ -13,8 +13,8 @@ import com.google.gwt.user.client.Window;
 
 public class NavbarController implements Controller {
 
-	public static final ImageResource LOGO = NavbarResources.INSTANCE.logo();
-	
+    public static final ImageResource LOGO = NavbarResources.INSTANCE.logo();
+
     public static final String NAVBAR_HTML = NavbarResources.INSTANCE.navbar().getSafeUri().asString();
     public static final String FOOTER_HTML = NavbarResources.INSTANCE.footer().getSafeUri().asString();
 
