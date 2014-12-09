@@ -1,0 +1,26 @@
+{
+  "name": "gwt-angular",
+  "description": "GWT Angular",
+  "main": "index.js",
+  "dependencies": {
+    "judo": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kyoken74/gwt-angular.git"
+  },
+  "keywords": [
+    "gwt",
+    "angular"
+  ],
+  "author": "Yuki Asayama",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/kyoken74/gwt-angular/issues"
+  },
+  "homepage": "https://github.com/kyoken74/gwt-angular"
+}
