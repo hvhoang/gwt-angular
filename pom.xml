@@ -173,7 +173,7 @@
           <version>2.7.0</version>
           <configuration>
             <gen>${project.build.directory}/generated</gen>
-            <closureCompiler>true</closureCompiler>
+            <closureCompiler>false</closureCompiler>
           </configuration>
         </plugin>
         <plugin>
