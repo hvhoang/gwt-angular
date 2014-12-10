@@ -1,0 +1,254 @@
+<html lang="en"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+<title>GWT Angular</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/ico" href="favicon.ico">
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px !important;
+  padding-bottom: 20px !important;
+}
+pre.prettyprint {
+  font-size: 12px !important;
+}
+</style>
+<link rel="stylesheet" href="http://gwt-angular.asayama.com/gwt-angular/clean/clean.css"><link rel="stylesheet" href="http://gwt-angular.asayama.com/css/bootstrap.min.css"><link rel="stylesheet" href="http://gwt-angular.asayama.com/css/bootstrap-theme.min.css"><script src="http://gwt-angular.asayama.com/8202D6D296DB0B797275EBFA282472A2.cache.js"></script><style>.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}pre.prettyprint{padding:2px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}</style></head>
+<body data-ng-controller="com.asayama.gwt.angular.site.client.NavbarController" class="ng-scope">
+  <!-- ngInclude: NAVBAR_HTML --><div data-ng-include="NAVBAR_HTML" class="ng-scope"><div class="navbar navbar-inverse navbar-fixed-top ng-scope" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#!/">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAFOUlEQVR42o1WW0hVaRQ+SsMMgw/jyIhYXkoTL6VmeM1StLyEhJciIjEVUUiEVATFK+J4w2tRoo7meEkrb6WkWCQ+ehlFg3nqZZj3GQghPNuz/vm+Hz0cz8zDbPjd273/9a21vrW+9R+T6ehSSjmsrq6eqq+vP2Wyu968eeOOlT03NzdztLL5zn4fbYlBLNv3Gth+86tXr34CUDqAfpmZmfljenpajYyM6MVnvuM37uFee/sjzBOOTN3d3T/AIAmG3bOzs7+/fv1aTUxMqNbWVpWTkyNhYWHG1atXjYKCAmlvb1eTk5OKe7iXNrQlhn1ajoggen5+/mds2nj58qVlampKdXV1qcLCQhUTE2N2dnY2zpw5Y4mMjJTExETBOwudJSUlmYuLi1VPT4+CHZcFTjaIRUximxChM6LYW1hYUL29vaqkpEQlJCSYXV1dCWwJDg6W6Oho4d3T01O8vLzkwoULEhsbK/Hx8XLp0iVLaGio+datW+aysjL15MkTRSxiEtuEf74Hn7+1tLQoJLTv5uZ2eP78eQkPD1egQwOfO3dO4FTy8vKkqqpKHj16JCkpKRIQEKAzunHjhoqKiqKzQxcXl33SR0xia5qQ0mxnZ6dycHAwEJlixDTw9fXVAI2NjTIwMCCISjY3N2VnZ0c+fPggHR0dEhERQcq0QywVGBhooA6sy6y1Dm/fvh3s7+9XiNR8+fJlIdfMAmnLs2fPBHxKX1+fNDc36zsdra+vy6dPnwSFlrS0NGG2DAYOzYODg4qYtg6ahoeHFbg1UDwBp3LlyhV5/PixoHBSW1urnbIGzIqU5efny/v372VtbU3u37+vMyGNYMB4/vw5HTRZHSwuLpaMjo4qgFpCQkJ0IVEwDc6oCezv769pu379uqSmpgr35ebmysOHD3X06CgdFGiyjI2NKWJaHbx79+4uX968eVMBzEKa0HoyPj4ud+7cEW9vb91JXOweFpcOYapXUFAQC80sLZmZmQp2iphWB0tLS4lwIPfu3WMnHTJK1ETApcTFxcnFixc1Rbynp6frTqqpqdGLDVBeXn6c1eGDBw8UsYhpdbCyshKKnv1SVFREBwbbjl1DB9euXdN9zzujLS0tlY2NDV3gra0t3VEAY0Mwe4M6evHixRdi2mbgjU75E5HQgRkFo+iEkWRlZWmKyLOfn59kZ2fr7BgAv+/u7groYAfpLqysrFTEIqbVwfLy8o8YYLt1dXXKycnJ7OPjoyoqKnR7NjU1CcaE5p1FJGXodZ1NW1ub7O3tCQYgvyuI0gzKtIqJaVvkb6GLj1Sgu7v7AdpUEejp06e6k6qrq4WFP336tG7Rs2fP6jpQC1yYR1SxgvoPKFio+CMxTww9qHmKAw6PB1Qzo7x9+7amg8Kis4aGBiF1AJDt7W29EBTBtYohzgMOPmLZj286GOQUBf9fHR0dDc4iFFdRpRjXMjQ0JKDROipAgYBSCkxh6GmRog5fOVWJdeLA4R9EmQnO/6Ie2Ako6AE1ccStQCOCLtOgFGFycjJroThNMYsO0F26/4HxN5xk2WJbTx1EGIQz4VdsOuRsgi6ENeF4oJg8PDy0qvlMJZNzTljOHtrAdoQY9sGb7I82HBqpSHOVpxULjzFg8NCh2ChCABsZGRkGC8rjk3tpY8e6g30ZHCCcb2xOuu8wsIrQXZ/JK/sb3WWgVQ0MP0bMkfyZe7j32O4I41/gJptfF46gx+oI49gdB0cbstnnxOXiM+ho47fjfbShren/Xkc/YawGaM0wULHIxWfbM/2/fpUcX/8AvHP32moA1TQAAAAASUVORK5CYII=" width="24" height="24" class="gwt-Image ng-isolate-scope" style="margin-top:-2px;float:left;margin-right:6px;">
+      gwt-angular
+    </a>
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="">
+        <a href="#!/">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </a>
+      </li>
+      <li class="">
+        <a href="#!/downloads" class="ng-binding">
+          <span class="glyphicon glyphicon-download"></span> Downloads
+        </a>
+      </li>
+      <li class="">
+        <a href="#!/documentation" class="ng-binding">
+          <span class="glyphicon glyphicon-book"></span> Documenation
+        </a>
+      </li>
+      <li class="">
+        <a href="#" class="dropdown-toggle ng-binding" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-file"></span> Tutorial <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><!-- ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=introduction" class="ng-binding ng-scope">Introduction</a><!-- end ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=projectStructure" class="ng-binding ng-scope">Project Structure</a><!-- end ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=projectObjectModel" class="ng-binding ng-scope">Project Object Model</a><!-- end ngRepeat: tutorialPage in getTutorial() --><a data-ng-repeat="tutorialPage in getTutorial()" href="#!/tutorial?page=gwtModuleXML" class="ng-binding ng-scope">GWT Module XML</a><!-- end ngRepeat: tutorialPage in getTutorial() --></li>
+        </ul>
+      </li>
+      <li class="dropdown ">
+        <a href="#" class="dropdown-toggle ng-binding" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-file"></span> Examples <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><!-- ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=textInput" class="ng-binding ng-scope">Text Input</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=onClickEvent" class="ng-binding ng-scope">OnClick Event</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=customDirective" class="ng-binding ng-scope">Custom Directive</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=customFilter" class="ng-binding ng-scope">Custom Filter</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=promise" class="ng-binding ng-scope">Promise</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=imageResource" class="ng-binding ng-scope">Image Resource</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=urlHashParameter" class="ng-binding ng-scope">URL Hash Parameter</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=httpClient" class="ng-binding ng-scope">HTTP Client</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=gwtWidgets" class="ng-binding ng-scope">GWT Widgets</a><!-- end ngRepeat: examplePage in getExamples() --><a data-ng-repeat="examplePage in getExamples()" href="#!/examples?page=prettify" class="ng-binding ng-scope">Prettify</a><!-- end ngRepeat: examplePage in getExamples() --></li>
+        </ul>
+      </li>
+    </ul>
+    <!--
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    -->
+    <!--
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Link</a></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul></li>
+    </ul>
+    -->
+  </div>
+  <!-- /.navbar-collapse -->
+</div>
+</div>
+<!--
+  <div class="panel panel-danger" style="margin: 0;">
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <b>WARNING</b>: This documentation is outated!
+      <a href="../">View the latest version.</a>
+    </div>
+  </div>
+-->
+  <!--[if lte IE 8]>
+  <div class="panel panel-danger" style="margin: 0;">
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <b>WARNING</b>: Internet Explorer 8 and below are not supported.
+      <a href="ie8.html">Why is IE8 not supported?</a>
+    </div>
+  </div>
+  <![endif]-->
+
+  <!-- ngView:  --><div data-ng-view="" class="ng-scope"><div class="container ng-scope" style="margin-top:2em;">
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="ng-binding">Text Input</h1>
+      <!-- ngInclude: getSelectedPage().url --><div data-ng-include="getSelectedPage().url" class="ng-scope"><div data-ng-controller="com.asayama.gwt.angular.site.examples.client.TextInputExampleResources" class="ng-scope">
+  <p>
+    This example demonstrates the declaration of Angular model and the 
+    communication between the view (HTML) and the controller (Java) using this
+    model.
+  </p><p>
+    To see this example in action, try typing in something into the text field
+    below. Before you enter any values into the field, the caption above the
+    field should read "<b>Hello, Stranger!</b>" Once you enter a value in the 
+    field, e.g. "Jack", then you will see that caption updated to 
+    "<b>Hello, Jack!</b>" as you type in the value.
+  </p>
+  <div class="panel panel-primary">
+    <!-- ngInclude: DEMO_URL --><div class="panel-body ng-scope" data-ng-include="DEMO_URL"><div data-ng-controller="com.asayama.gwt.angular.site.examples.client.TextInputExampleController" class="ng-scope">
+  <h2 class="ng-binding">Hello, Stranger!</h2>
+  <label for="nameInput">Enter Name: </label>
+  <input type="text" id="nameInput" data-ng-model="name" data-ng-change="setName(name||null)" data-ng-init="name = getName()" class="ng-pristine ng-untouched ng-valid">
+</div>
+</div>
+  </div>
+
+  <h2>View</h2>
+  <p>
+    The text <code>&lt;INPUT&gt;</code> field is associated with an Angular 
+    model called <code>name</code> using <code>data-ng-model</code> directive.
+    When the element is first rendered, the controller's <code>getName()</code>
+    is called and the value from this method is  assigned to the model. When the
+    value of the input box is changed, the change is communicated to the 
+    controller via <code>data-ng-change</code> directive, which calls 
+    <code>setName()</code> method.
+  </p>
+  <pre data-gwt-prettify="view()" class="ng-isolate-scope prettyprint"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">data-ng-controller</span><span class="pun">=</span><span class="atv">"com.asayama.gwt.angular.site.examples.client.TextInputExampleController"</span><span class="tag">&gt;</span><span class="pln">
+  </span><span class="tag">&lt;h2&gt;</span><span class="pln">{{ GREETING }}, {{ getName()||STRANGER }}!</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+  </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pun">=</span><span class="atv">"nameInput"</span><span class="tag">&gt;</span><span class="pln">Enter Name: </span><span class="tag">&lt;/label&gt;</span><span class="pln">
+  </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"nameInput"</span><span class="pln"> </span><span class="atn">data-ng-model</span><span class="pun">=</span><span class="atv">"name"</span><span class="pln">
+    </span><span class="atn">data-ng-change</span><span class="pun">=</span><span class="atv">"setName(name||null)"</span><span class="pln"> </span><span class="atn">data-ng-init</span><span class="pun">=</span><span class="atv">"name = getName()"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span></pre>
+
+  <h2>Controller</h2>
+  <p>
+    The controller code bound to the view above is shown below. The view 
+    communicates with the controller via the <code>getName()</code> and 
+    <code>setName()</code> methods.
+  </p><p class="ng-binding">
+    There are two other variables that are defined in this controller that 
+    are bound to the view. They are <code>GREETING</code> and <code>STRANGER
+    </code>. You may recognize these variables from the HTML code above.
+    These public final constants are bound to the view, so that they can be
+    inserted into the view via the use of double mustache notation, .
+  </p>
+  <pre data-gwt-prettify="controller()" class="ng-isolate-scope prettyprint"><span class="kwd">package</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">asayama</span><span class="pun">.</span><span class="pln">gwt</span><span class="pun">.</span><span class="pln">angular</span><span class="pun">.</span><span class="pln">site</span><span class="pun">.</span><span class="pln">examples</span><span class="pun">.</span><span class="pln">client</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">asayama</span><span class="pun">.</span><span class="pln">gwt</span><span class="pun">.</span><span class="pln">angular</span><span class="pun">.</span><span class="pln">client</span><span class="pun">.</span><span class="typ">Controller</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">TextInputExampleController</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">Controller</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">// Public final fields are directly bound to AngularJS's $scope, and they </span><span class="pln">
+    </span><span class="com">// are available for use in the HTML.</span><span class="pln">
+    
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> GREETING </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Hello"</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> STRANGER </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Stranger"</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="com">// Other fields are used to represent the state of this controller.</span><span class="pln">
+    
+    </span><span class="kwd">private</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> name </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> onControllerLoad</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">//noop</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">// Public methods are automatically wired to AngularJS's $scope, and</span><span class="pln">
+    </span><span class="com">// they are availabe for use in the HTML.</span><span class="pln">
+    
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> getName</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> setName</span><span class="pun">(</span><span class="typ">String</span><span class="pln"> name</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">name </span><span class="pun">=</span><span class="pln"> name</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+  <h2>Configuration</h2>
+  <p>
+    The following modules are required in the gwt.xml.
+  </p>
+  <pre data-gwt-prettify="config()" class="ng-isolate-scope prettyprint"><span class="pun">&lt;?</span><span class="pln">xml version</span><span class="pun">=</span><span class="str">"1.0"</span><span class="pln"> encoding</span><span class="pun">=</span><span class="str">"UTF-8"</span><span class="pun">?&gt;</span><span class="pln">
+</span><span class="tag">&lt;module&gt;</span><span class="pln">
+  </span><span class="tag">&lt;inherits</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"com.asayama.gwt.angular.NG"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+  </span><span class="tag">&lt;source</span><span class="pln"> </span><span class="atn">path</span><span class="pun">=</span><span class="atv">"client"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+  </span><span class="tag">&lt;entry-point</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"com.asayama.gwt.angular.site.examples.client.TextInputExample"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;/module&gt;</span></pre>
+
+  <p>
+    The following Maven dependencies are required in the pom.xml.
+  </p>
+  <pre class="prettyprint ng-scope"><span class="tag">&lt;dependency&gt;</span><span class="pln">
+  </span><span class="tag">&lt;groupId&gt;</span><span class="pln">com.asayama.gwt</span><span class="tag">&lt;/groupId&gt;</span><span class="pln">
+  </span><span class="tag">&lt;artifactId&gt;</span><span class="pln">gwt-angular-ng</span><span class="tag">&lt;/artifactId&gt;</span><span class="pln">
+  </span><span class="tag">&lt;version&gt;</span><span class="pln ng-binding">0.0.70-SNAPSHOT</span><span class="tag">&lt;/version&gt;</span><span class="pln">
+</span><span class="tag">&lt;/dependency&gt;</span></pre>
+
+  <p>
+    You can also browse the full source code on Github.
+  </p><p>
+    <a href="http://github.com/kyoken74/gwt-angular/tree/0.0.70-SNAPSHOT/gwt-angular-site/gwt-angular-examples/TextInput" class="ng-binding">
+      http://github.com/kyoken74/gwt-angular/tree/0.0.70-SNAPSHOT/gwt-angular-site/gwt-angular-examples/TextInput</a>
+  </p>
+
+</div>
+</div>
+      <!-- ngIf: getNextPage() --><div data-ng-if="getNextPage()" class="ng-scope">
+        <h3 style="text-align:right;">
+          <a href="#!/examples?page=onClickEvent" class="ng-binding">
+          Next: OnClick Event
+          <span class="glyphicon glyphicon-arrow-right"></span>
+          </a>
+        </h3>
+      </div><!-- end ngIf: getNextPage() -->
+    </div>
+    <div class="col-md-3">
+      <div class="list-group">
+        <!-- ngRepeat: page in getExamples() --><a class="list-group-item active" data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">Text Input</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">OnClick Event</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">Custom Directive</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">Custom Filter</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">Promise</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">Image Resource</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">URL Hash Parameter</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">HTTP Client</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">GWT Widgets</a><!-- end ngRepeat: page in getExamples() --><a class="list-group-item " data-ng-repeat="page in getExamples()" data-ng-click="onSelectPage(page)">Prettify</a><!-- end ngRepeat: page in getExamples() -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <hr style="margin-top:4em;">
+  <!-- ngInclude: FOOTER_HTML --><div class="container ng-scope" data-ng-include="FOOTER_HTML"><footer class="ng-scope">
+  <p>© Yuki Asayama 2014</p>
+  <small>
+    GWT Angular project is not affiliated with Google, GWT Project, or AngularJS.
+    GWT Angular is not an official project of GWT Project. Use of names, such as
+    Google, GWT, AngularJS, and other product and company names on this web site
+    or in the code does not imply endorsement of GWT Angular project by these 
+    entities.
+  </small>
+</footer>
+</div>
+
+  <script src="site.nocache.js"></script>
+
+
+<iframe src='javascript:""' id="site" style="position: absolute; width: 0px; height: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; left: -1000px; top: -1000px; " tabindex="-1"></iframe></body></html>

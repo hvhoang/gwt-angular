@@ -9,7 +9,7 @@ var options = {
 
 var judo = new Judo();
 var urlConfig = {
-  baseUrl: 'http://gwt-angular.asayama.com/index.html',
+  baseUrl: 'http://gwt-angular.asayama.com/',
   siteMapPath: 'site/sitemap.xml',
   urls: [{
     url: '#!/jumbotron',
