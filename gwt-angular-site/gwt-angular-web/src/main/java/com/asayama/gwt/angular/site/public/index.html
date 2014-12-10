@@ -7,7 +7,6 @@
   }
   $snapshot = 'snapshots' . preg_replace('/^a-zA-Z0-9_\//', '', $fragment) . '.html';
   if (file_exists($snapshot)) {
-    echo "<!-- GWT Angular welcomes robots! ($snapshot) -->\n";
     include $snapshot;
     die();
   }
