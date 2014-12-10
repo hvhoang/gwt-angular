@@ -9,8 +9,8 @@ var options = {
 
 var judo = new Judo();
 var urlConfig = {
-  baseUrl: 'http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT/index.html',
-  siteMapPath: 'sitemap.xml',
+  baseUrl: 'http://gwt-angular.asayama.com/index.html',
+  siteMapPath: 'site/sitemap.xml',
   urls: [{
     url: '#!/jumbotron',
     siteMap: {

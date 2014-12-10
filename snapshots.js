@@ -9,8 +9,8 @@ var options = {
 };
 
 var urlConfig = {
-  baseUrl: 'http://kyoken74.github.io/gwt-angular/index.html',
-  snapshotsDir: 'snapshots',
+  baseUrl: 'http://gwt-angular.asayama.com/index.html',
+  snapshotsDir: 'site/snapshots',
   urls: [{
       url: '#!/jumbotron',
       snapshot: {
