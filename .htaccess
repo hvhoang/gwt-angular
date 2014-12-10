@@ -1,0 +1,3 @@
+php_value include_path '/Users/asayama/Sites/gwt-angular/site'
+php_value date.timezone 'America/New_York'
+AddType application/x-httpd-php .html
