@@ -9,41 +9,41 @@ var options = {
 
 var judo = new Judo();
 var urlConfig = {
-  baseUrl: 'http://gwt-angular.asayama.com/',
+  baseUrl: 'http://gwt-angular.asayama.com/index.html',
   siteMapPath: 'site/sitemap.xml',
   urls: [{
     url: '#!/jumbotron',
     siteMap: {
-      //changefreq: 'weekly',
+      changefreq: 'weekly',
       priority:   '0.9',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/downloads',
     siteMap: {
-      //changefreq: 'daily',
-      priority:   '0.8',
+      changefreq: 'daily',
+      priority:   '0.7',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/documentation',
     siteMap: {
-      //changefreq: 'weekly',
-      priority:   '0.4',
+      changefreq: 'weekly',
+      priority:   '0.8',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/tutorial',
     siteMap: {
-      //changefreq: 'weekly',
-      priority:   '0.4',
+      changefreq: 'weekly',
+      priority:   '0.1',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/examples',
     siteMap: {
-      //changefreq: 'weekly',
-      priority:   '0.4',
+      changefreq: 'weekly',
+      priority:   '0.1',
       lastmod:    lastmod(new Date())
     }
   }]

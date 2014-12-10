@@ -5,7 +5,7 @@ var judo = new Judo();
 
 var options = {
   muteWarnings: false,
-  phantomProcs: 1
+  phantomProcs: 5
 };
 
 var urlConfig = {
