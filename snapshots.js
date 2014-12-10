@@ -9,14 +9,13 @@ var options = {
 };
 
 var urlConfig = {
-  baseUrl: 'http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT',
+  baseUrl: 'http://kyoken74.github.io/gwt-angular/index.html',
   snapshotsDir: 'snapshots',
   urls: [{
       url: '#!/jumbotron',
       snapshot: {
         filenames: [ 'jumbotron.html' ]
       }
-/*
     },{
       url: '#!/downloads',
       snapshot: {
@@ -37,7 +36,6 @@ var urlConfig = {
       snapshot: {
         filenames: [ 'examples.html' ]
       }
-*/
     }]
 };
 

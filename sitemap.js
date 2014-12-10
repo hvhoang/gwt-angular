@@ -9,45 +9,43 @@ var options = {
 
 var judo = new Judo();
 var urlConfig = {
-  baseUrl: 'http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT',
+  baseUrl: 'http://kyoken74.github.io/gwt-angular/0.0.70-SNAPSHOT/index.html',
   siteMapPath: 'sitemap.xml',
   urls: [{
     url: '#!/jumbotron',
     siteMap: {
-      changefreq: 'weekly',
+      //changefreq: 'weekly',
       priority:   '0.9',
       lastmod:    lastmod(new Date())
     }
-/*
   },{
     url: '#!/downloads',
     siteMap: {
-      changefreq: 'daily',
+      //changefreq: 'daily',
       priority:   '0.8',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/documentation',
     siteMap: {
-      changefreq: 'weekly',
-      priority:   '0.5',
+      //changefreq: 'weekly',
+      priority:   '0.4',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/tutorial',
     siteMap: {
-      changefreq: 'weekly',
-      priority:   '0.5',
+      //changefreq: 'weekly',
+      priority:   '0.4',
       lastmod:    lastmod(new Date())
     }
   },{
     url: '#!/examples',
     siteMap: {
-      changefreq: 'weekly',
-      priority:   '0.6',
+      //changefreq: 'weekly',
+      priority:   '0.4',
       lastmod:    lastmod(new Date())
     }
-*/
   }]
 };
 
