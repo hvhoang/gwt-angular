@@ -1,14 +1,18 @@
 package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.location.Location;
 import com.asayama.gwt.angular.route.client.RouteParams;
 
 public class UrlHashParameterExampleController implements Controller {
 
-    // Injectable fields are automatically injected by the framework
+    // Fields annotated Injector.Inject are injected by the framework
     
+    @Injector.Inject
     private RouteParams routeParams;
+
+    @Injector.Inject
     private Location location;
 
     // Other fields are used to represent the state of this controller

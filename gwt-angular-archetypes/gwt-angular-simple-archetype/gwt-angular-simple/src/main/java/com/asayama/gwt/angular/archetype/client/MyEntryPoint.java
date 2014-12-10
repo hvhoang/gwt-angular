@@ -8,17 +8,16 @@ import com.google.gwt.core.client.EntryPoint;
 
 public class MyEntryPoint extends AbstractModule implements EntryPoint {
 
-	@Override
-	public void onModuleLoad() {
-		Angular.module(this);
+    @Override
+    public void onModuleLoad() {
+        Angular.module(this);
         config(RouteProvider.class, new Configurator<RouteProvider>() {
             @Override
             public void configure(RouteProvider provider) {
-                provider
-                    .when(MyResources.INSTANCE.MyView(), MyController.class)
-                    .otherwise(MyResources.INSTANCE.MyView());
+                provider.when(MyResources.INSTANCE.MyView(), MyController.class)
+                        .otherwise(MyResources.INSTANCE.MyView());
             }
         });
-		Angular.bootstrap();
-	}
+        Angular.bootstrap();
+    }
 }

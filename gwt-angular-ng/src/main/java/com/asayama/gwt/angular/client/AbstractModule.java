@@ -56,12 +56,12 @@ public abstract class AbstractModule implements Module {
         String[] dependencies = FilterDependencyInspector.INSTANCE.inspect(klass);
         jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new AbstractFilterWrapper() {
-                	@Override
-                	public JSFilter call(Object... args) {
+                    @Override
+                    public JSFilter call(Object... args) {
                         this.filter = FilterCreator.INSTANCE.create(klass);
-                		this.binder = FilterBinderFactory.INSTANCE.create(filter);
-                		return super.call(args);
-                	}
+                        this.binder = FilterBinderFactory.INSTANCE.create(filter);
+                        return super.call(args);
+                    }
                 }));
         return this;
     }
@@ -76,33 +76,33 @@ public abstract class AbstractModule implements Module {
         String[] dependencies = DirectiveDependencyInspector.INSTANCE.inspect(klass);
         jso.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new AbstractDirectiveWrapper() {
-                	@Override
-                	public JSDirective call(Object... args) {
-                		this.directive = DirectiveCreator.INSTANCE.create(klass);
+                    @Override
+                    public JSDirective call(Object... args) {
+                        this.directive = DirectiveCreator.INSTANCE.create(klass);
                         directive.setName(name);
                         this.binder = DirectiveBinderFactory.INSTANCE.create(directive);
-                		return super.call(args);
-                	}
+                        return super.call(args);
+                    }
                 }));
         return this;
     }
 
     @Override
-	public <S extends Service> Module service(S service) {
-		// TODO Auto-generated method stub
-    	throw new UnsupportedOperationException("This method is not yet implemented");
-	}
+    public <S extends Service> Module service(S service) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("This method is not yet implemented");
+    }
 
-	@Override
+    @Override
     public <S extends Service> Module service(Class<S> klass) {
         return factory(new DefaultFactory<S>(klass));
     }
 
-	/**
-	 * Deprecated since 0.0.68
-	 */
-	@Deprecated
-	@Override
+    /**
+     * Deprecated since 0.0.68
+     */
+    @Deprecated
+    @Override
     public <S extends Service> Module factory(Class<S> klass) {
         return factory(new DefaultFactory<S>(klass));
     }
@@ -118,7 +118,7 @@ public abstract class AbstractModule implements Module {
             @Override
             public Service call(Object... args) {
                 Service service = factory.create();
-            	JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
+                JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
                 binder.apply(args);
                 return service;
             }
@@ -173,7 +173,7 @@ public abstract class AbstractModule implements Module {
                         GWT.log(message, new IllegalStateException(message));
                     }
 
-                	m = "shifing args";
+                    m = "shifing args";
                     Object[] shiftedArgs = new Object[args.length - 1];
                     for (int i = 0; i < shiftedArgs.length; i++) {
                         shiftedArgs[i] = args[i + 1];
@@ -210,7 +210,7 @@ public abstract class AbstractModule implements Module {
      * </p>
      */
     public <C extends ClientResources> Module resources(Class<C> klass) {
-    	String name = klass.getName();
+        String name = klass.getName();
         return resources(name, klass);
     }
     
@@ -221,10 +221,10 @@ public abstract class AbstractModule implements Module {
             public void exec(Object... args) {
                 String m = "";
                 try {
-                	
-                	ClientResources resources = ClientResourcesCreator.INSTANCE.create(klass);
-                	GWT.log("WARNING: You are using an experimental feature of GWT Angular, Module.resources(). "
-                			+ "This method might be removed from fugure versions without notice.");
+                    
+                    ClientResources resources = ClientResourcesCreator.INSTANCE.create(klass);
+                    GWT.log("WARNING: You are using an experimental feature of GWT Angular, Module.resources(). "
+                        + "This method might be removed from fugure versions without notice.");
                     if (resources == null) {
                         String message = "Unable to create " + name;
                         GWT.log(message, new IllegalStateException(message));
@@ -232,12 +232,12 @@ public abstract class AbstractModule implements Module {
                     JSClosure scopeBinder = ClientResourcesScopeBinderFactory.INSTANCE.create(resources);
                     if (scopeBinder == null) {
                         String message = "Unable to create binder for " + name + ". "
-                        		+ "Are you using this resources class as a controller in "
-                        		+ "your view? If not, you should extend ClientBundle "
-                        		+ "instead.";
+                            + "Are you using this resources class as a controller in "
+                            + "your view? If not, you should extend ClientBundle "
+                            + "instead.";
                         GWT.log(message, new IllegalStateException(message));
                     }
-                	
+                    
                     m = "binding args";
                     scopeBinder.apply(args);
                 } catch (Exception e) {
@@ -266,7 +266,7 @@ class JSModule extends JSObject {
     }
 
     final native JSArray<String> requires() /*-{
-		return this.requires;
+        return this.requires;
     }-*/;
     
     final native void value(String name, Object value) /*-{

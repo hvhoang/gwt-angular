@@ -21,9 +21,9 @@ public class MyHello extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-    	NGScope scope = NGScope.create();
-    	scope.put(getName(), "="); //register main attribute value
-    	return scope;
+        NGScope scope = NGScope.create();
+        scope.put(getName(), "="); //register main attribute value
+        return scope;
     }
 }
 

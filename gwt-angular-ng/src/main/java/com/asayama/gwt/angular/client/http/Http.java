@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client.http;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSClosure;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * <h1>This class does not work!</h1> I get the following error when unit
@@ -22,6 +22,7 @@ import com.asayama.gwt.jsni.client.JSClosure;
  */
 public class Http implements Service {
 
+    @Injector.Inject
     private NGHttp ngo;
 
     public void get(String url, final HttpCallback callback) {
@@ -45,14 +46,13 @@ public class Http implements Service {
     }
 }
 
-@Bind("$http")
-class NGHttp extends NGObject {
+@Injector.Bind("$http")
+class NGHttp extends JavaScriptObject {
 
     protected NGHttp() {
     }
 
-    final native void get(String url, JSClosure successCallback,
-            JSClosure errorCallback) /*-{
-		this.get(url).success(successCallback).error(errorCallback);
-	}-*/;
+    final native void get(String url, JSClosure successCallback, JSClosure errorCallback) /*-{
+        this.get(url).success(successCallback).error(errorCallback);
+    }-*/;
 }

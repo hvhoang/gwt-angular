@@ -91,7 +91,7 @@ interface ClientResourcesCreator extends Creator<ClientResources> {
  * @param <T>
  */
 interface DependencyInspector {
-	String[] inspect(Class<?> klass);
+    String[] inspect(Class<?> klass);
 }
 
 @SupportedRootClass(Provider.class)

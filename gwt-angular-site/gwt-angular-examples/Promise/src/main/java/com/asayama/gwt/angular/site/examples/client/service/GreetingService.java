@@ -1,5 +1,6 @@
 package com.asayama.gwt.angular.site.examples.client.service;
 
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Promise;
@@ -12,6 +13,7 @@ import com.google.gwt.user.client.Timer;
 public class GreetingService implements Service {
 
     // Q service is injected by Angular
+    @Injector.Inject
     private Q q;
     
     // Given the promises of name and salutation, returns a promise of greeting.

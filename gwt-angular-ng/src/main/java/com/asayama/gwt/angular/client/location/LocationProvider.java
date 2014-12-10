@@ -1,19 +1,20 @@
 package com.asayama.gwt.angular.client.location;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.DefaultFactory;
 import com.asayama.gwt.angular.client.Factory;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Provider;
+import com.google.gwt.core.client.JavaScriptObject;
 
 
 public class LocationProvider implements Provider<Location> {
 
+    @Injector.Inject
     NGLocationProvider ngo;
     
     @Override
     public Factory<Location> getFactory() {
-    	return new DefaultFactory<Location>(Location.class);
+        return new DefaultFactory<Location>(Location.class);
     }
     
     public LocationProvider html5Mode(boolean isHtml5) {
@@ -27,8 +28,8 @@ public class LocationProvider implements Provider<Location> {
     }
 }
 
-@Bind("$locationProvider")
-class NGLocationProvider extends NGObject {
+@Injector.Bind("$locationProvider")
+class NGLocationProvider extends JavaScriptObject {
 
     protected NGLocationProvider() {
     }

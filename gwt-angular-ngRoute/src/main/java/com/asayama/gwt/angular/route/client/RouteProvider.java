@@ -1,9 +1,8 @@
 package com.asayama.gwt.angular.route.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Factory;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Provider;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.JSON;
@@ -12,12 +11,13 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 public class RouteProvider implements Provider<Service> {
 
+    @Injector.Inject
     private NGRouteProvider ngo;
 
     @Override
     public Factory<Service> getFactory() {
-    	// TODO Auto-generated method stub
-    	return null;
+        // TODO Auto-generated method stub
+        return null;
     }
     
     public <C extends Controller> RouteProvider when(HtmlResource partial) {
@@ -73,17 +73,17 @@ public class RouteProvider implements Provider<Service> {
     }
 }
 
-@Bind("$routeProvider")
-class NGRouteProvider extends NGObject {
+@Injector.Bind("$routeProvider")
+class NGRouteProvider extends JavaScriptObject {
 
     protected NGRouteProvider() {
     }
 
     final native void when(String route, JavaScriptObject action) /*-{
-		this.when(route, action);
+        this.when(route, action);
     }-*/;
 
     final native void otherwise(JavaScriptObject action) /*-{
-		this.otherwise(action);
-	}-*/;
+        this.otherwise(action);
+    }-*/;
 }

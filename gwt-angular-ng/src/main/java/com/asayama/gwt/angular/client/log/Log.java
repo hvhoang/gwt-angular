@@ -1,11 +1,12 @@
 package com.asayama.gwt.angular.client.log;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
+import com.google.gwt.core.client.JavaScriptObject;
 
 public class Log implements Service {
 
+    @Injector.Inject
     private NGLog ngo;
 
     public void log(String message) {
@@ -29,30 +30,30 @@ public class Log implements Service {
     }
 }
 
-@Bind("$log")
-class NGLog extends NGObject {
+@Injector.Bind("$log")
+class NGLog extends JavaScriptObject {
 
     protected NGLog() {
     }
 
     final native void log(String message) /*-{
-		this.log(message);
+        this.log(message);
     }-*/;
-
+    
     final native void info(String message) /*-{
-		this.info(message);
+        this.info(message);
     }-*/;
-
+    
     final native void warn(String message) /*-{
-		this.warn(message);
+        this.warn(message);
     }-*/;
-
+    
     final native void error(String message) /*-{
-		this.error(message);
+        this.error(message);
     }-*/;
-
+    
     final native void debug(String message) /*-{
-		this.debug(message);
-	}-*/;
+        this.debug(message);
+    }-*/;
 
 }

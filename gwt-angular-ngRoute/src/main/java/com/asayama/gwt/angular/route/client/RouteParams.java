@@ -2,13 +2,13 @@ package com.asayama.gwt.angular.route.client;
 
 import java.util.Date;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.JSObject;
 
 public class RouteParams implements Service {
 
+    @Injector.Inject
     private NGRouteParams ngo;
 
     public String getString(String key) {
@@ -32,8 +32,8 @@ public class RouteParams implements Service {
     }
 }
 
-@Bind("$routeParams")
-class NGRouteParams extends NGObject {
+@Injector.Bind("$routeParams")
+class NGRouteParams extends JSObject {
 
     protected NGRouteParams() {
     }

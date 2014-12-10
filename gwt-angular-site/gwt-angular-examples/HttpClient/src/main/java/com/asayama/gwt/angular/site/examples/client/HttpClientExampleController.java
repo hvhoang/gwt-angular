@@ -1,8 +1,9 @@
 package com.asayama.gwt.angular.site.examples.client;
 
 import com.asayama.gwt.angular.client.Controller;
-import com.asayama.gwt.angular.client.q.Promise.Done;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.q.Promise.Continue;
+import com.asayama.gwt.angular.client.q.Promise.Done;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSON;
@@ -11,12 +12,11 @@ import com.google.gwt.http.client.Response;
 
 public class HttpClientExampleController implements Controller {
 
-    // Fields of type Injectable are injected by the framework
-    
+    // Fields annotated Injector.Inject are injected by the framework
+    @Injector.Inject
     private HttpClient http;
 
     // Other fields are used to represent the state of this controller
-
     private JSArray<Mayor> mayors;
 
     @Override

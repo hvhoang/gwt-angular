@@ -2,13 +2,14 @@ package com.asayama.gwt.angular.client.location;
 
 import java.util.List;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
+import com.google.gwt.core.client.JavaScriptObject;
 
 
 public class Location implements Service {
 
+    @Injector.Inject
     private NGLocation ngo;
 
     public String getHash() {
@@ -38,26 +39,26 @@ public class Location implements Service {
     }
 }
 
-@Bind("$location")
-class NGLocation extends NGObject {
+@Injector.Bind("$location")
+class NGLocation extends JavaScriptObject {
 
     protected NGLocation() {
     }
 
     final native String hash() /*-{
-		return this.hash();
+        return this.hash();
     }-*/;
-
+    
     final native void hash(String hash) /*-{
-		this.hash(hash);
+        this.hash(hash);
     }-*/;
-
+    
     final native void search(String key, String value) /*-{
-		this.search(key, value);
-	}-*/;
-
+        this.search(key, value);
+    }-*/;
+    
     final native void search(JSHashParam param) /*-{
-		this.search(param);
-	}-*/;
+        this.search(param);
+    }-*/;
 
 }

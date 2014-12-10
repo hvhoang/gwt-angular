@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Provide registers {@link Provider} with {@link Injector}.
@@ -22,6 +22,7 @@ import com.asayama.gwt.jsni.client.JSFunction;
  */
 public class Provide implements Service {
     
+    @Injector.Inject
     NGProvide ngo;
     
     public <S extends Service> void provider(String name, Function<S> provider) {
@@ -52,8 +53,8 @@ public class Provide implements Service {
     }
 }
 
-@Bind("$provide")
-class NGProvide extends NGObject {
+@Injector.Bind("$provide")
+class NGProvide extends JavaScriptObject {
 
     protected NGProvide() {
     }

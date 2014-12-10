@@ -9,5 +9,5 @@ package com.asayama.gwt.angular.client;
  */
 public interface Provider<S extends Service> extends Injectable {
 
-	Factory<S> getFactory();
+    Factory<S> getFactory();
 }

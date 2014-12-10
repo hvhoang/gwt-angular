@@ -105,9 +105,9 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
             }));
             
             NGScope scope = directive.scope();
-//        	if (scope != null && scope.get(directive.getName()) == null) {
+//            if (scope != null && scope.get(directive.getName()) == null) {
 //                scope.put(directive.getName(), "=");
-//        	}
+//            }
             jso.setScope(scope);
             
             binder.apply(args);
@@ -157,6 +157,6 @@ class JSDirective extends JSON {
      * value is not null, then a local isolate scope is created.
      */
     final native void setScope(NGScope scope) /*-{
-		this.scope = scope ? scope : true;
+        this.scope = scope ? scope : true;
     }-*/;
 }

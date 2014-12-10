@@ -41,7 +41,7 @@ public abstract class AbstractDirective implements Directive {
     
     @Override
     public NGScope scope() {
-    	return null;
+        return null;
     }
 
     @Override

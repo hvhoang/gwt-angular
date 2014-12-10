@@ -1,13 +1,14 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.angular.client.Angular.Bind;
-import com.asayama.gwt.angular.client.NGObject;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.jsni.client.JSArray;
+import com.google.gwt.core.client.JavaScriptObject;
 
 
 public class Q implements Service {
 
+    @Injector.Inject
     private NGQ ngo;
 
     public <V> Deferred<V> defer() {
@@ -19,8 +20,8 @@ public class Q implements Service {
     }
 }
 
-@Bind("$q")
-class NGQ extends NGObject {
+@Injector.Bind("$q")
+class NGQ extends JavaScriptObject {
 
     protected NGQ() {
     }

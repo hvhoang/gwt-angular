@@ -1,5 +1,6 @@
 package com.asayama.gwt.angular.http.client;
 
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.Service;
 import com.asayama.gwt.angular.client.q.Deferred;
 import com.asayama.gwt.angular.client.q.Promise;
@@ -52,6 +53,7 @@ import com.google.gwt.http.client.Response;
  */
 public class HttpClient implements Service {
 
+    @Injector.Inject
     private Q q;
     
     public Promise<Response> get(String url) {
