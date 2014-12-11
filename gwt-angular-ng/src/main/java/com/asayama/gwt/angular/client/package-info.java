@@ -194,6 +194,7 @@ interface BinderFactory<T> {
     JSClosure create(T object);
 }
 
+@SuppressWarnings("rawtypes")
 @SupportedRootClass(Provider.class)
 interface ProviderBinderFactory extends BinderFactory<Provider> {
     static ProviderBinderFactory INSTANCE = GWT.create(ProviderBinderFactory.class);
