@@ -18,7 +18,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         controller(ImageResourceExampleResources.class);
         controller(OnClickEventExampleResources.class);
         controller(PrettifyExampleResources.class);
-        resources(PromiseExampleResources.class);
+        controller(PromiseExampleResources.class);
         resources(TextInputExampleResources.class);
         resources(UrlHashParameterExampleResources.class);
     }
@@ -29,7 +29,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         pages.add(Page.create("OnClick Event", OnClickEventExampleResources.onClickEvent));
         pages.add(Page.create("Custom Directive", CustomDirectiveExampleResources.customDirective));
         pages.add(Page.create("Custom Filter", CustomFilterExampleResources.customFilter));
-        pages.add(Page.create("Promise", PromiseExampleResources.INSTANCE.promise()));
+        pages.add(Page.create("Promise", PromiseExampleResources.promise));
         pages.add(Page.create("Image Resource", ImageResourceExampleResources.imageResource));
         pages.add(Page.create("URL Hash Parameter", UrlHashParameterExampleResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", HttpClientExampleResources.httpClient));
