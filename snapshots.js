@@ -10,7 +10,7 @@ var options = {
 
 var urlConfig = {
   baseUrl: 'http://gwt-angular.asayama.com/index.html',
-  snapshotsDir: 'site/snapshots',
+  snapshotsDir: 'include/snapshots/',
   urls: [{
       url: '',
       snapshot: {

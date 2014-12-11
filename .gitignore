@@ -1,3 +1,5 @@
 .DS_Store
 node_modules
 *.swp
+site/sitemap.xml
+include/snapshots
