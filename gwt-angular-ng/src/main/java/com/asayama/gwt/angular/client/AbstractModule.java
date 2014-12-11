@@ -201,12 +201,16 @@ public abstract class AbstractModule implements Module {
      * <p>
      * Binds ClientBundle to the scope via controller pattern.
      * </p>
+     * 
+     * @deprecated Deprecated without replacement since 0.0.71.
      */
+    @Deprecated
     public <C extends ClientResources> Module resources(Class<C> klass) {
         String name = klass.getName();
         return resources(name, klass);
     }
     
+    @Deprecated
     <C extends ClientResources> Module resources(final String name, final Class<C> klass) {
         Closure initializer = new Closure() {
 

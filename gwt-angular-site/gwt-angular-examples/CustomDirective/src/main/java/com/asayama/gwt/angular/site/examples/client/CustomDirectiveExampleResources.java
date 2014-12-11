@@ -1,16 +1,32 @@
 package com.asayama.gwt.angular.site.examples.client;
 
-import com.asayama.gwt.angular.client.ClientResources;
+import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface CustomDirectiveExampleResources extends ClientResources {
+public class CustomDirectiveExampleResources implements Controller {
 
-    static final CustomDirectiveExampleResources INSTANCE = GWT.create(CustomDirectiveExampleResources.class);
+    public static final String DEMO_URL = CustomDirectiveExampleClientBundle.INSTANCE.demo().getSafeUri().asString();
+    public static final HtmlResource customDirective = CustomDirectiveExampleClientBundle.INSTANCE.customDirective();
+    public static final HtmlResource demo = CustomDirectiveExampleClientBundle.INSTANCE.demo();
+    public static final TextResource config = CustomDirectiveExampleClientBundle.INSTANCE.config();
+    public static final TextResource module = CustomDirectiveExampleClientBundle.INSTANCE.module();
+    public static final TextResource controller = CustomDirectiveExampleClientBundle.INSTANCE.controller();
+    public static final TextResource view = CustomDirectiveExampleClientBundle.INSTANCE.view();
+    public static final TextResource directive = CustomDirectiveExampleClientBundle.INSTANCE.directive();
+    public static final TextResource template = CustomDirectiveExampleClientBundle.INSTANCE.template();
+    
+    @Override
+    public void onControllerLoad() {
+    }
+}
 
-    static final String DEMO_URL = CustomDirectiveExampleResources.INSTANCE.demo().getSafeUri().asString();
+interface CustomDirectiveExampleClientBundle extends ClientBundle {
+
+    static final CustomDirectiveExampleClientBundle INSTANCE = GWT.create(CustomDirectiveExampleClientBundle.class);
 
     @Source("CustomDirectiveExampleDocumentation.html")
     HtmlResource customDirective();
