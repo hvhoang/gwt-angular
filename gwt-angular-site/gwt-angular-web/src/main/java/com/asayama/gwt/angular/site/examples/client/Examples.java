@@ -16,7 +16,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         controller(GwtWidgetsExampleResources.class);
         controller(HttpClientExampleResources.class);
         controller(ImageResourceExampleResources.class);
-        resources(OnClickEventExampleResources.class);
+        controller(OnClickEventExampleResources.class);
         resources(PrettifyExampleResources.class);
         resources(PromiseExampleResources.class);
         resources(TextInputExampleResources.class);
@@ -26,7 +26,7 @@ public class Examples extends AbstractModule implements EntryPoint {
     private JSArray<Page> getPages() {
         JSArray<Page> pages = JSArray.create();
         pages.add(Page.create("Text Input", TextInputExampleResources.INSTANCE.textInput()));
-        pages.add(Page.create("OnClick Event", OnClickEventExampleResources.INSTANCE.onClickEvent()));
+        pages.add(Page.create("OnClick Event", OnClickEventExampleResources.onClickEvent));
         pages.add(Page.create("Custom Directive", CustomDirectiveExampleResources.customDirective));
         pages.add(Page.create("Custom Filter", CustomFilterExampleResources.customFilter));
         pages.add(Page.create("Promise", PromiseExampleResources.INSTANCE.promise()));
