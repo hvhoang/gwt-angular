@@ -11,9 +11,7 @@ if (isset($fragment)) {
     if (!file_exists($snapshot)) {
         $snapshot = 'snapshots/index.html';
     }
-    echo '<!';
-    echo '-- GWT Angular welcomes robots! --';
-    echo ">\n";
+    echo '<!'.'-- GWT Angular welcomes robots! --'.chr(62)."\n";
     include $snapshot;
     die();
 }
