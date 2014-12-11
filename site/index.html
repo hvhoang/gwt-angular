@@ -11,7 +11,7 @@ if (isset($fragment)) {
     if (!file_exists($snapshot)) {
         $snapshot = 'snapshots/index.html';
     }
-    echo '<!'.'-- GWT Angular welcomes robots! --'.chr(62)."\n";
+    echo '<!-- GWT Angular welcomes robots! --'.chr(62)."\n";
     include $snapshot;
     die();
 }
@@ -48,10 +48,6 @@ pre.prettyprint {
   <hr style="margin-top:4em;">
   <div class="container" data-ng-include="FOOTER_HTML"></div>
   <script src="site.nocache.js"></script>
-  <?php
-  if (file_exists('analytics.php')) {
-      include_once('analytics.php');
-  }
-  ?>
+  <?php include_once('analytics.php'); ?>
 </body>
 </html>
