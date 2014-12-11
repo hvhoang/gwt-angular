@@ -1,10 +1,10 @@
 package com.asayama.gwt.jquery.client;
 
 import com.asayama.gwt.jsni.client.JSClosure;
-import com.asayama.gwt.jsni.client.JSObject;
+import com.google.gwt.core.client.JavaScriptObject;
 
 
-public class JQElement extends JSObject {
+public class JQElement extends JavaScriptObject {
     
     protected JQElement() {
     }
