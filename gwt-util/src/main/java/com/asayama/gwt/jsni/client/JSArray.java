@@ -58,6 +58,10 @@ public class JSArray<T> extends JavaScriptObject {
         return this[i];
     }-*/;
     
+    public final native int unshift(T e) /*-{
+        return this.unshift(e);
+    }-*/;
+    
     public final native boolean add(T e) /*-{
         this.push(e);
         return true;

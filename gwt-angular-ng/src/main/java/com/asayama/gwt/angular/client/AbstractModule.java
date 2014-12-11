@@ -189,17 +189,10 @@ public abstract class AbstractModule implements Module {
                 }
             }
         };
-        String [] dependencies;
-        {
-            String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
-            int len = d == null ? 0 : d.length;
-            dependencies = new String[len + 1];
-            dependencies[0] = "$scope";
-            for (int i = 0; i < len; i++) {
-                dependencies[i + 1] = d[i];
-            }
-        }
-        jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
+        String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
+        JSArray<String> dependencies = JSArray.create(d);
+        dependencies.unshift("$scope");
+        jso.controller(name, dependencies, JSClosure.create(initializer));
         return this;
     }
 
