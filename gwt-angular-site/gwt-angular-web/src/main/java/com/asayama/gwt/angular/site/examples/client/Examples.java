@@ -17,7 +17,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         controller(HttpClientExampleResources.class);
         controller(ImageResourceExampleResources.class);
         controller(OnClickEventExampleResources.class);
-        resources(PrettifyExampleResources.class);
+        controller(PrettifyExampleResources.class);
         resources(PromiseExampleResources.class);
         resources(TextInputExampleResources.class);
         resources(UrlHashParameterExampleResources.class);
@@ -34,7 +34,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         pages.add(Page.create("URL Hash Parameter", UrlHashParameterExampleResources.INSTANCE.urlHashParameter()));
         pages.add(Page.create("HTTP Client", HttpClientExampleResources.httpClient));
         pages.add(Page.create("GWT Widgets", GwtWidgetsExampleResources.gwtWidgets));
-        pages.add(Page.create("Prettify", PrettifyExampleResources.INSTANCE.prettify()));
+        pages.add(Page.create("Prettify", PrettifyExampleResources.prettify));
        return pages;
     }
 }
