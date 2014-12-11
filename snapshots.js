@@ -12,6 +12,11 @@ var urlConfig = {
   baseUrl: 'http://gwt-angular.asayama.com/index.html',
   snapshotsDir: 'site/snapshots',
   urls: [{
+      url: '',
+      snapshot: {
+        filenames: [ 'index.html' ]
+      }
+    },{
       url: '#!/jumbotron',
       snapshot: {
         filenames: [ 'jumbotron.html' ]

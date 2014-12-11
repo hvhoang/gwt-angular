@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <?php
-  $fragment = $_REQUEST['_escaped_fragment_'];
-  $pos = strpos($fragment, '?');
-  if ($pos) {
-    $fragment = substr($fragment, 0, $pos);
-  }
-  $snapshot = 'snapshots' . preg_replace('/^a-zA-Z0-9_\//', '', $fragment) . '.html';
-  if (file_exists($snapshot)) {
+$fragment = $_REQUEST['_escaped_fragment_'];
+if (isset($fragment)) {
+    $pos = strpos($fragment, '?');
+    if ($pos) {
+        $fragment = substr($fragment, 0, $pos);
+    }
+    $fragment = preg_replace('/^a-zA-Z0-9_\//', '', $fragment);
+    $snapshot = 'snapshots' . $fragment . '.html';
+    if (!file_exists($snapshot)) {
+        $snapshot = 'snapshots/index.html';
+    }
+    echo '<!';
+    echo '-- GWT Angular welcomes robots! --';
+    echo ">\n";
     include $snapshot;
     die();
-  }
+}
 ?>
 <html lang="en">
 <head>
 <title>GWT Angular</title>
+<meta name="fragment" content="!">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/ico" href="favicon.ico" />
 <style>
@@ -42,6 +50,10 @@ pre.prettyprint {
   <hr style="margin-top:4em;">
   <div class="container" data-ng-include="FOOTER_HTML"></div>
   <script src="site.nocache.js"></script>
-  <?php include_once("analytics.php") ?>
+  <?php
+  if (file_exists('analytics.php')) {
+      include_once('analytics.php');
+  }
+  ?>
 </body>
 </html>
