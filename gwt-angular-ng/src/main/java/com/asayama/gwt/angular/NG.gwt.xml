@@ -8,9 +8,6 @@
   <generate-with class="com.asayama.gwt.angular.rebind.DefaultInstantiableCreatorGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.Creator" />
   </generate-with>
-  <generate-with class="com.asayama.gwt.angular.rebind.PublicInterfaceCreatorGenerator">
-    <when-type-assignable class="com.asayama.gwt.angular.client.ClientResourcesCreator" />
-  </generate-with>
   <generate-with class="com.asayama.gwt.angular.rebind.DependencyInspectorGenerator">
     <when-type-assignable class="com.asayama.gwt.angular.client.DependencyInspector" />
   </generate-with>
