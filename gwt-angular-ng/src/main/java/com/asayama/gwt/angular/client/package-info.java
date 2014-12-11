@@ -68,6 +68,7 @@ interface ControllerCreator extends Creator<Controller> {
     public <X extends Controller> X create(Class<X> klass);
 }
 
+@Deprecated
 @SupportedRootClass(ClientResources.class)
 interface ClientResourcesCreator extends Creator<ClientResources> {
     static ClientResourcesCreator INSTANCE = GWT.create(ClientResourcesCreator.class);
