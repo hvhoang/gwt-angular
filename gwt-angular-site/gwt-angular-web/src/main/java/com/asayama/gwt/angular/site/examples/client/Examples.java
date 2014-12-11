@@ -12,7 +12,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         Angular.module(this);
         constant("examples", getPages());
         controller(CustomDirectiveExampleResources.class);
-        resources(CustomFilterExampleResources.class);
+        controller(CustomFilterExampleResources.class);
         resources(GwtWidgetsExampleResources.class);
         resources(HttpClientExampleResources.class);
         resources(ImageResourceExampleResources.class);
@@ -28,7 +28,7 @@ public class Examples extends AbstractModule implements EntryPoint {
         pages.add(Page.create("Text Input", TextInputExampleResources.INSTANCE.textInput()));
         pages.add(Page.create("OnClick Event", OnClickEventExampleResources.INSTANCE.onClickEvent()));
         pages.add(Page.create("Custom Directive", CustomDirectiveExampleResources.customDirective));
-        pages.add(Page.create("Custom Filter", CustomFilterExampleResources.INSTANCE.customFilter()));
+        pages.add(Page.create("Custom Filter", CustomFilterExampleResources.customFilter));
         pages.add(Page.create("Promise", PromiseExampleResources.INSTANCE.promise()));
         pages.add(Page.create("Image Resource", ImageResourceExampleResources.INSTANCE.imageResource()));
         pages.add(Page.create("URL Hash Parameter", UrlHashParameterExampleResources.INSTANCE.urlHashParameter()));
