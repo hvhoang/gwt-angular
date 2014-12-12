@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.asayama.gwt.angular</groupId>
     <artifactId>gwt-angular</artifactId>
-    <version>0.0.71</version>
+    <version>0.0.72-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
   
