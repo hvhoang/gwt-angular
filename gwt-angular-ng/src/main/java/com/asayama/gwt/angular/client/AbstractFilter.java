@@ -10,4 +10,8 @@ public abstract class AbstractFilter implements Filter {
         return filter(input);
     }
 
+    @Override
+    public void onFilterLoad() {
+        // noop by default
+    }
 }

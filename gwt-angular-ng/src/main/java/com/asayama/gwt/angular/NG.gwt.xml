@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
   <inherits name="bower_components/angular" />
+  <inherits name="com.google.gwt.logging.Logging"/>
   <inherits name="com.asayama.gwt.jsni.JSNI" />
   <inherits name="com.asayama.gwt.jquery.JQueryLite" />
   <inherits name="com.asayama.gwt.resources.Resources" />

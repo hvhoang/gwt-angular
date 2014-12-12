@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
-import com.google.gwt.core.client.GWT;
 
 /**
  * Provides GWT Java representation of AngularJS's angular object.
@@ -19,6 +20,9 @@ import com.google.gwt.core.client.GWT;
  * @author kyoken74
  */
 public class Angular {
+
+    private static final String CLASS = Angular.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
 
     @Target(ElementType.TYPE)
     public @interface SupportedRootClass {
@@ -57,7 +61,7 @@ public class Angular {
         JSArray<String> jsrequires = JSArray.create(requires);
         JSClosure jsclosure = JSClosure.create(closure);
         module.bind(_module(name, jsrequires, jsclosure));
-        GWT.log("Angular.module(" + module.getClass().getName() + ")");
+        LOG.log(Level.FINEST, "Angular.module(" + module.getClass().getName() + ")");
         return module;
     }
 
@@ -74,10 +78,10 @@ public class Angular {
             sb.append("\n").append(modules[i].getClass().getName());
         }
         try {
-            GWT.log(m = "bootstrapping " + jsarray.size() + " modules" + sb.toString());
+            LOG.log(Level.FINEST, m = "bootstrapping " + jsarray.size() + " modules" + sb.toString());
             _bootstrap(jsarray);
         } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
+            LOG.log(Level.FINEST, "Exception while " + m, e);
         }
     }
 

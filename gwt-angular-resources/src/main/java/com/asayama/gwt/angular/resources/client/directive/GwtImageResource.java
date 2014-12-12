@@ -1,10 +1,12 @@
 package com.asayama.gwt.angular.resources.client.directive;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.Image;
@@ -24,6 +26,9 @@ import com.google.gwt.user.client.ui.Image;
  */
 public class GwtImageResource extends AbstractDirective {
 
+    private static final String CLASS = GwtImageResource.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+    
     /**
      * Creates isolateScope and registers the following attribute definition.
      * <ul>
@@ -45,7 +50,7 @@ public class GwtImageResource extends AbstractDirective {
     public void link(NGScope scope, JQElement element, JSON attrs) {
         ImageResource resource = scope.get(getName());
         if (resource == null) {
-            GWT.log("Mandatory attribute " + getName() + " value is mssing");
+            LOG.log(Level.WARNING, "Mandatory attribute " + getName() + " value is mssing");
             return;
         }
         Image image = new Image(resource);

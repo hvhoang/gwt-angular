@@ -1,18 +1,31 @@
 package com.asayama.gwt.angular.site.client;
 
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Configurator;
 import com.asayama.gwt.angular.client.location.LocationProvider;
 import com.asayama.gwt.angular.client.sce.SceProvider;
 import com.asayama.gwt.angular.route.client.RouteProvider;
+import com.asayama.gwt.util.client.SimpleLogFormatter;
 import com.asayama.gwt.util.client.SuperDevModeIndicator;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
 public class SiteEntryPoint extends AbstractModule implements EntryPoint {
 
+    static {
+        SimpleLogFormatter formatter = new SimpleLogFormatter();
+        Handler[] handlers = Logger.getLogger("").getHandlers();
+        for (Handler handler : handlers) {
+            handler.setFormatter(formatter);
+        }
+    }
+    
     public void onModuleLoad() {
+        
         Angular.module(this);
         controller(DocumentationController.class);
         controller(DownloadsController.class);

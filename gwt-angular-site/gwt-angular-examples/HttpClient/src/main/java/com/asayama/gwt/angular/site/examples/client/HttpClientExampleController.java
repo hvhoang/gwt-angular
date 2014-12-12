@@ -1,5 +1,8 @@
 package com.asayama.gwt.angular.site.examples.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.q.Promise.Continue;
@@ -7,10 +10,12 @@ import com.asayama.gwt.angular.client.q.Promise.Done;
 import com.asayama.gwt.angular.http.client.HttpClient;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Response;
 
 public class HttpClientExampleController implements Controller {
+
+    private static final String CLASS = HttpClientExampleController.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
 
     // Fields annotated Injector.Inject are injected by the framework
     @Injector.Inject
@@ -28,7 +33,7 @@ public class HttpClientExampleController implements Controller {
                 if (statusCode == 200) {
                     return value.getText();
                 }
-                GWT.log("[" + statusCode + "] " + url);
+                LOG.log(Level.WARNING, "[" + statusCode + "] " + url);
                 return null;
             }
         }).then(new Continue<JSArray<Mayor>, String>() {

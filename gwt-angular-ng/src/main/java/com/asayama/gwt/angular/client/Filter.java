@@ -9,7 +9,7 @@ import com.asayama.gwt.util.client.Arrays;
 public interface Filter {
 
     String filter(String input, Object... options);
-
+    void onFilterLoad();
 }
 
 abstract class AbstractFilterWrapper implements Function<JSFilter> {

@@ -1,11 +1,16 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.google.gwt.core.client.GWT;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.JavaScriptObject;
 
 
 public class Deferred<V> extends JavaScriptObject {
 
+    private static final String CLASS = Deferred.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+    
     protected Deferred() {
     }
 
@@ -13,7 +18,7 @@ public class Deferred<V> extends JavaScriptObject {
         try {
             _resolve(HostedModeEnvelope.wrap(value));
         } catch (Exception e) {
-            GWT.log("Exception while resolving a value, value=" + value, e);
+            LOG.log(Level.WARNING, "Exception while resolving a value, value=" + value, e);
         }
     }
     
@@ -21,7 +26,7 @@ public class Deferred<V> extends JavaScriptObject {
         try {
             _reject(HostedModeEnvelope.wrap(reason));
         } catch (Exception e) {
-            GWT.log("Exception while rejecting a value", e);
+            LOG.log(Level.WARNING, "Exception while rejecting a value", e);
         }
     }
     
@@ -29,7 +34,7 @@ public class Deferred<V> extends JavaScriptObject {
         try {
             _progress(HostedModeEnvelope.wrap(progress));
         } catch (Exception e) {
-            GWT.log("Exception while notifying progress", e);
+            LOG.log(Level.WARNING, "Exception while notifying progress", e);
         }
     }
     

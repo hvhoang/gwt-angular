@@ -1,5 +1,8 @@
 package com.asayama.gwt.angular.masonry.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.AbstractModule;
 import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.jsni.client.JSObject;
@@ -11,6 +14,9 @@ import com.google.gwt.resources.client.ClientBundle;
 
 public class Masonry extends AbstractModule implements EntryPoint {
 
+    private static final String CLASS = Masonry.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+
     @Override
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
@@ -19,7 +25,7 @@ public class Masonry extends AbstractModule implements EntryPoint {
             MasonryModuleScripts.INSTANCE.angularMasonry().ensureInjected(JSObject.$wnd);
             Angular.moduleWithDependency(this, "wu.masonry");
         } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
+            LOG.log(Level.WARNING, "Exception while " + m, e);
         }
     }
 }

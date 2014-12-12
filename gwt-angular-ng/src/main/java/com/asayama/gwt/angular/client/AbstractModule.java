@@ -1,5 +1,8 @@
 package com.asayama.gwt.angular.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSArray;
@@ -8,7 +11,6 @@ import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSObject;
 import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.shared.GWT;
 
 /**
  * Provides abstract implementation of {@link Module}. See the javadoc comments
@@ -18,6 +20,9 @@ import com.google.gwt.core.shared.GWT;
  */
 public abstract class AbstractModule implements Module {
 
+    private static final String CLASS = AbstractModule.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+    
     JSModule jso;
 
     @Override
@@ -52,7 +57,7 @@ public abstract class AbstractModule implements Module {
         return filter(name, klass);
     }
     
-    <F extends Filter> Module filter(String name, final Class<F> klass) {
+    <F extends Filter> Module filter(final String name, final Class<F> klass) {
         String[] dependencies = FilterDependencyInspector.INSTANCE.inspect(klass);
         jso.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new AbstractFilterWrapper() {
@@ -60,6 +65,13 @@ public abstract class AbstractModule implements Module {
                     public JSFilter call(Object... args) {
                         this.filter = FilterCreator.INSTANCE.create(klass);
                         this.binder = FilterBinderFactory.INSTANCE.create(filter);
+                        String m = "";
+                        try {
+                            LOG.log(Level.FINEST, m = klass.getName() + ".onFilterLoad()");
+                            filter.onFilterLoad();
+                        } catch (Exception e) {
+                            LOG.log(Level.WARNING, "Exception while calling " + m, e);
+                        }
                         return super.call(args);
                     }
                 }));
@@ -81,6 +93,13 @@ public abstract class AbstractModule implements Module {
                         this.directive = DirectiveCreator.INSTANCE.create(klass);
                         directive.setName(name);
                         this.binder = DirectiveBinderFactory.INSTANCE.create(directive);
+                        String m = "";
+                        try {
+                            LOG.log(Level.FINEST, m = klass.getName() + ".onDirectiveLoad()");
+                            directive.onDirectiveLoad();
+                        } catch (Exception e) {
+                            LOG.log(Level.WARNING, "Exception while calling " + m, e);
+                        }
                         return super.call(args);
                     }
                 }));
@@ -113,10 +132,17 @@ public abstract class AbstractModule implements Module {
         return factory(name, factory);
     }
     
-    <S extends Service> Module factory(String name, final Factory<S> factory) {
+    <S extends Service> Module factory(final String name, final Factory<S> factory) {
         Function<Service> initializer = new Function<Service>() {
             @Override
             public Service call(Object... args) {
+                String m = "";
+                try {
+                    LOG.log(Level.FINEST, m = factory.getClass().getName() + ".onFactoryLoad() " + factory.getServiceClass().getName());
+                    factory.onFactoryLoad();
+                } catch (Exception e) {
+                    LOG.log(Level.WARNING, "Exception while calling " + m, e);
+                }
                 Service service = factory.create();
                 JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
                 binder.apply(args);
@@ -136,7 +162,13 @@ public abstract class AbstractModule implements Module {
                 P provider = ProviderCreator.INSTANCE.create(klass);
                 JSClosure binder = ProviderBinderFactory.INSTANCE.create(provider);
                 binder.apply(args);
-                configurator.configure(provider);
+                String m = "";
+                try {
+                    LOG.log(Level.FINEST, "configuring " + klass.getName());
+                    configurator.configure(provider);
+                } catch (Exception e) {
+                    LOG.log(Level.WARNING, "Exception while " + m, e);
+                }
                 return provider;
             }
         };
@@ -160,17 +192,17 @@ public abstract class AbstractModule implements Module {
                     Controller controller = ControllerCreator.INSTANCE.create(klass);
                     if (controller == null) {
                         String message = "Unable to create " + name;
-                        GWT.log(message, new IllegalStateException(message));
+                        LOG.log(Level.FINEST,message, new IllegalStateException(message));
                     }
                     JSClosure scopeBinder = ControllerScopeBinderFactory.INSTANCE.create(controller);
                     if (scopeBinder == null) {
                         String message = "Unable to create binder for " + name;
-                        GWT.log(message, new IllegalStateException(message));
+                        LOG.log(Level.FINEST,message, new IllegalStateException(message));
                     }
                     JSClosure binder = ControllerBinderFactory.INSTANCE.create(controller);
                     if (binder == null) {
                         String message = "Unable to create injector for " + name;
-                        GWT.log(message, new IllegalStateException(message));
+                        LOG.log(Level.FINEST,message, new IllegalStateException(message));
                     }
 
                     m = "shifing args";
@@ -182,10 +214,10 @@ public abstract class AbstractModule implements Module {
                     scopeBinder.apply(args);
                     m = "injecting shiftedArgs";
                     binder.apply(shiftedArgs);
-                    GWT.log(m = name + ".onControllerLoad()");
+                    LOG.log(Level.FINEST,m = name + ".onControllerLoad()");
                     controller.onControllerLoad();
                 } catch (Exception e) {
-                    GWT.log("Exception while " + m, e);
+                    LOG.log(Level.FINEST,"Exception while " + m, e);
                 }
             }
         };

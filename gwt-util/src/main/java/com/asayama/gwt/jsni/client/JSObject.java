@@ -1,10 +1,11 @@
 package com.asayama.gwt.jsni.client;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.asayama.gwt.jsni.client.exceptions.EmptyKeyException;
 import com.asayama.gwt.jsni.client.exceptions.UndefinedException;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONObject;
 
@@ -17,6 +18,9 @@ import com.google.gwt.json.client.JSONObject;
  * @see Invoker
  */
 public class JSObject extends JavaScriptObject {
+    
+    private static final String CLASS = JSObject.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
     
     public static final JavaScriptObject $wnd = $wnd();
     public static final JavaScriptObject $doc = $doc();
@@ -44,7 +48,7 @@ public class JSObject extends JavaScriptObject {
         try {
             return new JSONObject(this).toString();
         } catch (Exception e) {
-            GWT.log("Unable to obtain the script", e);
+            LOG.log(Level.WARNING, "Unable to obtain the script", e);
             return this.toString();
         }
     }

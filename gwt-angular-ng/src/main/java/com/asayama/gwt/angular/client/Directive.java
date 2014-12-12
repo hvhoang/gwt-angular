@@ -1,5 +1,8 @@
 package com.asayama.gwt.angular.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.Directive.Restrict;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.Closure;
@@ -7,7 +10,6 @@ import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.TextResource;
 
 
@@ -36,9 +38,13 @@ public interface Directive {
     NGScope scope();
     void compile(JQElement element, JSON attrs);
     void link(NGScope scope, JQElement element, JSON attrs);
+    void onDirectiveLoad();
 }
 
 abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
+
+    private static final String CLASS = AbstractDirectiveWrapper.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
 
     JSClosure binder;
     Directive directive;
@@ -89,15 +95,15 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
                                     JSON attrs = (JSON) args[2];
                                     directive.link(scope, element, attrs);
                                 } catch (Exception e) {
-                                    GWT.log("Exception while calling " + name + ".link()", e);
+                                    LOG.log(Level.FINEST, "Exception while calling " + name + ".link()", e);
                                 }
                             }
                         });
                     } catch (Exception e) {
-                        GWT.log("Exception while calling " + name + ".compile()", e);
+                        LOG.log(Level.WARNING, "Exception while calling " + name + ".compile()", e);
                         return JSClosure.create(new Closure() {
                             public void exec(Object... args) {
-                                GWT.log("Unable to call " + name + ".link(). See previous compile() errors");
+                                LOG.log(Level.WARNING, "Unable to call " + name + ".link(). See previous compile() errors");
                             }
                         });
                     }
@@ -115,7 +121,7 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
             return jso;
             
         } catch (Exception e) {
-            GWT.log("Exception while building a directive", e);
+            LOG.log(Level.WARNING, "Exception while building a directive", e);
             return jso;
         }
     }

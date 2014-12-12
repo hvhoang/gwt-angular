@@ -1,10 +1,12 @@
 package com.asayama.gwt.angular.resources.client.directive;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.TextResource;
 
 /**
@@ -14,6 +16,9 @@ import com.google.gwt.resources.client.TextResource;
  */
 public class GwtTextResource extends AbstractDirective {
 
+    private static final String CLASS = GwtTextResource.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+    
     /**
      * Creates isolateScope and registers the following attribute definition.
      * <ul>
@@ -31,7 +36,7 @@ public class GwtTextResource extends AbstractDirective {
     public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
         if (resource == null) {
-            GWT.log("Mandatory attribute " + getName() + " value is mssing");
+            LOG.log(Level.WARNING, "Mandatory attribute " + getName() + " value is mssing");
             return;
         }
         String text = resource.getText();
