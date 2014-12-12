@@ -8,10 +8,7 @@ if (isset($fragment)) {
     }
     $fragment = preg_replace('/^a-zA-Z0-9_\//', '', $fragment);
     $snapshot = 'snapshots' . $fragment . '.html';
-    if (!file_exists($snapshot)) {
-        $snapshot = 'snapshots/index.html';
-    }
-    echo '<!-- GWT Angular welcomes robots! --'.chr(62)."\n";
+    echo '<!-- GWT Angular welcomes robots! ('.$snapshot.') --'.chr(62)."\n";
     include $snapshot;
     die();
 }
