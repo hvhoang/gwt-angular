@@ -2,11 +2,11 @@ package com.asayama.gwt.angular.client.q;
 
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSFunction;
-import com.asayama.gwt.jsni.client.JSObject;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.shared.GWT;
 
 
-public class Promise<V> extends JSObject {
+public class Promise<V> extends JavaScriptObject {
     
     protected Promise() {
     }

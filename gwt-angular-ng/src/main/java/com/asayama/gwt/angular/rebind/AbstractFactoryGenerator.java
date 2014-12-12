@@ -5,14 +5,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
-import com.asayama.gwt.angular.client.Injectable;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.client.NGObject;
 import com.asayama.gwt.angular.rebind.util.ClassTypeFields;
 import com.asayama.gwt.angular.rebind.util.Field;
-import com.asayama.gwt.rebind.JClassTypeUtils;
 import com.asayama.gwt.rebind.JMethodUtils;
 import com.asayama.gwt.rebind.exceptions.RebindException;
 import com.google.gwt.core.ext.GeneratorContext;
@@ -32,8 +28,6 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
     @Override
     public String generate(TreeLogger logger, GeneratorContext context, String qualifiedClassName) throws UnableToCompleteException {
         
-        final String METHOD = "generate(TreeLogger, GeneratorContext, String)";
-
         JClassType classType = getClassType(context, qualifiedClassName);
         String packageName = classType.getPackage().getName();
         String className = classType.getSimpleSourceName();
@@ -61,7 +55,6 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                     String dependency = null;
                     Injector.Inject inject = field.getAnnotation(Injector.Inject.class);
                     if (inject != null) {
-                        //direct annotation supersedes other criteria
                         dependency = inject.value();
                         if (dependency == null || dependency.length() == 0) {
                             Injector.Bind bind = field.getType().isClass().getAnnotation(Injector.Bind.class);
@@ -71,29 +64,6 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
                             }
                         }
                     }
-                    //++ start of legacy code #90
-                    else if (field.getAnnotation(Angular.Bind.class) != null) {
-                        LOG.logp(Level.WARNING, CLASS, METHOD, 
-                                "Bind annotation has been deprecated since 0.0.70, and"
-                                + " replaced by Inject annotation. The continued use of"
-                                + " the old annoation is not supported, and will be"
-                                + " removed from future versions without further notice.");
-                        dependency = field.getAnnotation(Angular.Bind.class).value();
-                    }
-                    //-- end of legacy code #90
-                    //++ start of legacy code #91
-                    else if (JClassTypeUtils.supports(field.getType(), NGObject.class)) {
-                        LOG.logp(Level.WARNING, CLASS, METHOD, field.getType().getSimpleSourceName() +
-                                ": NGObject interface has been deprecated. Use Injector.Inject annotation instead.");
-                        Injector.Bind bind = field.getType().isClass().getAnnotation(Injector.Bind.class);
-                        dependency = bind.value();
-                    }
-                    else if (JClassTypeUtils.supports(field.getType(), Injectable.class)) {
-                        LOG.logp(Level.WARNING, CLASS, METHOD, field.getType().getSimpleSourceName() +
-                                ": Injectable interface has been deprecated. Use Injector.Inject annotation instead.");
-                        dependency = field.getType().getQualifiedSourceName();
-                    }
-                    //-- end of legacy code #91
                     String name = field.getName();
                     fieldList.add(new Field(field, cname, dependency, name));
                 }

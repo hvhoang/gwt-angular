@@ -1,17 +1,32 @@
 package com.asayama.gwt.angular.site.examples.client;
 
-import com.asayama.gwt.angular.client.ClientResources;
+import com.asayama.gwt.angular.client.Controller;
 import com.asayama.gwt.resources.client.HtmlResource;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
 
 
-public interface CustomFilterExampleResources extends ClientResources {
+public class CustomFilterExampleResources implements Controller {
 
-    static final CustomFilterExampleResources INSTANCE = GWT.create(CustomFilterExampleResources.class);
-
-    static final String DEMO_URL = CustomFilterExampleResources.INSTANCE.demo().getSafeUri().asString();
+    public static final String DEMO_URL = CustomFilterExampleClientBundle.INSTANCE.demo().getSafeUri().asString();
+    public static final HtmlResource customFilter = CustomFilterExampleClientBundle.INSTANCE.customFilter();
+    public static final HtmlResource demo = CustomFilterExampleClientBundle.INSTANCE.demo();
+    public static final TextResource config = CustomFilterExampleClientBundle.INSTANCE.config();
+    public static final TextResource module = CustomFilterExampleClientBundle.INSTANCE.module();
+    public static final TextResource controller = CustomFilterExampleClientBundle.INSTANCE.controller();
+    public static final TextResource view = CustomFilterExampleClientBundle.INSTANCE.view();
+    public static final TextResource filter = CustomFilterExampleClientBundle.INSTANCE.filter();
     
+    @Override
+    public void onControllerLoad() {
+    }
+}
+
+interface CustomFilterExampleClientBundle extends ClientBundle {
+
+    static final CustomFilterExampleClientBundle INSTANCE = GWT.create(CustomFilterExampleClientBundle.class);
+
     @Source("CustomFilterExampleDocumentation.html")
     HtmlResource customFilter();
 
@@ -37,3 +52,4 @@ public interface CustomFilterExampleResources extends ClientResources {
     @Source("filter/Reverse.java")
     TextResource filter();
 }
+

@@ -1,10 +1,10 @@
 package com.asayama.gwt.angular.client.q;
 
-import com.asayama.gwt.jsni.client.JSObject;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 
 
-public class Deferred<V> extends JSObject {
+public class Deferred<V> extends JavaScriptObject {
 
     protected Deferred() {
     }

@@ -1,5 +1,5 @@
 package com.asayama.gwt.angular.client;
 
-public interface Controller extends Injectable {
+public interface Controller {
     void onControllerLoad();
 }

@@ -68,13 +68,6 @@ interface ControllerCreator extends Creator<Controller> {
     public <X extends Controller> X create(Class<X> klass);
 }
 
-@SupportedRootClass(ClientResources.class)
-interface ClientResourcesCreator extends Creator<ClientResources> {
-    static ClientResourcesCreator INSTANCE = GWT.create(ClientResourcesCreator.class);
-    @Override
-    public <X extends ClientResources> X create(Class<X> klass);
-}
-
 /**
  * Provides interfaces for an object creator. This interface is intended to be
  * used with {@link DependencyInspectorGenerator}, which inspects the types eligible for
@@ -154,28 +147,6 @@ interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
 }
 
 /**
- * Represents the ScopeBinder factory for ClientBundle, so that the resources
- * declared as ClientBundle are readily available to the view (HTML) in a 
- * similar way the view models are available to the view via Controllers.
- *  
- * In AngularJS, during the construction of Controller class, we assign view 
- * models to the scope, so that they are accessible from the view (HTML). This 
- * factory generates this construction method on behalf of the user.
- * 
- * WARNING:
- * ClientBundleScopeBinderFactory is unable to provide the proper binding for
- * ClientBundle classes when the application is run in classic DevMode.
- * 
- * @author kyoken74
- */
-@SupportedRootClass(ClientResources.class)
-interface ClientResourcesScopeBinderFactory extends ScopeBinderFactory<ClientResources> {
-    static ClientResourcesScopeBinderFactory INSTANCE = GWT.create(ClientResourcesScopeBinderFactory.class);
-    @Override
-    public JSClosure create(ClientResources object);
-}
-
-/**
  * Provides interfaces for an object injector. This interface is intended to be
  * used with {@link BinderFactoryGenerator}, which inspects the types eligible for
  * creation at compile time.
@@ -194,6 +165,7 @@ interface BinderFactory<T> {
     JSClosure create(T object);
 }
 
+@SuppressWarnings("rawtypes")
 @SupportedRootClass(Provider.class)
 interface ProviderBinderFactory extends BinderFactory<Provider> {
     static ProviderBinderFactory INSTANCE = GWT.create(ProviderBinderFactory.class);

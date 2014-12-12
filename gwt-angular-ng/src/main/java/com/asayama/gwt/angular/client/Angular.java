@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.asayama.gwt.angular.client.Injector.Inject;
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSClosure;
@@ -21,15 +20,7 @@ import com.google.gwt.core.client.GWT;
  */
 public class Angular {
 
-    /**
-     * @deprecated Replaced by {@link Inject }
-     */
-    @Deprecated
-    @Target(ElementType.FIELD)
-    public @interface Bind {
-        String value();
-    }
-
+    @Target(ElementType.TYPE)
     public @interface SupportedRootClass {
         Class<?> value();
     }

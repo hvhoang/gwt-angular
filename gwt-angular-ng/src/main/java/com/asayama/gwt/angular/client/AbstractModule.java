@@ -189,71 +189,12 @@ public abstract class AbstractModule implements Module {
                 }
             }
         };
-        String [] dependencies;
-        {
-            String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
-            int len = d == null ? 0 : d.length;
-            dependencies = new String[len + 1];
-            dependencies[0] = "$scope";
-            for (int i = 0; i < len; i++) {
-                dependencies[i + 1] = d[i];
-            }
-        }
-        jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
+        String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
+        JSArray<String> dependencies = JSArray.create(d);
+        dependencies.unshift("$scope");
+        jso.controller(name, dependencies, JSClosure.create(initializer));
         return this;
     }
-
-    /**
-     * <b>This is an experimental feature.</b>
-     * <p>
-     * Binds ClientBundle to the scope via controller pattern.
-     * </p>
-     */
-    public <C extends ClientResources> Module resources(Class<C> klass) {
-        String name = klass.getName();
-        return resources(name, klass);
-    }
-    
-    <C extends ClientResources> Module resources(final String name, final Class<C> klass) {
-        Closure initializer = new Closure() {
-
-            @Override
-            public void exec(Object... args) {
-                String m = "";
-                try {
-                    
-                    ClientResources resources = ClientResourcesCreator.INSTANCE.create(klass);
-                    GWT.log("WARNING: You are using an experimental feature of GWT Angular, Module.resources(). "
-                        + "This method might be removed from fugure versions without notice.");
-                    if (resources == null) {
-                        String message = "Unable to create " + name;
-                        GWT.log(message, new IllegalStateException(message));
-                    }
-                    JSClosure scopeBinder = ClientResourcesScopeBinderFactory.INSTANCE.create(resources);
-                    if (scopeBinder == null) {
-                        String message = "Unable to create binder for " + name + ". "
-                            + "Are you using this resources class as a controller in "
-                            + "your view? If not, you should extend ClientBundle "
-                            + "instead.";
-                        GWT.log(message, new IllegalStateException(message));
-                    }
-                    
-                    m = "binding args";
-                    scopeBinder.apply(args);
-                } catch (Exception e) {
-                    GWT.log("Exception while " + m, e);
-                }
-            }
-        };
-        String [] dependencies;
-        {
-            dependencies = new String[1];
-            dependencies[0] = "$scope";
-        }
-        jso.controller(name, JSArray.create(dependencies), JSClosure.create(initializer));
-        return this;
-    }
-
 }
 
 class JSModule extends JSObject {
