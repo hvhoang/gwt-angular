@@ -49,7 +49,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.asayama.gwt.angular.site.SiteEntryPoint</module>
+              <module>com.asayama.gwt.angular.site.SiteEntryPointXS</module>
             </configuration>
             <goals>
               <goal>compile</goal>
