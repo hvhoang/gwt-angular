@@ -113,7 +113,7 @@ public interface Module extends EntryPoint {
      * <li>https://github.com/kyoken74/gwt-angular/issues/64</li>
      * </ul>
      */
-    void bind(JSModule jso);
+    void bind(NGModule jso);
 
     /**
      * Returns the name of the module. Every Angular module must be registered

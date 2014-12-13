@@ -87,7 +87,7 @@ class NGAngular extends JavaScriptObject {
     protected NGAngular() {
     }
     
-    native final JSModule module(String name, JSArray<String> requires, JSFunction<?> ctor) /*-{
+    native final NGModule module(String name, JSArray<String> requires, JSFunction<?> ctor) /*-{
         return this.module(name, requires, ctor);
     }-*/;
     

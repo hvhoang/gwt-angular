@@ -8,13 +8,15 @@ import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
-import com.asayama.gwt.jsni.client.JSObject;
 import com.asayama.gwt.util.client.Strings;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Provides abstract implementation of {@link Module}. See the javadoc comments
  * on {@link Module} for more details.
+ * <p>
+ * https://docs.angularjs.org/api/ng/type/angular.Module
+ * </p>
  * 
  * @author kyoken74
  */
@@ -23,30 +25,30 @@ public abstract class AbstractModule implements Module {
     private static final String CLASS = AbstractModule.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     
-    JSModule jso;
+    protected NGModule ngo;
 
     @Override
     public abstract void onModuleLoad();
     
     @Override
-    public void bind(JSModule jso) {
-        this.jso = jso;
+    public void bind(NGModule jso) {
+        this.ngo = jso;
     }
 
     @Override
     public String getName() {
-        return jso.getName();
+        return ngo.getName();
     }
 
     @Override
     public Module value(String name, Object value) {
-        jso.value(name, value);
+        ngo.value(name, value);
         return this;
     }
 
     @Override
     public Module constant(String name, Object value) {
-        jso.constant(name, value);
+        ngo.constant(name, value);
         return this;
     }
     
@@ -59,7 +61,7 @@ public abstract class AbstractModule implements Module {
     
     <F extends Filter> Module filter(final String name, final Class<F> klass) {
         String[] dependencies = FilterDependencyInspector.INSTANCE.inspect(klass);
-        jso.filter(name, JSArray.create(dependencies),
+        ngo.filter(name, JSArray.create(dependencies),
                 JSFunction.create(new AbstractFilterWrapper() {
                     @Override
                     public JSFilter call(Object... args) {
@@ -86,7 +88,7 @@ public abstract class AbstractModule implements Module {
     
     <D extends Directive> Module directive(final String name, final Class<D> klass) {
         String[] dependencies = DirectiveDependencyInspector.INSTANCE.inspect(klass);
-        jso.directive(name, JSArray.create(dependencies),
+        ngo.directive(name, JSArray.create(dependencies),
                 JSFunction.create(new AbstractDirectiveWrapper() {
                     @Override
                     public JSDirective call(Object... args) {
@@ -150,7 +152,7 @@ public abstract class AbstractModule implements Module {
             }
         };
         String[] dependencies = ServiceDependencyInspector.INSTANCE.inspect(factory.getServiceClass());
-        jso.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
+        ngo.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
 
@@ -173,7 +175,7 @@ public abstract class AbstractModule implements Module {
             }
         };
         String[] dependencies = ProviderDependencyInspector.INSTANCE.inspect(klass);
-        jso.config(JSArray.create(dependencies), JSFunction.create(initializer));
+        ngo.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
     
@@ -224,54 +226,136 @@ public abstract class AbstractModule implements Module {
         String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
         JSArray<String> dependencies = JSArray.create(d);
         dependencies.unshift("$scope");
-        jso.controller(name, dependencies, JSClosure.create(initializer));
+        ngo.controller(name, dependencies, JSClosure.create(initializer));
         return this;
     }
 }
 
-class JSModule extends JSObject {
+class NGModule extends JavaScriptObject {
 
-    protected JSModule() {
+    protected NGModule() {
     }
 
-    final String getName() {
-        return $string("name");
-    }
+    // Methods
+    
+    /**
+     * @param name service name
+     * @param dependencies 
+     * @param providerType Construction function for creating new instance of the service.
+     */
+    final native <S extends Service> NGModule provider(String name, JSArray<String> dependencies, JSFunction<S> providerType) /*-{
+        dependencies.push(providerType);
+        return this.provider(name, dependencies);
+    }-*/;
+    
+    /**
+     * @param name service name
+     * @param dependencies
+     * @param providerFunction Function for creating new instance of the service.
+     */
+    final native <S extends Service> NGModule factory(String name, JSArray<String> dependencies, JSFunction<S> providerFunction) /*-{
+        dependencies.push(providerFunction);
+        return this.factory(name, dependencies);
+    }-*/;
 
-    final native JSArray<String> requires() /*-{
+    /**
+     * @param name service name
+     * @param dependencies
+     * @param constructor A constructor function that will be instantiated.
+     */
+    final native <S extends Service> NGModule service(String name, JSArray<String> dependencies, JSFunction<S> constructor) /*-{
+        dependencies.push(constructor);
+        return this.factory(name, dependencies);
+    }-*/;
+
+    /**
+     * @param name service name
+     * @param object Service instance object.
+     */
+    final native NGModule value(String name, Object object) /*-{
+        return this.value(name, object);
+    }-*/;
+
+    /**
+     * @param name constant name
+     * @param object Constant value.
+     */
+    final native NGModule constant(String name, Object object) /*-{
+        return this.constant(name, object);
+    }-*/;
+
+    /**
+     * TODO Implement this AbstractModule.animation()
+     * <p>
+     * Depends on "ngAnimate" module.
+     * </p>
+     * 
+     * @param name animation name
+     * @param animationFactory Factory function for creating new instance of an animation.
+     */
+    final native NGModule animation(String name, JSFunction<?> animationFactory) /*-{
+        return this;
+    }-*/;
+
+    /**
+     * @param name Filter name.
+     * @param dependencies
+     * @param filterFactory Factory function for creating new instance of filter.
+     */
+    final native NGModule filter(String name, JSArray<String> dependencies, JSFunction<JSFilter> filterFactory) /*-{
+        dependencies.push(filterFactory);
+        return this.filter(name, dependencies);
+    }-*/;
+
+    /**
+     * @param name Controller name.
+     * @param dependencies
+     * @param constructor Controller constructor function.
+     */
+    final native NGModule controller(String name, JSArray<String> dependencies, JSClosure constructor) /*-{
+        dependencies.push(constructor);
+        return this.controller(name, dependencies);
+    }-*/;
+    
+    /**
+     * @param name Directive name.
+     * @param dependencies
+     * @param directiveFactory Factory function for creating new instance of directives.
+     */
+    final native NGModule directive(String name, JSArray<String> dependencies, JSFunction<JSDirective> directiveFactory) /*-{
+        dependencies.push(directiveFactory);
+        return this.directive(name, dependencies);
+    }-*/;
+
+    /**
+     * @param dependencies
+     * @param configFn Execute this function on module load. Useful for service configuration.
+     */
+    final native NGModule config(JSArray<String> dependencies, JavaScriptObject configFn) /*-{
+        dependencies.push(configFn);
+        return this.config(dependencies);
+    }-*/;
+
+    /**
+     * @param initializationFn Execute this function after injector creation. Useful for application initialization.
+     */
+    final native NGModule run(JavaScriptObject initializationFn) /*-{
+        return this.run(initializationFn);
+    }-*/;
+    
+    // Properties
+    
+    /**
+     * @return the list of modules which the injector will load before the current module is loaded.
+     */
+    final native JSArray<String> getRequires() /*-{
         return this.requires;
     }-*/;
-    
-    final native void value(String name, Object value) /*-{
-        this.value(name, value);
-    }-*/;
-    
-    final native void constant(String name, Object value) /*-{
-        this.constant(name, value);
-    }-*/;
-    
-    final native void filter(String name, JSArray<String> dependencies, JSFunction<JSFilter> filter) /*-{
-        dependencies.push(filter);
-        this.filter(name, dependencies);
-    }-*/;
 
-    final native void directive(String name, JSArray<String> dependencies, JSFunction<JSDirective> directive) /*-{
-        dependencies.push(directive);
-        this.directive(name, dependencies);
-    }-*/;
-
-    final native void config(JSArray<String> dependencies, JavaScriptObject constructor) /*-{
-        dependencies.push(constructor);
-        this.config(dependencies);
-    }-*/;
-    
-    final native <S extends Service> void factory(String name, JSArray<String> dependencies, JSFunction<S> constructor) /*-{
-        dependencies.push(constructor);
-        this.factory(name, dependencies);
-    }-*/;
-    
-    final native void controller(String name, JSArray<String> dependencies, JSClosure constructor) /*-{
-        dependencies.push(constructor);
-        this.controller(name, dependencies);
+    /**
+     * @return Name of the module.
+     */
+    final native String getName() /*-{
+        return this.name;
     }-*/;
 }
