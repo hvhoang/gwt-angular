@@ -26,6 +26,33 @@ public class Angular {
         Class<?> value();
     }
     
+    public static final class Version extends JavaScriptObject {
+
+        protected Version() {
+            // noop
+        }
+        
+        public final native String getFull() /*-{
+            return this.full;
+        }-*/;
+        
+        public final native int getMajor() /*-{
+            return this.major;
+        }-*/;
+        
+        public final native int getMinor()  /*-{
+            return this.minor;
+        }-*/;
+        
+        public final native int getDot()  /*-{
+            return this.dot;
+        }-*/;
+        
+        public final native String getCodeName()  /*-{
+            return this.codeName;
+        }-*/;
+    }
+    
     private static final String CLASS = Angular.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
@@ -90,6 +117,10 @@ public class Angular {
         LOG.log(Level.FINEST, "Angular.module(" + module.getClass().getName() + ")");
         return module;
     }
+    
+    public static Angular.Version getVersion() {
+        return ngo.getVersion();
+    }
 }
 
 class NGAngular extends JavaScriptObject {
@@ -101,6 +132,10 @@ class NGAngular extends JavaScriptObject {
     protected NGAngular() {
         // JavaScriptObject must have an empty protected default constructor
     }
+    
+    native final Angular.Version getVersion() /*-{
+        return this.version;
+    }-*/;
     
     // TODO https://docs.angularjs.org/api/ng/function/angular.bind
     

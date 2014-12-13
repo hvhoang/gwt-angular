@@ -1,5 +1,6 @@
 package com.asayama.gwt.angular.site.client;
 
+import com.asayama.gwt.angular.client.Angular;
 import com.asayama.gwt.angular.client.Controller;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.Constants;
@@ -11,6 +12,7 @@ public class JumbotronController implements Controller {
     public static final ImageResource LOGO = JumbotronResources.INSTANCE.logo();
     public static final String LEARN_MORE = JumbotronConstants.INSTANCE.learnMore();
     public static final String MORE = JumbotronConstants.INSTANCE.more();
+    public static final String ANGULAR_VERSION = Angular.getVersion().getFull();
     
     @Override
     public void onControllerLoad() {
