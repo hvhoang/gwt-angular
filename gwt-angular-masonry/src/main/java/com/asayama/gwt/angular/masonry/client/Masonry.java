@@ -23,7 +23,7 @@ public class Masonry extends AbstractModule implements EntryPoint {
         try {
             MasonryModuleScripts.INSTANCE.masonry().ensureInjected(JSObject.$wnd);
             MasonryModuleScripts.INSTANCE.angularMasonry().ensureInjected(JSObject.$wnd);
-            Angular.moduleWithDependency(this, "wu.masonry");
+            Angular.module(this, "wu.masonry");
         } catch (Exception e) {
             LOG.log(Level.WARNING, "Exception while " + m, e);
         }

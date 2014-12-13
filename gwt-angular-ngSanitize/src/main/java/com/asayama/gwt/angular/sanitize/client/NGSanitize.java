@@ -13,7 +13,7 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
     @Override
     public void onModuleLoad() {
         NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
-        Angular.moduleWithDependency(this, "ngSanitize");
+        Angular.module(this, "ngSanitize");
     }
 }
 
