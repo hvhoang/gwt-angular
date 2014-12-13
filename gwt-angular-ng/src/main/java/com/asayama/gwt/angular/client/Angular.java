@@ -36,7 +36,7 @@ public class Angular {
      * @deprecated Replaced by {@link #module(Module, String...)} since 0.0.72
      */
     @Deprecated
-    public static Module moduleWithDependency(Module module, String... requires) {
+    public static <M extends AbstractModule> M moduleWithDependency(M module, String... requires) {
         return module(module, requires);
     }
 
@@ -49,16 +49,16 @@ public class Angular {
      * @param module An instance of this module.
      * @param requires Optional list of other module names this module depends on.
      */
-    public static Module module(Module module, String... requires) {
+    public static <M extends AbstractModule> M module(M module, String... requires) {
         return module(module, null, requires == null ? EMPTY_STRING_ARRAY : requires);
     }
     
-    static Module module(Module module, Closure closure, String... requires) {
+    static <M extends AbstractModule> M module(M module, Closure closure, String... requires) {
         String name = module.getClass().getName();
         modules.add(name);
         JSArray<String> jsrequires = requires == null ? null : JSArray.create(requires);
         JSClosure jsclosure = closure == null ? null : JSClosure.create(closure);
-        module.bind(ngo.module(name, jsrequires, jsclosure));
+        module.ngo = ngo.module(name, jsrequires, jsclosure);
         LOG.log(Level.FINEST, "Angular.module(" + module.getClass().getName() + ")");
         return module;
     }
@@ -68,14 +68,13 @@ public class Angular {
     }
     
     @SafeVarargs
-    public static <M extends Module> Injector injector(Class<M>... modules) {
+    public static <M extends AbstractModule> Injector injector(Class<M>... modules) {
         List<String> names = new ArrayList<String>(modules.length);
         for (Class<?> klass : modules) {
             names.add(klass.getName());
         }
         return ngo.injector(JSArray.create(names.toArray(EMPTY_STRING_ARRAY)));
     }
-    
 }
 
 class NGAngular extends JavaScriptObject {
