@@ -3,9 +3,7 @@ package com.asayama.gwt.angular.client;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,43 +29,9 @@ public class Angular {
     private static final Logger LOG = Logger.getLogger(CLASS);
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
     
-    static final NGAngular ng = NGAngular.getInstance();
-    static List<String> modules = new ArrayList<String>();
-    static Map<String, Module> index = new HashMap<String, Module>();
+    protected static final NGAngular ngo = NGAngular.getInstance();
+    protected static final List<String> modules = new ArrayList<String>();
     
-    public static String[] modules() {
-        return modules.toArray(EMPTY_STRING_ARRAY);
-    }
-    
-    /**
-     * Creates a module with dependency listed in the <code>requires</code>
-     * parameter. If a module by the same name (i.e. the same class name
-     * including the package name) has been registered, then the previous
-     * registration is overridden.
-     * <p>
-     * If you wish to obtain a reference to a previously reigstered module,
-     * then please use {@link #getModule(Module)} instead.
-     * </p>
-     * 
-     * @param module
-     * @param requires
-     * @return
-     */
-    public static Module module(Module module, String... requires) {
-        Closure closure = new Closure() {
-            @Override
-            public void exec(Object... args) {
-                // noop
-            }
-        };
-        return module(module, closure, requires == null ? EMPTY_STRING_ARRAY : requires);
-    }
-    
-    public static Module getModule(Module module) {
-        //TODO implement me
-        throw new UnsupportedOperationException("This method has not yet been implemented");
-    }
-
     /**
      * @deprecated Replaced by {@link #module(Module, String...)} since 0.0.72
      */
@@ -76,20 +40,42 @@ public class Angular {
         return module(module, requires);
     }
 
-    public static Module module(Module module, Closure closure, String... requires) {
+    /**
+     * Creates a module with dependency listed in the <code>requires</code>
+     * parameter. If a module by the same name (i.e. the same class name
+     * including the package name) has been registered, then the previous
+     * registration is overridden.
+     * 
+     * @param module An instance of this module.
+     * @param requires Optional list of other module names this module depends on.
+     */
+    public static Module module(Module module, String... requires) {
+        return module(module, null, requires == null ? EMPTY_STRING_ARRAY : requires);
+    }
+    
+    static Module module(Module module, Closure closure, String... requires) {
         String name = module.getClass().getName();
         modules.add(name);
-        index.put(name, module);
         JSArray<String> jsrequires = requires == null ? null : JSArray.create(requires);
         JSClosure jsclosure = closure == null ? null : JSClosure.create(closure);
-        module.bind(ng.module(name, jsrequires, jsclosure));
+        module.bind(ngo.module(name, jsrequires, jsclosure));
         LOG.log(Level.FINEST, "Angular.module(" + module.getClass().getName() + ")");
         return module;
     }
 
     public static void bootstrap() {
-        ng.bootstrap(JSArray.create(modules()));
+        ngo.bootstrap(JSArray.create(modules.toArray(EMPTY_STRING_ARRAY)));
     }
+    
+    @SafeVarargs
+    public static <M extends Module> Injector injector(Class<M>... modules) {
+        List<String> names = new ArrayList<String>(modules.length);
+        for (Class<?> klass : modules) {
+            names.add(klass.getName());
+        }
+        return ngo.injector(JSArray.create(names.toArray(EMPTY_STRING_ARRAY)));
+    }
+    
 }
 
 class NGAngular extends JavaScriptObject {
@@ -107,5 +93,9 @@ class NGAngular extends JavaScriptObject {
     
     native final void bootstrap(JSArray<String> modules) /*-{
         this.bootstrap($doc, modules);
+    }-*/;
+    
+    native final Injector injector(JSArray<String> modules) /*-{
+        return this.injector(modules);
     }-*/;
 }
