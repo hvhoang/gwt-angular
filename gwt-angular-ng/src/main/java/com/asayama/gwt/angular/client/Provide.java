@@ -9,7 +9,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Provide registers {@link Provider} with {@link Injector}.
  * <p>
- * http://docs.angularjs.org/api/auto/object/$provide
+ * <a href="http://docs.angularjs.org/api/auto/object/$provide">
+ * http://docs.angularjs.org/api/auto/object/$provide</a>
  * </p>
  * The documentation talks about many of these methods returning "registered
  * provider instance" but I do not know what that means. It seems that services
