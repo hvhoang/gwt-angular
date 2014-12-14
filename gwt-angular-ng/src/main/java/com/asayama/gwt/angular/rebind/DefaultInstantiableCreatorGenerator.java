@@ -8,11 +8,9 @@ import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 
-public class DefaultInstantiableCreatorGenerator extends
-        AbstractFactoryGenerator {
+public class DefaultInstantiableCreatorGenerator extends AbstractFactoryGenerator {
 
-    private static final String CLASS = DefaultInstantiableCreatorGenerator.class
-            .getName();
+    private static final String CLASS = DefaultInstantiableCreatorGenerator.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
 
     @Override

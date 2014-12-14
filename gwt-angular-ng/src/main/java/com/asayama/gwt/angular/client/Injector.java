@@ -3,13 +3,13 @@ package com.asayama.gwt.angular.client;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
-import com.asayama.gwt.jsni.client.JSArray;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Used to retrieve object instances.
  * <p>
- * http://docs.angularjs.org/api/auto/service/$injector
+ * See also <a href="http://docs.angularjs.org/api/auto/service/$injector">
+ * http://docs.angularjs.org/api/auto/service/$injector</a>
  * </p>
  * 
  * @author kyoken74
@@ -32,8 +32,7 @@ public class Injector implements Service {
      * Similar code can be written in GWT Angular as follows.
      * <pre>
      * public class FooController implements Controller {
-     *   {@code @Injector.Inject}
-     *   Bar bar;
+     *   {@code @Injector.Inject} Bar bar;
      *   public void onControllerLoad() {
      *     bar.baz();
      *   }
@@ -79,24 +78,12 @@ public class Injector implements Service {
     NGInjector ngo;
     
     public <S extends Service> S get(Class<S> klass) {
-        return ngo.getService(klass.getName());
+        return ngo.get(klass.getName(), null);
     }
     
     public boolean has(String name) {
         return ngo.has(name);
     }
-    
-    /**
-     * FIXME Unclear what this method does.
-     */
-    public void instantiate() {
-        ngo.instantiate();
-    }
-    
-    public String[] annotate() {
-        return ngo.annotate().toArray(JSArray.STRING_ARRAY);
-    }
-    
 }
 
 @Injector.Bind("$injector")
@@ -105,20 +92,17 @@ class NGInjector extends JavaScriptObject {
     protected NGInjector() {
     }
 
-    final native <S extends Service> S getService(String name) /*-{
-        return this.get(name);
+    final native <S extends Service> S get(String name, String caller) /*-{
+        return this.get(name, caller);
     }-*/;
+    
+    // TODO invoke(fn, [self], [locals]);
     
     final native boolean has(String name) /*-{
         return this.has(name);
     }-*/;
     
-    final native void instantiate() /*-{
-        this.instantiate();
-    }-*/;
+    // TODO instantiate(Type, [locals]);
     
-    final native JSArray<String> annotate() /*-{
-        return this.annotate();
-    }-*/;
-
+    // TODO annotate(fn, [strictDi]);
 }

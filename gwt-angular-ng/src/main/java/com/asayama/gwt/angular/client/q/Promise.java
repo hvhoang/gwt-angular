@@ -1,13 +1,18 @@
 package com.asayama.gwt.angular.client.q;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.shared.GWT;
 
 
 public class Promise<V> extends JavaScriptObject {
     
+    private static final String CLASS = Promise.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+
     protected Promise() {
     }
 
@@ -61,7 +66,7 @@ public class Promise<V> extends JavaScriptObject {
                             V value = HostedModeEnvelope.unwrap(object);
                             return HostedModeEnvelope.wrap(success.call(value));
                         } catch (Throwable e) {
-                            GWT.log("Exception while calling promise success", e);
+                            LOG.log(Level.WARNING, "Exception while calling promise success", e);
                             return null; //FIXME Determine the suitable behavior.
                         }
                     }
@@ -76,7 +81,7 @@ public class Promise<V> extends JavaScriptObject {
                             fail.call(value);
                             return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
-                            GWT.log("Exception while calling promise fail", e);
+                            LOG.log(Level.WARNING, "Exception while calling promise fail", e);
                             return null; //FIXME Determine the suitable behavior.
                         }
                     }
@@ -91,7 +96,7 @@ public class Promise<V> extends JavaScriptObject {
                             notify.call(value);
                             return HostedModeEnvelope.wrap(value);
                         } catch (Throwable e) {
-                            GWT.log("Exception while calling promise notify", e);
+                            LOG.log(Level.WARNING, "Exception while calling promise notify", e);
                             return null; //FIXME Determine the suitable behavior.
                         }
                     }

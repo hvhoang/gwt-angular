@@ -1,5 +1,8 @@
 package com.asayama.gwt.angular.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.Directive.Restrict;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.Closure;
@@ -7,10 +10,13 @@ import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.TextResource;
 
-
+/**
+ * TODO This file needs some serious review and clean-up.
+ * 
+ * @author kyoken74
+ */
 public interface Directive {
     
     public static enum Restrict {
@@ -38,45 +44,62 @@ public interface Directive {
     void link(NGScope scope, JQElement element, JSON attrs);
 }
 
-abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
+class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirective> {
 
-    JSClosure binder;
-    Directive directive;
+    private static final String CLASS = DefaultDirectiveFactory.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
 
+    protected final String name;
+    protected final Class<D> klass;
+    
+    DefaultDirectiveFactory(String name, Class<D> klass) {
+        this.name = name;
+        this.klass = klass;
+    }
+    
     @Override
-    public JSDirective call(Object... args) {
+    public NGDirective call(Object... args) {
 
-        JSDirective jso = JSDirective.create();
+        String m = "creating NGDirective for " + name;
+        NGDirective ngo = NGDirective.create();
         
         try {
-            final String name = directive == null ? null : directive.getName();
             
+            m = "creating directive " + name;
+            final Directive directive = DirectiveCreator.INSTANCE.create(klass);
+            directive.setName(name);
+
+            m = "determining directive restriction for " + name;
             Restrict[] rs = directive.getRestrict();
             if (rs != null && rs.length > 0) {
                 StringBuilder sb = new StringBuilder();
                 for (Restrict r : rs) {
                     sb.append(r.code);
                 }
-                jso.setRestrict(sb.toString());
+                ngo.setRestrict(sb.toString());
             }
 
-//            jso.setTransclude(directive.getTransclude());
+            // TODO jso.setTransclude(directive.getTransclude());
 
+            m = "setting directive template for " + name;
             TextResource template = directive.getTemplate();
             if (template != null) {
-                jso.setTemplate(template.getText());
+                ngo.setTemplate(template.getText());
             }
             
+            m = "setting directive templateUrl for " + name;
             String templateUrl = directive.getTemplateUrl();
             if (templateUrl != null) {
-                jso.setTemplateUrl(templateUrl);
+                ngo.setTemplateUrl(templateUrl);
             }
             
-            jso.setCompile(JSFunction.create(new Function<JSClosure>() {
+            m = "setting directive compile for " + name;
+            ngo.setCompile(JSFunction.create(new Function<JSClosure>() {
                 
                 @Override
                 public JSClosure call(Object... args) {
                     try {
+                        LOG.finest("calling " + name + ".compile()");
                         JQElement element = (JQElement) args[0];
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);
@@ -84,39 +107,41 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
                             @Override
                             public void exec(Object... args) {
                                 try {
+                                    LOG.finest("calling " + name + ".link()");
                                     NGScope scope = (NGScope) args[0];
                                     JQElement element = (JQElement) args[1];
                                     JSON attrs = (JSON) args[2];
                                     directive.link(scope, element, attrs);
                                 } catch (Exception e) {
-                                    GWT.log("Exception while calling " + name + ".link()", e);
+                                    LOG.log(Level.WARNING, "Exception while calling " + name + ".link()", e);
                                 }
                             }
                         });
                     } catch (Exception e) {
-                        GWT.log("Exception while calling " + name + ".compile()", e);
-                        return JSClosure.create(new Closure() {
-                            public void exec(Object... args) {
-                                GWT.log("Unable to call " + name + ".link(). See previous compile() errors");
-                            }
-                        });
+                        LOG.log(Level.WARNING, "Exception while calling " + name + ".compile()", e);
+                        return null;
                     }
                 }
             }));
             
+            m = "getting directive scope for " + name;
             NGScope scope = directive.scope();
-//            if (scope != null && scope.get(directive.getName()) == null) {
-//                scope.put(directive.getName(), "=");
-//            }
-            jso.setScope(scope);
             
+            m = "setting directive scope for " + name;
+            ngo.setScope(scope);
+            
+            m = "creating binder for " + name;
+            JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
+            
+            m = "applying binder to " + name;
             binder.apply(args);
             
-            return jso;
+            m = "returning NGDirective";
+            return ngo;
             
         } catch (Exception e) {
-            GWT.log("Exception while building a directive", e);
-            return jso;
+            LOG.log(Level.WARNING, "Exception while " + m, e);
+            return ngo;
         }
     }
 }
@@ -126,9 +151,9 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
  * 
  * @author kyoken74
  */
-class JSDirective extends JSON {
+class NGDirective extends JSON {
 
-    protected JSDirective() {
+    protected NGDirective() {
     }
     
     final void setRestrict(String restrict) {

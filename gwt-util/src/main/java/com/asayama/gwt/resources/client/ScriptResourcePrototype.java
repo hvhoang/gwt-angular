@@ -1,24 +1,29 @@
 package com.asayama.gwt.resources.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
-import com.google.gwt.core.shared.GWT;
 
 
 public class ScriptResourcePrototype implements ScriptResource {
+
+    private static final String CLASS = ScriptResourcePrototype.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
 
     @Override
     public String getName() {
         String m = ScriptResourcePrototype.class.getName() + " should not be directly instantiated.";
         UnsupportedOperationException e = new UnsupportedOperationException(m);
-        GWT.log(m, e);
+        LOG.log(Level.WARNING, m, e);
         throw e;
     }
 
     public String getText() {
         String m = ScriptResourcePrototype.class.getName() + " should not be directly instantiated.";
         UnsupportedOperationException e = new UnsupportedOperationException(m);
-        GWT.log(m, e);
+        LOG.log(Level.WARNING, m, e);
         throw e;
     }
 

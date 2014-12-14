@@ -9,5 +9,4 @@ public abstract class AbstractFilter implements Filter {
     public String filter(String input, Object... options) {
         return filter(input);
     }
-
 }

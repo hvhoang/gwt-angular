@@ -1,5 +1,8 @@
 package com.asayama.gwt.jquery.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.jsni.client.JSObject;
 import com.asayama.gwt.resources.client.ScriptResource;
 import com.google.gwt.core.client.EntryPoint;
@@ -8,13 +11,16 @@ import com.google.gwt.resources.client.ClientBundle;
 
 public class JQuery implements EntryPoint {
     
+    private static final String CLASS = JQuery.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+
     @Override
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
             JQueryScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
         } catch (Exception e) {
-            GWT.log("Exception while " + m, e);
+            LOG.log(Level.WARNING, "Exception while " + m, e);
         }
     }
 }

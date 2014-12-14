@@ -18,4 +18,9 @@ public class DefaultFactory<S extends Service> implements Factory<S> {
     public Class<S> getServiceClass() {
         return klass;
     }
+    
+    @Override
+    public void onFactoryLoad() {
+        // noop by default
+    }
 }

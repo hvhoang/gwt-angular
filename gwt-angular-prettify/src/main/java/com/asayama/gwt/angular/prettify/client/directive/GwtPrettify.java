@@ -1,11 +1,13 @@
 package com.asayama.gwt.angular.prettify.client.directive;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.NGScope;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 
@@ -36,6 +38,9 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  */
 public class GwtPrettify extends AbstractDirective {
 
+    private static final String CLASS = GwtPrettify.class.getName();
+    private static final Logger LOG = Logger.getLogger(CLASS);
+    
     // FIXME https://github.com/kyoken74/gwt-angular/issues/78
     private Prettify filter = new Prettify();
     
@@ -71,7 +76,7 @@ public class GwtPrettify extends AbstractDirective {
     public void link(NGScope scope, JQElement element, JSON attrs) {
         TextResource resource = scope.get(getName());
         if (resource == null) {
-            GWT.log("Mandatory attribute, " + getName() + ", was missing");
+            LOG.log(Level.WARNING, "Mandatory attribute, " + getName() + ", was missing");
             return;
         }
         String text = SafeHtmlUtils.htmlEscape(resource.getText());
