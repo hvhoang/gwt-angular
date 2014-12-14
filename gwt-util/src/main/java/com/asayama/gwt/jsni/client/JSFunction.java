@@ -19,8 +19,7 @@ public class JSFunction<R> extends JavaScriptObject {
 
     public final R apply(Object... args) {
         @SuppressWarnings("unchecked")
-        JSArray<Object> jsarray = (JSArray<Object>) JavaScriptObject
-                .createArray();
+        JSArray<Object> jsarray = (JSArray<Object>) JavaScriptObject.createArray();
         if (args != null) {
             for (Object arg : args) {
                 jsarray.add(arg);
