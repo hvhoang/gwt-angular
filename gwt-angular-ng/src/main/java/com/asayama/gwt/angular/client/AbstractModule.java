@@ -277,24 +277,10 @@ public abstract class AbstractModule {
         return filter(name, klass);
     }
     
-    protected <F extends Filter> AbstractModule filter(final String name, final Class<F> klass) {
-        String[] dependencies = FilterDependencyInspector.INSTANCE.inspect(klass);
-        ngo.filter(name, JSArray.create(dependencies),
-                JSFunction.create(new AbstractFilterWrapper() {
-                    @Override
-                    public JSFilter call(Object... args) {
-                        this.filter = FilterCreator.INSTANCE.create(klass);
-                        this.binder = FilterBinderFactory.INSTANCE.create(filter);
-                        String m = "";
-                        try {
-                            LOG.log(Level.FINEST, m = klass.getName() + ".onFilterLoad()");
-                            filter.onFilterLoad();
-                        } catch (Exception e) {
-                            LOG.log(Level.WARNING, "Exception while calling " + m, e);
-                        }
-                        return super.call(args);
-                    }
-                }));
+    protected <F extends Filter> AbstractModule filter(String name, Class<F> klass) {
+        JSFunction<NGFilter> filterFactory = JSFunction.create(new DefaultFilterFactory<F>(name, klass));
+        JSArray<String> dependencies = JSArray.create(FilterDependencyInspector.INSTANCE.inspect(klass));
+        ngo.filter(name, dependencies, filterFactory);
         return this;
     }
     
@@ -376,7 +362,7 @@ public abstract class AbstractModule {
         return directive(Strings.decapitalize(className), klass);
     }
     
-    protected <D extends Directive> AbstractModule directive(final String name, Class<D> klass) {
+    protected <D extends Directive> AbstractModule directive(String name, Class<D> klass) {
         JSFunction<NGDirective> directiveFactory = JSFunction.create(new DefaultDirectiveFactory<D>(name, klass));
         JSArray<String> dependencies = JSArray.create(DirectiveDependencyInspector.INSTANCE.inspect(klass));
         ngo.directive(name, dependencies, directiveFactory);
@@ -501,7 +487,7 @@ class NGModule extends JavaScriptObject {
      * @param dependencies
      * @param filterFactory Factory function for creating new instance of filter.
      */
-    final native NGModule filter(String name, JSArray<String> dependencies, JSFunction<JSFilter> filterFactory) /*-{
+    final native NGModule filter(String name, JSArray<String> dependencies, JSFunction<NGFilter> filterFactory) /*-{
         dependencies.push(filterFactory);
         return this.filter(name, dependencies);
     }-*/;

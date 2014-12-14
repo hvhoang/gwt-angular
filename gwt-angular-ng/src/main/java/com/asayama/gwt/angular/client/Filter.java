@@ -5,21 +5,35 @@ import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.util.client.Arrays;
 
-
+/**
+ * TODO This file needs some serious review and clean-up.
+ * 
+ * @author kyoken74
+ */
 public interface Filter {
 
     String filter(String input, Object... options);
     void onFilterLoad();
 }
 
-abstract class AbstractFilterWrapper implements Function<JSFilter> {
+class DefaultFilterFactory<F extends Filter> implements Function<NGFilter> {
     
-    JSClosure binder;
-    Filter filter;
+    protected final String name;
+    protected final Class<F> klass;
+    
+    public DefaultFilterFactory(String name, Class<F> klass) {
+        this.name = name;
+        this.klass = klass;
+    }
     
     @Override
-    public JSFilter call(Object... args) {
-        JSFilter jso = JSFilter.create(new Function<String>() {
+    public NGFilter call(Object... args) {
+
+        final Filter filter = FilterCreator.INSTANCE.create(klass);
+        final JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
+//        filter.setName(name);
+        
+        NGFilter jso = NGFilter.create(new Function<String>() {
             @Override
             public String call(Object... args) {
                 if (args == null) {
@@ -32,6 +46,14 @@ abstract class AbstractFilterWrapper implements Function<JSFilter> {
                 if (args.length > 0) {
                     input = (String) args[0];
                 }
+                
+//                try {
+//                    LOG.log(Level.FINEST, m = klass.getName() + ".onFilterLoad()");
+                    filter.onFilterLoad();
+//                } catch (Exception e) {
+//                    LOG.log(Level.WARNING, "Exception while calling " + m, e);
+//                }
+
                 return filter.filter(input, Arrays.shift(args));
             }
         }).cast();
@@ -39,8 +61,8 @@ abstract class AbstractFilterWrapper implements Function<JSFilter> {
     }
 }
 
-class JSFilter extends JSFunction<String> {
+class NGFilter extends JSFunction<String> {
 
-    protected JSFilter() {
+    protected NGFilter() {
     }
 }
