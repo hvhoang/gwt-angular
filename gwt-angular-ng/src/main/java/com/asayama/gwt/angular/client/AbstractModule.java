@@ -274,10 +274,6 @@ public abstract class AbstractModule {
     public <F extends Filter> AbstractModule filter(Class<F> klass) {
         String className = Strings.simpleName(klass);
         String name = Strings.decapitalize(className);
-        return filter(name, klass);
-    }
-    
-    protected <F extends Filter> AbstractModule filter(String name, Class<F> klass) {
         JSFunction<NGFilter> filterFactory = JSFunction.create(new DefaultFilterFactory<F>(name, klass));
         JSArray<String> dependencies = JSArray.create(FilterDependencyInspector.INSTANCE.inspect(klass));
         ngo.filter(name, dependencies, filterFactory);
@@ -295,48 +291,8 @@ public abstract class AbstractModule {
      * @param klass Controller type.
      */
     public <C extends Controller> AbstractModule controller(Class<C> klass) {
-        return controller(klass.getName(), klass);
-    }
-
-    protected <C extends Controller> AbstractModule controller(final String name, final Class<C> klass) {
-        JSClosure constructor = JSClosure.create(new Closure() {
-            @Override
-            public void exec(Object... args) {
-                String m = "";
-                try {
-
-                    Controller controller = ControllerCreator.INSTANCE.create(klass);
-                    if (controller == null) {
-                        String message = "Unable to create " + name;
-                        LOG.log(Level.FINEST,message, new IllegalStateException(message));
-                    }
-                    JSClosure scopeBinder = ControllerScopeBinderFactory.INSTANCE.create(controller);
-                    if (scopeBinder == null) {
-                        String message = "Unable to create binder for " + name;
-                        LOG.log(Level.FINEST,message, new IllegalStateException(message));
-                    }
-                    JSClosure binder = ControllerBinderFactory.INSTANCE.create(controller);
-                    if (binder == null) {
-                        String message = "Unable to create injector for " + name;
-                        LOG.log(Level.FINEST,message, new IllegalStateException(message));
-                    }
-
-                    m = "shifing args";
-                    Object[] shiftedArgs = new Object[args.length - 1];
-                    for (int i = 0; i < shiftedArgs.length; i++) {
-                        shiftedArgs[i] = args[i + 1];
-                    }
-                    m = "binding args";
-                    scopeBinder.apply(args);
-                    m = "injecting shiftedArgs";
-                    binder.apply(shiftedArgs);
-                    LOG.log(Level.FINEST,m = name + ".onControllerLoad()");
-                    controller.onControllerLoad();
-                } catch (Exception e) {
-                    LOG.log(Level.FINEST,"Exception while " + m, e);
-                }
-            }
-        });
+        String name = klass.getName();
+        JSClosure constructor = JSClosure.create(new DefaultControllerConstructor<C>(name, klass));
         JSArray<String> dependencies = JSArray.create(ControllerDependencyInspector.INSTANCE.inspect(klass));
         dependencies.unshift("$scope");
         ngo.controller(name, dependencies, constructor);
@@ -358,10 +314,7 @@ public abstract class AbstractModule {
      */
     public <D extends Directive> AbstractModule directive(Class<D> klass) {
         String className = Strings.simpleName(klass);
-        return directive(Strings.decapitalize(className), klass);
-    }
-    
-    protected <D extends Directive> AbstractModule directive(String name, Class<D> klass) {
+        String name = Strings.decapitalize(className);
         JSFunction<NGDirective> directiveFactory = JSFunction.create(new DefaultDirectiveFactory<D>(name, klass));
         JSArray<String> dependencies = JSArray.create(DirectiveDependencyInspector.INSTANCE.inspect(klass));
         ngo.directive(name, dependencies, directiveFactory);
