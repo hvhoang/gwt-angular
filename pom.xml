@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt.angular</groupId>
   <artifactId>gwt-angular</artifactId>
-  <version>0.0.72</version>
+  <version>0.1.0</version>
   <packaging>pom</packaging>
   
   <name>gwt-angular</name>
@@ -16,25 +16,23 @@
     project aims to leverage the runtime efficiency of AngularJS and the build
     time optimization of GWT.
   </description>
-  <url>https://github.com/kyoken74/gwt-angular</url>
+  <url>http://gwt-angular.asayama.com</url>
 
   <modules>
+
     <!-- AngularJS API -->
     <module>gwt-angular-ng</module>
     <module>gwt-angular-ngRoute</module>
     <module>gwt-angular-ngSanitize</module>
+
     <!-- GWT Angular API -->
     <module>gwt-angular-http</module>
     <module>gwt-angular-resources</module>
     <module>gwt-angular-user</module>
+
     <!-- Extended Features -->
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
-    <module>gwt-angular-site</module>
-    <!-- GWT Utility -->
-    <module>gwt-util</module>
-    <module>gwt-jquery</module>
-    <module>gwt-bootstrap</module>
   </modules>
 
   <distributionManagement>
@@ -56,7 +54,7 @@
     <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
     <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
     <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
-    <tag>0.0.72</tag>
+    <tag>0.1.0</tag>
   </scm>
   <developers>
     <developer>
@@ -68,8 +66,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <timestamp.yyyymmdd>${maven.build.timestamp}</timestamp.yyyymmdd>
-    <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+    <gwt.version>2.6.1</gwt.version>
+    <velocity.version>1.7</velocity.version>
+    <gwt-binding.version>0.1.0</gwt-binding.version>
   </properties>
 
   <build>
@@ -143,11 +142,6 @@
           <version>2.2.1</version>
         </plugin>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>2.5</version>
-        </plugin>
-        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>
           <version>1.3.2</version>
@@ -168,15 +162,6 @@
           </executions>
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>gwt-maven-plugin</artifactId>
-          <version>2.6.1</version>
-          <configuration>
-            <gen>${project.build.directory}/generated</gen>
-            <closureCompiler>false</closureCompiler>
-          </configuration>
-        </plugin>
-        <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
           <version>1.6.3</version>
@@ -185,18 +170,6 @@
             <serverId>ossrh</serverId>
             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
             <autoReleaseAfterClose>true</autoReleaseAfterClose>
-            <!--
-              Set autoReleaseAfterClose to false to do a manual release
-              deployment without SCM integration.
-
-              1. mvn versions:set -DnewVersion=${version} #release version
-              2. mvn clean deploy -P release
-              3. mvn nexus-staging:release  #to promote
-                 mvn nexus-stagin:drop  #to back-out
-
-              See also
-                http://books.sonatype.com/nexus-book/reference/staging.html
-            -->
           </configuration>
         </plugin>
       </plugins>
@@ -294,87 +267,72 @@
   <dependencyManagement>
     <dependencies>
 
-      <!-- Project -->
+      <!-- gwt-angular -->
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngRoute</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngSanitize</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-user</artifactId>
-        <version>0.0.72</version>
+        <version>${project.version}</version>
       </dependency>
 
-      <!-- GWT Utility -->
+      <!-- gwt-binding -->
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-util</artifactId>
-        <version>0.0.72</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt.jquery</groupId>
-        <artifactId>gwt-jquery</artifactId>
-        <version>0.0.72</version>
-      </dependency>
-      <dependency>
-        <groupId>com.asayama.gwt.bootstrap</groupId>
-        <artifactId>gwt-bootstrap</artifactId>
-        <version>0.0.72</version>
+        <version>${gwt-binding.version}</version>
       </dependency>
 
-      <!-- GWT Client -->
+      <!-- gwt -->
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
-        <version>2.6.1</version>
+        <version>${gwt.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-dev</artifactId>
-        <version>2.6.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-codeserver</artifactId>
-        <version>2.6.1</version>
+        <version>${gwt.version}</version>
       </dependency>
 
-      <!-- Code Generator -->
+      <!-- velocity code generator -->
       <dependency>
         <groupId>org.apache.velocity</groupId>
         <artifactId>velocity</artifactId>
-        <version>1.7</version>
+        <version>${velocity.version}</version>
       </dependency>
 
     </dependencies>
