@@ -299,7 +299,7 @@ public abstract class AbstractModule {
     }
 
     protected <C extends Controller> AbstractModule controller(final String name, final Class<C> klass) {
-        Closure initializer = new Closure() {
+        JSClosure constructor = JSClosure.create(new Closure() {
             @Override
             public void exec(Object... args) {
                 String m = "";
@@ -336,11 +336,10 @@ public abstract class AbstractModule {
                     LOG.log(Level.FINEST,"Exception while " + m, e);
                 }
             }
-        };
-        String[] d = ControllerDependencyInspector.INSTANCE.inspect(klass);
-        JSArray<String> dependencies = JSArray.create(d);
+        });
+        JSArray<String> dependencies = JSArray.create(ControllerDependencyInspector.INSTANCE.inspect(klass));
         dependencies.unshift("$scope");
-        ngo.controller(name, dependencies, JSClosure.create(initializer));
+        ngo.controller(name, dependencies, constructor);
         return this;
     }
 
