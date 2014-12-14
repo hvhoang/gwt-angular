@@ -34,56 +34,45 @@ class DefaultFilterFactory<F extends Filter> implements Function<NGFilter> {
     @Override
     public NGFilter call(Object... args) {
 
-        String m = "entering";
-        
-        try {
+        NGFilter ngo = NGFilter.create(new Function<String>() {
             
-            m = "creating filter " + name;
-            final Filter filter = FilterCreator.INSTANCE.create(klass);
-            
-            m = "creating NGFilter for " + name;
-            NGFilter ngo = NGFilter.create(new Function<String>() {
+            @Override
+            public String call(Object... args) {
                 
-                @Override
-                public String call(Object... args) {
+                String m = "entering";
+                
+                try {
                     
-                    String m = "entering";
-                    
-                    try {
-                        
-                        if (args == null) {
-                            return "";
-                        }
-                        
-                        m = "creating binder for " + name;
-                        JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
-                        
-                        m = "applying binder to " + name;
-                        binder.apply(args);
-                        
-                        m = "identifying the input string";
-                        String input = null;
-                        if (args.length > 0) {
-                            input = (String) args[0];
-                        }
-                        
-                        LOG.finest(m = "calling " + klass.getName() + ".filter");
-                        return filter.filter(input, Arrays.shift(args));
-                        
-                    } catch (Exception e) {
-                        LOG.log(Level.WARNING, "Exception while " + m, e);
+                    if (args == null) {
                         return "";
                     }
+                    
+                    m = "creating filter " + name;
+                    Filter filter = FilterCreator.INSTANCE.create(klass);
+                    
+                    m = "creating binder for " + name;
+                    JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
+                    
+                    m = "applying binder to " + name;
+                    binder.apply(args);
+                    
+                    m = "identifying the input string";
+                    String input = null;
+                    if (args.length > 0) {
+                        input = (String) args[0];
+                    }
+                    
+                    LOG.finest(m = "calling " + klass.getName() + ".filter");
+                    return filter.filter(input, Arrays.shift(args));
+                    
+                } catch (Exception e) {
+                    LOG.log(Level.WARNING, "Exception while " + m, e);
+                    return "";
                 }
-            }).cast();
-            
-            m = "returning NGFilter for " + name;
-            return ngo;
-            
-        } catch (Exception e) {
-            LOG.log(Level.WARNING, "Exception while " + m, e);
-            return null;
-        }
+            }
+        }).cast();
+        
+        return ngo;
     }
 }
 
