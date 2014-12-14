@@ -10,11 +10,6 @@ public abstract class AbstractDirective implements Directive {
     private String name = null;
     
     @Override
-    public void onDirectiveLoad() {
-        // noop by default
-    }
-    
-    @Override
     public boolean getTransclude() {
         return false;
     }

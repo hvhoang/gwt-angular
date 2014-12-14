@@ -42,7 +42,6 @@ public interface Directive {
     NGScope scope();
     void compile(JQElement element, JSON attrs);
     void link(NGScope scope, JQElement element, JSON attrs);
-    void onDirectiveLoad();
 }
 
 class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirective> {
@@ -61,14 +60,16 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
     @Override
     public NGDirective call(Object... args) {
 
+        String m = "creating NGDirective for " + name;
         NGDirective ngo = NGDirective.create();
         
         try {
+            
+            m = "creating directive " + name;
             final Directive directive = DirectiveCreator.INSTANCE.create(klass);
-            final JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
-            
             directive.setName(name);
-            
+
+            m = "determining directive restriction for " + name;
             Restrict[] rs = directive.getRestrict();
             if (rs != null && rs.length > 0) {
                 StringBuilder sb = new StringBuilder();
@@ -78,23 +79,27 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
                 ngo.setRestrict(sb.toString());
             }
 
-//            jso.setTransclude(directive.getTransclude());
+            // TODO jso.setTransclude(directive.getTransclude());
 
+            m = "setting directive template for " + name;
             TextResource template = directive.getTemplate();
             if (template != null) {
                 ngo.setTemplate(template.getText());
             }
             
+            m = "setting directive templateUrl for " + name;
             String templateUrl = directive.getTemplateUrl();
             if (templateUrl != null) {
                 ngo.setTemplateUrl(templateUrl);
             }
             
+            m = "setting directive compile for " + name;
             ngo.setCompile(JSFunction.create(new Function<JSClosure>() {
                 
                 @Override
                 public JSClosure call(Object... args) {
                     try {
+                        LOG.finest("calling " + name + ".compile()");
                         JQElement element = (JQElement) args[0];
                         JSON attrs = (JSON) args[1];
                         directive.compile(element, attrs);
@@ -102,45 +107,40 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
                             @Override
                             public void exec(Object... args) {
                                 try {
+                                    LOG.finest("calling " + name + ".link()");
                                     NGScope scope = (NGScope) args[0];
                                     JQElement element = (JQElement) args[1];
                                     JSON attrs = (JSON) args[2];
                                     directive.link(scope, element, attrs);
                                 } catch (Exception e) {
-                                    LOG.log(Level.FINEST, "Exception while calling " + name + ".link()", e);
+                                    LOG.log(Level.WARNING, "Exception while calling " + name + ".link()", e);
                                 }
                             }
                         });
                     } catch (Exception e) {
                         LOG.log(Level.WARNING, "Exception while calling " + name + ".compile()", e);
-                        return JSClosure.create(new Closure() {
-                            public void exec(Object... args) {
-                                LOG.log(Level.WARNING, "Unable to call " + name + ".link(). See previous compile() errors");
-                            }
-                        });
+                        return null;
                     }
                 }
             }));
             
+            m = "getting directive scope for " + name;
             NGScope scope = directive.scope();
-//            if (scope != null && scope.get(directive.getName()) == null) {
-//                scope.put(directive.getName(), "=");
-//            }
+            
+            m = "setting directive scope for " + name;
             ngo.setScope(scope);
             
+            m = "creating binder for " + name;
+            JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
+            
+            m = "applying binder to " + name;
             binder.apply(args);
             
-//            try {
-                //LOG.log(Level.FINEST, m = klass.getName() + ".onDirectiveLoad()");
-                directive.onDirectiveLoad();
-//            } catch (Exception e) {
-//                LOG.log(Level.WARNING, "Exception while calling " + m, e);
-//            }
-
+            m = "returning NGDirective";
             return ngo;
             
         } catch (Exception e) {
-            LOG.log(Level.WARNING, "Exception while building a directive", e);
+            LOG.log(Level.WARNING, "Exception while " + m, e);
             return ngo;
         }
     }
