@@ -34,8 +34,11 @@ class DefaultControllerConstructor<C extends Controller> extends Closure {
     
     @Override
     public void exec(Object... args) {
+        
         String m = "entering";
+        
         try {
+            
             m = "creating controller " + name;
             Controller controller = ControllerCreator.INSTANCE.create(klass);
             
@@ -57,11 +60,11 @@ class DefaultControllerConstructor<C extends Controller> extends Closure {
             m = "injecting shiftedArgs";
             binder.apply(shiftedArgs);
             
-            LOG.log(Level.FINEST, m = name + ".onControllerLoad()");
+            LOG.finest(m = name + ".onControllerLoad()");
             controller.onControllerLoad();
             
         } catch (Exception e) {
-            LOG.log(Level.FINEST, "Exception while " + m, e);
+            LOG.log(Level.WARNING, "Exception while " + m, e);
         }
     }
 }
