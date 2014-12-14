@@ -376,25 +376,10 @@ public abstract class AbstractModule {
         return directive(Strings.decapitalize(className), klass);
     }
     
-    protected <D extends Directive> AbstractModule directive(final String name, final Class<D> klass) {
-        String[] dependencies = DirectiveDependencyInspector.INSTANCE.inspect(klass);
-        ngo.directive(name, JSArray.create(dependencies),
-                JSFunction.create(new AbstractDirectiveWrapper() {
-                    @Override
-                    public JSDirective call(Object... args) {
-                        this.directive = DirectiveCreator.INSTANCE.create(klass);
-                        directive.setName(name);
-                        this.binder = DirectiveBinderFactory.INSTANCE.create(directive);
-                        String m = "";
-                        try {
-                            LOG.log(Level.FINEST, m = klass.getName() + ".onDirectiveLoad()");
-                            directive.onDirectiveLoad();
-                        } catch (Exception e) {
-                            LOG.log(Level.WARNING, "Exception while calling " + m, e);
-                        }
-                        return super.call(args);
-                    }
-                }));
+    protected <D extends Directive> AbstractModule directive(final String name, Class<D> klass) {
+        JSFunction<NGDirective> directiveFactory = JSFunction.create(new DefaultDirectiveFactory<D>(name, klass));
+        JSArray<String> dependencies = JSArray.create(DirectiveDependencyInspector.INSTANCE.inspect(klass));
+        ngo.directive(name, dependencies, directiveFactory);
         return this;
     }
 
@@ -536,7 +521,7 @@ class NGModule extends JavaScriptObject {
      * @param dependencies
      * @param directiveFactory Factory function for creating new instance of directives.
      */
-    final native NGModule directive(String name, JSArray<String> dependencies, JSFunction<JSDirective> directiveFactory) /*-{
+    final native NGModule directive(String name, JSArray<String> dependencies, JSFunction<NGDirective> directiveFactory) /*-{
         dependencies.push(directiveFactory);
         return this.directive(name, dependencies);
     }-*/;

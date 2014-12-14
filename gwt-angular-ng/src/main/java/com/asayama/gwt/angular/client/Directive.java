@@ -12,7 +12,11 @@ import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.resources.client.TextResource;
 
-
+/**
+ * TODO This file needs some serious review and clean-up.
+ * 
+ * @author kyoken74
+ */
 public interface Directive {
     
     public static enum Restrict {
@@ -41,21 +45,29 @@ public interface Directive {
     void onDirectiveLoad();
 }
 
-abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
+class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirective> {
 
-    private static final String CLASS = AbstractDirectiveWrapper.class.getName();
+    private static final String CLASS = DefaultDirectiveFactory.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
 
-    JSClosure binder;
-    Directive directive;
-
+    protected final String name;
+    protected final Class<D> klass;
+    
+    DefaultDirectiveFactory(String name, Class<D> klass) {
+        this.name = name;
+        this.klass = klass;
+    }
+    
     @Override
-    public JSDirective call(Object... args) {
+    public NGDirective call(Object... args) {
 
-        JSDirective jso = JSDirective.create();
+        NGDirective ngo = NGDirective.create();
         
         try {
-            final String name = directive == null ? null : directive.getName();
+            final Directive directive = DirectiveCreator.INSTANCE.create(klass);
+            final JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
+            
+            directive.setName(name);
             
             Restrict[] rs = directive.getRestrict();
             if (rs != null && rs.length > 0) {
@@ -63,22 +75,22 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
                 for (Restrict r : rs) {
                     sb.append(r.code);
                 }
-                jso.setRestrict(sb.toString());
+                ngo.setRestrict(sb.toString());
             }
 
 //            jso.setTransclude(directive.getTransclude());
 
             TextResource template = directive.getTemplate();
             if (template != null) {
-                jso.setTemplate(template.getText());
+                ngo.setTemplate(template.getText());
             }
             
             String templateUrl = directive.getTemplateUrl();
             if (templateUrl != null) {
-                jso.setTemplateUrl(templateUrl);
+                ngo.setTemplateUrl(templateUrl);
             }
             
-            jso.setCompile(JSFunction.create(new Function<JSClosure>() {
+            ngo.setCompile(JSFunction.create(new Function<JSClosure>() {
                 
                 @Override
                 public JSClosure call(Object... args) {
@@ -114,15 +126,22 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
 //            if (scope != null && scope.get(directive.getName()) == null) {
 //                scope.put(directive.getName(), "=");
 //            }
-            jso.setScope(scope);
+            ngo.setScope(scope);
             
             binder.apply(args);
             
-            return jso;
+//            try {
+                //LOG.log(Level.FINEST, m = klass.getName() + ".onDirectiveLoad()");
+                directive.onDirectiveLoad();
+//            } catch (Exception e) {
+//                LOG.log(Level.WARNING, "Exception while calling " + m, e);
+//            }
+
+            return ngo;
             
         } catch (Exception e) {
             LOG.log(Level.WARNING, "Exception while building a directive", e);
-            return jso;
+            return ngo;
         }
     }
 }
@@ -132,9 +151,9 @@ abstract class AbstractDirectiveWrapper implements Function<JSDirective> {
  * 
  * @author kyoken74
  */
-class JSDirective extends JSON {
+class NGDirective extends JSON {
 
-    protected JSDirective() {
+    protected NGDirective() {
     }
     
     final void setRestrict(String restrict) {
