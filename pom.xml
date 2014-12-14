@@ -31,10 +31,6 @@
     <module>gwt-angular-masonry</module>
     <module>gwt-angular-prettify</module>
     <module>gwt-angular-site</module>
-    <!-- GWT Utility -->
-    <module>gwt-util</module>
-    <module>gwt-jquery</module>
-    <module>gwt-bootstrap</module>
   </modules>
 
   <distributionManagement>
