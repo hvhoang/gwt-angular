@@ -41,7 +41,8 @@ public class GwtPrettify extends AbstractDirective {
     private static final String CLASS = GwtPrettify.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     
-    // FIXME https://github.com/kyoken74/gwt-angular/issues/78
+    //FIXME https://github.com/kyoken74/gwt-angular/issues/78
+    //@Injector.Inject
     private Prettify filter = new Prettify();
     
     /**
