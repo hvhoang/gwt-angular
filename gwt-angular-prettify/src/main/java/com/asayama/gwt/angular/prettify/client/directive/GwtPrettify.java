@@ -64,9 +64,9 @@ public class GwtPrettify extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-        NGScope scope = NGScope.create();
-        scope.put(getName(), "=");
-        return scope;
+        NGScope isolateScope = NGScope.create();
+        isolateScope.put(getName(), "=");
+        return isolateScope;
     }
     
     /**
@@ -74,8 +74,8 @@ public class GwtPrettify extends AbstractDirective {
      * attribute. TextResource is processed by {@link Prettify} filter.
      */
     @Override
-    public void link(NGScope scope, JQElement element, JSON attrs) {
-        TextResource resource = scope.get(getName());
+    public void link(NGScope isolateScope, JQElement element, JSON attrs) {
+        TextResource resource = isolateScope.get(getName());
         if (resource == null) {
             LOG.log(Level.WARNING, "Mandatory attribute, " + getName() + ", was missing");
             return;
