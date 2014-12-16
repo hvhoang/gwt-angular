@@ -211,9 +211,9 @@ public abstract class AbstractModule {
     }
 
     /**
-     * Registers an object to the module. Objects registered by this method are
-     * accessible via {@link Inject } annotation within the same module. For
-     * example,
+     * Registers an object/data structure to the module. Objects registered by 
+     * this method are accessible by services and controllers via {@link Inject}
+     * annotation within the same module. For example,
      * <pre>
      * MyModule module = new MyModule();
      * Angular.module(module);
@@ -222,9 +222,14 @@ public abstract class AbstractModule {
      * ...
      * class MyService implements Service {
      *   {@code @Injector.Inject("myValue") }
-     *   String myValue; //injector will assign "Hello, World!" to this variable.
+     *   String myValue; //injector assigns "Hello, World!"
      * }
      * </pre>
+     * The concept of value in AngularJS is a useful way to manage objects 
+     * that are of module scope. With GWT, however, we can accomplish the same 
+     * thing by simply using the Java package name with {@code public static},
+     * if the value is used exclusively in GWT. The method is nevertheless 
+     * useful if your module is expected to be a hybrid of GWT and JavaScript.
      * 
      * @param name Name of the object.
      * @param object The instance of the object.
@@ -235,20 +240,30 @@ public abstract class AbstractModule {
     }
 
     /**
-     * Registers an object to the module. Objects registered by this method are
-     * accessible via {@link Inject } annotation within the same module. For
-     * example,
+     * Registers an object/data structure to the module. Objects registered by 
+     * this method are accessible by services and controllers via {@link Inject}
+     * annotation within the same module, or to a module during configuration.
+     * For example,
      * <pre>
      * MyModule module = new MyModule();
      * Angular.module(module);
-     * module.constant("myValue", "Hello, World!");
-     * module.service(MyService.class);
+     * module.constant("myConstant", "Hello, World!");
+     * {@code module.configure(MyServiceProvider.class, Configurator<MyServiceProvider>()} {
+     *   public void configure(MyServiceProvider provider) {
+     *     //configure provider
+     *   }
+     * });
      * ...
-     * class MyService implements Service {
-     *   {@code @Injector.Inject("myValue") }
-     *   String myValue; //injector will assign "Hello, World!" to this variable.
+     * class MyServiceProvider implements Provider {
+     *   {@code @Injector.Inject("myConstant") }
+     *   String myConstant; //injector assigns "Hello, World!"
      * }
      * </pre>
+     * The concept of value in AngularJS is a useful way to manage objects 
+     * that are of module scope. With GWT, however, we can accomplish the same 
+     * thing by simply using the Java package name with {@code public static},
+     * if the value is used exclusively in GWT. The method is nevertheless 
+     * useful if your module is expected to be a hybrid of GWT and JavaScript.
      * 
      * @param name Name of the object.
      * @param object The instance of the object.
