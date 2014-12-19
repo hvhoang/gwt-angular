@@ -154,7 +154,9 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
             JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
             
             m = "applying binder to " + name;
-            binder.apply(args);
+            if (binder != null) {
+                binder.apply(args);
+            }
             
             m = "returning NGDirective";
             return ngo;

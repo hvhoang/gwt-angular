@@ -11,15 +11,19 @@ public class __${className} implements ${className} {
     @Override
     public JSClosure create(${supportedRootClassType} object) {
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
+#set($fields = ${classTypeFields.getInjectables($supportedClassType)})
+#if (${fields.size()} > 0)
         if (object instanceof ${supportedClassType.qualifiedSourceName}) {
             return __${className}_create((${supportedClassType.qualifiedSourceName}) object);
         }
+#end
 #end
         return null;
     }
 
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
 #set($fields = ${classTypeFields.getInjectables($supportedClassType)})
+#if (${fields.size()} > 0)
     private native JSClosure __${className}_create(${supportedClassType.qualifiedSourceName} object) /*-{
         return function (#foreach($field in $fields)${field.name}#if(${foreach.hasNext}), #end#end) {
 #foreach($field in $fields)
@@ -29,6 +33,6 @@ public class __${className} implements ${className} {
     }-*/;
 
 #end
+#end
 }
 //--end of ${packageName}.__${className}
-

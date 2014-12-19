@@ -68,7 +68,9 @@ class DefaultControllerConstructor<C extends Controller> extends Closure {
             scopeBinder.apply(args);
             
             m = "injecting shiftedArgs";
-            binder.apply(shiftedArgs);
+            if (binder != null) {
+                binder.apply(shiftedArgs);
+            }
             
             LOG.finest(m = name + ".onControllerLoad()");
             controller.onControllerLoad();
