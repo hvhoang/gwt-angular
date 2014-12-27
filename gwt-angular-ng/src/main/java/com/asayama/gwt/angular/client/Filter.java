@@ -53,8 +53,10 @@ class DefaultFilterFactory<F extends Filter> implements Function<NGFilter> {
                     m = "creating binder for " + name;
                     JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
                     
-                    m = "applying binder to " + name;
-                    binder.apply(args);
+                    if (binder != null) {
+                        m = "applying binder to " + name;
+                        binder.apply(args);
+                    }
                     
                     m = "identifying the input string";
                     String input = null;
