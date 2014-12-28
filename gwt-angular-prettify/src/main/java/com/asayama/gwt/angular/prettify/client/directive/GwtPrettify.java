@@ -4,7 +4,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.NGScope;
+import com.asayama.gwt.angular.prettify.client.Prettifier;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
@@ -41,9 +43,8 @@ public class GwtPrettify extends AbstractDirective {
     private static final String CLASS = GwtPrettify.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     
-    //FIXME https://github.com/kyoken74/gwt-angular/issues/78
-    //@Injector.Inject
-    private Prettify filter = new Prettify();
+    @Injector.Inject
+    protected Prettifier prettifier;
     
     /**
      * Returns the following restrictions.
@@ -82,7 +83,7 @@ public class GwtPrettify extends AbstractDirective {
         }
         String text = SafeHtmlUtils.htmlEscape(resource.getText());
         if (text != null && text.length() > 0) {
-            element.empty().append(filter.filter(text));
+            element.empty().append(prettifier.prettify(text));
         }
         element.addClass("prettyprint");
     }

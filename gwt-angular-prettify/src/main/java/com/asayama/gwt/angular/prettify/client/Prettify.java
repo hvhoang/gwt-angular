@@ -18,6 +18,7 @@ public class Prettify extends AbstractModule implements EntryPoint {
         PrettifyScripts.INSTANCE.css().ensureInjected();
         PrettifyScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
         Angular.module(this);
+        service(Prettifier.class);
         filter(com.asayama.gwt.angular.prettify.client.filter.Prettify.class);
         directive(GwtPrettify.class);
         directive(Prettyprint.class);

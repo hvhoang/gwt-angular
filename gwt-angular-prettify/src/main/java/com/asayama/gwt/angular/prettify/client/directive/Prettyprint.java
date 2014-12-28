@@ -2,7 +2,7 @@ package com.asayama.gwt.angular.prettify.client.directive;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.prettify.client.filter.Prettify;
+import com.asayama.gwt.angular.prettify.client.Prettifier;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -11,8 +11,8 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 public class Prettyprint extends AbstractDirective {
 
     @Injector.Inject
-    private Prettify filter;
-    
+    protected Prettifier prettifier;    
+
     /**
      * Returns the following restrictions.
      * <ul>
@@ -30,6 +30,6 @@ public class Prettyprint extends AbstractDirective {
     @Override
     public void compile(JQElement element, JSON attrs) {
         String text = SafeHtmlUtils.htmlEscape(element.text());
-        element.empty().append(filter.filter(text));
+        element.empty().append(prettifier.prettify(text));
     }
 }
