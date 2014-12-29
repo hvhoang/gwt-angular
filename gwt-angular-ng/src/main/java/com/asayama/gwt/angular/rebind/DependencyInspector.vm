@@ -15,7 +15,7 @@ public class __${className} implements ${className} {
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
 #set($fields = ${classTypeFields.getInjectables($supportedClassType)})
 #if (${fields.size()} > 0)
-        if (klass.getName().equals("${supportedClassType.qualifiedSourceName}")) {
+        if (klass.equals(${supportedClassType.qualifiedSourceName}.class)) {
             return new String[] {
 #foreach($field in ${classTypeFields.getInjectables($supportedClassType)})
                 "${field.dependency}"#if(${foreach.hasNext}),#end
