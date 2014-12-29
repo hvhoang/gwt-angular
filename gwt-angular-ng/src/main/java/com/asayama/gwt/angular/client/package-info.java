@@ -68,6 +68,13 @@ interface ControllerCreator extends Creator<Controller> {
     public <X extends Controller> X create(Class<X> klass);
 }
 
+@SupportedRootClass(Runnable.class)
+interface RunnableCreator extends Creator<Runnable> {
+    static RunnableCreator INSTANCE = GWT.create(RunnableCreator.class);
+    @Override
+    public <X extends Runnable> X create(Class<X> klass);
+}
+
 /**
  * Provides interfaces for an object creator. This interface is intended to be
  * used with {@link DependencyInspectorGenerator}, which inspects the types eligible for
@@ -110,6 +117,14 @@ interface DirectiveDependencyInspector extends DependencyInspector {
 @SupportedRootClass(Filter.class)
 interface FilterDependencyInspector extends DependencyInspector {
     static FilterDependencyInspector INSTANCE = GWT.create(FilterDependencyInspector.class);
+}
+
+/**
+ * @since 0.1.1
+ */
+@SupportedRootClass(Runnable.class)
+interface RunnableDependencyInspector extends DependencyInspector {
+    static RunnableDependencyInspector INSTANCE = GWT.create(RunnableDependencyInspector.class);
 }
 
 /**
@@ -199,4 +214,14 @@ interface FilterBinderFactory extends BinderFactory<Filter> {
     static FilterBinderFactory INSTANCE = GWT.create(FilterBinderFactory.class);
     @Override
     public JSClosure create(Filter object);
+}
+
+/**
+ * @since 0.1.1
+ */
+@SupportedRootClass(Runnable.class)
+interface RunnableBinderFactory extends BinderFactory<Runnable> {
+    static RunnableBinderFactory INSTANCE = GWT.create(RunnableBinderFactory.class);
+    @Override
+    public JSClosure create(Runnable object);
 }
