@@ -8,10 +8,14 @@ import com.asayama.gwt.jsni.client.JSArray;
 
 public class __${className} implements ${className} {
 
+    private final static String[] EMPTY_STRING_ARRAY = new String[0];
+
     @Override
     public String[] inspect(Class<?> klass) {
 #foreach(${supportedClassType} in ${classTypeFields.classTypes})
-        if (klass.getName().equals("${supportedClassType.qualifiedSourceName}")) {
+#set($fields = ${classTypeFields.getInjectables($supportedClassType)})
+#if (${fields.size()} > 0)
+        if (klass.equals(${supportedClassType.qualifiedSourceName}.class)) {
             return new String[] {
 #foreach($field in ${classTypeFields.getInjectables($supportedClassType)})
                 "${field.dependency}"#if(${foreach.hasNext}),#end
@@ -20,7 +24,8 @@ public class __${className} implements ${className} {
             };
         }
 #end
-        return null;
+#end
+        return EMPTY_STRING_ARRAY;
     }
 
 }

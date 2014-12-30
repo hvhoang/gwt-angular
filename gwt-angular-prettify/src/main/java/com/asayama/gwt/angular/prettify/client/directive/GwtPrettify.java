@@ -4,7 +4,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.AbstractDirective;
+import com.asayama.gwt.angular.client.Injector;
 import com.asayama.gwt.angular.client.NGScope;
+import com.asayama.gwt.angular.prettify.client.Prettifier;
 import com.asayama.gwt.angular.prettify.client.filter.Prettify;
 import com.asayama.gwt.jquery.client.JQElement;
 import com.asayama.gwt.jsni.client.JSON;
@@ -41,8 +43,8 @@ public class GwtPrettify extends AbstractDirective {
     private static final String CLASS = GwtPrettify.class.getName();
     private static final Logger LOG = Logger.getLogger(CLASS);
     
-    // FIXME https://github.com/kyoken74/gwt-angular/issues/78
-    private Prettify filter = new Prettify();
+    @Injector.Inject
+    protected Prettifier prettifier;
     
     /**
      * Returns the following restrictions.
@@ -63,9 +65,9 @@ public class GwtPrettify extends AbstractDirective {
      */
     @Override
     public NGScope scope() {
-        NGScope scope = NGScope.create();
-        scope.put(getName(), "=");
-        return scope;
+        NGScope isolateScope = NGScope.create();
+        isolateScope.put(getName(), "=");
+        return isolateScope;
     }
     
     /**
@@ -73,15 +75,15 @@ public class GwtPrettify extends AbstractDirective {
      * attribute. TextResource is processed by {@link Prettify} filter.
      */
     @Override
-    public void link(NGScope scope, JQElement element, JSON attrs) {
-        TextResource resource = scope.get(getName());
+    public void link(NGScope isolateScope, JQElement element, JSON attrs) {
+        TextResource resource = isolateScope.get(getName());
         if (resource == null) {
             LOG.log(Level.WARNING, "Mandatory attribute, " + getName() + ", was missing");
             return;
         }
         String text = SafeHtmlUtils.htmlEscape(resource.getText());
         if (text != null && text.length() > 0) {
-            element.empty().append(filter.filter(text));
+            element.empty().append(prettifier.prettify(text));
         }
         element.addClass("prettyprint");
     }

@@ -120,7 +120,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
     
     protected List<JClassType> getSupportedClassTypes(JClassType supportedRootClassType) {
         
-        final String METHOD = "getSupportedSubClassTypes(JClassType)";
+        final String METHOD = "getSupportedClassTypes(JClassType)";
         
         JClassType[] supportedSubClassTypes = supportedRootClassType.getSubtypes();
         List<JClassType> supportedClassTypes = new ArrayList<JClassType>();
@@ -134,7 +134,7 @@ abstract class AbstractFactoryGenerator extends AbstractGenerator {
         
         if (supportedClassTypes.size() == 0) {
             String m = "Unable to find supportedClassTypes for " + supportedRootClassType;
-            LOG.logp(Level.WARNING, CLASS, METHOD, m);
+            LOG.logp(Level.INFO, CLASS, METHOD, m);
         }
         
         return supportedClassTypes;

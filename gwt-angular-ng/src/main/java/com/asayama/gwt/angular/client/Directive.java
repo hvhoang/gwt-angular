@@ -34,13 +34,33 @@ public interface Directive {
     }
     
     String getName();
+    
     boolean getTransclude();
+    
     void setName(String name);
+    
     Restrict[] getRestrict();
+    
     TextResource getTemplate();
+    
     String getTemplateUrl();
+    
     NGScope scope();
+    
+    /**
+     * In AngularJS, compile method returns linker function. In this 
+     * implementation, however, we do not return any values. This is because 
+     * {@link DefaultDirectiveFactory} wraps the call to 
+     * {@link #link(NGScope, JQElement, JSON)} into a JavaScript function, and
+     * returns that from the JavaScript wrapping of the compile function call.
+     * <p>
+     * This means that, unlike AngularJS, we currently do not support compile
+     * dependent linker option (i.e. the outcome of compile function cannot
+     * return different linker functions).
+     * </p>
+     */
     void compile(JQElement element, JSON attrs);
+    
     void link(NGScope scope, JQElement element, JSON attrs);
 }
 
@@ -134,7 +154,9 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
             JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
             
             m = "applying binder to " + name;
-            binder.apply(args);
+            if (binder != null) {
+                binder.apply(args);
+            }
             
             m = "returning NGDirective";
             return ngo;

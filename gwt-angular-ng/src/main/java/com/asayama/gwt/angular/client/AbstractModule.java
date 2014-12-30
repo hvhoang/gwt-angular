@@ -168,7 +168,9 @@ public abstract class AbstractModule {
                     Service service = factory.create();
                     m = "binding dependency to " + SNAME;
                     JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
-                    binder.apply(args);
+                    if (binder != null) {
+                        binder.apply(args);
+                    }
                     return service;
                 } catch (Exception e) {
                     LOG.log(Level.WARNING, "Exception while " + m, e);
@@ -211,9 +213,9 @@ public abstract class AbstractModule {
     }
 
     /**
-     * Registers an object to the module. Objects registered by this method are
-     * accessible via {@link Inject } annotation within the same module. For
-     * example,
+     * Registers an object/data structure to the module. Objects registered by 
+     * this method are accessible by services and controllers via {@link Inject}
+     * annotation within the same module. For example,
      * <pre>
      * MyModule module = new MyModule();
      * Angular.module(module);
@@ -222,9 +224,14 @@ public abstract class AbstractModule {
      * ...
      * class MyService implements Service {
      *   {@code @Injector.Inject("myValue") }
-     *   String myValue; //injector will assign "Hello, World!" to this variable.
+     *   String myValue; //injector assigns "Hello, World!"
      * }
      * </pre>
+     * The concept of value in AngularJS is a useful way to manage objects 
+     * that are of module scope. With GWT, however, we can accomplish the same 
+     * thing by simply using the Java package name with {@code public static},
+     * if the value is used exclusively in GWT. The method is nevertheless 
+     * useful if your module is expected to be a hybrid of GWT and JavaScript.
      * 
      * @param name Name of the object.
      * @param object The instance of the object.
@@ -235,20 +242,30 @@ public abstract class AbstractModule {
     }
 
     /**
-     * Registers an object to the module. Objects registered by this method are
-     * accessible via {@link Inject } annotation within the same module. For
-     * example,
+     * Registers an object/data structure to the module. Objects registered by 
+     * this method are accessible by services and controllers via {@link Inject}
+     * annotation within the same module, or to a module during configuration.
+     * For example,
      * <pre>
      * MyModule module = new MyModule();
      * Angular.module(module);
-     * module.constant("myValue", "Hello, World!");
-     * module.service(MyService.class);
+     * module.constant("myConstant", "Hello, World!");
+     * {@code module.configure(MyServiceProvider.class, Configurator<MyServiceProvider>()} {
+     *   public void configure(MyServiceProvider provider) {
+     *     //configure provider
+     *   }
+     * });
      * ...
-     * class MyService implements Service {
-     *   {@code @Injector.Inject("myValue") }
-     *   String myValue; //injector will assign "Hello, World!" to this variable.
+     * class MyServiceProvider implements Provider {
+     *   {@code @Injector.Inject("myConstant") }
+     *   String myConstant; //injector assigns "Hello, World!"
      * }
      * </pre>
+     * The concept of value in AngularJS is a useful way to manage objects 
+     * that are of module scope. With GWT, however, we can accomplish the same 
+     * thing by simply using the Java package name with {@code public static},
+     * if the value is used exclusively in GWT. The method is nevertheless 
+     * useful if your module is expected to be a hybrid of GWT and JavaScript.
      * 
      * @param name Name of the object.
      * @param object The instance of the object.
@@ -333,21 +350,59 @@ public abstract class AbstractModule {
         Function<P> initializer = new Function<P>() {
             @Override
             public P call(Object... args) {
-                P provider = ProviderCreator.INSTANCE.create(klass);
-                JSClosure binder = ProviderBinderFactory.INSTANCE.create(provider);
-                binder.apply(args);
                 String m = "";
                 try {
+                    P provider = ProviderCreator.INSTANCE.create(klass);
+                    JSClosure binder = ProviderBinderFactory.INSTANCE.create(provider);
+                    if (binder != null) {
+                        binder.apply(args);
+                    }
                     LOG.log(Level.FINEST, "configuring " + klass.getName());
                     configurator.configure(provider);
+                    return provider;
                 } catch (Exception e) {
                     LOG.log(Level.WARNING, "Exception while " + m, e);
+                    return null;
                 }
-                return provider;
             }
         };
         String[] dependencies = ProviderDependencyInspector.INSTANCE.inspect(klass);
         ngo.config(JSArray.create(dependencies), JSFunction.create(initializer));
+        return this;
+    }
+    
+    /**
+     * Runs module initialization task provided by <code>klass</code>.
+     * Whilst the task is defined as a <code>Runnable</code>, the task is not
+     * executed in a separate thread. The tasks are executed synchronously.
+     * 
+     * @param runnable Module initialization task.
+     * @since 0.1.1
+     */
+    public <R extends Runnable> AbstractModule run(final Class<R> klass) {
+        Closure initializer = new Closure() {
+            @Override
+            public void exec(Object... args) {
+                String m = "exec(Object...)";
+                try {
+                    m = "creating task " + klass.getName();
+                    R runnable = RunnableCreator.INSTANCE.create(klass);
+
+                    m = "creating binder for task " + klass.getName();
+                    JSClosure binder = RunnableBinderFactory.INSTANCE.create(runnable);
+                    if (binder != null) {
+                        m = "injecting dependencies into task " + klass.getName();
+                        binder.apply(args);
+                    }
+                    m = "running task " + klass.getName();
+                    runnable.run();
+                } catch (Exception e) {
+                    LOG.log(Level.WARNING, "Exception while " + m, e);
+                }
+            }
+        };
+        String[] dependencies = RunnableDependencyInspector.INSTANCE.inspect(klass);
+        ngo.run(JSArray.create(dependencies), JSClosure.create(initializer));
         return this;
     }
 
@@ -436,7 +491,7 @@ class NGModule extends JavaScriptObject {
 
     /**
      * @param name Filter name.
-     * @param dependencies
+     * @param dependencies Dependency annotation
      * @param filterFactory Factory function for creating new instance of filter.
      */
     final native NGModule filter(String name, JSArray<String> dependencies, JSFunction<NGFilter> filterFactory) /*-{
@@ -446,7 +501,7 @@ class NGModule extends JavaScriptObject {
 
     /**
      * @param name Controller name.
-     * @param dependencies
+     * @param dependencies Dependency annotation
      * @param constructor Controller constructor function.
      */
     final native NGModule controller(String name, JSArray<String> dependencies, JSClosure constructor) /*-{
@@ -456,7 +511,7 @@ class NGModule extends JavaScriptObject {
     
     /**
      * @param name Directive name.
-     * @param dependencies
+     * @param dependencies Dependency annotation
      * @param directiveFactory Factory function for creating new instance of directives.
      */
     final native NGModule directive(String name, JSArray<String> dependencies, JSFunction<NGDirective> directiveFactory) /*-{
@@ -465,7 +520,7 @@ class NGModule extends JavaScriptObject {
     }-*/;
 
     /**
-     * @param dependencies
+     * @param dependencies Dependency annotation
      * @param configFn Execute this function on module load. Useful for service configuration.
      */
     final native NGModule config(JSArray<String> dependencies, JavaScriptObject configFn) /*-{
@@ -474,10 +529,12 @@ class NGModule extends JavaScriptObject {
     }-*/;
 
     /**
+     * @param dependencies Dependency annotation
      * @param initializationFn Execute this function after injector creation. Useful for application initialization.
      */
-    final native NGModule run(JavaScriptObject initializationFn) /*-{
-        return this.run(initializationFn);
+    final native NGModule run(JSArray<String> dependencies, JavaScriptObject initializationFn) /*-{
+        dependencies.push(initializationFn);
+        return this.run(dependencies);
     }-*/;
     
     // Properties
