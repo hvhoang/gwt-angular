@@ -10,6 +10,7 @@ import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.jsni.client.JSON;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.TextResource;
 
 /**
@@ -86,7 +87,8 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
         try {
             
             m = "creating directive " + name;
-            final Directive directive = DirectiveCreator.INSTANCE.create(klass);
+            DirectiveCreator creator = GWT.create(DirectiveCreator.class);
+            final Directive directive = creator.create(klass);
             directive.setName(name);
 
             m = "determining directive restriction for " + name;
@@ -151,7 +153,8 @@ class DefaultDirectiveFactory<D extends Directive>  implements Function<NGDirect
             ngo.setScope(scope);
             
             m = "creating binder for " + name;
-            JSClosure binder = DirectiveBinderFactory.INSTANCE.create(directive);
+            DirectiveBinderFactory binderFactory = GWT.create(DirectiveBinderFactory.class);
+            JSClosure binder = binderFactory.create(directive);
             
             m = "applying binder to " + name;
             if (binder != null) {

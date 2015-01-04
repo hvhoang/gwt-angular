@@ -1,5 +1,7 @@
 package com.asayama.gwt.angular.client;
 
+import com.google.gwt.core.client.GWT;
+
 
 public class DefaultFactory<S extends Service> implements Factory<S> {
 
@@ -11,7 +13,8 @@ public class DefaultFactory<S extends Service> implements Factory<S> {
 
     @Override
     public S create() {
-        return ServiceCreator.INSTANCE.create(this.klass);
+        ServiceCreator creator = GWT.create(ServiceCreator.class);
+        return creator.create(this.klass);
     }
 
     @Override

@@ -15,8 +15,9 @@ public class Prettify extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        PrettifyScripts.INSTANCE.css().ensureInjected();
-        PrettifyScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
+        PrettifyScripts scripts = GWT.create(PrettifyScripts.class);
+        scripts.css().ensureInjected();
+        scripts.script().ensureInjected(JSObject.$wnd);
         Angular.module(this);
         service(Prettifier.class);
         filter(com.asayama.gwt.angular.prettify.client.filter.Prettify.class);
@@ -26,8 +27,6 @@ public class Prettify extends AbstractModule implements EntryPoint {
 }
 
 interface PrettifyScripts extends ClientBundle {
-    
-    static PrettifyScripts INSTANCE = GWT.create(PrettifyScripts.class);
     
     @Source("bower_components/google-code-prettify/bin/prettify.min.css")
     StyleResource css();

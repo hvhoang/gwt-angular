@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSClosure;
+import com.google.gwt.core.client.GWT;
 
 public interface Controller {
     void onControllerLoad();
@@ -50,13 +51,16 @@ class DefaultControllerConstructor<C extends Controller> extends Closure {
         try {
             
             m = "creating controller " + name;
-            Controller controller = ControllerCreator.INSTANCE.create(klass);
+            ControllerCreator creator = GWT.create(ControllerCreator.class);
+            Controller controller = creator.create(klass);
             
             m = "creating scopeBinder for " + name;
-            JSClosure scopeBinder = ControllerScopeBinderFactory.INSTANCE.create(controller);
+            ControllerScopeBinderFactory scopeBinderFactory = GWT.create(ControllerScopeBinderFactory.class);
+            JSClosure scopeBinder = scopeBinderFactory.create(controller);
 
             m = "creating binder for " + name;
-            JSClosure binder = ControllerBinderFactory.INSTANCE.create(controller);
+            ControllerBinderFactory binderFactory = GWT.create(ControllerBinderFactory.class);
+            JSClosure binder = binderFactory.create(controller);
 
             m = "shifing args";
             Object[] shiftedArgs = new Object[args.length - 1];

@@ -12,14 +12,13 @@ public class NGSanitize extends AbstractModule implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
+        NGScripts scripts = GWT.create(NGScripts.class);
+        scripts.script().ensureInjected(JSObject.$wnd);
         Angular.module(this, "ngSanitize");
     }
 }
 
 interface NGScripts extends ClientBundle {
-    
-    static NGScripts INSTANCE = GWT.create(NGScripts.class);
     
     @Source("bower_components/angular-sanitize/angular-sanitize.min.js")
     ScriptResource script();

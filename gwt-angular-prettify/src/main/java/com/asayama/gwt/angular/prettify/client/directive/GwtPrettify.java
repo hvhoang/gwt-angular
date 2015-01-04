@@ -25,12 +25,12 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
  * <pre>
  * // Controller defines MY_TEXT which is bound the the controller's scope.
  * public MyController implements Controller {
- *   public static final TextResource MY_TEXT = MyResource.INSTANCE.myText();
+ *   public static MyResource RESOURCES = GWT.create(MyResource.class);
+ *   public static final TextResource MY_TEXT = RESOURCES.myText();
  * }
  * 
  * // my.txt file content is bound to myText() method.
  * public MyResource extends ClientBundle {
- *   public static MyResource INSTANCE = GWT.create(MyResource.class);
  *   @Source("my.txt")
  *   public TextResource myText();
  * }

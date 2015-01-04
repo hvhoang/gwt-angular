@@ -21,7 +21,8 @@ public class NG extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
+            NGScripts scripts = GWT.create(NGScripts.class);
+            scripts.script().ensureInjected(JSObject.$wnd);
             Angular.module(this, "ng");
             service(Q.class);
             service(Location.class);
@@ -33,8 +34,6 @@ public class NG extends AbstractModule implements EntryPoint {
 }
 
 interface NGScripts extends ClientBundle {
-    
-    static NGScripts INSTANCE = GWT.create(NGScripts.class);
     
     @Source("bower_components/angular/angular.min.js")
     ScriptResource script();
