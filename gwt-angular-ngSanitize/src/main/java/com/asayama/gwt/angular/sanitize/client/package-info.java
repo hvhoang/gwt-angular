@@ -5,8 +5,8 @@
  * In order to use the components in this module, the user must add the 
  * following inherit statements in his or code.
  * </p>
- * <pre>{@code
- * <inherits name="com.asayama.gwt.angular.sanitize.AngularSanitize" />
- * }</pre>
+ * <pre>
+ * {@code <inherits name="com.asayama.gwt.angular.sanitize.NGSanitize" />}
+ * </pre>
  */
 package com.asayama.gwt.angular.sanitize.client;
