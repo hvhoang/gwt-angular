@@ -68,7 +68,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gwt.version>2.6.1</gwt.version>
     <velocity.version>1.7</velocity.version>
-    <gwt-binding.version>0.1.1</gwt-binding.version>
   </properties>
 
   <build>
@@ -313,7 +312,7 @@
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-util</artifactId>
-        <version>${gwt-binding.version}</version>
+        <version>0.1.1</version>
       </dependency>
 
       <!-- gwt -->
