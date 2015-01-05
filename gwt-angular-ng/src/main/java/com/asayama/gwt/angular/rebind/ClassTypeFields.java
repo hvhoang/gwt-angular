@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.rebind.util;
+package com.asayama.gwt.angular.rebind;
 
 import java.util.ArrayList;
 import java.util.HashMap;

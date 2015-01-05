@@ -15,7 +15,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.thirdparty.javascript.jscomp.FunctionInformationMap.Module;
 
 /**
- * Provides GWT Java representation of AngularJS's angular object.
+ * Provides GWT Java representation of AngularJS's {@code angular} object,
+ * which exposes a public interface to the users.
  * 
  * @author kyoken74
  */

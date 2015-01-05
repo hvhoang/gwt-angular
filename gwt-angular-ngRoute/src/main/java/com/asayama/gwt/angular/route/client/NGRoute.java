@@ -11,6 +11,19 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
+/**
+ * GWT Angular route module, analogous to AngularJS's {@code ngRoute}. In order
+ * to depend on this module, the user must inherit from this module in his 
+ * gwt.xml.
+ * 
+ * <pre>
+ * {@code <inherits name="com.asayama.gwt.angular.NGRoute" />}
+ * </pre>
+ * 
+ * This module automatically injects the angular JavaScript file.
+ * 
+ * @author kyoken74
+ */
 public class NGRoute extends AbstractModule implements EntryPoint {
 
     private static final String CLASS = NGRoute.class.getName();

@@ -4,7 +4,36 @@ import com.asayama.gwt.jsni.client.JSON;
 import com.asayama.gwt.jsni.client.JSObject;
 
 /**
- * https://github.com/kyoken74/gwt-angular/issues/6
+ * Provides GWT Java interface for AngularJS's {@code $scope} object. In order
+ * to inject {@code $scope} into your Angular component, you can simply declare
+ * it as a component's property, and annotate it with {@code @Injector.Inject},
+ * e.g.
+ * <pre>
+ * public class MyController implements Controller {
+ * 
+ *   {@code @Injector.Inject}
+ *   NGScope scope;
+ *   
+ *   public void onControllerLoad() {
+ *     scope.put("name", "World!");
+ *   }
+ * }
+ * </pre>
+ * 
+ * Another use of this interface is to inject {@code $rootScope} into your
+ * Angular component, e.g.
+ * <pre>
+ * public class MyRunnable implements Runnable {
+ * 
+ *   {@code @Injector.Inject}("$rootScope")
+ *   NGScope scope;
+ *   
+ *   public void run() {
+ *     scope.put("greeting", "Hello");
+ *   }
+ * }
+ * </pre>
+ * 
  * @author kyoken74
  */
 @Injector.Bind("$scope")

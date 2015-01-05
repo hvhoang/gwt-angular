@@ -7,7 +7,52 @@ import com.asayama.gwt.jsni.client.Closure;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.google.gwt.core.client.GWT;
 
+/**
+ * Provides an interface for AngularJS's controller objects. While AngularJS 
+ * does not require the users to declare their controllers to be controllers,
+ * GWT Angular clarifies the roles of the controllers by requiring that the
+ * controller implementations to support at least one method, 
+ * {@link #onControllerLoad()}.
+ * <p>
+ * User defined controllers supporting this interface must be registered with
+ * the user's module in order for it to be visible to the framework. For 
+ * example,
+ * </p>
+ * <pre>
+ * public class MyModule extends AbstractModule implements EntryPoint {
+ *   public void onModuleLoad() {
+ *     Angular.module(this);
+ *     controller(MyController.class);
+ *   }
+ * }
+ * 
+ * class MyController implements Controller {
+ *   String name;
+ *   public void onControllerLoad() {
+ *     name = "World!";
+ *   }
+ *   public String getName() {
+ *     return name;
+ *   }
+ * }
+ * </pre>
+ * 
+ * @author kyoken74
+ */
 public interface Controller {
+    
+    /**
+     * This method is called when the user supplied controller is loaded by the
+     * framework. The method is similar to the JavaScript constructor for 
+     * controllers, which is called by the AngularJS framework, though the
+     * binding of properties and functions to the {@code $scope} is handled by
+     * GWT Angular, rather than requiring the user to write the binding by hand.
+     * <p>
+     * This reduces the need for custom implementation of
+     * {@link #onControllerLoad()}, and hence an no-op implementation of this
+     * method is provided by {@link AbstractController}.
+     * </p>
+     */
     void onControllerLoad();
 }
 

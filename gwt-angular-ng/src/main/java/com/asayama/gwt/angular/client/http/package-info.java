@@ -1,5 +1,5 @@
 /**
- * Provides GWT Java wrapper around AngularJS's <code>$http</code>.
+ * Provides GWT Java wrapper around AngularJS's <code>$http</code> service.
  * 
  * <h1>WARNIG: This package is work-in-progress</h1>
  */

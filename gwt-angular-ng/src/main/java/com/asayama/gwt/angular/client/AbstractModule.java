@@ -14,9 +14,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Provides GWT Java interface for AngularJS's Module object, and acts as an
- * adapter for GWT module (represented by the EntryPoint interface) and Angular
- * module (represented by the added interfaces in this class.
+ * Provides an abstract implementation for AngularJS's Module object, and acts 
+ * as an adapter for GWT module (represented by the EntryPoint interface) and 
+ * Angular module (represented by the added interfaces in this class.
  * 
  * <p>
  * <a href="http://docs.angularjs.org/api/angular.Module">
@@ -28,11 +28,11 @@ import com.google.gwt.core.client.JavaScriptObject;
  * relevant to the module is done by implementing the <code>onModuleLoad()</code>
  * method.
  * </p><p>
- * It is recommended the code to be organized such that a single GWT module
- * represents a single Angular module. This will help the code organized, and
- * easier to understand, though this is not strictly enforced by the code. More
- * advanced users may create separate sets of GWT and Angular module hierarchies
- * and assemble them any way he wishes.
+ * It is recommended that the code to be organized such that a single GWT 
+ * module represents a single Angular module. This will help the code kept 
+ * organized, and easier to understand, though this is not strictly enforced by
+ * this framework. More advanced users may create separate sets of GWT and 
+ * Angular module hierarchies and assemble them any way he wishes.
  * </p><p>
  * If you choose to mirror the GWT and Angular modules, then be sure to register
  * your implementation of your Module to the GWT module descriptor as an
@@ -102,10 +102,6 @@ import com.google.gwt.core.client.JavaScriptObject;
  * consistent with the Angular module dependency (i.e. "requires" property
  * in AngularJS). You should have only one entry point that bootstraps the user
  * interface per application.
- * <p>
- * Users should consider extending {@link AbstractModule} rather than directly
- * implementing this interface.
- * </p>
  * 
  * @author kyoken74
  */
@@ -163,7 +159,7 @@ public abstract class AbstractModule {
                 String m = "";
                 try {
                     final String SNAME = factory.getServiceClass().getName();
-                    LOG.log(Level.FINEST, m = "calling onFactoryLoad() for " + SNAME);
+                    LOG.finest(m = "calling onFactoryLoad() for " + SNAME);
                     factory.onFactoryLoad();
                     m = "calling create() for " + SNAME;
                     Service service = factory.create();
