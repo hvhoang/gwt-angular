@@ -1,6 +1,18 @@
 package com.asayama.gwt.angular.client;
 
+import com.google.gwt.core.client.GWT;
 
+/**
+ * Provides a default implementation of {@code Service} {@link Factory} 
+ * interface. This implementation uses {@link ServiceCreator} class, which is a
+ * generated class, to instantiate {@link Service} object. Services created 
+ * this way are expected to support default constructor that is publicly 
+ * visible.
+ * 
+ * @author kyoken74
+ * @param <S> Service type to be created by this factory.
+ * @see AbstractModule#service(Class)
+ */
 public class DefaultFactory<S extends Service> implements Factory<S> {
 
     private final Class<S> klass;
@@ -11,7 +23,8 @@ public class DefaultFactory<S extends Service> implements Factory<S> {
 
     @Override
     public S create() {
-        return ServiceCreator.INSTANCE.create(this.klass);
+        ServiceCreator creator = GWT.create(ServiceCreator.class);
+        return creator.create(this.klass);
     }
 
     @Override

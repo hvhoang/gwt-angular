@@ -1,4 +1,4 @@
-package com.asayama.gwt.angular.rebind.util;
+package com.asayama.gwt.angular.rebind;
 
 import com.google.gwt.core.ext.typeinfo.JField;
 

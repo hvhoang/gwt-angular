@@ -71,4 +71,5 @@ I'd like to thank the following entities and individuals.
 
 - GitHub for Hosting the GIT repository
 - Sonatype for Hosting the binary artifacts
+- Javadoc.io for Hosting the javadoc
 - Eyal Shaked for reporting build issues

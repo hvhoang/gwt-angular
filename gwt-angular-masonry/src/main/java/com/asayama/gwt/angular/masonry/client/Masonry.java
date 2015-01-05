@@ -21,8 +21,9 @@ public class Masonry extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            MasonryModuleScripts.INSTANCE.masonry().ensureInjected(JSObject.$wnd);
-            MasonryModuleScripts.INSTANCE.angularMasonry().ensureInjected(JSObject.$wnd);
+            MasonryModuleScripts scripts = GWT.create(MasonryModuleScripts.class);
+            scripts.masonry().ensureInjected(JSObject.$wnd);
+            scripts.angularMasonry().ensureInjected(JSObject.$wnd);
             Angular.module(this, "wu.masonry");
         } catch (Exception e) {
             LOG.log(Level.WARNING, "Exception while " + m, e);
@@ -32,8 +33,6 @@ public class Masonry extends AbstractModule implements EntryPoint {
 
 interface MasonryModuleScripts extends ClientBundle {
     
-    static MasonryModuleScripts INSTANCE = GWT.create(MasonryModuleScripts.class);
-
     @Source("bower_components/angular-masonry.js")
     ScriptResource masonry();
 

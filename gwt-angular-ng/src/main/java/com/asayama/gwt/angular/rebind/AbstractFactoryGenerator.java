@@ -7,8 +7,6 @@ import java.util.logging.Logger;
 
 import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.angular.client.Injector;
-import com.asayama.gwt.angular.rebind.util.ClassTypeFields;
-import com.asayama.gwt.angular.rebind.util.Field;
 import com.asayama.gwt.rebind.JMethodUtils;
 import com.asayama.gwt.rebind.exceptions.RebindException;
 import com.google.gwt.core.ext.GeneratorContext;

@@ -12,6 +12,18 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
+/**
+ * GWT Angular core module, analogous to AngularJS's {@code ng}. In order to
+ * depend on this module, the user must inherit from this module in his gwt.xml.
+ * 
+ * <pre>
+ * {@code <inherits name="com.asayama.gwt.angular.NG" />}
+ * </pre>
+ * 
+ * This module automatically injects the angular JavaScript file.
+ * 
+ * @author kyoken74
+ */
 public class NG extends AbstractModule implements EntryPoint {
     
     private static final String CLASS = NG.class.getName();
@@ -21,7 +33,8 @@ public class NG extends AbstractModule implements EntryPoint {
     public void onModuleLoad() {
         String m = "initializing " + getClass().getName();
         try {
-            NGScripts.INSTANCE.script().ensureInjected(JSObject.$wnd);
+            NGScripts scripts = GWT.create(NGScripts.class);
+            scripts.script().ensureInjected(JSObject.$wnd);
             Angular.module(this, "ng");
             service(Q.class);
             service(Location.class);
@@ -33,8 +46,6 @@ public class NG extends AbstractModule implements EntryPoint {
 }
 
 interface NGScripts extends ClientBundle {
-    
-    static NGScripts INSTANCE = GWT.create(NGScripts.class);
     
     @Source("bower_components/angular/angular.min.js")
     ScriptResource script();

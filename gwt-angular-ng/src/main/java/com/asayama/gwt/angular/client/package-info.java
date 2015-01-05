@@ -15,7 +15,6 @@ package com.asayama.gwt.angular.client;
 
 import com.asayama.gwt.angular.client.Angular.SupportedRootClass;
 import com.asayama.gwt.jsni.client.JSClosure;
-import com.google.gwt.core.client.GWT;
 
 /**
  * Provides interfaces for an object creator. This interface is intended to be
@@ -35,42 +34,36 @@ interface Creator<T> {
 
 @SupportedRootClass(Filter.class)
 interface FilterCreator extends Creator<Filter> {
-    static FilterCreator INSTANCE = GWT.create(FilterCreator.class);
     @Override
     public <X extends Filter> X create(Class<X> klass);
 }
 
 @SupportedRootClass(Directive.class)
 interface DirectiveCreator extends Creator<Directive> {
-    static DirectiveCreator INSTANCE = GWT.create(DirectiveCreator.class);
     @Override
     public <X extends Directive> X create(Class<X> klass);
 }
 
 @SupportedRootClass(Provider.class)
 interface ProviderCreator extends Creator<Provider<?>> {
-    static ProviderCreator INSTANCE = GWT.create(ProviderCreator.class);
     @Override
     public <X extends Provider<?>> X create(Class<X> klass);
 }
 
 @SupportedRootClass(Service.class)
 interface ServiceCreator extends Creator<Service> {
-    static ServiceCreator INSTANCE = GWT.create(ServiceCreator.class);
     @Override
     public <X extends Service> X create(Class<X> klass);
 }
 
 @SupportedRootClass(Controller.class)
 interface ControllerCreator extends Creator<Controller> {
-    static ControllerCreator INSTANCE = GWT.create(ControllerCreator.class);
     @Override
     public <X extends Controller> X create(Class<X> klass);
 }
 
 @SupportedRootClass(Runnable.class)
 interface RunnableCreator extends Creator<Runnable> {
-    static RunnableCreator INSTANCE = GWT.create(RunnableCreator.class);
     @Override
     public <X extends Runnable> X create(Class<X> klass);
 }
@@ -96,27 +89,22 @@ interface DependencyInspector {
 
 @SupportedRootClass(Provider.class)
 interface ProviderDependencyInspector extends DependencyInspector {
-    static ProviderDependencyInspector INSTANCE = GWT.create(ProviderDependencyInspector.class);
 }
 
 @SupportedRootClass(Service.class)
 interface ServiceDependencyInspector extends DependencyInspector {
-    static ServiceDependencyInspector INSTANCE = GWT.create(ServiceDependencyInspector.class);
 }
 
 @SupportedRootClass(Controller.class)
 interface ControllerDependencyInspector extends DependencyInspector {
-    static ControllerDependencyInspector INSTANCE = GWT.create(ControllerDependencyInspector.class);
 }
 
 @SupportedRootClass(Directive.class)
 interface DirectiveDependencyInspector extends DependencyInspector {
-    static DirectiveDependencyInspector INSTANCE = GWT.create(DirectiveDependencyInspector.class);
 }
 
 @SupportedRootClass(Filter.class)
 interface FilterDependencyInspector extends DependencyInspector {
-    static FilterDependencyInspector INSTANCE = GWT.create(FilterDependencyInspector.class);
 }
 
 /**
@@ -124,7 +112,6 @@ interface FilterDependencyInspector extends DependencyInspector {
  */
 @SupportedRootClass(Runnable.class)
 interface RunnableDependencyInspector extends DependencyInspector {
-    static RunnableDependencyInspector INSTANCE = GWT.create(RunnableDependencyInspector.class);
 }
 
 /**
@@ -156,7 +143,6 @@ interface ScopeBinderFactory<T> {
  */
 @SupportedRootClass(Controller.class)
 interface ControllerScopeBinderFactory extends ScopeBinderFactory<Controller> {
-    static ControllerScopeBinderFactory INSTANCE = GWT.create(ControllerScopeBinderFactory.class);
     @Override
     public JSClosure create(Controller object);
 }
@@ -183,35 +169,30 @@ interface BinderFactory<T> {
 @SuppressWarnings("rawtypes")
 @SupportedRootClass(Provider.class)
 interface ProviderBinderFactory extends BinderFactory<Provider> {
-    static ProviderBinderFactory INSTANCE = GWT.create(ProviderBinderFactory.class);
     @Override
     public JSClosure create(Provider object);
 }
 
 @SupportedRootClass(Service.class)
 interface ServiceBinderFactory extends BinderFactory<Service> {
-    static ServiceBinderFactory INSTANCE = GWT.create(ServiceBinderFactory.class);
     @Override
     public JSClosure create(Service object);
 }
 
 @SupportedRootClass(Controller.class)
 interface ControllerBinderFactory extends BinderFactory<Controller> {
-    static ControllerBinderFactory INSTANCE = GWT.create(ControllerBinderFactory.class);
     @Override
     public JSClosure create(Controller object);
 }
 
 @SupportedRootClass(Directive.class)
 interface DirectiveBinderFactory extends BinderFactory<Directive> {
-    static DirectiveBinderFactory INSTANCE = GWT.create(DirectiveBinderFactory.class);
     @Override
     public JSClosure create(Directive object);
 }
 
 @SupportedRootClass(Filter.class)
 interface FilterBinderFactory extends BinderFactory<Filter> {
-    static FilterBinderFactory INSTANCE = GWT.create(FilterBinderFactory.class);
     @Override
     public JSClosure create(Filter object);
 }
@@ -221,7 +202,6 @@ interface FilterBinderFactory extends BinderFactory<Filter> {
  */
 @SupportedRootClass(Runnable.class)
 interface RunnableBinderFactory extends BinderFactory<Runnable> {
-    static RunnableBinderFactory INSTANCE = GWT.create(RunnableBinderFactory.class);
     @Override
     public JSClosure create(Runnable object);
 }

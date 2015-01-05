@@ -7,6 +7,7 @@ import com.asayama.gwt.jsni.client.Function;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.util.client.Arrays;
+import com.google.gwt.core.client.GWT;
 
 /**
  * TODO This file needs some serious review and clean-up.
@@ -48,10 +49,12 @@ class DefaultFilterFactory<F extends Filter> implements Function<NGFilter> {
                     }
                     
                     m = "creating filter " + name;
-                    Filter filter = FilterCreator.INSTANCE.create(klass);
+                    FilterCreator creator = GWT.create(FilterCreator.class);
+                    Filter filter = creator.create(klass);
                     
                     m = "creating binder for " + name;
-                    JSClosure binder = FilterBinderFactory.INSTANCE.create(filter);
+                    FilterBinderFactory binderFactory = GWT.create(FilterBinderFactory.class);
+                    JSClosure binder = binderFactory.create(filter);
                     
                     if (binder != null) {
                         m = "applying binder to " + name;

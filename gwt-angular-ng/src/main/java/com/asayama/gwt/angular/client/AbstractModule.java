@@ -10,12 +10,13 @@ import com.asayama.gwt.jsni.client.JSArray;
 import com.asayama.gwt.jsni.client.JSClosure;
 import com.asayama.gwt.jsni.client.JSFunction;
 import com.asayama.gwt.util.client.Strings;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Provides GWT Java interface for AngularJS's Module object, and acts as an
- * adapter for GWT module (represented by the EntryPoint interface) and Angular
- * module (represented by the added interfaces in this class.
+ * Provides an abstract implementation for AngularJS's Module object, and acts 
+ * as an adapter for GWT module (represented by the EntryPoint interface) and 
+ * Angular module (represented by the added interfaces in this class.
  * 
  * <p>
  * <a href="http://docs.angularjs.org/api/angular.Module">
@@ -27,11 +28,11 @@ import com.google.gwt.core.client.JavaScriptObject;
  * relevant to the module is done by implementing the <code>onModuleLoad()</code>
  * method.
  * </p><p>
- * It is recommended the code to be organized such that a single GWT module
- * represents a single Angular module. This will help the code organized, and
- * easier to understand, though this is not strictly enforced by the code. More
- * advanced users may create separate sets of GWT and Angular module hierarchies
- * and assemble them any way he wishes.
+ * It is recommended that the code to be organized such that a single GWT 
+ * module represents a single Angular module. This will help the code kept 
+ * organized, and easier to understand, though this is not strictly enforced by
+ * this framework. More advanced users may create separate sets of GWT and 
+ * Angular module hierarchies and assemble them any way he wishes.
  * </p><p>
  * If you choose to mirror the GWT and Angular modules, then be sure to register
  * your implementation of your Module to the GWT module descriptor as an
@@ -101,10 +102,6 @@ import com.google.gwt.core.client.JavaScriptObject;
  * consistent with the Angular module dependency (i.e. "requires" property
  * in AngularJS). You should have only one entry point that bootstraps the user
  * interface per application.
- * <p>
- * Users should consider extending {@link AbstractModule} rather than directly
- * implementing this interface.
- * </p>
  * 
  * @author kyoken74
  */
@@ -162,12 +159,13 @@ public abstract class AbstractModule {
                 String m = "";
                 try {
                     final String SNAME = factory.getServiceClass().getName();
-                    LOG.log(Level.FINEST, m = "calling onFactoryLoad() for " + SNAME);
+                    LOG.finest(m = "calling onFactoryLoad() for " + SNAME);
                     factory.onFactoryLoad();
                     m = "calling create() for " + SNAME;
                     Service service = factory.create();
                     m = "binding dependency to " + SNAME;
-                    JSClosure binder = ServiceBinderFactory.INSTANCE.create(service);
+                    ServiceBinderFactory binderFactory = GWT.create(ServiceBinderFactory.class);
+                    JSClosure binder = binderFactory.create(service);
                     if (binder != null) {
                         binder.apply(args);
                     }
@@ -178,7 +176,8 @@ public abstract class AbstractModule {
                 }
             }
         };
-        String[] dependencies = ServiceDependencyInspector.INSTANCE.inspect(factory.getServiceClass());
+        ServiceDependencyInspector inspector = GWT.create(ServiceDependencyInspector.class);
+        String[] dependencies = inspector.inspect(factory.getServiceClass());
         ngo.factory(name, JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
@@ -292,7 +291,8 @@ public abstract class AbstractModule {
         String className = Strings.simpleName(klass);
         String name = Strings.decapitalize(className);
         JSFunction<NGFilter> filterFactory = JSFunction.create(new DefaultFilterFactory<F>(name, klass));
-        JSArray<String> dependencies = JSArray.create(FilterDependencyInspector.INSTANCE.inspect(klass));
+        FilterDependencyInspector inspector = GWT.create(FilterDependencyInspector.class);
+        JSArray<String> dependencies = JSArray.create(inspector.inspect(klass));
         ngo.filter(name, dependencies, filterFactory);
         return this;
     }
@@ -310,7 +310,8 @@ public abstract class AbstractModule {
     public <C extends Controller> AbstractModule controller(Class<C> klass) {
         String name = klass.getName();
         JSClosure constructor = JSClosure.create(new DefaultControllerConstructor<C>(name, klass));
-        JSArray<String> dependencies = JSArray.create(ControllerDependencyInspector.INSTANCE.inspect(klass));
+        ControllerDependencyInspector inspector = GWT.create(ControllerDependencyInspector.class);
+        JSArray<String> dependencies = JSArray.create(inspector.inspect(klass));
         dependencies.unshift("$scope");
         ngo.controller(name, dependencies, constructor);
         return this;
@@ -333,7 +334,8 @@ public abstract class AbstractModule {
         String className = Strings.simpleName(klass);
         String name = Strings.decapitalize(className);
         JSFunction<NGDirective> directiveFactory = JSFunction.create(new DefaultDirectiveFactory<D>(name, klass));
-        JSArray<String> dependencies = JSArray.create(DirectiveDependencyInspector.INSTANCE.inspect(klass));
+        DirectiveDependencyInspector inspector = GWT.create(DirectiveDependencyInspector.class);
+        JSArray<String> dependencies = JSArray.create(inspector.inspect(klass));
         ngo.directive(name, dependencies, directiveFactory);
         return this;
     }
@@ -352,8 +354,10 @@ public abstract class AbstractModule {
             public P call(Object... args) {
                 String m = "";
                 try {
-                    P provider = ProviderCreator.INSTANCE.create(klass);
-                    JSClosure binder = ProviderBinderFactory.INSTANCE.create(provider);
+                    ProviderCreator creator = GWT.create(ProviderCreator.class);
+                    P provider = creator.create(klass);
+                    ProviderBinderFactory binderFactory = GWT.create(ProviderBinderFactory.class);
+                    JSClosure binder = binderFactory.create(provider);
                     if (binder != null) {
                         binder.apply(args);
                     }
@@ -366,7 +370,8 @@ public abstract class AbstractModule {
                 }
             }
         };
-        String[] dependencies = ProviderDependencyInspector.INSTANCE.inspect(klass);
+        ProviderDependencyInspector inspector = GWT.create(ProviderDependencyInspector.class);
+        String[] dependencies = inspector.inspect(klass);
         ngo.config(JSArray.create(dependencies), JSFunction.create(initializer));
         return this;
     }
@@ -386,10 +391,12 @@ public abstract class AbstractModule {
                 String m = "exec(Object...)";
                 try {
                     m = "creating task " + klass.getName();
-                    R runnable = RunnableCreator.INSTANCE.create(klass);
+                    RunnableCreator creator = GWT.create(RunnableCreator.class);
+                    R runnable = creator.create(klass);
 
                     m = "creating binder for task " + klass.getName();
-                    JSClosure binder = RunnableBinderFactory.INSTANCE.create(runnable);
+                    RunnableBinderFactory binderFactory = GWT.create(RunnableBinderFactory.class);
+                    JSClosure binder = binderFactory.create(runnable);
                     if (binder != null) {
                         m = "injecting dependencies into task " + klass.getName();
                         binder.apply(args);
@@ -401,7 +408,8 @@ public abstract class AbstractModule {
                 }
             }
         };
-        String[] dependencies = RunnableDependencyInspector.INSTANCE.inspect(klass);
+        RunnableDependencyInspector inspector = GWT.create(RunnableDependencyInspector.class);
+        String[] dependencies = inspector.inspect(klass);
         ngo.run(JSArray.create(dependencies), JSClosure.create(initializer));
         return this;
     }
