@@ -5,7 +5,7 @@
       <div data-ng-include="getSelectedPage().url"></div>
       <div data-ng-if="getNextPage()">
         <h3 style="text-align:right;">
-          <a href="#!/tutorial?page={{ getNextPage().name }}">
+          <a href="#!/examples?page={{ getNextPage().name }}">
           Next: {{ getNextPage().title }}
           <span class="glyphicon glyphicon-arrow-right"></span>
           </a>
@@ -15,7 +15,7 @@
     <div class="col-md-3">
       <div class="list-group">
         <a class="list-group-item {{ getStylePageActive(page.name) }}"
-          data-ng-repeat="page in getTutorial()" 
+          data-ng-repeat="page in getPages()" 
           data-ng-click="onSelectPage(page)">{{ page.title }}</a>
       </div>
     </div>
