@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>gwt-angular-ngSanitize</artifactId>
+  <artifactId>gwt-angular-ngAnimate</artifactId>
   <packaging>jar</packaging>
   <parent>
     <groupId>com.asayama.gwt.angular</groupId>
@@ -11,9 +11,9 @@
     <relativePath>..</relativePath>
   </parent>
 
-  <name>gwt-angular-ngSanitize</name>
+  <name>gwt-angular-ngAnimate</name>
   <description>
-    Provides GWT wrapper around the AngularJS's Sanitize API.
+    Provides GWT wrapper around the AngularJS's ngAnimate API.
   </description>
 
   <build>
@@ -84,6 +84,10 @@
     <dependency>
       <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ng</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt.angular</groupId>
+      <artifactId>gwt-angular-resources</artifactId>
     </dependency>
   </dependencies>
 

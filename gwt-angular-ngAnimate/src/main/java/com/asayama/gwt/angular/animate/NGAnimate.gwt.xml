@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <inherits name="bower_components/angular-animate" />
+  <inherits name="com.google.gwt.user.User" />
+  <inherits name="com.asayama.gwt.angular.NG" />
+  <inherits name="com.asayama.gwt.resources.Resources" />
+  <source path="client" />
+  <entry-point class="com.asayama.gwt.angular.animate.client.NGAnimate" />
+</module>
