@@ -22,6 +22,7 @@
 
     <!-- AngularJS API -->
     <module>gwt-angular-ng</module>
+    <module>gwt-angular-ngAnimate</module>
     <module>gwt-angular-ngRoute</module>
     <module>gwt-angular-ngSanitize</module>
 
@@ -270,6 +271,11 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
+        <version>0.1.3-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.asayama.gwt.angular</groupId>
+        <artifactId>gwt-angular-ngAnimate</artifactId>
         <version>0.1.3-SNAPSHOT</version>
       </dependency>
       <dependency>
