@@ -12,12 +12,12 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
 /**
- * GWT Angular route module, analogous to AngularJS's {@code ngRoute}. In order
- * to depend on this module, the user must inherit from this module in his 
- * gwt.xml.
+ * GWT Angular animation module, analogous to AngularJS's {@code ngAnimate}. In
+ * order to depend on this module, the user must inherit from this module in 
+ * his gwt.xml.
  * 
  * <pre>
- * {@code <inherits name="com.asayama.gwt.angular.NGRoute" />}
+ * {@code <inherits name="com.asayama.gwt.angular.NGAnimate" />}
  * </pre>
  * 
  * This module automatically injects the angular JavaScript file.
@@ -36,7 +36,6 @@ public class NGAnimate extends AbstractModule implements EntryPoint {
             NGScripts scripts = GWT.create(NGScripts.class);
             scripts.script().ensureInjected(JSObject.$wnd);
             Angular.module(this, "ngAnimate");
-            service(RouteParams.class);
         } catch (Exception e) {
             LOG.log(Level.WARNING, "Exception while " + m, e);
         }
