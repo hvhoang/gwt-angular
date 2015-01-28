@@ -9,7 +9,7 @@ var options = {
 };
 
 var urlConfig = {
-  baseUrl: 'http://gwt-angular.asayama.com/index.html',
+  baseUrl: 'http://gwt-angular.asayama.com/index.html?test',
   snapshotsDir: 'include/snapshots/',
   urls: [{
       url: '',
