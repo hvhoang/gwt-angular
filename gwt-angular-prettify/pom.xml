@@ -87,6 +87,10 @@
       <groupId>com.asayama.gwt.angular</groupId>
       <artifactId>gwt-angular-ng</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.asayama.gwt.angular</groupId>
+      <artifactId>gwt-angular-http</artifactId>
+    </dependency>
   </dependencies>
 
 </project>
