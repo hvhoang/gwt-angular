@@ -2,19 +2,27 @@ php_value include_path '/Users/asayama/Sites/gwt-angular/include'
 php_value date.timezone 'America/New_York'
 AddType application/x-httpd-php .html
 
-#php_value include_path '/home/gwtangular/include'
-#ExpiresActive On
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+</ifmodule>
 
+#php_value include_path '/home/gwtangular/include'
+#php_value date.timezone 'America/New_York'
+#AddHandler fcgid-script .html
+#FCGIWrapper "/dh/cgi-system/php53.cgi" .html
+#
+#ExpiresActive On
+#
 #<filesMatch "\\.cache\\.">
 #ExpiresDefault "access plus 1 year"
 #Header set Cache-Control "max-age=31536000, public"
 #</filesMatch>
-
+#
 #<filesMatch "\\.nocache\\.">
 #ExpiresDefault "now"
 #Header set Cache-Control "no-cache, no-store, must-revalidate"
 #</filesMatch>
-
-<ifmodule mod_deflate.c>
-AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
-</ifmodule>
+#
+#<ifmodule mod_deflate.c>
+#AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+#</ifmodule>
