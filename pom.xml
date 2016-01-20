@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asayama.gwt.angular</groupId>
   <artifactId>gwt-angular</artifactId>
-  <version>0.2.3</version>
+  <version>0.2.4</version>
   <packaging>pom</packaging>
   
   <name>gwt-angular</name>
@@ -55,7 +55,7 @@
     <connection>scm:git:git@github.com:kyoken74/gwt-angular.git</connection>
     <url>scm:git:git@github.com:kyoken74/gwt-angular.git</url>
     <developerConnection>scm:git:git@github.com:kyoken74/gwt-angular.git</developerConnection>
-    <tag>0.2.3</tag>
+    <tag>0.2.4</tag>
   </scm>
   <developers>
     <developer>
@@ -67,7 +67,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gwt.version>2.7.0</gwt.version>
+    <gwt.version>2.8.0-beta1</gwt.version>
     <velocity.version>1.7</velocity.version>
   </properties>
 
@@ -271,54 +271,54 @@
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ng</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngAnimate</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngRoute</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-ngSanitize</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-http</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-masonry</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-prettify</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-resources</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
       <dependency>
         <groupId>com.asayama.gwt.angular</groupId>
         <artifactId>gwt-angular-user</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
       </dependency>
 
       <!-- gwt-binding -->
       <dependency>
         <groupId>com.asayama.gwt</groupId>
         <artifactId>gwt-util</artifactId>
-        <version>0.1.3</version>
+        <version>0.1.4</version>
       </dependency>
 
       <!-- gwt -->
